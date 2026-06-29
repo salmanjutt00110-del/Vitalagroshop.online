@@ -193,10 +193,10 @@ const ProductGridCard = React.memo(({ product, openCheckout, lang }) => {
         <motion.div variants={imageVariants} className="relative w-full pt-5 pb-2 px-4 z-10">
           {/* Category label at top-left */}
           <div className="flex items-center gap-1.5 mb-3">
-            <span className="text-[8px] font-black tracking-[0.15em] px-2.5 py-1 rounded-lg border border-[#0F7B3B]/15 bg-[#0F7B3B]/10 text-[#0F7B3B] uppercase">
+            <span className="text-[8px] font-black tracking-[0.15em] px-2.5 py-1 rounded-lg border border-[#39D98A]/20 bg-[#39D98A]/10 text-[#39D98A] uppercase">
               {getCategoryLabel(product.category)}
             </span>
-            <span className="text-[8px] font-black tracking-[0.15em] px-2.5 py-1 rounded-lg border border-[#102415]/10 bg-[#F8FAF8] text-[#5A5A5A] uppercase">
+            <span className="text-[8px] font-black tracking-[0.15em] px-2.5 py-1 rounded-lg border border-[#ffffff]/20 bg-[#ffffff]/10 text-[#ffffff]/80 uppercase">
               {product.status?.en || 'PREMIUM'}
             </span>
           </div>
@@ -250,24 +250,24 @@ const ProductGridCard = React.memo(({ product, openCheckout, lang }) => {
         >
           <div className="space-y-2.5 sm:space-y-4">
             {nameUr && (lang === 'ur' || lang === 'pb') && (
-              <h3 className="text-[#0F7B3B] font-extrabold text-sm sm:text-2xl leading-normal text-center select-none min-h-[1.25rem] sm:min-h-[1.75rem]" style={{ fontFamily: "'Jameel Noori Nastaleeq', 'Noto Nastaliq Urdu', serif" }} dir="rtl">
+              <h3 className="text-[#39D98A] font-extrabold text-sm sm:text-2xl leading-normal text-center select-none min-h-[1.25rem] sm:min-h-[1.75rem]" style={{ fontFamily: "'Jameel Noori Nastaleeq', 'Noto Nastaliq Urdu', serif" }} dir="rtl">
                 {nameUr}
               </h3>
             )}
             
-            <h4 className="text-[#1E1E1E] font-extrabold text-xs sm:text-lg leading-tight group-hover:text-[#0F7B3B] transition-colors duration-300 text-center line-clamp-1">
+            <h4 className="text-[#ffffff] font-extrabold text-xs sm:text-lg leading-tight group-hover:text-[#39D98A] transition-colors duration-300 text-center line-clamp-1">
               {nameEn}
             </h4>
 
             <div className="flex justify-center">
-              <span className="text-[7.5px] sm:text-[10px] font-mono font-black text-[#5A5A5A] uppercase bg-[#F8FAF8] border border-[#102415]/10 px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-lg tracking-wider inline-block truncate max-w-full text-center">
+              <span className="text-[7.5px] sm:text-[10px] font-mono font-black text-[#A0B3A6] uppercase bg-[#000000]/20 border border-[#ffffff]/10 px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-lg tracking-wider inline-block truncate max-w-full text-center">
                 {product.genericName?.en || product.activeIngredient || 'BIOTECH FORMULA'}
               </span>
             </div>
 
             {/* Hidden description on mobile if not expanded */}
             {(!isMobile || isCardExpanded) && (
-              <p className="text-neutral-500 text-[10px] sm:text-xs leading-relaxed line-clamp-2 text-center h-[28px] sm:h-[36px] overflow-hidden px-1 font-semibold">
+              <p className="text-[#A0B3A6] text-[10px] sm:text-xs leading-relaxed line-clamp-2 text-center h-[28px] sm:h-[36px] overflow-hidden px-1 font-semibold">
                 {desc}
               </p>
             )}
@@ -291,8 +291,8 @@ const ProductGridCard = React.memo(({ product, openCheckout, lang }) => {
                       onClick={(e) => { e.preventDefault(); e.stopPropagation(); setActiveSizeIdx(idx); }}
                       className={`px-2 py-1 sm:px-3 sm:py-1.5 rounded-lg text-[9px] sm:text-[10px] font-black border transition-all cursor-pointer shrink-0 ${
                         isSelected
-                          ? 'bg-emerald-500/20 border-emerald-400/60 text-emerald-300 shadow-[0_0_12px_rgba(16,185,129,0.25)]'
-                          : 'bg-white/90 border-emerald-900/10 text-emerald-950/45 hover:text-neutral-700 hover:bg-white/[0.08] hover:border-emerald-900/20'
+                          ? 'bg-[#39D98A]/20 border-[#39D98A]/60 text-[#39D98A] shadow-[0_0_12px_rgba(57,217,138,0.2)]'
+                          : 'bg-[#ffffff]/5 border-[#ffffff]/10 text-[#ffffff]/60 hover:text-white hover:bg-[#ffffff]/10'
                       }`}
                     >
                       {sizeName}
@@ -304,31 +304,26 @@ const ProductGridCard = React.memo(({ product, openCheckout, lang }) => {
               <div className="flex items-center justify-between">
                 <div className="flex flex-col">
                   <div className="flex items-baseline gap-1.5">
-                    <span className="text-[#102415] font-black text-sm sm:text-xl font-mono leading-none tracking-tight">
+                    <span className="text-[#39D98A] font-black text-sm sm:text-xl font-mono leading-none tracking-tight">
                       {activePrice === 0 ? 'On Request' : `₨ ${activePrice.toLocaleString()}`}
                     </span>
                     {activePrice > 0 && oldPrice && oldPrice > activePrice && (
-                      <span className="text-[#5A5A5A] line-through text-[9px] sm:text-[11px] font-mono leading-none">
+                      <span className="text-[#ffffff]/40 line-through text-[9px] sm:text-[11px] font-mono leading-none">
                         ₨{oldPrice.toLocaleString()}
                       </span>
                     )}
                   </div>
-                  {activePrice > 0 && oldPrice && oldPrice > activePrice && (
-                    <span className="text-[8px] sm:text-[9px] text-[#0F7B3B] font-bold mt-1">
-                      Save ₨{(oldPrice - activePrice).toLocaleString()}
-                    </span>
-                  )}
                 </div>
 
-                <div className="flex items-center gap-1 bg-white/90 rounded-lg border border-emerald-900/5 px-1 py-0.5 sm:px-1.5 sm:py-1">
+                <div className="flex items-center gap-1 bg-[#ffffff]/5 rounded-lg border border-[#ffffff]/10 px-1 py-0.5 sm:px-1.5 sm:py-1">
                   <button
                     onClick={(e) => { e.preventDefault(); e.stopPropagation(); setQty(q => Math.max(1, q - 1)); }}
-                    className="w-5.5 h-5.5 sm:w-7 sm:h-7 rounded bg-white/60 hover:bg-white/15 text-emerald-950 text-xs flex items-center justify-center transition-all font-bold cursor-pointer active:scale-90"
+                    className="w-5.5 h-5.5 sm:w-7 sm:h-7 rounded bg-[#ffffff]/10 hover:bg-[#ffffff]/20 text-[#ffffff] text-xs flex items-center justify-center transition-all font-bold cursor-pointer active:scale-90"
                   >−</button>
-                  <span className="text-emerald-950 text-[11px] sm:text-sm font-black w-4 sm:w-5 text-center font-mono">{qty}</span>
+                  <span className="text-[#ffffff] text-[11px] sm:text-sm font-black w-4 sm:w-5 text-center font-mono">{qty}</span>
                   <button
                     onClick={(e) => { e.preventDefault(); e.stopPropagation(); setQty(q => q + 1); }}
-                    className="w-5.5 h-5.5 sm:w-7 sm:h-7 rounded bg-emerald-500/15 hover:bg-emerald-500/30 text-emerald-300 text-xs flex items-center justify-center transition-all font-bold cursor-pointer active:scale-90"
+                    className="w-5.5 h-5.5 sm:w-7 sm:h-7 rounded bg-[#39D98A]/20 hover:bg-[#39D98A]/30 text-[#39D98A] text-xs flex items-center justify-center transition-all font-bold cursor-pointer active:scale-90"
                   >+</button>
                 </div>
               </div>

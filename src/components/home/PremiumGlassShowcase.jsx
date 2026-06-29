@@ -441,14 +441,14 @@ Thank You.`;
         
         {/* Section Header */}
         <div className="text-center mb-16">
-          <span className="inline-flex items-center gap-1.5 px-3 py-1 bg-white/60 border border-emerald-900/10 rounded-full text-xs font-bold uppercase tracking-widest text-emerald-700">
+          <span className="inline-flex items-center gap-1.5 px-3 py-1 bg-[#ffffff]/5 border border-[#ffffff]/10 rounded-full text-xs font-bold uppercase tracking-widest text-[#39D98A]">
             <Sparkles className="w-3.5 h-3.5 animate-pulse" />
             {t.showcase.badge}
           </span>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-emerald-950 mt-4 tracking-tight">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white mt-4 tracking-tight">
             {lang === 'en' ? 'Our Flagship Solutions' : 'وائٹل کی فلیگ شپ پروڈکٹس'}
           </h2>
-          <p className="text-neutral-600 text-base sm:text-lg max-w-2xl mx-auto mt-4">
+          <p className="text-[#A0B3A6] text-base sm:text-lg max-w-2xl mx-auto mt-4">
             {lang === 'en' 
               ? 'Explore our world-class crop protection and biotechnology formulations, designed for maximum efficiency and yield.' 
               : 'جدید ترین ریسرچ اور بائیوٹیکنالوجی فارمولیشنز کی تفصیلات دریافت کریں۔'}
@@ -463,28 +463,28 @@ Thank You.`;
             
             {/* Category & Badge */}
             <div className="space-y-2.5 animate-gsap">
-              <span className="px-3 py-1 rounded-full text-xs font-black bg-[#76C945]/15 text-emerald-600 border border-[#76C945]/20 uppercase tracking-widest">
+              <span className="px-3 py-1 rounded-full text-xs font-black bg-[#39D98A]/15 text-[#39D98A] border border-[#39D98A]/20 uppercase tracking-widest">
                 {t.categories[activeProduct.category] || activeProduct.category}
               </span>
-              <h3 className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight text-emerald-950 leading-tight mt-2">
+              <h3 className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight text-white leading-tight mt-2">
                 {activeProduct.name[lang] || activeProduct.name.en}
               </h3>
-              <p className="text-[#C5A059] font-black text-xs sm:text-sm tracking-wider uppercase">
+              <p className="text-[#A0B3A6] font-black text-xs sm:text-sm tracking-wider uppercase">
                 {activeProduct.genericName[lang] || activeProduct.genericName.en}
               </p>
             </div>
 
             {/* Tagline / Short Description */}
-            <p className="text-neutral-600 text-sm sm:text-base leading-relaxed border-l-2 border-[#76C945] pl-3 animate-gsap">
+            <p className="text-[#A0B3A6] text-sm sm:text-base leading-relaxed border-l-2 border-[#39D98A] pl-3 animate-gsap">
               {activeProduct.shortDesc ? (activeProduct.shortDesc[lang] || activeProduct.shortDesc.en) : (activeProduct.description[lang]?.split('.')[0] + '.')}
             </p>
 
             {/* Suitable crops */}
             <div className="space-y-2 animate-gsap">
-              <span className="text-[10px] font-black text-neutral-500 uppercase tracking-wider block">{l.crops}</span>
+              <span className="text-[10px] font-black text-[#A0B3A6] uppercase tracking-wider block">{l.crops}</span>
               <div className="flex flex-wrap gap-2">
                 {activeProduct.crops?.slice(0, 4).map((crop, i) => (
-                  <div key={i} className="flex items-center gap-1.5 px-3 py-1 bg-white/60 rounded-lg border border-emerald-900/5 text-xs text-neutral-700 font-bold">
+                  <div key={i} className="flex items-center gap-1.5 px-3 py-1 bg-[#ffffff]/5 rounded-lg border border-[#ffffff]/10 text-xs text-white font-bold">
                     <span>{crop.icon}</span>
                     <span>{crop.name[lang]}</span>
                   </div>
@@ -493,24 +493,24 @@ Thank You.`;
             </div>
 
             {/* Key Benefits row */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 border-y border-emerald-900/5 py-4 animate-gsap">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 border-y border-[#ffffff]/10 py-4 animate-gsap">
               <div className="space-y-1.5">
-                <span className="text-[10px] font-black text-emerald-600 uppercase tracking-wider block">{l.benefits}</span>
+                <span className="text-[10px] font-black text-[#39D98A] uppercase tracking-wider block">{l.benefits}</span>
                 <ul className="space-y-1">
                   {activeProduct.benefits[lang]?.slice(0, 2).map((b, i) => (
-                    <li key={i} className="text-xs text-neutral-600 flex items-start gap-1.5 leading-relaxed">
-                      <Check className="w-3.5 h-3.5 text-emerald-700 shrink-0 mt-0.5" />
+                    <li key={i} className="text-xs text-[#A0B3A6] flex items-start gap-1.5 leading-relaxed">
+                      <Check className="w-3.5 h-3.5 text-[#39D98A] shrink-0 mt-0.5" />
                       <span>{b}</span>
                     </li>
                   ))}
                 </ul>
               </div>
               <div className="space-y-1.5">
-                <span className="text-[10px] font-black text-emerald-600 uppercase tracking-wider block">{l.features}</span>
+                <span className="text-[10px] font-black text-[#39D98A] uppercase tracking-wider block">{l.features}</span>
                 <ul className="space-y-1">
                   {activeProduct.features[lang]?.slice(0, 2).map((f, i) => (
-                    <li key={i} className="text-xs text-neutral-600 flex items-start gap-1.5 leading-relaxed">
-                      <Check className="w-3.5 h-3.5 text-emerald-400 shrink-0 mt-0.5" />
+                    <li key={i} className="text-xs text-[#A0B3A6] flex items-start gap-1.5 leading-relaxed">
+                      <Check className="w-3.5 h-3.5 text-[#39D98A] shrink-0 mt-0.5" />
                       <span>{f}</span>
                     </li>
                   ))}
@@ -521,7 +521,7 @@ Thank You.`;
             {/* Size Selector */}
             {activeProduct.sizes && activeProduct.sizes.length > 0 && (
               <div className="space-y-2 animate-gsap">
-                <span className="text-[10px] font-black text-neutral-500 uppercase tracking-wider block">{l.sizes}</span>
+                <span className="text-[10px] font-black text-[#A0B3A6] uppercase tracking-wider block">{l.sizes}</span>
                 <div className="flex flex-wrap gap-2">
                   {activeProduct.sizes.map((s, idx) => (
                     <button
@@ -529,8 +529,8 @@ Thank You.`;
                       onClick={() => selectSize(idx)}
                       className={`px-3 py-1.5 rounded-lg text-xs font-black border transition-all duration-300 ${
                         idx === activeSizeIdx
-                          ? 'bg-[#76C945]/20 text-emerald-600 border-[#76C945]'
-                          : 'bg-white/60 text-neutral-600 border-emerald-900/10 hover:bg-white/80 hover:border-emerald-900/20'
+                          ? 'bg-[#39D98A]/20 text-[#39D98A] border-[#39D98A]/60 shadow-[0_0_12px_rgba(57,217,138,0.2)]'
+                          : 'bg-[#ffffff]/5 text-[#ffffff]/60 border-[#ffffff]/10 hover:bg-[#ffffff]/10 hover:text-white'
                       }`}
                     >
                       {s.size}
@@ -541,29 +541,24 @@ Thank You.`;
             )}
 
             {/* Prices & SKU Block */}
-            <div className="p-4 bg-white/70 border border-emerald-900/5 rounded-2xl flex flex-col sm:flex-row sm:items-center justify-between gap-4 animate-gsap">
+            <div className="p-4 bg-gradient-to-r from-[#0A1810] to-[#0C1E14] border border-[#39D98A]/20 rounded-2xl flex flex-col sm:flex-row sm:items-center justify-between gap-4 animate-gsap shadow-[0_8px_30px_rgba(0,0,0,0.4)]">
               <div>
                 <div className="flex items-baseline gap-2">
                   {/* Rolling Price Counter Display */}
-                  <span ref={rollingPriceRef} className="text-2xl sm:text-3xl font-black text-emerald-950 font-mono">
+                  <span ref={rollingPriceRef} className="text-2xl sm:text-3xl font-black text-[#39D98A] font-mono">
                     PKR {displayedPrice}
                   </span>
                   {displayedOldPrice && displayedOldPrice > displayedPrice && (
-                    <>
-                      <span className="line-through text-neutral-500 text-sm sm:text-base font-mono">
-                        PKR {displayedOldPrice}
-                      </span>
-                      <span className="px-1.5 py-0.5 bg-red-500/20 text-red-400 text-[10px] font-black rounded">
-                        Save {Math.round((1 - activeSize.price / activeSize.oldPrice) * 100)}%
-                      </span>
-                    </>
+                    <span className="line-through text-[#ffffff]/40 text-sm sm:text-base font-mono">
+                      PKR {displayedOldPrice}
+                    </span>
                   )}
                 </div>
-                <div className="flex gap-3 text-[10px] text-neutral-500 mt-1 font-bold">
-                  <span>SKU: <span className="text-neutral-600 font-semibold">{activeSize.sku}</span></span>
+                <div className="flex gap-3 text-[10px] text-[#A0B3A6] mt-1 font-bold">
+                  <span>SKU: <span className="text-white font-semibold">{activeSize.sku}</span></span>
                   <span className="flex items-center gap-1">
-                    <span className={`w-1 h-1 rounded-full ${activeSize.stockStatus === 'In Stock' ? 'bg-emerald-400' : 'bg-amber-400 animate-pulse'}`} />
-                    <span className={activeSize.stockStatus === 'In Stock' ? 'text-emerald-400' : 'text-amber-400'}>
+                    <span className={`w-1 h-1 rounded-full ${activeSize.stockStatus === 'In Stock' ? 'bg-[#39D98A]' : 'bg-amber-400 animate-pulse'}`} />
+                    <span className={activeSize.stockStatus === 'In Stock' ? 'text-[#39D98A]' : 'text-amber-400'}>
                       {activeSize.stockStatus === 'In Stock' ? l.inStock : activeSize.stockStatus === 'Low Stock' ? l.lowStock : l.outOfStock}
                     </span>
                   </span>
@@ -573,8 +568,8 @@ Thank You.`;
               {/* Specs Badge */}
               {activeProduct.formulation && (
                 <div className="text-right">
-                  <span className="text-xs text-neutral-600 block">{activeProduct.formulation}</span>
-                  <span className="text-[10px] text-neutral-500 block mt-0.5 truncate max-w-[120px]">{activeProduct.activeIngredient}</span>
+                  <span className="text-xs text-white block font-black">{activeProduct.formulation}</span>
+                  <span className="text-[10px] text-[#A0B3A6] block mt-0.5 truncate max-w-[120px]">{activeProduct.activeIngredient}</span>
                 </div>
               )}
             </div>
@@ -585,7 +580,7 @@ Thank You.`;
                 onMouseMove={handleMagneticHover}
                 onMouseLeave={handleMagneticLeave}
                 onClick={triggerBuyNow}
-                className="w-full py-3.5 bg-[#76C945] hover:bg-[#8AD65A] text-[#0A2E1F] rounded-xl text-xs sm:text-sm font-black flex items-center justify-center gap-1.5 transition-all shadow-lg shadow-[#76C945]/15"
+                className="w-full py-3.5 bg-gradient-to-r from-[#39D98A] to-[#1FAF5A] hover:shadow-[0_4px_15px_rgba(57,217,138,0.3)] text-[#061509] rounded-xl text-xs sm:text-sm font-black flex items-center justify-center gap-1.5 transition-all"
               >
                 <span>{l.buyNow}</span>
               </button>
@@ -594,9 +589,9 @@ Thank You.`;
                 onMouseMove={handleMagneticHover}
                 onMouseLeave={handleMagneticLeave}
                 onClick={triggerAddToCart}
-                className="w-full py-3.5 bg-white/80 border border-emerald-900/10 hover:bg-white/15 text-emerald-950 rounded-xl text-xs sm:text-sm font-bold flex items-center justify-center gap-1.5 transition-all"
+                className="w-full py-3.5 bg-[#ffffff]/5 border border-[#ffffff]/10 hover:bg-[#ffffff]/10 text-[#ffffff] rounded-xl text-xs sm:text-sm font-bold flex items-center justify-center gap-1.5 transition-all"
               >
-                <ShoppingCart className="w-4 h-4 text-emerald-700" />
+                <ShoppingCart className="w-4 h-4 text-[#ffffff]" />
                 <span>{l.cart}</span>
               </button>
 
@@ -606,7 +601,7 @@ Thank You.`;
                 href={getWhatsAppMsgUrl()}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-full py-3.5 border border-emerald-500/30 hover:bg-emerald-500/10 text-emerald-400 rounded-xl text-xs sm:text-sm font-bold flex items-center justify-center gap-1.5 transition-all"
+                className="w-full py-3.5 border border-[#39D98A]/30 hover:bg-[#39D98A]/10 text-[#39D98A] rounded-xl text-xs sm:text-sm font-bold flex items-center justify-center gap-1.5 transition-all"
               >
                 <MessageCircle className="w-4.5 h-4.5" />
                 <span>{l.whatsapp}</span>
@@ -616,9 +611,9 @@ Thank You.`;
                 onMouseMove={handleMagneticHover}
                 onMouseLeave={handleMagneticLeave}
                 onClick={handlePdfDownload}
-                className="w-full py-3.5 bg-white/70 border border-emerald-900/5 backdrop-blur-md hover:bg-white text-neutral-700 rounded-xl text-xs sm:text-sm font-bold flex items-center justify-center gap-1.5 transition-all"
+                className="w-full py-3.5 bg-[#ffffff]/5 border border-[#ffffff]/10 hover:bg-[#ffffff]/10 text-[#ffffff] rounded-xl text-xs sm:text-sm font-bold flex items-center justify-center gap-1.5 transition-all"
               >
-                <Download className="w-4.5 h-4.5 text-neutral-500" />
+                <Download className="w-4.5 h-4.5 text-[#ffffff]" />
                 <span>{l.pdf}</span>
               </button>
             </div>
@@ -757,7 +752,7 @@ function ProductGlassCard({ activeProduct, lang, displayedPrice, setActiveDetail
       onMouseLeave={handleCardMouseLeave}
     >
       {/* Glowing Refraction Glass platform at bottom */}
-      <div className="absolute bottom-[-10px] w-[80%] h-6 bg-white/60 border border-emerald-900/10 rounded-full filter blur-[2px] backdrop-blur-md z-0 scale-x-110 shadow-[0_15px_30px_rgba(118,201,69,0.25)]" />
+      <div className="absolute bottom-[-10px] w-[80%] h-6 bg-[#39D98A]/10 border border-[#39D98A]/20 rounded-full filter blur-[4px] backdrop-blur-md z-0 scale-x-110 shadow-[0_15px_30px_rgba(57,217,138,0.25)]" />
 
       {/* Glassmorphic card frame */}
       <motion.div
@@ -769,15 +764,15 @@ function ProductGlassCard({ activeProduct, lang, displayedPrice, setActiveDetail
           backdropFilter: 'blur(24px) saturate(160%)',
           WebkitBackdropFilter: 'blur(24px) saturate(160%)'
         }}
-        className="absolute inset-0 bg-white/80 border border-emerald-900/10 rounded-3xl p-6 flex flex-col justify-between items-center shadow-[0_35px_80px_rgba(0,0,0,0.8),inset_0_2px_4px_rgba(255,255,255,0.05)] overflow-hidden cursor-pointer hover:border-emerald-900/20 transition-all duration-300"
+        className="absolute inset-0 bg-[#0A1810]/90 border border-[#39D98A]/10 rounded-3xl p-6 flex flex-col justify-between items-center shadow-[0_35px_80px_rgba(0,0,0,0.9),inset_0_2px_4px_rgba(255,255,255,0.02)] overflow-hidden cursor-pointer hover:border-[#39D98A]/30 transition-all duration-300"
       >
         {/* Sheen sheen reflection */}
-        <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/[0.03] to-transparent pointer-events-none skew-y-12 translate-y-[-50%]" />
+        <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-[#ffffff]/[0.02] to-transparent pointer-events-none skew-y-12 translate-y-[-50%]" />
 
         {/* Top card info */}
-        <div className="w-full flex justify-between items-center text-[10px] font-black text-neutral-400 tracking-widest uppercase z-10">
+        <div className="w-full flex justify-between items-center text-[10px] font-black text-[#A0B3A6] tracking-widest uppercase z-10">
           <span>VITAL SHOWROOM</span>
-          <span className="text-emerald-700">{activeProduct.formulation}</span>
+          <span className="text-[#39D98A]">{activeProduct.formulation}</span>
         </div>
 
         {/* Main Product PNG floating outside boundaries */}
