@@ -72,8 +72,8 @@ export default function PremiumProductCard({ product }) {
         </div>
 
         {/* Product Image — Floating Bottle */}
-        <div className="relative aspect-[4/3] w-full flex items-center justify-center mb-5 rounded-2xl overflow-hidden bg-gradient-to-b from-[#0A1810] to-[#0C1E14] border border-[#39D98A]/10">
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_60%,rgba(15,123,59,0.04)_0%,transparent_65%)] group-hover:scale-105 transition-transform duration-500 pointer-events-none" />
+        <div className="relative aspect-[4/3] w-full flex items-center justify-center mb-5 rounded-2xl overflow-hidden bg-[#F4F6F4] border border-black/5">
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_60%,rgba(15,123,59,0.08)_0%,transparent_65%)] group-hover:scale-105 transition-transform duration-500 pointer-events-none" />
           
           <motion.div
             animate={{ y: [0, -4, 0] }}
@@ -83,7 +83,7 @@ export default function PremiumProductCard({ product }) {
             <BlurUpImage
               src={product.pngUrl || product.imageUrl}
               alt={prodNameEn}
-              className="max-h-full w-auto object-contain select-none pointer-events-none drop-shadow-[0_8px_16px_rgba(0,0,0,0.15)]"
+              className="max-h-full w-auto object-contain select-none pointer-events-none drop-shadow-[0_12px_24px_rgba(0,0,0,0.15)]"
             />
           </motion.div>
         </div>
@@ -92,21 +92,21 @@ export default function PremiumProductCard({ product }) {
         <div className="space-y-1 mb-3 relative z-10 text-left">
           {prodNameUr && (
             <h3 
-              className="text-[#39D98A] font-extrabold text-base leading-snug"
+              className="text-[#0F7B3B] font-extrabold text-base leading-snug"
               style={{ fontFamily: "'Jameel Noori Nastaleeq', 'Noto Nastaliq Urdu', serif" }}
               dir="rtl"
             >
               {prodNameUr}
             </h3>
           )}
-          <h4 className="text-[#ffffff] font-black text-sm leading-tight group-hover:text-[#39D98A] transition-colors duration-300 line-clamp-1">
+          <h4 className="text-[#0A1810] font-black text-sm leading-tight group-hover:text-[#0F7B3B] transition-colors duration-300 line-clamp-1">
             {prodNameEn}
           </h4>
         </div>
 
         {/* Generic Chemical Formulation Badge */}
         <div className="flex justify-start mb-4">
-          <span className="text-[9px] font-mono font-bold text-[#A0B3A6] bg-[#000000]/20 border border-[#ffffff]/10 px-2.5 py-1 rounded-lg tracking-wider inline-block truncate max-w-full">
+          <span className="text-[9px] font-mono font-bold text-[#4B5E53] bg-[#E8EFEA] border border-[#D1E0D6] px-2.5 py-1 rounded-lg tracking-wider inline-block truncate max-w-full">
             {product.activeIngredient || 'BIOTECH FORMULATION'}
           </span>
         </div>
@@ -137,7 +137,7 @@ export default function PremiumProductCard({ product }) {
                 className="space-y-4"
               >
                 {/* Short Description */}
-                <p className="text-[#A0B3A6] text-[11px] leading-relaxed text-left line-clamp-2">
+                <p className="text-[#4B5E53] text-[11px] leading-relaxed text-left line-clamp-2">
                   {product.shortDesc?.[lang] || product.description?.[lang] || (lang === 'en' ? 'Premium agrochemical formulation for target control.' : 'بہترین زرعی فارمولیشن فار ٹارگٹ کنٹرول۔')}
                 </p>
 
@@ -157,8 +157,8 @@ export default function PremiumProductCard({ product }) {
                             }}
                             className={`px-3 py-1.5 rounded-xl text-[10px] font-black border transition-all duration-300 cursor-pointer ${
                               isActive
-                                ? 'bg-[#39D98A]/20 text-[#39D98A] border-[#39D98A]/60 shadow-[0_0_12px_rgba(57,217,138,0.2)]'
-                                : 'bg-[#ffffff]/5 text-[#ffffff]/60 border-[#ffffff]/10 hover:bg-[#ffffff]/10 hover:text-white'
+                                ? 'bg-[#0F7B3B]/10 text-[#0F7B3B] border border-[#0F7B3B]/40 shadow-[0_0_12px_rgba(15,123,59,0.15)]'
+                                : 'bg-white text-[#4B5E53] border border-black/10 hover:border-[#0F7B3B]/30 hover:text-[#0A1810] shadow-sm'
                             }`}
                           >
                             {szName}
@@ -172,20 +172,20 @@ export default function PremiumProductCard({ product }) {
                 {/* Price & Quantity Row */}
                 <div className="flex items-center justify-between">
                   {/* Price */}
-                  <span className="text-[#39D98A] font-black text-lg sm:text-xl font-mono">
+                  <span className="text-[#0A1810] font-black text-lg sm:text-xl font-mono">
                     {currentPrice === 0 ? 'On Request' : `Rs ${currentPrice.toLocaleString()}`}
                   </span>
 
                   {/* Quantity Adjustment */}
-                  <div className="flex items-center gap-1.5 bg-[#ffffff]/5 rounded-xl border border-[#ffffff]/10 px-1.5 py-1">
+                  <div className="flex items-center gap-1.5 bg-[#F8FAF8] rounded-xl border border-black/10 px-1.5 py-1">
                     <button
                       onClick={(e) => { e.stopPropagation(); setQuantity(q => Math.max(1, q - 1)); }}
-                      className="w-7 h-7 rounded-lg bg-[#ffffff]/10 hover:bg-[#ffffff]/20 text-[#ffffff] text-sm flex items-center justify-center transition-all font-bold cursor-pointer active:scale-90"
+                      className="w-7 h-7 rounded-lg bg-white hover:bg-gray-100 text-[#0A1810] text-sm flex items-center justify-center transition-all font-bold cursor-pointer active:scale-90 border border-black/5 shadow-sm"
                     >−</button>
-                    <span className="text-[#ffffff] text-xs font-black w-5 text-center font-mono">{quantity}</span>
+                    <span className="text-[#0A1810] text-xs font-black w-5 text-center font-mono">{quantity}</span>
                     <button
                       onClick={(e) => { e.stopPropagation(); setQuantity(q => q + 1); }}
-                      className="w-7 h-7 rounded-lg bg-[#39D98A]/20 hover:bg-[#39D98A]/30 text-[#39D98A] text-sm flex items-center justify-center transition-all font-bold cursor-pointer active:scale-90"
+                      className="w-7 h-7 rounded-lg bg-[#0F7B3B]/10 hover:bg-[#0F7B3B]/20 text-[#0F7B3B] text-sm flex items-center justify-center transition-all font-bold cursor-pointer active:scale-90 border border-[#0F7B3B]/10"
                     >+</button>
                   </div>
                 </div>
@@ -202,7 +202,7 @@ export default function PremiumProductCard({ product }) {
                   <Link
                     to={`/products/${product.slug || product.id}`}
                     onClick={(e) => e.stopPropagation()}
-                    className="flex items-center justify-center gap-1 h-11 bg-[#ffffff]/5 hover:bg-[#ffffff]/10 border border-[#ffffff]/10 rounded-xl text-[10px] font-bold text-[#ffffff] transition-all active:scale-95 cursor-pointer"
+                    className="flex items-center justify-center gap-1.5 h-11 bg-white border border-[#0F7B3B]/20 hover:bg-[#0F7B3B]/5 hover:border-[#0F7B3B]/40 text-[#0F7B3B] rounded-xl text-[10px] font-black uppercase tracking-wider transition-all active:scale-95 cursor-pointer shadow-sm"
                   >
                     {lang === 'en' ? 'Details' : 'تفصیلات'}
                     <ChevronRight className="w-3.5 h-3.5" />

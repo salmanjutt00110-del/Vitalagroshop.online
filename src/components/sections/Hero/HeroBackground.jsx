@@ -37,8 +37,8 @@ export default function HeroBackground({ videoRef }) {
         </video>
       </div>
 
-      {/* 2. Minimal gradient overlay — light premium theme fade */}
-      <div className="absolute inset-0 z-[1] bg-gradient-to-b from-[#102415]/20 via-[#F8FAF8]/40 to-[#F8FAF8] backdrop-blur-[2px]" />
+      {/* 2. Minimal gradient overlay for text readability */}
+      <div className="absolute inset-0 z-[1] bg-black/10" />
 
       {/* Premium Vignette / Depth */}
       <div className="absolute inset-0 z-[1] bg-[radial-gradient(ellipse_at_center,transparent_40%,rgba(16,36,21,0.1)_100%)]" />

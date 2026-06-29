@@ -28,7 +28,7 @@ export default function TopTicker() {
   const doubledItems = [...tickerItems, ...tickerItems, ...tickerItems];
 
   return (
-    <div className="w-full bg-[#031505] border-b border-[#76C945]/15 text-neutral-700 text-[11px] font-semibold tracking-wide h-8 flex items-center relative overflow-hidden z-[60] select-none">
+    <div className="w-full bg-white border-b border-emerald-900/10 text-emerald-950 text-[11px] font-bold tracking-wide h-8 flex items-center relative overflow-hidden z-[60] select-none">
       <style>{`
         @keyframes marquee {
           0% {

@@ -848,11 +848,11 @@ export default function Products() {
                 
                 {/* Header Category and Badges */}
                 <div className="flex flex-wrap items-center gap-2">
-                  <span className="px-3 py-1 bg-[#76C945]/10 border border-[#76C945]/30 text-emerald-600 text-[10px] tracking-[0.2em] font-black uppercase rounded-md shadow-[0_0_8px_rgba(118,201,69,0.15)]">
+                  <span className="px-3 py-1 bg-[#39D98A]/10 border border-[#39D98A]/30 text-[#39D98A] text-[10px] tracking-[0.2em] font-black uppercase rounded-md shadow-[0_0_8px_rgba(57,217,138,0.15)]">
                     ✦ {getCategoryLabel(activeHeroProduct.category)}
                   </span>
                   {activeHeroProduct.activeIngredient && (
-                    <span className="px-3 py-1 bg-white/60 border border-emerald-900/10 text-neutral-600 text-[10px] tracking-wide font-bold rounded-md">
+                    <span className="px-3 py-1 bg-[#ffffff]/5 border border-[#ffffff]/10 text-[#A0B3A6] text-[10px] tracking-wide font-bold rounded-md">
                       {activeHeroProduct.activeIngredient}
                     </span>
                   )}
@@ -868,30 +868,30 @@ export default function Products() {
                     transition={{ duration: 0.5 }}
                     className="space-y-2 sm:space-y-4"
                   >
-                    <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black tracking-tight leading-none text-emerald-950 flex flex-wrap gap-x-4 items-center">
+                    <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black tracking-tight leading-none text-white flex flex-wrap gap-x-4 items-center">
                       <span>{activeHeroProduct.name}</span>
                       {activeHeroProduct.name_ur && (lang === 'ur' || lang === 'pb') && (
-                        <span className="text-emerald-400 text-2xl sm:text-4xl font-extrabold" style={{ fontFamily: "'Jameel Noori Nastaleeq', 'Noto Nastaliq Urdu', serif" }} dir="rtl">
+                        <span className="text-[#39D98A] text-2xl sm:text-4xl font-extrabold" style={{ fontFamily: "'Jameel Noori Nastaleeq', 'Noto Nastaliq Urdu', serif" }} dir="rtl">
                           {activeHeroProduct.name_ur}
                         </span>
                       )}
                     </h1>
 
-                    <div className="inline-block text-[10px] sm:text-xs font-mono font-bold text-emerald-300 bg-emerald-950/40 border border-emerald-500/20 px-3 py-1 rounded-full">
+                    <div className="inline-block text-[10px] sm:text-xs font-mono font-bold text-[#39D98A] bg-[#39D98A]/10 border border-[#39D98A]/20 px-3 py-1 rounded-full">
                       INGREDIENTS: {activeHeroProduct.formula || 'Biotech Active Synthesis'}
                     </div>
 
-                    <p className="text-emerald-950/75 text-xs sm:text-base max-w-2xl leading-relaxed">
+                    <p className="text-[#A0B3A6] text-xs sm:text-base max-w-2xl leading-relaxed">
                       {activeHeroProduct.description?.[lang] || activeHeroProduct.description?.en || activeHeroProduct.shortDesc?.[lang] || activeHeroProduct.shortDesc?.en}
                     </p>
 
                     {/* Recommended Crops list */}
                     {activeHeroProduct.crops && (
                       <div className="space-y-1.5 sm:space-y-2">
-                        <span className="text-[10px] text-neutral-500 block font-black uppercase tracking-wider">Recommended Crops:</span>
+                        <span className="text-[10px] text-[#A0B3A6] block font-black uppercase tracking-wider">Recommended Crops:</span>
                         <div className="flex flex-wrap gap-2">
                           {activeHeroProduct.crops.slice(0, 5).map((cr, idx) => (
-                            <span key={idx} className="px-2.5 py-1 rounded-lg bg-white/60 border border-emerald-900/5 text-[10px] sm:text-xs font-bold text-neutral-700 flex items-center gap-1">
+                            <span key={idx} className="px-2.5 py-1 rounded-lg bg-[#ffffff]/5 border border-[#ffffff]/10 text-[10px] sm:text-xs font-bold text-white flex items-center gap-1">
                               <span>{cr.icon || '🌱'}</span>
                               <span>{typeof cr.name === 'object' ? cr.name[lang] : cr.name}</span>
                             </span>
@@ -903,12 +903,12 @@ export default function Products() {
                 </AnimatePresence>
 
                 {/* Sizing, Pricing, and Action Section */}
-                <div className="bg-slate-50/50 border border-emerald-900/5 backdrop-blur-xl rounded-[24px] p-5 sm:p-6 space-y-4 sm:space-y-6">
+                <div className="bg-[#0A1810]/80 border border-[#ffffff]/10 backdrop-blur-xl rounded-[24px] p-5 sm:p-6 space-y-4 sm:space-y-6">
                   
                   <div className="flex flex-wrap items-center justify-between gap-4">
                     {/* Sizes Selection */}
                     <div className="space-y-1.5">
-                      <span className="text-[10px] text-neutral-500 block font-black uppercase tracking-wider">Pack Sizes:</span>
+                      <span className="text-[10px] text-[#A0B3A6] block font-black uppercase tracking-wider">Pack Sizes:</span>
                       <div className="flex flex-wrap gap-1.5">
                         {activeHeroProduct.sizes?.map((sz, idx) => {
                           const sizeName = typeof sz === 'object' ? sz.size : sz;
@@ -919,8 +919,8 @@ export default function Products() {
                               onClick={() => setHeroActiveSizeIdx(idx)}
                               className={`px-3 py-1.5 rounded-xl text-[10px] sm:text-xs font-bold border transition-all cursor-pointer ${
                                 active 
-                                  ? 'bg-emerald-500/20 text-emerald-300 border-emerald-400 shadow-md shadow-emerald-500/10'
-                                  : 'bg-white/60 border-emerald-900/5 text-neutral-500 hover:bg-white/80 hover:text-emerald-950'
+                                  ? 'bg-[#39D98A]/20 text-[#39D98A] border-[#39D98A]/60 shadow-[0_0_12px_rgba(57,217,138,0.2)]'
+                                  : 'bg-[#ffffff]/5 border-[#ffffff]/10 text-white/60 hover:bg-[#ffffff]/10 hover:text-white'
                               }`}
                             >
                               {sizeName}
@@ -932,18 +932,18 @@ export default function Products() {
 
                     {/* Quantity Adjustment */}
                     <div className="space-y-1.5">
-                      <span className="text-[10px] text-neutral-500 block font-black uppercase tracking-wider">Quantity:</span>
-                      <div className="flex items-center gap-2 bg-white/60 rounded-xl border border-emerald-900/5 p-1 h-[34px] sm:h-[38px]">
+                      <span className="text-[10px] text-[#A0B3A6] block font-black uppercase tracking-wider">Quantity:</span>
+                      <div className="flex items-center gap-2 bg-[#ffffff]/5 rounded-xl border border-[#ffffff]/10 p-1 h-[34px] sm:h-[38px]">
                         <button
                           onClick={() => setHeroQuantity(q => Math.max(1, q - 1))}
-                          className="w-6 h-6 rounded-lg bg-white/60 hover:bg-white/80 flex items-center justify-center font-bold text-emerald-950 text-xs transition-colors cursor-pointer"
+                          className="w-6 h-6 rounded-lg bg-[#ffffff]/10 hover:bg-[#ffffff]/20 flex items-center justify-center font-bold text-white text-xs transition-colors cursor-pointer"
                         >
                           -
                         </button>
-                        <span className="w-6 text-center text-xs font-black text-emerald-950 font-mono">{heroQuantity}</span>
+                        <span className="w-6 text-center text-xs font-black text-white font-mono">{heroQuantity}</span>
                         <button
                           onClick={() => setHeroQuantity(q => q + 1)}
-                          className="w-6 h-6 rounded-lg bg-white/60 hover:bg-white/80 flex items-center justify-center font-bold text-emerald-950 text-xs transition-colors cursor-pointer"
+                          className="w-6 h-6 rounded-lg bg-[#39D98A]/20 hover:bg-[#39D98A]/30 flex items-center justify-center font-bold text-[#39D98A] text-xs transition-colors cursor-pointer"
                         >
                           +
                         </button>
@@ -952,32 +952,27 @@ export default function Products() {
                   </div>
 
                   {/* Pricing and Action row */}
-                  <div className="flex flex-wrap items-center justify-between gap-4 border-t border-emerald-900/5 pt-4">
+                  <div className="flex flex-wrap items-center justify-between gap-4 border-t border-[#ffffff]/10 pt-4">
                     
                     {/* Price with Orange/Red Discount Badge */}
                     <div className="flex items-center gap-4">
                       <div className="flex flex-col">
                         <div className="flex items-baseline gap-2">
-                          <span className="text-2xl sm:text-3xl font-black text-emerald-700 font-mono">
+                          <span className="text-2xl sm:text-3xl font-black text-[#39D98A] font-mono">
                             {heroActivePrice === 0 ? 'On Request' : `PKR ${heroActivePrice.toLocaleString()}`}
                           </span>
                           {heroActivePrice > 0 && heroOldPrice && heroOldPrice > heroActivePrice && (
-                            <span className="text-neutral-400 line-through text-xs sm:text-sm font-mono">
+                            <span className="text-white/40 line-through text-xs sm:text-sm font-mono">
                               PKR {heroOldPrice.toLocaleString()}
                             </span>
                           )}
                         </div>
-                        {heroActivePrice > 0 && heroOldPrice && heroOldPrice > heroActivePrice && (
-                          <span className="text-[9px] sm:text-xs text-emerald-700/80 font-bold">
-                            Save PKR {(heroOldPrice - heroActivePrice).toLocaleString()}
-                          </span>
-                        )}
                       </div>
 
                       {/* Large floating glass discount badge */}
                       {heroActivePrice > 0 && heroOldPrice && heroOldPrice > heroActivePrice && (
                         <div 
-                          className="px-3.5 py-1.5 rounded-full bg-gradient-to-r from-red-600 via-orange-500 to-red-600 text-emerald-950 text-xs font-black uppercase tracking-wider shadow-[0_6px_20px_rgba(239,68,68,0.45)] border border-red-400/20 select-none z-10 shrink-0"
+                          className="px-3.5 py-1.5 rounded-full bg-gradient-to-r from-red-600 via-orange-500 to-red-600 text-white text-xs font-black uppercase tracking-wider shadow-[0_6px_20px_rgba(239,68,68,0.45)] border border-red-400/20 select-none z-10 shrink-0"
                           style={{ animation: 'float-badge 3s infinite ease-in-out' }}
                         >
                           {Math.round((1 - heroActivePrice / heroOldPrice) * 100)}% OFF
