@@ -255,6 +255,7 @@ const ProductGridCard = React.memo(({ product, openCheckout, lang }) => {
               <BlurUpImage
                 src={getProductImage(product)}
                 alt={nameEn}
+                loading="eager"
                 className="max-h-full max-w-[95%] object-contain mx-auto transition-transform duration-500"
                 style={{
                   filter: isHovered
@@ -1091,6 +1092,7 @@ export default function Products() {
                     <BlurUpImage
                       src={activeHeroProduct.image}
                       alt={activeHeroProduct.name}
+                      loading="eager"
                       className="h-44 xs:h-52 sm:h-64 md:h-76 max-w-full object-contain select-none pointer-events-none mx-auto"
                       style={{
                         filter: isMobile 

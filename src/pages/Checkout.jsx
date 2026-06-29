@@ -794,6 +794,48 @@ export default function CheckoutPage() {
                       </div>
                     </div>
 
+                    {/* Pre-Confirmation Payment Bank Details */}
+                    <div className="mt-4 pt-4 border-t border-white/5 space-y-4">
+                      <div className="text-left">
+                        <h5 className="text-[11px] font-black text-amber-500 uppercase tracking-widest leading-none mb-1 font-sans">
+                          {lang === 'en' ? 'Pre-Confirmation Payment Accounts' : 'تصدیقی رقم جمع کروانے کے اکاؤنٹس'}
+                        </h5>
+                        <p className="text-[10px] text-neutral-400 font-sans leading-relaxed">
+                          {lang === 'en' 
+                            ? 'Please transfer the mandatory 299 PKR pre-confirmation delivery charges to any of our official bank accounts below to confirm your Cash on Delivery order:'
+                            : 'براہ کرم اپنا کیش آن ڈیلیوری آرڈر کنفرم کرنے کے لیے لازمی 299 روپے ڈلیوری چارجز درج ذیل کسی بھی بینک اکاؤنٹ میں ٹرانسفر کریں:'}
+                        </p>
+                      </div>
+
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 max-h-[220px] overflow-y-auto pr-1 custom-scrollbar">
+                        {PAYMENT_METHODS.filter(m => m.id !== 'cod' && m.available).map((method) => (
+                          <div 
+                            key={method.id} 
+                            className="p-3 rounded-2xl border border-white/5 bg-white/[0.01] hover:bg-white/[0.03] transition-colors flex items-center justify-between gap-3 text-xs"
+                          >
+                            <div className="flex items-center gap-2.5 min-w-0">
+                              <span className="text-lg shrink-0">{method.icon}</span>
+                              <div className="min-w-0">
+                                <span className="font-extrabold text-white text-[11px] block leading-tight">{method.label}</span>
+                                <span className="font-mono text-[10px] text-neutral-400 block truncate max-w-[200px] sm:max-w-xs">{method.iban}</span>
+                              </div>
+                            </div>
+                            <button
+                              onClick={(e) => {
+                                e.preventDefault();
+                                e.stopPropagation();
+                                navigator.clipboard.writeText(method.iban);
+                                toast.success(lang === 'en' ? `${method.label} IBAN copied!` : `${method.label} کا آئی بی اے این کاپی ہو گیا!`);
+                              }}
+                              className="p-2 rounded-lg bg-white/5 hover:bg-emerald-500/10 text-neutral-450 hover:text-emerald-400 transition-all cursor-pointer flex items-center justify-center shrink-0"
+                            >
+                              <Copy size={12} />
+                            </button>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+
                     {/* Trust Badges */}
                     <div className="flex flex-wrap items-center justify-between gap-4 p-4 border border-white/5 rounded-2xl bg-white/[0.01]">
                       {/* Security Badge */}
