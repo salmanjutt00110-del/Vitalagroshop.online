@@ -125,7 +125,7 @@ export default function PremiumProductRange() {
         <div 
           className="absolute inset-0 bg-cover bg-center opacity-[0.55]"
           style={{ 
-            backgroundImage: 'url("/jungle_bg.png")',
+            backgroundImage: 'url("/jungle_bg.webp")',
             filter: 'brightness(0.5) contrast(1.15) saturate(1.1)'
           }}
         />

@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { updateOrderStatus } from '@/lib/firestore/orders';
-import { jsPDF } from 'jspdf';
 import { 
   User, 
   Download, 
@@ -28,6 +27,11 @@ export default function OrdersTable({ orders, activeFilter, theme }) {
   const [updating, setUpdating] = useState(false);
   const [copiedId, setCopiedId] = useState(null);
   const [zoom, setZoom] = useState(1);
+  const [currentPage, setCurrentPage] = useState(1);
+
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [activeFilter]);
 
   // Rider/Courier assignment states
   const [courierName, setCourierName] = useState('Leopards');
@@ -49,6 +53,10 @@ export default function OrdersTable({ orders, activeFilter, theme }) {
     }
     return o.status === activeFilter;
   });
+
+  const ITEMS_PER_PAGE = 15;
+  const totalPages = Math.ceil(displayedOrders.length / ITEMS_PER_PAGE);
+  const paginatedOrders = displayedOrders.slice((currentPage - 1) * ITEMS_PER_PAGE, currentPage * ITEMS_PER_PAGE);
 
   const handleStatusChange = async (orderId, newStatus, paymentDetails = null) => {
     setUpdating(true);
@@ -82,7 +90,8 @@ export default function OrdersTable({ orders, activeFilter, theme }) {
     }
   };
 
-  const handleDownloadPDF = (order) => {
+  const handleDownloadPDF = async (order) => {
+    const { jsPDF } = await import('jspdf');
     const doc = new jsPDF();
     doc.setFont("Helvetica");
     
@@ -173,7 +182,7 @@ export default function OrdersTable({ orders, activeFilter, theme }) {
                 </td>
               </tr>
             ) : (
-              displayedOrders.map((order) => {
+              paginatedOrders.map((order) => {
                 const customerName = order.customerName || order.customer?.name || 'N/A';
                 const customerPhone = order.customerPhone || order.customer?.phone || '';
                 const city = order.city || order.customer?.city || 'N/A';
@@ -284,6 +293,43 @@ export default function OrdersTable({ orders, activeFilter, theme }) {
           </tbody>
         </table>
       </div>
+
+      {/* Pagination Controls */}
+      {totalPages > 1 && (
+        <div className="flex items-center justify-between pt-2">
+          <span className="text-[10px] font-mono text-neutral-500 uppercase tracking-wider">
+            Page {currentPage} of {totalPages} ({displayedOrders.length} entries)
+          </span>
+          <div className="flex gap-2">
+            <button
+              onClick={() => setCurrentPage(prev => Math.max(prev - 1, 1))}
+              disabled={currentPage === 1}
+              className={`px-3 py-1.5 rounded-lg border font-bold text-[9px] uppercase font-mono transition-all cursor-pointer ${
+                currentPage === 1
+                  ? 'opacity-40 cursor-not-allowed border-white/5 text-neutral-600'
+                  : theme === 'light'
+                    ? 'bg-neutral-100 hover:bg-neutral-200 border-neutral-300 text-neutral-800'
+                    : 'bg-[#121212] hover:bg-neutral-800 border-white/10 text-white'
+              }`}
+            >
+              Previous
+            </button>
+            <button
+              onClick={() => setCurrentPage(prev => Math.min(prev + 1, totalPages))}
+              disabled={currentPage === totalPages}
+              className={`px-3 py-1.5 rounded-lg border font-bold text-[9px] uppercase font-mono transition-all cursor-pointer ${
+                currentPage === totalPages
+                  ? 'opacity-40 cursor-not-allowed border-white/5 text-neutral-600'
+                  : theme === 'light'
+                    ? 'bg-neutral-100 hover:bg-neutral-200 border-neutral-300 text-neutral-800'
+                    : 'bg-[#121212] hover:bg-neutral-800 border-white/10 text-white'
+              }`}
+            >
+              Next
+            </button>
+          </div>
+        </div>
+      )}
 
       {/* DETAIL DRAWER OVERLAY */}
       {selectedOrder && (() => {

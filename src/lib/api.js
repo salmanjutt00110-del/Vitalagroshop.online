@@ -11,7 +11,7 @@ async function checkServerHealth() {
   if (isCheckingHealth) return;
   isCheckingHealth = true;
   
-  apiClient.get('/products', { timeout: 2000 })
+  apiClient.get('/health', { timeout: 2000 })
     .then(res => {
       serverOnline = (res.status === 200);
       isCheckingHealth = false;

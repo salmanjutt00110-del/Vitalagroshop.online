@@ -66,12 +66,21 @@ export const getProductImage = (product) => {
     return p.startsWith('/') || p.startsWith('http://') || p.startsWith('https://') || p.startsWith('data:');
   };
 
+  const getWebpUrl = (url) => {
+    if (url && typeof url === 'string') {
+      if (url.endsWith('.png')) {
+        return url.substring(0, url.length - 4) + '.webp';
+      }
+    }
+    return url;
+  };
+
   // Return static WebP/PNG if it exists and is a valid path/URL
-  if (product.pngUrl && isValidPath(product.pngUrl)) return product.pngUrl.trim();
-  if (product.imageUrl && isValidPath(product.imageUrl)) return product.imageUrl.trim();
+  if (product.pngUrl && isValidPath(product.pngUrl)) return getWebpUrl(product.pngUrl.trim());
+  if (product.imageUrl && isValidPath(product.imageUrl)) return getWebpUrl(product.imageUrl.trim());
   
   // Default fallback path in public folder
-  return `/products/${slug}.png`;
+  return `/products/${slug}.webp`;
 };
 
 export const PRODUCTS_DATA = {

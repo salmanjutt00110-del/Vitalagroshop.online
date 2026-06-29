@@ -39,9 +39,20 @@ else:
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 db.init_app(app)
 
+# In-memory product response caching
+products_cache = {
+    "data": None,
+    "timestamp": 0
+}
+CACHE_DURATION = 300  # 5 minutes in seconds
+
 # Create tables and load mock products if database is fresh
 with app.app_context():
     db.create_all()
+
+@app.route("/api/health", methods=["GET"])
+def health_check():
+    return jsonify({"status": "healthy", "timestamp": datetime.datetime.utcnow().isoformat()}), 200
 
 # Utility functions
 def verify_token(token):
@@ -196,6 +207,10 @@ if not os.path.exists(UPLOAD_FOLDER):
 # Products Endpoints
 @app.route("/api/products", methods=["GET"])
 def get_products():
+    now = time.time()
+    if products_cache["data"] is not None and (now - products_cache["timestamp"]) < CACHE_DURATION:
+        return jsonify(products_cache["data"]), 200
+
     products = Product.query.all()
     output = []
     for p in products:
@@ -223,6 +238,8 @@ def get_products():
             "dynamicPricingMatrix": json.loads(p.dynamicPricingMatrix) if p.dynamicPricingMatrix else {},
             "stockInventory": p.stockInventory or 0
         })
+    products_cache["data"] = output
+    products_cache["timestamp"] = now
     return jsonify(output), 200
 
 @app.route("/api/products/<product_id>", methods=["GET"])
@@ -372,6 +389,7 @@ def create_product():
     db.session.add(log)
     db.session.commit()
 
+    products_cache["data"] = None
     return jsonify({"message": "Product synthesized successfully", "id": p_id}), 201
 
 @app.route("/api/products/<product_id>", methods=["PUT"])
@@ -483,6 +501,7 @@ def update_product(product_id):
     db.session.add(log)
     db.session.commit()
 
+    products_cache["data"] = None
     return jsonify({"message": "Product details customized successfully"}), 200
 
 @app.route("/api/products/<product_id>", methods=["DELETE"])
@@ -499,6 +518,7 @@ def delete_product(product_id):
     db.session.add(log)
     db.session.commit()
 
+    products_cache["data"] = None
     return jsonify({"message": "Product purged from ledger successfully"}), 200
 
 # Orders API

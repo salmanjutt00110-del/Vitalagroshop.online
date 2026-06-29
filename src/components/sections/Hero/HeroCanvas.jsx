@@ -32,11 +32,7 @@ function FloatingLeaf({ index, mouse }) {
     
     return new THREE.ExtrudeGeometry(shape, {
       depth: 0.015,
-      bevelEnabled: true,
-      bevelSegments: 2,
-      steps: 1,
-      bevelSize: 0.008,
-      bevelThickness: 0.008
+      bevelEnabled: false
     });
   }, []);
 
@@ -120,13 +116,13 @@ export default function HeroCanvas() {
     <div className="absolute inset-0 z-1 pointer-events-none">
       <Canvas
         camera={{ position: [0, 0, 5], fov: 60 }}
-        dpr={[1, 1.5]}
+        dpr={[1, 1.2]}
         gl={{ antialias: true, alpha: true }}
       >
         <ambientLight intensity={0.55} />
         <directionalLight position={[3, 5, 2]} intensity={1.3} color="#ffffff" />
         <MouseLight mouse={mouse} />
-        {[...Array(20)].map((_, i) => (
+        {[...Array(12)].map((_, i) => (
           <FloatingLeaf key={i} index={i} mouse={mouse} />
         ))}
         <fog attach="fog" near={5} far={9} color="#0A2E1F" />

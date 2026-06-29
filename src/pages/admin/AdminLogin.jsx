@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Lock, Mail, Loader2, AlertCircle, Eye, EyeOff, CheckCircle, Leaf, Shield, Truck, User } from 'lucide-react';
 import vitalAgroLogo from '@/assets/vital agro logo.webp';
-import loginSeedling from '@/assets/login_seedling.png';
+import loginSeedling from '@/assets/login_seedling.webp';
 import toast from 'react-hot-toast';
 import apiClient from '@/lib/apiClient';
 
@@ -91,7 +91,7 @@ export default function AdminLogin() {
       <div 
         className="absolute inset-0 z-0 opacity-45 bg-cover bg-center pointer-events-none"
         style={{
-          backgroundImage: 'url("/admin_bg_forest.png")',
+          backgroundImage: 'url("/admin_bg_forest.webp")',
         }}
       />
       {/* Dark gradient overlay */}

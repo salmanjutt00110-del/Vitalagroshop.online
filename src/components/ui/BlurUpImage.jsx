@@ -1,25 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { cn } from '@/lib/utils';
 
-export default function BlurUpImage({ src, alt, className, style, ...props }) {
+export default function BlurUpImage({ src, alt, className, style, loading = 'lazy', ...props }) {
   const [isLoaded, setIsLoaded] = useState(false);
-  const [imgSrc, setImgSrc] = useState(null);
 
   useEffect(() => {
     setIsLoaded(false);
-    if (!src) return;
-
-    const img = new Image();
-    img.src = src;
-    img.onload = () => {
-      setImgSrc(src);
-      setIsLoaded(true);
-    };
-    img.onerror = () => {
-      // If error occurs, fall back to src anyway
-      setImgSrc(src);
-      setIsLoaded(true);
-    };
   }, [src]);
 
   return (
@@ -31,10 +17,13 @@ export default function BlurUpImage({ src, alt, className, style, ...props }) {
         </div>
       )}
       
-      {imgSrc && (
+      {src && (
         <img
-          src={imgSrc}
+          src={src}
           alt={alt}
+          loading={loading}
+          onLoad={() => setIsLoaded(true)}
+          onError={() => setIsLoaded(true)}
           className={cn(
             "transition-all duration-700 ease-out",
             isLoaded ? "opacity-100 blur-0 scale-100" : "opacity-0 blur-xl scale-95",

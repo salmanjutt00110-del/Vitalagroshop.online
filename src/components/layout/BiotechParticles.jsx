@@ -79,8 +79,6 @@ export default function BiotechParticles() {
         ctx.beginPath();
         ctx.arc(node1X, this.y, this.size, 0, Math.PI * 2);
         ctx.fillStyle = this.color;
-        ctx.shadowBlur = 6;
-        ctx.shadowColor = '#10B981';
         ctx.fill();
 
         // Node 2
@@ -120,8 +118,6 @@ export default function BiotechParticles() {
         ctx.beginPath();
         ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
         ctx.fillStyle = '#10B981';
-        ctx.shadowBlur = 5;
-        ctx.shadowColor = '#10B981';
         ctx.fill();
         ctx.restore();
       }

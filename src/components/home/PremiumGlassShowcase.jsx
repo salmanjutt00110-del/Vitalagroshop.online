@@ -14,7 +14,6 @@ import { useLanguage } from '@/lib/LanguageContext';
 import { useCart } from '@/lib/CartContext';
 import { PRODUCTS_DATA } from '@/data/productsData';
 import { useApp } from '@/contexts/AppContext';
-import allProductBgPhoto from '@/assets/all_product_bg_photo.png';
 
 // List of exact 11 featured products requested
 const FEATURED_SLUGS = [
@@ -62,9 +61,7 @@ export default function PremiumGlassShowcase() {
   const priceValObj = useRef({ val: 0 });
   const canvasRef = useRef(null);
 
-  // 3D card tilt angles
-  const [tilt, setTilt] = useState({ x: 0, y: 0 });
-  const [parallax, setParallax] = useState({ x: 0, y: 0 });
+
 
   // Map slugs dynamically from data
   const featuredProducts = useMemo(() => {
@@ -146,35 +143,14 @@ export default function PremiumGlassShowcase() {
     });
   };
 
-  // 3D Card Hover Tilt Calculations
-  const handleCardMouseMove = (e) => {
-    const card = e.currentTarget;
-    const rect = card.getBoundingClientRect();
-    const x = e.clientX - rect.left - rect.width / 2;
-    const y = e.clientY - rect.top - rect.height / 2;
 
-    const tiltX = -(y / (rect.height / 2)) * 12; // Max 12deg
-    const tiltY = (x / (rect.width / 2)) * 12;  // Max 12deg
-
-    setTilt({ x: tiltX, y: tiltY });
-    setParallax({ x: x * 0.15, y: y * 0.15 });
-  };
-
-  const handleCardMouseLeave = () => {
-    setTilt({ x: 0, y: 0 });
-    setParallax({ x: 0, y: 0 });
-  };
 
   // Navigations
   const handleNext = () => {
-    setTilt({ x: 0, y: 0 });
-    setParallax({ x: 0, y: 0 });
     setCurrentIndex((prev) => (prev + 1) % featuredProducts.length);
   };
 
   const handlePrev = () => {
-    setTilt({ x: 0, y: 0 });
-    setParallax({ x: 0, y: 0 });
     setCurrentIndex((prev) => (prev - 1 + featuredProducts.length) % featuredProducts.length);
   };
 
@@ -229,6 +205,8 @@ export default function PremiumGlassShowcase() {
     if (!canvas) return;
     const ctx = canvas.getContext('2d');
     let frameId;
+    let isRunning = false;
+    let isVisible = true;
 
     const resize = () => {
       canvas.width = canvas.parentElement.clientWidth;
@@ -267,6 +245,7 @@ export default function PremiumGlassShowcase() {
     };
 
     const render = () => {
+      if (!ctx || !canvas) return;
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
       particles.forEach(p => {
@@ -285,11 +264,37 @@ export default function PremiumGlassShowcase() {
       frameId = requestAnimationFrame(render);
     };
 
-    render();
+    const startLoop = () => {
+      if (!isRunning) {
+        isRunning = true;
+        render();
+      }
+    };
+
+    const stopLoop = () => {
+      if (isRunning) {
+        cancelAnimationFrame(frameId);
+        isRunning = false;
+      }
+    };
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        isVisible = entry.isIntersecting;
+        if (isVisible) {
+          startLoop();
+        } else {
+          stopLoop();
+        }
+      },
+      { threshold: 0.01 }
+    );
+    observer.observe(canvas);
 
     return () => {
-      cancelAnimationFrame(frameId);
+      stopLoop();
       window.removeEventListener('resize', resize);
+      observer.disconnect();
     };
   }, [currentIndex]);
 
@@ -404,7 +409,7 @@ Thank You.`;
         <div 
           className="absolute inset-0 bg-cover bg-center"
           style={{ 
-            backgroundImage: 'linear-gradient(to bottom, rgba(2, 5, 2, 0.88) 0%, rgba(2, 5, 2, 0.78) 50%, rgba(2, 5, 2, 0.92) 100%), url("/jungle_bg.png")',
+            backgroundImage: 'linear-gradient(to bottom, rgba(2, 5, 2, 0.88) 0%, rgba(2, 5, 2, 0.78) 50%, rgba(2, 5, 2, 0.92) 100%), url("/jungle_bg.webp")',
             backgroundAttachment: 'fixed',
             filter: 'brightness(0.55) contrast(1.15) saturate(1.05)',
           }}
@@ -653,69 +658,12 @@ Thank You.`;
               )}
 
               {/* Active Center Hero Card (Pinterest glass card showcase style) */}
-              <div 
-                className="relative z-20 w-[230px] xs:w-[250px] sm:w-[280px] lg:w-[300px] xl:w-[340px] h-[320px] xs:h-[350px] sm:h-[400px] lg:h-[420px] xl:h-[460px] flex items-center justify-center"
-                onMouseMove={handleCardMouseMove}
-                onMouseLeave={handleCardMouseLeave}
-              >
-                {/* Glowing Refraction Glass platform at bottom */}
-                <div className="absolute bottom-[-10px] w-[80%] h-6 bg-white/5 border border-white/10 rounded-full filter blur-[2px] backdrop-blur-md z-0 scale-x-110 shadow-[0_15px_30px_rgba(118,201,69,0.25)]" />
-
-                {/* Glassmorphic card frame */}
-                <motion.div
-                  onClick={() => setActiveDetailsProduct(activeProduct)}
-                  style={{
-                    transformStyle: 'preserve-3d',
-                    transform: `perspective(1000px) rotateX(${tilt.x}deg) rotateY(${tilt.y}deg)`,
-                    transition: 'transform 0.15s ease-out',
-                    backdropFilter: 'blur(24px) saturate(160%)',
-                    WebkitBackdropFilter: 'blur(24px) saturate(160%)'
-                  }}
-                  className="absolute inset-0 bg-white/[0.03] border border-white/10 rounded-3xl p-6 flex flex-col justify-between items-center shadow-[0_35px_80px_rgba(0,0,0,0.8),inset_0_2px_4px_rgba(255,255,255,0.05)] overflow-hidden cursor-pointer hover:border-white/20 transition-all duration-300"
-                >
-                  {/* Sheen sheen reflection */}
-                  <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/[0.03] to-transparent pointer-events-none skew-y-12 translate-y-[-50%]" />
-
-                  {/* Top card info */}
-                  <div className="w-full flex justify-between items-center text-[10px] font-black text-white/30 tracking-widest uppercase z-10">
-                    <span>VITAL SHOWROOM</span>
-                    <span className="text-[#76C945]">{activeProduct.formulation}</span>
-                  </div>
-
-                  {/* Main Product PNG floating outside boundaries */}
-                  <div 
-                    className="relative flex items-center justify-center w-full h-3/5 z-20"
-                    style={{
-                      transform: `translate3d(${parallax.x}px, ${parallax.y}px, 60px)`,
-                      transition: 'transform 0.2s ease-out'
-                    }}
-                  >
-                    <AnimatePresence mode="wait">
-                      <motion.img
-                        key={activeProduct.slug}
-                        src={activeProduct.pngUrl}
-                        alt={activeProduct.name.en}
-                        initial={{ opacity: 0, scale: 0.85, y: 15 }}
-                        animate={{ opacity: 1, scale: 1.05, y: 0 }}
-                        exit={{ opacity: 0, scale: 0.85, y: -15 }}
-                        transition={{ duration: 0.5, ease: "easeOut" }}
-                        className="max-h-[200px] xs:max-h-[220px] sm:max-h-[260px] lg:max-h-[280px] xl:max-h-[300px] w-auto object-contain drop-shadow-[0_20px_40px_rgba(0,0,0,0.65)] hover:scale-110 transition-transform duration-500"
-                      />
-                    </AnimatePresence>
-                  </div>
-
-                  {/* Bottom details inside glass */}
-                  <div className="w-full flex justify-between items-center z-10">
-                    <span className="text-[10px] font-bold text-white/40 tracking-wider">
-                      {activeProduct.activeIngredient}
-                    </span>
-                    <span className="text-[10px] font-black text-[#76C945] font-mono">
-                      PKR {displayedPrice}
-                    </span>
-                  </div>
-
-                </motion.div>
-              </div>
+              <ProductGlassCard 
+                activeProduct={activeProduct}
+                lang={lang}
+                displayedPrice={displayedPrice}
+                setActiveDetailsProduct={setActiveDetailsProduct}
+              />
 
               {/* Right card peak (peaking from right boundary) */}
               {rightCardProduct && (
@@ -776,5 +724,94 @@ Thank You.`;
 
       </div>
     </section>
+  );
+}
+
+// Isolated Glass Card Component to prevent mouse-move state from re-rendering the heavy showcase parent
+function ProductGlassCard({ activeProduct, lang, displayedPrice, setActiveDetailsProduct }) {
+  const [tilt, setTilt] = useState({ x: 0, y: 0 });
+  const [parallax, setParallax] = useState({ x: 0, y: 0 });
+
+  const handleCardMouseMove = (e) => {
+    const card = e.currentTarget;
+    const rect = card.getBoundingClientRect();
+    const x = e.clientX - rect.left - rect.width / 2;
+    const y = e.clientY - rect.top - rect.height / 2;
+
+    const tiltX = -(y / (rect.height / 2)) * 12; // Max 12deg
+    const tiltY = (x / (rect.width / 2)) * 12;  // Max 12deg
+
+    setTilt({ x: tiltX, y: tiltY });
+    setParallax({ x: x * 0.15, y: y * 0.15 });
+  };
+
+  const handleCardMouseLeave = () => {
+    setTilt({ x: 0, y: 0 });
+    setParallax({ x: 0, y: 0 });
+  };
+
+  return (
+    <div 
+      className="relative z-20 w-[230px] xs:w-[250px] sm:w-[280px] lg:w-[300px] xl:w-[340px] h-[320px] xs:h-[350px] sm:h-[400px] lg:h-[420px] xl:h-[460px] flex items-center justify-center"
+      onMouseMove={handleCardMouseMove}
+      onMouseLeave={handleCardMouseLeave}
+    >
+      {/* Glowing Refraction Glass platform at bottom */}
+      <div className="absolute bottom-[-10px] w-[80%] h-6 bg-white/5 border border-white/10 rounded-full filter blur-[2px] backdrop-blur-md z-0 scale-x-110 shadow-[0_15px_30px_rgba(118,201,69,0.25)]" />
+
+      {/* Glassmorphic card frame */}
+      <motion.div
+        onClick={() => setActiveDetailsProduct(activeProduct)}
+        style={{
+          transformStyle: 'preserve-3d',
+          transform: `perspective(1000px) rotateX(${tilt.x}deg) rotateY(${tilt.y}deg)`,
+          transition: 'transform 0.15s ease-out',
+          backdropFilter: 'blur(24px) saturate(160%)',
+          WebkitBackdropFilter: 'blur(24px) saturate(160%)'
+        }}
+        className="absolute inset-0 bg-white/[0.03] border border-white/10 rounded-3xl p-6 flex flex-col justify-between items-center shadow-[0_35px_80px_rgba(0,0,0,0.8),inset_0_2px_4px_rgba(255,255,255,0.05)] overflow-hidden cursor-pointer hover:border-white/20 transition-all duration-300"
+      >
+        {/* Sheen sheen reflection */}
+        <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/[0.03] to-transparent pointer-events-none skew-y-12 translate-y-[-50%]" />
+
+        {/* Top card info */}
+        <div className="w-full flex justify-between items-center text-[10px] font-black text-white/30 tracking-widest uppercase z-10">
+          <span>VITAL SHOWROOM</span>
+          <span className="text-[#76C945]">{activeProduct.formulation}</span>
+        </div>
+
+        {/* Main Product PNG floating outside boundaries */}
+        <div 
+          className="relative flex items-center justify-center w-full h-3/5 z-20"
+          style={{
+            transform: `translate3d(${parallax.x}px, ${parallax.y}px, 60px)`,
+            transition: 'transform 0.2s ease-out'
+          }}
+        >
+          <AnimatePresence mode="wait">
+            <motion.img
+              key={activeProduct.slug}
+              src={activeProduct.pngUrl}
+              alt={activeProduct.name.en}
+              initial={{ opacity: 0, scale: 0.85, y: 15 }}
+              animate={{ opacity: 1, scale: 1.05, y: 0 }}
+              exit={{ opacity: 0, scale: 0.85, y: -15 }}
+              transition={{ duration: 0.5, ease: "easeOut" }}
+              className="max-h-[200px] xs:max-h-[220px] sm:max-h-[260px] lg:max-h-[280px] xl:max-h-[300px] w-auto object-contain drop-shadow-[0_20px_40px_rgba(0,0,0,0.65)] hover:scale-110 transition-transform duration-500"
+            />
+          </AnimatePresence>
+        </div>
+
+        {/* Bottom details inside glass */}
+        <div className="w-full flex justify-between items-center z-10">
+          <span className="text-[10px] font-bold text-white/40 tracking-wider">
+            {activeProduct.activeIngredient}
+          </span>
+          <span className="text-[10px] font-black text-[#76C945] font-mono">
+            PKR {displayedPrice}
+          </span>
+        </div>
+      </motion.div>
+    </div>
   );
 }

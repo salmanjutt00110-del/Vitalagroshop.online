@@ -28,7 +28,7 @@ class Product(db.Model):
     generic_name_ur = db.Column(db.String(255))
     generic_name_json = db.Column(db.Text) # JSON mapping lang -> genericName
     slug = db.Column(db.String(100), unique=True, nullable=False)
-    category = db.Column(db.String(100), nullable=False)
+    category = db.Column(db.String(100), nullable=False, index=True)
     rating = db.Column(db.Float, default=4.5)
     active_ingredient = db.Column(db.String(255))
     formulation = db.Column(db.String(100))
@@ -72,15 +72,15 @@ class Order(db.Model):
     id = db.Column(db.String(100), primary_key=True)
     order_number = db.Column(db.String(100), unique=True, nullable=False)
     customer_name = db.Column(db.String(255), nullable=False)
-    phone = db.Column(db.String(100), nullable=False)
-    city = db.Column(db.String(100), nullable=False)
+    phone = db.Column(db.String(100), nullable=False, index=True)
+    city = db.Column(db.String(100), nullable=False, index=True)
     province = db.Column(db.String(100), nullable=False)
     postal_code = db.Column(db.String(100))
     address = db.Column(db.Text, nullable=False)
     notes = db.Column(db.Text)
     # 8-state order lifecycle:
     # pending → confirmed → processing → packed → shipped → out_for_delivery → delivered | cancelled
-    status = db.Column(db.String(50), default='pending')
+    status = db.Column(db.String(50), default='pending', index=True)
     quantity = db.Column(db.Integer, default=1)
     total_amount = db.Column(db.Float, nullable=False)
     payment_method = db.Column(db.String(100), default='COD')
@@ -97,8 +97,8 @@ class Order(db.Model):
 class OrderItem(db.Model):
     __tablename__ = 'order_items'
     id = db.Column(db.Integer, primary_key=True)
-    order_id = db.Column(db.String(100), db.ForeignKey('orders.id'), nullable=False)
-    product_id = db.Column(db.String(100), nullable=False)
+    order_id = db.Column(db.String(100), db.ForeignKey('orders.id'), nullable=False, index=True)
+    product_id = db.Column(db.String(100), nullable=False, index=True)
     product_name = db.Column(db.String(255), nullable=False)
     pack_size = db.Column(db.String(50), nullable=False)
     quantity = db.Column(db.Integer, nullable=False)
@@ -108,10 +108,10 @@ class OrderItem(db.Model):
 class Payment(db.Model):
     __tablename__ = 'payments'
     id = db.Column(db.Integer, primary_key=True)
-    order_id = db.Column(db.String(100), db.ForeignKey('orders.id'), nullable=False)
+    order_id = db.Column(db.String(100), db.ForeignKey('orders.id'), nullable=False, index=True)
     method = db.Column(db.String(100), nullable=False)
     amount = db.Column(db.Float, nullable=False)
-    status = db.Column(db.String(50), default='pending') # pending, approved, rejected, request_new
+    status = db.Column(db.String(50), default='pending', index=True) # pending, approved, rejected, request_new
     transaction_ref = db.Column(db.String(255))
     timestamp = db.Column(db.String(100))
     receiver_wallet = db.Column(db.String(100))
@@ -122,7 +122,7 @@ class Payment(db.Model):
 class PaymentScreenshot(db.Model):
     __tablename__ = 'payment_screenshots'
     id = db.Column(db.Integer, primary_key=True)
-    order_id = db.Column(db.String(100), db.ForeignKey('orders.id'), nullable=False)
+    order_id = db.Column(db.String(100), db.ForeignKey('orders.id'), nullable=False, index=True)
     file_path = db.Column(db.String(512))
     base64_data = db.Column(db.Text)
     ocr_report = db.Column(db.Text) # JSON string
@@ -131,7 +131,7 @@ class PaymentScreenshot(db.Model):
 class Review(db.Model):
     __tablename__ = 'reviews'
     id = db.Column(db.Integer, primary_key=True)
-    product_id = db.Column(db.String(100), nullable=False)
+    product_id = db.Column(db.String(100), nullable=False, index=True)
     user_name = db.Column(db.String(255), nullable=False)
     rating = db.Column(db.Integer, default=5)
     text = db.Column(db.Text, nullable=False)
@@ -140,15 +140,15 @@ class Review(db.Model):
 class Wishlist(db.Model):
     __tablename__ = 'wishlist'
     id = db.Column(db.Integer, primary_key=True)
-    user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
-    product_id = db.Column(db.String(100), nullable=False)
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False, index=True)
+    product_id = db.Column(db.String(100), nullable=False, index=True)
     created_at = db.Column(db.DateTime, default=datetime.datetime.utcnow)
 
 class CartItem(db.Model):
     __tablename__ = 'cart'
     id = db.Column(db.Integer, primary_key=True)
-    user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
-    product_id = db.Column(db.String(100), nullable=False)
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False, index=True)
+    product_id = db.Column(db.String(100), nullable=False, index=True)
     quantity = db.Column(db.Integer, default=1)
     size = db.Column(db.String(50))
     created_at = db.Column(db.DateTime, default=datetime.datetime.utcnow)
@@ -156,7 +156,7 @@ class CartItem(db.Model):
 class ScannerHistory(db.Model):
     __tablename__ = 'scanner_history'
     id = db.Column(db.Integer, primary_key=True)
-    user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'), index=True)
     crop_type = db.Column(db.String(255))
     diagnosis = db.Column(db.Text)
     recommended_treatment = db.Column(db.Text)
@@ -166,7 +166,7 @@ class ScannerHistory(db.Model):
 class ChatHistory(db.Model):
     __tablename__ = 'chat_history'
     id = db.Column(db.Integer, primary_key=True)
-    user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'), index=True)
     role = db.Column(db.String(50), nullable=False) # 'user', 'assistant'
     content = db.Column(db.Text, nullable=False)
     created_at = db.Column(db.DateTime, default=datetime.datetime.utcnow)
@@ -192,7 +192,7 @@ class Coupon(db.Model):
 class Inventory(db.Model):
     __tablename__ = 'inventory'
     id = db.Column(db.Integer, primary_key=True)
-    product_id = db.Column(db.String(100), nullable=False)
+    product_id = db.Column(db.String(100), nullable=False, index=True)
     size = db.Column(db.String(50), nullable=False)
     stock = db.Column(db.Integer, default=0)
     created_at = db.Column(db.DateTime, default=datetime.datetime.utcnow)

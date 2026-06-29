@@ -1,8 +1,6 @@
 @import './styles/mobile.css';
 @import './styles/tokens.css';
 
-@import url('https://cdn.jsdelivr.net/npm/jameel-noori@1.1.2/jameel-noori.min.css');
-
 @font-face {
   font-family: 'Jameel Noori Nastaleeq';
   src: url('https://cdn.jsdelivr.net/npm/jameel-noori@1.1.2/fonts/jameel-noori-nastaleeq4.woff2') format('woff2'),

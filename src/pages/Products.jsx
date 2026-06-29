@@ -783,7 +783,7 @@ export default function Products() {
     <div 
       className="min-h-screen text-white font-body overflow-x-hidden relative"
       style={{
-        backgroundImage: 'linear-gradient(to bottom, rgba(2, 5, 2, 0.35) 0%, rgba(2, 8, 4, 0.25) 50%, rgba(2, 5, 2, 0.45) 100%), url("/jungle_bg.png")',
+        backgroundImage: 'linear-gradient(to bottom, rgba(2, 5, 2, 0.35) 0%, rgba(2, 8, 4, 0.25) 50%, rgba(2, 5, 2, 0.45) 100%), url("/jungle_bg.webp")',
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         backgroundAttachment: 'fixed',
@@ -852,7 +852,7 @@ export default function Products() {
           <div 
             className="absolute inset-0 bg-cover bg-center"
             style={{ 
-              backgroundImage: 'url("/jungle_bg.png")',
+              backgroundImage: 'url("/jungle_bg.webp")',
               filter: 'brightness(0.65) contrast(1.05) saturate(1.1)',
             }}
           />

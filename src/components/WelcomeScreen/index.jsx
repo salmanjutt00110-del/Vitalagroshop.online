@@ -128,7 +128,7 @@ export const WelcomeScreen = ({ onComplete }) => {
       <div 
         className="absolute inset-0 z-0 bg-cover bg-center pointer-events-none opacity-45 scale-102 transition-transform duration-1000"
         style={{
-          backgroundImage: 'url("/jungle_bg.png")',
+          backgroundImage: 'url("/jungle_bg.webp")',
           filter: 'brightness(0.3) contrast(1.1) saturate(1.15) blur(1px)'
         }}
       />
@@ -158,7 +158,6 @@ export const WelcomeScreen = ({ onComplete }) => {
               bottom: ff.bottom,
               animation: `firefly-float-preloader ${ff.duration} infinite linear`,
               animationDelay: ff.delay,
-              boxShadow: '0 0 10px rgba(74, 222, 128, 0.8), 0 0 20px rgba(74, 222, 128, 0.4)',
               transform: `scale(${ff.scale})`
             }}
           />
