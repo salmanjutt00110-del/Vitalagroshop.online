@@ -17,10 +17,34 @@ const BrandLogo = ({ id, textColor }) => {
           </svg>
         </div>
       );
+    case 'jsbank':
+      return (
+        <div className={`${baseClass} bg-[#0066B3] text-white`}>
+          JS
+        </div>
+      );
     case 'hbl':
       return (
         <div className={`${baseClass} bg-[#00A651] text-white`}>
           HBL
+        </div>
+      );
+    case 'bankalhabib':
+      return (
+        <div className={`${baseClass} bg-[#007236] text-white`}>
+          BAHL
+        </div>
+      );
+    case 'habibmetro':
+      return (
+        <div className={`${baseClass} bg-[#662D91] text-white`}>
+          HMB
+        </div>
+      );
+    case 'mcb':
+      return (
+        <div className={`${baseClass} bg-[#F58220] text-white`}>
+          MCB
         </div>
       );
     case 'meezan':
@@ -35,19 +59,6 @@ const BrandLogo = ({ id, textColor }) => {
           UBL
         </div>
       );
-    case 'allied':
-      return (
-        <div className={`${baseClass} bg-[#004A8F] text-[#F47920]`}>
-          ABL
-        </div>
-      );
-    case 'alfalah':
-      return (
-        <div className={`${baseClass} bg-[#E01B24] text-white`}>
-          BAFL
-        </div>
-      );
-
     default:
       return (
         <div className={`${baseClass} bg-white/5 border border-white/10 text-white/50`}>
