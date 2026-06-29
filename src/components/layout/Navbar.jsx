@@ -73,15 +73,15 @@ export default function Navbar() {
           style={{
             maxWidth: 680,
             marginLeft: 'auto',
-            /* Premium Glassmorphism Navbar (Apple/Stripe Quality) */
-            background: 'rgba(255, 255, 255, 0.10)',
-            backdropFilter: 'blur(18px) saturate(180%)',
-            WebkitBackdropFilter: 'blur(18px) saturate(180%)',
-            border: '1px solid rgba(255, 255, 255, 0.15)',
+            /* Original Green Glass Effect */
+            background: 'rgba(10, 35, 20, 0.75)',
+            backdropFilter: 'blur(16px) saturate(180%)',
+            WebkitBackdropFilter: 'blur(16px) saturate(180%)',
+            border: '1px solid rgba(255, 255, 255, 0.1)',
             boxShadow: [
-              '0 4px 15px rgba(0,0,0,0.03)',
-              '0 10px 30px rgba(0,0,0,0.05)',
-              'inset 0 1px 0 rgba(255,255,255,0.2)',
+              '0 4px 15px rgba(0,0,0,0.1)',
+              '0 10px 30px rgba(0,0,0,0.2)',
+              'inset 0 1px 0 rgba(255,255,255,0.05)',
             ].join(', '),
           }}
         >
@@ -134,7 +134,7 @@ export default function Navbar() {
                   transition={{ duration: 0.24, ease: [0.16, 1, 0.3, 1] }}
                   style={{
                     display: 'block', width: 22, height: 2.5,
-                    background: '#064e3b', borderRadius: 99,
+                    background: '#ffffff', borderRadius: 99,
                     transformOrigin: 'center',
                   }}
                 />
@@ -155,7 +155,7 @@ export default function Navbar() {
                   transition={{ type: 'spring', stiffness: 320, damping: 22 }}
                   style={{
                     height: 42, width: 'auto', objectFit: 'contain',
-                    filter: 'drop-shadow(0 2px 4px rgba(0,0,0,0.05)) invert(1) hue-rotate(180deg)',
+                    filter: 'drop-shadow(0 2px 4px rgba(0,0,0,0.15))',
                     cursor: 'pointer',
                   }}
                 />
@@ -178,7 +178,7 @@ export default function Navbar() {
                     background: 'rgba(255, 255, 255, 0.05)',
                     border: '1px solid rgba(255, 255, 255, 0.1)',
                   }}
-                  className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-[10px] font-extrabold uppercase text-emerald-950 hover:bg-white/80 transition-all cursor-pointer shadow-sm"
+                  className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-[10px] font-extrabold uppercase text-white hover:bg-white/10 transition-all cursor-pointer shadow-sm"
                 >
                   <span>{lang === 'en' ? '🇬🇧 EN' : lang === 'ur' ? '🇵🇰 اردو' : '🇵🇰 پب'}</span>
                   <span className="text-[7px] opacity-60">▼</span>
@@ -227,7 +227,7 @@ export default function Navbar() {
                 whileTap={{ scale: 0.92 }}
                 style={{ position: 'relative', background: 'none', border: 'none', cursor: 'pointer', padding: 4 }}
               >
-                <ShoppingCart style={{ width: 22, height: 22, color: '#064e3b', strokeWidth: 1.8 }} />
+                <ShoppingCart style={{ width: 22, height: 22, color: '#ffffff', strokeWidth: 1.8 }} />
                 {cartCount > 0 && (
                   <motion.span
                     initial={{ scale: 0, rotate: -45 }}

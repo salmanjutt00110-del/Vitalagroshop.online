@@ -184,43 +184,10 @@ const ProductGridCard = React.memo(({ product, openCheckout, lang }) => {
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, margin: "-40px" }}
-        style={isMobile ? {} : { rotateX, rotateY, transformStyle: 'preserve-3d' }}
+        style={isMobile ? {} : {}}
         className="group relative rounded-[24px] overflow-hidden flex flex-col premium-glass-card cursor-default select-none border border-emerald-900/10 shadow-2xl h-full justify-between"
-        whileHover={{ scale: 1.025, y: -6 }}
-        whileTap={{ scale: 0.97 }}
-        transition={{ duration: 0.3, ease: [0.2, 0.8, 0.2, 1] }}
       >
-        {/* === CINEMATIC GLASS BACKGROUND === */}
-        <div className="absolute inset-0 pointer-events-none z-0">
-          {/* Top spotlight */}
-          <div className="absolute -top-[30%] left-[20%] w-[60%] h-[60%] bg-[radial-gradient(ellipse,rgba(16,185,129,0.2),transparent_70%)] blur-2xl opacity-80 group-hover:opacity-100 transition-opacity duration-700" />
-          {/* Bottom ambient */}
-          <div className="absolute -bottom-[20%] right-[-10%] w-[50%] h-[50%] bg-[radial-gradient(circle,rgba(16,185,129,0.12),transparent_70%)] blur-2xl" />
-          {/* Noise grain overlay */}
-          <div className="absolute inset-0 opacity-[0.03]" style={{
-            backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")`,
-          }} />
-        </div>
 
-        {/* === GLARE SWEEP on hover === */}
-        <div className="absolute inset-0 z-[5] pointer-events-none overflow-hidden rounded-[24px]">
-          <div className="absolute inset-0 w-[200%] h-full bg-gradient-to-r from-transparent via-white/40 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-out" />
-        </div>
-
-        {/* === PREMIUM PRICE TAG COUPON === */}
-        <div className="absolute top-3 right-3 z-30 pointer-events-none">
-          <motion.div
-            animate={{ y: [0, -3, 0] }}
-            transition={{ repeat: Infinity, duration: 4, ease: "easeInOut" }}
-            className="px-3 py-1.5 rounded-xl bg-[#10b981]/25 border border-[#10b981]/40 text-[#34d399] text-[10px] font-black uppercase tracking-wider backdrop-blur-md shadow-[0_4px_12px_rgba(16,185,129,0.25)] flex items-center gap-1.5"
-            style={{
-              boxShadow: '0 0 15px rgba(16, 185, 129, 0.15), inset 0 1px 0 rgba(255,255,255,0.06)'
-            }}
-          >
-            <span className="w-1.5 h-1.5 rounded-full bg-[#34d399] animate-pulse" />
-            {activePrice === 0 ? 'Request' : `₨ ${activePrice.toLocaleString()}`}
-          </motion.div>
-        </div>
 
         {/* ======= PRODUCT IMAGE ZONE ======= */}
         <motion.div variants={imageVariants} className="relative w-full pt-5 pb-2 px-4 z-10">
@@ -245,12 +212,10 @@ const ProductGridCard = React.memo(({ product, openCheckout, lang }) => {
 
             <motion.div
               animate={{
-                y: isHovered ? [0, -8, -2, -8, 0] : [0, -5, 0],
-                rotateY: isHovered ? [0, 6, -6, 6, 0] : 0,
+                y: isHovered ? [0, -5, 0] : [0, -3, 0],
               }}
-              transition={{ repeat: Infinity, duration: isHovered ? 3 : 5, ease: "easeInOut" }}
+              transition={{ repeat: Infinity, duration: 4, ease: "easeInOut" }}
               className="relative z-10 flex items-center justify-center w-full h-full max-h-[92%]"
-              style={{ transformStyle: 'preserve-3d' }}
             >
               <BlurUpImage
                 src={getProductImage(product)}
@@ -258,9 +223,7 @@ const ProductGridCard = React.memo(({ product, openCheckout, lang }) => {
                 loading="eager"
                 className="max-h-full max-w-[95%] object-contain mx-auto transition-transform duration-500"
                 style={{
-                  filter: isHovered
-                    ? 'drop-shadow(0 15px 25px rgba(0,0,0,0.65)) drop-shadow(0 0 15px rgba(16,185,129,0.3))'
-                    : 'drop-shadow(0 8px 12px rgba(0,0,0,0.45)) drop-shadow(0 0 6px rgba(16,185,129,0.12))',
+                  filter: 'drop-shadow(0 8px 12px rgba(0,0,0,0.15))',
                   transition: 'filter 0.5s ease'
                 }}
               />

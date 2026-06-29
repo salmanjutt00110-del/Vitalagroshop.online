@@ -77,13 +77,7 @@ export default function FeaturedProducts() {
                   <div style={{ transitionDuration: '1.4s' }} className="absolute inset-0 w-[200%] h-full bg-gradient-to-r from-transparent via-white/[0.06] to-transparent -translate-x-full group-hover:translate-x-full transition-transform ease-out" />
                 </div>
 
-                {/* === PREMIUM PRICE TAG COUPON === */}
-                <div className="absolute top-3 right-3 z-30 pointer-events-none">
-                  <div className="px-2.5 py-1.2 rounded-lg bg-[#10b981]/25 border border-[#10b981]/40 text-[#34d399] text-[9px] font-black tracking-wide backdrop-blur-md shadow-[0_4px_12px_rgba(16,185,129,0.15)] flex items-center gap-1">
-                    <span className="w-1 h-1 rounded-full bg-[#34d399] animate-pulse" />
-                    {product.price === 0 ? 'Request' : `₨ ${product.price.toLocaleString()}`}
-                  </div>
-                </div>
+
 
                 {/* Product Image */}
                 <div className="relative aspect-square w-full flex items-center justify-center p-3 sm:p-6 overflow-hidden">
