@@ -191,7 +191,7 @@ function App() {
 
   // Dynamic products hydration from Flask API
   React.useEffect(() => {
-    apiClient.get('/products')
+    apiClient.get('/products', { timeout: 2000, __retryCount: 3 })
       .then(res => res.data)
       .then(data => {
         if (Array.isArray(data)) {

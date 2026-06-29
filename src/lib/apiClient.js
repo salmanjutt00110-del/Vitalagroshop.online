@@ -100,7 +100,7 @@ apiClient.interceptors.response.use(
 
 export const checkServerHealth = async () => {
   try {
-    const res = await apiClient.get('/products', { 
+    const res = await apiClient.get('/health', { 
       timeout: 2000,
       // Avoid retrying health checks if they fail to prevent infinite loops/long delays
       __retryCount: MAX_RETRIES 
