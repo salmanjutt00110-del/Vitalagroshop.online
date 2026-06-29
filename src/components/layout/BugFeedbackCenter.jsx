@@ -182,16 +182,16 @@ export default function BugFeedbackCenter({ isOpen, onClose }) {
             animate={{ x: 0 }}
             exit={{ x: '100%' }}
             transition={{ type: 'spring', damping: 25, stiffness: 200 }}
-            className="fixed right-0 top-0 bottom-0 w-full sm:w-[480px] bg-[#071910] border-l border-white/5 shadow-2xl z-[110] flex flex-col justify-between overflow-hidden"
+            className="fixed right-0 top-0 bottom-0 w-full sm:w-[480px] bg-[#071910] border-l border-emerald-900/5 shadow-2xl z-[110] flex flex-col justify-between overflow-hidden"
           >
             {/* Header */}
-            <div className="p-6 border-b border-white/5 flex items-center justify-between bg-black/20">
+            <div className="p-6 border-b border-emerald-900/5 flex items-center justify-between bg-emerald-950/5">
               <div className="flex items-center gap-2">
                 <div className="p-2 rounded-xl bg-emerald-500/10 border border-emerald-500/20 text-[#10B981] animate-pulse">
                   <AlertTriangle size={18} />
                 </div>
                 <div className="text-left">
-                  <h3 className="font-extrabold text-sm uppercase tracking-widest text-white flex items-center gap-1.5">
+                  <h3 className="font-extrabold text-sm uppercase tracking-widest text-emerald-950 flex items-center gap-1.5">
                     Feedback & Bug Center <Sparkles className="w-3.5 h-3.5 text-[#10B981]" />
                   </h3>
                   <p className="text-[10px] text-neutral-500 font-mono uppercase tracking-wider mt-0.5">Enterprise diagnostic link</p>
@@ -199,7 +199,7 @@ export default function BugFeedbackCenter({ isOpen, onClose }) {
               </div>
               <button 
                 onClick={onClose}
-                className="w-8 h-8 rounded-lg bg-white/5 border border-white/5 hover:border-white/10 flex items-center justify-center text-neutral-400 hover:text-white cursor-pointer transition-all"
+                className="w-8 h-8 rounded-lg bg-white/60 border border-emerald-900/5 hover:border-emerald-900/10 flex items-center justify-center text-neutral-400 hover:text-emerald-950 cursor-pointer transition-all"
               >
                 <X size={15} />
               </button>
@@ -210,7 +210,7 @@ export default function BugFeedbackCenter({ isOpen, onClose }) {
               {success ? (
                 <div className="h-full flex flex-col items-center justify-center text-center space-y-3 py-20">
                   <CheckCircle2 className="w-16 h-16 text-[#10B981]" />
-                  <h4 className="font-bold text-white uppercase tracking-wider text-sm">Thank You for Helping Us Grow!</h4>
+                  <h4 className="font-bold text-emerald-950 uppercase tracking-wider text-sm">Thank You for Helping Us Grow!</h4>
                   <p className="text-neutral-500 text-xs leading-relaxed max-w-xs font-mono uppercase">Your diagnostics have been securely compiled and synchronized to the admin control panel dashboard.</p>
                 </div>
               ) : (
@@ -221,7 +221,7 @@ export default function BugFeedbackCenter({ isOpen, onClose }) {
                     <select
                       value={category}
                       onChange={e => setCategory(e.target.value)}
-                      className="w-full px-3.5 py-2.5 rounded-xl bg-black border border-white/5 text-white outline-none focus:border-emerald-500/30 transition-all font-mono cursor-pointer"
+                      className="w-full px-3.5 py-2.5 rounded-xl bg-black border border-emerald-900/5 text-emerald-950 outline-none focus:border-emerald-500/30 transition-all font-mono cursor-pointer"
                     >
                       <option value="bug">🐛 Bug Report</option>
                       <option value="suggestion">💡 Suggestion / Idea</option>
@@ -240,7 +240,7 @@ export default function BugFeedbackCenter({ isOpen, onClose }) {
                       value={message}
                       onChange={e => setMessage(e.target.value)}
                       rows={5}
-                      className="w-full px-3.5 py-2.5 rounded-xl bg-black border border-white/5 text-white outline-none focus:border-emerald-500/30 transition-all font-sans leading-relaxed resize-none text-[12px]"
+                      className="w-full px-3.5 py-2.5 rounded-xl bg-black border border-emerald-900/5 text-emerald-950 outline-none focus:border-emerald-500/30 transition-all font-sans leading-relaxed resize-none text-[12px]"
                       required
                     />
                   </div>
@@ -249,7 +249,7 @@ export default function BugFeedbackCenter({ isOpen, onClose }) {
                   <div className="space-y-1.5">
                     <label className="text-[9px] uppercase tracking-wider text-neutral-500 font-black block">Screenshot / Image Attachment</label>
                     {screenshotPreview ? (
-                      <div className="relative aspect-video rounded-xl border border-white/10 overflow-hidden group bg-black/40 flex items-center justify-center">
+                      <div className="relative aspect-video rounded-xl border border-emerald-900/10 overflow-hidden group bg-emerald-950/5 flex items-center justify-center">
                         <img src={screenshotPreview} alt="Screenshot Attachment" className="max-h-full max-w-full object-contain" />
                         <button
                           type="button"
@@ -260,7 +260,7 @@ export default function BugFeedbackCenter({ isOpen, onClose }) {
                         </button>
                       </div>
                     ) : (
-                      <label className="flex flex-col items-center justify-center border border-dashed border-white/10 hover:border-emerald-500/20 bg-black/20 hover:bg-black/30 rounded-xl p-6 cursor-pointer transition-all">
+                      <label className="flex flex-col items-center justify-center border border-dashed border-emerald-900/10 hover:border-emerald-500/20 bg-emerald-950/5 hover:bg-black/30 rounded-xl p-6 cursor-pointer transition-all">
                         <Upload size={18} className="text-neutral-500 mb-2" />
                         <span className="text-[10px] text-neutral-400">Click to upload screenshot</span>
                         <span className="text-[8px] text-neutral-600 mt-1 uppercase">PNG, JPG, JPEG (Max 5MB)</span>
@@ -272,7 +272,7 @@ export default function BugFeedbackCenter({ isOpen, onClose }) {
                   {/* Voice Recording Feedback */}
                   <div className="space-y-1.5">
                     <label className="text-[9px] uppercase tracking-wider text-neutral-500 font-black block">Voice Diagnostic Log</label>
-                    <div className="border border-white/5 bg-black/20 rounded-xl p-4 flex items-center justify-between gap-4">
+                    <div className="border border-emerald-900/5 bg-emerald-950/5 rounded-xl p-4 flex items-center justify-between gap-4">
                       {isRecording ? (
                         <div className="flex items-center gap-3 w-full">
                           <span className="w-2.5 h-2.5 rounded-full bg-red-500 animate-ping" />
@@ -322,11 +322,11 @@ export default function BugFeedbackCenter({ isOpen, onClose }) {
 
             {/* Footer Buttons */}
             {!success && (
-              <div className="p-6 border-t border-white/5 bg-black/20 flex gap-3">
+              <div className="p-6 border-t border-emerald-900/5 bg-emerald-950/5 flex gap-3">
                 <button
                   type="button"
                   onClick={onClose}
-                  className="flex-1 py-3 border border-white/5 hover:border-white/10 text-neutral-400 hover:text-white rounded-xl font-bold uppercase transition-all cursor-pointer text-[10px]"
+                  className="flex-1 py-3 border border-emerald-900/5 hover:border-emerald-900/10 text-neutral-400 hover:text-emerald-950 rounded-xl font-bold uppercase transition-all cursor-pointer text-[10px]"
                 >
                   Discard
                 </button>

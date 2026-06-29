@@ -122,10 +122,10 @@ export default function AIDiseaseScanner() {
             text-[#5cb85c] text-[11px] tracking-[0.2em] uppercase font-bold mb-5 shadow-inner">
             🤖 AI DISEASE SCANNER
           </span>
-          <h1 className="text-3xl md:text-4xl font-black text-white mb-3 tracking-tight">
+          <h1 className="text-3xl md:text-4xl font-black text-emerald-950 mb-3 tracking-tight">
             {lang === 'en' ? 'Scan Crop Health' : 'فصل کی صحت سکین کریں'}
           </h1>
-          <p className="text-white/50 text-xs sm:text-sm max-w-lg mx-auto leading-relaxed">
+          <p className="text-neutral-500 text-xs sm:text-sm max-w-lg mx-auto leading-relaxed">
             {lang === 'en'
               ? 'Snap or upload a photo of leaf or stem symptoms. Get instant AI diagnosis + Vital Agro treatment recommendations.'
               : 'پتے یا تنے کی بیماری کی تصویر اپ لوڈ کریں۔ فوری اے آئی تشخیص اور علاج پائیں۔'}
@@ -143,7 +143,7 @@ export default function AIDiseaseScanner() {
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.2, duration: 0.6 }}
             className={`relative rounded-3xl overflow-hidden min-h-[380px] transition-all duration-300 ${
-              dragOver ? 'border-[#5cb85c] bg-[rgba(92,184,92,0.05)] scale-[1.01]' : 'border-white/8 bg-white/[0.03]'
+              dragOver ? 'border-[#5cb85c] bg-[rgba(92,184,92,0.05)] scale-[1.01]' : 'border-emerald-900/5 bg-white/80'
             }`}
             style={{
               backdropFilter: 'blur(20px)',
@@ -198,7 +198,7 @@ export default function AIDiseaseScanner() {
                   <button
                     onClick={(e) => { e.stopPropagation(); setImage(null); setResult(null); setError(null); }}
                     className="absolute top-2 right-2 w-8 h-8 rounded-full
-                      bg-black/70 hover:bg-black/90 text-white/70 hover:text-white border border-white/10
+                      bg-black/70 hover:bg-black/90 text-neutral-600 hover:text-emerald-950 border border-emerald-900/10
                       flex items-center justify-center text-xs transition-colors"
                   >
                     ✕
@@ -218,10 +218,10 @@ export default function AIDiseaseScanner() {
                   >
                     <Camera size={32} className="text-[#5cb85c]" />
                   </motion.div>
-                  <p className="text-white font-semibold text-base mb-2">
+                  <p className="text-emerald-950 font-semibold text-base mb-2">
                     {lang === 'en' ? 'Take Photo or Upload Image' : 'تصویر لیں یا فائل اپ لوڈ کریں'}
                   </p>
-                  <p className="text-white/35 text-xs">
+                  <p className="text-neutral-400 text-xs">
                     {lang === 'en' ? 'PNG, JPG, JPEG · up to 10MB' : 'پی این جی، جے پی جی · 10 ایم بی تک'}
                   </p>
                   <div className="mt-4 px-5 py-2 rounded-full border border-[rgba(92,184,92,0.3)]
@@ -294,17 +294,17 @@ const ScanningAnimation = ({ lang }) => (
       </div>
     </div>
 
-    <p className="text-white font-semibold text-base mb-2">
+    <p className="text-emerald-950 font-semibold text-base mb-2">
       {lang === 'en' ? 'Analyzing Crop...' : 'فصل کا معائنہ کیا جا رہا ہے...'}
     </p>
-    <p className="text-white/40 text-xs text-center leading-relaxed">
+    <p className="text-neutral-500 text-xs text-center leading-relaxed">
       {lang === 'en' 
         ? 'AI is identifying disease patterns and pathology symptoms'
         : 'اے آئی بیماری کے خدوخال اور علامات کا تجزیہ کر رہا ہے'}
     </p>
 
     {/* Scanning progress bar */}
-    <div className="mt-6 w-full max-w-xs h-1.5 rounded-full bg-white/10 overflow-hidden">
+    <div className="mt-6 w-full max-w-xs h-1.5 rounded-full bg-white/80 overflow-hidden">
       <motion.div
         className="h-full rounded-full bg-[#5cb85c]"
         animate={{ width: ['0%', '100%'] }}
@@ -316,19 +316,19 @@ const ScanningAnimation = ({ lang }) => (
 
 const AwaitingScan = ({ lang }) => (
   <div className="h-full flex flex-col items-center justify-center p-8 text-center select-none">
-    <div className="w-16 h-16 rounded-2xl bg-white/5 border border-white/10
+    <div className="w-16 h-16 rounded-2xl bg-white/60 border border-emerald-900/10
       flex items-center justify-center text-3xl mb-5">
       🌿
     </div>
-    <p className="text-white/40 text-[10px] tracking-[0.15em] uppercase font-bold mb-2">
+    <p className="text-neutral-500 text-[10px] tracking-[0.15em] uppercase font-bold mb-2">
       {lang === 'en' ? 'AWAITING SCAN' : 'سکین کا انتظار ہے'}
     </p>
-    <p className="text-white/25 text-xs leading-relaxed max-w-xs">
+    <p className="text-emerald-950/25 text-xs leading-relaxed max-w-xs">
       {lang === 'en'
         ? 'Upload an image on the left to receive an instant AI diagnostic report.'
         : 'رپورٹ حاصل کرنے کے لیے بائیں جانب تصویر اپ لوڈ کریں۔'}
     </p>
-    <div className="mt-8 space-y-3.5 text-left w-full max-w-xs border-t border-white/5 pt-6">
+    <div className="mt-8 space-y-3.5 text-left w-full max-w-xs border-t border-emerald-900/5 pt-6">
       {[
         { icon: '🔍', text: lang === 'en' ? 'Disease identification' : 'بیماری کی شناخت' },
         { icon: '💊', text: lang === 'en' ? 'Treatment recommendations' : 'علاج کی تجاویز' },
@@ -336,7 +336,7 @@ const AwaitingScan = ({ lang }) => (
         { icon: '📋', text: lang === 'en' ? 'Severity assessment' : 'سنجیدگی کا اندازہ' },
       ].map(item => (
         <div key={item.text}
-          className="flex items-center gap-3 text-white/45 text-xs font-semibold">
+          className="flex items-center gap-3 text-emerald-950/45 text-xs font-semibold">
           <span className="text-sm shrink-0">{item.icon}</span>
           <span>{item.text}</span>
         </div>
@@ -348,11 +348,11 @@ const AwaitingScan = ({ lang }) => (
 const ScanResults = ({ result, lang }) => (
   <div className="p-6 h-full overflow-y-auto space-y-6 scrollbar-thin text-left">
     {/* Confidence badge */}
-    <div className="flex items-center gap-3 pb-4 border-b border-white/5">
+    <div className="flex items-center gap-3 pb-4 border-b border-emerald-900/5">
       <div className="w-10 h-10 rounded-xl bg-[rgba(45,106,45,0.25)]
         flex items-center justify-center text-lg shadow-inner">🔬</div>
       <div>
-        <p className="text-white font-black text-sm">{lang === 'en' ? 'Diagnosis Complete' : 'تشخیص مکمل ہو گئی'}</p>
+        <p className="text-emerald-950 font-black text-sm">{lang === 'en' ? 'Diagnosis Complete' : 'تشخیص مکمل ہو گئی'}</p>
         <p className="text-[#5cb85c] text-[11px] font-bold font-mono">
           {result.confidence}% {lang === 'en' ? 'confidence' : 'یقین دہانی'}
         </p>
@@ -364,18 +364,18 @@ const ScanResults = ({ result, lang }) => (
       <p className="text-red-400/80 text-[9px] uppercase tracking-widest font-black mb-1.5">
         {lang === 'en' ? 'Detected Disease' : 'پائی جانے والی بیماری'}
       </p>
-      <p className="text-white font-extrabold text-base leading-snug">{result.disease}</p>
-      <p className="text-white/50 text-xs mt-2 leading-relaxed">{result.description}</p>
+      <p className="text-emerald-950 font-extrabold text-base leading-snug">{result.disease}</p>
+      <p className="text-neutral-500 text-xs mt-2 leading-relaxed">{result.description}</p>
     </div>
 
     {/* Severity */}
     <div className="space-y-1.5">
-      <div className="flex justify-between text-xs font-bold text-white/50">
+      <div className="flex justify-between text-xs font-bold text-neutral-500">
         <span>{lang === 'en' ? 'Severity Assessment:' : 'شدت کا اندازہ:'}</span>
-        <span className="text-white font-mono">{result.severity}%</span>
+        <span className="text-emerald-950 font-mono">{result.severity}%</span>
       </div>
       <div className="flex items-center gap-3">
-        <div className="flex-1 h-2 rounded-full bg-white/10 overflow-hidden">
+        <div className="flex-1 h-2 rounded-full bg-white/80 overflow-hidden">
           <div
             className="h-full rounded-full transition-all duration-500"
             style={{
@@ -389,12 +389,12 @@ const ScanResults = ({ result, lang }) => (
 
     {/* Treatment */}
     <div className="space-y-2.5">
-      <p className="text-white/50 text-[10px] uppercase tracking-widest font-black">
+      <p className="text-neutral-500 text-[10px] uppercase tracking-widest font-black">
         {lang === 'en' ? 'Recommended Treatment' : 'تجویز کردہ علاج'}
       </p>
       <ul className="space-y-2">
         {result.treatments?.map((t, i) => (
-          <li key={i} className="text-white/75 text-xs flex gap-2.5 leading-relaxed items-start">
+          <li key={i} className="text-emerald-950/75 text-xs flex gap-2.5 leading-relaxed items-start">
             <span className="text-[#5cb85c] text-sm shrink-0">✓</span>
             <span>{t}</span>
           </li>
@@ -404,7 +404,7 @@ const ScanResults = ({ result, lang }) => (
 
     {/* Vital Agro Products */}
     {result.suggestedProducts?.length > 0 && (
-      <div className="pt-2 border-t border-white/5">
+      <div className="pt-2 border-t border-emerald-900/5">
         <p className="text-[#5cb85c] text-[10px] uppercase tracking-widest font-black mb-3">
           ✦ {lang === 'en' ? 'Vital Agro Recommends' : 'وائٹل ایگرو کی تجویز کردہ پروڈکٹس'}
         </p>
@@ -421,7 +421,7 @@ const ScanResults = ({ result, lang }) => (
               <img src={product.image} alt={product.name}
                 className="w-12 h-12 object-contain shrink-0 drop-shadow-md" />
               <div className="flex-1 min-w-0">
-                <p className="text-white text-xs font-bold truncate">{product.name}</p>
+                <p className="text-emerald-950 text-xs font-bold truncate">{product.name}</p>
                 <p className="text-[#5cb85c] text-[11px] font-mono font-bold mt-0.5">
                   PKR {product.price?.toLocaleString()} →
                 </p>

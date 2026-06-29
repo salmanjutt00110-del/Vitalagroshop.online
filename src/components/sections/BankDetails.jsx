@@ -86,7 +86,7 @@ function CopyButton({ text }) {
       {copied ? (
         <Check className="w-3.5 h-3.5 text-emerald-400" />
       ) : (
-        <Copy className="w-3.5 h-3.5 text-white/30 group-hover/copy:text-emerald-400 transition-colors" />
+        <Copy className="w-3.5 h-3.5 text-neutral-400 group-hover/copy:text-emerald-400 transition-colors" />
       )}
     </button>
   );
@@ -119,7 +119,7 @@ export default function BankDetails() {
           }}
         >
           <Building2 className="w-5 h-5 text-emerald-400" />
-          <span className="text-sm sm:text-base font-black text-white tracking-wide">
+          <span className="text-sm sm:text-base font-black text-emerald-950 tracking-wide">
             {expanded ? tx.hideBanks : tx.showBanks}
           </span>
           {expanded ? (
@@ -154,7 +154,7 @@ export default function BankDetails() {
                   <div className="absolute -top-20 -right-20 w-40 h-40 rounded-full bg-emerald-500/10 blur-[60px] pointer-events-none" />
 
                   <div className="text-center space-y-2 relative z-10">
-                    <h2 className="text-sm sm:text-lg font-black text-white tracking-wide leading-tight">
+                    <h2 className="text-sm sm:text-lg font-black text-emerald-950 tracking-wide leading-tight">
                       {tx.title}
                     </h2>
                     <div className="flex items-center justify-center gap-3">
@@ -167,7 +167,7 @@ export default function BankDetails() {
                   </div>
 
                   {/* Bank Table */}
-                  <div className="mt-6 rounded-2xl overflow-hidden border border-white/10">
+                  <div className="mt-6 rounded-2xl overflow-hidden border border-emerald-900/10">
                     {/* Table Header */}
                     <div className="grid grid-cols-[40px_1fr_1fr_40px] sm:grid-cols-[50px_1fr_1.5fr_40px] bg-emerald-500/10 border-b border-emerald-500/20">
                       <div className="p-2.5 sm:p-3 text-[9px] sm:text-[10px] font-black text-emerald-300 tracking-widest uppercase text-center">{tx.sno}</div>
@@ -183,8 +183,8 @@ export default function BankDetails() {
                         initial={{ opacity: 0, x: -20 }}
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ delay: idx * 0.06, duration: 0.4 }}
-                        className={`grid grid-cols-[40px_1fr_1fr_40px] sm:grid-cols-[50px_1fr_1.5fr_40px] items-center border-b border-white/5 last:border-b-0 group/row hover:bg-white/[0.03] transition-colors ${
-                          idx % 2 === 0 ? 'bg-white/[0.01]' : 'bg-transparent'
+                        className={`grid grid-cols-[40px_1fr_1fr_40px] sm:grid-cols-[50px_1fr_1.5fr_40px] items-center border-b border-emerald-900/5 last:border-b-0 group/row hover:bg-white/80 transition-colors ${
+                          idx % 2 === 0 ? 'bg-white/60' : 'bg-transparent'
                         }`}
                       >
                         <div className="p-2.5 sm:p-3 text-center">
@@ -193,10 +193,10 @@ export default function BankDetails() {
                           </span>
                         </div>
                         <div className="p-2.5 sm:p-3">
-                          <span className="text-[11px] sm:text-xs font-bold text-white/90 tracking-wide">{bank.name}</span>
+                          <span className="text-[11px] sm:text-xs font-bold text-neutral-800 tracking-wide">{bank.name}</span>
                         </div>
                         <div className="p-2.5 sm:p-3">
-                          <span className="text-[9px] sm:text-[11px] font-mono font-bold text-white/70 tracking-wider break-all leading-relaxed">{bank.iban}</span>
+                          <span className="text-[9px] sm:text-[11px] font-mono font-bold text-neutral-600 tracking-wider break-all leading-relaxed">{bank.iban}</span>
                         </div>
                         <div className="p-2.5 sm:p-3 flex justify-center">
                           <CopyButton text={bank.iban} />
@@ -227,7 +227,7 @@ export default function BankDetails() {
                     </h3>
                   </div>
 
-                  <p className="text-[11px] sm:text-xs font-bold text-white/80 mb-3 relative z-10">
+                  <p className="text-[11px] sm:text-xs font-bold text-neutral-700 mb-3 relative z-10">
                     {tx.codNotice}
                   </p>
 
@@ -237,15 +237,15 @@ export default function BankDetails() {
                         <span className="inline-flex items-center justify-center w-5 h-5 rounded-md bg-amber-500/10 border border-amber-500/20 text-amber-400 text-[9px] font-black shrink-0 mt-0.5">
                           {idx + 1}
                         </span>
-                        <span className="text-white/70 leading-relaxed">
-                          <strong className="text-white/90">{point.bold}</strong>{' '}
+                        <span className="text-neutral-600 leading-relaxed">
+                          <strong className="text-neutral-800">{point.bold}</strong>{' '}
                           {point.text}
                         </span>
                       </li>
                     ))}
                   </ol>
 
-                  <p className="text-[10px] text-white/50 font-semibold mt-4 pt-3 border-t border-amber-500/10 relative z-10">
+                  <p className="text-[10px] text-neutral-500 font-semibold mt-4 pt-3 border-t border-amber-500/10 relative z-10">
                     {tx.codFooter}
                   </p>
                 </div>

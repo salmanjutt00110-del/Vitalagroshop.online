@@ -14,7 +14,7 @@ export default function AppLayout() {
   const location = useLocation();
 
   return (
-    <div className="min-h-screen flex flex-col bioluminescent-grid text-white relative">
+    <div className="min-h-screen flex flex-col bioluminescent-grid text-emerald-950 relative">
       <BiotechParticles />
       {/* Cinematic Volumetric Light Blobs for Trillion-Dollar Web Aesthetic */}
       <div className="fixed inset-0 overflow-hidden pointer-events-none z-0">

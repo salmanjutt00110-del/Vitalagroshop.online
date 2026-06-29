@@ -68,9 +68,9 @@ export default function OrderTrackingModal({ order, onClose, onUpdateStatus, the
           className={`${c.modal} w-full max-w-4xl p-0 overflow-hidden flex flex-col max-h-[90vh]`}
         >
           {/* Header */}
-          <div className="p-6 border-b border-white/5 bg-white/5 flex items-center justify-between">
+          <div className="p-6 border-b border-emerald-900/5 bg-white/60 flex items-center justify-between">
             <div>
-              <h2 className="text-xl font-black text-white uppercase tracking-wider flex items-center gap-3">
+              <h2 className="text-xl font-black text-emerald-950 uppercase tracking-wider flex items-center gap-3">
                 Order Tracking
                 <span className={c.badge}>#{order.orderNumber}</span>
               </h2>
@@ -78,7 +78,7 @@ export default function OrderTrackingModal({ order, onClose, onUpdateStatus, the
                 {new Date(order.createdAt).toLocaleString()}
               </p>
             </div>
-            <button onClick={onClose} className="p-2 hover:bg-white/10 rounded-full transition-colors text-neutral-400 hover:text-white">
+            <button onClick={onClose} className="p-2 hover:bg-white/80 rounded-full transition-colors text-neutral-400 hover:text-emerald-950">
               <X size={20} />
             </button>
           </div>
@@ -89,7 +89,7 @@ export default function OrderTrackingModal({ order, onClose, onUpdateStatus, the
             {/* Timeline */}
             <div className="relative py-8 px-4">
               {/* Connector Line */}
-              <div className="absolute top-1/2 left-8 right-8 h-1 bg-white/5 -translate-y-1/2 rounded-full overflow-hidden">
+              <div className="absolute top-1/2 left-8 right-8 h-1 bg-white/60 -translate-y-1/2 rounded-full overflow-hidden">
                 {currentStageIdx >= 0 && (
                   <motion.div 
                     initial={{ width: 0 }}
@@ -122,7 +122,7 @@ export default function OrderTrackingModal({ order, onClose, onUpdateStatus, the
                         <Icon size={20} className={isCurrent && !isCancelled ? 'animate-pulse' : ''} />
                       </motion.div>
                       <div className="text-center">
-                        <p className={`text-xs font-bold uppercase tracking-widest ${isCompleted ? 'text-white' : 'text-neutral-500'}`}>
+                        <p className={`text-xs font-bold uppercase tracking-widest ${isCompleted ? 'text-emerald-950' : 'text-neutral-500'}`}>
                           {stage.label}
                         </p>
                         {isCompleted && (
@@ -144,17 +144,17 @@ export default function OrderTrackingModal({ order, onClose, onUpdateStatus, the
               <div className={c.card}>
                 <h3 className="text-xs font-bold text-neutral-400 uppercase tracking-widest mb-4">Customer Info</h3>
                 <div className="space-y-3 text-sm">
-                  <div className="flex justify-between border-b border-white/5 pb-2">
+                  <div className="flex justify-between border-b border-emerald-900/5 pb-2">
                     <span className="text-neutral-500">Name</span>
-                    <span className="font-bold text-white">{order.customerDetails?.name || 'N/A'}</span>
+                    <span className="font-bold text-emerald-950">{order.customerDetails?.name || 'N/A'}</span>
                   </div>
-                  <div className="flex justify-between border-b border-white/5 pb-2">
+                  <div className="flex justify-between border-b border-emerald-900/5 pb-2">
                     <span className="text-neutral-500">Phone</span>
-                    <span className="font-bold text-white">{order.customerDetails?.phone || 'N/A'}</span>
+                    <span className="font-bold text-emerald-950">{order.customerDetails?.phone || 'N/A'}</span>
                   </div>
-                  <div className="flex justify-between border-b border-white/5 pb-2">
+                  <div className="flex justify-between border-b border-emerald-900/5 pb-2">
                     <span className="text-neutral-500">Address</span>
-                    <span className="font-bold text-white text-right max-w-[200px] truncate">{order.customerDetails?.address || 'N/A'}</span>
+                    <span className="font-bold text-emerald-950 text-right max-w-[200px] truncate">{order.customerDetails?.address || 'N/A'}</span>
                   </div>
                   <div className="flex justify-between pt-2">
                     <span className="text-neutral-500">Payment</span>
@@ -169,10 +169,10 @@ export default function OrderTrackingModal({ order, onClose, onUpdateStatus, the
                 
                 {order.trackingInfo ? (
                   <div className="space-y-4">
-                    <div className="bg-white/5 p-4 rounded-xl border border-white/10 space-y-2">
+                    <div className="bg-white/60 p-4 rounded-xl border border-emerald-900/10 space-y-2">
                       <div className="flex justify-between items-center text-xs text-neutral-400 uppercase">
                         <span>Courier Partner</span>
-                        <span className="font-bold text-white">{order.trackingInfo.courier}</span>
+                        <span className="font-bold text-emerald-950">{order.trackingInfo.courier}</span>
                       </div>
                       <div className="flex justify-between items-center">
                         <span className="text-sm font-bold text-[#10B981] tracking-widest font-mono">
@@ -180,7 +180,7 @@ export default function OrderTrackingModal({ order, onClose, onUpdateStatus, the
                         </span>
                         <button 
                           onClick={() => copyToClipboard(order.trackingInfo.trackingId)}
-                          className="text-[#10B981] hover:text-[#8AD65A] p-2 bg-white/5 hover:bg-white/10 rounded-lg transition-colors"
+                          className="text-[#10B981] hover:text-emerald-600 p-2 bg-white/60 hover:bg-white/80 rounded-lg transition-colors"
                         >
                           <Copy size={16} />
                         </button>

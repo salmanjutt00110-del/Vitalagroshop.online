@@ -135,7 +135,7 @@ export default function AdminLogin() {
           <div className="relative z-10 flex items-center gap-3">
             <img src={vitalAgroLogo} alt="Vital Agro Logo" className="h-9 w-auto object-contain" />
             <div className="text-left">
-              <h1 className="text-xl font-bold tracking-tight text-white flex items-center gap-1.5 leading-none">
+              <h1 className="text-xl font-bold tracking-tight text-emerald-950 flex items-center gap-1.5 leading-none">
                 Vital <span className="text-[#10B981]">Agro</span>
               </h1>
               <span className="text-[10px] text-neutral-500 font-mono tracking-widest uppercase block mt-1">Growth. Protection. Prosperity.</span>
@@ -186,13 +186,13 @@ export default function AdminLogin() {
           </div>
 
           {/* Footer Copyright */}
-          <div className="relative z-10 border-t border-white/5 pt-6 text-[10px] text-neutral-500 font-mono text-left">
+          <div className="relative z-10 border-t border-emerald-900/5 pt-6 text-[10px] text-neutral-500 font-mono text-left">
             <span>© 2025 Vital Agro Chemical Industries (Pvt) Ltd. All rights reserved.</span>
           </div>
         </div>
 
         {/* Right Side: Login Form Card */}
-        <div className="lg:col-span-6 p-6 lg:p-8 flex flex-col justify-center bg-black relative border-t lg:border-t-0 lg:border-l border-white/5">
+        <div className="lg:col-span-6 p-6 lg:p-8 flex flex-col justify-center bg-black relative border-t lg:border-t-0 lg:border-l border-emerald-900/5">
           
           <div className="max-w-md w-full mx-auto relative group">
             {/* Green glowing ambient aura behind card */}
@@ -210,7 +210,7 @@ export default function AdminLogin() {
 
               {/* Title Header */}
               <div className="text-center space-y-1.5">
-                <h2 className="text-xl font-bold tracking-tight text-white">
+                <h2 className="text-xl font-bold tracking-tight text-emerald-950">
                   Admin <span className="text-[#10B981]">Login</span>
                 </h2>
                 <p className="text-neutral-400 text-xs">Welcome back! Please login to your account.</p>
@@ -254,7 +254,7 @@ export default function AdminLogin() {
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
                       placeholder="Enter your email"
-                      className="w-full pl-11 pr-4 py-3.5 bg-black/80 border border-[#10B981]/25 focus:border-[#10B981]/60 focus:ring-1 focus:ring-[#10B981]/20 text-white placeholder-neutral-600 rounded-xl text-xs outline-none transition-all shadow-inner font-sans"
+                      className="w-full pl-11 pr-4 py-3.5 bg-black/80 border border-[#10B981]/25 focus:border-[#10B981]/60 focus:ring-1 focus:ring-[#10B981]/20 text-emerald-950 placeholder-neutral-600 rounded-xl text-xs outline-none transition-all shadow-inner font-sans"
                     />
                   </div>
                 </div>
@@ -271,12 +271,12 @@ export default function AdminLogin() {
                       value={password}
                       onChange={(e) => setPassword(e.target.value)}
                       placeholder="Enter your password"
-                      className="w-full pl-11 pr-11 py-3.5 bg-black/80 border border-[#10B981]/25 focus:border-[#10B981]/60 focus:ring-1 focus:ring-[#10B981]/20 text-white placeholder-neutral-600 rounded-xl text-xs outline-none transition-all shadow-inner font-sans"
+                      className="w-full pl-11 pr-11 py-3.5 bg-black/80 border border-[#10B981]/25 focus:border-[#10B981]/60 focus:ring-1 focus:ring-[#10B981]/20 text-emerald-950 placeholder-neutral-600 rounded-xl text-xs outline-none transition-all shadow-inner font-sans"
                     />
                     <button
                       type="button"
                       onClick={() => setShowPassword(!showPassword)}
-                      className="absolute right-4 top-1/2 -translate-y-1/2 text-neutral-500 hover:text-white transition-colors"
+                      className="absolute right-4 top-1/2 -translate-y-1/2 text-neutral-500 hover:text-emerald-950 transition-colors"
                     >
                       {showPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
                     </button>

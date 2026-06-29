@@ -45,7 +45,7 @@ export default function AdminLoader({ onComplete }) {
   }, [onComplete]);
 
   return (
-    <div className="fixed inset-0 z-[999999] flex flex-col items-center justify-center bg-[#050C07] text-white overflow-hidden">
+    <div className="fixed inset-0 z-[999999] flex flex-col items-center justify-center bg-[#050C07] text-emerald-950 overflow-hidden">
       {/* Jungle Ambient Lighting */}
       <div className="absolute inset-0 z-0 bg-gradient-to-tr from-black/90 via-[#0a1a10] to-[#10b981]/15 pointer-events-none" />
       
@@ -112,7 +112,7 @@ export default function AdminLoader({ onComplete }) {
             </motion.p>
           </AnimatePresence>
           
-          <div className="h-1.5 w-full bg-black/50 rounded-full overflow-hidden border border-white/5 backdrop-blur-sm relative">
+          <div className="h-1.5 w-full bg-emerald-950/10 rounded-full overflow-hidden border border-emerald-900/5 backdrop-blur-sm relative">
             <motion.div 
               className="absolute top-0 left-0 bottom-0 bg-gradient-to-r from-[#10B981] to-[#8AD65A] shadow-[0_0_10px_rgba(16,185,129,0.8)]"
               initial={{ width: '0%' }}
@@ -121,7 +121,7 @@ export default function AdminLoader({ onComplete }) {
             />
           </div>
           
-          <div className="flex justify-between items-center text-[10px] font-mono text-white/40">
+          <div className="flex justify-between items-center text-[10px] font-mono text-neutral-500">
             <span>SECURE.ADMIN</span>
             <span>{Math.floor(progress)}%</span>
           </div>

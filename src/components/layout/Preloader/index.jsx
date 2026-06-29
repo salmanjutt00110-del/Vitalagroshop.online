@@ -207,7 +207,7 @@ export default function Preloader({ onFinish }) {
 
       {/* Company name */}
       <motion.p
-        className="text-white/60 text-[11px] tracking-[0.25em] uppercase mb-8"
+        className="text-neutral-600 text-[11px] tracking-[0.25em] uppercase mb-8"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 0.4 }}
@@ -351,7 +351,7 @@ export default function Preloader({ onFinish }) {
             transition={{ duration: 0.4, ease: 'easeOut' }}
           />
         </div>
-        <p className="text-center text-white/30 text-[11px] mt-3 tracking-wide">
+        <p className="text-center text-neutral-400 text-[11px] mt-3 tracking-wide">
           {currentMsg}
         </p>
       </div>

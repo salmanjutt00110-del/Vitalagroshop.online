@@ -48,7 +48,7 @@ const TrackOrder = React.lazy(() => import('./pages/TrackOrder'));
 import apiClient from '@/lib/apiClient';
 
 const AdminLoader = () => (
-  <div className="min-h-screen flex items-center justify-center bg-[#080f08]">
+  <div className="min-h-screen flex items-center justify-center bg-slate-50">
     <div className="w-10 h-10 rounded-full border-4 border-[#76C945] border-t-transparent animate-spin" />
   </div>
 );
@@ -89,7 +89,7 @@ class WelcomeErrorBoundary extends React.Component {
   render() {
     if (this.state.hasError) {
       return (
-        <div className="min-h-screen bg-[#031109] text-white relative overflow-hidden flex flex-col justify-between">
+        <div className="min-h-screen bg-slate-50 text-emerald-950 relative overflow-hidden flex flex-col justify-between">
           <React.Suspense fallback={<PageLoader />}>
             <PremiumGlassShowcase />
           </React.Suspense>
@@ -100,7 +100,7 @@ class WelcomeErrorBoundary extends React.Component {
                     this.props.onBypass();
                   }
                 }}
-                className="px-8 py-4 bg-emerald-500/10 hover:bg-emerald-500/20 text-[#76C945] rounded-2xl text-sm font-black uppercase tracking-widest border border-[#76C945]/30 backdrop-blur-md transition-all shadow-xl hover:shadow-[#76C945]/10 hover:scale-103 active:scale-97 cursor-pointer"
+                className="px-8 py-4 bg-emerald-500/10 hover:bg-emerald-500/20 text-emerald-700 rounded-2xl text-sm font-black uppercase tracking-widest border border-[#76C945]/30 backdrop-blur-md transition-all shadow-xl hover:shadow-[#76C945]/10 hover:scale-103 active:scale-97 cursor-pointer"
               >
                 Enter Platform
               </button>

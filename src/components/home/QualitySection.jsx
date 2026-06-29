@@ -56,7 +56,7 @@ export default function QualitySection() {
               initial={{ opacity: 0, y: 10 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="inline-block text-xs font-black tracking-widest uppercase text-[#76C945] mb-4"
+              className="inline-block text-xs font-black tracking-widest uppercase text-emerald-700 mb-4"
             >
               {t.quality.badge}
             </motion.span>
@@ -92,8 +92,8 @@ export default function QualitySection() {
                     lift={true}
                     className="flex gap-5 p-4 bg-white/40 hover:bg-white/90 border-[#0A2E1F]/5 hover:border-[#76C945]/20 hover:shadow-lg transition-all duration-300"
                   >
-                    <div className="flex-shrink-0 w-14 h-14 rounded-2xl bg-[#0A2E1F] text-white flex items-center justify-center font-black text-sm group-hover:bg-[#76C945] group-hover:text-[#0A2E1F] transition-all duration-300 shadow-md">
-                      <step.icon className="w-6 h-6 text-[#76C945] group-hover:text-[#0A2E1F] transition-colors" />
+                    <div className="flex-shrink-0 w-14 h-14 rounded-2xl bg-[#0A2E1F] text-emerald-950 flex items-center justify-center font-black text-sm group-hover:bg-[#76C945] group-hover:text-[#0A2E1F] transition-all duration-300 shadow-md">
+                      <step.icon className="w-6 h-6 text-emerald-700 group-hover:text-[#0A2E1F] transition-colors" />
                     </div>
                     <div>
                       <h4 className="font-extrabold text-[#0A2E1F] mb-1 text-base">{step.title}</h4>
@@ -119,7 +119,7 @@ export default function QualitySection() {
               maxTilt={4}
               glow={true}
               lift={false}
-              className="relative rounded-3xl overflow-hidden aspect-[4/3] shadow-2xl border border-white/20 bg-white"
+              className="relative rounded-3xl overflow-hidden aspect-[4/3] shadow-2xl border border-emerald-900/20 bg-white"
             >
               <img
                 src={researchLab}
@@ -143,7 +143,7 @@ export default function QualitySection() {
                 maxTilt={10}
                 className="w-16 h-16 bg-white/95 backdrop-blur-md rounded-2xl shadow-xl flex items-center justify-center border border-white/40"
               >
-                <FlaskConical className="w-7 h-7 text-[#76C945]" />
+                <FlaskConical className="w-7 h-7 text-emerald-700" />
               </GlassCard>
             </motion.div>
 
@@ -172,11 +172,11 @@ export default function QualitySection() {
               <GlassCard
                 tilt={true}
                 maxTilt={6}
-                className="bg-gradient-to-br from-[#0A2E1F] to-[#0A2E1F]/90 text-white rounded-2xl p-5 shadow-2xl backdrop-blur-md border border-white/10 w-56"
+                className="bg-gradient-to-br from-[#0A2E1F] to-[#0A2E1F]/90 text-emerald-950 rounded-2xl p-5 shadow-2xl backdrop-blur-md border border-emerald-900/10 w-56"
               >
-                <CheckCircle className="w-8 h-8 text-[#76C945] mb-2" />
+                <CheckCircle className="w-8 h-8 text-emerald-700 mb-2" />
                 <div className="font-extrabold text-base">{t.quality.iso}</div>
-                <div className="text-white/60 text-xs mt-0.5">{t.quality.isoDesc}</div>
+                <div className="text-neutral-600 text-xs mt-0.5">{t.quality.isoDesc}</div>
               </GlassCard>
             </motion.div>
           </motion.div>

@@ -65,7 +65,7 @@ export default function AnalyticsCharts({ theme, c }) {
       
       {/* 1. Revenue curve (AreaChart) */}
       <div className={`lg:col-span-8 rounded-3xl p-5 space-y-3 text-left shadow-xl hover:shadow-2xl transition-all duration-300 ${c.card}`}>
-        <h3 className={`font-bold text-xs uppercase tracking-wider flex items-center gap-1.5 ${theme === 'light' ? 'text-black' : 'text-white'}`}>
+        <h3 className={`font-bold text-xs uppercase tracking-wider flex items-center gap-1.5 ${theme === 'light' ? 'text-black' : 'text-emerald-950'}`}>
           <Activity className="w-4 h-4 text-[#10B981] drop-shadow-[0_0_4px_rgba(16,185,129,0.5)]" /> Weekly Revenue Curve
         </h3>
         <div className="h-64">
@@ -89,7 +89,7 @@ export default function AnalyticsCharts({ theme, c }) {
 
       {/* 2. Product Categories share (PieChart) */}
       <div className={`lg:col-span-4 rounded-3xl p-5 space-y-3 text-left shadow-xl hover:shadow-2xl transition-all duration-300 ${c.card}`}>
-        <h3 className={`font-bold text-xs uppercase tracking-wider ${theme === 'light' ? 'text-black' : 'text-white'}`}>Product Categories Share</h3>
+        <h3 className={`font-bold text-xs uppercase tracking-wider ${theme === 'light' ? 'text-black' : 'text-emerald-950'}`}>Product Categories Share</h3>
         <div className="h-64 flex items-center justify-center">
           <ResponsiveContainer width="100%" height="100%">
             <PieChart>
@@ -116,7 +116,7 @@ export default function AnalyticsCharts({ theme, c }) {
 
       {/* 3. Monthly Sales Volume (BarChart) */}
       <div className={`lg:col-span-4 rounded-3xl p-5 space-y-3 text-left shadow-xl hover:shadow-2xl transition-all duration-300 ${c.card}`}>
-        <h3 className={`font-bold text-xs uppercase tracking-wider ${theme === 'light' ? 'text-black' : 'text-white'}`}>Monthly Sales Volume</h3>
+        <h3 className={`font-bold text-xs uppercase tracking-wider ${theme === 'light' ? 'text-black' : 'text-emerald-950'}`}>Monthly Sales Volume</h3>
         <div className="h-48">
           <ResponsiveContainer width="100%" height="100%">
             <BarChart data={MONTHLY_SALES_DATA}>
@@ -138,7 +138,7 @@ export default function AnalyticsCharts({ theme, c }) {
 
       {/* 4. Top Selling Products (BarChart) */}
       <div className={`lg:col-span-4 rounded-3xl p-5 space-y-3 text-left shadow-xl hover:shadow-2xl transition-all duration-300 ${c.card}`}>
-        <h3 className={`font-bold text-xs uppercase tracking-wider ${theme === 'light' ? 'text-black' : 'text-white'}`}>Top Performing Products</h3>
+        <h3 className={`font-bold text-xs uppercase tracking-wider ${theme === 'light' ? 'text-black' : 'text-emerald-950'}`}>Top Performing Products</h3>
         <div className="h-48">
           <ResponsiveContainer width="100%" height="100%">
             <BarChart data={TOP_PRODUCTS_DATA}>
@@ -182,7 +182,7 @@ export default function AnalyticsCharts({ theme, c }) {
 
       {/* 6. Daily Orders (AreaChart) */}
       <div className={`lg:col-span-6 rounded-3xl p-5 space-y-3 text-left shadow-xl hover:shadow-2xl transition-all duration-300 ${c.card}`}>
-        <h3 className={`font-bold text-xs uppercase tracking-wider ${theme === 'light' ? 'text-black' : 'text-white'}`}>Daily Orders Trends</h3>
+        <h3 className={`font-bold text-xs uppercase tracking-wider ${theme === 'light' ? 'text-black' : 'text-emerald-950'}`}>Daily Orders Trends</h3>
         <div className="h-48">
           <ResponsiveContainer width="100%" height="100%">
             <AreaChart data={REVENUE_GROWTH_DATA}>
@@ -204,7 +204,7 @@ export default function AnalyticsCharts({ theme, c }) {
 
       {/* 7. Weekly Orders Breakdown */}
       <div className={`lg:col-span-6 rounded-3xl p-5 space-y-3 text-left shadow-xl hover:shadow-2xl transition-all duration-300 ${c.card}`}>
-        <h3 className={`font-bold text-xs uppercase tracking-wider ${theme === 'light' ? 'text-black' : 'text-white'}`}>Weekly Orders Index</h3>
+        <h3 className={`font-bold text-xs uppercase tracking-wider ${theme === 'light' ? 'text-black' : 'text-emerald-950'}`}>Weekly Orders Index</h3>
         <div className="h-48">
           <ResponsiveContainer width="100%" height="100%">
             <BarChart data={REVENUE_GROWTH_DATA}>

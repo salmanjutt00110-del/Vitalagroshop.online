@@ -132,13 +132,13 @@ export default function BankManager() {
   };
 
   return (
-    <div className="space-y-6 text-white text-left font-sans">
-      <div className="flex justify-between items-center border-b border-white/5 pb-4">
+    <div className="space-y-6 text-emerald-950 text-left font-sans">
+      <div className="flex justify-between items-center border-b border-emerald-900/5 pb-4">
         <div>
           <h2 className="text-xl font-bold tracking-wider uppercase text-emerald-400">
             Bank Account Management
           </h2>
-          <p className="text-white/40 text-xs mt-1">
+          <p className="text-neutral-500 text-xs mt-1">
             Configure active banking coordinates displayed during checkout
           </p>
         </div>
@@ -154,7 +154,7 @@ export default function BankManager() {
       {loading ? (
         <div className="text-center py-20 text-xs font-mono text-neutral-500">Loading banking coordinates...</div>
       ) : accounts.length === 0 ? (
-        <div className="text-center py-20 border border-dashed border-white/5 rounded-2xl">
+        <div className="text-center py-20 border border-dashed border-emerald-900/5 rounded-2xl">
           <p className="text-neutral-500 text-xs font-mono tracking-wide uppercase">No bank accounts configured.</p>
         </div>
       ) : (
@@ -172,7 +172,7 @@ export default function BankManager() {
               >
                 {/* Status indicators */}
                 <div className="absolute top-4 right-4 flex items-center gap-2">
-                  <span className={`text-[9px] font-bold px-2 py-0.5 rounded font-mono uppercase ${isActive ? 'bg-emerald-950/40 text-emerald-400 border border-emerald-500/20' : 'bg-white/5 text-white/40 border border-white/10'}`}>
+                  <span className={`text-[9px] font-bold px-2 py-0.5 rounded font-mono uppercase ${isActive ? 'bg-emerald-950/40 text-emerald-400 border border-emerald-500/20' : 'bg-white/60 text-neutral-500 border border-emerald-900/10'}`}>
                     {acc.status || 'Inactive'}
                   </span>
                   <label className="relative inline-flex items-center cursor-pointer">
@@ -189,22 +189,22 @@ export default function BankManager() {
                 <div className="flex gap-5 items-start">
                   {/* QR Code and Logo */}
                   <div className="flex flex-col gap-2 items-center">
-                    <div className="w-24 h-24 bg-white p-1 rounded-xl flex items-center justify-center border border-white/5 shadow-inner">
+                    <div className="w-24 h-24 bg-white p-1 rounded-xl flex items-center justify-center border border-emerald-900/5 shadow-inner">
                       <img src={acc.qr_code} alt="QR Code" className="w-full h-full object-contain" />
                     </div>
-                    <span className="text-[8px] text-white/30 uppercase font-mono tracking-wider">Scan to Pay</span>
+                    <span className="text-[8px] text-neutral-400 uppercase font-mono tracking-wider">Scan to Pay</span>
                   </div>
 
                   {/* Account details */}
                   <div className="flex-1 space-y-3 font-mono text-xs">
                     <div>
-                      <h4 className="text-white font-bold text-sm leading-tight uppercase font-sans tracking-wide">{acc.bank_name}</h4>
+                      <h4 className="text-emerald-950 font-bold text-sm leading-tight uppercase font-sans tracking-wide">{acc.bank_name}</h4>
                       <p className="text-neutral-500 text-[10px] mt-0.5 font-sans leading-none">{acc.instructions || 'Corporate Account'}</p>
                     </div>
 
                     <div className="space-y-1">
                       <span className="text-[9px] text-neutral-500 uppercase block">Account Title</span>
-                      <span className="text-white font-bold block truncate max-w-[200px]" title={acc.account_title}>{acc.account_title}</span>
+                      <span className="text-emerald-950 font-bold block truncate max-w-[200px]" title={acc.account_title}>{acc.account_title}</span>
                     </div>
 
                     <div className="space-y-1">
@@ -213,7 +213,7 @@ export default function BankManager() {
                         <span className="text-emerald-400 font-bold block">{acc.account_number}</span>
                         <button 
                           onClick={() => copyToClipboard(acc.account_number, `num-${acc.id}`)}
-                          className="p-1 hover:bg-neutral-800 rounded text-neutral-500 hover:text-white transition-all cursor-pointer"
+                          className="p-1 hover:bg-neutral-800 rounded text-neutral-500 hover:text-emerald-950 transition-all cursor-pointer"
                         >
                           {copiedId === `num-${acc.id}` ? <Check size={10} className="text-emerald-400" /> : <Copy size={10} />}
                         </button>
@@ -226,7 +226,7 @@ export default function BankManager() {
                         <span className="text-emerald-400 font-bold block truncate max-w-[150px]" title={acc.iban}>{acc.iban}</span>
                         <button 
                           onClick={() => copyToClipboard(acc.iban, `iban-${acc.id}`)}
-                          className="p-1 hover:bg-neutral-800 rounded text-neutral-500 hover:text-white transition-all cursor-pointer"
+                          className="p-1 hover:bg-neutral-800 rounded text-neutral-500 hover:text-emerald-950 transition-all cursor-pointer"
                         >
                           {copiedId === `iban-${acc.id}` ? <Check size={10} className="text-emerald-400" /> : <Copy size={10} />}
                         </button>
@@ -236,10 +236,10 @@ export default function BankManager() {
                 </div>
 
                 {/* Bottom edit actions */}
-                <div className="flex justify-end gap-2 border-t border-white/5 mt-4 pt-3.5">
+                <div className="flex justify-end gap-2 border-t border-emerald-900/5 mt-4 pt-3.5">
                   <button
                     onClick={() => handleOpenEdit(acc)}
-                    className="p-2 bg-black/50 border border-[#10b981]/15 hover:bg-neutral-850 hover:border-white/10 rounded-lg text-white/80 hover:text-white transition-all flex items-center gap-1 text-[10px] uppercase cursor-pointer"
+                    className="p-2 bg-emerald-950/10 border border-[#10b981]/15 hover:bg-neutral-850 hover:border-emerald-900/10 rounded-lg text-neutral-700 hover:text-emerald-950 transition-all flex items-center gap-1 text-[10px] uppercase cursor-pointer"
                   >
                     <Edit3 size={11} /> Edit
                   </button>
@@ -261,12 +261,12 @@ export default function BankManager() {
         <div className="fixed inset-0 z-[9999] flex items-center justify-center p-4">
           <div onClick={() => setModalOpen(false)} className="absolute inset-0 bg-black/80 backdrop-blur-sm" />
 
-          <div className="relative w-full max-w-lg bg-[#060b07]/55 backdrop-blur-xl border border-[#10b981]/15 shadow-2xl rounded-2xl p-6 text-white space-y-5">
-            <div className="flex justify-between items-center pb-3 border-b border-white/5">
+          <div className="relative w-full max-w-lg bg-[#060b07]/55 backdrop-blur-xl border border-[#10b981]/15 shadow-2xl rounded-2xl p-6 text-emerald-950 space-y-5">
+            <div className="flex justify-between items-center pb-3 border-b border-emerald-900/5">
               <h3 className="font-bold text-sm tracking-wider uppercase text-emerald-400 font-mono">
                 {editingAccount ? 'Edit Bank Account details' : 'Configure New Bank Account'}
               </h3>
-              <button onClick={() => setModalOpen(false)} className="text-neutral-500 hover:text-white text-xs">✕</button>
+              <button onClick={() => setModalOpen(false)} className="text-neutral-500 hover:text-emerald-950 text-xs">✕</button>
             </div>
 
             <form onSubmit={handleSave} className="space-y-4">
@@ -279,7 +279,7 @@ export default function BankManager() {
                     placeholder="e.g. Meezan Bank"
                     value={bankName}
                     onChange={e => setBankName(e.target.value)}
-                    className="w-full px-3.5 py-2 bg-black/40 border border-[#10b981]/15 rounded-xl text-xs outline-none focus:border-emerald-500/40 text-white font-mono"
+                    className="w-full px-3.5 py-2 bg-emerald-950/5 border border-[#10b981]/15 rounded-xl text-xs outline-none focus:border-emerald-500/40 text-emerald-950 font-mono"
                   />
                 </div>
                 <div className="space-y-1">
@@ -289,7 +289,7 @@ export default function BankManager() {
                     placeholder="e.g. Pine Avenue, Lahore"
                     value={instructions}
                     onChange={e => setInstructions(e.target.value)}
-                    className="w-full px-3.5 py-2 bg-black/40 border border-[#10b981]/15 rounded-xl text-xs outline-none focus:border-emerald-500/40 text-white font-mono"
+                    className="w-full px-3.5 py-2 bg-emerald-950/5 border border-[#10b981]/15 rounded-xl text-xs outline-none focus:border-emerald-500/40 text-emerald-950 font-mono"
                   />
                 </div>
               </div>
@@ -302,7 +302,7 @@ export default function BankManager() {
                   placeholder="e.g. Vital Agro Chemical Industries"
                   value={accountTitle}
                   onChange={e => setAccountTitle(e.target.value)}
-                  className="w-full px-3.5 py-2 bg-black/40 border border-[#10b981]/15 rounded-xl text-xs outline-none focus:border-emerald-500/40 text-white font-mono"
+                  className="w-full px-3.5 py-2 bg-emerald-950/5 border border-[#10b981]/15 rounded-xl text-xs outline-none focus:border-emerald-500/40 text-emerald-950 font-mono"
                 />
               </div>
 
@@ -315,7 +315,7 @@ export default function BankManager() {
                     placeholder="e.g. 1203094857392019"
                     value={accountNumber}
                     onChange={e => setAccountNumber(e.target.value)}
-                    className="w-full px-3.5 py-2 bg-black/40 border border-[#10b981]/15 rounded-xl text-xs outline-none focus:border-emerald-500/40 text-white font-mono"
+                    className="w-full px-3.5 py-2 bg-emerald-950/5 border border-[#10b981]/15 rounded-xl text-xs outline-none focus:border-emerald-500/40 text-emerald-950 font-mono"
                   />
                 </div>
                 <div className="space-y-1">
@@ -326,7 +326,7 @@ export default function BankManager() {
                     placeholder="e.g. PK49MEZN..."
                     value={iban}
                     onChange={e => setIban(e.target.value)}
-                    className="w-full px-3.5 py-2 bg-black/40 border border-[#10b981]/15 rounded-xl text-xs outline-none focus:border-emerald-500/40 text-white font-mono"
+                    className="w-full px-3.5 py-2 bg-emerald-950/5 border border-[#10b981]/15 rounded-xl text-xs outline-none focus:border-emerald-500/40 text-emerald-950 font-mono"
                   />
                 </div>
               </div>
@@ -338,15 +338,15 @@ export default function BankManager() {
                   placeholder="Leave blank to generate automatically"
                   value={qrCode}
                   onChange={e => setQrCode(e.target.value)}
-                  className="w-full px-3.5 py-2 bg-black/40 border border-[#10b981]/15 rounded-xl text-xs outline-none focus:border-emerald-500/40 text-white font-mono"
+                  className="w-full px-3.5 py-2 bg-emerald-950/5 border border-[#10b981]/15 rounded-xl text-xs outline-none focus:border-emerald-500/40 text-emerald-950 font-mono"
                 />
               </div>
 
-              <div className="flex justify-end gap-3 pt-3 border-t border-white/5 font-mono">
+              <div className="flex justify-end gap-3 pt-3 border-t border-emerald-900/5 font-mono">
                 <button
                   type="button"
                   onClick={() => setModalOpen(false)}
-                  className="px-4 py-2 rounded-xl border border-white/5 text-neutral-400 hover:bg-neutral-900 text-xs font-bold uppercase cursor-pointer"
+                  className="px-4 py-2 rounded-xl border border-emerald-900/5 text-neutral-400 hover:bg-slate-50 text-xs font-bold uppercase cursor-pointer"
                 >
                   Cancel
                 </button>

@@ -117,7 +117,7 @@ export default function HeroContent() {
           {/* Tagline Badge — cinematic fade-in */}
           <motion.div
             variants={itemReveal}
-            className="inline-flex items-center gap-3 px-4 py-1.5 rounded-full bg-white/10 border border-white/20 text-white/80 text-xs sm:text-sm mb-4 lg:mb-8"
+            className="inline-flex items-center gap-3 px-4 py-1.5 rounded-full bg-white/80 border border-emerald-900/20 text-neutral-700 text-xs sm:text-sm mb-4 lg:mb-8"
             style={{ willChange: 'transform, opacity' }}
           >
             <div className="bg-white/20 rounded-md px-1.5 py-0.5">
@@ -136,7 +136,7 @@ export default function HeroContent() {
               transition={{ duration: 8, repeat: Infinity, ease: 'linear' }}
               className="flex items-center"
             >
-              <Leaf className="w-4 h-4 text-[#76C945]" />
+              <Leaf className="w-4 h-4 text-emerald-700" />
             </motion.div>
             <span>{t.hero.badge}</span>
           </motion.div>
@@ -145,7 +145,7 @@ export default function HeroContent() {
           <h1 className="mb-4 lg:mb-6 tracking-tight" data-speed="0.04">
             <AnimatedText
               text={t.hero.heading1}
-              className="text-3xl xs:text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-extrabold text-white leading-tight block"
+              className="text-3xl xs:text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-extrabold text-emerald-950 leading-tight block"
             />
             <AnimatedText
               text={t.hero.heading2}
@@ -157,7 +157,7 @@ export default function HeroContent() {
           {/* Subheading — smooth reveal */}
           <motion.p
             variants={itemReveal}
-            className="text-base sm:text-lg lg:text-xl text-white/70 max-w-lg mb-6 lg:mb-10 leading-relaxed mx-auto lg:mx-0 font-medium"
+            className="text-base sm:text-lg lg:text-xl text-neutral-600 max-w-lg mb-6 lg:mb-10 leading-relaxed mx-auto lg:mx-0 font-medium"
             style={{ willChange: 'transform, opacity' }}
           >
             {t.hero.sub}
@@ -199,7 +199,7 @@ export default function HeroContent() {
           {/* Stats Counters */}
           <motion.div
             variants={itemReveal}
-            className="flex flex-wrap gap-4 sm:gap-6 mt-8 pt-6 lg:mt-12 lg:pt-8 border-t border-white/10 w-full justify-center lg:justify-start"
+            className="flex flex-wrap gap-4 sm:gap-6 mt-8 pt-6 lg:mt-12 lg:pt-8 border-t border-emerald-900/10 w-full justify-center lg:justify-start"
           >
             {[
               { to: 15, suffix: '+', label: t.hero.years },
@@ -212,10 +212,10 @@ export default function HeroContent() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 1.2 + i * 0.15, ease: [0.16, 1, 0.3, 1] }}
               >
-                <div className="text-2xl sm:text-3xl font-black text-[#8AD65A]">
+                <div className="text-2xl sm:text-3xl font-black text-emerald-600">
                   <CountUp from={0} to={stat.to} suffix={stat.suffix} />
                 </div>
-                <div className="text-white/50 mt-1 font-semibold tracking-wide" style={{ fontSize: 'clamp(11px, 3vw, 13px)' }}>{stat.label}</div>
+                <div className="text-neutral-500 mt-1 font-semibold tracking-wide" style={{ fontSize: 'clamp(11px, 3vw, 13px)' }}>{stat.label}</div>
               </motion.div>
             ))}
           </motion.div>
@@ -295,7 +295,7 @@ export default function HeroContent() {
                     className="h-40 sm:h-52 w-auto object-contain drop-shadow-[0_12px_24px_rgba(0,0,0,0.4)]"
                   />
                 </div>
-                <span className="text-white font-bold text-xs bg-[#76C945]/20 px-3.5 py-1.5 rounded-full border border-[#76C945]/30 mt-2 z-10 backdrop-blur-sm">
+                <span className="text-emerald-950 font-bold text-xs bg-[#76C945]/20 px-3.5 py-1.5 rounded-full border border-[#76C945]/30 mt-2 z-10 backdrop-blur-sm">
                   Fatty
                 </span>
               </motion.div>
@@ -331,7 +331,7 @@ export default function HeroContent() {
                     className="h-28 w-auto object-contain drop-shadow-[0_6px_12px_rgba(0,0,0,0.35)]"
                   />
                 </div>
-                <span className="text-white font-bold text-[10px] bg-[#C5A059]/25 px-2.5 py-0.5 rounded-full mt-1 border border-[#C5A059]/30 z-10">
+                <span className="text-emerald-950 font-bold text-[10px] bg-[#C5A059]/25 px-2.5 py-0.5 rounded-full mt-1 border border-[#C5A059]/30 z-10">
                   Super 4G
                 </span>
               </motion.div>
@@ -367,7 +367,7 @@ export default function HeroContent() {
                     className="h-28 w-auto object-contain drop-shadow-[0_6px_12px_rgba(0,0,0,0.35)]"
                   />
                 </div>
-                <span className="text-white font-bold text-[10px] bg-[#76C945]/20 px-2.5 py-0.5 rounded-full mt-1 border border-[#76C945]/35 z-10">
+                <span className="text-emerald-950 font-bold text-[10px] bg-[#76C945]/20 px-2.5 py-0.5 rounded-full mt-1 border border-[#76C945]/35 z-10">
                   AAQAAB
                 </span>
               </motion.div>

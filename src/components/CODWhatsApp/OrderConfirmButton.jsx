@@ -94,7 +94,7 @@ const OrderConfirmButton = ({ onConfirm, onValidate, onComplete, disabled }) => 
             exit={{ opacity: 0, scale: 0.9 }}
             whileTap={{ scale: 0.96 }}
             className="relative w-full h-[58px] rounded-full overflow-hidden
-              font-extrabold text-base text-white uppercase tracking-wider
+              font-extrabold text-base text-emerald-950 uppercase tracking-wider
               bg-gradient-to-r from-[#2d6a2d] via-[#3d8c3d] to-[#2d6a2d]
               border border-[rgba(92,184,92,0.4)]
               disabled:opacity-40 disabled:cursor-not-allowed
@@ -151,7 +151,7 @@ const OrderConfirmButton = ({ onConfirm, onValidate, onComplete, disabled }) => 
             }}
           >
             {/* Golden line starts filling */}
-            <div className="absolute top-0 left-0 right-0 h-[3px] bg-white/5">
+            <div className="absolute top-0 left-0 right-0 h-[3px] bg-white/60">
               <motion.div
                 className="h-full bg-gradient-to-r from-yellow-400 via-amber-400 to-yellow-300"
                 style={{ 
@@ -224,7 +224,7 @@ const OrderConfirmButton = ({ onConfirm, onValidate, onComplete, disabled }) => 
 
             {/* Preparing / Dispatching Labels */}
             <div className="w-full text-center z-20">
-              <span className="text-[10px] font-black uppercase tracking-widest text-[#8AD65A] drop-shadow">
+              <span className="text-[10px] font-black uppercase tracking-widest text-emerald-600 drop-shadow">
                 {progress < 40 
                   ? 'Assembling Order...' 
                   : progress < 85 
@@ -280,7 +280,7 @@ const OrderConfirmButton = ({ onConfirm, onValidate, onComplete, disabled }) => 
 
               {/* Success label */}
               <motion.span
-                className="relative z-10 font-black tracking-[0.2em] text-sm text-[#8AD65A]"
+                className="relative z-10 font-black tracking-[0.2em] text-sm text-emerald-600"
                 style={{
                   textShadow: '0 0 15px rgba(92,184,92,0.85)',
                 }}

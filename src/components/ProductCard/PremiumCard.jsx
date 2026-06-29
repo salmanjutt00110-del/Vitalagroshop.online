@@ -44,7 +44,7 @@ export default function PremiumCard({ product, mousePosition = { x: 0, y: 0 }, l
       whileTap={{ scale: 0.98 }}
     >
       {/* Bottle Showcase Frame */}
-      <div className="relative aspect-[4/3] w-full flex items-center justify-center p-4 bg-white/[0.02] rounded-2xl border border-white/5 mb-6 overflow-hidden shadow-inner">
+      <div className="relative aspect-[4/3] w-full flex items-center justify-center p-4 bg-white/70 rounded-2xl border border-emerald-900/5 mb-6 overflow-hidden shadow-inner">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(16,185,129,0.12)_0%,transparent_60%)] pointer-events-none" />
         
         {/* Floating Product with 3D animation */}
@@ -90,7 +90,7 @@ export default function PremiumCard({ product, mousePosition = { x: 0, y: 0 }, l
         )}
 
         {/* 2. English Name */}
-        <h4 className="text-white font-bold text-sm sm:text-base leading-tight group-hover:text-emerald-300 transition-colors duration-300 text-center line-clamp-1">
+        <h4 className="text-emerald-950 font-bold text-sm sm:text-base leading-tight group-hover:text-emerald-300 transition-colors duration-300 text-center line-clamp-1">
           {nameEn}
         </h4>
 
@@ -102,19 +102,19 @@ export default function PremiumCard({ product, mousePosition = { x: 0, y: 0 }, l
         </div>
 
         {/* 4. Short Description */}
-        <p className="text-xs text-white/50 leading-relaxed text-center line-clamp-2 h-[34px] overflow-hidden px-2">
+        <p className="text-xs text-neutral-500 leading-relaxed text-center line-clamp-2 h-[34px] overflow-hidden px-2">
           {desc}
         </p>
 
         {/* 5. Price */}
-        <div className="flex items-baseline justify-center gap-2 pt-3 border-t border-white/5 font-mono">
+        <div className="flex items-baseline justify-center gap-2 pt-3 border-t border-emerald-900/5 font-mono">
           {price === 0 ? (
-            <span className="text-lg font-black text-[#8AD65A]">{lang === 'en' ? 'On Request' : 'درخواست پر'}</span>
+            <span className="text-lg font-black text-emerald-600">{lang === 'en' ? 'On Request' : 'درخواست پر'}</span>
           ) : (
-            <span className="text-lg font-black text-[#8AD65A]">PKR {price.toLocaleString()}</span>
+            <span className="text-lg font-black text-emerald-600">PKR {price.toLocaleString()}</span>
           )}
           {oldPrice && oldPrice > price && (
-            <span className="text-xs text-white/35 line-through font-mono">PKR {oldPrice.toLocaleString()}</span>
+            <span className="text-xs text-neutral-400 line-through font-mono">PKR {oldPrice.toLocaleString()}</span>
           )}
         </div>
 

@@ -72,7 +72,7 @@ export default function HoloChart({ stats }) {
           rotateY,
           transformStyle: 'preserve-3d',
         }}
-        className="relative p-6 rounded-3xl border border-white/10 backdrop-blur-2xl bg-neutral-950/40 shadow-[0_20px_50px_rgba(0,0,0,0.6)] text-white overflow-hidden space-y-6 group cursor-pointer"
+        className="relative p-6 rounded-3xl border border-emerald-900/10 backdrop-blur-2xl bg-white/60 shadow-[0_20px_50px_rgba(0,0,0,0.6)] text-emerald-950 overflow-hidden space-y-6 group cursor-pointer"
       >
         {/* Holographic scanning laser line */}
         <div className="absolute inset-0 pointer-events-none z-20 overflow-hidden rounded-3xl">
@@ -96,14 +96,14 @@ export default function HoloChart({ stats }) {
         <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.012)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.012)_1px,transparent_1px)] bg-[size:16px_16px] pointer-events-none opacity-40" />
 
         {/* Header Widget Info */}
-        <div className="flex justify-between items-center border-b border-white/5 pb-4" style={{ transform: 'translateZ(20px)' }}>
+        <div className="flex justify-between items-center border-b border-emerald-900/5 pb-4" style={{ transform: 'translateZ(20px)' }}>
           <div className="flex items-center gap-2">
             <div className="p-2 bg-[#10b981]/15 rounded-xl border border-[#10b981]/30">
               <Activity className="w-4 h-4 text-[#8ad65a] animate-pulse" />
             </div>
             <div className="text-left">
-              <h3 className="font-extrabold text-xs tracking-widest font-mono text-white uppercase">System Telemetry</h3>
-              <p className="text-[8px] text-white/40 tracking-widest font-mono uppercase mt-0.5">Real-time DB Monitor</p>
+              <h3 className="font-extrabold text-xs tracking-widest font-mono text-emerald-950 uppercase">System Telemetry</h3>
+              <p className="text-[8px] text-neutral-500 tracking-widest font-mono uppercase mt-0.5">Real-time DB Monitor</p>
             </div>
           </div>
           <span className="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-emerald-950/40 border border-emerald-500/30 text-[9px] font-black text-emerald-400 font-mono tracking-widest uppercase">
@@ -126,7 +126,7 @@ export default function HoloChart({ stats }) {
           
           {/* Middle DNA Genetic Dial */}
           <div 
-            className="absolute w-32 h-32 rounded-full border border-double border-emerald-500/15 flex items-center justify-center text-[5px] text-white/10 tracking-widest uppercase select-none font-mono"
+            className="absolute w-32 h-32 rounded-full border border-double border-emerald-500/15 flex items-center justify-center text-[5px] text-emerald-950/10 tracking-widest uppercase select-none font-mono"
             style={{ transform: `rotate(${-rotation * 1.3}deg)` }}
           >
             LAT: 31.52 - LNG: 74.35 // ARID SOIL CHECK
@@ -138,8 +138,8 @@ export default function HoloChart({ stats }) {
 
           {/* Central Telemetry Stats */}
           <div className="z-10 text-center space-y-1">
-            <span className="text-[9px] text-white/35 font-mono uppercase tracking-wider block">Server Load</span>
-            <span className="text-3xl font-black font-mono text-white block tracking-tighter">
+            <span className="text-[9px] text-neutral-400 font-mono uppercase tracking-wider block">Server Load</span>
+            <span className="text-3xl font-black font-mono text-emerald-950 block tracking-tighter">
               {liveNumbers.cpu}%
             </span>
             <span className="text-[8px] text-[#8ad65a] font-mono tracking-widest uppercase block animate-pulse">
@@ -150,7 +150,7 @@ export default function HoloChart({ stats }) {
 
         {/* Stats Metrics Progress Bars */}
         <div className="space-y-4" style={{ transform: 'translateZ(30px)' }}>
-          <span className="text-[9px] text-white/40 font-mono uppercase tracking-widest block text-left">
+          <span className="text-[9px] text-neutral-500 font-mono uppercase tracking-widest block text-left">
             Order Distribution Ratio
           </span>
           <div className="space-y-3.5">
@@ -159,11 +159,11 @@ export default function HoloChart({ stats }) {
               return (
                 <div key={bar.label} className="space-y-1.5">
                   <div className="flex justify-between text-[10px] font-mono">
-                    <span className="text-white/60 font-bold">{bar.label}</span>
+                    <span className="text-neutral-600 font-bold">{bar.label}</span>
                     <span style={{ color: bar.color }} className="font-extrabold">{bar.count} ({percentage}%)</span>
                   </div>
                   {/* Progress track */}
-                  <div className="h-2 rounded-full bg-white/5 border border-white/5 overflow-hidden p-[1px]">
+                  <div className="h-2 rounded-full bg-white/60 border border-emerald-900/5 overflow-hidden p-[1px]">
                     <motion.div 
                       className="h-full rounded-full"
                       style={{ backgroundColor: bar.color, boxShadow: `0 0 10px ${bar.color}` }}
@@ -180,11 +180,11 @@ export default function HoloChart({ stats }) {
 
         {/* Live system logs */}
         <div 
-          className="p-3.5 rounded-2xl bg-white/[0.01] border border-white/5 font-mono text-[9px] text-left text-white/45 space-y-2 relative"
+          className="p-3.5 rounded-2xl bg-white/60 border border-emerald-900/5 font-mono text-[9px] text-left text-emerald-950/45 space-y-2 relative"
           style={{ transform: 'translateZ(20px)' }}
         >
-          <div className="flex justify-between border-b border-white/5 pb-2">
-            <span className="text-white/30 uppercase font-black flex items-center gap-1">
+          <div className="flex justify-between border-b border-emerald-900/5 pb-2">
+            <span className="text-neutral-400 uppercase font-black flex items-center gap-1">
               <Terminal className="w-3.5 h-3.5 text-emerald-400" />
               LOG TELEMETRY
             </span>
@@ -192,9 +192,9 @@ export default function HoloChart({ stats }) {
           </div>
           <div className="space-y-1">
             <p className="truncate text-emerald-400/80">✓ FETCH: orders snapshot loaded successfully</p>
-            <p className="truncate text-white/40">✓ SOCKET: database active ({stats.total} registries synced)</p>
+            <p className="truncate text-neutral-500">✓ SOCKET: database active ({stats.total} registries synced)</p>
             <p className="truncate text-blue-400/80">✓ TELEMETRY: CPU {liveNumbers.cpu}% | RAM {liveNumbers.ram}%</p>
-            <p className="truncate text-white/30">✓ SSL: 256-bit secure session verified</p>
+            <p className="truncate text-neutral-400">✓ SSL: 256-bit secure session verified</p>
           </div>
         </div>
 

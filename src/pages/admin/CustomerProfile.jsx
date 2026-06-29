@@ -131,11 +131,11 @@ export default function CustomerProfile({ orders }) {
     const favoriteProduct = Object.entries(favProducts).sort((a, b) => b[1] - a[1])[0]?.[0] || 'N/A';
 
     return (
-      <div className="space-y-6 text-white text-left font-sans">
+      <div className="space-y-6 text-emerald-950 text-left font-sans">
         <div className="flex items-center gap-3">
           <button 
             onClick={() => setSelectedCustomerId(null)}
-            className="p-2 bg-neutral-900 hover:bg-neutral-800 border border-white/5 rounded-xl transition-all cursor-pointer"
+            className="p-2 bg-slate-50 hover:bg-neutral-800 border border-emerald-900/5 rounded-xl transition-all cursor-pointer"
           >
             <ArrowLeft size={16} />
           </button>
@@ -153,14 +153,14 @@ export default function CustomerProfile({ orders }) {
               <div className="w-20 h-20 rounded-full bg-emerald-950/40 border border-emerald-500/20 flex items-center justify-center text-emerald-400 text-2xl font-black mb-3 font-mono">
                 {avatarInitials}
               </div>
-              <h3 className="text-white font-extrabold text-base leading-tight flex items-center gap-2">
+              <h3 className="text-emerald-950 font-extrabold text-base leading-tight flex items-center gap-2">
                 {customer.name}
                 {meta.isVIP && <Star className="w-4 h-4 fill-amber-400 text-amber-400 shrink-0" />}
               </h3>
               <p className="text-neutral-400 text-xs mt-1 font-mono uppercase">{customer.city}</p>
             </div>
 
-            <div className="space-y-3.5 border-t border-white/5 pt-4 text-xs font-mono">
+            <div className="space-y-3.5 border-t border-emerald-900/5 pt-4 text-xs font-mono">
               <div className="flex items-center gap-2.5">
                 <Phone className="w-4 h-4 text-neutral-500 shrink-0" />
                 <div className="flex items-center gap-2">
@@ -194,7 +194,7 @@ export default function CustomerProfile({ orders }) {
             </div>
 
             {/* VIP / Block switches */}
-            <div className="border-t border-white/5 pt-4 space-y-3.5">
+            <div className="border-t border-emerald-900/5 pt-4 space-y-3.5">
               <div className="flex justify-between items-center text-xs">
                 <span className="text-neutral-300 font-bold uppercase tracking-wider flex items-center gap-1.5">
                   <Star className="w-4 h-4 text-amber-400" /> VIP Status
@@ -237,17 +237,17 @@ export default function CustomerProfile({ orders }) {
               </div>
               <div className="p-4 bg-[#060b07]/55 backdrop-blur-xl border border-[#10b981]/15 rounded-xl space-y-1">
                 <span className="text-[9px] text-neutral-500 uppercase tracking-wider block">Total Orders</span>
-                <span className="text-sm font-bold text-white block">{customer.ordersList.length}</span>
+                <span className="text-sm font-bold text-emerald-950 block">{customer.ordersList.length}</span>
               </div>
               <div className="p-4 bg-[#060b07]/55 backdrop-blur-xl border border-[#10b981]/15 rounded-xl space-y-1">
                 <span className="text-[9px] text-neutral-500 uppercase tracking-wider block">Favorite Product</span>
-                <span className="text-[9px] font-bold text-white block truncate uppercase" title={favoriteProduct}>{favoriteProduct}</span>
+                <span className="text-[9px] font-bold text-emerald-950 block truncate uppercase" title={favoriteProduct}>{favoriteProduct}</span>
               </div>
             </div>
 
             {/* Note text field */}
             <div className="bg-[#060b07]/55 backdrop-blur-xl border border-[#10b981]/15 rounded-2xl p-5 space-y-3">
-              <h4 className="text-white font-bold text-xs uppercase tracking-wider flex items-center gap-1.5">
+              <h4 className="text-emerald-950 font-bold text-xs uppercase tracking-wider flex items-center gap-1.5">
                 <MessageSquare className="w-4 h-4 text-emerald-400" /> Administrative Notes
               </h4>
               <textarea 
@@ -255,7 +255,7 @@ export default function CustomerProfile({ orders }) {
                 defaultValue={meta.notes}
                 placeholder="Write custom customer observations, address instructions, or order logs..."
                 id={`customer-notes-${customer.id}`}
-                className="w-full bg-black/40 border border-[#10b981]/15 rounded-xl p-3 text-xs outline-none focus:border-emerald-500/40 resize-none text-white font-mono"
+                className="w-full bg-emerald-950/5 border border-[#10b981]/15 rounded-xl p-3 text-xs outline-none focus:border-emerald-500/40 resize-none text-emerald-950 font-mono"
               />
               <div className="flex justify-end">
                 <button
@@ -272,19 +272,19 @@ export default function CustomerProfile({ orders }) {
 
             {/* Purchase logs */}
             <div className="bg-[#060b07]/55 backdrop-blur-xl border border-[#10b981]/15 rounded-2xl p-5 space-y-4">
-              <h4 className="text-white font-bold text-xs uppercase tracking-wider">Purchase History Registry</h4>
+              <h4 className="text-emerald-950 font-bold text-xs uppercase tracking-wider">Purchase History Registry</h4>
               <div className="overflow-y-auto max-h-[220px] space-y-3">
                 {customer.ordersList.map(o => (
-                  <div key={o.id} className="p-3 bg-black/40 border border-[#10b981]/15 rounded-xl flex justify-between items-center text-xs font-mono">
+                  <div key={o.id} className="p-3 bg-emerald-950/5 border border-[#10b981]/15 rounded-xl flex justify-between items-center text-xs font-mono">
                     <div className="text-left space-y-1">
-                      <span className="text-white font-bold block">Order #{o.orderNumber}</span>
+                      <span className="text-emerald-950 font-bold block">Order #{o.orderNumber}</span>
                       <span className="text-neutral-400 text-[9px] block">
                         {o.productName || o.item?.productName || 'N/A'} ({o.packSize || o.item?.packSize || 'N/A'})
                       </span>
                     </div>
                     <div className="text-right space-y-1">
                       <span className="text-emerald-400 font-bold block">PKR {(o.grandTotal || o.totalAmount || 0).toLocaleString()}</span>
-                      <span className="text-[8px] bg-black/50 border border-[#10b981]/15 px-2 py-0.5 rounded uppercase font-bold text-neutral-300">{o.status}</span>
+                      <span className="text-[8px] bg-emerald-950/10 border border-[#10b981]/15 px-2 py-0.5 rounded uppercase font-bold text-neutral-300">{o.status}</span>
                     </div>
                   </div>
                 ))}
@@ -299,16 +299,16 @@ export default function CustomerProfile({ orders }) {
   }
 
   return (
-    <div className="space-y-6 text-white text-left font-sans">
+    <div className="space-y-6 text-emerald-950 text-left font-sans">
       <div>
         <h2 className="text-xl font-bold tracking-wider uppercase text-emerald-400">Customer Directory</h2>
-        <p className="text-white/40 text-xs mt-1">Directory registry tracking unique clients and lifetime spend metrics</p>
+        <p className="text-neutral-500 text-xs mt-1">Directory registry tracking unique clients and lifetime spend metrics</p>
       </div>
 
-      <div className="bg-black/40 border border-[#10b981]/15 rounded-2xl shadow-lg overflow-x-auto">
+      <div className="bg-emerald-950/5 border border-[#10b981]/15 rounded-2xl shadow-lg overflow-x-auto">
         <table className="w-full text-left border-collapse text-xs">
           <thead>
-            <tr className="border-b border-white/5 text-[9px] font-mono text-neutral-500 tracking-wider uppercase bg-[#121212]">
+            <tr className="border-b border-emerald-900/5 text-[9px] font-mono text-neutral-500 tracking-wider uppercase bg-[#121212]">
               <th className="py-3.5 px-4 font-bold">Customer Name</th>
               <th className="py-3.5 px-4 font-bold">Contact Phone</th>
               <th className="py-3.5 px-4 font-bold">City</th>
@@ -321,7 +321,7 @@ export default function CustomerProfile({ orders }) {
           <tbody>
             {customerList.length === 0 ? (
               <tr>
-                <td colSpan="7" className="py-14 text-center border-b border-white/5 text-neutral-500 font-mono">
+                <td colSpan="7" className="py-14 text-center border-b border-emerald-900/5 text-neutral-500 font-mono">
                   No customers found.
                 </td>
               </tr>
@@ -329,8 +329,8 @@ export default function CustomerProfile({ orders }) {
               customerList.map(c => {
                 const meta = customerMeta[c.id] || { isVIP: false, isBlocked: false };
                 return (
-                  <tr key={c.id} className="border-b border-white/5 hover:bg-neutral-900/60 transition-colors duration-150">
-                    <td className="py-3.5 px-4 font-bold text-white flex items-center gap-1.5">
+                  <tr key={c.id} className="border-b border-emerald-900/5 hover:bg-slate-50/80 transition-colors duration-150">
+                    <td className="py-3.5 px-4 font-bold text-emerald-950 flex items-center gap-1.5">
                       {c.name}
                       {meta.isVIP && <Star className="w-3.5 h-3.5 fill-amber-400 text-amber-400" />}
                     </td>
@@ -358,7 +358,7 @@ export default function CustomerProfile({ orders }) {
                     <td className="py-3.5 px-4 text-right">
                       <button
                         onClick={() => setSelectedCustomerId(c.id)}
-                        className="px-3 py-1.5 bg-[#121212] hover:bg-neutral-850 text-white font-bold rounded-lg border border-white/10 hover:border-white/20 transition-all text-[10px] uppercase cursor-pointer"
+                        className="px-3 py-1.5 bg-[#121212] hover:bg-neutral-850 text-emerald-950 font-bold rounded-lg border border-emerald-900/10 hover:border-emerald-900/20 transition-all text-[10px] uppercase cursor-pointer"
                       >
                         View Profile
                       </button>

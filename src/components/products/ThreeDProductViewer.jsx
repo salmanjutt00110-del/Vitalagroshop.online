@@ -268,7 +268,7 @@ export default function ThreeDProductViewer({ imageUrl, name }) {
         ref={mountRef} 
         className="w-full h-full min-h-[350px] sm:min-h-[420px] active:cursor-grabbing" 
       />
-      <div className="absolute bottom-3 left-1/2 -translate-x-1/2 bg-black/40 backdrop-blur-md border border-white/10 px-4 py-1.5 rounded-full text-[10px] text-white/80 font-bold uppercase tracking-widest pointer-events-none">
+      <div className="absolute bottom-3 left-1/2 -translate-x-1/2 bg-emerald-950/5 backdrop-blur-md border border-emerald-900/10 px-4 py-1.5 rounded-full text-[10px] text-neutral-700 font-bold uppercase tracking-widest pointer-events-none">
         Drag to Rotate / 3D Mode
       </div>
     </div>

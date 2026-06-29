@@ -12,7 +12,7 @@ export default function TopTicker() {
       link: 'https://wa.me/923011837160',
     },
     {
-      icon: <Mail className="w-3.5 h-3.5 text-[#76C945]" />,
+      icon: <Mail className="w-3.5 h-3.5 text-emerald-700" />,
       text: 'info@vitalagro.com',
       link: 'mailto:info@vitalagro.com',
     },
@@ -28,7 +28,7 @@ export default function TopTicker() {
   const doubledItems = [...tickerItems, ...tickerItems, ...tickerItems];
 
   return (
-    <div className="w-full bg-[#031505] border-b border-[#76C945]/15 text-white/80 text-[11px] font-semibold tracking-wide h-8 flex items-center relative overflow-hidden z-[60] select-none">
+    <div className="w-full bg-[#031505] border-b border-[#76C945]/15 text-neutral-700 text-[11px] font-semibold tracking-wide h-8 flex items-center relative overflow-hidden z-[60] select-none">
       <style>{`
         @keyframes marquee {
           0% {
@@ -51,7 +51,7 @@ export default function TopTicker() {
       <div className="marquee-container py-1.5">
         {doubledItems.map((item, idx) => {
           const content = (
-            <div className="flex items-center gap-2 whitespace-nowrap mx-8 hover:text-white transition-colors duration-200 cursor-pointer">
+            <div className="flex items-center gap-2 whitespace-nowrap mx-8 hover:text-emerald-950 transition-colors duration-200 cursor-pointer">
               {item.icon}
               <span>{item.text}</span>
             </div>

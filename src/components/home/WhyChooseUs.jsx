@@ -21,7 +21,7 @@ export default function WhyChooseUs() {
   ];
 
   return (
-    <section className="py-24 relative overflow-hidden bg-[#061406] text-white">
+    <section className="py-24 relative overflow-hidden bg-[#061406] text-emerald-950">
       {/* Background radial highlights */}
       <div className="absolute top-[-10%] right-[-10%] w-[350px] h-[350px] bg-[#76C945]/12 rounded-full filter blur-[100px] pointer-events-none select-none" />
       <div className="absolute bottom-[-10%] left-[-10%] w-[300px] h-[300px] bg-[#C5A059]/5 rounded-full filter blur-[80px] pointer-events-none select-none" />
@@ -43,11 +43,11 @@ export default function WhyChooseUs() {
             initial={{ opacity: 0, scale: 0.9 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
-            className="inline-block text-xs font-black tracking-widest uppercase text-[#76C945] mb-4"
+            className="inline-block text-xs font-black tracking-widest uppercase text-emerald-700 mb-4"
           >
             {t.whyUs.badge}
           </motion.span>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white mb-4">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-emerald-950 mb-4">
             <AnimatedText text={t.whyUs.title} />
           </h2>
           <motion.p
@@ -55,7 +55,7 @@ export default function WhyChooseUs() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2, duration: 0.7 }}
-            className="text-white/60 text-base sm:text-lg max-w-2xl mx-auto"
+            className="text-neutral-600 text-base sm:text-lg max-w-2xl mx-auto"
           >
             {t.whyUs.desc}
           </motion.p>
@@ -70,23 +70,23 @@ export default function WhyChooseUs() {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
-              className="w-full relative rounded-3xl overflow-hidden border border-white/10 bg-white/[0.02] flex flex-col justify-between p-8 group shadow-2xl min-h-[360px] hover-3d-card"
+              className="w-full relative rounded-3xl overflow-hidden border border-emerald-900/10 bg-white/70 flex flex-col justify-between p-8 group shadow-2xl min-h-[360px] hover-3d-card"
             >
               <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(118,201,69,0.15)_0%,transparent_60%)]" />
               
               <div className="relative z-10 space-y-2">
-                <span className="text-[10px] font-black uppercase text-[#8AD65A] tracking-widest bg-[#76C945]/15 border border-[#76C945]/20 px-3 py-1 rounded-full">
+                <span className="text-[10px] font-black uppercase text-emerald-600 tracking-widest bg-[#76C945]/15 border border-[#76C945]/20 px-3 py-1 rounded-full">
                   Premium Standards
                 </span>
-                <h3 className="text-xl font-black text-white mt-3">Advanced Agrochemical Science</h3>
-                <p className="text-xs text-white/50 leading-relaxed max-w-xs">
+                <h3 className="text-xl font-black text-emerald-950 mt-3">Advanced Agrochemical Science</h3>
+                <p className="text-xs text-neutral-500 leading-relaxed max-w-xs">
                   We formulate each product batch with imported raw ingredients matching strict laboratory tolerances.
                 </p>
               </div>
  
               {/* Floating product bottle */}
               <div className="relative flex-1 flex items-center justify-center py-6">
-                <div className="absolute w-[60%] h-4 bg-black/40 rounded-full blur-[10px] bottom-2" />
+                <div className="absolute w-[60%] h-4 bg-emerald-950/5 rounded-full blur-[10px] bottom-2" />
                 <img
                   src={vitalCImg}
                   alt="Vital-C Formulation Showcase"
@@ -96,10 +96,10 @@ export default function WhyChooseUs() {
 
               {/* Spec tags */}
               <div className="relative z-10 flex gap-2 flex-wrap pt-2">
-                <span className="px-2.5 py-1 bg-white/5 border border-white/10 rounded-md text-[9px] font-mono text-white/60 font-semibold">
+                <span className="px-2.5 py-1 bg-white/60 border border-emerald-900/10 rounded-md text-[9px] font-mono text-neutral-600 font-semibold">
                   100% Quality Inspected
                 </span>
-                <span className="px-2.5 py-1 bg-white/5 border border-white/10 rounded-md text-[9px] font-mono text-white/60 font-semibold">
+                <span className="px-2.5 py-1 bg-white/60 border border-emerald-900/10 rounded-md text-[9px] font-mono text-neutral-600 font-semibold">
                   HPLC Tested
                 </span>
               </div>
@@ -128,15 +128,15 @@ export default function WhyChooseUs() {
                     boxShadow: '0 25px 50px rgba(0, 0, 0, 0.45), 0 0 35px rgba(118, 201, 69, 0.25)',
                   }}
                   transition={{ type: "spring", stiffness: 300, damping: 20 }}
-                  className="w-full p-5 bg-white/[0.02] hover:bg-white/[0.06] border-white/5 hover:border-[#76C945]/20 shadow-xl transition-all duration-300"
+                  className="w-full p-5 bg-white/70 hover:bg-white/[0.06] border-emerald-900/5 hover:border-[#76C945]/20 shadow-xl transition-all duration-300"
                 >
                   <div className="flex gap-4 items-start h-full">
                     <div className="w-11 h-11 rounded-xl bg-[#76C945]/15 border border-[#76C945]/20 flex items-center justify-center shrink-0">
-                      <reason.icon className="w-5 h-5 text-[#8AD65A]" />
+                      <reason.icon className="w-5 h-5 text-emerald-600" />
                     </div>
                     <div className="space-y-1">
-                      <h3 className="font-bold text-white text-sm">{reason.title}</h3>
-                      <p className="text-xs text-white/50 leading-relaxed">{reason.desc}</p>
+                      <h3 className="font-bold text-emerald-950 text-sm">{reason.title}</h3>
+                      <p className="text-xs text-neutral-500 leading-relaxed">{reason.desc}</p>
                     </div>
                   </div>
                 </GlassCard>

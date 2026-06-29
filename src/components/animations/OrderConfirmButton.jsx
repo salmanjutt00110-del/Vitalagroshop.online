@@ -34,7 +34,7 @@ export const OrderConfirmButton = ({ onConfirm, disabled }) => {
             exit={{ opacity: 0, scale: 0.95, y: -8 }}
             whileTap={{ scale: 0.97 }}
             className="absolute inset-0 rounded-full font-bold text-sm
-              text-white overflow-hidden cursor-pointer
+              text-emerald-950 overflow-hidden cursor-pointer
               disabled:opacity-40 disabled:cursor-not-allowed"
             style={{
               background: 'linear-gradient(135deg,#1a5c1a,#2d7a2d,#1a5c1a)',
@@ -95,7 +95,7 @@ export const OrderConfirmButton = ({ onConfirm, disabled }) => {
             {/* Label */}
             <motion.span
               className="absolute right-5 top-1/2 -translate-y-1/2
-                text-white/40 text-xs font-semibold"
+                text-neutral-500 text-xs font-semibold"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.4 }}

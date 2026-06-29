@@ -295,7 +295,7 @@ export default function ProductShowcase() {
 
                 {/* Product name — large */}
                 <h2
-                  className="text-4xl sm:text-5xl lg:text-7.5xl font-black text-white leading-none tracking-tight"
+                  className="text-4xl sm:text-5xl lg:text-7.5xl font-black text-emerald-950 leading-none tracking-tight"
                   style={{ textShadow: `0 0 40px ${current.themeColor}20` }}
                 >
                   {current.name[lang] || current.name}
@@ -303,17 +303,17 @@ export default function ProductShowcase() {
 
                 {/* Chemical Formula */}
                 <div className="flex flex-col">
-                  <span className="text-[9px] uppercase font-bold text-white/30 tracking-wider">
+                  <span className="text-[9px] uppercase font-bold text-neutral-400 tracking-wider">
                     {activeLabels.formula}
                   </span>
-                  <p className="text-white/80 text-xs sm:text-sm font-semibold tracking-wide font-mono mt-0.5">
+                  <p className="text-neutral-700 text-xs sm:text-sm font-semibold tracking-wide font-mono mt-0.5">
                     {current.activeIngredient || current.formulation}
                   </p>
                 </div>
 
                 {/* Short Description */}
                 <p
-                  className="text-white/60 text-xs sm:text-sm leading-relaxed max-w-md border-l-2 pl-3"
+                  className="text-neutral-600 text-xs sm:text-sm leading-relaxed max-w-md border-l-2 pl-3"
                   style={{ borderColor: `${current.themeColor}50` }}
                 >
                   {current.shortDesc?.[lang] || current.description[lang]?.split('۔')[0] + '۔' || current.description}
@@ -321,12 +321,12 @@ export default function ProductShowcase() {
 
                 {/* Key Benefits */}
                 <div className="space-y-1.5">
-                  <span className="text-[9px] uppercase font-bold text-white/30 tracking-wider">
+                  <span className="text-[9px] uppercase font-bold text-neutral-400 tracking-wider">
                     {activeLabels.benefits}
                   </span>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-1.5 sm:gap-2">
                     {(current.benefits?.[lang] || []).slice(0, 4).map((benefit, bIdx) => (
-                      <div key={bIdx} className="flex items-center gap-2 text-white/80 text-xs font-semibold">
+                      <div key={bIdx} className="flex items-center gap-2 text-neutral-700 text-xs font-semibold">
                         <div className="w-4 h-4 rounded-full flex items-center justify-center shrink-0" style={{ background: `${current.themeColor}20`, border: `1px solid ${current.themeColor}40` }}>
                           <Check className="w-2.5 h-2.5" style={{ color: current.themeColor }} />
                         </div>
@@ -339,7 +339,7 @@ export default function ProductShowcase() {
                 {/* Available Sizes */}
                 {current.sizes && current.sizes.length > 0 && (
                   <div className="space-y-2">
-                    <span className="text-[9px] uppercase font-bold text-white/30 tracking-wider block">
+                    <span className="text-[9px] uppercase font-bold text-neutral-400 tracking-wider block">
                       {activeLabels.sizes}
                     </span>
                     <div className="flex flex-wrap gap-1.5">
@@ -349,8 +349,8 @@ export default function ProductShowcase() {
                           onClick={() => setSelectedSizeIdx(idx)}
                           className={`px-3 py-1.5 rounded-lg text-xs font-black border transition-all duration-300 ${
                             selectedSizeIdx === idx
-                              ? 'text-white border-white bg-white/10 scale-102 shadow-sm'
-                              : 'text-white/50 border-white/10 bg-white/5 hover:border-white/20'
+                              ? 'text-emerald-950 border-white bg-white/80 scale-102 shadow-sm'
+                              : 'text-neutral-500 border-emerald-900/10 bg-white/60 hover:border-emerald-900/20'
                           }`}
                           style={{ borderColor: selectedSizeIdx === idx ? current.themeColor : '' }}
                         >
@@ -362,7 +362,7 @@ export default function ProductShowcase() {
                 )}
 
                 {/* Price, Stock and Notices */}
-                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 py-3 border-y border-white/5">
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 py-3 border-y border-emerald-900/5">
                   <div className="flex flex-col">
                     <span className="text-3xl font-black font-mono tracking-tight" style={{ color: current.themeColor }}>
                       <RollingPrice price={currentSizeObj.price} />
@@ -377,7 +377,7 @@ export default function ProductShowcase() {
                   </div>
 
                   {/* Delivery / Payment / COD Notice */}
-                  <div className="flex flex-col space-y-1.5 max-w-xs text-[10px] text-white/40 leading-relaxed font-semibold">
+                  <div className="flex flex-col space-y-1.5 max-w-xs text-[10px] text-neutral-500 leading-relaxed font-semibold">
                     <div className="flex items-center gap-1.5">
                       <Truck className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
                       <span className="text-emerald-400">{activeLabels.freeShipping}</span>
@@ -397,14 +397,14 @@ export default function ProductShowcase() {
                 <div className="flex flex-col sm:flex-row gap-3 pt-2">
                   <button
                     onClick={() => openCheckout(current)}
-                    className="flex-1 px-6 py-3.5 rounded-2xl font-black text-xs sm:text-sm text-white uppercase tracking-wider relative overflow-hidden transition-all duration-300 hover:scale-102 active:scale-98 shadow-lg"
+                    className="flex-1 px-6 py-3.5 rounded-2xl font-black text-xs sm:text-sm text-emerald-950 uppercase tracking-wider relative overflow-hidden transition-all duration-300 hover:scale-102 active:scale-98 shadow-lg"
                     style={{
                       background: `linear-gradient(135deg, ${current.themeColor}cc, ${current.themeColor})`,
                       boxShadow: `0 8px 30px ${current.themeColor}35`,
                     }}
                   >
                     <motion.div
-                      className="absolute inset-0 bg-white/10"
+                      className="absolute inset-0 bg-white/80"
                       initial={{ x: '-100%' }}
                       whileHover={{ x: '100%' }}
                       transition={{ duration: 0.4 }}
@@ -417,7 +417,7 @@ export default function ProductShowcase() {
 
                   <button
                     onClick={() => navigate(`/products/${current.slug}`)}
-                    className="px-6 py-3.5 rounded-2xl font-bold text-xs sm:text-sm border transition-all duration-300 bg-white/5 flex items-center justify-center gap-1.5 hover:bg-white/10"
+                    className="px-6 py-3.5 rounded-2xl font-bold text-xs sm:text-sm border transition-all duration-300 bg-white/60 flex items-center justify-center gap-1.5 hover:bg-white/80"
                     style={{
                       borderColor: `${current.themeColor}40`,
                       color: current.themeColor,
@@ -429,7 +429,7 @@ export default function ProductShowcase() {
 
                   <button
                     onClick={handleDownload}
-                    className="px-4 py-3.5 rounded-2xl font-bold text-xs sm:text-sm border border-white/10 hover:border-white/20 transition-all text-white/70 hover:text-white flex items-center justify-center gap-1.5"
+                    className="px-4 py-3.5 rounded-2xl font-bold text-xs sm:text-sm border border-emerald-900/10 hover:border-emerald-900/20 transition-all text-neutral-600 hover:text-emerald-950 flex items-center justify-center gap-1.5"
                   >
                     <Download className="w-4 h-4" />
                     <span className="hidden sm:inline">{activeLabels.downloadBrochure}</span>
@@ -548,7 +548,7 @@ export default function ProductShowcase() {
         </div>
 
         {/* Product count */}
-        <p className="text-white/30 text-[10px] tracking-wider font-mono">
+        <p className="text-neutral-400 text-[10px] tracking-wider font-mono">
           {currentIdx + 1} / {SHOWCASE_PRODUCTS.length}
         </p>
       </div>

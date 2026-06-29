@@ -557,10 +557,10 @@ export default function ProductDetail() {
   if (!product) {
     if (catalogLoaded) {
       return (
-        <div className="min-h-screen pt-32 bg-[#020502] text-white px-4 flex flex-col items-center justify-center text-center gap-6">
+        <div className="min-h-screen pt-32 bg-[#020502] text-emerald-950 px-4 flex flex-col items-center justify-center text-center gap-6">
           <AlertTriangle className="w-16 h-16 text-amber-500 animate-bounce" />
           <h1 className="text-2xl font-black">Information currently unavailable.</h1>
-          <p className="text-white/60 text-sm max-w-md leading-relaxed font-semibold">
+          <p className="text-neutral-600 text-sm max-w-md leading-relaxed font-semibold">
             {lang === 'en' 
               ? 'The requested product details could not be found. It may have been renamed or is temporarily offline.'
               : 'مصنوعات کی تفصیلات فی الحال دستیاب نہیں ہیں۔ ہو سکتا ہے یہ پروڈکٹ ہٹا دی گئی ہو یا عارضی طور پر آف لائن ہو۔'}
@@ -572,7 +572,7 @@ export default function ProductDetail() {
       );
     }
     return (
-      <div className="min-h-screen pt-32 bg-[#020502] text-white px-4">
+      <div className="min-h-screen pt-32 bg-[#020502] text-emerald-950 px-4">
         <div className="max-w-7xl mx-auto space-y-12 select-none">
           {/* Back button skeleton */}
           <Skeleton className="h-6 w-32 rounded-lg" />
@@ -602,7 +602,7 @@ export default function ProductDetail() {
               <Skeleton className="h-6 w-1/3 rounded-lg mt-2" />
               <Skeleton className="h-32 w-full rounded-[28px] mt-6" />
               
-              <div className="flex gap-4 p-4 rounded-2xl bg-white/[0.01] border border-white/5 mt-6">
+              <div className="flex gap-4 p-4 rounded-2xl bg-white/60 border border-emerald-900/5 mt-6">
                 <Skeleton className="w-10 h-10 rounded-full shrink-0" />
                 <div className="space-y-2 flex-1">
                   <Skeleton className="h-4 w-40 rounded" />
@@ -611,13 +611,13 @@ export default function ProductDetail() {
               </div>
 
               {/* Checkout cards skeleton */}
-              <div className="grid md:grid-cols-2 gap-6 mt-8 pt-6 border-t border-white/5">
-                <div className="bg-white/[0.01] border border-white/5 rounded-3xl p-6 space-y-4">
+              <div className="grid md:grid-cols-2 gap-6 mt-8 pt-6 border-t border-emerald-900/5">
+                <div className="bg-white/60 border border-emerald-900/5 rounded-3xl p-6 space-y-4">
                   <Skeleton className="h-6 w-1/2 rounded" />
                   <Skeleton className="h-4 w-3/4 rounded" />
                   <Skeleton className="h-12 w-full rounded-full" />
                 </div>
-                <div className="bg-white/[0.01] border border-white/5 rounded-3xl p-6 space-y-4">
+                <div className="bg-white/60 border border-emerald-900/5 rounded-3xl p-6 space-y-4">
                   <Skeleton className="h-6 w-1/2 rounded" />
                   <Skeleton className="h-4 w-3/4 rounded" />
                   <Skeleton className="h-12 w-full rounded-full" />
@@ -656,7 +656,7 @@ export default function ProductDetail() {
   const expiryInfo = "36 Months from Date of Formulation (Batch details printed on lid)";
 
   return (
-    <div className="relative min-h-screen bg-[#020502] text-white overflow-hidden pt-20 pb-16 select-none font-sans">
+    <div className="relative min-h-screen bg-[#020502] text-emerald-950 overflow-hidden pt-20 pb-16 select-none font-sans">
       {/* Clean Linear Grid System Background */}
       <div 
         className="absolute inset-0 z-0 opacity-15 pointer-events-none"
@@ -700,7 +700,7 @@ export default function ProductDetail() {
                     </span>
                   )}
                 </div>
-                <h1 className="text-3xl font-black tracking-tight leading-none text-white font-heading">
+                <h1 className="text-3xl font-black tracking-tight leading-none text-emerald-950 font-heading">
                   {product.name?.[lang] || product.name?.en}
                 </h1>
                 {product.formulation && (
@@ -711,7 +711,7 @@ export default function ProductDetail() {
               </div>
             )}
 
-            <TiltCard className="relative bg-white/[0.03] border border-white/10 backdrop-blur-2xl rounded-[32px] p-6 w-full max-w-[440px] aspect-square flex items-center justify-center shadow-[0_25px_60px_rgba(0,0,0,0.8)] overflow-hidden cursor-crosshair group">
+            <TiltCard className="relative bg-white/80 border border-emerald-900/10 backdrop-blur-2xl rounded-[32px] p-6 w-full max-w-[440px] aspect-square flex items-center justify-center shadow-[0_25px_60px_rgba(0,0,0,0.8)] overflow-hidden cursor-crosshair group">
               <div 
                 className="relative w-full h-full flex items-center justify-center"
                 onMouseMove={handleImageMouseMove}
@@ -720,13 +720,13 @@ export default function ProductDetail() {
                 onClick={() => setIsZoomed(true)}
               >
                 {galleryImages[activeTab]?.isLogo ? (
-                  <div className="p-8 bg-white/5 rounded-2xl border border-white/10 backdrop-blur-md flex flex-col items-center justify-center gap-4 text-center w-full h-full">
+                  <div className="p-8 bg-white/60 rounded-2xl border border-emerald-900/10 backdrop-blur-md flex flex-col items-center justify-center gap-4 text-center w-full h-full">
                     <img
                       src={galleryImages[activeTab]?.url}
                       alt="Logo View"
                       className="max-h-24 w-auto object-contain drop-shadow-[0_0_15px_rgba(255,255,255,0.25)]"
                     />
-                    <span className="text-white/60 font-bold text-xs uppercase tracking-widest">
+                    <span className="text-neutral-600 font-bold text-xs uppercase tracking-widest">
                       {galleryImages[activeTab]?.label}
                     </span>
                   </div>
@@ -776,11 +776,11 @@ export default function ProductDetail() {
               </div>
 
               {/* Magnify Hint */}
-              <div className="absolute bottom-4 right-4 bg-black/50 p-2.5 rounded-full border border-white/10 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity">
-                <Maximize className="w-4 h-4 text-white/80" />
+              <div className="absolute bottom-4 right-4 bg-emerald-950/10 p-2.5 rounded-full border border-emerald-900/10 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity">
+                <Maximize className="w-4 h-4 text-neutral-700" />
               </div>
               <div className="absolute top-4 left-4">
-                <span className="px-3 py-1 bg-[#76C945]/10 border border-[#76C945]/30 text-[#8AD65A] text-xs font-black rounded-full uppercase tracking-wider backdrop-blur-md">
+                <span className="px-3 py-1 bg-[#76C945]/10 border border-[#76C945]/30 text-emerald-600 text-xs font-black rounded-full uppercase tracking-wider backdrop-blur-md">
                   {CATEGORY_LABELS[lang]?.[product.category] || "Agrotech Formula"}
                 </span>
               </div>
@@ -794,8 +794,8 @@ export default function ProductDetail() {
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                   onClick={() => setActiveTab(i)}
-                  className={`w-16 h-16 rounded-2xl border transition-all overflow-hidden p-1 flex items-center justify-center bg-white/[0.02] backdrop-blur-sm ${
-                    activeTab === i ? 'border-emerald-500 bg-white/5 shadow-md shadow-emerald-500/20' : 'border-white/10 opacity-50 hover:opacity-100'
+                  className={`w-16 h-16 rounded-2xl border transition-all overflow-hidden p-1 flex items-center justify-center bg-white/70 backdrop-blur-sm ${
+                    activeTab === i ? 'border-emerald-500 bg-white/60 shadow-md shadow-emerald-500/20' : 'border-emerald-900/10 opacity-50 hover:opacity-100'
                   }`}
                 >
                   <img
@@ -829,7 +829,7 @@ export default function ProductDetail() {
               <div className="w-full max-w-[440px] pt-4">
                 <button
                   onClick={() => setIsMobileSpecsOpen(prev => !prev)}
-                  className="w-full h-14 bg-gradient-to-r from-emerald-500 to-emerald-600 hover:from-emerald-400 hover:to-emerald-500 text-white rounded-2xl text-xs sm:text-sm font-extrabold uppercase tracking-wider shadow-lg shadow-emerald-950/20 flex items-center justify-center gap-2 cursor-pointer transition-all active:scale-97"
+                  className="w-full h-14 bg-gradient-to-r from-emerald-500 to-emerald-600 hover:from-emerald-400 hover:to-emerald-500 text-emerald-950 rounded-2xl text-xs sm:text-sm font-extrabold uppercase tracking-wider shadow-lg shadow-emerald-950/20 flex items-center justify-center gap-2 cursor-pointer transition-all active:scale-97"
                 >
                   <span>{isMobileSpecsOpen ? (lang === 'en' ? 'Hide Detailed Specs ▴' : 'تفصیلات بند کریں ▴') : (lang === 'en' ? 'Show Detailed Specs ▾' : 'تفصیلات دیکھیں ▾')}</span>
                 </button>
@@ -865,12 +865,12 @@ export default function ProductDetail() {
 
             {/* Dynamic Sizing selector & Pricing display */}
             <div className="space-y-6 w-full animate-gsap">
-              <div className="bg-white/[0.03] border border-white/10 backdrop-blur-xl rounded-[28px] p-6 sm:p-8 space-y-6 shadow-2xl relative">
+              <div className="bg-white/80 border border-emerald-900/10 backdrop-blur-xl rounded-[28px] p-6 sm:p-8 space-y-6 shadow-2xl relative">
                 
                 {/* Size Pill Buttons */}
                 {sizesList?.length > 0 && (
                   <div className="space-y-3">
-                    <span className="text-xs text-white/50 block font-black uppercase tracking-wider">
+                    <span className="text-xs text-neutral-500 block font-black uppercase tracking-wider">
                       {lang === 'en' ? 'Select Pack Size' : 'پیکنگ سائز منتخب کریں'}
                     </span>
                     <div className="flex flex-wrap gap-2.5">
@@ -886,7 +886,7 @@ export default function ProductDetail() {
                             className={`px-4 py-2.5 rounded-2xl text-xs sm:text-sm font-extrabold border transition-all duration-300 ${
                               active
                                 ? 'bg-emerald-500/20 text-emerald-400 border-emerald-500 shadow-md shadow-emerald-500/10'
-                                : 'bg-white/5 text-white/60 border-white/5 hover:bg-white/10 hover:border-white/10'
+                                : 'bg-white/60 text-neutral-600 border-emerald-900/5 hover:bg-white/80 hover:border-emerald-900/10'
                             }`}
                           >
                             {szName}
@@ -898,7 +898,7 @@ export default function ProductDetail() {
                 )}
 
                 {/* Dynamic PricesDisplay */}
-                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-5 border-t border-white/5 pt-5">
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-5 border-t border-emerald-900/5 pt-5">
                   <div className="space-y-2">
                     <div className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded bg-emerald-950/40 border border-emerald-500/20 text-[9px] font-black text-emerald-400 font-mono tracking-widest uppercase">
                       <span className="w-1 h-1 rounded-full bg-emerald-400 animate-ping" />
@@ -906,12 +906,12 @@ export default function ProductDetail() {
                     </div>
                     
                     <div className="flex items-baseline gap-3">
-                      <span className="text-3xl sm:text-4xl font-black text-white">
+                      <span className="text-3xl sm:text-4xl font-black text-emerald-950">
                         {unitPrice === 0 ? "On Request" : `PKR ${unitPrice || 0}`}
                       </span>
                       {originalPrice > 0 && originalPrice > unitPrice && unitPrice !== 0 && (
                         <div className="flex items-center gap-2">
-                          <span className="line-through text-white/30 text-sm">
+                          <span className="line-through text-neutral-400 text-sm">
                             PKR {originalPrice}
                           </span>
                           <span className="px-1.5 py-0.5 bg-rose-500/20 text-rose-400 text-[9px] font-black rounded-md uppercase">
@@ -922,9 +922,9 @@ export default function ProductDetail() {
                     </div>
                     
                     {/* Delivery, SKU, availability status indicators */}
-                    <div className="flex flex-wrap gap-x-4 gap-y-1 text-xs text-white/40 font-semibold">
-                      <span>SKU: <span className="text-white/60 font-bold">{sku}</span></span>
-                      {weight && <span>Weight: <span className="text-white/60 font-bold">{weight}</span></span>}
+                    <div className="flex flex-wrap gap-x-4 gap-y-1 text-xs text-neutral-500 font-semibold">
+                      <span>SKU: <span className="text-neutral-600 font-bold">{sku}</span></span>
+                      {weight && <span>Weight: <span className="text-neutral-600 font-bold">{weight}</span></span>}
                       <span className="flex items-center gap-1">
                         <span className={`w-1.5 h-1.5 rounded-full ${stockStatus === 'In Stock' ? 'bg-emerald-400 shadow-[0_0_6px_#34d399]' : 'bg-amber-400 animate-pulse'}`} />
                         <span className={stockStatus === 'In Stock' ? 'text-emerald-400 font-bold' : 'text-amber-400 font-bold'}>
@@ -935,17 +935,17 @@ export default function ProductDetail() {
                   </div>
 
                   {/* Quantity Adjuster */}
-                  <div className="flex items-center gap-3 bg-white/5 rounded-2xl border border-white/10 px-3 py-2 h-max w-max">
+                  <div className="flex items-center gap-3 bg-white/60 rounded-2xl border border-emerald-900/10 px-3 py-2 h-max w-max">
                     <button
                       onClick={() => setQuantity(q => Math.max(1, q - 1))}
-                      className="w-8 h-8 rounded-xl bg-white/5 hover:bg-white/10 flex items-center justify-center font-bold text-white text-base transition-colors"
+                      className="w-8 h-8 rounded-xl bg-white/60 hover:bg-white/80 flex items-center justify-center font-bold text-emerald-950 text-base transition-colors"
                     >
                       -
                     </button>
-                    <span className="w-8 text-center text-sm font-black text-white font-mono">{quantity}</span>
+                    <span className="w-8 text-center text-sm font-black text-emerald-950 font-mono">{quantity}</span>
                     <button
                       onClick={() => setQuantity(q => q + 1)}
-                      className="w-8 h-8 rounded-xl bg-white/5 hover:bg-white/10 flex items-center justify-center font-bold text-white text-base transition-colors"
+                      className="w-8 h-8 rounded-xl bg-white/60 hover:bg-white/80 flex items-center justify-center font-bold text-emerald-950 text-base transition-colors"
                     >
                       +
                     </button>
@@ -953,10 +953,10 @@ export default function ProductDetail() {
                 </div>
 
                 {/* Delivery info */}
-                <div className="flex gap-4 p-4 rounded-2xl bg-white/[0.02] border border-white/5 text-xs text-white/50">
+                <div className="flex gap-4 p-4 rounded-2xl bg-white/70 border border-emerald-900/5 text-xs text-neutral-500">
                   <Truck className="w-5 h-5 text-emerald-400 shrink-0" />
                   <div>
-                    <span className="text-white/70 font-extrabold block">Shipped via TCS Express Service</span>
+                    <span className="text-neutral-600 font-extrabold block">Shipped via TCS Express Service</span>
                     <span>Estimated Delivery Time: 2 - 3 Business Days.</span>
                   </div>
                 </div>
@@ -976,7 +976,7 @@ export default function ProductDetail() {
                     }
                     navigate('/checkout');
                   }}
-                  className="w-full h-14 bg-gradient-to-r from-[#22c55e] to-[#16a34a] text-white rounded-2xl text-sm font-black uppercase tracking-widest shadow-xl flex items-center justify-center gap-2.5 cursor-pointer relative overflow-hidden group hover:scale-[1.02] active:scale-[0.98] transition-all hover:shadow-[0_8px_30px_rgba(34,197,94,0.30)]"
+                  className="w-full h-14 bg-gradient-to-r from-[#22c55e] to-[#16a34a] text-emerald-950 rounded-2xl text-sm font-black uppercase tracking-widest shadow-xl flex items-center justify-center gap-2.5 cursor-pointer relative overflow-hidden group hover:scale-[1.02] active:scale-[0.98] transition-all hover:shadow-[0_8px_30px_rgba(34,197,94,0.30)]"
                 >
                   <span>{lang === 'en' ? 'Continue to Checkout →' : 'خریداری کے لیے آگے بڑھیں ←'}</span>
                 </button>
@@ -990,68 +990,68 @@ export default function ProductDetail() {
         {/* 2. DESCRIPTION, TECHNICAL DETAILS, CROPS, DOSAGE TABLES */}
         {(!isMobile || isMobileSpecsOpen) && (
           <>
-            <div className="grid lg:grid-cols-3 gap-12 pt-10 border-t border-white/5 items-start">
+            <div className="grid lg:grid-cols-3 gap-12 pt-10 border-t border-emerald-900/5 items-start">
           
           {/* Main info text block */}
           <div className="lg:col-span-2 space-y-12">
             
-            <section className="bg-white/[0.01] border border-white/5 p-8 rounded-[28px] backdrop-blur-2xl text-left">
-              <h2 className="text-2xl font-black text-white mb-5 pb-3 border-b border-white/5 flex items-center gap-2">
+            <section className="bg-white/60 border border-emerald-900/5 p-8 rounded-[28px] backdrop-blur-2xl text-left">
+              <h2 className="text-2xl font-black text-emerald-950 mb-5 pb-3 border-b border-emerald-900/5 flex items-center gap-2">
                 <Leaf className="w-5 h-5 text-emerald-400" />
                 Product Description
               </h2>
-              <p className="text-white/70 text-base leading-relaxed whitespace-pre-line">
+              <p className="text-neutral-600 text-base leading-relaxed whitespace-pre-line">
                 {(product.description?.[lang] || product.description?.en) || (lang === 'en' ? 'No information available' : 'کوئی معلومات دستیاب نہیں ہے')}
               </p>
             </section>
 
             {/* Features lists grid */}
-            <section className="bg-white/[0.01] border border-white/5 p-8 rounded-[28px] backdrop-blur-2xl text-left">
-              <h2 className="text-2xl font-black text-white mb-6 pb-3 border-b border-white/5 flex items-center gap-2">
+            <section className="bg-white/60 border border-emerald-900/5 p-8 rounded-[28px] backdrop-blur-2xl text-left">
+              <h2 className="text-2xl font-black text-emerald-950 mb-6 pb-3 border-b border-emerald-900/5 flex items-center gap-2">
                 <Sparkles className="w-5 h-5 text-emerald-400" />
                 Key Features
               </h2>
               {product.features?.[lang] && product.features[lang].length > 0 ? (
                 <div className="grid sm:grid-cols-2 gap-4">
                   {product.features[lang].map((feat, idx) => (
-                    <div key={idx} className="flex gap-3 p-4 bg-white/[0.02] border border-white/5 rounded-2xl">
+                    <div key={idx} className="flex gap-3 p-4 bg-white/70 border border-emerald-900/5 rounded-2xl">
                       <div className="w-10 h-10 rounded-xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center shrink-0">
                         {FEATURE_ICONS[idx % FEATURE_ICONS.length]}
                       </div>
-                      <p className="text-xs text-white/70 leading-relaxed font-medium">{feat}</p>
+                      <p className="text-xs text-neutral-600 leading-relaxed font-medium">{feat}</p>
                     </div>
                   ))}
                 </div>
               ) : (
-                <p className="text-white/40 text-xs font-sans italic">{lang === 'en' ? 'No information available' : 'کوئی معلومات دستیاب نہیں ہے'}</p>
+                <p className="text-neutral-500 text-xs font-sans italic">{lang === 'en' ? 'No information available' : 'کوئی معلومات دستیاب نہیں ہے'}</p>
               )}
             </section>
 
             {/* Benefits checks */}
-            <section className="bg-white/[0.01] border border-white/5 p-8 rounded-[28px] backdrop-blur-2xl text-left">
-              <h2 className="text-2xl font-black text-white mb-6 pb-3 border-b border-white/5 flex items-center gap-2">
+            <section className="bg-white/60 border border-emerald-900/5 p-8 rounded-[28px] backdrop-blur-2xl text-left">
+              <h2 className="text-2xl font-black text-emerald-950 mb-6 pb-3 border-b border-emerald-900/5 flex items-center gap-2">
                 <CheckCircle2 className="w-5 h-5 text-emerald-400" />
                 Key Benefits
               </h2>
               {product.benefits?.[lang] && product.benefits[lang].length > 0 ? (
                 <div className="grid sm:grid-cols-2 gap-3.5">
                   {product.benefits[lang].map((ben, idx) => (
-                    <div key={idx} className="flex items-center gap-3 p-3 bg-white/[0.02] border border-white/5 rounded-xl">
+                    <div key={idx} className="flex items-center gap-3 p-3 bg-white/70 border border-emerald-900/5 rounded-xl">
                       <div className="w-5 h-5 rounded-full bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center shrink-0">
                         <Check className="w-3 h-3 text-emerald-400" />
                       </div>
-                      <span className="text-sm font-semibold text-white/80">{ben}</span>
+                      <span className="text-sm font-semibold text-neutral-700">{ben}</span>
                     </div>
                   ))}
                 </div>
               ) : (
-                <p className="text-white/40 text-xs font-sans italic">{lang === 'en' ? 'No information available' : 'کوئی معلومات دستیاب نہیں ہے'}</p>
+                <p className="text-neutral-500 text-xs font-sans italic">{lang === 'en' ? 'No information available' : 'کوئی معلومات دستیاب نہیں ہے'}</p>
               )}
             </section>
 
             {/* Crops info pills */}
-            <section className="bg-white/[0.01] border border-white/5 p-8 rounded-[28px] backdrop-blur-2xl text-left">
-              <h2 className="text-2xl font-black text-white mb-6 pb-3 border-b border-white/5 flex items-center gap-2">
+            <section className="bg-white/60 border border-emerald-900/5 p-8 rounded-[28px] backdrop-blur-2xl text-left">
+              <h2 className="text-2xl font-black text-emerald-950 mb-6 pb-3 border-b border-emerald-900/5 flex items-center gap-2">
                 <Info className="w-5 h-5 text-emerald-400" />
                 Target Crops
               </h2>
@@ -1061,7 +1061,7 @@ export default function ProductDetail() {
                     <motion.div
                       key={idx}
                       whileHover={{ scale: 1.05 }}
-                      className="flex items-center gap-2.5 px-4.5 py-2.5 bg-white/[0.02] border border-white/5 rounded-full text-sm font-semibold cursor-default"
+                      className="flex items-center gap-2.5 px-4.5 py-2.5 bg-white/70 border border-emerald-900/5 rounded-full text-sm font-semibold cursor-default"
                     >
                       <span className="text-lg">{crop.icon || "🌱"}</span>
                       <span>{crop.name?.[lang] || crop.name?.en}</span>
@@ -1069,21 +1069,21 @@ export default function ProductDetail() {
                   ))}
                 </div>
               ) : (
-                <p className="text-white/40 text-xs font-sans italic">{lang === 'en' ? 'No information available' : 'کوئی معلومات دستیاب نہیں ہے'}</p>
+                <p className="text-neutral-500 text-xs font-sans italic">{lang === 'en' ? 'No information available' : 'کوئی معلومات دستیاب نہیں ہے'}</p>
               )}
             </section>
 
             {/* Dosages specification table */}
-            <section className="bg-white/[0.01] border border-white/5 p-8 rounded-[28px] overflow-hidden text-left">
-              <h2 className="text-2xl font-black text-white mb-6 pb-3 border-b border-white/5 flex items-center gap-2">
+            <section className="bg-white/60 border border-emerald-900/5 p-8 rounded-[28px] overflow-hidden text-left">
+              <h2 className="text-2xl font-black text-emerald-950 mb-6 pb-3 border-b border-emerald-900/5 flex items-center gap-2">
                 <FileText className="w-5 h-5 text-emerald-400" />
                 Recommended Dosage & Timing
               </h2>
               {product.dosageTable && product.dosageTable.length > 0 ? (
-                <div className="overflow-x-auto rounded-2xl border border-white/10">
+                <div className="overflow-x-auto rounded-2xl border border-emerald-900/10">
                   <table className="w-full text-center border-collapse">
                     <thead>
-                      <tr className="bg-emerald-950/80 text-white text-xs border-b border-white/10">
+                      <tr className="bg-emerald-950/80 text-emerald-950 text-xs border-b border-emerald-900/10">
                         <th className="p-4 font-bold">{lang === 'en' ? 'Crop' : 'فصل'}</th>
                         <th className="p-4 font-bold">{lang === 'en' ? 'Dosage' : 'خوراک'}</th>
                         <th className="p-4 font-bold">{lang === 'en' ? 'Water' : 'پانی'}</th>
@@ -1091,10 +1091,10 @@ export default function ProductDetail() {
                         <th className="p-4 font-bold">{lang === 'en' ? 'Frequency' : 'تعداد'}</th>
                       </tr>
                     </thead>
-                    <tbody className="divide-y divide-white/5 text-xs text-white/70 bg-white/[0.01]">
+                    <tbody className="divide-y divide-white/5 text-xs text-neutral-600 bg-white/60">
                       {product.dosageTable.map((row, idx) => (
-                        <tr key={idx} className="hover:bg-white/[0.02] transition-colors">
-                          <td className="p-4 font-extrabold text-white">{row.crop?.[lang] || row.crop?.en}</td>
+                        <tr key={idx} className="hover:bg-white/70 transition-colors">
+                          <td className="p-4 font-extrabold text-emerald-950">{row.crop?.[lang] || row.crop?.en}</td>
                           <td className="p-4 font-bold text-emerald-400">{row.dosage?.[lang] || row.dosage?.en}</td>
                           <td className="p-4 text-amber-400 font-medium">{row.water?.[lang] || row.water?.en}</td>
                           <td className="p-4">{row.timing?.[lang] || row.timing?.en}</td>
@@ -1105,43 +1105,43 @@ export default function ProductDetail() {
                   </table>
                 </div>
               ) : (
-                <p className="text-white/40 text-xs font-sans italic">{lang === 'en' ? 'No information available' : 'کوئی معلومات دستیاب نہیں ہے'}</p>
+                <p className="text-neutral-500 text-xs font-sans italic">{lang === 'en' ? 'No information available' : 'کوئی معلومات دستیاب نہیں ہے'}</p>
               )}
             </section>
 
 
             {/* TECHNICAL DETAILS SPECIFICATIONS */}
-            <section className="bg-white/[0.01] border border-white/5 p-8 rounded-[28px] backdrop-blur-2xl">
-              <h2 className="text-2xl font-black text-white mb-6 pb-3 border-b border-white/5 flex items-center gap-2">
+            <section className="bg-white/60 border border-emerald-900/5 p-8 rounded-[28px] backdrop-blur-2xl">
+              <h2 className="text-2xl font-black text-emerald-950 mb-6 pb-3 border-b border-emerald-900/5 flex items-center gap-2">
                 <Cpu className="w-5 h-5 text-emerald-400" />
                 Technical Specifications
               </h2>
               <div className="grid sm:grid-cols-2 gap-3.5 text-xs">
-                <div className="flex justify-between p-4 bg-white/[0.02] border border-white/5 rounded-xl">
-                  <span className="text-white/40 font-bold">Brand:</span>
-                  <span className="text-white/80 font-black">Vital Agro</span>
+                <div className="flex justify-between p-4 bg-white/70 border border-emerald-900/5 rounded-xl">
+                  <span className="text-neutral-500 font-bold">Brand:</span>
+                  <span className="text-neutral-700 font-black">Vital Agro</span>
                 </div>
-                <div className="flex justify-between p-4 bg-white/[0.02] border border-white/5 rounded-xl">
-                  <span className="text-white/40 font-bold">Active Ingredient:</span>
-                  <span className="text-white/80 font-black text-right max-w-[200px] truncate">
+                <div className="flex justify-between p-4 bg-white/70 border border-emerald-900/5 rounded-xl">
+                  <span className="text-neutral-500 font-bold">Active Ingredient:</span>
+                  <span className="text-neutral-700 font-black text-right max-w-[200px] truncate">
                     {product.activeIngredient || product.genericName?.en || "Organic Booster"}
                   </span>
                 </div>
-                <div className="flex justify-between p-4 bg-white/[0.02] border border-white/5 rounded-xl">
-                  <span className="text-white/40 font-bold">Product Code:</span>
-                  <span className="text-white/80 font-black">{sku}</span>
+                <div className="flex justify-between p-4 bg-white/70 border border-emerald-900/5 rounded-xl">
+                  <span className="text-neutral-500 font-bold">Product Code:</span>
+                  <span className="text-neutral-700 font-black">{sku}</span>
                 </div>
-                <div className="flex justify-between p-4 bg-white/[0.02] border border-white/5 rounded-xl">
-                  <span className="text-white/40 font-bold">Manufacturing Company:</span>
-                  <span className="text-white/80 font-black text-right">Vital Agro Chemical Industries</span>
+                <div className="flex justify-between p-4 bg-white/70 border border-emerald-900/5 rounded-xl">
+                  <span className="text-neutral-500 font-bold">Manufacturing Company:</span>
+                  <span className="text-neutral-700 font-black text-right">Vital Agro Chemical Industries</span>
                 </div>
-                <div className="flex justify-between p-4 bg-white/[0.02] border border-white/5 rounded-xl">
-                  <span className="text-white/40 font-bold">Expiry details:</span>
-                  <span className="text-white/80 font-black text-right">{expiryInfo}</span>
+                <div className="flex justify-between p-4 bg-white/70 border border-emerald-900/5 rounded-xl">
+                  <span className="text-neutral-500 font-bold">Expiry details:</span>
+                  <span className="text-neutral-700 font-black text-right">{expiryInfo}</span>
                 </div>
-                <div className="flex justify-between p-4 bg-white/[0.02] border border-white/5 rounded-xl">
-                  <span className="text-white/40 font-bold">Product Category:</span>
-                  <span className="text-white/80 font-black text-right capitalize">
+                <div className="flex justify-between p-4 bg-white/70 border border-emerald-900/5 rounded-xl">
+                  <span className="text-neutral-500 font-bold">Product Category:</span>
+                  <span className="text-neutral-700 font-black text-right capitalize">
                     {CATEGORY_LABELS[lang]?.[product.category] || product.category}
                   </span>
                 </div>
@@ -1169,8 +1169,8 @@ export default function ProductDetail() {
                       <Info className="w-4 h-4" />
                     </div>
                     <div className="space-y-1">
-                      <span className="font-bold block text-white/80 uppercase tracking-widest text-[9px]">Storage Guideline</span>
-                      <p className="leading-relaxed text-white/60 font-semibold">{storageInfo}</p>
+                      <span className="font-bold block text-neutral-700 uppercase tracking-widest text-[9px]">Storage Guideline</span>
+                      <p className="leading-relaxed text-neutral-600 font-semibold">{storageInfo}</p>
                     </div>
                   </div>
                   <div className="flex gap-3 items-start border-t border-rose-500/10 pt-4">
@@ -1178,8 +1178,8 @@ export default function ProductDetail() {
                       <AlertTriangle className="w-4 h-4" />
                     </div>
                     <div className="space-y-1">
-                      <span className="font-bold block text-white/80 uppercase tracking-widest text-[9px]">Warning Instruction</span>
-                      <p className="leading-relaxed text-white/60 font-semibold">{warningInfo}</p>
+                      <span className="font-bold block text-neutral-700 uppercase tracking-widest text-[9px]">Warning Instruction</span>
+                      <p className="leading-relaxed text-neutral-600 font-semibold">{warningInfo}</p>
                     </div>
                   </div>
                 </div>
@@ -1190,33 +1190,33 @@ export default function ProductDetail() {
 
 
             {/* DYNAMIC DATABASE CUSTOMER REVIEWS */}
-            <section className="bg-white/[0.01] border border-white/5 p-8 rounded-[28px] backdrop-blur-2xl space-y-8">
-              <h2 className="text-2xl font-black text-white pb-3 border-b border-white/5 flex items-center gap-2">
+            <section className="bg-white/60 border border-emerald-900/5 p-8 rounded-[28px] backdrop-blur-2xl space-y-8">
+              <h2 className="text-2xl font-black text-emerald-950 pb-3 border-b border-emerald-900/5 flex items-center gap-2">
                 <Users className="w-5 h-5 text-emerald-400" />
                 Customer Reviews
               </h2>
               
               {/* Write Review Form */}
-              <form onSubmit={handleReviewSubmit} className="space-y-4 p-5 rounded-2xl bg-white/[0.02] border border-white/5">
-                <h3 className="text-sm font-black text-white/80 uppercase tracking-wider">Submit Your Product Feedback</h3>
+              <form onSubmit={handleReviewSubmit} className="space-y-4 p-5 rounded-2xl bg-white/70 border border-emerald-900/5">
+                <h3 className="text-sm font-black text-neutral-700 uppercase tracking-wider">Submit Your Product Feedback</h3>
                 <div className="grid sm:grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-[10px] font-bold text-white/40 mb-1 uppercase">Your Name</label>
+                    <label className="block text-[10px] font-bold text-neutral-500 mb-1 uppercase">Your Name</label>
                     <input
                       type="text"
                       required
                       placeholder="e.g. Salmaan Jutt"
                       value={newReview.name}
                       onChange={(e) => setNewReview({ ...newReview, name: e.target.value })}
-                      className="w-full px-4 py-2.5 rounded-xl border border-white/10 bg-white/5 text-sm focus:ring-1 focus:ring-emerald-500 text-white placeholder-white/20"
+                      className="w-full px-4 py-2.5 rounded-xl border border-emerald-900/10 bg-white/60 text-sm focus:ring-1 focus:ring-emerald-500 text-emerald-950 placeholder-white/20"
                     />
                   </div>
                   <div>
-                    <label className="block text-[10px] font-bold text-white/40 mb-1 uppercase">Rating (1 to 5 Stars)</label>
+                    <label className="block text-[10px] font-bold text-neutral-500 mb-1 uppercase">Rating (1 to 5 Stars)</label>
                     <select
                       value={newReview.rating}
                       onChange={(e) => setNewReview({ ...newReview, rating: Number(e.target.value) })}
-                      className="w-full px-4 py-2.5 rounded-xl border border-white/10 bg-white/5 text-sm focus:ring-1 focus:ring-emerald-500 text-white"
+                      className="w-full px-4 py-2.5 rounded-xl border border-emerald-900/10 bg-white/60 text-sm focus:ring-1 focus:ring-emerald-500 text-emerald-950"
                     >
                       <option value="5" className="bg-[#020502]">5 Stars (Excellent)</option>
                       <option value="4" className="bg-[#020502]">4 Stars (Good)</option>
@@ -1227,14 +1227,14 @@ export default function ProductDetail() {
                   </div>
                 </div>
                 <div>
-                  <label className="block text-[10px] font-bold text-white/40 mb-1 uppercase">Your Message</label>
+                  <label className="block text-[10px] font-bold text-neutral-500 mb-1 uppercase">Your Message</label>
                   <textarea
                     rows={3}
                     required
                     placeholder="Describe crop results and effectiveness..."
                     value={newReview.text}
                     onChange={(e) => setNewReview({ ...newReview, text: e.target.value })}
-                    className="w-full px-4 py-2.5 rounded-xl border border-white/10 bg-white/5 text-sm focus:ring-1 focus:ring-emerald-500 text-white placeholder-white/20"
+                    className="w-full px-4 py-2.5 rounded-xl border border-emerald-900/10 bg-white/60 text-sm focus:ring-1 focus:ring-emerald-500 text-emerald-950 placeholder-white/20"
                   />
                 </div>
                 <motion.button
@@ -1252,15 +1252,15 @@ export default function ProductDetail() {
               {/* Reviews lists */}
               <div className="space-y-4">
                 {loadingReviews ? (
-                  <p className="text-xs text-white/40 italic">Syncing product reviews database ledger...</p>
+                  <p className="text-xs text-neutral-500 italic">Syncing product reviews database ledger...</p>
                 ) : reviews.length === 0 ? (
-                  <p className="text-xs text-white/40 italic">No customer reviews posted yet. Be the first to share your experience!</p>
+                  <p className="text-xs text-neutral-500 italic">No customer reviews posted yet. Be the first to share your experience!</p>
                 ) : (
                   reviews.map((rev) => (
-                    <div key={rev.id} className="p-5 rounded-2xl bg-white/[0.02] border border-white/5 space-y-2 relative overflow-hidden">
+                    <div key={rev.id} className="p-5 rounded-2xl bg-white/70 border border-emerald-900/5 space-y-2 relative overflow-hidden">
                       <div className="flex items-center justify-between">
                         <div className="flex items-center gap-2">
-                          <span className="text-xs font-black text-white/80">{rev.user_name}</span>
+                          <span className="text-xs font-black text-neutral-700">{rev.user_name}</span>
                           <span className="px-1.5 py-0.5 rounded bg-emerald-500/10 text-emerald-400 text-[8px] font-black uppercase flex items-center gap-0.5">
                             <ShieldCheck className="w-2.5 h-2.5" /> Verified Buyer
                           </span>
@@ -1273,10 +1273,10 @@ export default function ProductDetail() {
                           ))}
                         </div>
                       </div>
-                      <p className="text-xs sm:text-sm text-white/70 leading-relaxed font-semibold">
+                      <p className="text-xs sm:text-sm text-neutral-600 leading-relaxed font-semibold">
                         {rev.text}
                       </p>
-                      <span className="block text-[9px] text-white/30 font-bold">
+                      <span className="block text-[9px] text-neutral-400 font-bold">
                         {new Date(rev.created_at || Date.now()).toLocaleDateString()}
                       </span>
                     </div>
@@ -1290,8 +1290,8 @@ export default function ProductDetail() {
           {/* RIGHT SIDE FAQ ACCORDION BAR */}
           <div className="space-y-6">
             
-            <section className="bg-white/[0.01] border border-white/5 p-6 rounded-[28px] space-y-4">
-              <h2 className="text-lg font-black text-white pb-2 border-b border-white/5 flex items-center gap-2">
+            <section className="bg-white/60 border border-emerald-900/5 p-6 rounded-[28px] space-y-4">
+              <h2 className="text-lg font-black text-emerald-950 pb-2 border-b border-emerald-900/5 flex items-center gap-2">
                 <HelpCircle className="w-4 h-4 text-emerald-400" />
                 Frequently Asked Questions
               </h2>
@@ -1303,10 +1303,10 @@ export default function ProductDetail() {
                 ]).map((faq, idx) => {
                   const open = openFaq === idx;
                   return (
-                    <div key={idx} className="border border-white/5 rounded-xl bg-white/[0.01] overflow-hidden transition-all">
+                    <div key={idx} className="border border-emerald-900/5 rounded-xl bg-white/60 overflow-hidden transition-all">
                       <button
                         onClick={() => setOpenFaq(open ? null : idx)}
-                        className="w-full flex justify-between items-center p-4 text-left text-xs font-black text-white hover:bg-white/5 transition-colors"
+                        className="w-full flex justify-between items-center p-4 text-left text-xs font-black text-emerald-950 hover:bg-white/60 transition-colors"
                       >
                         <span>{faq.q}</span>
                         <span className="text-emerald-400 font-extrabold">{open ? '−' : '+'}</span>
@@ -1319,7 +1319,7 @@ export default function ProductDetail() {
                             exit={{ height: 0 }}
                             className="overflow-hidden"
                           >
-                            <p className="p-4 pt-0 text-[11px] text-white/60 leading-relaxed whitespace-pre-line border-t border-white/5 bg-[#020502]/50 font-medium">
+                            <p className="p-4 pt-0 text-[11px] text-neutral-600 leading-relaxed whitespace-pre-line border-t border-emerald-900/5 bg-[#020502]/50 font-medium">
                               {faq.a}
                             </p>
                           </motion.div>
@@ -1342,22 +1342,22 @@ export default function ProductDetail() {
                 <span className="text-xs font-black text-emerald-400 block tracking-wider uppercase">
                   Vital Agro Chemicals
                 </span>
-                <span className="text-[10px] text-white/40 block mt-0.5 leading-tight font-bold">
+                <span className="text-[10px] text-neutral-500 block mt-0.5 leading-tight font-bold">
                   Bayer, Syngenta & BASF Grade Formulations
                 </span>
               </div>
 
               {/* Social Media Links V3 */}
               <div className="border-t border-emerald-500/10 pt-4 space-y-2">
-                <span className="text-[9px] text-white/40 block font-bold uppercase tracking-wider">Connect With Us</span>
-                <div className="flex justify-center gap-3 text-white/60">
+                <span className="text-[9px] text-neutral-500 block font-bold uppercase tracking-wider">Connect With Us</span>
+                <div className="flex justify-center gap-3 text-neutral-600">
                   {SOCIAL_LINKS.map((social) => (
                     <a
                       key={social.name}
                       href={social.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="p-2 rounded-xl bg-white/[0.02] border border-white/5 hover:border-emerald-500/30 hover:text-emerald-400 hover:bg-emerald-500/5 transition-all"
+                      className="p-2 rounded-xl bg-white/70 border border-emerald-900/5 hover:border-emerald-500/30 hover:text-emerald-400 hover:bg-emerald-500/5 transition-all"
                       title={social.name}
                     >
                       {social.icon}
@@ -1373,8 +1373,8 @@ export default function ProductDetail() {
 
         {/* 3. RELATED PRODUCTS SLIDER */}
         {related.length > 0 && (
-          <section className="space-y-6 pt-10 border-t border-white/5">
-            <h2 className="text-2xl font-black text-white flex items-center gap-2">
+          <section className="space-y-6 pt-10 border-t border-emerald-900/5">
+            <h2 className="text-2xl font-black text-emerald-950 flex items-center gap-2">
               <Sparkles className="w-5 h-5 text-emerald-400" />
               Related Crop Protection Solutions
             </h2>
@@ -1393,7 +1393,7 @@ export default function ProductDetail() {
                     className="group block min-w-[240px] sm:min-w-[280px] p-5 premium-glass-card rounded-2xl"
                   >
                     {/* Image Showcase */}
-                    <div className="relative aspect-[4/3] w-full flex items-center justify-center p-4 bg-white/[0.01] rounded-xl mb-4 overflow-hidden border border-white/5">
+                    <div className="relative aspect-[4/3] w-full flex items-center justify-center p-4 bg-white/60 rounded-xl mb-4 overflow-hidden border border-emerald-900/5">
                       {/* Glow orb */}
                       <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(16,185,129,0.12)_0%,transparent_60%)] pointer-events-none" />
                       
@@ -1434,7 +1434,7 @@ export default function ProductDetail() {
                       )}
                       
                       {/* 2. English Name */}
-                      <h4 className="font-bold text-xs sm:text-sm text-white group-hover:text-emerald-400 transition-colors truncate">
+                      <h4 className="font-bold text-xs sm:text-sm text-emerald-950 group-hover:text-emerald-400 transition-colors truncate">
                         {pNameEn}
                       </h4>
 
@@ -1446,12 +1446,12 @@ export default function ProductDetail() {
                       </div>
 
                       {/* 4. Short Description */}
-                      <p className="text-[10px] text-white/40 leading-normal line-clamp-2 h-[28px] overflow-hidden px-1">
+                      <p className="text-[10px] text-neutral-500 leading-normal line-clamp-2 h-[28px] overflow-hidden px-1">
                         {pDesc}
                       </p>
 
                       {/* 5. Price */}
-                      <div className="pt-2 border-t border-white/5 font-mono">
+                      <div className="pt-2 border-t border-emerald-900/5 font-mono">
                         <span className="text-emerald-400 font-bold text-xs sm:text-sm">
                           {pPrice === 0 ? 'On Request' : `₨ ${pPrice.toLocaleString()}`}
                         </span>
@@ -1473,7 +1473,7 @@ export default function ProductDetail() {
                 setIsMobileSpecsOpen(false);
                 window.scrollTo({ top: 0, behavior: 'smooth' });
               }}
-              className="w-full h-14 bg-white/5 hover:bg-white/10 text-white/80 border border-white/10 rounded-2xl text-xs sm:text-sm font-extrabold uppercase tracking-wider flex items-center justify-center gap-2 cursor-pointer transition-all"
+              className="w-full h-14 bg-white/60 hover:bg-white/80 text-neutral-700 border border-emerald-900/10 rounded-2xl text-xs sm:text-sm font-extrabold uppercase tracking-wider flex items-center justify-center gap-2 cursor-pointer transition-all"
             >
               <span>{lang === 'en' ? 'Hide Specifications ▴' : 'معلومات بند کریں ▴'}</span>
             </button>
@@ -1481,18 +1481,18 @@ export default function ProductDetail() {
         )}
 
         {/* PREVIOUS / NEXT SEQUENTIAL NAVIGATION BAR */}
-        <div className="flex flex-col sm:flex-row justify-between items-center gap-4 bg-white/[0.02] border border-white/5 rounded-[24px] p-5 sm:p-6 backdrop-blur-xl mt-12 select-none">
+        <div className="flex flex-col sm:flex-row justify-between items-center gap-4 bg-white/70 border border-emerald-900/5 rounded-[24px] p-5 sm:p-6 backdrop-blur-xl mt-12 select-none">
           {prevProduct && (
             <Link
               to={`/products/${prevProduct.slug || prevProduct.id}`}
               className="flex items-center gap-3 group text-left w-full sm:w-auto"
             >
-              <div className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 group-hover:border-emerald-500/30 group-hover:bg-emerald-500/10 flex items-center justify-center text-white group-hover:text-emerald-400 transition-all shrink-0">
+              <div className="w-10 h-10 rounded-xl bg-white/60 border border-emerald-900/10 group-hover:border-emerald-500/30 group-hover:bg-emerald-500/10 flex items-center justify-center text-emerald-950 group-hover:text-emerald-400 transition-all shrink-0">
                 <ArrowLeft className="w-5 h-5 transition-transform group-hover:-translate-x-1" />
               </div>
               <div>
-                <span className="text-[9px] text-white/30 font-bold block uppercase tracking-widest">Previous Product</span>
-                <span className="text-xs font-black text-white group-hover:text-emerald-400 transition-colors line-clamp-1 max-w-[150px]">
+                <span className="text-[9px] text-neutral-400 font-bold block uppercase tracking-widest">Previous Product</span>
+                <span className="text-xs font-black text-emerald-950 group-hover:text-emerald-400 transition-colors line-clamp-1 max-w-[150px]">
                   {typeof prevProduct.name === 'object' ? prevProduct.name.en : prevProduct.name}
                 </span>
               </div>
@@ -1501,7 +1501,7 @@ export default function ProductDetail() {
 
           <Link
             to="/products"
-            className="px-5 py-2.5 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-xs font-black uppercase tracking-wider text-emerald-400 hover:text-emerald-300 transition-all text-center"
+            className="px-5 py-2.5 rounded-xl bg-white/60 hover:bg-white/80 border border-emerald-900/10 text-xs font-black uppercase tracking-wider text-emerald-400 hover:text-emerald-300 transition-all text-center"
           >
             Back to Catalog
           </Link>
@@ -1512,12 +1512,12 @@ export default function ProductDetail() {
               className="flex items-center gap-3 group text-right w-full sm:w-auto justify-end sm:justify-start"
             >
               <div className="order-2 sm:order-1">
-                <span className="text-[9px] text-white/30 font-bold block uppercase tracking-widest">Next Product</span>
-                <span className="text-xs font-black text-white group-hover:text-emerald-400 transition-colors line-clamp-1 max-w-[150px]">
+                <span className="text-[9px] text-neutral-400 font-bold block uppercase tracking-widest">Next Product</span>
+                <span className="text-xs font-black text-emerald-950 group-hover:text-emerald-400 transition-colors line-clamp-1 max-w-[150px]">
                   {typeof nextProduct.name === 'object' ? nextProduct.name.en : nextProduct.name}
                 </span>
               </div>
-              <div className="order-1 sm:order-2 w-10 h-10 rounded-xl bg-white/5 border border-white/10 group-hover:border-emerald-500/30 group-hover:bg-emerald-500/10 flex items-center justify-center text-white group-hover:text-emerald-400 transition-all shrink-0">
+              <div className="order-1 sm:order-2 w-10 h-10 rounded-xl bg-white/60 border border-emerald-900/10 group-hover:border-emerald-500/30 group-hover:bg-emerald-500/10 flex items-center justify-center text-emerald-950 group-hover:text-emerald-400 transition-all shrink-0">
                 <ChevronRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
               </div>
             </Link>
@@ -1549,12 +1549,12 @@ export default function ProductDetail() {
                   alt="Zoomed Product View"
                   className="max-w-full max-h-[75vh] object-contain drop-shadow-[0_20px_50px_rgba(255,255,255,0.1)]"
                 />
-                <span className="text-white/80 font-black text-sm text-center bg-white/10 px-4 py-2 rounded-full border border-white/20">
+                <span className="text-neutral-700 font-black text-sm text-center bg-white/80 px-4 py-2 rounded-full border border-emerald-900/20">
                   {product.name?.[lang] || product.name?.en}
                 </span>
                 <button
                   onClick={() => setIsZoomed(false)}
-                  className="absolute top-4 right-4 text-white hover:text-emerald-400 font-black text-xl bg-white/10 rounded-full w-8 h-8 flex items-center justify-center border border-white/20"
+                  className="absolute top-4 right-4 text-emerald-950 hover:text-emerald-400 font-black text-xl bg-white/80 rounded-full w-8 h-8 flex items-center justify-center border border-emerald-900/20"
                 >
                   ×
                 </button>

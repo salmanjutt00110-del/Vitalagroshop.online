@@ -112,7 +112,7 @@ export default function PremiumProductCard({ product }) {
               {prodNameUr}
             </h3>
           )}
-          <h4 className="text-white font-black text-sm leading-tight group-hover:text-emerald-300 transition-colors duration-300 line-clamp-1">
+          <h4 className="text-emerald-950 font-black text-sm leading-tight group-hover:text-emerald-300 transition-colors duration-300 line-clamp-1">
             {prodNameEn}
           </h4>
         </div>
@@ -150,7 +150,7 @@ export default function PremiumProductCard({ product }) {
                 className="space-y-4"
               >
                 {/* Short Description */}
-                <p className="text-white/50 text-[11px] leading-relaxed text-left line-clamp-2">
+                <p className="text-neutral-500 text-[11px] leading-relaxed text-left line-clamp-2">
                   {product.shortDesc?.[lang] || product.description?.[lang] || (lang === 'en' ? 'Premium agrochemical formulation for target control.' : 'بہترین زرعی فارمولیشن فار ٹارگٹ کنٹرول۔')}
                 </p>
 
@@ -171,7 +171,7 @@ export default function PremiumProductCard({ product }) {
                             className={`px-3 py-1.5 rounded-xl text-[10px] font-black border transition-all duration-300 cursor-pointer ${
                               isActive
                                 ? 'bg-emerald-500/15 text-emerald-400 border-emerald-500 shadow-md shadow-emerald-500/5'
-                                : 'bg-white/5 text-white/50 border-white/10 hover:bg-white/10 hover:border-white/20'
+                                : 'bg-white/60 text-neutral-500 border-emerald-900/10 hover:bg-white/80 hover:border-emerald-900/20'
                             }`}
                           >
                             {szName}
@@ -190,12 +190,12 @@ export default function PremiumProductCard({ product }) {
                   </span>
 
                   {/* Quantity Adjustment */}
-                  <div className="flex items-center gap-1.5 bg-white/[0.04] rounded-xl border border-white/10 px-1.5 py-1">
+                  <div className="flex items-center gap-1.5 bg-white/90 rounded-xl border border-emerald-900/10 px-1.5 py-1">
                     <button
                       onClick={(e) => { e.stopPropagation(); setQuantity(q => Math.max(1, q - 1)); }}
-                      className="w-7 h-7 rounded-lg bg-white/5 hover:bg-white/15 text-white text-sm flex items-center justify-center transition-all font-bold cursor-pointer active:scale-90"
+                      className="w-7 h-7 rounded-lg bg-white/60 hover:bg-white/15 text-emerald-950 text-sm flex items-center justify-center transition-all font-bold cursor-pointer active:scale-90"
                     >−</button>
-                    <span className="text-white text-xs font-black w-5 text-center font-mono">{quantity}</span>
+                    <span className="text-emerald-950 text-xs font-black w-5 text-center font-mono">{quantity}</span>
                     <button
                       onClick={(e) => { e.stopPropagation(); setQuantity(q => q + 1); }}
                       className="w-7 h-7 rounded-lg bg-emerald-500/15 hover:bg-emerald-500/30 text-emerald-300 text-sm flex items-center justify-center transition-all font-bold cursor-pointer active:scale-90"
@@ -215,7 +215,7 @@ export default function PremiumProductCard({ product }) {
                   <Link
                     to={`/products/${product.slug || product.id}`}
                     onClick={(e) => e.stopPropagation()}
-                    className="flex items-center justify-center gap-1 h-11 bg-white/5 hover:bg-white/10 border border-white/10 hover:border-emerald-500/30 rounded-xl text-[10px] font-bold text-white transition-all active:scale-95 cursor-pointer backdrop-blur-sm"
+                    className="flex items-center justify-center gap-1 h-11 bg-white/60 hover:bg-white/80 border border-emerald-900/10 hover:border-emerald-500/30 rounded-xl text-[10px] font-bold text-emerald-950 transition-all active:scale-95 cursor-pointer backdrop-blur-sm"
                   >
                     {lang === 'en' ? 'Details' : 'تفصیلات'}
                     <ChevronRight className="w-3.5 h-3.5" />
@@ -225,7 +225,7 @@ export default function PremiumProductCard({ product }) {
                 {/* Collapse Link */}
                 <button
                   onClick={toggleExpand}
-                  className="w-full text-center text-[10px] font-bold text-white/40 hover:text-emerald-400 transition-colors uppercase tracking-wider pt-1 flex items-center justify-center gap-1 cursor-pointer"
+                  className="w-full text-center text-[10px] font-bold text-neutral-500 hover:text-emerald-400 transition-colors uppercase tracking-wider pt-1 flex items-center justify-center gap-1 cursor-pointer"
                 >
                   ▲ {lang === 'en' ? 'HIDE' : 'چھپائیں'}
                 </button>

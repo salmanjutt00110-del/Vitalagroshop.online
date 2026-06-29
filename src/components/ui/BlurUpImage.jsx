@@ -49,7 +49,7 @@ export default function BlurUpImage({ src, alt, className, style, loading = 'laz
     <div className="relative w-full h-full flex items-center justify-center overflow-hidden">
       {/* Premium subtle blur-up placeholder */}
       {!isLoaded && showSpinner && (
-        <div className="absolute inset-0 bg-white/[0.01] backdrop-blur-sm animate-pulse rounded-2xl flex items-center justify-center z-10">
+        <div className="absolute inset-0 bg-white/60 backdrop-blur-sm animate-pulse rounded-2xl flex items-center justify-center z-10">
           <div className="w-5 h-5 rounded-full border-2 border-emerald-500/20 border-t-emerald-400 animate-spin" />
         </div>
       )}

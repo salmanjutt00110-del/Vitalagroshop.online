@@ -17,9 +17,9 @@ const BankDetails = React.lazy(() => import('../components/sections/BankDetails'
 const SectionPlaceholder = ({ height = '300px' }) => (
   <div
     style={{ height }}
-    className="w-full bg-[#020d06] animate-pulse border-y border-white/5 flex items-center justify-center"
+    className="w-full bg-slate-50 animate-pulse border-y border-emerald-900/5 flex items-center justify-center"
   >
-    <div className="text-white/20 text-[10px] font-mono tracking-[0.3em] uppercase">
+    <div className="text-emerald-950/20 text-[10px] font-mono tracking-[0.3em] uppercase">
       Loading Section...
     </div>
   </div>

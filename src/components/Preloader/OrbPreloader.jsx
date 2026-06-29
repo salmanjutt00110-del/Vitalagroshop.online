@@ -232,7 +232,7 @@ export const OrbPreloader = ({ onComplete }) => {
           transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
         >
           <motion.div
-            className="p-4 rounded-[22px] bg-white/[0.01] border border-white/5 shadow-[inset_0_1px_0_rgba(255,255,255,0.02)] backdrop-blur-md"
+            className="p-4 rounded-[22px] bg-white/60 border border-emerald-900/5 shadow-[inset_0_1px_0_rgba(255,255,255,0.02)] backdrop-blur-md"
             animate={{ y: [0, -4, 0] }}
             transition={{ duration: 3.5, repeat: Infinity, ease: 'easeInOut' }}
           >
@@ -251,10 +251,10 @@ export const OrbPreloader = ({ onComplete }) => {
           animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
           transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
         >
-          <h2 className="text-white font-extrabold tracking-widest text-lg md:text-xl font-heading uppercase">
+          <h2 className="text-emerald-950 font-extrabold tracking-widest text-lg md:text-xl font-heading uppercase">
             Welcome to <span className="text-emerald-400">Vital Agro</span>
           </h2>
-          <p className="text-white/40 text-[9px] md:text-[10px] tracking-[0.25em] uppercase font-mono mt-2">
+          <p className="text-neutral-500 text-[9px] md:text-[10px] tracking-[0.25em] uppercase font-mono mt-2">
             ♦ VITAL AGRO CHEMICAL INDUSTRIES ♦
           </p>
         </motion.div>
@@ -268,7 +268,7 @@ export const OrbPreloader = ({ onComplete }) => {
           animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
           transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
         >
-          <p className="text-white/60 text-[10px] tracking-wider font-medium uppercase leading-relaxed max-w-xs">
+          <p className="text-neutral-600 text-[10px] tracking-wider font-medium uppercase leading-relaxed max-w-xs">
             Empowering progressive farmers with premium imported biotech formulations.
           </p>
         </motion.div>
@@ -365,7 +365,7 @@ export const OrbPreloader = ({ onComplete }) => {
               <AnimatePresence mode="wait">
                 <motion.p
                   key={msgIdx}
-                  className="text-white/30 text-[11px] tracking-widest text-center"
+                  className="text-neutral-400 text-[11px] tracking-widest text-center"
                   initial={{ opacity: 0, y: 4 }}
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -4 }}

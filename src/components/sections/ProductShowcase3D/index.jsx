@@ -363,7 +363,7 @@ export const ProductShowcase3D = () => {
                   {prod.category}
                 </span>
                 {prod.badge && (
-                  <span className="px-3 py-1 rounded-full text-[10px] font-bold bg-white/8 border border-white/15 text-white/60">
+                  <span className="px-3 py-1 rounded-full text-[10px] font-bold bg-white/8 border border-emerald-900/15 text-neutral-600">
                     {prod.badge}
                   </span>
                 )}
@@ -371,7 +371,7 @@ export const ProductShowcase3D = () => {
 
               {/* Name */}
               <h2
-                className="text-5xl md:text-6xl font-black text-white leading-none mb-3"
+                className="text-5xl md:text-6xl font-black text-emerald-950 leading-none mb-3"
                 style={{ textShadow: `0 0 50px ${prod.theme}25` }}
               >
                 {prod.name[lang] || prod.name.en || prod.name}
@@ -383,13 +383,13 @@ export const ProductShowcase3D = () => {
               </p>
 
               {/* Formula */}
-              <p className="text-white/35 text-xs tracking-widest uppercase mb-5 font-mono">
+              <p className="text-neutral-400 text-xs tracking-widest uppercase mb-5 font-mono">
                 {prod.formula}
               </p>
 
               {/* Description */}
               <p
-                className="text-white/55 text-sm leading-relaxed mb-6 border-l-2 pl-4 max-w-md"
+                className="text-emerald-950/55 text-sm leading-relaxed mb-6 border-l-2 pl-4 max-w-md"
                 style={{ borderColor: `${prod.theme}50` }}
               >
                 {prod.desc[lang] || prod.desc.en || prod.desc}
@@ -400,7 +400,7 @@ export const ProductShowcase3D = () => {
                 {prod.crops?.map((crop) => (
                   <span
                     key={crop}
-                    className="px-3 py-1.5 rounded-xl text-xs font-semibold bg-white/5 border border-white/10 text-white/55 flex items-center gap-1"
+                    className="px-3 py-1.5 rounded-xl text-xs font-semibold bg-white/60 border border-emerald-900/10 text-emerald-950/55 flex items-center gap-1"
                   >
                     🌾 {getTranslatedCrop(crop)}
                   </span>
@@ -412,7 +412,7 @@ export const ProductShowcase3D = () => {
                 <span className="text-4xl font-black font-mono animate-pulse" style={{ color: prod.theme }}>
                   PKR {prod.price.toLocaleString()}
                 </span>
-                <span className="text-white/25 text-xs font-bold uppercase tracking-wider">
+                <span className="text-emerald-950/25 text-xs font-bold uppercase tracking-wider">
                   {lang === 'en' ? 'per unit' : 'فی یونٹ'}
                 </span>
               </div>
@@ -432,14 +432,14 @@ export const ProductShowcase3D = () => {
                   <motion.button
                     onClick={() => navigate(`/checkout?product=${prod.slug}`)}
                     whileTap={{ scale: 0.97 }}
-                    className="relative px-8 py-4 rounded-2xl font-bold text-sm text-white overflow-hidden flex-1 sm:flex-none"
+                    className="relative px-8 py-4 rounded-2xl font-bold text-sm text-emerald-950 overflow-hidden flex-1 sm:flex-none"
                     style={{
                       background: `linear-gradient(135deg, ${prod.theme}cc, ${prod.theme})`,
                       boxShadow: `0 0 30px ${prod.theme}35, 0 8px 20px rgba(0,0,0,0.3)`,
                     }}
                   >
                     <motion.div
-                      className="absolute inset-0 bg-white/10"
+                      className="absolute inset-0 bg-white/80"
                       initial={{ x: '-110%', skewX: '-20deg' }}
                       whileHover={{ x: '110%' }}
                       transition={{ duration: 0.4 }}
@@ -451,7 +451,7 @@ export const ProductShowcase3D = () => {
                   <motion.button
                     onClick={() => setActiveDetailsProduct(PRODUCTS_DATA[prod.slug])}
                     whileTap={{ scale: 0.97 }}
-                    className="px-8 py-4 rounded-2xl font-bold text-sm border transition-all duration-300 flex-1 sm:flex-none bg-white/5"
+                    className="px-8 py-4 rounded-2xl font-bold text-sm border transition-all duration-300 flex-1 sm:flex-none bg-white/60"
                     style={{
                       borderColor: `${prod.theme}40`,
                       color: prod.theme,
@@ -606,7 +606,7 @@ export const ProductShowcase3D = () => {
           ))}
         </div>
 
-        <p className="text-white/25 text-[10px] tracking-widest font-mono">
+        <p className="text-emerald-950/25 text-[10px] tracking-widest font-mono">
           {idx + 1} / {PRODUCTS.length} · {paused ? 'Paused' : 'Auto'}
         </p>
       </div>

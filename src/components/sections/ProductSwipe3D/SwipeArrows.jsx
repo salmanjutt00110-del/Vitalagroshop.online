@@ -14,8 +14,8 @@ export default function SwipeArrows({ onPrev, onNext, canPrev, canNext }) {
         className="
           absolute left-2 md:left-4 top-[40%] md:top-1/2 -translate-y-1/2
           w-9 h-9 md:w-12 md:h-12 rounded-full flex items-center justify-center
-          bg-black/30 md:bg-white/5 border border-white/10
-          text-white/80 md:text-white/60 hover:text-white hover:bg-white/10
+          bg-black/30 md:bg-white/60 border border-emerald-900/10
+          text-neutral-700 md:text-neutral-600 hover:text-emerald-950 hover:bg-white/80
           disabled:opacity-20 disabled:cursor-not-allowed
           transition-all duration-300 z-20
           backdrop-blur-md md:backdrop-blur-xl
@@ -33,8 +33,8 @@ export default function SwipeArrows({ onPrev, onNext, canPrev, canNext }) {
         className="
           absolute right-2 md:left-auto md:right-4 top-[40%] md:top-1/2 -translate-y-1/2
           w-9 h-9 md:w-12 md:h-12 rounded-full flex items-center justify-center
-          bg-black/30 md:bg-white/5 border border-white/10
-          text-white/80 md:text-white/60 hover:text-white hover:bg-white/10
+          bg-black/30 md:bg-white/60 border border-emerald-900/10
+          text-neutral-700 md:text-neutral-600 hover:text-emerald-950 hover:bg-white/80
           disabled:opacity-20 disabled:cursor-not-allowed
           transition-all duration-300 z-20
           backdrop-blur-md md:backdrop-blur-xl

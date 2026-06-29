@@ -51,11 +51,11 @@ export default function PremiumProductSlider({ products, title, subtitle }) {
           className="flex flex-col sm:flex-row justify-between items-start sm:items-end mb-8 sm:mb-10 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto gap-4"
         >
           <div className="space-y-2">
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-black text-white tracking-tight leading-tight">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-black text-emerald-950 tracking-tight leading-tight">
               {title}
             </h2>
             {subtitle && (
-              <p className="text-white/40 text-xs sm:text-sm max-w-xl leading-relaxed">
+              <p className="text-neutral-500 text-xs sm:text-sm max-w-xl leading-relaxed">
                 {subtitle}
               </p>
             )}
@@ -65,14 +65,14 @@ export default function PremiumProductSlider({ products, title, subtitle }) {
           <div className="hidden sm:flex gap-2">
             <button
               onClick={scrollPrev}
-              className="w-10 h-10 rounded-full bg-white/[0.04] hover:bg-white/[0.08] border border-white/10 hover:border-emerald-500/30 flex items-center justify-center text-white/40 hover:text-emerald-400 transition-all duration-300 cursor-pointer active:scale-95"
+              className="w-10 h-10 rounded-full bg-white/90 hover:bg-white/[0.08] border border-emerald-900/10 hover:border-emerald-500/30 flex items-center justify-center text-neutral-500 hover:text-emerald-400 transition-all duration-300 cursor-pointer active:scale-95"
               aria-label="Previous"
             >
               <ChevronLeft className="w-5 h-5" />
             </button>
             <button
               onClick={scrollNext}
-              className="w-10 h-10 rounded-full bg-white/[0.04] hover:bg-white/[0.08] border border-white/10 hover:border-emerald-500/30 flex items-center justify-center text-white/40 hover:text-emerald-400 transition-all duration-300 cursor-pointer active:scale-95"
+              className="w-10 h-10 rounded-full bg-white/90 hover:bg-white/[0.08] border border-emerald-900/10 hover:border-emerald-500/30 flex items-center justify-center text-neutral-500 hover:text-emerald-400 transition-all duration-300 cursor-pointer active:scale-95"
               aria-label="Next"
             >
               <ChevronRight className="w-5 h-5" />
@@ -122,14 +122,14 @@ export default function PremiumProductSlider({ products, title, subtitle }) {
       <div className="flex sm:hidden justify-center gap-3 mt-4">
         <button
           onClick={scrollPrev}
-          className="w-10 h-10 rounded-full bg-white/[0.04] border border-white/10 flex items-center justify-center text-white/40 active:text-emerald-400 transition-colors cursor-pointer active:scale-95"
+          className="w-10 h-10 rounded-full bg-white/90 border border-emerald-900/10 flex items-center justify-center text-neutral-500 active:text-emerald-400 transition-colors cursor-pointer active:scale-95"
           aria-label="Previous"
         >
           <ChevronLeft className="w-5 h-5" />
         </button>
         <button
           onClick={scrollNext}
-          className="w-10 h-10 rounded-full bg-white/[0.04] border border-white/10 flex items-center justify-center text-white/40 active:text-emerald-400 transition-colors cursor-pointer active:scale-95"
+          className="w-10 h-10 rounded-full bg-white/90 border border-emerald-900/10 flex items-center justify-center text-neutral-500 active:text-emerald-400 transition-colors cursor-pointer active:scale-95"
           aria-label="Next"
         >
           <ChevronRight className="w-5 h-5" />

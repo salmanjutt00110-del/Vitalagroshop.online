@@ -32,7 +32,7 @@ export default function About() {
         url="https://vital-agro.vercel.app/about"
       />
       {/* Header */}
-      <section className="bg-gradient-to-b from-[#020703] via-[#051107] to-neutral-950 py-20 relative overflow-hidden border-b border-white/5">
+      <section className="bg-gradient-to-b from-[#020703] via-[#051107] to-neutral-950 py-20 relative overflow-hidden border-b border-emerald-900/5">
         <video
           ref={videoRef1}
           autoPlay
@@ -47,13 +47,13 @@ export default function About() {
           <source src={vitalBgWebm} type="video/webm" />
           <source src={vitalBg} type="video/mp4" />
         </video>
-        <div className="absolute inset-0 bg-neutral-950/70" />
+        <div className="absolute inset-0 bg-white/70" />
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center z-10">
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
-            <h1 className="text-3xl xs:text-4xl sm:text-5xl font-extrabold text-white mt-4 mb-4">About Vital Agro Chemical Industries</h1>
-            <span className="text-sm font-bold tracking-widest uppercase text-[#76C945] block mt-2">About Us</span>
-            <h2 className="text-2xl sm:text-3xl font-extrabold text-white/80 mt-2 mb-4">Our Story</h2>
-            <p className="text-white/60 text-lg max-w-2xl mx-auto">
+            <h1 className="text-3xl xs:text-4xl sm:text-5xl font-extrabold text-emerald-950 mt-4 mb-4">About Vital Agro Chemical Industries</h1>
+            <span className="text-sm font-bold tracking-widest uppercase text-emerald-700 block mt-2">About Us</span>
+            <h2 className="text-2xl sm:text-3xl font-extrabold text-neutral-700 mt-2 mb-4">Our Story</h2>
+            <p className="text-neutral-600 text-lg max-w-2xl mx-auto">
               {"Pioneering agricultural excellence through premium formulations and unwavering commitment to farmer prosperity."}
             </p>
           </motion.div>
@@ -69,7 +69,7 @@ export default function About() {
               initial={{ opacity: 0, scale: 0.95 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
-              className="relative rounded-3xl overflow-hidden aspect-[4/3] shadow-2xl border border-white/10 bg-white/[0.02] flex items-center justify-center p-8 group"
+              className="relative rounded-3xl overflow-hidden aspect-[4/3] shadow-2xl border border-emerald-900/10 bg-white/70 flex items-center justify-center p-8 group"
             >
               <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(118,201,69,0.15)_0%,transparent_60%)]" />
               <img
@@ -125,7 +125,7 @@ export default function About() {
               className="bg-card rounded-3xl p-10 border border-border"
             >
               <div className="w-16 h-16 rounded-2xl bg-[#76C945]/10 flex items-center justify-center mb-6">
-                <Target className="w-8 h-8 text-[#76C945]" />
+                <Target className="w-8 h-8 text-emerald-700" />
               </div>
               <h3 className="text-2xl font-extrabold text-foreground mb-4">Our Mission</h3>
               <p className="text-muted-foreground text-lg leading-relaxed">
@@ -160,7 +160,7 @@ export default function About() {
             viewport={{ once: true }}
             className="text-center mb-16"
           >
-            <span className="text-sm font-bold tracking-widest uppercase text-[#76C945]">Core Values</span>
+            <span className="text-sm font-bold tracking-widest uppercase text-emerald-700">Core Values</span>
             <h2 className="text-2xl xs:text-3xl sm:text-4xl font-extrabold text-foreground mt-4">What Drives Us</h2>
           </motion.div>
 
@@ -180,7 +180,7 @@ export default function About() {
                 className="text-center p-8 rounded-2xl bg-card border border-border hover:shadow-xl transition-all"
               >
                 <div className="w-16 h-16 rounded-2xl bg-[#76C945]/10 flex items-center justify-center mx-auto mb-6">
-                  <value.icon className="w-7 h-7 text-[#76C945]" />
+                  <value.icon className="w-7 h-7 text-emerald-700" />
                 </div>
                 <h3 className="font-bold text-foreground text-lg mb-2">{value.title}</h3>
                 <p className="text-sm text-muted-foreground">{value.desc}</p>

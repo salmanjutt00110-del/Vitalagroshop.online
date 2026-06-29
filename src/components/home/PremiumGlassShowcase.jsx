@@ -391,7 +391,7 @@ Thank You.`;
 
   return (
     <section 
-      className="relative py-24 bg-[#020502]/90 overflow-hidden select-none border-b border-white/5"
+      className="relative py-24 bg-[#020502]/90 overflow-hidden select-none border-b border-emerald-900/5"
       onTouchStart={(e) => {
         setIsPlaying(false);
         handleTouchStart(e);
@@ -441,14 +441,14 @@ Thank You.`;
         
         {/* Section Header */}
         <div className="text-center mb-16">
-          <span className="inline-flex items-center gap-1.5 px-3 py-1 bg-white/5 border border-white/10 rounded-full text-xs font-bold uppercase tracking-widest text-[#76C945]">
+          <span className="inline-flex items-center gap-1.5 px-3 py-1 bg-white/60 border border-emerald-900/10 rounded-full text-xs font-bold uppercase tracking-widest text-emerald-700">
             <Sparkles className="w-3.5 h-3.5 animate-pulse" />
             {t.showcase.badge}
           </span>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white mt-4 tracking-tight">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-emerald-950 mt-4 tracking-tight">
             {lang === 'en' ? 'Our Flagship Solutions' : 'وائٹل کی فلیگ شپ پروڈکٹس'}
           </h2>
-          <p className="text-white/60 text-base sm:text-lg max-w-2xl mx-auto mt-4">
+          <p className="text-neutral-600 text-base sm:text-lg max-w-2xl mx-auto mt-4">
             {lang === 'en' 
               ? 'Explore our world-class crop protection and biotechnology formulations, designed for maximum efficiency and yield.' 
               : 'جدید ترین ریسرچ اور بائیوٹیکنالوجی فارمولیشنز کی تفصیلات دریافت کریں۔'}
@@ -463,10 +463,10 @@ Thank You.`;
             
             {/* Category & Badge */}
             <div className="space-y-2.5 animate-gsap">
-              <span className="px-3 py-1 rounded-full text-xs font-black bg-[#76C945]/15 text-[#8AD65A] border border-[#76C945]/20 uppercase tracking-widest">
+              <span className="px-3 py-1 rounded-full text-xs font-black bg-[#76C945]/15 text-emerald-600 border border-[#76C945]/20 uppercase tracking-widest">
                 {t.categories[activeProduct.category] || activeProduct.category}
               </span>
-              <h3 className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight text-white leading-tight mt-2">
+              <h3 className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight text-emerald-950 leading-tight mt-2">
                 {activeProduct.name[lang] || activeProduct.name.en}
               </h3>
               <p className="text-[#C5A059] font-black text-xs sm:text-sm tracking-wider uppercase">
@@ -475,16 +475,16 @@ Thank You.`;
             </div>
 
             {/* Tagline / Short Description */}
-            <p className="text-white/70 text-sm sm:text-base leading-relaxed border-l-2 border-[#76C945] pl-3 animate-gsap">
+            <p className="text-neutral-600 text-sm sm:text-base leading-relaxed border-l-2 border-[#76C945] pl-3 animate-gsap">
               {activeProduct.shortDesc ? (activeProduct.shortDesc[lang] || activeProduct.shortDesc.en) : (activeProduct.description[lang]?.split('.')[0] + '.')}
             </p>
 
             {/* Suitable crops */}
             <div className="space-y-2 animate-gsap">
-              <span className="text-[10px] font-black text-white/40 uppercase tracking-wider block">{l.crops}</span>
+              <span className="text-[10px] font-black text-neutral-500 uppercase tracking-wider block">{l.crops}</span>
               <div className="flex flex-wrap gap-2">
                 {activeProduct.crops?.slice(0, 4).map((crop, i) => (
-                  <div key={i} className="flex items-center gap-1.5 px-3 py-1 bg-white/5 rounded-lg border border-white/5 text-xs text-white/80 font-bold">
+                  <div key={i} className="flex items-center gap-1.5 px-3 py-1 bg-white/60 rounded-lg border border-emerald-900/5 text-xs text-neutral-700 font-bold">
                     <span>{crop.icon}</span>
                     <span>{crop.name[lang]}</span>
                   </div>
@@ -493,23 +493,23 @@ Thank You.`;
             </div>
 
             {/* Key Benefits row */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 border-y border-white/5 py-4 animate-gsap">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 border-y border-emerald-900/5 py-4 animate-gsap">
               <div className="space-y-1.5">
-                <span className="text-[10px] font-black text-[#8AD65A] uppercase tracking-wider block">{l.benefits}</span>
+                <span className="text-[10px] font-black text-emerald-600 uppercase tracking-wider block">{l.benefits}</span>
                 <ul className="space-y-1">
                   {activeProduct.benefits[lang]?.slice(0, 2).map((b, i) => (
-                    <li key={i} className="text-xs text-white/60 flex items-start gap-1.5 leading-relaxed">
-                      <Check className="w-3.5 h-3.5 text-[#76C945] shrink-0 mt-0.5" />
+                    <li key={i} className="text-xs text-neutral-600 flex items-start gap-1.5 leading-relaxed">
+                      <Check className="w-3.5 h-3.5 text-emerald-700 shrink-0 mt-0.5" />
                       <span>{b}</span>
                     </li>
                   ))}
                 </ul>
               </div>
               <div className="space-y-1.5">
-                <span className="text-[10px] font-black text-[#8AD65A] uppercase tracking-wider block">{l.features}</span>
+                <span className="text-[10px] font-black text-emerald-600 uppercase tracking-wider block">{l.features}</span>
                 <ul className="space-y-1">
                   {activeProduct.features[lang]?.slice(0, 2).map((f, i) => (
-                    <li key={i} className="text-xs text-white/60 flex items-start gap-1.5 leading-relaxed">
+                    <li key={i} className="text-xs text-neutral-600 flex items-start gap-1.5 leading-relaxed">
                       <Check className="w-3.5 h-3.5 text-emerald-400 shrink-0 mt-0.5" />
                       <span>{f}</span>
                     </li>
@@ -521,7 +521,7 @@ Thank You.`;
             {/* Size Selector */}
             {activeProduct.sizes && activeProduct.sizes.length > 0 && (
               <div className="space-y-2 animate-gsap">
-                <span className="text-[10px] font-black text-white/40 uppercase tracking-wider block">{l.sizes}</span>
+                <span className="text-[10px] font-black text-neutral-500 uppercase tracking-wider block">{l.sizes}</span>
                 <div className="flex flex-wrap gap-2">
                   {activeProduct.sizes.map((s, idx) => (
                     <button
@@ -529,8 +529,8 @@ Thank You.`;
                       onClick={() => selectSize(idx)}
                       className={`px-3 py-1.5 rounded-lg text-xs font-black border transition-all duration-300 ${
                         idx === activeSizeIdx
-                          ? 'bg-[#76C945]/20 text-[#8AD65A] border-[#76C945]'
-                          : 'bg-white/5 text-white/60 border-white/10 hover:bg-white/10 hover:border-white/20'
+                          ? 'bg-[#76C945]/20 text-emerald-600 border-[#76C945]'
+                          : 'bg-white/60 text-neutral-600 border-emerald-900/10 hover:bg-white/80 hover:border-emerald-900/20'
                       }`}
                     >
                       {s.size}
@@ -541,16 +541,16 @@ Thank You.`;
             )}
 
             {/* Prices & SKU Block */}
-            <div className="p-4 bg-white/[0.02] border border-white/5 rounded-2xl flex flex-col sm:flex-row sm:items-center justify-between gap-4 animate-gsap">
+            <div className="p-4 bg-white/70 border border-emerald-900/5 rounded-2xl flex flex-col sm:flex-row sm:items-center justify-between gap-4 animate-gsap">
               <div>
                 <div className="flex items-baseline gap-2">
                   {/* Rolling Price Counter Display */}
-                  <span ref={rollingPriceRef} className="text-2xl sm:text-3xl font-black text-white font-mono">
+                  <span ref={rollingPriceRef} className="text-2xl sm:text-3xl font-black text-emerald-950 font-mono">
                     PKR {displayedPrice}
                   </span>
                   {displayedOldPrice && displayedOldPrice > displayedPrice && (
                     <>
-                      <span className="line-through text-white/40 text-sm sm:text-base font-mono">
+                      <span className="line-through text-neutral-500 text-sm sm:text-base font-mono">
                         PKR {displayedOldPrice}
                       </span>
                       <span className="px-1.5 py-0.5 bg-red-500/20 text-red-400 text-[10px] font-black rounded">
@@ -559,8 +559,8 @@ Thank You.`;
                     </>
                   )}
                 </div>
-                <div className="flex gap-3 text-[10px] text-white/40 mt-1 font-bold">
-                  <span>SKU: <span className="text-white/60 font-semibold">{activeSize.sku}</span></span>
+                <div className="flex gap-3 text-[10px] text-neutral-500 mt-1 font-bold">
+                  <span>SKU: <span className="text-neutral-600 font-semibold">{activeSize.sku}</span></span>
                   <span className="flex items-center gap-1">
                     <span className={`w-1 h-1 rounded-full ${activeSize.stockStatus === 'In Stock' ? 'bg-emerald-400' : 'bg-amber-400 animate-pulse'}`} />
                     <span className={activeSize.stockStatus === 'In Stock' ? 'text-emerald-400' : 'text-amber-400'}>
@@ -573,8 +573,8 @@ Thank You.`;
               {/* Specs Badge */}
               {activeProduct.formulation && (
                 <div className="text-right">
-                  <span className="text-xs text-white/60 block">{activeProduct.formulation}</span>
-                  <span className="text-[10px] text-white/40 block mt-0.5 truncate max-w-[120px]">{activeProduct.activeIngredient}</span>
+                  <span className="text-xs text-neutral-600 block">{activeProduct.formulation}</span>
+                  <span className="text-[10px] text-neutral-500 block mt-0.5 truncate max-w-[120px]">{activeProduct.activeIngredient}</span>
                 </div>
               )}
             </div>
@@ -594,9 +594,9 @@ Thank You.`;
                 onMouseMove={handleMagneticHover}
                 onMouseLeave={handleMagneticLeave}
                 onClick={triggerAddToCart}
-                className="w-full py-3.5 bg-white/10 border border-white/10 hover:bg-white/15 text-white rounded-xl text-xs sm:text-sm font-bold flex items-center justify-center gap-1.5 transition-all"
+                className="w-full py-3.5 bg-white/80 border border-emerald-900/10 hover:bg-white/15 text-emerald-950 rounded-xl text-xs sm:text-sm font-bold flex items-center justify-center gap-1.5 transition-all"
               >
-                <ShoppingCart className="w-4 h-4 text-[#76C945]" />
+                <ShoppingCart className="w-4 h-4 text-emerald-700" />
                 <span>{l.cart}</span>
               </button>
 
@@ -616,9 +616,9 @@ Thank You.`;
                 onMouseMove={handleMagneticHover}
                 onMouseLeave={handleMagneticLeave}
                 onClick={handlePdfDownload}
-                className="w-full py-3.5 bg-white/[0.02] border border-white/5 backdrop-blur-md hover:bg-white/[0.05] text-white/80 rounded-xl text-xs sm:text-sm font-bold flex items-center justify-center gap-1.5 transition-all"
+                className="w-full py-3.5 bg-white/70 border border-emerald-900/5 backdrop-blur-md hover:bg-white text-neutral-700 rounded-xl text-xs sm:text-sm font-bold flex items-center justify-center gap-1.5 transition-all"
               >
-                <Download className="w-4.5 h-4.5 text-white/50" />
+                <Download className="w-4.5 h-4.5 text-neutral-500" />
                 <span>{l.pdf}</span>
               </button>
             </div>
@@ -639,7 +639,7 @@ Thank You.`;
               {leftCardProduct && (
                 <div 
                   onClick={handlePrev}
-                  className="absolute left-[-12%] sm:left-[-8%] lg:left-[-10%] xl:left-[-12%] z-10 w-[160px] sm:w-[180px] lg:w-[200px] xl:w-[220px] h-[260px] sm:h-[300px] lg:h-[320px] xl:h-[360px] rounded-2xl border border-white/5 p-4 flex flex-col justify-between items-center opacity-30 filter blur-[3px] scale-80 cursor-pointer hover:opacity-50 transition-all duration-500 hidden sm:flex"
+                  className="absolute left-[-12%] sm:left-[-8%] lg:left-[-10%] xl:left-[-12%] z-10 w-[160px] sm:w-[180px] lg:w-[200px] xl:w-[220px] h-[260px] sm:h-[300px] lg:h-[320px] xl:h-[360px] rounded-2xl border border-emerald-900/5 p-4 flex flex-col justify-between items-center opacity-30 filter blur-[3px] scale-80 cursor-pointer hover:opacity-50 transition-all duration-500 hidden sm:flex"
                   style={{
                     background: 'rgba(255, 255, 255, 0.03)',
                     backdropFilter: 'blur(12px)',
@@ -651,7 +651,7 @@ Thank You.`;
                     alt={leftCardProduct.name.en} 
                     className="max-h-24 sm:max-h-32 lg:max-h-36 w-auto object-contain drop-shadow-[0_8px_15px_rgba(0,0,0,0.5)]"
                   />
-                  <span className="text-[10px] font-black text-white/30 truncate block max-w-full">
+                  <span className="text-[10px] font-black text-neutral-400 truncate block max-w-full">
                     {leftCardProduct.name[lang]?.split(' ')[0]}
                   </span>
                 </div>
@@ -669,7 +669,7 @@ Thank You.`;
               {rightCardProduct && (
                 <div 
                   onClick={handleNext}
-                  className="absolute right-[-12%] sm:right-[-8%] lg:right-[-10%] xl:right-[-12%] z-10 w-[160px] sm:w-[180px] lg:w-[200px] xl:w-[220px] h-[260px] sm:h-[300px] lg:h-[320px] xl:h-[360px] rounded-2xl border border-white/5 backdrop-blur-md p-4 flex flex-col justify-between items-center opacity-30 filter blur-[3px] scale-80 cursor-pointer hover:opacity-50 transition-all duration-500 hidden sm:flex"
+                  className="absolute right-[-12%] sm:right-[-8%] lg:right-[-10%] xl:right-[-12%] z-10 w-[160px] sm:w-[180px] lg:w-[200px] xl:w-[220px] h-[260px] sm:h-[300px] lg:h-[320px] xl:h-[360px] rounded-2xl border border-emerald-900/5 backdrop-blur-md p-4 flex flex-col justify-between items-center opacity-30 filter blur-[3px] scale-80 cursor-pointer hover:opacity-50 transition-all duration-500 hidden sm:flex"
                   style={{
                     background: 'rgba(255, 255, 255, 0.03)',
                     backdropFilter: 'blur(12px)',
@@ -681,7 +681,7 @@ Thank You.`;
                     alt={rightCardProduct.name.en} 
                     className="max-h-24 sm:max-h-32 lg:max-h-36 w-auto object-contain drop-shadow-[0_8px_15px_rgba(0,0,0,0.5)]"
                   />
-                  <span className="text-[10px] font-black text-white/30 truncate block max-w-full">
+                  <span className="text-[10px] font-black text-neutral-400 truncate block max-w-full">
                     {rightCardProduct.name[lang]?.split(' ')[0]}
                   </span>
                 </div>
@@ -693,7 +693,7 @@ Thank You.`;
             <div className="flex items-center gap-3 mt-4 z-20">
               <button
                 onClick={handlePrev}
-                className="p-2.5 rounded-lg bg-white/5 border border-white/10 text-white hover:text-[#76C945] transition-all"
+                className="p-2.5 rounded-lg bg-white/60 border border-emerald-900/10 text-emerald-950 hover:text-emerald-700 transition-all"
               >
                 <ChevronLeft className="w-4 h-4" />
               </button>
@@ -712,7 +712,7 @@ Thank You.`;
 
               <button
                 onClick={handleNext}
-                className="p-2.5 rounded-lg bg-white/5 border border-white/10 text-white hover:text-[#76C945] transition-all"
+                className="p-2.5 rounded-lg bg-white/60 border border-emerald-900/10 text-emerald-950 hover:text-emerald-700 transition-all"
               >
                 <ChevronRight className="w-4 h-4" />
               </button>
@@ -757,7 +757,7 @@ function ProductGlassCard({ activeProduct, lang, displayedPrice, setActiveDetail
       onMouseLeave={handleCardMouseLeave}
     >
       {/* Glowing Refraction Glass platform at bottom */}
-      <div className="absolute bottom-[-10px] w-[80%] h-6 bg-white/5 border border-white/10 rounded-full filter blur-[2px] backdrop-blur-md z-0 scale-x-110 shadow-[0_15px_30px_rgba(118,201,69,0.25)]" />
+      <div className="absolute bottom-[-10px] w-[80%] h-6 bg-white/60 border border-emerald-900/10 rounded-full filter blur-[2px] backdrop-blur-md z-0 scale-x-110 shadow-[0_15px_30px_rgba(118,201,69,0.25)]" />
 
       {/* Glassmorphic card frame */}
       <motion.div
@@ -769,15 +769,15 @@ function ProductGlassCard({ activeProduct, lang, displayedPrice, setActiveDetail
           backdropFilter: 'blur(24px) saturate(160%)',
           WebkitBackdropFilter: 'blur(24px) saturate(160%)'
         }}
-        className="absolute inset-0 bg-white/[0.03] border border-white/10 rounded-3xl p-6 flex flex-col justify-between items-center shadow-[0_35px_80px_rgba(0,0,0,0.8),inset_0_2px_4px_rgba(255,255,255,0.05)] overflow-hidden cursor-pointer hover:border-white/20 transition-all duration-300"
+        className="absolute inset-0 bg-white/80 border border-emerald-900/10 rounded-3xl p-6 flex flex-col justify-between items-center shadow-[0_35px_80px_rgba(0,0,0,0.8),inset_0_2px_4px_rgba(255,255,255,0.05)] overflow-hidden cursor-pointer hover:border-emerald-900/20 transition-all duration-300"
       >
         {/* Sheen sheen reflection */}
         <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/[0.03] to-transparent pointer-events-none skew-y-12 translate-y-[-50%]" />
 
         {/* Top card info */}
-        <div className="w-full flex justify-between items-center text-[10px] font-black text-white/30 tracking-widest uppercase z-10">
+        <div className="w-full flex justify-between items-center text-[10px] font-black text-neutral-400 tracking-widest uppercase z-10">
           <span>VITAL SHOWROOM</span>
-          <span className="text-[#76C945]">{activeProduct.formulation}</span>
+          <span className="text-emerald-700">{activeProduct.formulation}</span>
         </div>
 
         {/* Main Product PNG floating outside boundaries */}
@@ -804,10 +804,10 @@ function ProductGlassCard({ activeProduct, lang, displayedPrice, setActiveDetail
 
         {/* Bottom details inside glass */}
         <div className="w-full flex justify-between items-center z-10">
-          <span className="text-[10px] font-bold text-white/40 tracking-wider">
+          <span className="text-[10px] font-bold text-neutral-500 tracking-wider">
             {activeProduct.activeIngredient}
           </span>
-          <span className="text-[10px] font-black text-[#76C945] font-mono">
+          <span className="text-[10px] font-black text-emerald-700 font-mono">
             PKR {displayedPrice}
           </span>
         </div>

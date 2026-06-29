@@ -55,7 +55,7 @@ export default function AboutPreview() {
                 boxShadow: "0 30px 60px rgba(0, 0, 0, 0.6), 0 0 40px rgba(118, 201, 69, 0.15)",
               }}
               transition={{ type: "spring", stiffness: 200, damping: 18 }}
-              className="relative rounded-3xl overflow-hidden aspect-[4/3] shadow-2xl border border-white/20"
+              className="relative rounded-3xl overflow-hidden aspect-[4/3] shadow-2xl border border-emerald-900/20"
             >
               <video
                 ref={videoRef}
@@ -122,7 +122,7 @@ export default function AboutPreview() {
               />
             </div>
 
-            <span className="text-xs font-black tracking-widest uppercase text-[#76C945] block mb-2">{t.about.badge}</span>
+            <span className="text-xs font-black tracking-widest uppercase text-emerald-700 block mb-2">{t.about.badge}</span>
             
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-foreground mt-2 mb-6 leading-tight">
               <AnimatedText text={t.about.title} />
@@ -140,7 +140,7 @@ export default function AboutPreview() {
               ].map((item, i) => (
                 <div key={i} className="flex flex-col gap-3 group">
                   <div className="w-12 h-12 rounded-xl bg-[#76C945]/10 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                    <item.icon className="w-5 h-5 text-[#76C945]" />
+                    <item.icon className="w-5 h-5 text-emerald-700" />
                   </div>
                   <h4 className="font-extrabold text-[#0A2E1F] text-sm">{item.title}</h4>
                   <p className="text-xs text-muted-foreground leading-relaxed">{item.desc}</p>

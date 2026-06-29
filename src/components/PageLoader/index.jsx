@@ -106,7 +106,7 @@ export const PageLoader = () => {
         animate={{ opacity: 0.15 }}
         exit={{ opacity: 0 }}
         transition={{ duration: 0.15 }}
-        className="fixed inset-0 z-[900] bg-[#020d06]/20 backdrop-blur-[2px] pointer-events-none"
+        className="fixed inset-0 z-[900] bg-slate-50/20 backdrop-blur-[2px] pointer-events-none"
       />
     )
   }
@@ -139,7 +139,7 @@ export const PageLoader = () => {
 
       {/* Brand text */}
       <motion.p
-        className="mt-4 text-white/30 text-[10px] tracking-[0.4em] uppercase"
+        className="mt-4 text-neutral-400 text-[10px] tracking-[0.4em] uppercase"
         animate={{ opacity: [0.3, 0.6, 0.3] }}
         transition={{ duration: 2, repeat: Infinity }}
       >

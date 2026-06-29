@@ -123,10 +123,10 @@ Thank You.`;
         className={`
           w-full py-4.5 rounded-[24px]
           flex items-center justify-center gap-2.5
-          font-black text-sm text-white uppercase tracking-wider
+          font-black text-sm text-emerald-950 uppercase tracking-wider
           relative overflow-hidden
           bg-gradient-to-br from-[#225522]/90 via-[#3d8c3d]/90 to-[#1b441b]/90
-          backdrop-blur-xl border border-white/20
+          backdrop-blur-xl border border-emerald-900/20
           transition-shadow duration-300
           ${className}
         `}
@@ -215,9 +215,9 @@ Thank You.`;
             animate={{ rotate: isHovered ? 12 : 0 }}
             transition={{ type: 'spring', stiffness: 300, damping: 10 }}
           >
-            <ShoppingBag size={18} className="text-[#8AD65A]" />
+            <ShoppingBag size={18} className="text-emerald-600" />
           </motion.div>
-          <span className="font-extrabold text-white text-sm tracking-wider drop-shadow-md">
+          <span className="font-extrabold text-emerald-950 text-sm tracking-wider drop-shadow-md">
             {lang === 'en' ? 'Buy Now (COD)' : 'ابھی خریدیں (COD)'}
           </span>
         </span>

@@ -70,8 +70,8 @@ export default function AIScannerModule() {
   };
 
   return (
-    <div className="space-y-6 text-white text-left font-sans">
-      <div className="flex justify-between items-center border-b border-white/10 pb-4">
+    <div className="space-y-6 text-emerald-950 text-left font-sans">
+      <div className="flex justify-between items-center border-b border-emerald-900/10 pb-4">
         <div>
           <h2 className="text-xl font-bold tracking-wider uppercase text-emerald-400">AI Product & Barcode Scanner</h2>
           <p className="text-neutral-400 text-xs mt-1">Verify batch authenticity, originality markings, and dealer franchises coordinates</p>
@@ -79,13 +79,13 @@ export default function AIScannerModule() {
         <div className="flex gap-2">
           <button 
             onClick={handleDownloadReport} 
-            className="px-3.5 py-2 bg-white/5 hover:bg-white/10 border border-white/10 rounded-xl text-[10px] font-bold uppercase tracking-wider transition-all flex items-center gap-1.5 cursor-pointer"
+            className="px-3.5 py-2 bg-white/60 hover:bg-white/80 border border-emerald-900/10 rounded-xl text-[10px] font-bold uppercase tracking-wider transition-all flex items-center gap-1.5 cursor-pointer"
           >
             <Download size={12} /> Export CSV
           </button>
           <button 
             onClick={handlePrintReport} 
-            className="px-3.5 py-2 bg-white/5 hover:bg-white/10 border border-white/10 rounded-xl text-[10px] font-bold uppercase tracking-wider transition-all flex items-center gap-1.5 cursor-pointer"
+            className="px-3.5 py-2 bg-white/60 hover:bg-white/80 border border-emerald-900/10 rounded-xl text-[10px] font-bold uppercase tracking-wider transition-all flex items-center gap-1.5 cursor-pointer"
           >
             <Printer size={12} /> Print Log
           </button>
@@ -96,7 +96,7 @@ export default function AIScannerModule() {
         
         {/* Left Area: Viewfinder / Scanner Action */}
         <div className="lg:col-span-5 bg-[#060b07]/55 backdrop-blur-xl border border-[#10b981]/15 rounded-3xl p-6 space-y-6">
-          <div className="flex justify-between items-center border-b border-white/5 pb-3">
+          <div className="flex justify-between items-center border-b border-emerald-900/5 pb-3">
             <span className="text-xs font-bold uppercase tracking-wider">Telemetry Viewfinder</span>
             <div className="flex gap-1.5">
               {['qr', 'barcode', 'camera'].map(type => (
@@ -104,7 +104,7 @@ export default function AIScannerModule() {
                   key={type}
                   onClick={() => setScanType(type)}
                   className={`px-3 py-1.5 rounded-lg text-[9px] font-bold uppercase font-mono tracking-wider cursor-pointer ${
-                    scanType === type ? 'bg-emerald-600 border border-emerald-500 text-white' : 'text-neutral-400 hover:text-white'
+                    scanType === type ? 'bg-emerald-600 border border-emerald-500 text-emerald-950' : 'text-neutral-400 hover:text-emerald-950'
                   }`}
                 >
                   {type === 'qr' && <QrCode size={11} className="inline mr-1" />}
@@ -117,7 +117,7 @@ export default function AIScannerModule() {
           </div>
 
           {/* Viewfinder frame */}
-          <div className="relative aspect-video rounded-2xl bg-neutral-950 border border-white/10 overflow-hidden flex flex-col items-center justify-center">
+          <div className="relative aspect-video rounded-2xl bg-white border border-emerald-900/10 overflow-hidden flex flex-col items-center justify-center">
             {isScanning ? (
               <div className="space-y-3 flex flex-col items-center">
                 <RefreshCw className="w-8 h-8 text-[#10B981] animate-spin" />
@@ -169,10 +169,10 @@ export default function AIScannerModule() {
                 placeholder="Enter serial key or scan code..."
                 value={searchQuery}
                 onChange={e => setSearchQuery(e.target.value)}
-                className="w-full pl-10 pr-4 py-2.5 bg-[#1a1a1a] border border-white/5 focus:border-[#10B981]/50 text-white rounded-xl outline-none"
+                className="w-full pl-10 pr-4 py-2.5 bg-[#1a1a1a] border border-emerald-900/5 focus:border-[#10B981]/50 text-emerald-950 rounded-xl outline-none"
               />
             </div>
-            <button type="submit" className="px-4 py-2.5 bg-white/5 border border-white/10 hover:bg-white/10 rounded-xl font-bold uppercase cursor-pointer">
+            <button type="submit" className="px-4 py-2.5 bg-white/60 border border-emerald-900/10 hover:bg-white/80 rounded-xl font-bold uppercase cursor-pointer">
               Scan
             </button>
           </form>
@@ -183,15 +183,15 @@ export default function AIScannerModule() {
           
           {/* Scan Result Details */}
           <div className="bg-[#060b07]/55 backdrop-blur-xl border border-[#10b981]/15 rounded-3xl p-6 text-left">
-            <h3 className="font-bold text-xs uppercase tracking-wider border-b border-white/5 pb-3 flex items-center gap-2">
+            <h3 className="font-bold text-xs uppercase tracking-wider border-b border-emerald-900/5 pb-3 flex items-center gap-2">
               <Award size={14} className="text-emerald-400" /> Scan Results Analysis
             </h3>
 
             {scanResult ? (
               <div className="mt-4 space-y-4">
-                <div className="flex items-center justify-between p-4 bg-black/40 border border-white/5 rounded-2xl">
+                <div className="flex items-center justify-between p-4 bg-emerald-950/5 border border-emerald-900/5 rounded-2xl">
                   <div className="text-left">
-                    <span className="font-bold text-white text-base block">{scanResult.name}</span>
+                    <span className="font-bold text-emerald-950 text-base block">{scanResult.name}</span>
                     <span className="text-[10px] text-neutral-500 block mt-1 uppercase font-mono">Batch: {scanResult.batch}</span>
                   </div>
 
@@ -207,22 +207,22 @@ export default function AIScannerModule() {
                 </div>
 
                 <div className="grid grid-cols-2 gap-4 font-mono text-[11px] leading-relaxed text-neutral-300">
-                  <div className="bg-black/30 p-3.5 rounded-xl border border-white/5 space-y-1">
-                    <span className="text-[9px] text-white/30 uppercase block">Manufacturing Date</span>
+                  <div className="bg-black/30 p-3.5 rounded-xl border border-emerald-900/5 space-y-1">
+                    <span className="text-[9px] text-neutral-400 uppercase block">Manufacturing Date</span>
                     <span className="font-bold block">{scanResult.mfg}</span>
                   </div>
-                  <div className="bg-black/30 p-3.5 rounded-xl border border-white/5 space-y-1">
-                    <span className="text-[9px] text-white/30 uppercase block">Expiry Date</span>
+                  <div className="bg-black/30 p-3.5 rounded-xl border border-emerald-900/5 space-y-1">
+                    <span className="text-[9px] text-neutral-400 uppercase block">Expiry Date</span>
                     <span className="font-bold block">{scanResult.exp}</span>
                   </div>
-                  <div className="bg-black/30 p-3.5 rounded-xl border border-white/5 space-y-1 col-span-2">
-                    <span className="text-[9px] text-white/30 uppercase block">Verified Dealer Franchise</span>
-                    <span className="font-bold block text-white">{scanResult.dealer}</span>
+                  <div className="bg-black/30 p-3.5 rounded-xl border border-emerald-900/5 space-y-1 col-span-2">
+                    <span className="text-[9px] text-neutral-400 uppercase block">Verified Dealer Franchise</span>
+                    <span className="font-bold block text-emerald-950">{scanResult.dealer}</span>
                   </div>
                 </div>
               </div>
             ) : (
-              <div className="py-14 text-center border border-dashed border-white/5 rounded-2xl mt-4">
+              <div className="py-14 text-center border border-dashed border-emerald-900/5 rounded-2xl mt-4">
                 <Camera className="w-10 h-10 text-neutral-700 mx-auto mb-2" />
                 <p className="text-neutral-500 text-xs font-mono uppercase">Scan a code to view diagnostic metrics</p>
               </div>
@@ -231,15 +231,15 @@ export default function AIScannerModule() {
 
           {/* Scan Logs History */}
           <div className="bg-[#060b07]/55 backdrop-blur-xl border border-[#10b981]/15 rounded-3xl p-6 text-left">
-            <h3 className="font-bold text-xs uppercase tracking-wider border-b border-white/5 pb-3 flex items-center gap-2">
+            <h3 className="font-bold text-xs uppercase tracking-wider border-b border-emerald-900/5 pb-3 flex items-center gap-2">
               <History size={14} className="text-emerald-400" /> Active Scan Logs
             </h3>
 
             <div className="mt-4 space-y-3.5 max-h-[200px] overflow-y-auto font-mono text-xs">
               {scanHistory.map(item => (
-                <div key={item.id} className="p-3 bg-black/40 border border-white/5 rounded-xl flex justify-between items-center">
+                <div key={item.id} className="p-3 bg-emerald-950/5 border border-emerald-900/5 rounded-xl flex justify-between items-center">
                   <div className="text-left space-y-1">
-                    <span className="font-bold text-white block text-xs">{item.name}</span>
+                    <span className="font-bold text-emerald-950 block text-xs">{item.name}</span>
                     <span className="text-[9px] text-neutral-500 block flex items-center gap-1">
                       <MapPin size={9} /> {item.location}
                     </span>

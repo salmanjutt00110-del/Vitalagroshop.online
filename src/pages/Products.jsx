@@ -44,12 +44,12 @@ const HeroSliderSkeleton = () => (
 
 // Custom skeletons matching grid cards
 const ProductGridCardSkeleton = () => (
-  <div className="rounded-[22px] overflow-hidden flex flex-col premium-glass-card h-full p-5 border border-white/5 space-y-4">
+  <div className="rounded-[22px] overflow-hidden flex flex-col premium-glass-card h-full p-5 border border-emerald-900/5 space-y-4">
     <div className="flex gap-2 mb-2">
       <Skeleton className="h-5 w-20 rounded-lg" />
       <Skeleton className="h-5 w-16 rounded-lg" />
     </div>
-    <div className="aspect-[4/3] w-full flex items-center justify-center bg-white/[0.01] border border-white/5 rounded-2xl relative p-4">
+    <div className="aspect-[4/3] w-full flex items-center justify-center bg-white/60 border border-emerald-900/5 rounded-2xl relative p-4">
       <Skeleton className="h-[75%] w-[55%] rounded-xl" />
     </div>
     <div className="space-y-3 pt-2">
@@ -57,7 +57,7 @@ const ProductGridCardSkeleton = () => (
       <Skeleton className="h-5 w-2/3 mx-auto rounded-lg" />
       <Skeleton className="h-4 w-5/6 mx-auto rounded-lg" />
     </div>
-    <div className="border-t border-white/5 pt-4 space-y-3 mt-auto">
+    <div className="border-t border-emerald-900/5 pt-4 space-y-3 mt-auto">
       <div className="flex gap-2">
         <Skeleton className="h-6 w-12 rounded-lg" />
         <Skeleton className="h-6 w-12 rounded-lg" />
@@ -185,7 +185,7 @@ const ProductGridCard = React.memo(({ product, openCheckout, lang }) => {
         whileInView="visible"
         viewport={{ once: true, margin: "-40px" }}
         style={isMobile ? {} : { rotateX, rotateY, transformStyle: 'preserve-3d' }}
-        className="group relative rounded-[24px] overflow-hidden flex flex-col premium-glass-card cursor-default select-none border border-white/10 shadow-2xl h-full justify-between"
+        className="group relative rounded-[24px] overflow-hidden flex flex-col premium-glass-card cursor-default select-none border border-emerald-900/10 shadow-2xl h-full justify-between"
         whileHover={{ scale: 1.025, y: -6 }}
         whileTap={{ scale: 0.97 }}
         transition={{ duration: 0.3, ease: [0.2, 0.8, 0.2, 1] }}
@@ -229,13 +229,13 @@ const ProductGridCard = React.memo(({ product, openCheckout, lang }) => {
             <span className="text-[8px] font-black tracking-[0.15em] px-2.5 py-1 rounded-lg border border-emerald-500/25 bg-emerald-500/10 text-emerald-400 uppercase backdrop-blur-sm">
               {getCategoryLabel(product.category)}
             </span>
-            <span className="text-[8px] font-black tracking-[0.15em] px-2.5 py-1 rounded-lg border border-white/10 bg-white/5 text-white/50 uppercase backdrop-blur-sm">
+            <span className="text-[8px] font-black tracking-[0.15em] px-2.5 py-1 rounded-lg border border-emerald-900/10 bg-white/60 text-neutral-500 uppercase backdrop-blur-sm">
               {product.status?.en || 'PREMIUM'}
             </span>
           </div>
 
           {/* 3D Product Image Container */}
-          <div className="relative aspect-square w-full flex items-center justify-center p-4 sm:p-5 overflow-hidden rounded-[20px] bg-white/[0.02] border border-white/10">
+          <div className="relative aspect-square w-full flex items-center justify-center p-4 sm:p-5 overflow-hidden rounded-[20px] bg-white/70 border border-emerald-900/10">
             <div className="absolute w-32 h-32 rounded-full bg-emerald-500/10 blur-[30px] group-hover:bg-emerald-400/20 group-hover:blur-[40px] transition-all duration-700 pointer-events-none" />
             <div className="absolute bottom-2 w-[70%] pointer-events-none z-0">
               <div className="absolute inset-x-4 -bottom-1 h-3 rounded-full bg-black/60 blur-[6px]" />
@@ -292,7 +292,7 @@ const ProductGridCard = React.memo(({ product, openCheckout, lang }) => {
               </h3>
             )}
             
-            <h4 className="text-white font-extrabold text-xs sm:text-lg leading-tight group-hover:text-emerald-300 transition-colors duration-300 text-center line-clamp-1">
+            <h4 className="text-emerald-950 font-extrabold text-xs sm:text-lg leading-tight group-hover:text-emerald-300 transition-colors duration-300 text-center line-clamp-1">
               {nameEn}
             </h4>
 
@@ -304,7 +304,7 @@ const ProductGridCard = React.memo(({ product, openCheckout, lang }) => {
 
             {/* Hidden description on mobile if not expanded */}
             {(!isMobile || isCardExpanded) && (
-              <p className="text-white/50 text-[10px] sm:text-xs leading-relaxed line-clamp-2 text-center h-[28px] sm:h-[36px] overflow-hidden px-1 font-semibold">
+              <p className="text-neutral-500 text-[10px] sm:text-xs leading-relaxed line-clamp-2 text-center h-[28px] sm:h-[36px] overflow-hidden px-1 font-semibold">
                 {desc}
               </p>
             )}
@@ -316,7 +316,7 @@ const ProductGridCard = React.memo(({ product, openCheckout, lang }) => {
               initial={isMobile ? { opacity: 0, height: 0 } : false}
               animate={isMobile ? { opacity: 1, height: 'auto' } : false}
               transition={{ duration: 0.35, ease: 'easeOut' }}
-              className="space-y-3 mt-auto pt-3 border-t border-white/5"
+              className="space-y-3 mt-auto pt-3 border-t border-emerald-900/5"
             >
               <div className="flex gap-1.5 overflow-x-auto no-scrollbar py-0.5 select-none">
                 {product.sizes?.map((sz, idx) => {
@@ -329,7 +329,7 @@ const ProductGridCard = React.memo(({ product, openCheckout, lang }) => {
                       className={`px-2 py-1 sm:px-3 sm:py-1.5 rounded-lg text-[9px] sm:text-[10px] font-black border transition-all cursor-pointer shrink-0 ${
                         isSelected
                           ? 'bg-emerald-500/20 border-emerald-400/60 text-emerald-300 shadow-[0_0_12px_rgba(16,185,129,0.25)]'
-                          : 'bg-white/[0.04] border-white/10 text-white/45 hover:text-white/80 hover:bg-white/[0.08] hover:border-white/20'
+                          : 'bg-white/90 border-emerald-900/10 text-emerald-950/45 hover:text-neutral-700 hover:bg-white/[0.08] hover:border-emerald-900/20'
                       }`}
                     >
                       {sizeName}
@@ -345,7 +345,7 @@ const ProductGridCard = React.memo(({ product, openCheckout, lang }) => {
                       {activePrice === 0 ? 'On Request' : `₨ ${activePrice.toLocaleString()}`}
                     </span>
                     {activePrice > 0 && oldPrice && oldPrice > activePrice && (
-                      <span className="text-white/25 line-through text-[9px] sm:text-[11px] font-mono leading-none">
+                      <span className="text-emerald-950/25 line-through text-[9px] sm:text-[11px] font-mono leading-none">
                         ₨{oldPrice.toLocaleString()}
                       </span>
                     )}
@@ -357,12 +357,12 @@ const ProductGridCard = React.memo(({ product, openCheckout, lang }) => {
                   )}
                 </div>
 
-                <div className="flex items-center gap-1 bg-white/[0.04] rounded-lg border border-white/5 px-1 py-0.5 sm:px-1.5 sm:py-1">
+                <div className="flex items-center gap-1 bg-white/90 rounded-lg border border-emerald-900/5 px-1 py-0.5 sm:px-1.5 sm:py-1">
                   <button
                     onClick={(e) => { e.preventDefault(); e.stopPropagation(); setQty(q => Math.max(1, q - 1)); }}
-                    className="w-5.5 h-5.5 sm:w-7 sm:h-7 rounded bg-white/5 hover:bg-white/15 text-white text-xs flex items-center justify-center transition-all font-bold cursor-pointer active:scale-90"
+                    className="w-5.5 h-5.5 sm:w-7 sm:h-7 rounded bg-white/60 hover:bg-white/15 text-emerald-950 text-xs flex items-center justify-center transition-all font-bold cursor-pointer active:scale-90"
                   >−</button>
-                  <span className="text-white text-[11px] sm:text-sm font-black w-4 sm:w-5 text-center font-mono">{qty}</span>
+                  <span className="text-emerald-950 text-[11px] sm:text-sm font-black w-4 sm:w-5 text-center font-mono">{qty}</span>
                   <button
                     onClick={(e) => { e.preventDefault(); e.stopPropagation(); setQty(q => q + 1); }}
                     className="w-5.5 h-5.5 sm:w-7 sm:h-7 rounded bg-emerald-500/15 hover:bg-emerald-500/30 text-emerald-300 text-xs flex items-center justify-center transition-all font-bold cursor-pointer active:scale-90"
@@ -408,7 +408,7 @@ const ProductGridCard = React.memo(({ product, openCheckout, lang }) => {
               )}
             </motion.div>
           ) : (
-            <div className="mt-3.5 pt-2 border-t border-white/5 flex flex-col gap-2">
+            <div className="mt-3.5 pt-2 border-t border-emerald-900/5 flex flex-col gap-2">
               <button
                 onClick={(e) => {
                   e.preventDefault();
@@ -429,7 +429,7 @@ const ProductGridCard = React.memo(({ product, openCheckout, lang }) => {
                   e.stopPropagation();
                   setActiveDetailsProduct(product);
                 }}
-                className="w-full py-2 rounded-xl text-[8px] font-black tracking-widest text-white/50 uppercase border border-white/5 bg-white/[0.02] cursor-pointer active:scale-95 transition-all flex items-center justify-center gap-1"
+                className="w-full py-2 rounded-xl text-[8px] font-black tracking-widest text-neutral-500 uppercase border border-emerald-900/5 bg-white/70 cursor-pointer active:scale-95 transition-all flex items-center justify-center gap-1"
               >
                 <Info size={10} /> Specifications
               </button>
@@ -451,20 +451,20 @@ const CategorySection = ({ categoryKey, title, subtitle, products, openCheckout,
   return (
     <div className="space-y-5 pt-10 first:pt-0">
       {/* Category Glass Banner (Portion Header) */}
-      <div className="bg-[#050f0a]/40 border border-white/10 rounded-2xl p-5 md:p-6 backdrop-blur-xl shadow-lg relative overflow-hidden select-none">
+      <div className="bg-[#050f0a]/40 border border-emerald-900/10 rounded-2xl p-5 md:p-6 backdrop-blur-xl shadow-lg relative overflow-hidden select-none">
         {/* Ambient interior light glow */}
         <div className="absolute top-0 right-0 w-48 h-48 bg-emerald-500/[0.03] rounded-full blur-3xl pointer-events-none" />
         
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 relative z-10">
           <div className="space-y-2">
-            <h2 className="text-xl md:text-2xl font-black text-white tracking-tight flex items-center gap-2.5">
+            <h2 className="text-xl md:text-2xl font-black text-emerald-950 tracking-tight flex items-center gap-2.5">
               <span className="w-1.5 h-6 bg-emerald-500 rounded-full inline-block shadow-[0_0_10px_rgba(16,185,129,0.5)]" />
               {title}
               <span className="text-xs font-mono text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 px-2.5 py-0.5 rounded-full font-bold">
                 {products.length} {lang === 'en' ? 'Products' : 'مصنوعات'}
               </span>
             </h2>
-            <p className="text-white/60 text-[11px] md:text-xs leading-relaxed max-w-4xl font-medium">
+            <p className="text-neutral-600 text-[11px] md:text-xs leading-relaxed max-w-4xl font-medium">
               {subtitle}
             </p>
           </div>
@@ -782,7 +782,7 @@ export default function Products() {
 
   return (
     <div 
-      className="min-h-screen text-white font-body overflow-x-hidden relative"
+      className="min-h-screen text-emerald-950 font-body overflow-x-hidden relative"
       style={{
         backgroundImage: 'linear-gradient(to bottom, rgba(2, 5, 2, 0.35) 0%, rgba(2, 8, 4, 0.25) 50%, rgba(2, 5, 2, 0.45) 100%), url("/jungle_bg.webp")',
         backgroundSize: 'cover',
@@ -833,7 +833,7 @@ export default function Products() {
       `}} />
 
       {/* HERO PRODUCT SHOWCASE CONTAINER */}
-      <section className="relative w-full min-h-[92vh] flex items-center justify-center overflow-hidden pt-20 border-b border-white/5 select-none">
+      <section className="relative w-full min-h-[92vh] flex items-center justify-center overflow-hidden pt-20 border-b border-emerald-900/5 select-none">
         
         {/* Clean Linear Grid System Background */}
         <div 
@@ -890,11 +890,11 @@ export default function Products() {
                 
                 {/* Header Category and Badges */}
                 <div className="flex flex-wrap items-center gap-2">
-                  <span className="px-3 py-1 bg-[#76C945]/10 border border-[#76C945]/30 text-[#8AD65A] text-[10px] tracking-[0.2em] font-black uppercase rounded-md shadow-[0_0_8px_rgba(118,201,69,0.15)]">
+                  <span className="px-3 py-1 bg-[#76C945]/10 border border-[#76C945]/30 text-emerald-600 text-[10px] tracking-[0.2em] font-black uppercase rounded-md shadow-[0_0_8px_rgba(118,201,69,0.15)]">
                     ✦ {getCategoryLabel(activeHeroProduct.category)}
                   </span>
                   {activeHeroProduct.activeIngredient && (
-                    <span className="px-3 py-1 bg-white/5 border border-white/10 text-white/70 text-[10px] tracking-wide font-bold rounded-md">
+                    <span className="px-3 py-1 bg-white/60 border border-emerald-900/10 text-neutral-600 text-[10px] tracking-wide font-bold rounded-md">
                       {activeHeroProduct.activeIngredient}
                     </span>
                   )}
@@ -910,7 +910,7 @@ export default function Products() {
                     transition={{ duration: 0.5 }}
                     className="space-y-2 sm:space-y-4"
                   >
-                    <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black tracking-tight leading-none text-white flex flex-wrap gap-x-4 items-center">
+                    <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black tracking-tight leading-none text-emerald-950 flex flex-wrap gap-x-4 items-center">
                       <span>{activeHeroProduct.name}</span>
                       {activeHeroProduct.name_ur && (lang === 'ur' || lang === 'pb') && (
                         <span className="text-emerald-400 text-2xl sm:text-4xl font-extrabold" style={{ fontFamily: "'Jameel Noori Nastaleeq', 'Noto Nastaliq Urdu', serif" }} dir="rtl">
@@ -923,17 +923,17 @@ export default function Products() {
                       INGREDIENTS: {activeHeroProduct.formula || 'Biotech Active Synthesis'}
                     </div>
 
-                    <p className="text-white/75 text-xs sm:text-base max-w-2xl leading-relaxed">
+                    <p className="text-emerald-950/75 text-xs sm:text-base max-w-2xl leading-relaxed">
                       {activeHeroProduct.description?.[lang] || activeHeroProduct.description?.en || activeHeroProduct.shortDesc?.[lang] || activeHeroProduct.shortDesc?.en}
                     </p>
 
                     {/* Recommended Crops list */}
                     {activeHeroProduct.crops && (
                       <div className="space-y-1.5 sm:space-y-2">
-                        <span className="text-[10px] text-white/40 block font-black uppercase tracking-wider">Recommended Crops:</span>
+                        <span className="text-[10px] text-neutral-500 block font-black uppercase tracking-wider">Recommended Crops:</span>
                         <div className="flex flex-wrap gap-2">
                           {activeHeroProduct.crops.slice(0, 5).map((cr, idx) => (
-                            <span key={idx} className="px-2.5 py-1 rounded-lg bg-white/5 border border-white/5 text-[10px] sm:text-xs font-bold text-white/80 flex items-center gap-1">
+                            <span key={idx} className="px-2.5 py-1 rounded-lg bg-white/60 border border-emerald-900/5 text-[10px] sm:text-xs font-bold text-neutral-700 flex items-center gap-1">
                               <span>{cr.icon || '🌱'}</span>
                               <span>{typeof cr.name === 'object' ? cr.name[lang] : cr.name}</span>
                             </span>
@@ -945,12 +945,12 @@ export default function Products() {
                 </AnimatePresence>
 
                 {/* Sizing, Pricing, and Action Section */}
-                <div className="bg-neutral-900/50 border border-white/5 backdrop-blur-xl rounded-[24px] p-5 sm:p-6 space-y-4 sm:space-y-6">
+                <div className="bg-slate-50/50 border border-emerald-900/5 backdrop-blur-xl rounded-[24px] p-5 sm:p-6 space-y-4 sm:space-y-6">
                   
                   <div className="flex flex-wrap items-center justify-between gap-4">
                     {/* Sizes Selection */}
                     <div className="space-y-1.5">
-                      <span className="text-[10px] text-white/40 block font-black uppercase tracking-wider">Pack Sizes:</span>
+                      <span className="text-[10px] text-neutral-500 block font-black uppercase tracking-wider">Pack Sizes:</span>
                       <div className="flex flex-wrap gap-1.5">
                         {activeHeroProduct.sizes?.map((sz, idx) => {
                           const sizeName = typeof sz === 'object' ? sz.size : sz;
@@ -962,7 +962,7 @@ export default function Products() {
                               className={`px-3 py-1.5 rounded-xl text-[10px] sm:text-xs font-bold border transition-all cursor-pointer ${
                                 active 
                                   ? 'bg-emerald-500/20 text-emerald-300 border-emerald-400 shadow-md shadow-emerald-500/10'
-                                  : 'bg-white/5 border-white/5 text-white/50 hover:bg-white/10 hover:text-white'
+                                  : 'bg-white/60 border-emerald-900/5 text-neutral-500 hover:bg-white/80 hover:text-emerald-950'
                               }`}
                             >
                               {sizeName}
@@ -974,18 +974,18 @@ export default function Products() {
 
                     {/* Quantity Adjustment */}
                     <div className="space-y-1.5">
-                      <span className="text-[10px] text-white/40 block font-black uppercase tracking-wider">Quantity:</span>
-                      <div className="flex items-center gap-2 bg-white/5 rounded-xl border border-white/5 p-1 h-[34px] sm:h-[38px]">
+                      <span className="text-[10px] text-neutral-500 block font-black uppercase tracking-wider">Quantity:</span>
+                      <div className="flex items-center gap-2 bg-white/60 rounded-xl border border-emerald-900/5 p-1 h-[34px] sm:h-[38px]">
                         <button
                           onClick={() => setHeroQuantity(q => Math.max(1, q - 1))}
-                          className="w-6 h-6 rounded-lg bg-white/5 hover:bg-white/10 flex items-center justify-center font-bold text-white text-xs transition-colors cursor-pointer"
+                          className="w-6 h-6 rounded-lg bg-white/60 hover:bg-white/80 flex items-center justify-center font-bold text-emerald-950 text-xs transition-colors cursor-pointer"
                         >
                           -
                         </button>
-                        <span className="w-6 text-center text-xs font-black text-white font-mono">{heroQuantity}</span>
+                        <span className="w-6 text-center text-xs font-black text-emerald-950 font-mono">{heroQuantity}</span>
                         <button
                           onClick={() => setHeroQuantity(q => q + 1)}
-                          className="w-6 h-6 rounded-lg bg-white/5 hover:bg-white/10 flex items-center justify-center font-bold text-white text-xs transition-colors cursor-pointer"
+                          className="w-6 h-6 rounded-lg bg-white/60 hover:bg-white/80 flex items-center justify-center font-bold text-emerald-950 text-xs transition-colors cursor-pointer"
                         >
                           +
                         </button>
@@ -994,23 +994,23 @@ export default function Products() {
                   </div>
 
                   {/* Pricing and Action row */}
-                  <div className="flex flex-wrap items-center justify-between gap-4 border-t border-white/5 pt-4">
+                  <div className="flex flex-wrap items-center justify-between gap-4 border-t border-emerald-900/5 pt-4">
                     
                     {/* Price with Orange/Red Discount Badge */}
                     <div className="flex items-center gap-4">
                       <div className="flex flex-col">
                         <div className="flex items-baseline gap-2">
-                          <span className="text-2xl sm:text-3xl font-black text-[#76C945] font-mono">
+                          <span className="text-2xl sm:text-3xl font-black text-emerald-700 font-mono">
                             {heroActivePrice === 0 ? 'On Request' : `PKR ${heroActivePrice.toLocaleString()}`}
                           </span>
                           {heroActivePrice > 0 && heroOldPrice && heroOldPrice > heroActivePrice && (
-                            <span className="text-white/30 line-through text-xs sm:text-sm font-mono">
+                            <span className="text-neutral-400 line-through text-xs sm:text-sm font-mono">
                               PKR {heroOldPrice.toLocaleString()}
                             </span>
                           )}
                         </div>
                         {heroActivePrice > 0 && heroOldPrice && heroOldPrice > heroActivePrice && (
-                          <span className="text-[9px] sm:text-xs text-[#76C945]/80 font-bold">
+                          <span className="text-[9px] sm:text-xs text-emerald-700/80 font-bold">
                             Save PKR {(heroOldPrice - heroActivePrice).toLocaleString()}
                           </span>
                         )}
@@ -1019,7 +1019,7 @@ export default function Products() {
                       {/* Large floating glass discount badge */}
                       {heroActivePrice > 0 && heroOldPrice && heroOldPrice > heroActivePrice && (
                         <div 
-                          className="px-3.5 py-1.5 rounded-full bg-gradient-to-r from-red-600 via-orange-500 to-red-600 text-white text-xs font-black uppercase tracking-wider shadow-[0_6px_20px_rgba(239,68,68,0.45)] border border-red-400/20 select-none z-10 shrink-0"
+                          className="px-3.5 py-1.5 rounded-full bg-gradient-to-r from-red-600 via-orange-500 to-red-600 text-emerald-950 text-xs font-black uppercase tracking-wider shadow-[0_6px_20px_rgba(239,68,68,0.45)] border border-red-400/20 select-none z-10 shrink-0"
                           style={{ animation: 'float-badge 3s infinite ease-in-out' }}
                         >
                           {Math.round((1 - heroActivePrice / heroOldPrice) * 100)}% OFF
@@ -1106,13 +1106,13 @@ export default function Products() {
                 {/* Manual Navigation Controls for Hero */}
                 <button
                   onClick={() => setHeroActiveIdx(prev => (prev - 1 + mappedProducts.length) % mappedProducts.length)}
-                  className="absolute left-1 w-9 h-9 rounded-full bg-black/40 border border-white/10 flex items-center justify-center text-white hover:bg-[#76C945]/20 hover:border-[#76C945]/40 transition-colors z-20 cursor-pointer"
+                  className="absolute left-1 w-9 h-9 rounded-full bg-emerald-950/5 border border-emerald-900/10 flex items-center justify-center text-emerald-950 hover:bg-[#76C945]/20 hover:border-[#76C945]/40 transition-colors z-20 cursor-pointer"
                 >
                   <ChevronLeft size={16} />
                 </button>
                 <button
                   onClick={() => setHeroActiveIdx(prev => (prev + 1) % mappedProducts.length)}
-                  className="absolute right-1 w-9 h-9 rounded-full bg-black/40 border border-white/10 flex items-center justify-center text-white hover:bg-[#76C945]/20 hover:border-[#76C945]/40 transition-colors z-20 cursor-pointer"
+                  className="absolute right-1 w-9 h-9 rounded-full bg-emerald-950/5 border border-emerald-900/10 flex items-center justify-center text-emerald-950 hover:bg-[#76C945]/20 hover:border-[#76C945]/40 transition-colors z-20 cursor-pointer"
                 >
                   <ChevronRight size={16} />
                 </button>
@@ -1152,7 +1152,7 @@ export default function Products() {
                   exit={{ opacity: 0, scale: 0.8 }}
                   transition={{ duration: 0.25, ease: 'easeOut' }}
                   onClick={handleSearchExpand}
-                  className="w-12 h-12 rounded-2xl bg-white/[0.03] border border-white/10 hover:border-emerald-500/40 flex items-center justify-center text-white/40 hover:text-emerald-400 backdrop-blur-xl transition-all cursor-pointer shadow-lg hover:shadow-emerald-500/10 hover:bg-emerald-500/5 active:scale-95"
+                  className="w-12 h-12 rounded-2xl bg-white/80 border border-emerald-900/10 hover:border-emerald-500/40 flex items-center justify-center text-neutral-500 hover:text-emerald-400 backdrop-blur-xl transition-all cursor-pointer shadow-lg hover:shadow-emerald-500/10 hover:bg-emerald-500/5 active:scale-95"
                   aria-label="Open search"
                 >
                   <Search className="w-5 h-5" />
@@ -1177,11 +1177,11 @@ export default function Products() {
                     onChange={(e) => setSearch(e.target.value)}
                     onBlur={handleSearchCollapse}
                     placeholder={lang === 'en' ? 'Search by product name, ingredient, formulation or crop...' : 'نام، دوا کا فارمولا، کیمیکل یا فصل سے تلاش کریں...'}
-                    className="w-full pl-12 pr-12 py-3 bg-white/[0.03] border border-white/10 focus:border-emerald-500/60 rounded-2xl text-xs sm:text-sm text-white placeholder-white/35 focus:outline-none focus:ring-1 focus:ring-emerald-500/35 transition-all backdrop-blur-xl shadow-[inset_0_2px_4px_rgba(0,0,0,0.4)]"
+                    className="w-full pl-12 pr-12 py-3 bg-white/80 border border-emerald-900/10 focus:border-emerald-500/60 rounded-2xl text-xs sm:text-sm text-emerald-950 placeholder-white/35 focus:outline-none focus:ring-1 focus:ring-emerald-500/35 transition-all backdrop-blur-xl shadow-[inset_0_2px_4px_rgba(0,0,0,0.4)]"
                   />
                   <button
                     onMouseDown={(e) => { e.preventDefault(); setSearch(''); setIsSearchExpanded(false); }}
-                    className="absolute inset-y-0 right-3 flex items-center text-white/40 hover:text-white transition-colors cursor-pointer"
+                    className="absolute inset-y-0 right-3 flex items-center text-neutral-500 hover:text-emerald-950 transition-colors cursor-pointer"
                   >
                     <X className="w-4 h-4" />
                   </button>
@@ -1202,13 +1202,13 @@ export default function Products() {
                     onClick={() => setCategory(key)}
                     className={`px-3.5 py-2.5 rounded-xl text-[10px] md:text-xs font-black uppercase tracking-wider transition-all duration-300 border flex items-center gap-1.5 cursor-pointer backdrop-blur-md ${
                       isActive
-                        ? 'bg-emerald-500/15 border-emerald-500 text-white shadow-[0_0_20px_rgba(16,185,129,0.25)]'
-                        : 'bg-white/[0.02] border-white/10 text-white/50 hover:bg-white/10 hover:border-white/20'
+                        ? 'bg-emerald-500/15 border-emerald-500 text-emerald-950 shadow-[0_0_20px_rgba(16,185,129,0.25)]'
+                        : 'bg-white/70 border-emerald-900/10 text-neutral-500 hover:bg-white/80 hover:border-emerald-900/20'
                     }`}
                   >
                     {label}
                     <span className={`text-[9px] px-1.5 py-0.5 rounded-md font-mono ${
-                      isActive ? 'bg-emerald-500/20 text-emerald-400' : 'bg-white/10 text-white/30'
+                      isActive ? 'bg-emerald-500/20 text-emerald-400' : 'bg-white/80 text-neutral-400'
                     }`}>
                       {count}
                     </span>
@@ -1255,8 +1255,8 @@ export default function Products() {
             </div>
           ) : (
             <div className="space-y-6">
-              <div className="border-b border-white/5 pb-4 select-none">
-                <h2 className="text-xl md:text-2xl font-black text-white tracking-tight flex items-center gap-2">
+              <div className="border-b border-emerald-900/5 pb-4 select-none">
+                <h2 className="text-xl md:text-2xl font-black text-emerald-950 tracking-tight flex items-center gap-2">
                   <span className="w-1.5 h-6 bg-emerald-500 rounded-full inline-block" />
                   {search 
                     ? (lang === 'en' ? `Search Results for "${search}"` : `تلاش کے نتائج برائے "${search}"`)
@@ -1286,16 +1286,16 @@ export default function Products() {
                   </AnimatePresence>
                 </motion.div>
               ) : (
-                <div className="text-center py-20 bg-white/[0.02] border border-white/5 rounded-[32px] p-8 max-w-2xl mx-auto shadow-2xl backdrop-blur-md flex flex-col items-center gap-6 relative overflow-hidden">
+                <div className="text-center py-20 bg-white/70 border border-emerald-900/5 rounded-[32px] p-8 max-w-2xl mx-auto shadow-2xl backdrop-blur-md flex flex-col items-center gap-6 relative overflow-hidden">
                   <div className="absolute inset-0 bg-emerald-500/[0.01] pointer-events-none" />
                   <div className="w-20 h-20 rounded-full bg-emerald-950/20 border border-emerald-500/20 flex items-center justify-center text-emerald-400/80 shadow-lg shadow-emerald-500/5">
                     <Search className="w-10 h-10" />
                   </div>
                   <div className="space-y-2">
-                    <h3 className="text-lg font-extrabold text-white">
+                    <h3 className="text-lg font-extrabold text-emerald-950">
                       {lang === 'en' ? 'No Agrochemicals Found' : 'کوئی زرعی مصنوعات نہیں ملیں'}
                     </h3>
-                    <p className="text-white/50 text-xs max-w-md leading-relaxed font-semibold">
+                    <p className="text-neutral-500 text-xs max-w-md leading-relaxed font-semibold">
                       {lang === 'en' 
                         ? "We couldn't find any premium products matching your query. Try checking your spelling or selecting another category filter." 
                         : "ہمیں آپ کی تلاش کے مطابق کوئی مصنوعات نہیں ملیں۔ براہ کرم ہجے چیک کریں یا دوسری کیٹیگری منتخب کریں۔"}

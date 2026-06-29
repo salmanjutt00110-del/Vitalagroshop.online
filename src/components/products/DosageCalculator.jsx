@@ -69,7 +69,7 @@ export default function DosageCalculator({ dosage }) {
       >
         <div className="flex items-center gap-3">
           <div className="w-10 h-10 rounded-xl bg-[#76C945]/15 flex items-center justify-center">
-            <Calculator className="w-5 h-5 text-[#76C945]" />
+            <Calculator className="w-5 h-5 text-emerald-700" />
           </div>
           <div className="text-left">
             <p className="font-bold text-foreground text-sm">Dosage Calculator</p>
@@ -96,7 +96,7 @@ export default function DosageCalculator({ dosage }) {
               ) : (
                 <>
                   <p className="text-xs text-muted-foreground mb-4">
-                    Based on recommended dosage: <span className="font-bold text-[#76C945]">{dosage}</span>
+                    Based on recommended dosage: <span className="font-bold text-emerald-700">{dosage}</span>
                   </p>
                   <div className="flex gap-3 mb-4">
                     <div className="flex-1">
@@ -132,19 +132,19 @@ export default function DosageCalculator({ dosage }) {
                         exit={{ opacity: 0, y: -10 }}
                         className="bg-gradient-to-r from-[#0A2E1F] to-[#0A3A26] rounded-xl p-5 text-center"
                       >
-                        <p className="text-white/60 text-xs mb-1">Estimated Amount Needed</p>
-                        <p className="text-3xl font-extrabold text-[#76C945]">{formatAmount(result)}</p>
-                        <p className="text-white/50 text-xs mt-1">
+                        <p className="text-neutral-600 text-xs mb-1">Estimated Amount Needed</p>
+                        <p className="text-3xl font-extrabold text-emerald-700">{formatAmount(result)}</p>
+                        <p className="text-neutral-500 text-xs mt-1">
                           for {fieldSize} {selectedUnit.label.toLowerCase()}
                         </p>
-                        <div className="mt-3 pt-3 border-t border-white/10 grid grid-cols-2 gap-3 text-left">
+                        <div className="mt-3 pt-3 border-t border-emerald-900/10 grid grid-cols-2 gap-3 text-left">
                           <div>
-                            <p className="text-white/40 text-xs">In Liters</p>
-                            <p className="text-white text-sm font-bold">{(result / 1000).toFixed(3)} L</p>
+                            <p className="text-neutral-500 text-xs">In Liters</p>
+                            <p className="text-emerald-950 text-sm font-bold">{(result / 1000).toFixed(3)} L</p>
                           </div>
                           <div>
-                            <p className="text-white/40 text-xs">In Milliliters</p>
-                            <p className="text-white text-sm font-bold">{Math.round(result)} ml</p>
+                            <p className="text-neutral-500 text-xs">In Milliliters</p>
+                            <p className="text-emerald-950 text-sm font-bold">{Math.round(result)} ml</p>
                           </div>
                         </div>
                       </motion.div>

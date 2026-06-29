@@ -18,7 +18,7 @@ export default function HeroBackground({ videoRef }) {
   }, []);
 
   return (
-    <div className="absolute inset-0 overflow-hidden select-none pointer-events-none z-0 bg-[#020502]">
+    <div className="absolute inset-0 overflow-hidden select-none pointer-events-none z-0 bg-white">
       {/* 1. Background video loop */}
       <div className="absolute inset-0 w-full h-full">
         <video
@@ -37,8 +37,8 @@ export default function HeroBackground({ videoRef }) {
         </video>
       </div>
 
-      {/* 2. Minimal gradient overlay — only bottom fade for text readability, video stays fully visible */}
-      <div className="absolute inset-0 z-[1] bg-gradient-to-b from-[#020502]/30 via-transparent to-[#020502]/80" />
+      {/* 2. Minimal gradient overlay — light premium theme fade */}
+      <div className="absolute inset-0 z-[1] bg-gradient-to-b from-white/30 via-white/10 to-white/95" />
 
       {/* 3. Cinematic Drifting Fog Layers (Optimized with natural gradient fades, no expensive blur filter) */}
       <div className="absolute inset-0 z-[2] pointer-events-none">

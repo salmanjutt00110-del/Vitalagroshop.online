@@ -50,7 +50,7 @@ export default function PremiumProductSpecs({ product }) {
   return (
     <div className="w-full mt-12 mb-20 flex flex-col gap-6" dir={lang === 'ur' ? 'rtl' : 'ltr'}>
       {/* Premium Glassmorphism Tabs Header */}
-      <div className="flex overflow-x-auto no-scrollbar gap-2 p-2 bg-[#0a0f0c] border border-white/5 rounded-2xl w-full">
+      <div className="flex overflow-x-auto no-scrollbar gap-2 p-2 bg-[#0a0f0c] border border-emerald-900/5 rounded-2xl w-full">
         {tabs.map((tab) => {
           const isActive = activeTab === tab.id;
           return (
@@ -58,7 +58,7 @@ export default function PremiumProductSpecs({ product }) {
               key={tab.id}
               onClick={() => setActiveTab(tab.id)}
               className={`relative flex items-center gap-2 px-6 py-3 rounded-xl text-sm font-bold transition-all duration-300 whitespace-nowrap outline-none ${
-                isActive ? 'text-white' : 'text-white/40 hover:text-white/80 hover:bg-white/[0.02]'
+                isActive ? 'text-emerald-950' : 'text-neutral-500 hover:text-neutral-700 hover:bg-white/70'
               }`}
             >
               {isActive && (
@@ -79,7 +79,7 @@ export default function PremiumProductSpecs({ product }) {
       </div>
 
       {/* Tab Content Area */}
-      <div className="bg-[#050906] border border-white/5 rounded-[32px] p-8 min-h-[300px] relative overflow-hidden">
+      <div className="bg-[#050906] border border-emerald-900/5 rounded-[32px] p-8 min-h-[300px] relative overflow-hidden">
         {/* Subtle background glow */}
         <div className="absolute top-0 right-0 w-64 h-64 bg-emerald-500/5 blur-[100px] pointer-events-none" />
         
@@ -101,11 +101,11 @@ export default function PremiumProductSpecs({ product }) {
                   </h3>
                   <div className="space-y-4">
                     {(Array.isArray(specs.features) ? specs.features : specs.features[lang] || specs.features.en).map((item, idx) => (
-                      <div key={idx} className="flex gap-3 items-start bg-white/[0.02] p-4 rounded-xl border border-white/5">
+                      <div key={idx} className="flex gap-3 items-start bg-white/70 p-4 rounded-xl border border-emerald-900/5">
                         <div className="w-5 h-5 rounded-full bg-emerald-500/20 border border-emerald-500/30 flex items-center justify-center shrink-0 mt-0.5">
                           <CheckCircle2 className="w-3 h-3 text-emerald-400" />
                         </div>
-                        <span className="text-sm font-semibold text-white/90 leading-relaxed">{item}</span>
+                        <span className="text-sm font-semibold text-neutral-800 leading-relaxed">{item}</span>
                       </div>
                     ))}
                   </div>
@@ -117,11 +117,11 @@ export default function PremiumProductSpecs({ product }) {
                   </h3>
                   <div className="space-y-4">
                     {(Array.isArray(specs.benefits) ? specs.benefits : specs.benefits[lang] || specs.benefits.en).map((item, idx) => (
-                      <div key={idx} className="flex gap-3 items-start bg-white/[0.02] p-4 rounded-xl border border-white/5">
+                      <div key={idx} className="flex gap-3 items-start bg-white/70 p-4 rounded-xl border border-emerald-900/5">
                         <div className="w-5 h-5 rounded-full bg-emerald-500/20 border border-emerald-500/30 flex items-center justify-center shrink-0 mt-0.5">
                           <CheckCircle2 className="w-3 h-3 text-emerald-400" />
                         </div>
-                        <span className="text-sm font-semibold text-white/90 leading-relaxed">{item}</span>
+                        <span className="text-sm font-semibold text-neutral-800 leading-relaxed">{item}</span>
                       </div>
                     ))}
                   </div>
@@ -131,31 +131,31 @@ export default function PremiumProductSpecs({ product }) {
 
             {activeTab === 'application' && (
               <div className="space-y-8">
-                <div className="bg-white/[0.02] p-6 rounded-2xl border border-white/5">
+                <div className="bg-white/70 p-6 rounded-2xl border border-emerald-900/5">
                   <h3 className="text-lg font-black text-emerald-400 mb-4 flex items-center gap-2">
                     <Layers className="w-5 h-5" />
                     {lang === 'en' ? 'Application Method' : 'طریقہ استعمال'}
                   </h3>
-                  <p className="text-white/80 leading-relaxed text-sm font-medium">
+                  <p className="text-neutral-700 leading-relaxed text-sm font-medium">
                     {specs.applicationMethod[lang] || specs.applicationMethod.en}
                   </p>
                 </div>
                 
                 {product.dosageTable && product.dosageTable.length > 0 ? (
-                  <div className="overflow-x-auto rounded-2xl border border-white/10">
+                  <div className="overflow-x-auto rounded-2xl border border-emerald-900/10">
                     <table className="w-full text-center border-collapse">
                       <thead>
-                        <tr className="bg-[#0a0f0c] text-white text-xs border-b border-white/10">
+                        <tr className="bg-[#0a0f0c] text-emerald-950 text-xs border-b border-emerald-900/10">
                           <th className="p-4 font-bold">{lang === 'en' ? 'Crop' : 'فصل'}</th>
                           <th className="p-4 font-bold">{lang === 'en' ? 'Dosage' : 'خوراک'}</th>
                           <th className="p-4 font-bold">{lang === 'en' ? 'Water' : 'پانی'}</th>
                           <th className="p-4 font-bold">{lang === 'en' ? 'Timing' : 'وقت'}</th>
                         </tr>
                       </thead>
-                      <tbody className="divide-y divide-white/5 text-xs text-white/70 bg-white/[0.01]">
+                      <tbody className="divide-y divide-white/5 text-xs text-neutral-600 bg-white/60">
                         {product.dosageTable.map((row, idx) => (
-                          <tr key={idx} className="hover:bg-white/[0.02] transition-colors">
-                            <td className="p-4 font-extrabold text-white">{row.crop?.[lang] || row.crop?.en}</td>
+                          <tr key={idx} className="hover:bg-white/70 transition-colors">
+                            <td className="p-4 font-extrabold text-emerald-950">{row.crop?.[lang] || row.crop?.en}</td>
                             <td className="p-4 font-bold text-emerald-400">{row.dosage?.[lang] || row.dosage?.en}</td>
                             <td className="p-4 text-amber-400 font-medium">{row.water?.[lang] || row.water?.en}</td>
                             <td className="p-4">{row.timing?.[lang] || row.timing?.en}</td>
@@ -165,12 +165,12 @@ export default function PremiumProductSpecs({ product }) {
                     </table>
                   </div>
                 ) : (
-                  <div className="bg-white/[0.02] p-6 rounded-2xl border border-white/5">
+                  <div className="bg-white/70 p-6 rounded-2xl border border-emerald-900/5">
                     <h3 className="text-lg font-black text-emerald-400 mb-4 flex items-center gap-2">
                       <Database className="w-5 h-5" />
                       {lang === 'en' ? 'General Dosage' : 'عام مقدار'}
                     </h3>
-                    <p className="text-white/80 leading-relaxed text-sm font-medium">
+                    <p className="text-neutral-700 leading-relaxed text-sm font-medium">
                       {specs.dosage[lang] || specs.dosage.en}
                     </p>
                   </div>
@@ -185,7 +185,7 @@ export default function PremiumProductSpecs({ product }) {
                     <ShieldCheck className="w-5 h-5" />
                     {lang === 'en' ? 'Safety Instructions' : 'حفاظتی ہدایات'}
                   </h3>
-                  <p className="text-white/80 leading-relaxed text-sm font-medium">
+                  <p className="text-neutral-700 leading-relaxed text-sm font-medium">
                     {specs.safety[lang] || specs.safety.en}
                   </p>
                 </div>
@@ -194,7 +194,7 @@ export default function PremiumProductSpecs({ product }) {
                     <Database className="w-5 h-5" />
                     {lang === 'en' ? 'Storage Guidelines' : 'ذخیرہ کرنے کی ہدایات'}
                   </h3>
-                  <p className="text-white/80 leading-relaxed text-sm font-medium">
+                  <p className="text-neutral-700 leading-relaxed text-sm font-medium">
                     {specs.storage[lang] || specs.storage.en}
                   </p>
                 </div>
@@ -203,21 +203,21 @@ export default function PremiumProductSpecs({ product }) {
 
             {activeTab === 'technical' && (
               <div className="grid sm:grid-cols-2 gap-4">
-                <div className="bg-white/[0.02] p-5 rounded-2xl border border-white/5 flex justify-between items-center">
-                  <span className="text-white/40 font-bold text-sm">Brand</span>
-                  <span className="text-white/90 font-black text-sm">Vital Agro</span>
+                <div className="bg-white/70 p-5 rounded-2xl border border-emerald-900/5 flex justify-between items-center">
+                  <span className="text-neutral-500 font-bold text-sm">Brand</span>
+                  <span className="text-neutral-800 font-black text-sm">Vital Agro</span>
                 </div>
-                <div className="bg-white/[0.02] p-5 rounded-2xl border border-white/5 flex justify-between items-center">
-                  <span className="text-white/40 font-bold text-sm">Active Ingredient</span>
-                  <span className="text-white/90 font-black text-sm max-w-[180px] truncate">{product.activeIngredient || product.genericName?.en || "Organic Formula"}</span>
+                <div className="bg-white/70 p-5 rounded-2xl border border-emerald-900/5 flex justify-between items-center">
+                  <span className="text-neutral-500 font-bold text-sm">Active Ingredient</span>
+                  <span className="text-neutral-800 font-black text-sm max-w-[180px] truncate">{product.activeIngredient || product.genericName?.en || "Organic Formula"}</span>
                 </div>
-                <div className="bg-white/[0.02] p-5 rounded-2xl border border-white/5 flex justify-between items-center">
-                  <span className="text-white/40 font-bold text-sm">Product SKU</span>
-                  <span className="text-white/90 font-black text-sm">{product.productCode || product.id.toUpperCase()}</span>
+                <div className="bg-white/70 p-5 rounded-2xl border border-emerald-900/5 flex justify-between items-center">
+                  <span className="text-neutral-500 font-bold text-sm">Product SKU</span>
+                  <span className="text-neutral-800 font-black text-sm">{product.productCode || product.id.toUpperCase()}</span>
                 </div>
-                <div className="bg-white/[0.02] p-5 rounded-2xl border border-white/5 flex justify-between items-center">
-                  <span className="text-white/40 font-bold text-sm">Formulation</span>
-                  <span className="text-white/90 font-black text-sm">{product.formulation || 'Liquid/Powder'}</span>
+                <div className="bg-white/70 p-5 rounded-2xl border border-emerald-900/5 flex justify-between items-center">
+                  <span className="text-neutral-500 font-bold text-sm">Formulation</span>
+                  <span className="text-neutral-800 font-black text-sm">{product.formulation || 'Liquid/Powder'}</span>
                 </div>
               </div>
             )}

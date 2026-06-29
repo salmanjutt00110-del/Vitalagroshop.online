@@ -102,7 +102,7 @@ const GlassInput = ({ label, required, error, value, onChange, placeholder, ...p
           color: isFocused ? '#10B981' : 'rgba(255, 255, 255, 0.4)',
         }}
       >
-        {label} {required && <span className="text-[#8AD65A] ml-0.5">*</span>}
+        {label} {required && <span className="text-emerald-600 ml-0.5">*</span>}
       </motion.label>
       <input
         {...props}
@@ -111,12 +111,12 @@ const GlassInput = ({ label, required, error, value, onChange, placeholder, ...p
         onFocus={() => setIsFocused(true)}
         onBlur={() => setIsFocused(false)}
         placeholder={placeholder}
-        className={`w-full bg-black/45 border rounded-2xl px-4 pb-2.5 pt-6 text-sm text-white outline-none transition-all duration-300 backdrop-blur-xl ${
+        className={`w-full bg-black/45 border rounded-2xl px-4 pb-2.5 pt-6 text-sm text-emerald-950 outline-none transition-all duration-300 backdrop-blur-xl ${
           isFocused 
             ? 'border-emerald-500/60 shadow-[0_0_15px_rgba(16,185,129,0.15)] ring-1 ring-emerald-500/30' 
             : error 
               ? 'border-red-500/50' 
-              : 'border-white/8 hover:border-white/15'
+              : 'border-emerald-900/5 hover:border-emerald-900/15'
         }`}
       />
       {error && (
@@ -145,7 +145,7 @@ const GlassTextarea = ({ label, required, error, value, onChange, placeholder, r
           color: isFocused ? '#10B981' : 'rgba(255, 255, 255, 0.4)',
         }}
       >
-        {label} {required && <span className="text-[#8AD65A] ml-0.5">*</span>}
+        {label} {required && <span className="text-emerald-600 ml-0.5">*</span>}
       </motion.label>
       <textarea
         {...props}
@@ -155,12 +155,12 @@ const GlassTextarea = ({ label, required, error, value, onChange, placeholder, r
         onBlur={() => setIsFocused(false)}
         placeholder={placeholder}
         rows={rows}
-        className={`w-full bg-black/45 border rounded-2xl px-4 pb-2.5 pt-6 text-sm text-white outline-none resize-none transition-all duration-300 backdrop-blur-xl ${
+        className={`w-full bg-black/45 border rounded-2xl px-4 pb-2.5 pt-6 text-sm text-emerald-950 outline-none resize-none transition-all duration-300 backdrop-blur-xl ${
           isFocused 
             ? 'border-emerald-500/60 shadow-[0_0_15px_rgba(16,185,129,0.15)] ring-1 ring-emerald-500/30' 
             : error 
               ? 'border-red-500/50' 
-              : 'border-white/8 hover:border-white/15'
+              : 'border-emerald-900/5 hover:border-emerald-900/15'
         }`}
       />
       {error && (
@@ -290,7 +290,7 @@ export default function Contact() {
   };
 
   return (
-    <div className="min-h-screen pt-20 bg-transparent text-white" dir={isRTL ? "rtl" : "ltr"}>
+    <div className="min-h-screen pt-20 bg-transparent text-emerald-950" dir={isRTL ? "rtl" : "ltr"}>
       <SEOHead
         title="Contact Us | Vital Agro Chemical Industries"
         description="Get in touch with Vital Agro. Send us a message, locate our Head Office, or connect via WhatsApp for inquiries."
@@ -306,7 +306,7 @@ export default function Contact() {
       `}</style>
 
       {/* Header section with forest atmosphere */}
-      <section className="bg-gradient-to-b from-[#020703] via-[#051107] to-[#020d06] py-24 relative overflow-hidden border-b border-white/5">
+      <section className="bg-gradient-to-b from-[#020703] via-[#051107] to-[#020d06] py-24 relative overflow-hidden border-b border-emerald-900/5">
         {/* Clean Linear Grid System Background */}
         <div 
           className="absolute inset-0 z-0 opacity-15 pointer-events-none"
@@ -325,11 +325,11 @@ export default function Contact() {
         }} />
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center z-10">
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
-            <span className="text-xs font-black tracking-widest uppercase text-[#76C945] bg-[#76C945]/10 px-3 py-1 rounded-full">{cTrans.badge}</span>
-            <h1 className="text-4xl xs:text-5xl sm:text-6xl lg:text-7xl font-black text-white mt-5 mb-4 uppercase tracking-tight">
+            <span className="text-xs font-black tracking-widest uppercase text-emerald-700 bg-[#76C945]/10 px-3 py-1 rounded-full">{cTrans.badge}</span>
+            <h1 className="text-4xl xs:text-5xl sm:text-6xl lg:text-7xl font-black text-emerald-950 mt-5 mb-4 uppercase tracking-tight">
               {cTrans.title}
             </h1>
-            <p className="text-white/60 text-sm sm:text-base max-w-xl mx-auto leading-relaxed">
+            <p className="text-neutral-600 text-sm sm:text-base max-w-xl mx-auto leading-relaxed">
               {cTrans.sub}
             </p>
           </motion.div>
@@ -349,7 +349,7 @@ export default function Contact() {
                   alt="Vital Agro Logo"
                   className="h-10 w-auto object-contain"
                 />
-                <span className="h-6 w-px bg-white/10" />
+                <span className="h-6 w-px bg-white/80" />
                 <img
                   src={tagLogo}
                   alt="Tag Logo"
@@ -358,8 +358,8 @@ export default function Contact() {
               </div>
 
               <div className="text-left">
-                <h2 className="text-3xl font-black text-white tracking-tight">{cTrans.connectHeader}</h2>
-                <p className="text-white/50 text-sm mt-3 leading-relaxed">
+                <h2 className="text-3xl font-black text-emerald-950 tracking-tight">{cTrans.connectHeader}</h2>
+                <p className="text-neutral-500 text-sm mt-3 leading-relaxed">
                   {cTrans.connectDesc}
                 </p>
               </div>
@@ -379,16 +379,16 @@ export default function Contact() {
                     viewport={{ once: true }}
                     transition={{ delay: i * 0.08, type: 'spring', stiffness: 220, damping: 20 }}
                     whileHover={{ scale: 1.02, borderColor: 'rgba(16, 185, 129, 0.25)', boxShadow: '0 8px 30px rgba(0,0,0,0.45)' }}
-                    className="flex gap-4 p-5 bg-white/[0.02] border border-white/5 backdrop-blur-2xl rounded-2xl shadow-xl relative overflow-hidden transition-all duration-300 text-left group"
+                    className="flex gap-4 p-5 bg-white/70 border border-emerald-900/5 backdrop-blur-2xl rounded-2xl shadow-xl relative overflow-hidden transition-all duration-300 text-left group"
                   >
                     <div className="absolute inset-0 bg-emerald-500/[0.01] opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                     
-                    <div className="w-11 h-11 rounded-xl bg-white/[0.03] border border-white/10 flex items-center justify-center shrink-0 shadow-inner group-hover:border-emerald-500/30 transition-colors">
+                    <div className="w-11 h-11 rounded-xl bg-white/80 border border-emerald-900/10 flex items-center justify-center shrink-0 shadow-inner group-hover:border-emerald-500/30 transition-colors">
                       <item.icon className={`w-5 h-5 ${item.color}`} />
                     </div>
                     <div className="flex-1 relative z-10">
                       <div className="flex justify-between items-center">
-                        <p className="font-black text-white text-xs uppercase tracking-wider">{item.label}</p>
+                        <p className="font-black text-emerald-950 text-xs uppercase tracking-wider">{item.label}</p>
                         {item.isAddress && (
                           <button
                             onClick={handleCopyAddress}
@@ -399,7 +399,7 @@ export default function Contact() {
                           </button>
                         )}
                       </div>
-                      <p className="text-white/60 text-sm font-semibold whitespace-pre-line mt-2 leading-relaxed">{item.value}</p>
+                      <p className="text-neutral-600 text-sm font-semibold whitespace-pre-line mt-2 leading-relaxed">{item.value}</p>
                     </div>
                   </motion.div>
                 ))}
@@ -419,8 +419,8 @@ export default function Contact() {
                   <MessageCircle className="w-6 h-6 stroke-[2.5]" />
                 </div>
                 <div>
-                  <p className="font-black text-white text-base leading-tight">{cTrans.chatWa}</p>
-                  <p className="text-[#8AD65A] text-xs font-bold mt-0.5">{cTrans.chatWaSub}</p>
+                  <p className="font-black text-emerald-950 text-base leading-tight">{cTrans.chatWa}</p>
+                  <p className="text-emerald-600 text-xs font-bold mt-0.5">{cTrans.chatWaSub}</p>
                 </div>
               </motion.a>
             </div>
@@ -433,11 +433,11 @@ export default function Contact() {
               transition={{ type: 'spring', stiffness: 220, damping: 20 }}
               className="lg:col-span-3"
             >
-              <div className="bg-white/[0.02] border border-white/5 backdrop-blur-3xl rounded-3xl p-8 sm:p-10 shadow-2xl relative overflow-hidden text-left">
+              <div className="bg-white/70 border border-emerald-900/5 backdrop-blur-3xl rounded-3xl p-8 sm:p-10 shadow-2xl relative overflow-hidden text-left">
                 <div className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-emerald-500 via-[#76C945] to-teal-500" />
                 <div className="absolute top-0 right-0 w-32 h-32 bg-emerald-500/[0.02] filter blur-3xl rounded-full pointer-events-none" />
                 
-                <h3 className="text-2xl font-black text-white mb-6 uppercase tracking-wide flex items-center gap-2">
+                <h3 className="text-2xl font-black text-emerald-950 mb-6 uppercase tracking-wide flex items-center gap-2">
                   <Sparkles className="w-5 h-5 text-emerald-400 animate-pulse" />
                   <span>{cTrans.formHeader}</span>
                 </h3>
@@ -468,14 +468,14 @@ export default function Contact() {
 
                   {/* Glass drop-down selection for inquiry category */}
                   <div className="space-y-2">
-                    <span className="block text-[9px] font-black text-white/35 uppercase tracking-widest ml-1">
+                    <span className="block text-[9px] font-black text-neutral-400 uppercase tracking-widest ml-1">
                       {cTrans.labelType}
                     </span>
                     <Select value={form.type} onValueChange={(v) => setForm({ ...form, type: v })}>
-                      <SelectTrigger className="w-full bg-black/45 border border-white/8 rounded-2xl px-4 py-6 text-sm text-white outline-none focus:border-emerald-500/60 focus:ring-1 focus:ring-emerald-500/30 backdrop-blur-xl transition-all duration-300">
+                      <SelectTrigger className="w-full bg-black/45 border border-emerald-900/5 rounded-2xl px-4 py-6 text-sm text-emerald-950 outline-none focus:border-emerald-500/60 focus:ring-1 focus:ring-emerald-500/30 backdrop-blur-xl transition-all duration-300">
                         <SelectValue />
                       </SelectTrigger>
-                      <SelectContent className="rounded-2xl bg-[#090f0a]/95 border border-white/10 text-white backdrop-blur-xl">
+                      <SelectContent className="rounded-2xl bg-[#090f0a]/95 border border-emerald-900/10 text-emerald-950 backdrop-blur-xl">
                         <SelectItem value="general" className="rounded-xl focus:bg-emerald-500/10 focus:text-emerald-400 font-bold">{cTrans.inquiryGeneral}</SelectItem>
                         <SelectItem value="dealer_inquiry" className="rounded-xl focus:bg-emerald-500/10 focus:text-emerald-400 font-bold">{cTrans.inquiryDealer}</SelectItem>
                         <SelectItem value="product_inquiry" className="rounded-xl focus:bg-emerald-500/10 focus:text-emerald-400 font-bold">{cTrans.inquiryProduct}</SelectItem>
@@ -512,7 +512,7 @@ export default function Contact() {
                       </span>
                     ) : (
                       <>
-                        <Send size={15} className="text-white shrink-0" />
+                        <Send size={15} className="text-emerald-950 shrink-0" />
                         <span>{cTrans.btnSend}</span>
                       </>
                     )}
@@ -528,7 +528,7 @@ export default function Contact() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ type: 'spring', stiffness: 180, damping: 22 }}
-            className="mt-16 bg-white/[0.02] border border-white/8 rounded-[32px] p-6 shadow-2xl backdrop-blur-3xl overflow-hidden group relative text-left"
+            className="mt-16 bg-white/70 border border-emerald-900/5 rounded-[32px] p-6 shadow-2xl backdrop-blur-3xl overflow-hidden group relative text-left"
             style={{
               boxShadow: '0 25px 60px rgba(0,0,0,0.65), 0 0 45px rgba(16,185,129,0.05)'
             }}
@@ -538,11 +538,11 @@ export default function Contact() {
                 <span className="text-[10px] font-black text-emerald-400 uppercase tracking-widest block mb-2">
                   {lang === 'en' ? 'Interactive Directions & Navigation Control' : 'نقشہ اور نیویگیشن کنٹرول'}
                 </span>
-                <h3 className="text-xl sm:text-2xl font-black text-white flex items-center gap-2">
-                  <MapPin className="w-5 h-5 text-[#76C945] animate-bounce" />
+                <h3 className="text-xl sm:text-2xl font-black text-emerald-950 flex items-center gap-2">
+                  <MapPin className="w-5 h-5 text-emerald-700 animate-bounce" />
                   <span>{lang === 'en' ? 'Head Office Location Map' : 'ہیڈ آفس نقشہ مقام'}</span>
                 </h3>
-                <p className="text-xs text-white/50 mt-2 font-bold whitespace-pre-line leading-relaxed">{cTrans.officeValue}</p>
+                <p className="text-xs text-neutral-500 mt-2 font-bold whitespace-pre-line leading-relaxed">{cTrans.officeValue}</p>
               </div>
               
               {/* Premium Glass Actions overlay buttons */}
@@ -551,7 +551,7 @@ export default function Contact() {
                   onClick={() => openMapNavigation('directions')}
                   className="flex items-center justify-center gap-1.5 btn-premium-primary text-xs tracking-wider border-none w-full"
                 >
-                  <MapPin size={13} className="text-white shrink-0" />
+                  <MapPin size={13} className="text-emerald-950 shrink-0" />
                   <span>{lang === 'en' ? 'Get Directions' : 'راستہ تلاش کریں'}</span>
                 </button>
 
@@ -600,7 +600,7 @@ export default function Contact() {
             </div>
             
             {/* Round Iframe frame */}
-            <div className="relative w-full rounded-2xl overflow-hidden border border-white/5 shadow-inner">
+            <div className="relative w-full rounded-2xl overflow-hidden border border-emerald-900/5 shadow-inner">
               <iframe
                 src="https://maps.google.com/maps?q=Plot%20No.%2050%20%26%2056,%20Vital%20Office,%20Haroonabad,%20Bahawalnagar,%20Pakistan&t=&z=15&ie=UTF8&iwloc=&output=embed"
                 width="100%"

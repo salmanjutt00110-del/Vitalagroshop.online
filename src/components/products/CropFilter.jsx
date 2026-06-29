@@ -41,12 +41,12 @@ export default function CropFilter({ onCropSelect, activeCrop }) {
         >
           <div className="flex items-center gap-3">
             <div className="w-10 h-10 rounded-xl bg-[#76C945]/15 flex items-center justify-center">
-              <Sprout className="w-5 h-5 text-[#76C945]" />
+              <Sprout className="w-5 h-5 text-emerald-700" />
             </div>
             <div className="text-left">
               <p className="font-bold text-foreground text-sm">Filter by Crop Type</p>
               {activeCrop ? (
-                <p className="text-xs text-[#76C945]">Showing products for: <span className="font-bold">{activeCrop.name}</span></p>
+                <p className="text-xs text-emerald-700">Showing products for: <span className="font-bold">{activeCrop.name}</span></p>
               ) : (
                 <p className="text-xs text-muted-foreground">Select your crop to see recommended products</p>
               )}
@@ -90,7 +90,7 @@ export default function CropFilter({ onCropSelect, activeCrop }) {
                       onClick={() => { onCropSelect(crop); setIsOpen(false); }}
                       className={`flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium border transition-all ${
                         activeCrop?.name === crop.name
-                          ? 'bg-[#0A2E1F] text-white border-[#0A2E1F]'
+                          ? 'bg-[#0A2E1F] text-emerald-950 border-[#0A2E1F]'
                           : 'bg-muted/50 text-foreground border-border hover:border-[#76C945]/50 hover:bg-[#76C945]/5'
                       }`}
                     >

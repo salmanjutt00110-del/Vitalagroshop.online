@@ -36,7 +36,7 @@ export default function CTASection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-10%" }}
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-          className="relative rounded-3xl overflow-hidden shadow-2xl border border-white/10"
+          className="relative rounded-3xl overflow-hidden shadow-2xl border border-emerald-900/10"
         >
           {/* Looping Ambient Video Background */}
           <video
@@ -72,7 +72,7 @@ export default function CTASection() {
                 }}
                 transition={{ duration: 5 + i, repeat: Infinity, ease: 'easeInOut', delay: i * 0.8 }}
               >
-                <Leaf className="w-6 h-6 text-[#76C945]/30" />
+                <Leaf className="w-6 h-6 text-emerald-700/30" />
               </motion.div>
             ))}
           </div>
@@ -86,12 +86,12 @@ export default function CTASection() {
                 initial={{ opacity: 0, y: 10 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                className="inline-block text-xs font-black tracking-widest uppercase text-[#76C945]"
+                className="inline-block text-xs font-black tracking-widest uppercase text-emerald-700"
               >
                 Partner With Us
               </motion.span>
               
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white leading-tight">
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-emerald-950 leading-tight">
                 <AnimatedText text={t.cta.title} />
               </h2>
               
@@ -100,7 +100,7 @@ export default function CTASection() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.2, duration: 0.7 }}
-                className="text-white/70 text-base sm:text-lg max-w-xl"
+                className="text-neutral-600 text-base sm:text-lg max-w-xl"
               >
                 {t.cta.desc}
               </motion.p>

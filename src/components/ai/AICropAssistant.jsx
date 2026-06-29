@@ -152,7 +152,7 @@ export default function AICropAssistant() {
         onClick={handleToggleOpen}
         whileHover={{ scale: 1.08 }}
         whileTap={{ scale: 0.95 }}
-        className="w-14 h-14 bg-gradient-to-tr from-[#1e5c1e] to-[#76C945] text-white rounded-full flex items-center justify-center shadow-[0_10px_30px_rgba(118,201,69,0.35)] border border-[#76C945]/40 relative overflow-hidden"
+        className="w-14 h-14 bg-gradient-to-tr from-[#1e5c1e] to-[#76C945] text-emerald-950 rounded-full flex items-center justify-center shadow-[0_10px_30px_rgba(118,201,69,0.35)] border border-[#76C945]/40 relative overflow-hidden"
         style={{ touchAction: 'manipulation' }}
       >
         <motion.div
@@ -184,31 +184,31 @@ export default function AICropAssistant() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 40, scale: 0.92 }}
             transition={{ type: 'spring', stiffness: 280, damping: 28 }}
-            className="absolute bottom-20 right-0 w-[90vw] max-w-[380px] h-[520px] rounded-3xl overflow-hidden border border-white/10 shadow-[0_30px_70px_rgba(0,0,0,0.5)] flex flex-col"
+            className="absolute bottom-20 right-0 w-[90vw] max-w-[380px] h-[520px] rounded-3xl overflow-hidden border border-emerald-900/10 shadow-[0_30px_70px_rgba(0,0,0,0.5)] flex flex-col"
             style={{
               background: 'rgba(10, 26, 15, 0.96)',
               backdropFilter: 'blur(30px)'
             }}
           >
             {/* Header */}
-            <div className="p-4 border-b border-white/8 bg-gradient-to-r from-white/[0.04] to-transparent flex items-center justify-between">
+            <div className="p-4 border-b border-emerald-900/5 bg-gradient-to-r from-white/[0.04] to-transparent flex items-center justify-between">
               <div className="flex items-center gap-2.5">
-                <div className="w-9 h-9 bg-[#76C945]/15 border border-[#76C945]/30 rounded-xl flex items-center justify-center text-[#8AD65A]">
+                <div className="w-9 h-9 bg-[#76C945]/15 border border-[#76C945]/30 rounded-xl flex items-center justify-center text-emerald-600">
                   <Sprout size={18} className="animate-pulse" />
                 </div>
                 <div>
-                  <h4 className="text-white font-bold text-sm tracking-wide flex items-center gap-1.5">
+                  <h4 className="text-emerald-950 font-bold text-sm tracking-wide flex items-center gap-1.5">
                     Vital Agro Advisor
-                    <span className="flex items-center px-1.5 py-0.5 rounded-full bg-[#76C945]/15 text-[#8AD65A] text-[8px] font-black uppercase">
+                    <span className="flex items-center px-1.5 py-0.5 rounded-full bg-[#76C945]/15 text-emerald-600 text-[8px] font-black uppercase">
                       24/7 AI
                     </span>
                   </h4>
-                  <p className="text-white/40 text-[10px] font-medium">
+                  <p className="text-neutral-500 text-[10px] font-medium">
                     {lang === 'en' ? 'Online • Crop & Soil Specialist' : 'آن لائن • زرعی ماہر'}
                   </p>
                 </div>
               </div>
-              <button onClick={() => setIsOpen(false)} className="text-white/40 hover:text-white transition-colors">
+              <button onClick={() => setIsOpen(false)} className="text-neutral-500 hover:text-emerald-950 transition-colors">
                 <X size={16} />
               </button>
             </div>
@@ -219,15 +219,15 @@ export default function AICropAssistant() {
                 <div key={idx} className={`flex gap-2.5 ${m.role === 'user' ? 'flex-row-reverse' : ''}`}>
                   <div className={`w-8 h-8 rounded-xl flex items-center justify-center shrink-0 border ${
                     m.role === 'user' 
-                      ? 'bg-white/8 border-white/10 text-white' 
-                      : 'bg-[#76C945]/10 border-[#76C945]/30 text-[#8AD65A]'
+                      ? 'bg-white/8 border-emerald-900/10 text-emerald-950' 
+                      : 'bg-[#76C945]/10 border-[#76C945]/30 text-emerald-600'
                   }`}>
                     {m.role === 'user' ? <User size={14} /> : <Bot size={14} />}
                   </div>
                   <div className={`max-w-[75%] rounded-2xl p-3.5 text-xs sm:text-[13px] leading-relaxed whitespace-pre-line ${
                     m.role === 'user'
-                      ? 'bg-gradient-to-r from-[#225c22] to-[#2d7a2d] text-white border border-[#76C945]/20 rounded-tr-none'
-                      : 'bg-white/5 text-white/95 border border-white/8 rounded-tl-none'
+                      ? 'bg-gradient-to-r from-[#225c22] to-[#2d7a2d] text-emerald-950 border border-[#76C945]/20 rounded-tr-none'
+                      : 'bg-white/60 text-emerald-950/95 border border-emerald-900/5 rounded-tl-none'
                   }`}>
                     <div>{m.text}</div>
                     {m.role === 'model' && (m.text.includes('+92-301-1837160') || m.text.toLowerCase().includes('whatsapp')) && (
@@ -251,10 +251,10 @@ export default function AICropAssistant() {
 
               {isLoading && (
                 <div className="flex gap-2.5">
-                  <div className="w-8 h-8 rounded-xl bg-[#76C945]/10 border-[#76C945]/30 text-[#8AD65A] flex items-center justify-center shrink-0">
+                  <div className="w-8 h-8 rounded-xl bg-[#76C945]/10 border-[#76C945]/30 text-emerald-600 flex items-center justify-center shrink-0">
                     <Bot size={14} className="animate-spin" />
                   </div>
-                  <div className="bg-white/5 border border-white/8 rounded-2xl rounded-tl-none p-4 flex gap-1.5 items-center">
+                  <div className="bg-white/60 border border-emerald-900/5 rounded-2xl rounded-tl-none p-4 flex gap-1.5 items-center">
                     <span className="w-1.5 h-1.5 bg-white/40 rounded-full animate-bounce" />
                     <span className="w-1.5 h-1.5 bg-white/40 rounded-full animate-bounce" style={{ animationDelay: '0.2s' }} />
                     <span className="w-1.5 h-1.5 bg-white/40 rounded-full animate-bounce" style={{ animationDelay: '0.4s' }} />
@@ -265,11 +265,11 @@ export default function AICropAssistant() {
             </div>
 
             {/* Presets and Input */}
-            <div className="p-3 border-t border-white/8 bg-white/[0.01] space-y-3">
+            <div className="p-3 border-t border-emerald-900/5 bg-white/60 space-y-3">
               {/* Prompt Suggestion Chips */}
               {messages.length === 1 && !isLoading && (
                 <div className="flex flex-col gap-1.5">
-                  <span className="text-[9px] font-black text-white/30 uppercase tracking-widest pl-1">
+                  <span className="text-[9px] font-black text-neutral-400 uppercase tracking-widest pl-1">
                     {lang === 'en' ? 'SUGGESTED TOPICS:' : 'تجویز کردہ موضوعات:'}
                   </span>
                   <div className="flex flex-col gap-1.5">
@@ -277,9 +277,9 @@ export default function AICropAssistant() {
                       <button
                         key={idx}
                         onClick={() => handleSendMessage(p[lang])}
-                        className="w-full text-left p-2.5 bg-white/5 border border-white/8 hover:border-[#76C945]/40 hover:bg-white/8 rounded-xl text-[10px] sm:text-xs text-white/70 hover:text-white transition-all flex items-center gap-1.5"
+                        className="w-full text-left p-2.5 bg-white/60 border border-emerald-900/5 hover:border-[#76C945]/40 hover:bg-white/8 rounded-xl text-[10px] sm:text-xs text-neutral-600 hover:text-emerald-950 transition-all flex items-center gap-1.5"
                       >
-                        <Sparkles size={10} className="text-[#8AD65A] shrink-0" />
+                        <Sparkles size={10} className="text-emerald-600 shrink-0" />
                         <span className="truncate">{p[lang]}</span>
                       </button>
                     ))}
@@ -288,19 +288,19 @@ export default function AICropAssistant() {
               )}
 
               {/* TextInput Form */}
-              <div className="flex items-center gap-2 bg-white/5 rounded-2xl border border-white/8 p-1.5 focus-within:border-[#76C945]/40 transition-colors">
+              <div className="flex items-center gap-2 bg-white/60 rounded-2xl border border-emerald-900/5 p-1.5 focus-within:border-[#76C945]/40 transition-colors">
                 <input
                   type="text"
                   placeholder={lang === 'en' ? 'Ask about crops, diseases...' : 'فصلوں یا بیماریوں کے بارے میں پوچھیں...'}
                   value={input}
                   onChange={(e) => setInput(e.target.value)}
                   onKeyDown={(e) => e.key === 'Enter' && handleSendMessage()}
-                  className="flex-1 bg-transparent border-none outline-none pl-3 text-xs sm:text-sm text-white placeholder:text-white/30"
+                  className="flex-1 bg-transparent border-none outline-none pl-3 text-xs sm:text-sm text-emerald-950 placeholder:text-neutral-400"
                 />
                 <button
                   onClick={() => handleSendMessage()}
                   disabled={!input.trim() || isLoading}
-                  className="w-9 h-9 bg-[#76C945] hover:bg-[#8AD65A] disabled:bg-white/10 text-[#0A2E1F] disabled:text-white/30 rounded-xl flex items-center justify-center transition-colors shrink-0"
+                  className="w-9 h-9 bg-[#76C945] hover:bg-[#8AD65A] disabled:bg-white/80 text-[#0A2E1F] disabled:text-neutral-400 rounded-xl flex items-center justify-center transition-colors shrink-0"
                 >
                   <Send size={14} />
                 </button>

@@ -53,7 +53,7 @@ export default function FeaturedProducts() {
           <span className="text-[10px] font-black tracking-[0.25em] text-emerald-400 uppercase mb-2 block">
             {lang === 'en' ? '★ FLAGSHIP PRODUCTS' : '★ فلیگ شپ مصنوعات'}
           </span>
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black text-white tracking-tight">
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black text-emerald-950 tracking-tight">
             {lang === 'en' ? 'Our Top Products' : 'ہماری بہترین مصنوعات'}
           </h2>
         </motion.div>
@@ -70,7 +70,7 @@ export default function FeaturedProducts() {
               className="group"
             >
               <div
-                className="rounded-[16px] sm:rounded-[24px] overflow-hidden border border-white/10 relative flex flex-col h-full premium-glass-card"
+                className="rounded-[16px] sm:rounded-[24px] overflow-hidden border border-emerald-900/10 relative flex flex-col h-full premium-glass-card"
                 style={{
                   backdropFilter: 'blur(24px)',
                   WebkitBackdropFilter: 'blur(24px)',
@@ -110,7 +110,7 @@ export default function FeaturedProducts() {
 
                 {/* Info */}
                 <div className="px-2.5 sm:px-5 pb-3 sm:pb-5 flex flex-col flex-1">
-                  <h3 className="text-[10px] sm:text-sm lg:text-base font-black text-white text-center line-clamp-1 group-hover:text-emerald-300 transition-colors">
+                  <h3 className="text-[10px] sm:text-sm lg:text-base font-black text-emerald-950 text-center line-clamp-1 group-hover:text-emerald-300 transition-colors">
                     {product.name_en}
                   </h3>
                   {product.name_ur && (lang === 'ur' || lang === 'pb') && (

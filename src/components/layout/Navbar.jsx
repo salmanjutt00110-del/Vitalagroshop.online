@@ -76,18 +76,18 @@ export default function Navbar() {
             marginRight: 'auto',
             borderRadius: 22,
             overflow: 'hidden',
-            /* Premium 3D glass */
-            background: 'rgba(5, 18, 7, 0.28)',
+            /* Premium Light 3D glass */
+            background: 'rgba(255, 255, 255, 0.65)',
             backdropFilter: 'blur(36px) saturate(200%) brightness(115%)',
             WebkitBackdropFilter: 'blur(36px) saturate(200%) brightness(115%)',
-            border: '1px solid rgba(34, 197, 94, 0.30)',
+            border: '1px solid rgba(16, 185, 129, 0.15)',
             boxShadow: [
-              '0 4px 6px rgba(0,0,0,0.25)',
-              '0 10px 40px rgba(0,0,0,0.45)',
-              '0 0 0 1px rgba(255,255,255,0.04)',
-              '0 0 30px rgba(34,197,94,0.12)',
-              'inset 0 1px 0 rgba(255,255,255,0.18)',
-              'inset 0 -1px 0 rgba(0,0,0,0.20)',
+              '0 4px 6px rgba(0,0,0,0.02)',
+              '0 10px 40px rgba(0,0,0,0.06)',
+              '0 0 0 1px rgba(255,255,255,0.4)',
+              '0 0 30px rgba(16,185,129,0.08)',
+              'inset 0 1px 0 rgba(255,255,255,0.8)',
+              'inset 0 -1px 0 rgba(0,0,0,0.02)',
             ].join(', '),
           }}
         >
@@ -140,7 +140,7 @@ export default function Navbar() {
                   transition={{ duration: 0.24, ease: [0.16, 1, 0.3, 1] }}
                   style={{
                     display: 'block', width: 22, height: 2.5,
-                    background: '#ffffff', borderRadius: 99,
+                    background: '#064e3b', borderRadius: 99,
                     transformOrigin: 'center',
                   }}
                 />
@@ -161,7 +161,7 @@ export default function Navbar() {
                   transition={{ type: 'spring', stiffness: 320, damping: 22 }}
                   style={{
                     height: 42, width: 'auto', objectFit: 'contain',
-                    filter: 'drop-shadow(0 2px 8px rgba(0,0,0,0.55))',
+                    filter: 'drop-shadow(0 2px 4px rgba(0,0,0,0.1)) invert(1) hue-rotate(180deg)', /* Make logo dark if it's white */
                     cursor: 'pointer',
                   }}
                 />
@@ -184,7 +184,7 @@ export default function Navbar() {
                     background: 'rgba(255, 255, 255, 0.05)',
                     border: '1px solid rgba(255, 255, 255, 0.1)',
                   }}
-                  className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-[10px] font-extrabold uppercase text-white hover:bg-white/10 transition-all cursor-pointer shadow-sm"
+                  className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-[10px] font-extrabold uppercase text-emerald-950 hover:bg-white/80 transition-all cursor-pointer shadow-sm"
                 >
                   <span>{lang === 'en' ? '🇬🇧 EN' : lang === 'ur' ? '🇵🇰 اردو' : '🇵🇰 پب'}</span>
                   <span className="text-[7px] opacity-60">▼</span>
@@ -196,10 +196,10 @@ export default function Navbar() {
                     e.stopPropagation();
                   }}
                   style={{
-                    background: 'rgba(5, 18, 7, 0.95)',
-                    border: '1px solid rgba(34, 197, 94, 0.30)',
+                    background: 'rgba(255, 255, 255, 0.95)',
+                    border: '1px solid rgba(16, 185, 129, 0.15)',
                   }}
-                  className={`absolute right-0 top-full mt-2 w-28 backdrop-blur-xl rounded-xl py-1 shadow-2xl transition-all duration-300 z-50 flex flex-col overflow-hidden ${
+                  className={`absolute right-0 top-full mt-2 w-28 backdrop-blur-xl rounded-xl py-1 shadow-xl transition-all duration-300 z-50 flex flex-col overflow-hidden ${
                     isLangOpen ? 'opacity-100 visible translate-y-0' : 'opacity-0 invisible -translate-y-2'
                   }`}
                 >
@@ -215,7 +215,7 @@ export default function Navbar() {
                         setIsLangOpen(false);
                       }}
                       className={`px-4 py-2 text-left text-xs font-black hover:bg-emerald-500/20 transition-colors cursor-pointer ${
-                        lang === l.code ? 'text-emerald-400' : 'text-white/70'
+                        lang === l.code ? 'text-emerald-400' : 'text-neutral-600'
                       }`}
                     >
                       {l.label}
@@ -233,7 +233,7 @@ export default function Navbar() {
                 whileTap={{ scale: 0.92 }}
                 style={{ position: 'relative', background: 'none', border: 'none', cursor: 'pointer', padding: 4 }}
               >
-                <ShoppingCart style={{ width: 22, height: 22, color: '#fff', strokeWidth: 1.8 }} />
+                <ShoppingCart style={{ width: 22, height: 22, color: '#064e3b', strokeWidth: 1.8 }} />
                 {cartCount > 0 && (
                   <motion.span
                     initial={{ scale: 0, rotate: -45 }}

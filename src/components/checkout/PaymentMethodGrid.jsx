@@ -19,31 +19,31 @@ const BrandLogo = ({ id, textColor }) => {
       );
     case 'jsbank':
       return (
-        <div className={`${baseClass} bg-[#0066B3] text-white`}>
+        <div className={`${baseClass} bg-[#0066B3] text-emerald-950`}>
           JS
         </div>
       );
     case 'hbl':
       return (
-        <div className={`${baseClass} bg-[#00A651] text-white`}>
+        <div className={`${baseClass} bg-[#00A651] text-emerald-950`}>
           HBL
         </div>
       );
     case 'bankalhabib':
       return (
-        <div className={`${baseClass} bg-[#007236] text-white`}>
+        <div className={`${baseClass} bg-[#007236] text-emerald-950`}>
           BAHL
         </div>
       );
     case 'habibmetro':
       return (
-        <div className={`${baseClass} bg-[#662D91] text-white`}>
+        <div className={`${baseClass} bg-[#662D91] text-emerald-950`}>
           HMB
         </div>
       );
     case 'mcb':
       return (
-        <div className={`${baseClass} bg-[#F58220] text-white`}>
+        <div className={`${baseClass} bg-[#F58220] text-emerald-950`}>
           MCB
         </div>
       );
@@ -55,13 +55,13 @@ const BrandLogo = ({ id, textColor }) => {
       );
     case 'ubl':
       return (
-        <div className={`${baseClass} bg-[#0067B9] text-white`}>
+        <div className={`${baseClass} bg-[#0067B9] text-emerald-950`}>
           UBL
         </div>
       );
     default:
       return (
-        <div className={`${baseClass} bg-white/5 border border-white/10 text-white/50`}>
+        <div className={`${baseClass} bg-white/60 border border-emerald-900/10 text-neutral-500`}>
           BANK
         </div>
       );
@@ -71,8 +71,8 @@ const BrandLogo = ({ id, textColor }) => {
 export const PaymentMethodGrid = ({ selected, onSelect, lang }) => {
   return (
     <div className="space-y-4">
-      <div className="flex items-center justify-between border-b border-white/5 pb-2">
-        <p className="text-white/50 text-[11px] font-black tracking-[0.15em] uppercase">
+      <div className="flex items-center justify-between border-b border-emerald-900/5 pb-2">
+        <p className="text-neutral-500 text-[11px] font-black tracking-[0.15em] uppercase">
           {lang === 'en' ? '💳 Choose Payment Method' : '💳 طریقہ ادائیگی منتخب کریں'}
         </p>
         <span className="text-[10px] text-emerald-400 font-bold bg-emerald-500/10 px-2 py-0.5 rounded-full">
@@ -100,8 +100,8 @@ export const PaymentMethodGrid = ({ selected, onSelect, lang }) => {
                 relative p-4 rounded-2xl border text-left
                 transition-all duration-300 flex items-center gap-4 cursor-pointer select-none
                 ${isSelected
-                  ? 'border-emerald-500/60 shadow-[0_0_25px_rgba(16,185,129,0.15)] bg-white/[0.04]'
-                  : 'border-white/5 bg-white/[0.02] hover:border-white/15 hover:bg-white/[0.03]'
+                  ? 'border-emerald-500/60 shadow-[0_0_25px_rgba(16,185,129,0.15)] bg-white/90'
+                  : 'border-emerald-900/5 bg-white/70 hover:border-emerald-900/15 hover:bg-white/80'
                 }
                 ${!method.available ? 'opacity-30 cursor-not-allowed' : ''}
               `}
@@ -127,7 +127,7 @@ export const PaymentMethodGrid = ({ selected, onSelect, lang }) => {
               {/* Brand Info */}
               <div className="flex-1 min-w-0 pr-4">
                 <div className="flex items-center gap-2">
-                  <p className="text-white text-sm font-black tracking-wide truncate">
+                  <p className="text-emerald-950 text-sm font-black tracking-wide truncate">
                     {method.label}
                   </p>
                   {method.id === 'cod' && (

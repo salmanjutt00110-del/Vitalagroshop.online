@@ -286,31 +286,31 @@ export default function NaviKnobMenu({ isOpen, onClose, setIsMenuOpen }) {
       >
         
         {/* iOS Native Status Bar (9:41 AM, 4G, 100% Battery) */}
-        <div className="flex justify-between items-center text-white/30 text-[10px] font-mono tracking-widest uppercase py-2">
+        <div className="flex justify-between items-center text-neutral-400 text-[10px] font-mono tracking-widest uppercase py-2">
           <span>9:41 AM</span>
           <div className="flex items-center gap-1.5">
             <span>4G</span>
-            <div className="w-5.5 h-2.5 border border-white/20 rounded-sm p-[1px] flex items-center">
-              <div className="w-full h-full bg-white/50 rounded-[1px]" />
+            <div className="w-5.5 h-2.5 border border-emerald-900/20 rounded-sm p-[1px] flex items-center">
+              <div className="w-full h-full bg-white/600 rounded-[1px]" />
             </div>
             <span>100%</span>
           </div>
         </div>
 
         {/* Brand Header Bar */}
-        <div className="flex items-center justify-between border-b border-white/5 pb-3">
+        <div className="flex items-center justify-between border-b border-emerald-900/5 pb-3">
           <div className="flex items-center gap-2">
-            <div className="bg-white/5 rounded-lg p-1 border border-white/10">
+            <div className="bg-white/60 rounded-lg p-1 border border-emerald-900/10">
               <img src={vitalAgroLogo} alt="Vital Agro" className="h-5 w-auto object-contain" />
             </div>
             <div>
-              <p className="text-white font-black text-xs leading-none tracking-widest font-mono uppercase">VITAL AGRO</p>
+              <p className="text-emerald-950 font-black text-xs leading-none tracking-widest font-mono uppercase">VITAL AGRO</p>
               <p className="text-[#10b981] text-[7px] tracking-widest uppercase font-mono mt-0.5">BIO-AGRICULTURE ENGINE</p>
             </div>
           </div>
           <button 
             onClick={handleCloseMenu}
-            className="w-7 h-7 rounded-xl bg-white/5 border border-white/10 hover:border-white/20 text-white/60 hover:text-white flex items-center justify-center text-xs font-mono transition-all cursor-pointer"
+            className="w-7 h-7 rounded-xl bg-white/60 border border-emerald-900/10 hover:border-emerald-900/20 text-neutral-600 hover:text-emerald-950 flex items-center justify-center text-xs font-mono transition-all cursor-pointer"
           >
             ✕
           </button>
@@ -326,13 +326,13 @@ export default function NaviKnobMenu({ isOpen, onClose, setIsMenuOpen }) {
                 animate={{ opacity: 1, scale: 1, y: 0 }}
                 exit={{ opacity: 0, scale: 0.92, y: -15 }}
                 transition={{ type: 'spring', stiffness: 350, damping: 28 }}
-                className="w-full rounded-3xl border border-white/10 bg-neutral-950/40 backdrop-blur-2xl p-6 shadow-2xl space-y-4 text-center flex flex-col justify-center min-h-[260px]"
+                className="w-full rounded-3xl border border-emerald-900/10 bg-white/60 backdrop-blur-2xl p-6 shadow-2xl space-y-4 text-center flex flex-col justify-center min-h-[260px]"
               >
                 <div className="w-12 h-12 rounded-full bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center mx-auto shadow-[0_0_15px_rgba(16,185,129,0.15)]">
                   <Home className="w-5 h-5 text-emerald-400" />
                 </div>
-                <h3 className="text-white font-black text-sm tracking-wider font-mono uppercase">VITAL AGRO HOME</h3>
-                <p className="text-white/55 text-[11px] leading-relaxed max-w-xs mx-auto">
+                <h3 className="text-emerald-950 font-black text-sm tracking-wider font-mono uppercase">VITAL AGRO HOME</h3>
+                <p className="text-emerald-950/55 text-[11px] leading-relaxed max-w-xs mx-auto">
                   Premium agricultural bio-stimulants, chelated foliar micronutrients, and crop yield protection blocks engineered for optimal soil health.
                 </p>
                 <button 
@@ -351,13 +351,13 @@ export default function NaviKnobMenu({ isOpen, onClose, setIsMenuOpen }) {
                 animate={{ opacity: 1, scale: 1, y: 0 }}
                 exit={{ opacity: 0, scale: 0.92, y: -15 }}
                 transition={{ type: 'spring', stiffness: 350, damping: 28 }}
-                className="w-full rounded-3xl border border-white/10 bg-neutral-950/40 backdrop-blur-2xl p-6 shadow-2xl space-y-4 text-center flex flex-col justify-center min-h-[260px]"
+                className="w-full rounded-3xl border border-emerald-900/10 bg-white/60 backdrop-blur-2xl p-6 shadow-2xl space-y-4 text-center flex flex-col justify-center min-h-[260px]"
               >
                 <div className="w-12 h-12 rounded-full bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center mx-auto shadow-[0_0_15px_rgba(16,185,129,0.15)]">
                   <Users className="w-5 h-5 text-emerald-400" />
                 </div>
-                <h3 className="text-white font-black text-sm tracking-wider font-mono uppercase">ABOUT OUR LABORATORY</h3>
-                <p className="text-white/55 text-[11px] leading-relaxed max-w-xs mx-auto">
+                <h3 className="text-emerald-950 font-black text-sm tracking-wider font-mono uppercase">ABOUT OUR LABORATORY</h3>
+                <p className="text-emerald-950/55 text-[11px] leading-relaxed max-w-xs mx-auto">
                   Pioneering bio-stimulants and foliar crop nutrition. We formulate research-based solutions that bypass standard metadata metabolic pathways for plants.
                 </p>
                 <button 
@@ -376,40 +376,40 @@ export default function NaviKnobMenu({ isOpen, onClose, setIsMenuOpen }) {
                 animate={{ opacity: 1, scale: 1, y: 0 }}
                 exit={{ opacity: 0, scale: 0.92, y: -15 }}
                 transition={{ type: 'spring', stiffness: 350, damping: 28 }}
-                className="w-full rounded-3xl border border-white/10 bg-neutral-950/40 backdrop-blur-2xl p-5 shadow-2xl flex flex-col justify-between min-h-[300px] space-y-3"
+                className="w-full rounded-3xl border border-emerald-900/10 bg-white/60 backdrop-blur-2xl p-5 shadow-2xl flex flex-col justify-between min-h-[300px] space-y-3"
               >
                 {/* Search Bar */}
                 <div className="relative w-full">
-                  <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-white/30" />
+                  <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-neutral-400" />
                   <input
                     type="text"
                     placeholder="search pesticide catalog..."
                     value={productSearch}
                     onChange={e => setProductSearch(e.target.value)}
-                    className="w-full pl-10 pr-4 py-2.5 rounded-xl bg-white/[0.03] border border-white/10 text-white text-xs font-mono outline-none placeholder:text-white/20 focus:border-emerald-500/40 transition-all"
+                    className="w-full pl-10 pr-4 py-2.5 rounded-xl bg-white/80 border border-emerald-900/10 text-emerald-950 text-xs font-mono outline-none placeholder:text-emerald-950/20 focus:border-emerald-500/40 transition-all"
                   />
                 </div>
 
                 {/* Horizontal Swipe Carousel of products */}
                 <div className="flex-1 w-full flex items-center overflow-x-auto snap-x snap-mandatory scrollbar-hide py-2 gap-4">
                   {filteredProducts.length === 0 ? (
-                    <div className="w-full text-center text-white/20 font-mono text-[10px] py-12">
+                    <div className="w-full text-center text-emerald-950/20 font-mono text-[10px] py-12">
                       NO PRODUCTS FOUND
                     </div>
                   ) : (
                     filteredProducts.map((p) => (
                       <div 
                         key={p.id}
-                        className="flex-shrink-0 w-[210px] snap-center rounded-2xl border border-white/10 bg-neutral-900/60 backdrop-blur-xl p-3.5 space-y-3 shadow-lg relative group overflow-hidden flex flex-col justify-between"
+                        className="flex-shrink-0 w-[210px] snap-center rounded-2xl border border-emerald-900/10 bg-slate-50/80 backdrop-blur-xl p-3.5 space-y-3 shadow-lg relative group overflow-hidden flex flex-col justify-between"
                       >
                         {/* High-res bottle showcase */}
-                        <div className="aspect-[4/3] rounded-xl bg-black/30 border border-white/5 flex items-center justify-center p-2 relative">
+                        <div className="aspect-[4/3] rounded-xl bg-black/30 border border-emerald-900/5 flex items-center justify-center p-2 relative">
                           <img 
                             src={p.pngUrl || p.imageUrl} 
                             alt={p.name.en} 
                             className="h-full w-auto object-contain transition-transform duration-300 group-hover:scale-105"
                           />
-                          <span className="absolute top-2 right-2 flex items-center gap-0.5 text-[8px] bg-emerald-500/15 text-[#8AD65A] border border-emerald-500/25 px-1.5 py-0.5 rounded font-black font-mono">
+                          <span className="absolute top-2 right-2 flex items-center gap-0.5 text-[8px] bg-emerald-500/15 text-emerald-600 border border-emerald-500/25 px-1.5 py-0.5 rounded font-black font-mono">
                             <Star className="w-2.5 h-2.5 fill-emerald-400 stroke-none" />
                             {p.rating || '4.9'}
                           </span>
@@ -417,12 +417,12 @@ export default function NaviKnobMenu({ isOpen, onClose, setIsMenuOpen }) {
 
                         {/* Details */}
                         <div className="text-left space-y-1">
-                          <h4 className="text-white text-xs font-bold font-mono tracking-wider truncate">{p.name.en}</h4>
+                          <h4 className="text-emerald-950 text-xs font-bold font-mono tracking-wider truncate">{p.name.en}</h4>
                           <div className="flex justify-between items-center">
-                            <span className="text-white/40 text-[9px] font-mono">
+                            <span className="text-neutral-500 text-[9px] font-mono">
                               {p.sizes?.[0]?.size || '500ml'}
                             </span>
-                            <span className="text-[#8AD65A] text-xs font-black font-mono">
+                            <span className="text-emerald-600 text-xs font-black font-mono">
                               PKR {p.sizes?.[0]?.price || p.price || '750'}
                             </span>
                           </div>
@@ -454,13 +454,13 @@ export default function NaviKnobMenu({ isOpen, onClose, setIsMenuOpen }) {
                 animate={{ opacity: 1, scale: 1, y: 0 }}
                 exit={{ opacity: 0, scale: 0.92, y: -15 }}
                 transition={{ type: 'spring', stiffness: 350, damping: 28 }}
-                className="w-full rounded-3xl border border-white/10 bg-neutral-950/40 backdrop-blur-2xl p-6 shadow-2xl space-y-4 text-center flex flex-col justify-center min-h-[260px]"
+                className="w-full rounded-3xl border border-emerald-900/10 bg-white/60 backdrop-blur-2xl p-6 shadow-2xl space-y-4 text-center flex flex-col justify-center min-h-[260px]"
               >
                 <div className="w-12 h-12 rounded-full bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center mx-auto shadow-[0_0_15px_rgba(16,185,129,0.15)]">
                   <Dna className="w-5 h-5 text-emerald-400" />
                 </div>
-                <h3 className="text-white font-black text-sm tracking-wider font-mono uppercase">WHY VITAL CHEMICALS</h3>
-                <div className="space-y-2 text-left max-w-xs mx-auto text-[10px] font-mono text-white/60">
+                <h3 className="text-emerald-950 font-black text-sm tracking-wider font-mono uppercase">WHY VITAL CHEMICALS</h3>
+                <div className="space-y-2 text-left max-w-xs mx-auto text-[10px] font-mono text-neutral-600">
                   <p className="flex items-center gap-2">
                     <span className="w-1.5 h-1.5 rounded-full bg-[#10b981]" />
                     Foliar absorption under 48 hours
@@ -490,11 +490,11 @@ export default function NaviKnobMenu({ isOpen, onClose, setIsMenuOpen }) {
                 animate={{ opacity: 1, scale: 1, y: 0 }}
                 exit={{ opacity: 0, scale: 0.92, y: -15 }}
                 transition={{ type: 'spring', stiffness: 350, damping: 28 }}
-                className="w-full rounded-3xl border border-white/10 bg-neutral-950/40 backdrop-blur-2xl p-5 shadow-2xl flex flex-col justify-center min-h-[260px] space-y-4"
+                className="w-full rounded-3xl border border-emerald-900/10 bg-white/60 backdrop-blur-2xl p-5 shadow-2xl flex flex-col justify-center min-h-[260px] space-y-4"
               >
                 <div className="text-center">
-                  <h3 className="text-white font-black text-xs tracking-wider font-mono uppercase">REQUEST CARTON QUOTE</h3>
-                  <p className="text-white/40 text-[9px] font-mono uppercase mt-0.5">Submit Farm Bulk Pricing Inquiries</p>
+                  <h3 className="text-emerald-950 font-black text-xs tracking-wider font-mono uppercase">REQUEST CARTON QUOTE</h3>
+                  <p className="text-neutral-500 text-[9px] font-mono uppercase mt-0.5">Submit Farm Bulk Pricing Inquiries</p>
                 </div>
 
                 <AnimatePresence mode="wait">
@@ -521,7 +521,7 @@ export default function NaviKnobMenu({ isOpen, onClose, setIsMenuOpen }) {
                         required
                         value={quoteName}
                         onChange={e => setQuoteName(e.target.value)}
-                        className="w-full px-4 py-2.5 rounded-xl bg-white/[0.02] border border-white/10 text-white text-xs font-mono outline-none focus:border-emerald-500/40 transition-all"
+                        className="w-full px-4 py-2.5 rounded-xl bg-white/70 border border-emerald-900/10 text-emerald-950 text-xs font-mono outline-none focus:border-emerald-500/40 transition-all"
                       />
                       <input
                         type="tel"
@@ -529,7 +529,7 @@ export default function NaviKnobMenu({ isOpen, onClose, setIsMenuOpen }) {
                         required
                         value={quotePhone}
                         onChange={e => setQuotePhone(e.target.value)}
-                        className="w-full px-4 py-2.5 rounded-xl bg-white/[0.02] border border-white/10 text-white text-xs font-mono outline-none focus:border-emerald-500/40 transition-all"
+                        className="w-full px-4 py-2.5 rounded-xl bg-white/70 border border-emerald-900/10 text-emerald-950 text-xs font-mono outline-none focus:border-emerald-500/40 transition-all"
                       />
                       <button
                         type="submit"
@@ -550,7 +550,7 @@ export default function NaviKnobMenu({ isOpen, onClose, setIsMenuOpen }) {
                         <Check className="w-5 h-5" />
                       </div>
                       <p className="text-emerald-400 font-mono text-[11px] uppercase tracking-wider font-extrabold">Quote Request Received</p>
-                      <p className="text-white/40 text-[9px] font-mono">Our specialists will contact you shortly.</p>
+                      <p className="text-neutral-500 text-[9px] font-mono">Our specialists will contact you shortly.</p>
                     </motion.div>
                   )}
                 </AnimatePresence>
@@ -606,13 +606,13 @@ export default function NaviKnobMenu({ isOpen, onClose, setIsMenuOpen }) {
               className="absolute w-[260px] h-[260px] rounded-full border border-dotted border-emerald-500/10 flex items-center justify-center"
               style={{ transform: `rotate(${rotation}deg)`, transition: transitionStyle }}
             >
-              <span className="absolute text-[5px] font-mono text-white/10 select-none tracking-[0.2em] uppercase">
+              <span className="absolute text-[5px] font-mono text-emerald-950/10 select-none tracking-[0.2em] uppercase">
                 VITAL-AGRO-DNA-STRUT-PATHWAY
               </span>
             </div>
 
             {/* Concentric glassmorphic base ring */}
-            <div className="absolute w-[220px] h-[220px] rounded-full bg-neutral-900/15 border border-white/5 backdrop-blur-[1px]" />
+            <div className="absolute w-[220px] h-[220px] rounded-full bg-slate-50/15 border border-emerald-900/5 backdrop-blur-[1px]" />
 
             {/* Rotating nodes wheel container */}
             <div 
@@ -653,14 +653,14 @@ export default function NaviKnobMenu({ isOpen, onClose, setIsMenuOpen }) {
                       }}
                       className={`flex flex-col items-center gap-1 px-2.5 py-2 rounded-xl border transition-all duration-300 min-w-[75px] ${
                         isActive
-                          ? 'bg-neutral-900/90 border-[#10b981] shadow-[0_0_12px_rgba(16,185,129,0.35)] scale-105'
-                          : 'backdrop-blur-md bg-neutral-950/40 border-white/5 hover:border-white/15 scale-90 opacity-60'
+                          ? 'bg-slate-50/90 border-[#10b981] shadow-[0_0_12px_rgba(16,185,129,0.35)] scale-105'
+                          : 'backdrop-blur-md bg-white/60 border-emerald-900/5 hover:border-emerald-900/15 scale-90 opacity-60'
                       }`}
                     >
-                      <div className={`p-1 rounded-lg ${isActive ? 'bg-[#10b981]/15 text-[#10b981]' : 'bg-white/5 text-white/70'}`}>
+                      <div className={`p-1 rounded-lg ${isActive ? 'bg-[#10b981]/15 text-[#10b981]' : 'bg-white/60 text-neutral-600'}`}>
                         <Icon className="w-3.5 h-3.5" />
                       </div>
-                      <span className={`text-[8px] font-black font-mono tracking-wider ${isActive ? 'text-[#10b981]' : 'text-white/60'}`}>
+                      <span className={`text-[8px] font-black font-mono tracking-wider ${isActive ? 'text-[#10b981]' : 'text-neutral-600'}`}>
                         {item.label}
                       </span>
                     </div>
@@ -675,7 +675,7 @@ export default function NaviKnobMenu({ isOpen, onClose, setIsMenuOpen }) {
                 e.stopPropagation();
                 handleCloseMenu();
               }}
-              className="absolute w-20 h-20 rounded-full bg-gradient-to-br from-[#051c0c] to-[#0d0d0d] border-2 border-white/10 hover:border-emerald-500/50 shadow-[0_0_20px_rgba(16,185,129,0.15)] flex flex-col items-center justify-center pointer-events-auto z-[999] group overflow-hidden"
+              className="absolute w-20 h-20 rounded-full bg-gradient-to-br from-[#051c0c] to-[#0d0d0d] border-2 border-emerald-900/10 hover:border-emerald-500/50 shadow-[0_0_20px_rgba(16,185,129,0.15)] flex flex-col items-center justify-center pointer-events-auto z-[999] group overflow-hidden"
             >
               {/* Inner animated rotating needle */}
               <div 
@@ -689,9 +689,9 @@ export default function NaviKnobMenu({ isOpen, onClose, setIsMenuOpen }) {
               </div>
 
               {/* Central Logo Core */}
-              <div className="relative z-10 w-14 h-14 rounded-full bg-black/80 border border-white/5 flex flex-col items-center justify-center p-1.5 shadow-inner">
+              <div className="relative z-10 w-14 h-14 rounded-full bg-black/80 border border-emerald-900/5 flex flex-col items-center justify-center p-1.5 shadow-inner">
                 <img src={vitalAgroLogo} alt="Logo" className="w-6 h-auto object-contain animate-pulse" />
-                <span className="text-[5px] font-mono text-white/30 tracking-wider mt-0.5 group-hover:text-[#10b981] transition-colors">
+                <span className="text-[5px] font-mono text-neutral-400 tracking-wider mt-0.5 group-hover:text-[#10b981] transition-colors">
                   CLOSE
                 </span>
               </div>

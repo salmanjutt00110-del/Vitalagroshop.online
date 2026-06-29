@@ -32,7 +32,7 @@
 
 @layer base {
   :root {
-    --background: 120 20% 98%;
+    --background: 0 0% 100%;
     --foreground: 153 50% 9%;
     --card: 0 0% 100%;
     --card-foreground: 153 50% 9%;
@@ -51,59 +51,7 @@
     --border: 120 15% 88%;
     --input: 120 15% 88%;
     --ring: 100 50% 45%;
-    --chart-1: 100 50% 45%;
-    --chart-2: 153 50% 12%;
-    --chart-3: 40 45% 55%;
-    --chart-4: 120 30% 70%;
-    --chart-5: 80 40% 50%;
     --radius: 0.75rem;
-    --font-heading: 'Plus Jakarta Sans', ui-sans-serif, system-ui, sans-serif;
-    --font-body: 'Plus Jakarta Sans', ui-sans-serif, system-ui, sans-serif;
-    --font-display: 'Plus Jakarta Sans', ui-sans-serif, system-ui, sans-serif;
-    --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-    --sidebar-background: 153 50% 9%;
-    --sidebar-foreground: 120 20% 98%;
-    --sidebar-primary: 100 50% 45%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 153 40% 15%;
-    --sidebar-accent-foreground: 120 20% 98%;
-    --sidebar-border: 153 30% 18%;
-    --sidebar-ring: 100 50% 45%;
-  }
-
-  .dark {
-    --background: 153 50% 4%;
-    --foreground: 120 20% 98%;
-    --card: 153 50% 7%;
-    --card-foreground: 120 20% 98%;
-    --popover: 153 50% 7%;
-    --popover-foreground: 120 20% 98%;
-    --primary: 100 50% 45%;
-    --primary-foreground: 153 50% 9%;
-    --secondary: 153 40% 12%;
-    --secondary-foreground: 120 20% 98%;
-    --muted: 153 30% 12%;
-    --muted-foreground: 120 10% 60%;
-    --accent: 40 45% 55%;
-    --accent-foreground: 0 0% 100%;
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 0 0% 98%;
-    --border: 153 30% 14%;
-    --input: 153 30% 14%;
-    --ring: 100 50% 45%;
-    --chart-1: 100 50% 45%;
-    --chart-2: 40 45% 55%;
-    --chart-3: 153 50% 12%;
-    --chart-4: 120 30% 70%;
-    --chart-5: 80 40% 50%;
-    --sidebar-background: 153 50% 4%;
-    --sidebar-foreground: 120 20% 98%;
-    --sidebar-primary: 100 50% 45%;
-    --sidebar-primary-foreground: 153 50% 9%;
-    --sidebar-accent: 153 40% 10%;
-    --sidebar-accent-foreground: 120 20% 98%;
-    --sidebar-border: 153 30% 12%;
-    --sidebar-ring: 100 50% 45%;
   }
 }
 
@@ -234,11 +182,12 @@ html, body {
   min-height: 48px;
   padding: 0 2rem;
   border-radius: 9999px;
-  border: 1px solid rgba(16, 185, 129, 0.45);
-  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(16, 185, 129, 0.2);
+  background: rgba(255, 255, 255, 0.8);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
-  color: #e2e8f0 !important;
+  color: #064e3b !important;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
   cursor: pointer;
   will-change: transform, box-shadow, border-color, background-color;
   transform-style: preserve-3d;
@@ -255,7 +204,7 @@ html, body {
   left: -100%;
   width: 60%;
   height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.15), transparent);
+  background: linear-gradient(90deg, transparent, rgba(16, 185, 129, 0.1), transparent);
   transform: skewX(-25deg);
   pointer-events: none;
 }
@@ -265,14 +214,14 @@ html, body {
 }
 .btn-premium-secondary:hover {
   transform: translateY(-2px) scale(1.03);
-  background: rgba(16, 185, 129, 0.08);
-  border-color: rgba(16, 185, 129, 0.85);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3), 0 0 15px rgba(16, 185, 129, 0.2);
-  color: #ffffff !important;
+  background: rgba(255, 255, 255, 1);
+  border-color: rgba(16, 185, 129, 0.6);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08), 0 0 15px rgba(16, 185, 129, 0.15);
+  color: #064e3b !important;
 }
 .btn-premium-secondary:active {
   transform: translateY(1px) scale(0.97);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
 }
 
 .btn-premium-whatsapp {
@@ -412,11 +361,11 @@ html, body {
 
 /* True Premium Glassmorphism Cards */
 .premium-glass-card {
-  background: rgba(255, 255, 255, 0.05) !important;
+  background: rgba(255, 255, 255, 0.75) !important;
   backdrop-filter: blur(25px) saturate(180%) !important;
   -webkit-backdrop-filter: blur(25px) saturate(180%) !important;
-  border: 1px solid rgba(255, 255, 255, 0.12) !important;
-  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5) !important;
+  border: 1px solid rgba(0, 0, 0, 0.05) !important;
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.04) !important;
   transition: transform 300ms cubic-bezier(0.2, 0.8, 0.2, 1),
               border-color 300ms cubic-bezier(0.2, 0.8, 0.2, 1),
               box-shadow 300ms cubic-bezier(0.2, 0.8, 0.2, 1),
@@ -427,9 +376,9 @@ html, body {
 }
 .premium-glass-card:hover {
   transform: translateY(-6px) scale(1.02) !important;
-  background: rgba(255, 255, 255, 0.08) !important;
-  border-color: rgba(16, 185, 129, 0.35) !important; /* Emerald border highlight */
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.65), 0 0 30px rgba(16, 185, 129, 0.15) !important; /* Soft emerald glow increase */
+  background: rgba(255, 255, 255, 0.95) !important;
+  border-color: rgba(16, 185, 129, 0.25) !important; /* Emerald border highlight */
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.08), 0 0 30px rgba(16, 185, 129, 0.1) !important; /* Soft emerald glow increase */
 }
 
 /* Animated gradient overlay shift class */
@@ -574,35 +523,35 @@ html, body, #root {
 
 /* PRODUCT CARD GLASS */
 .glass-card {
-  background:           rgba(255, 255, 255, 0.04);
+  background:           rgba(255, 255, 255, 0.7);
   backdrop-filter:      blur(20px) saturate(160%);
   -webkit-backdrop-filter: blur(20px) saturate(160%);
-  border:               1px solid rgba(255, 255, 255, 0.08);
-  box-shadow:           0 4px 24px rgba(0, 0, 0, 0.3);
+  border:               1px solid rgba(16, 185, 129, 0.1);
+  box-shadow:           0 8px 30px rgba(0, 0, 0, 0.04);
 }
 
 .glass-card:hover {
-  background:           rgba(255, 255, 255, 0.06);
-  border-color:         rgba(92, 184, 92, 0.18);
-  box-shadow:           0 16px 48px rgba(0, 0, 0, 0.5),
-                        0 0 0 1px rgba(92, 184, 92, 0.08);
+  background:           rgba(255, 255, 255, 0.9);
+  border-color:         rgba(16, 185, 129, 0.3);
+  box-shadow:           0 16px 48px rgba(0, 0, 0, 0.08),
+                        0 0 0 1px rgba(16, 185, 129, 0.08);
 }
 
 /* PREMIUM GLASS (stronger blur for modals, sheets) */
 .glass-premium {
-  background:           rgba(6, 20, 6, 0.85);
+  background:           rgba(255, 255, 255, 0.85);
   backdrop-filter:      blur(40px) saturate(180%);
   -webkit-backdrop-filter: blur(40px) saturate(180%);
-  border:               1px solid rgba(255, 255, 255, 0.08);
+  border:               1px solid rgba(0, 0, 0, 0.05);
 }
 
 /* NAVBAR GLASS (on scroll) */
 .glass-navbar {
-  background:           rgba(6, 20, 6, 0.92);
+  background:           rgba(255, 255, 255, 0.85);
   backdrop-filter:      blur(24px) saturate(160%);
   -webkit-backdrop-filter: blur(24px) saturate(160%);
-  border-bottom:        1px solid rgba(255, 255, 255, 0.07);
-  box-shadow:           0 4px 30px rgba(0, 0, 0, 0.4);
+  border-bottom:        1px solid rgba(0, 0, 0, 0.05);
+  box-shadow:           0 4px 30px rgba(0, 0, 0, 0.03);
 }
 
 /* Ensure backdrop-filter works in Safari */
@@ -615,11 +564,11 @@ html, body, #root {
 
 /* Unified Trillion-Dollar Biotech Theme & Glow */
 .bioluminescent-grid {
-  background-color: #010402;
+  background-color: #fafafa;
   background-image: 
     radial-gradient(circle at 50% 50%, rgba(16, 185, 129, 0.08) 0%, transparent 70%),
-    linear-gradient(rgba(16, 185, 129, 0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(16, 185, 129, 0.03) 1px, transparent 1px);
+    linear-gradient(rgba(16, 185, 129, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(16, 185, 129, 0.05) 1px, transparent 1px);
   background-size: 100% 100%, 55px 55px, 55px 55px;
   background-attachment: fixed;
   position: relative;
@@ -631,13 +580,13 @@ html, body, #root {
   position: fixed;
   inset: 0;
   background: 
-    radial-gradient(circle at 15% 15%, rgba(16, 185, 129, 0.02) 0%, transparent 40%),
-    radial-gradient(circle at 85% 85%, rgba(138, 214, 90, 0.02) 0%, transparent 40%),
-    linear-gradient(rgba(10, 25, 12, 0.15) 50%, rgba(0, 0, 0, 0.3) 50%);
+    radial-gradient(circle at 15% 15%, rgba(16, 185, 129, 0.05) 0%, transparent 40%),
+    radial-gradient(circle at 85% 85%, rgba(138, 214, 90, 0.05) 0%, transparent 40%),
+    linear-gradient(rgba(255, 255, 255, 0.8) 50%, rgba(255, 255, 255, 0.9) 50%);
   background-size: 100% 100%, 100% 100%, 100% 4px;
   pointer-events: none;
   z-index: 1;
-  opacity: 0.45;
+  opacity: 0.6;
 }
 
 .glow-action-trigger {

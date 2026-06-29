@@ -92,7 +92,7 @@ export default function Footer() {
       id="premium-footer"
       role="contentinfo" 
       aria-label="Vital Agro Enterprise Footer"
-      className="relative text-white overflow-hidden pt-36 transition-colors duration-500 z-10"
+      className="relative text-emerald-950 overflow-hidden pt-36 transition-colors duration-500 z-10"
       style={{
         background: `radial-gradient(circle at 50% 120%, rgba(118, 201, 69, 0.12) 0%, #030805 100%)`,
         paddingBottom: 'calc(env(safe-area-inset-bottom, 0px) + 3rem)'
@@ -163,7 +163,7 @@ export default function Footer() {
           <div 
             onMouseMove={(e) => handleCardMove(e, 1)}
             onMouseLeave={handleCardLeave}
-            className="lg:col-span-4 p-6 rounded-[28px] bg-gradient-to-b from-white/[0.04] to-white/[0.01] border border-white/10 backdrop-blur-3xl flex flex-col justify-between relative overflow-hidden group shadow-2xl transition-all duration-300"
+            className="lg:col-span-4 p-6 rounded-[28px] bg-gradient-to-b from-white/[0.04] to-white/[0.01] border border-emerald-900/10 backdrop-blur-3xl flex flex-col justify-between relative overflow-hidden group shadow-2xl transition-all duration-300"
             style={{
               transform: cardTilt.index === 1 ? `perspective(1000px) rotateX(${cardTilt.y * -1}deg) rotateY(${cardTilt.x}deg) translateZ(10px)` : 'none',
               boxShadow: cardTilt.index === 1 ? '0 25px 55px rgba(0,0,0,0.65), 0 0 20px rgba(118,201,69,0.15)' : 'none',
@@ -180,7 +180,7 @@ export default function Footer() {
             <div>
               {/* Dual Logo Container */}
               <div className="flex items-center gap-4 mb-6">
-                <div className="bg-white/10 backdrop-blur-md rounded-xl px-3.5 py-2 border border-white/5 shadow-md shadow-black/35 hover:scale-105 transition-transform duration-300">
+                <div className="bg-white/80 backdrop-blur-md rounded-xl px-3.5 py-2 border border-emerald-900/5 shadow-md shadow-black/35 hover:scale-105 transition-transform duration-300">
                   <img
                     src={vitalAgroLogo}
                     alt="Vital Agro Logo"
@@ -189,7 +189,7 @@ export default function Footer() {
                   />
                 </div>
                 <span className="h-6 w-px bg-white/15" />
-                <div className="bg-white/5 backdrop-blur-md rounded-xl px-3 py-2 border border-white/5 shadow-sm hover:scale-105 transition-transform duration-300">
+                <div className="bg-white/60 backdrop-blur-md rounded-xl px-3 py-2 border border-emerald-900/5 shadow-sm hover:scale-105 transition-transform duration-300">
                   <img
                     src={vitalGroupLogo}
                     alt="Vital Group Logo"
@@ -200,14 +200,14 @@ export default function Footer() {
               </div>
 
               {/* Tagline Reveal */}
-              <p className="text-white/60 text-sm leading-relaxed mb-6 font-medium pr-2">
+              <p className="text-neutral-600 text-sm leading-relaxed mb-6 font-medium pr-2">
                 {t.footer.desc}
               </p>
             </div>
 
             {/* Social Icons Card Embedded */}
             <div className="space-y-3 mt-4">
-              <span className="text-[9px] font-black tracking-widest text-[#76C945] uppercase block">Follow Our Nodes</span>
+              <span className="text-[9px] font-black tracking-widest text-emerald-700 uppercase block">Follow Our Nodes</span>
               <div className="flex gap-2.5">
                 {SOCIAL_LINKS.map((social) => (
                   <motion.a
@@ -217,7 +217,7 @@ export default function Footer() {
                     rel="noopener noreferrer"
                     whileHover={{ scale: 1.12, rotate: 8 }}
                     whileTap={{ scale: 0.95 }}
-                    className={`w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-white/70 hover:text-white transition-all duration-300 ${social.colorClass}`}
+                    className={`w-10 h-10 rounded-full bg-white/60 border border-emerald-900/10 flex items-center justify-center text-neutral-600 hover:text-emerald-950 transition-all duration-300 ${social.colorClass}`}
                     aria-label={`Follow us on ${social.label}`}
                   >
                     <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -233,7 +233,7 @@ export default function Footer() {
           <div
             onMouseMove={(e) => handleCardMove(e, 2)}
             onMouseLeave={handleCardLeave}
-            className="lg:col-span-2 p-6 rounded-[28px] bg-gradient-to-b from-white/[0.04] to-white/[0.01] border border-white/10 backdrop-blur-3xl flex flex-col justify-between relative overflow-hidden group shadow-2xl transition-all duration-300"
+            className="lg:col-span-2 p-6 rounded-[28px] bg-gradient-to-b from-white/[0.04] to-white/[0.01] border border-emerald-900/10 backdrop-blur-3xl flex flex-col justify-between relative overflow-hidden group shadow-2xl transition-all duration-300"
             style={{
               transform: cardTilt.index === 2 ? `perspective(1000px) rotateX(${cardTilt.y * -1}deg) rotateY(${cardTilt.x}deg) translateZ(10px)` : 'none',
               boxShadow: cardTilt.index === 2 ? '0 25px 55px rgba(0,0,0,0.65), 0 0 20px rgba(118,201,69,0.1)' : 'none',
@@ -241,13 +241,13 @@ export default function Footer() {
             }}
           >
             <div>
-              <h4 className="text-xs font-black tracking-widest uppercase text-[#76C945] mb-6">{t.footer.quickLinks}</h4>
+              <h4 className="text-xs font-black tracking-widest uppercase text-emerald-700 mb-6">{t.footer.quickLinks}</h4>
               <ul className="space-y-4">
                 {QUICK_LINKS.map((link) => (
                   <li key={link.path}>
                     <Link
                       to={link.path}
-                      className="text-white/70 hover:text-white text-sm transition-all duration-300 flex items-center gap-2 group/link select-none"
+                      className="text-neutral-600 hover:text-emerald-950 text-sm transition-all duration-300 flex items-center gap-2 group/link select-none"
                     >
                       <span className="w-1.5 h-1.5 rounded-full bg-[#76C945]/40 group-hover/link:bg-[#76C945] group-hover/link:scale-125 transition-all" />
                       <span className="group-hover/link:translate-x-1.5 transition-transform duration-300 flex items-center gap-1">
@@ -265,7 +265,7 @@ export default function Footer() {
           <div
             onMouseMove={(e) => handleCardMove(e, 3)}
             onMouseLeave={handleCardLeave}
-            className="lg:col-span-3 p-6 rounded-[28px] bg-gradient-to-b from-white/[0.04] to-white/[0.01] border border-white/10 backdrop-blur-3xl flex flex-col justify-between relative overflow-hidden group shadow-2xl transition-all duration-300"
+            className="lg:col-span-3 p-6 rounded-[28px] bg-gradient-to-b from-white/[0.04] to-white/[0.01] border border-emerald-900/10 backdrop-blur-3xl flex flex-col justify-between relative overflow-hidden group shadow-2xl transition-all duration-300"
             style={{
               transform: cardTilt.index === 3 ? `perspective(1000px) rotateX(${cardTilt.y * -1}deg) rotateY(${cardTilt.x}deg) translateZ(10px)` : 'none',
               boxShadow: cardTilt.index === 3 ? '0 25px 55px rgba(0,0,0,0.65), 0 0 20px rgba(118,201,69,0.1)' : 'none',
@@ -273,13 +273,13 @@ export default function Footer() {
             }}
           >
             <div>
-              <h4 className="text-xs font-black tracking-widest uppercase text-[#76C945] mb-5">{t.footer.categories}</h4>
+              <h4 className="text-xs font-black tracking-widest uppercase text-emerald-700 mb-5">{t.footer.categories}</h4>
               <div className="flex flex-wrap gap-2.5">
                 {FOOTER_CATEGORIES.map((cat) => (
                   <Link
                     key={cat.slug}
                     to={`/products?category=${cat.slug}`}
-                    className="px-3.5 py-2 rounded-xl text-xs font-bold bg-white/5 border border-white/5 text-white/80 hover:bg-gradient-to-r hover:from-[#76C945] hover:to-[#5cb85c] hover:text-[#0A2E1F] hover:border-[#76C945] hover:shadow-[0_0_15px_rgba(118,201,69,0.35)] transition-all duration-300 transform hover:scale-105"
+                    className="px-3.5 py-2 rounded-xl text-xs font-bold bg-white/60 border border-emerald-900/5 text-neutral-700 hover:bg-gradient-to-r hover:from-[#76C945] hover:to-[#5cb85c] hover:text-[#0A2E1F] hover:border-[#76C945] hover:shadow-[0_0_15px_rgba(118,201,69,0.35)] transition-all duration-300 transform hover:scale-105"
                   >
                     {t.categories[cat.key] || cat.slug}
                   </Link>
@@ -287,7 +287,7 @@ export default function Footer() {
               </div>
             </div>
             
-            <div className="text-[10px] text-white/40 font-mono mt-6">
+            <div className="text-[10px] text-neutral-500 font-mono mt-6">
               VITAL AGRO INDEX SYSTEM v11
             </div>
           </div>
@@ -296,7 +296,7 @@ export default function Footer() {
           <div
             onMouseMove={(e) => handleCardMove(e, 4)}
             onMouseLeave={handleCardLeave}
-            className="lg:col-span-3 p-6 rounded-[28px] bg-gradient-to-b from-white/[0.04] to-white/[0.01] border border-white/10 backdrop-blur-3xl flex flex-col justify-between relative overflow-hidden group shadow-2xl transition-all duration-300"
+            className="lg:col-span-3 p-6 rounded-[28px] bg-gradient-to-b from-white/[0.04] to-white/[0.01] border border-emerald-900/10 backdrop-blur-3xl flex flex-col justify-between relative overflow-hidden group shadow-2xl transition-all duration-300"
             style={{
               transform: cardTilt.index === 4 ? `perspective(1000px) rotateX(${cardTilt.y * -1}deg) rotateY(${cardTilt.x}deg) translateZ(10px)` : 'none',
               boxShadow: cardTilt.index === 4 ? '0 25px 55px rgba(0,0,0,0.65), 0 0 20px rgba(118,201,69,0.1)' : 'none',
@@ -304,19 +304,19 @@ export default function Footer() {
             }}
           >
             <div className="space-y-4">
-              <h4 className="text-xs font-black tracking-widest uppercase text-[#76C945] mb-2">{t.footer.contact}</h4>
+              <h4 className="text-xs font-black tracking-widest uppercase text-emerald-700 mb-2">{t.footer.contact}</h4>
               
               <ul className="space-y-3.5">
                 {/* Location */}
                 <li className="flex gap-3 text-xs items-start group/contact">
-                  <div className="w-9 h-9 rounded-xl bg-white/5 flex items-center justify-center shrink-0 border border-white/5 group-hover/contact:bg-[#76C945]/15 group-hover/contact:border-[#76C945]/20 transition-all duration-300">
-                    <MapPin className="w-4 h-4 text-white/50 group-hover/contact:text-[#8AD65A] transition-colors" />
+                  <div className="w-9 h-9 rounded-xl bg-white/60 flex items-center justify-center shrink-0 border border-emerald-900/5 group-hover/contact:bg-[#76C945]/15 group-hover/contact:border-[#76C945]/20 transition-all duration-300">
+                    <MapPin className="w-4 h-4 text-neutral-500 group-hover/contact:text-emerald-600 transition-colors" />
                   </div>
                   <a
                     href="https://www.google.com/maps/dir/?api=1&destination=Plot+No.+50+%26+56%2C+Vital+Office%2C+Haroonabad%2C+Distt.+Bahawalnagar%2C+Pakistan"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-white/70 hover:text-white leading-relaxed font-semibold hover:underline"
+                    className="text-neutral-600 hover:text-emerald-950 leading-relaxed font-semibold hover:underline"
                   >
                     Plot 50 & 56, Vital Office, Haroonabad, Bahawalnagar, Pakistan
                   </a>
@@ -324,30 +324,30 @@ export default function Footer() {
 
                 {/* Phone */}
                 <li className="flex gap-3 text-xs items-center group/contact">
-                  <div className="w-9 h-9 rounded-xl bg-white/5 flex items-center justify-center shrink-0 border border-white/5 group-hover/contact:bg-[#76C945]/15 group-hover/contact:border-[#76C945]/20 transition-all duration-300">
-                    <Phone className="w-4 h-4 text-white/50 group-hover/contact:text-[#8AD65A] transition-colors" />
+                  <div className="w-9 h-9 rounded-xl bg-white/60 flex items-center justify-center shrink-0 border border-emerald-900/5 group-hover/contact:bg-[#76C945]/15 group-hover/contact:border-[#76C945]/20 transition-all duration-300">
+                    <Phone className="w-4 h-4 text-neutral-500 group-hover/contact:text-emerald-600 transition-colors" />
                   </div>
-                  <a href="tel:+920632253137" className="text-white/70 hover:text-white leading-none font-mono font-bold">
+                  <a href="tel:+920632253137" className="text-neutral-600 hover:text-emerald-950 leading-none font-mono font-bold">
                     063-2253137
                   </a>
                 </li>
 
                 {/* Email */}
                 <li className="flex gap-3 text-xs items-center group/contact">
-                  <div className="w-9 h-9 rounded-xl bg-white/5 flex items-center justify-center shrink-0 border border-white/5 group-hover/contact:bg-[#76C945]/15 group-hover/contact:border-[#76C945]/20 transition-all duration-300">
-                    <Mail className="w-4 h-4 text-white/50 group-hover/contact:text-[#8AD65A] transition-colors" />
+                  <div className="w-9 h-9 rounded-xl bg-white/60 flex items-center justify-center shrink-0 border border-emerald-900/5 group-hover/contact:bg-[#76C945]/15 group-hover/contact:border-[#76C945]/20 transition-all duration-300">
+                    <Mail className="w-4 h-4 text-neutral-500 group-hover/contact:text-emerald-600 transition-colors" />
                   </div>
-                  <a href="mailto:info@vitalagro.com.pk" className="text-white/70 hover:text-white leading-none font-semibold">
+                  <a href="mailto:info@vitalagro.com.pk" className="text-neutral-600 hover:text-emerald-950 leading-none font-semibold">
                     info@vitalagro.com.pk
                   </a>
                 </li>
 
                 {/* Working Hours */}
                 <li className="flex gap-3 text-xs items-center group/contact">
-                  <div className="w-9 h-9 rounded-xl bg-white/5 flex items-center justify-center shrink-0 border border-white/5">
-                    <Clock className="w-4 h-4 text-white/40" />
+                  <div className="w-9 h-9 rounded-xl bg-white/60 flex items-center justify-center shrink-0 border border-emerald-900/5">
+                    <Clock className="w-4 h-4 text-neutral-500" />
                   </div>
-                  <span className="text-white/60 font-semibold leading-tight">
+                  <span className="text-neutral-600 font-semibold leading-tight">
                     Mon - Sat: 9 AM - 6 PM
                   </span>
                 </li>
@@ -398,7 +398,7 @@ export default function Footer() {
           <div 
             onMouseMove={(e) => handleCardMove(e, 5)}
             onMouseLeave={handleCardLeave}
-            className="md:col-span-2 p-5 rounded-[26px] bg-gradient-to-b from-white/[0.04] to-white/[0.01] border border-white/10 backdrop-blur-2xl flex flex-col sm:flex-row items-center justify-between gap-6 overflow-hidden relative group shadow-xl"
+            className="md:col-span-2 p-5 rounded-[26px] bg-gradient-to-b from-white/[0.04] to-white/[0.01] border border-emerald-900/10 backdrop-blur-2xl flex flex-col sm:flex-row items-center justify-between gap-6 overflow-hidden relative group shadow-xl"
             style={{
               transform: cardTilt.index === 5 ? `perspective(1000px) rotateX(${cardTilt.y * -0.6}deg) rotateY(${cardTilt.x * 0.6}deg) translateZ(5px)` : 'none',
               boxShadow: cardTilt.index === 5 ? '0 20px 45px rgba(0,0,0,0.5), 0 0 25px rgba(118,201,69,0.08)' : 'none',
@@ -409,14 +409,14 @@ export default function Footer() {
               <span className="px-2.5 py-0.5 rounded-full bg-[#C5A059]/10 border border-[#C5A059]/25 text-[#C5A059] text-[9px] font-black uppercase tracking-widest inline-block">
                 Verified Quality Standard
               </span>
-              <h4 className="text-sm font-extrabold text-white">ISO 9001:2015 Certification</h4>
-              <p className="text-[10px] text-white/50 leading-relaxed max-w-md">
+              <h4 className="text-sm font-extrabold text-emerald-950">ISO 9001:2015 Certification</h4>
+              <p className="text-[10px] text-neutral-500 leading-relaxed max-w-md">
                 Our raw chemicals are certified for chemical compositions, active ingredients density, and organic environmental safety parameters.
               </p>
             </div>
 
-            <div className="flex items-center gap-4 bg-white/5 border border-white/5 rounded-2xl p-3 shadow-inner">
-              <div className="bg-white/10 rounded-xl px-2 py-1 flex items-center justify-center shrink-0">
+            <div className="flex items-center gap-4 bg-white/60 border border-emerald-900/5 rounded-2xl p-3 shadow-inner">
+              <div className="bg-white/80 rounded-xl px-2 py-1 flex items-center justify-center shrink-0">
                 <img
                   src={tagLogo}
                   alt="TAG Certification Badge Logo"
@@ -425,8 +425,8 @@ export default function Footer() {
                 />
               </div>
               <div className="text-left font-mono">
-                <span className="text-[8px] text-white/35 block font-black">CERTIFICATE NO</span>
-                <span className="text-xs font-black text-white">TAG-9001-QA</span>
+                <span className="text-[8px] text-neutral-400 block font-black">CERTIFICATE NO</span>
+                <span className="text-xs font-black text-emerald-950">TAG-9001-QA</span>
               </div>
             </div>
           </div>
@@ -435,7 +435,7 @@ export default function Footer() {
           <div 
             onMouseMove={(e) => handleCardMove(e, 6)}
             onMouseLeave={handleCardLeave}
-            className="p-5 rounded-[26px] bg-gradient-to-b from-white/[0.04] to-white/[0.01] border border-white/10 backdrop-blur-2xl flex flex-col justify-between overflow-hidden relative group shadow-xl"
+            className="p-5 rounded-[26px] bg-gradient-to-b from-white/[0.04] to-white/[0.01] border border-emerald-900/10 backdrop-blur-2xl flex flex-col justify-between overflow-hidden relative group shadow-xl"
             style={{
               transform: cardTilt.index === 6 ? `perspective(1000px) rotateX(${cardTilt.y * -0.6}deg) rotateY(${cardTilt.x * 0.6}deg) translateZ(5px)` : 'none',
               boxShadow: cardTilt.index === 6 ? '0 20px 45px rgba(0,0,0,0.5), 0 0 25px rgba(197,160,89,0.08)' : 'none',
@@ -443,15 +443,15 @@ export default function Footer() {
             }}
           >
             <div className="space-y-1">
-              <span className="text-[9px] font-black tracking-widest text-[#8AD65A] uppercase block">Corporation Node</span>
-              <h5 className="text-xs font-extrabold text-white">Member of Vital Group</h5>
+              <span className="text-[9px] font-black tracking-widest text-emerald-600 uppercase block">Corporation Node</span>
+              <h5 className="text-xs font-extrabold text-emerald-950">Member of Vital Group</h5>
             </div>
             
-            <p className="text-[10px] text-white/40 leading-normal my-2.5">
+            <p className="text-[10px] text-neutral-500 leading-normal my-2.5">
               Leveraging massive national logistical reach and agricultural retail networks across Punjab and Sindh.
             </p>
 
-            <div className="flex items-center justify-between pt-2 border-t border-white/5 font-mono text-[9px] text-[#8AD65A] font-black">
+            <div className="flex items-center justify-between pt-2 border-t border-emerald-900/5 font-mono text-[9px] text-emerald-600 font-black">
               <span>EST. 2011</span>
               <span>HAROONABAD, PK</span>
             </div>
@@ -459,16 +459,16 @@ export default function Footer() {
         </div>
 
         {/* Bottom copyright divider & Company Info strip */}
-        <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-5 relative z-10">
-          <p className="text-white/40 text-xs font-semibold select-none">
+        <div className="border-t border-emerald-900/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-5 relative z-10">
+          <p className="text-neutral-500 text-xs font-semibold select-none">
             &copy; {new Date().getFullYear()} Vital Agro Chemical Industries (Pvt.) Ltd. All rights reserved.
           </p>
           
-          <div className="flex items-center gap-4 bg-white/[0.03] border border-white/5 rounded-full px-4.5 py-1.5 shadow-sm">
+          <div className="flex items-center gap-4 bg-white/80 border border-emerald-900/5 rounded-full px-4.5 py-1.5 shadow-sm">
             <div className="bg-white/15 rounded-md px-1.5 py-0.5 shrink-0 flex items-center justify-center">
               <img src={vitalAgroLogo} alt="VA" className="h-5 w-auto drop-shadow-sm" loading="lazy" />
             </div>
-            <p className="text-white/40 text-[10px] uppercase tracking-wider font-mono">
+            <p className="text-neutral-500 text-[10px] uppercase tracking-wider font-mono">
               {t.footer.tagline}
             </p>
           </div>
@@ -540,7 +540,7 @@ function ScrollToTopOrb() {
           onClick={scrollToTop}
           onMouseEnter={() => setHovered(true)}
           onMouseLeave={() => setHovered(false)}
-          className="fixed bottom-6 right-6 w-11 h-11 rounded-full bg-black/60 border border-white/20 flex items-center justify-center backdrop-blur-xl shadow-[0_10px_25px_rgba(0,0,0,0.5)] hover:border-[#76C945] hover:shadow-[0_0_20px_#76C945] transition-all cursor-pointer z-50 text-white group"
+          className="fixed bottom-6 right-6 w-11 h-11 rounded-full bg-black/60 border border-emerald-900/20 flex items-center justify-center backdrop-blur-xl shadow-[0_10px_25px_rgba(0,0,0,0.5)] hover:border-[#76C945] hover:shadow-[0_0_20px_#76C945] transition-all cursor-pointer z-50 text-emerald-950 group"
           aria-label="Scroll to top of the page"
         >
           {/* Circular ping animation */}
@@ -549,7 +549,7 @@ function ScrollToTopOrb() {
             animate={hovered ? { y: [0, -3, 0] } : {}}
             transition={{ repeat: Infinity, duration: 1.2, ease: "easeInOut" }}
           >
-            <ArrowUp className="w-5 h-5 group-hover:text-[#8AD65A] transition-colors" />
+            <ArrowUp className="w-5 h-5 group-hover:text-emerald-600 transition-colors" />
           </motion.div>
         </motion.button>
       )}

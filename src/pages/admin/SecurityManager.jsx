@@ -56,7 +56,7 @@ export default function SecurityManager({ theme }) {
           
           {/* Active Sessions */}
           <div className={`${c.card} p-6 space-y-6`}>
-            <div className="flex justify-between items-center border-b border-white/5 pb-4">
+            <div className="flex justify-between items-center border-b border-emerald-900/5 pb-4">
               <h2 className="text-sm font-black uppercase tracking-widest text-emerald-400 flex items-center gap-2">
                 <Users size={16} /> Authorized Operators
               </h2>
@@ -68,7 +68,7 @@ export default function SecurityManager({ theme }) {
             <div className="overflow-x-auto">
               <table className="w-full text-left border-collapse">
                 <thead>
-                  <tr className="border-b border-white/5 text-[9px] font-mono text-neutral-500 uppercase tracking-wider">
+                  <tr className="border-b border-emerald-900/5 text-[9px] font-mono text-neutral-500 uppercase tracking-wider">
                     <th className="py-3 px-4 font-bold">Identity</th>
                     <th className="py-3 px-4 font-bold">Role</th>
                     <th className="py-3 px-4 font-bold">Status</th>
@@ -77,9 +77,9 @@ export default function SecurityManager({ theme }) {
                 </thead>
                 <tbody>
                   {users.map((user) => (
-                    <tr key={user.id} className="border-b border-white/5 hover:bg-white/5 transition-colors">
+                    <tr key={user.id} className="border-b border-emerald-900/5 hover:bg-white/60 transition-colors">
                       <td className="py-3 px-4">
-                        <p className="text-xs font-bold text-white">{user.email}</p>
+                        <p className="text-xs font-bold text-emerald-950">{user.email}</p>
                         <p className="text-[10px] text-neutral-500 font-mono">Last Seen: {user.lastLogin}</p>
                       </td>
                       <td className="py-3 px-4">
@@ -99,10 +99,10 @@ export default function SecurityManager({ theme }) {
                         )}
                       </td>
                       <td className="py-3 px-4 text-right">
-                        <button className="p-1.5 text-neutral-400 hover:text-white transition-colors bg-white/5 rounded hover:bg-white/10 ml-2">
+                        <button className="p-1.5 text-neutral-400 hover:text-emerald-950 transition-colors bg-white/60 rounded hover:bg-white/80 ml-2">
                           <Shield size={14} />
                         </button>
-                        <button className="p-1.5 text-red-400 hover:text-red-300 transition-colors bg-white/5 rounded hover:bg-white/10 ml-2">
+                        <button className="p-1.5 text-red-400 hover:text-red-300 transition-colors bg-white/60 rounded hover:bg-white/80 ml-2">
                           <Trash2 size={14} />
                         </button>
                       </td>
@@ -124,7 +124,7 @@ export default function SecurityManager({ theme }) {
               </div>
               <div>
                 <h3 className="text-neutral-400 text-xs font-bold uppercase tracking-widest">Main Database</h3>
-                <p className="text-2xl font-black text-white mt-1">99.99%</p>
+                <p className="text-2xl font-black text-emerald-950 mt-1">99.99%</p>
                 <p className="text-[10px] text-neutral-500 font-mono mt-1">Uptime SLA Maintained</p>
               </div>
             </div>
@@ -138,7 +138,7 @@ export default function SecurityManager({ theme }) {
               </div>
               <div>
                 <h3 className="text-neutral-400 text-xs font-bold uppercase tracking-widest">Failed Logins</h3>
-                <p className="text-2xl font-black text-white mt-1">14<span className="text-sm text-neutral-500 ml-1">/24h</span></p>
+                <p className="text-2xl font-black text-emerald-950 mt-1">14<span className="text-sm text-neutral-500 ml-1">/24h</span></p>
                 <p className="text-[10px] text-neutral-500 font-mono mt-1">Failed attempts detected</p>
               </div>
             </div>
@@ -156,9 +156,9 @@ export default function SecurityManager({ theme }) {
             </h2>
             
             <div className="space-y-4">
-              <div className="flex items-center justify-between p-4 bg-black/40 rounded-xl border border-white/5">
+              <div className="flex items-center justify-between p-4 bg-emerald-950/5 rounded-xl border border-emerald-900/5">
                 <div>
-                  <h3 className="text-xs font-bold text-white uppercase tracking-wider">Two-Factor Auth</h3>
+                  <h3 className="text-xs font-bold text-emerald-950 uppercase tracking-wider">Two-Factor Auth</h3>
                   <p className="text-[10px] text-neutral-500 leading-snug mt-1">Enforce 2FA for all admin operators</p>
                 </div>
                 <button 
@@ -173,9 +173,9 @@ export default function SecurityManager({ theme }) {
                 </button>
               </div>
               
-              <div className="flex items-center justify-between p-4 bg-black/40 rounded-xl border border-white/5 opacity-50 cursor-not-allowed">
+              <div className="flex items-center justify-between p-4 bg-emerald-950/5 rounded-xl border border-emerald-900/5 opacity-50 cursor-not-allowed">
                 <div>
-                  <h3 className="text-xs font-bold text-white uppercase tracking-wider flex items-center gap-2">IP Whitelisting <Lock size={12}/></h3>
+                  <h3 className="text-xs font-bold text-emerald-950 uppercase tracking-wider flex items-center gap-2">IP Whitelisting <Lock size={12}/></h3>
                   <p className="text-[10px] text-neutral-500 leading-snug mt-1">Restrict access to specific IP ranges</p>
                 </div>
               </div>
@@ -184,7 +184,7 @@ export default function SecurityManager({ theme }) {
 
           {/* Audit Logs */}
           <div className={`${c.card} p-6 flex-1 h-[500px] flex flex-col`}>
-            <div className="flex justify-between items-center border-b border-white/5 pb-4 mb-4">
+            <div className="flex justify-between items-center border-b border-emerald-900/5 pb-4 mb-4">
               <h2 className="text-sm font-black uppercase tracking-widest text-emerald-400 flex items-center gap-2">
                 <Activity size={16} /> System Telemetry
               </h2>
@@ -192,17 +192,17 @@ export default function SecurityManager({ theme }) {
             
             <div className="flex-1 overflow-y-auto space-y-4 pr-2" style={{ WebkitOverflowScrolling: "touch" }}>
               {auditLogs.map((log) => (
-                <div key={log.id} className="relative pl-6 pb-2 border-l border-white/10 last:border-0">
+                <div key={log.id} className="relative pl-6 pb-2 border-l border-emerald-900/10 last:border-0">
                   <div className={`absolute -left-1.5 top-1.5 w-3 h-3 rounded-full border-2 border-black ${getActionColor(log.action).split(' ')[1].replace('/10', '')} shadow-md`} />
                   
-                  <div className="bg-black/30 p-3 rounded-xl border border-white/5">
+                  <div className="bg-black/30 p-3 rounded-xl border border-emerald-900/5">
                     <div className="flex justify-between items-start mb-1">
                       <span className={`text-[9px] font-bold uppercase tracking-wider px-2 py-0.5 rounded border ${getActionColor(log.action)}`}>
                         {log.action}
                       </span>
                       <span className="text-[9px] text-neutral-500 font-mono">{new Date(log.timestamp).toLocaleTimeString()}</span>
                     </div>
-                    <p className="text-xs text-white font-medium mt-2">{log.details}</p>
+                    <p className="text-xs text-emerald-950 font-medium mt-2">{log.details}</p>
                     <p className="text-[10px] text-neutral-500 font-mono mt-1">Initiator: {log.user}</p>
                   </div>
                 </div>

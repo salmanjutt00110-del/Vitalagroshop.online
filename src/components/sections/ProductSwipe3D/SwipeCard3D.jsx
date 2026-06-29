@@ -153,7 +153,7 @@ export default function SwipeCard3D({ product, isActive, isPeek, isDragging, ope
 
         {/* 3D Floating Product Image */}
         <div 
-          className="relative aspect-[4/3] w-full flex items-center justify-center p-4 bg-white/[0.02] rounded-2xl border border-white/5 mt-10 mb-6 overflow-hidden shadow-inner"
+          className="relative aspect-[4/3] w-full flex items-center justify-center p-4 bg-white/70 rounded-2xl border border-emerald-900/5 mt-10 mb-6 overflow-hidden shadow-inner"
         >
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(16,185,129,0.18)_0%,transparent_60%)] pointer-events-none" />
           
@@ -195,7 +195,7 @@ export default function SwipeCard3D({ product, isActive, isPeek, isDragging, ope
           )}
 
           {/* 2. English Name */}
-          <h4 className="text-white font-bold text-sm sm:text-base leading-tight group-hover:text-emerald-300 transition-colors text-center line-clamp-1">
+          <h4 className="text-emerald-950 font-bold text-sm sm:text-base leading-tight group-hover:text-emerald-300 transition-colors text-center line-clamp-1">
             {prodNameEn}
           </h4>
 
@@ -207,7 +207,7 @@ export default function SwipeCard3D({ product, isActive, isPeek, isDragging, ope
           </div>
 
           {/* 4. Short Description */}
-          <p className="text-xs text-white/50 leading-relaxed text-center line-clamp-2 h-[34px] overflow-hidden px-2">
+          <p className="text-xs text-neutral-500 leading-relaxed text-center line-clamp-2 h-[34px] overflow-hidden px-2">
             {desc}
           </p>
 
@@ -226,8 +226,8 @@ export default function SwipeCard3D({ product, isActive, isPeek, isDragging, ope
                     className={`
                       px-2.5 py-1 rounded-lg text-[10px] font-black border transition-all duration-300
                       ${selectedSize === name
-                        ? 'bg-[#5cb85c]/20 border-[#5cb85c] text-[#8AD65A] scale-105 shadow-[0_0_8px_rgba(92,184,92,0.15)]'
-                        : 'bg-white/5 border-white/10 text-white/50 hover:text-white hover:border-white/20'
+                        ? 'bg-[#5cb85c]/20 border-[#5cb85c] text-emerald-600 scale-105 shadow-[0_0_8px_rgba(92,184,92,0.15)]'
+                        : 'bg-white/60 border-emerald-900/10 text-neutral-500 hover:text-emerald-950 hover:border-emerald-900/20'
                       }
                     `}
                   >
@@ -239,14 +239,14 @@ export default function SwipeCard3D({ product, isActive, isPeek, isDragging, ope
           )}
 
           {/* Price Display */}
-          <div className="flex items-center justify-center gap-3 mt-2 h-8 font-mono border-t border-white/5 pt-4">
+          <div className="flex items-center justify-center gap-3 mt-2 h-8 font-mono border-t border-emerald-900/5 pt-4">
             <span 
               className="font-black text-xl text-emerald-400"
             >
               {price === 0 ? (lang === 'en' ? 'On Request' : 'درخواست پر') : `${CURRENCY} ${price?.toLocaleString()}`}
             </span>
             {originalPrice && originalPrice > price && price !== 0 && (
-              <span className="text-white/30 text-xs line-through transition-opacity duration-300">
+              <span className="text-neutral-400 text-xs line-through transition-opacity duration-300">
                 {CURRENCY} {originalPrice.toLocaleString()}
               </span>
             )}
@@ -259,7 +259,7 @@ export default function SwipeCard3D({ product, isActive, isPeek, isDragging, ope
           <motion.button
             onClick={() => openCheckout && openCheckout({ ...product, defaultSize: selectedSize })}
             whileTap={{ scale: 0.97 }}
-            className="w-full py-3.5 rounded-2xl font-black text-xs uppercase tracking-wider text-white relative overflow-hidden"
+            className="w-full py-3.5 rounded-2xl font-black text-xs uppercase tracking-wider text-emerald-950 relative overflow-hidden"
             style={{
               background: `linear-gradient(135deg, ${product.theme || '#10b981'}bb, ${product.theme || '#10b981'}dd)`,
               boxShadow: `0 0 28px ${product.theme || '#10b981'}45`,
@@ -279,7 +279,7 @@ export default function SwipeCard3D({ product, isActive, isPeek, isDragging, ope
           {/* View Details */}
           <Link
             to={`/products/${product.slug}`}
-            className="w-full py-3 rounded-2xl text-center text-xs font-black uppercase tracking-wider text-white/50 border transition-all duration-300"
+            className="w-full py-3 rounded-2xl text-center text-xs font-black uppercase tracking-wider text-neutral-500 border transition-all duration-300"
             style={{
               borderColor: 'rgba(255, 255, 255, 0.1)',
             }}

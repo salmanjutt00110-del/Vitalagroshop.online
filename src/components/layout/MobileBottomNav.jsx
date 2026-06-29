@@ -55,7 +55,7 @@ export const MobileBottomNav = () => {
               {/* Label — TEXT ONLY, CLEAN */}
               <span
                 className={`relative z-10 text-xs font-semibold transition-all duration-300 ${
-                  isActive ? 'text-[#5cb85c]' : 'text-white/40'
+                  isActive ? 'text-[#5cb85c]' : 'text-neutral-500'
                 }`}
               >
                 {tab.label}

@@ -68,16 +68,16 @@ const OrderProgressTracker = ({ order, lang }) => {
   ];
 
   return (
-    <div className="bg-white dark:bg-white/[0.02] border border-border dark:border-white/10 rounded-3xl p-6 text-left shadow-sm mt-6 relative overflow-hidden">
+    <div className="bg-white dark:bg-white/70 border border-border dark:border-emerald-900/10 rounded-3xl p-6 text-left shadow-sm mt-6 relative overflow-hidden">
       <div className="absolute top-0 right-0 w-24 h-24 bg-emerald-500/[0.02] filter blur-xl rounded-full" />
-      <h3 className="text-xs font-black text-muted-foreground dark:text-white/40 uppercase tracking-wider mb-6">
+      <h3 className="text-xs font-black text-muted-foreground dark:text-neutral-500 uppercase tracking-wider mb-6">
         {lang === 'en' ? '📦 Order Processing Progress' : '📦 آرڈر پروسیسنگ کی صورتحال'}
       </h3>
 
       {/* Progress Connector Track */}
       <div className="relative flex flex-col md:flex-row justify-between gap-6 md:gap-4 md:items-center">
         {/* Horizontal Connector Line for Desktop */}
-        <div className="absolute top-5 left-8 right-8 h-0.5 bg-[#F4F7F5] dark:bg-white/5 hidden md:block z-0">
+        <div className="absolute top-5 left-8 right-8 h-0.5 bg-[#F4F7F5] dark:bg-white/60 hidden md:block z-0">
           <motion.div 
             className="h-full bg-gradient-to-r from-emerald-500 to-teal-500"
             initial={{ width: 0 }}
@@ -96,10 +96,10 @@ const OrderProgressTracker = ({ order, lang }) => {
               <motion.div 
                 className={`w-10 h-10 rounded-full flex items-center justify-center border font-mono text-sm font-bold shrink-0 transition-all duration-300 ${
                   isCompleted 
-                    ? 'bg-emerald-500 border-emerald-500 text-white shadow-[0_0_15px_rgba(16,185,129,0.25)]'
+                    ? 'bg-emerald-500 border-emerald-500 text-emerald-950 shadow-[0_0_15px_rgba(16,185,129,0.25)]'
                     : isActive
                       ? 'bg-white dark:bg-[#071910] border-emerald-400 text-emerald-500 shadow-[0_0_15px_rgba(16,185,129,0.15)] animate-pulse'
-                      : 'bg-white dark:bg-[#071910] border-border dark:border-white/5 text-muted-foreground/30 dark:text-white/20'
+                      : 'bg-white dark:bg-[#071910] border-border dark:border-emerald-900/5 text-muted-foreground/30 dark:text-emerald-950/20'
                 }`}
                 whileHover={{ scale: 1.05 }}
               >
@@ -114,14 +114,14 @@ const OrderProgressTracker = ({ order, lang }) => {
               <div className="text-left md:text-center space-y-0.5">
                 <h4 className={`text-xs font-black tracking-wide ${
                   isCompleted 
-                    ? 'text-foreground dark:text-white' 
+                    ? 'text-foreground dark:text-emerald-950' 
                     : isActive 
                       ? 'text-emerald-500 font-extrabold' 
-                      : 'text-muted-foreground/40 dark:text-white/30'
+                      : 'text-muted-foreground/40 dark:text-neutral-400'
                 }`}>
                   {lang === 'en' ? step.labelEn : step.labelUr}
                 </h4>
-                <p className="text-[10px] text-muted-foreground dark:text-white/40 leading-snug font-sans">
+                <p className="text-[10px] text-muted-foreground dark:text-neutral-500 leading-snug font-sans">
                   {lang === 'en' ? step.descEn : step.descUr}
                 </p>
               </div>
@@ -158,10 +158,10 @@ export default function OrderSuccess() {
 
   if (loading) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-[#071910] text-white">
+      <div className="min-h-screen flex items-center justify-center bg-[#071910] text-emerald-950">
         <div className="flex flex-col items-center gap-3">
           <div className="w-10 h-10 rounded-full border-4 border-[#76C945] border-t-transparent animate-spin" />
-          <p className="text-xs text-white/50 tracking-wider">Finalizing Order Success State...</p>
+          <p className="text-xs text-neutral-500 tracking-wider">Finalizing Order Success State...</p>
         </div>
       </div>
     );
@@ -169,10 +169,10 @@ export default function OrderSuccess() {
 
   if (!order) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-[#071910] text-white px-4">
-        <div className="max-w-md w-full text-center space-y-5 p-8 rounded-3xl border border-white/10 bg-white/5 backdrop-blur-xl">
+      <div className="min-h-screen flex items-center justify-center bg-[#071910] text-emerald-950 px-4">
+        <div className="max-w-md w-full text-center space-y-5 p-8 rounded-3xl border border-emerald-900/10 bg-white/60 backdrop-blur-xl">
           <h2 className="text-2xl font-black">Information currently unavailable.</h2>
-          <p className="text-sm text-white/50 leading-relaxed font-semibold">
+          <p className="text-sm text-neutral-500 leading-relaxed font-semibold">
             {lang === 'en'
               ? 'We were unable to locate this order registry. It may still be syncing to Firestore database nodes.'
               : 'آرڈر کی تفصیلات فی الحال دستیاب نہیں ہیں۔ ہو سکتا ہے یہ آرڈر ابھی ڈیٹا بیس کے ساتھ ہم آہنگ ہو رہا ہو۔'}
@@ -202,7 +202,7 @@ export default function OrderSuccess() {
   };
 
   return (
-    <div className="min-h-screen pt-28 pb-20 bg-[#F4F7F5] dark:bg-[#071910] text-foreground dark:text-white transition-colors duration-300">
+    <div className="min-h-screen pt-28 pb-20 bg-[#F4F7F5] dark:bg-[#071910] text-foreground dark:text-emerald-950 transition-colors duration-300">
       <SEOHead
         title="Order Successful | Vital Agro"
         description="Thank you for shopping with Vital Agro Chemical Industries. Your agriculture order has been confirmed successfully."
@@ -228,7 +228,7 @@ export default function OrderSuccess() {
               animate={{ pathLength: 1 }}
               transition={{ duration: 0.5, delay: 0.2 }}
             >
-              <Check size={40} className="text-white stroke-[3.5]" />
+              <Check size={40} className="text-emerald-950 stroke-[3.5]" />
             </motion.div>
           </motion.div>
         </div>
@@ -247,7 +247,7 @@ export default function OrderSuccess() {
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3 }}
-          className="text-sm text-muted-foreground dark:text-white/50 max-w-md mx-auto mt-2 leading-relaxed font-sans"
+          className="text-sm text-muted-foreground dark:text-neutral-500 max-w-md mx-auto mt-2 leading-relaxed font-sans"
         >
           {lang === 'en' 
             ? `Your order registry #${order.orderNumber} has been dispatched to our warehousing logisticians.` 
@@ -268,16 +268,16 @@ export default function OrderSuccess() {
           initial={{ opacity: 0, scale: 0.96 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ delay: 0.4 }}
-          className="bg-white dark:bg-white/[0.02] border border-border dark:border-white/10 rounded-3xl p-6 shadow-sm mt-6 text-left"
+          className="bg-white dark:bg-white/70 border border-border dark:border-emerald-900/10 rounded-3xl p-6 shadow-sm mt-6 text-left"
         >
-          <div className="flex justify-between items-center border-b border-border dark:border-white/5 pb-4">
+          <div className="flex justify-between items-center border-b border-border dark:border-emerald-900/5 pb-4">
             <div>
-              <span className="text-[10px] text-muted-foreground dark:text-white/40 block font-bold uppercase">{lang === 'en' ? 'ORDER NUMBER' : 'آرڈر نمبر'}</span>
-              <span className="font-mono text-base font-black text-primary dark:text-[#8AD65A]">{order.orderNumber}</span>
+              <span className="text-[10px] text-muted-foreground dark:text-neutral-500 block font-bold uppercase">{lang === 'en' ? 'ORDER NUMBER' : 'آرڈر نمبر'}</span>
+              <span className="font-mono text-base font-black text-primary dark:text-emerald-600">{order.orderNumber}</span>
             </div>
             <button
               onClick={() => downloadInvoice(order)}
-              className="flex items-center gap-1.5 px-4 py-2.5 bg-[#5cb85c]/10 dark:bg-[#5cb85c]/15 border border-[#5cb85c]/20 hover:bg-[#5cb85c]/25 text-[#2d6a2d] dark:text-[#8AD65A] rounded-xl text-xs font-black transition-colors"
+              className="flex items-center gap-1.5 px-4 py-2.5 bg-[#5cb85c]/10 dark:bg-[#5cb85c]/15 border border-[#5cb85c]/20 hover:bg-[#5cb85c]/25 text-[#2d6a2d] dark:text-emerald-600 rounded-xl text-xs font-black transition-colors"
             >
               <FileDown size={14} />
               <span>{lang === 'en' ? 'Download Receipt' : 'رسید ڈاؤن لوڈ کریں'}</span>
@@ -288,11 +288,11 @@ export default function OrderSuccess() {
             <div className="flex gap-3">
               <Calendar className="text-primary mt-0.5" size={18} />
               <div>
-                <span className="text-[9px] text-muted-foreground dark:text-white/40 block font-bold uppercase">{lang === 'en' ? 'ESTIMATED DELIVERY' : 'توقعہ تاریخ وصولی'}</span>
-                <span className="text-xs text-foreground dark:text-white/80 font-bold block mt-0.5">
+                <span className="text-[9px] text-muted-foreground dark:text-neutral-500 block font-bold uppercase">{lang === 'en' ? 'ESTIMATED DELIVERY' : 'توقعہ تاریخ وصولی'}</span>
+                <span className="text-xs text-foreground dark:text-neutral-700 font-bold block mt-0.5">
                   {formatEstDate(deliveryMin)} – {formatEstDate(deliveryMax)}
                 </span>
-                <span className="text-[10px] text-muted-foreground dark:text-white/30 block mt-0.5 leading-snug font-sans">
+                <span className="text-[10px] text-muted-foreground dark:text-neutral-400 block mt-0.5 leading-snug font-sans">
                   Deliveries are managed within 2-4 business days.
                 </span>
               </div>
@@ -301,28 +301,28 @@ export default function OrderSuccess() {
             <div className="flex gap-3">
               <Truck className="text-primary mt-0.5" size={18} />
               <div>
-                <span className="text-[9px] text-muted-foreground dark:text-white/40 block font-bold uppercase">{lang === 'en' ? 'SHIPPING ADDRESS' : 'ڈیلیوری ایڈریس'}</span>
-                <span className="text-xs text-foreground dark:text-white/80 font-bold block mt-0.5">
+                <span className="text-[9px] text-muted-foreground dark:text-neutral-500 block font-bold uppercase">{lang === 'en' ? 'SHIPPING ADDRESS' : 'ڈیلیوری ایڈریس'}</span>
+                <span className="text-xs text-foreground dark:text-neutral-700 font-bold block mt-0.5">
                   {order.customer?.name || order.customerName} ({order.customer?.phone || order.customerPhone})
                 </span>
-                <span className="text-[10px] text-muted-foreground dark:text-white/30 block mt-0.5 leading-snug font-sans">
+                <span className="text-[10px] text-muted-foreground dark:text-neutral-400 block mt-0.5 leading-snug font-sans">
                   {order.customer?.address || order.customerAddress}, {order.customer?.city || order.customerCity}, {order.customer?.province || order.customerProvince}
                 </span>
               </div>
             </div>
           </div>
 
-          <div className="grid sm:grid-cols-2 gap-6 pt-4 border-t border-border dark:border-white/5 text-xs mt-4">
+          <div className="grid sm:grid-cols-2 gap-6 pt-4 border-t border-border dark:border-emerald-900/5 text-xs mt-4">
             <div>
-              <span className="text-[9px] text-muted-foreground dark:text-white/40 block font-bold uppercase">{lang === 'en' ? 'PAYMENT METHOD' : 'طریقہ ادائیگی'}</span>
-              <span className="font-extrabold text-foreground dark:text-white/85 mt-1 block">
+              <span className="text-[9px] text-muted-foreground dark:text-neutral-500 block font-bold uppercase">{lang === 'en' ? 'PAYMENT METHOD' : 'طریقہ ادائیگی'}</span>
+              <span className="font-extrabold text-foreground dark:text-emerald-950/85 mt-1 block">
                 {order.paymentMethod === 'cod' || order.paymentMethod === 'COD' || (order.paymentMethod || '').toLowerCase() === 'cod'
                   ? 'Cash On Delivery (COD)' 
                   : (order.paymentMethod || '').toUpperCase() + ' Advance Payment'}
               </span>
             </div>
             <div>
-              <span className="text-[9px] text-muted-foreground dark:text-white/40 block font-bold uppercase">{lang === 'en' ? 'TRANSACTION STATUS' : 'ٹرانزیکشن سٹیٹس'}</span>
+              <span className="text-[9px] text-muted-foreground dark:text-neutral-500 block font-bold uppercase">{lang === 'en' ? 'TRANSACTION STATUS' : 'ٹرانزیکشن سٹیٹس'}</span>
               <span className={`inline-block mt-1.5 px-2 py-0.5 rounded-md text-[9px] font-black uppercase ${
                 order.paymentMethod === 'cod' || order.paymentMethod === 'COD' || (order.paymentMethod || '').toLowerCase() === 'cod'
                   ? 'bg-emerald-500/10 text-emerald-500 border border-emerald-500/20'
@@ -347,7 +347,7 @@ export default function OrderSuccess() {
             href={buildOrderMessage(order)}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center justify-center gap-2 px-6 py-4 bg-[#25D366] hover:bg-[#20ba5a] hover:shadow-[#25D366]/20 text-white rounded-full font-black text-sm transition-colors shadow-lg cursor-pointer"
+            className="flex items-center justify-center gap-2 px-6 py-4 bg-[#25D366] hover:bg-[#20ba5a] hover:shadow-[#25D366]/20 text-emerald-950 rounded-full font-black text-sm transition-colors shadow-lg cursor-pointer"
           >
             <MessageCircle size={16} />
             <span>{lang === 'en' ? 'Confirm on WhatsApp' : 'واٹس ایپ پر آرڈر کنفرم کریں'}</span>
@@ -363,7 +363,7 @@ export default function OrderSuccess() {
 
           <Link
             to="/products"
-            className="flex items-center justify-center gap-2 px-6 py-4 bg-white dark:bg-white/5 border border-border dark:border-white/10 hover:bg-muted dark:hover:bg-white/10 text-foreground dark:text-white rounded-full font-bold text-sm transition-colors"
+            className="flex items-center justify-center gap-2 px-6 py-4 bg-white dark:bg-white/60 border border-border dark:border-emerald-900/10 hover:bg-muted dark:hover:bg-white/80 text-foreground dark:text-emerald-950 rounded-full font-bold text-sm transition-colors"
           >
             <ShoppingBag size={16} />
             <span>{lang === 'en' ? 'Continue Shopping' : 'خریداری جاری رکھیں'}</span>

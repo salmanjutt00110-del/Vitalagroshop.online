@@ -25,7 +25,7 @@ export default function ProductsShowcase() {
 
   return (
     <Suspense fallback={
-      <div className="h-[400px] flex items-center justify-center bg-[#02140c] text-white/40 text-xs tracking-widest font-black uppercase">
+      <div className="h-[400px] flex items-center justify-center bg-[#02140c] text-neutral-500 text-xs tracking-widest font-black uppercase">
         Loading Showcase...
       </div>
     }>

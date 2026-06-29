@@ -149,7 +149,7 @@ export default function MobileSidebar({ open, onClose }) {
             transition-all duration-300 select-none
             ${active 
               ? 'border-emerald-500/50 bg-emerald-950/20 text-emerald-400 font-extrabold shadow-[0_0_20px_rgba(16,185,129,0.12)]' 
-              : 'border-white/5 bg-white/[0.02] text-white/80 hover:text-white'
+              : 'border-emerald-900/5 bg-white/70 text-neutral-700 hover:text-emerald-950'
             }
           `}
         >
@@ -190,7 +190,7 @@ export default function MobileSidebar({ open, onClose }) {
                 e.stopPropagation();
                 onToggle();
               }}
-              className="h-full w-14 flex items-center justify-center border-l border-white/5 hover:bg-white/5 text-white/50 hover:text-white transition-colors cursor-pointer shrink-0"
+              className="h-full w-14 flex items-center justify-center border-l border-emerald-900/5 hover:bg-white/60 text-neutral-500 hover:text-emerald-950 transition-colors cursor-pointer shrink-0"
             >
               <motion.div
                 animate={{ rotate: open ? 180 : 0 }}
@@ -231,7 +231,7 @@ export default function MobileSidebar({ open, onClose }) {
                 animate={{ height: 'auto', opacity: 1 }}
                 exit={{ height: 0, opacity: 0 }}
                 transition={{ duration: 0.28, ease: 'easeInOut' }}
-                className="overflow-hidden bg-neutral-900/10"
+                className="overflow-hidden bg-slate-50/10"
               >
                 <div className="pl-6 pt-1.5 pb-2 ml-4 border-l border-emerald-500/15 flex flex-col gap-1">
                   {children}
@@ -248,7 +248,7 @@ export default function MobileSidebar({ open, onClose }) {
     <button
       type="button"
       onClick={() => go(path)}
-      className="flex items-center gap-3 w-full text-left py-2 text-xs font-bold text-white/50 hover:text-emerald-400 transition-colors duration-200 cursor-pointer bg-none border-none select-none"
+      className="flex items-center gap-3 w-full text-left py-2 text-xs font-bold text-neutral-500 hover:text-emerald-400 transition-colors duration-200 cursor-pointer bg-none border-none select-none"
     >
       <span className="w-1.5 h-1.5 rounded-full bg-emerald-500/30 group-hover:bg-emerald-500 shrink-0" />
       <span>{label}</span>
@@ -273,7 +273,7 @@ export default function MobileSidebar({ open, onClose }) {
         animate={{ opacity: open ? 1 : 0 }}
         transition={{ duration: 0.3 }}
         onClick={onClose}
-        className="absolute inset-0 cursor-pointer bg-black/40 backdrop-blur-[6px]"
+        className="absolute inset-0 cursor-pointer bg-emerald-950/5 backdrop-blur-[6px]"
       />
 
       {/* 3D Glass Sidebar Panel */}
@@ -283,9 +283,9 @@ export default function MobileSidebar({ open, onClose }) {
           opacity: open ? 1 : 0 
         }}
         transition={{ type: 'spring', damping: 28, stiffness: 220 }}
-        className="relative z-10 w-[85vw] max-w-[360px] h-full flex flex-col overflow-hidden rounded-r-3xl border-r border-white/10 shadow-2xl origin-left"
+        className="relative z-10 w-[85vw] max-w-[360px] h-full flex flex-col overflow-hidden rounded-r-3xl border-r border-emerald-900/10 shadow-2xl origin-left"
         style={{
-          background: 'rgba(10, 18, 12, 0.55)',
+          background: 'rgba(255, 255, 255, 0.85)',
           backdropFilter: 'blur(35px) saturate(180%) brightness(110%)',
           WebkitBackdropFilter: 'blur(35px) saturate(180%) brightness(110%)'
         }}
@@ -380,7 +380,7 @@ export default function MobileSidebar({ open, onClose }) {
                 borderColor: 'rgba(16, 185, 129, 0.4)'
               }}
               whileTap={{ scale: 0.9 }}
-              className="w-10 h-10 rounded-xl flex items-center justify-center bg-white/[0.05] border border-white/10 text-white/70 transition-all duration-300 cursor-pointer"
+              className="w-10 h-10 rounded-xl flex items-center justify-center bg-white border border-emerald-900/10 text-neutral-600 transition-all duration-300 cursor-pointer"
             >
               <X size={18} />
             </motion.button>
@@ -422,7 +422,7 @@ export default function MobileSidebar({ open, onClose }) {
           <div className="flex-1 min-h-[40px]" />
 
           {/* ACTION BUTTONS (WhatsApp, Get Quote, Language dropup) */}
-          <div className="border-t border-white/10 pt-6 flex flex-col gap-4 flex-shrink-0">
+          <div className="border-t border-emerald-900/10 pt-6 flex flex-col gap-4 flex-shrink-0">
             
             {/* Get Quote button - premium glowing gradient */}
             <motion.button
@@ -450,7 +450,7 @@ export default function MobileSidebar({ open, onClose }) {
               rel="noreferrer"
               whileHover={{ scale: 1.02, borderColor: 'rgba(16, 185, 129, 0.5)', backgroundColor: 'rgba(16, 185, 129, 0.05)' }}
               whileTap={{ scale: 0.98 }}
-              className="w-full h-[52px] rounded-2xl bg-white/[0.02] border border-white/10 text-white/80 font-black text-sm transition-all duration-300 flex items-center justify-center gap-2 cursor-pointer no-underline"
+              className="w-full h-[52px] rounded-2xl bg-white/70 border border-emerald-900/10 text-neutral-700 font-black text-sm transition-all duration-300 flex items-center justify-center gap-2 cursor-pointer no-underline"
             >
               <MessageCircle size={16} className="text-emerald-400" />
               <span>WhatsApp</span>
@@ -458,14 +458,14 @@ export default function MobileSidebar({ open, onClose }) {
 
             {/* Language Selector Dropup Trigger */}
             <div className="space-y-1">
-              <span className="block text-[9px] font-black text-white/35 uppercase tracking-widest text-left">
+              <span className="block text-[9px] font-black text-neutral-400 uppercase tracking-widest text-left">
                 {lang === 'en' ? 'SELECT LANGUAGE' : 'زبان منتخب کریں'}
               </span>
               <div className="relative">
                 <button
                   type="button"
                   onClick={() => setLangOpen(p => !p)}
-                  className="w-full h-[46px] rounded-2xl bg-white/[0.02] border border-white/10 text-white/80 text-xs font-bold flex items-center justify-between px-4 cursor-pointer transition-colors hover:border-white/20 select-none"
+                  className="w-full h-[46px] rounded-2xl bg-white/70 border border-emerald-900/10 text-neutral-700 text-xs font-bold flex items-center justify-between px-4 cursor-pointer transition-colors hover:border-emerald-900/20 select-none"
                 >
                   <span className="flex items-center gap-2">
                     <Globe size={14} className="text-emerald-400" />
@@ -483,7 +483,7 @@ export default function MobileSidebar({ open, onClose }) {
                       animate={{ opacity: 1, y: 0, scale: 1 }}
                       exit={{ opacity: 0, y: 8, scale: 0.96 }}
                       transition={{ duration: 0.2 }}
-                      className="absolute left-0 right-0 bottom-[calc(100%+8px)] z-50 p-1.5 rounded-2xl bg-[#090f0a]/95 backdrop-blur-2xl border border-white/10 shadow-2xl flex flex-col gap-1"
+                      className="absolute left-0 right-0 bottom-[calc(100%+8px)] z-50 p-1.5 rounded-2xl bg-white/95 backdrop-blur-2xl border border-emerald-900/10 shadow-2xl flex flex-col gap-1"
                     >
                       {[
                         { code: 'en', label: '🇬🇧 English (EN)' },
@@ -495,7 +495,7 @@ export default function MobileSidebar({ open, onClose }) {
                           type="button"
                           onClick={() => { setLang(item.code); setLangOpen(false); }}
                           className={`w-full text-left px-3 py-2.5 rounded-xl text-xs font-black flex items-center justify-between cursor-pointer ${
-                            lang === item.code ? 'bg-emerald-500/10 text-emerald-400' : 'bg-transparent text-white/60 hover:bg-white/5'
+                            lang === item.code ? 'bg-emerald-500/10 text-emerald-400' : 'bg-transparent text-neutral-600 hover:bg-white/60'
                           }`}
                         >
                           <span>{item.label}</span>
@@ -512,7 +512,7 @@ export default function MobileSidebar({ open, onClose }) {
 
             {/* Social Links */}
             <div className="space-y-1">
-              <span className="block text-[9px] font-black text-white/35 uppercase tracking-widest text-left">
+              <span className="block text-[9px] font-black text-neutral-400 uppercase tracking-widest text-left">
                 {lang === 'ur' ? 'سوشل میڈیا' : 'FOLLOW US'}
               </span>
               <div className="flex gap-2.5">
@@ -525,7 +525,7 @@ export default function MobileSidebar({ open, onClose }) {
                     aria-label={name}
                     whileHover={{ scale: 1.1, backgroundColor: 'rgba(16,185,129,0.1)', borderColor: 'rgba(16,185,129,0.4)', color: '#10B981' }}
                     whileTap={{ scale: 0.95 }}
-                    className="w-10 h-10 rounded-full bg-white/[0.02] border border-white/10 text-white/50 flex items-center justify-center cursor-pointer transition-all duration-300"
+                    className="w-10 h-10 rounded-full bg-white/70 border border-emerald-900/10 text-neutral-500 flex items-center justify-center cursor-pointer transition-all duration-300"
                   >
                     <Icon size={16} />
                   </motion.a>

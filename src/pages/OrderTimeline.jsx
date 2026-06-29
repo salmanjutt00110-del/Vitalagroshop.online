@@ -40,10 +40,10 @@ export default function OrderTimeline() {
 
   if (loading) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-[#071910] text-white">
+      <div className="min-h-screen flex items-center justify-center bg-[#071910] text-emerald-950">
         <div className="flex flex-col items-center gap-3">
           <div className="w-10 h-10 rounded-full border-4 border-[#76C945] border-t-transparent animate-spin" />
-          <p className="text-xs text-white/50 tracking-wider">Loading Tracking Timeline...</p>
+          <p className="text-xs text-neutral-500 tracking-wider">Loading Tracking Timeline...</p>
         </div>
       </div>
     );
@@ -51,11 +51,11 @@ export default function OrderTimeline() {
 
   if (!order) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-[#071910] text-white px-4">
-        <div className="max-w-md w-full text-center space-y-5 p-8 rounded-3xl border border-white/10 bg-white/5 backdrop-blur-xl">
+      <div className="min-h-screen flex items-center justify-center bg-[#071910] text-emerald-950 px-4">
+        <div className="max-w-md w-full text-center space-y-5 p-8 rounded-3xl border border-emerald-900/10 bg-white/60 backdrop-blur-xl">
           <AlertCircle className="w-16 h-16 text-red-400 mx-auto" />
           <h2 className="text-2xl font-black">Information currently unavailable.</h2>
-          <p className="text-sm text-white/50 leading-relaxed font-semibold">
+          <p className="text-sm text-neutral-500 leading-relaxed font-semibold">
             {lang === 'en' 
               ? 'The tracking ID is invalid or has expired. Please verify your link and try again.'
               : 'آرڈر ٹریکنگ آئی ڈی درست نہیں ہے۔ براہ کرم لنک چیک کر کے دوبارہ کوشش کریں۔'}
@@ -93,7 +93,7 @@ export default function OrderTimeline() {
   const currentStepIndex = getActiveStepIndex();
 
   return (
-    <div className="min-h-screen pt-28 pb-20 bg-[#F4F7F5] dark:bg-[#071910] transition-colors duration-300 text-foreground dark:text-white">
+    <div className="min-h-screen pt-28 pb-20 bg-[#F4F7F5] dark:bg-[#071910] transition-colors duration-300 text-foreground dark:text-emerald-950">
       <SEOHead
         title={`Track Order ${order.orderNumber || ''} | Vital Agro`}
         description="Track your agricultural crop protection order timeline and download invoices in real time."
@@ -110,7 +110,7 @@ export default function OrderTimeline() {
         </Link>
 
         {/* Order Details Title Summary */}
-        <div className="p-6 bg-white dark:bg-white/[0.03] border border-border dark:border-white/10 rounded-3xl shadow-sm mb-8 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+        <div className="p-6 bg-white dark:bg-white/80 border border-border dark:border-emerald-900/10 rounded-3xl shadow-sm mb-8 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
           <div>
             <span className="text-xs font-black text-primary uppercase tracking-widest block mb-1">
               {lang === 'en' ? 'ORDER TRACKING SYSTEM' : 'آرڈر ٹریکنگ سسٹم'}
@@ -133,8 +133,8 @@ export default function OrderTimeline() {
         </div>
 
         {/* Timeline Visual Track */}
-        <div className="p-8 bg-white dark:bg-white/[0.03] border border-border dark:border-white/10 rounded-3xl shadow-sm">
-          <div className="relative border-l-2 border-border dark:border-white/10 ml-4 pl-8 space-y-10">
+        <div className="p-8 bg-white dark:bg-white/80 border border-border dark:border-emerald-900/10 rounded-3xl shadow-sm">
+          <div className="relative border-l-2 border-border dark:border-emerald-900/10 ml-4 pl-8 space-y-10">
             {TRACKING_STEPS.map((step, idx) => {
               const isCompleted = idx <= currentStepIndex;
               const isActive = idx === currentStepIndex;
@@ -151,7 +151,7 @@ export default function OrderTimeline() {
                   <span className={`absolute -left-[43px] top-0.5 w-6 h-6 rounded-full flex items-center justify-center border transition-all duration-300 ${
                     isCompleted
                       ? 'bg-primary border-primary text-[#0A2E1F]'
-                      : 'bg-background dark:bg-[#071910] border-border dark:border-white/10 text-muted-foreground/40'
+                      : 'bg-background dark:bg-[#071910] border-border dark:border-emerald-900/10 text-muted-foreground/40'
                   }`}>
                     {step.status === 'delivered' ? (
                       <CheckCircle2 size={12} className="stroke-[3]" />
@@ -165,11 +165,11 @@ export default function OrderTimeline() {
                   {/* Step Info Text Details */}
                   <div className="space-y-1">
                     <h3 className={`font-black text-base transition-colors ${
-                      isActive ? 'text-primary' : isCompleted ? 'text-foreground dark:text-white' : 'text-muted-foreground/50'
+                      isActive ? 'text-primary' : isCompleted ? 'text-foreground dark:text-emerald-950' : 'text-muted-foreground/50'
                     }`}>
                       {lang === 'en' ? step.labelEn : step.labelUr}
                     </h3>
-                    <p className="text-xs text-muted-foreground dark:text-white/55 leading-relaxed max-w-lg">
+                    <p className="text-xs text-muted-foreground dark:text-emerald-950/55 leading-relaxed max-w-lg">
                       {lang === 'en' ? step.descEn : step.descUr}
                     </p>
                   </div>
@@ -181,11 +181,11 @@ export default function OrderTimeline() {
 
         {/* Customer Address Summary Info Box */}
         <div className="grid sm:grid-cols-2 gap-4 mt-8">
-          <div className="p-5 bg-white dark:bg-white/[0.02] border border-border dark:border-white/10 rounded-2xl flex gap-3 text-left">
+          <div className="p-5 bg-white dark:bg-white/70 border border-border dark:border-emerald-900/10 rounded-2xl flex gap-3 text-left">
             <MapPin className="text-[#C5A059] shrink-0 mt-0.5" size={18} />
             <div className="space-y-1">
               <span className="text-[10px] text-muted-foreground block font-bold uppercase tracking-wider">{lang === 'en' ? 'DELIVERY DESTINATION' : 'ڈیلیوری ایڈریس'}</span>
-              <p className="text-xs text-foreground dark:text-white/80 font-semibold leading-relaxed">
+              <p className="text-xs text-foreground dark:text-neutral-700 font-semibold leading-relaxed">
                 {order.customer?.name} ({order.customer?.phone})
               </p>
               <p className="text-[11px] text-muted-foreground leading-relaxed">
@@ -194,11 +194,11 @@ export default function OrderTimeline() {
             </div>
           </div>
 
-          <div className="p-5 bg-white dark:bg-white/[0.02] border border-border dark:border-white/10 rounded-2xl flex gap-3 text-left">
+          <div className="p-5 bg-white dark:bg-white/70 border border-border dark:border-emerald-900/10 rounded-2xl flex gap-3 text-left">
             <ShoppingBag className="text-primary shrink-0 mt-0.5" size={18} />
             <div className="space-y-1">
               <span className="text-[10px] text-muted-foreground block font-bold uppercase tracking-wider">{lang === 'en' ? 'ITEM ORDER DETAILS' : 'آرڈر کی تفصیلات'}</span>
-              <p className="text-xs text-foreground dark:text-white/80 font-bold leading-relaxed">
+              <p className="text-xs text-foreground dark:text-neutral-700 font-bold leading-relaxed">
                 {order.item?.productName}
               </p>
               <p className="text-[11px] text-muted-foreground font-mono">

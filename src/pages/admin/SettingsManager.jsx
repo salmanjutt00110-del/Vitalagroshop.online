@@ -182,16 +182,16 @@ export default function SettingsManager() {
   };
 
   return (
-    <div className="space-y-6 text-white text-left font-sans">
-      <div className="flex justify-between items-center border-b border-white/5 pb-4">
+    <div className="space-y-6 text-emerald-950 text-left font-sans">
+      <div className="flex justify-between items-center border-b border-emerald-900/5 pb-4">
         <div>
           <h2 className="text-xl font-bold tracking-wider uppercase text-emerald-400">Website Configuration Settings</h2>
-          <p className="text-white/40 text-xs mt-1 font-sans">Configure branding attributes, CMS overrides, details coordinates, and page SEO headers</p>
+          <p className="text-neutral-500 text-xs mt-1 font-sans">Configure branding attributes, CMS overrides, details coordinates, and page SEO headers</p>
         </div>
       </div>
 
       {/* Tabs list */}
-      <div className="flex border-b border-white/5 gap-6 text-xs uppercase font-bold font-mono overflow-x-auto pb-1 scrollbar-hide">
+      <div className="flex border-b border-emerald-900/5 gap-6 text-xs uppercase font-bold font-mono overflow-x-auto pb-1 scrollbar-hide">
         <button 
           onClick={() => setActiveTab('site')}
           className={`pb-2.5 transition-all cursor-pointer whitespace-nowrap ${activeTab === 'site' ? 'border-b-2 border-[#10B981] text-[#10B981]' : 'text-neutral-500 hover:text-neutral-300'}`}
@@ -238,7 +238,7 @@ export default function SettingsManager() {
                 required
                 value={siteDetails.name}
                 onChange={e => setSiteDetails({ ...siteDetails, name: e.target.value })}
-                className="w-full px-3 py-2 bg-black/40 border border-[#10b981]/15 rounded-xl outline-none focus:border-emerald-500/40 text-white font-sans font-bold"
+                className="w-full px-3 py-2 bg-emerald-950/5 border border-[#10b981]/15 rounded-xl outline-none focus:border-emerald-500/40 text-emerald-950 font-sans font-bold"
               />
             </div>
             <div className="space-y-1">
@@ -248,7 +248,7 @@ export default function SettingsManager() {
                 required
                 value={siteDetails.logo}
                 onChange={e => setSiteDetails({ ...siteDetails, logo: e.target.value })}
-                className="w-full px-3 py-2 bg-black/40 border border-[#10b981]/15 rounded-xl outline-none focus:border-emerald-500/40 text-white font-sans"
+                className="w-full px-3 py-2 bg-emerald-950/5 border border-[#10b981]/15 rounded-xl outline-none focus:border-emerald-500/40 text-emerald-950 font-sans"
               />
             </div>
             <div className="space-y-1">
@@ -258,7 +258,7 @@ export default function SettingsManager() {
                 required
                 value={siteDetails.favicon}
                 onChange={e => setSiteDetails({ ...siteDetails, favicon: e.target.value })}
-                className="w-full px-3 py-2 bg-black/40 border border-[#10b981]/15 rounded-xl outline-none focus:border-emerald-500/40 text-white font-sans"
+                className="w-full px-3 py-2 bg-emerald-950/5 border border-[#10b981]/15 rounded-xl outline-none focus:border-emerald-500/40 text-emerald-950 font-sans"
               />
             </div>
             <button 
@@ -274,20 +274,20 @@ export default function SettingsManager() {
       {/* Tab: CMS Page editor overrides */}
       {activeTab === 'cms' && (
         <div className="space-y-6">
-          <div className="flex items-center justify-between border-b border-white/5 pb-2">
+          <div className="flex items-center justify-between border-b border-emerald-900/5 pb-2">
             <h3 className="font-bold text-xs uppercase tracking-wider font-mono">Bilingual Homepage CMS Dictionary</h3>
             
             {/* Language Switcher */}
-            <div className="flex bg-black/55 border border-white/5 rounded-xl p-0.5 font-mono text-[9px] uppercase font-bold tracking-wider">
+            <div className="flex bg-black/55 border border-emerald-900/5 rounded-xl p-0.5 font-mono text-[9px] uppercase font-bold tracking-wider">
               <button
                 onClick={() => setCmsLang('en')}
-                className={`px-3 py-1.5 rounded-lg transition-all cursor-pointer ${cmsLang === 'en' ? 'bg-[#10B981] text-[#020503]' : 'text-neutral-500 hover:text-white'}`}
+                className={`px-3 py-1.5 rounded-lg transition-all cursor-pointer ${cmsLang === 'en' ? 'bg-[#10B981] text-[#020503]' : 'text-neutral-500 hover:text-emerald-950'}`}
               >
                 English
               </button>
               <button
                 onClick={() => setCmsLang('ur')}
-                className={`px-3 py-1.5 rounded-lg transition-all cursor-pointer ${cmsLang === 'ur' ? 'bg-[#10B981] text-[#020503]' : 'text-neutral-500 hover:text-white'}`}
+                className={`px-3 py-1.5 rounded-lg transition-all cursor-pointer ${cmsLang === 'ur' ? 'bg-[#10B981] text-[#020503]' : 'text-neutral-500 hover:text-emerald-950'}`}
               >
                 اردو (Urdu)
               </button>
@@ -297,7 +297,7 @@ export default function SettingsManager() {
           <form onSubmit={handleSaveCMSOverrides} className="grid grid-cols-1 lg:grid-cols-2 gap-6 items-start">
             {/* Left side: Hero CMS inputs */}
             <div className="bg-[#060b07]/55 backdrop-blur-xl border border-[#10b981]/15 rounded-2xl p-5 space-y-4 shadow-lg text-left">
-              <h4 className="font-bold text-xs uppercase tracking-wider text-emerald-400 border-b border-white/5 pb-2 font-mono">
+              <h4 className="font-bold text-xs uppercase tracking-wider text-emerald-400 border-b border-emerald-900/5 pb-2 font-mono">
                 🚀 Hero Landing Section CMS
               </h4>
               <div className="space-y-3 text-xs font-mono">
@@ -308,7 +308,7 @@ export default function SettingsManager() {
                     required
                     value={heroBadge}
                     onChange={e => setHeroBadge(e.target.value)}
-                    className="w-full px-3 py-2 bg-black/40 border border-[#10b981]/15 rounded-xl outline-none focus:border-emerald-500/40 text-white font-sans"
+                    className="w-full px-3 py-2 bg-emerald-950/5 border border-[#10b981]/15 rounded-xl outline-none focus:border-emerald-500/40 text-emerald-950 font-sans"
                   />
                 </div>
                 <div className="grid grid-cols-2 gap-3">
@@ -319,7 +319,7 @@ export default function SettingsManager() {
                       required
                       value={heroHeading1}
                       onChange={e => setHeroHeading1(e.target.value)}
-                      className="w-full px-3 py-2 bg-black/40 border border-[#10b981]/15 rounded-xl outline-none focus:border-emerald-500/40 text-white font-sans"
+                      className="w-full px-3 py-2 bg-emerald-950/5 border border-[#10b981]/15 rounded-xl outline-none focus:border-emerald-500/40 text-emerald-950 font-sans"
                     />
                   </div>
                   <div className="space-y-1">
@@ -329,7 +329,7 @@ export default function SettingsManager() {
                       required
                       value={heroHeading2}
                       onChange={e => setHeroHeading2(e.target.value)}
-                      className="w-full px-3 py-2 bg-black/40 border border-[#10b981]/15 rounded-xl outline-none focus:border-emerald-500/40 text-white font-sans"
+                      className="w-full px-3 py-2 bg-emerald-950/5 border border-[#10b981]/15 rounded-xl outline-none focus:border-emerald-500/40 text-emerald-950 font-sans"
                     />
                   </div>
                 </div>
@@ -340,7 +340,7 @@ export default function SettingsManager() {
                     required
                     value={heroSub}
                     onChange={e => setHeroSub(e.target.value)}
-                    className="w-full px-3 py-2 bg-black/40 border border-[#10b981]/15 rounded-xl outline-none focus:border-emerald-500/40 text-white font-sans resize-none leading-relaxed text-xs"
+                    className="w-full px-3 py-2 bg-emerald-950/5 border border-[#10b981]/15 rounded-xl outline-none focus:border-emerald-500/40 text-emerald-950 font-sans resize-none leading-relaxed text-xs"
                   />
                 </div>
               </div>
@@ -349,7 +349,7 @@ export default function SettingsManager() {
             {/* Right side: About & Footer CMS inputs */}
             <div className="space-y-6">
               <div className="bg-[#060b07]/55 backdrop-blur-xl border border-[#10b981]/15 rounded-2xl p-5 space-y-4 shadow-lg text-left">
-                <h4 className="font-bold text-xs uppercase tracking-wider text-emerald-400 border-b border-white/5 pb-2 font-mono">
+                <h4 className="font-bold text-xs uppercase tracking-wider text-emerald-400 border-b border-emerald-900/5 pb-2 font-mono">
                   🌱 About Overview & Footer CMS
                 </h4>
                 <div className="space-y-3 text-xs font-mono">
@@ -361,7 +361,7 @@ export default function SettingsManager() {
                         required
                         value={aboutBadge}
                         onChange={e => setAboutBadge(e.target.value)}
-                        className="w-full px-3 py-2 bg-black/40 border border-[#10b981]/15 rounded-xl outline-none focus:border-emerald-500/40 text-white font-sans"
+                        className="w-full px-3 py-2 bg-emerald-950/5 border border-[#10b981]/15 rounded-xl outline-none focus:border-emerald-500/40 text-emerald-950 font-sans"
                       />
                     </div>
                     <div className="space-y-1">
@@ -371,7 +371,7 @@ export default function SettingsManager() {
                         required
                         value={aboutTitle}
                         onChange={e => setAboutTitle(e.target.value)}
-                        className="w-full px-3 py-2 bg-black/40 border border-[#10b981]/15 rounded-xl outline-none focus:border-emerald-500/40 text-white font-sans font-bold"
+                        className="w-full px-3 py-2 bg-emerald-950/5 border border-[#10b981]/15 rounded-xl outline-none focus:border-emerald-500/40 text-emerald-950 font-sans font-bold"
                       />
                     </div>
                   </div>
@@ -382,11 +382,11 @@ export default function SettingsManager() {
                       required
                       value={aboutDesc}
                       onChange={e => setAboutDesc(e.target.value)}
-                      className="w-full px-3 py-2 bg-black/40 border border-[#10b981]/15 rounded-xl outline-none focus:border-emerald-500/40 text-white font-sans resize-none leading-relaxed text-xs"
+                      className="w-full px-3 py-2 bg-emerald-950/5 border border-[#10b981]/15 rounded-xl outline-none focus:border-emerald-500/40 text-emerald-950 font-sans resize-none leading-relaxed text-xs"
                     />
                   </div>
                   
-                  <div className="h-px bg-white/5 my-2" />
+                  <div className="h-px bg-white/60 my-2" />
                   
                   <div className="space-y-1">
                     <label className="text-[9px] text-neutral-400 uppercase block">Footer description</label>
@@ -395,7 +395,7 @@ export default function SettingsManager() {
                       required
                       value={footerDesc}
                       onChange={e => setFooterDesc(e.target.value)}
-                      className="w-full px-3 py-2 bg-black/40 border border-[#10b981]/15 rounded-xl outline-none focus:border-emerald-500/40 text-white font-sans resize-none leading-relaxed text-xs"
+                      className="w-full px-3 py-2 bg-emerald-950/5 border border-[#10b981]/15 rounded-xl outline-none focus:border-emerald-500/40 text-emerald-950 font-sans resize-none leading-relaxed text-xs"
                     />
                   </div>
 
@@ -406,7 +406,7 @@ export default function SettingsManager() {
                       required
                       value={footerTagline}
                       onChange={e => setFooterTagline(e.target.value)}
-                      className="w-full px-3 py-2 bg-black/40 border border-[#10b981]/15 rounded-xl outline-none focus:border-emerald-500/40 text-white font-sans"
+                      className="w-full px-3 py-2 bg-emerald-950/5 border border-[#10b981]/15 rounded-xl outline-none focus:border-emerald-500/40 text-emerald-950 font-sans"
                     />
                   </div>
                 </div>
@@ -417,7 +417,7 @@ export default function SettingsManager() {
                 <button
                   type="button"
                   onClick={() => loadCMSOverrides(cmsLang)}
-                  className="px-5 py-2.5 bg-neutral-900 border border-white/5 hover:border-white/10 text-neutral-400 hover:text-white rounded-xl uppercase text-[10px] tracking-wider cursor-pointer font-bold font-mono transition-all"
+                  className="px-5 py-2.5 bg-slate-50 border border-emerald-900/5 hover:border-emerald-900/10 text-neutral-400 hover:text-emerald-950 rounded-xl uppercase text-[10px] tracking-wider cursor-pointer font-bold font-mono transition-all"
                 >
                   Reset Defaults
                 </button>
@@ -451,13 +451,13 @@ export default function SettingsManager() {
 
             <div className="space-y-4">
               {sliders.map((slide, idx) => (
-                <div key={slide.id} className="bg-[#060b07]/55 backdrop-blur-xl border border-[#10b981]/15 rounded-2xl overflow-hidden flex gap-4 p-4 items-center transition-all hover:border-white/10">
-                  <div className="w-28 h-16 bg-neutral-900 rounded-lg overflow-hidden shrink-0 border border-white/5">
+                <div key={slide.id} className="bg-[#060b07]/55 backdrop-blur-xl border border-[#10b981]/15 rounded-2xl overflow-hidden flex gap-4 p-4 items-center transition-all hover:border-emerald-900/10">
+                  <div className="w-28 h-16 bg-slate-50 rounded-lg overflow-hidden shrink-0 border border-emerald-900/5">
                     <img src={slide.image} alt={slide.title} className="w-full h-full object-cover" />
                   </div>
                   <div className="flex-1 space-y-1 text-left font-sans">
                     <span className="text-[8px] text-neutral-500 font-mono block">SLIDE #{idx + 1}</span>
-                    <h4 className="font-bold text-xs text-white leading-snug">{slide.title}</h4>
+                    <h4 className="font-bold text-xs text-emerald-950 leading-snug">{slide.title}</h4>
                     <p className="text-[10px] text-neutral-400 line-clamp-1">{slide.subtitle}</p>
                   </div>
                   <button 
@@ -486,7 +486,7 @@ export default function SettingsManager() {
                   placeholder="e.g. Ultra Premium Biotech Inputs"
                   value={newTitle}
                   onChange={e => setNewTitle(e.target.value)}
-                  className="w-full px-3 py-2 bg-black/40 border border-[#10b981]/15 rounded-xl outline-none focus:border-emerald-500/40 text-white font-sans"
+                  className="w-full px-3 py-2 bg-emerald-950/5 border border-[#10b981]/15 rounded-xl outline-none focus:border-emerald-500/40 text-emerald-950 font-sans"
                 />
               </div>
 
@@ -497,7 +497,7 @@ export default function SettingsManager() {
                   placeholder="e.g. Scientifically calibrated for yield maximization"
                   value={newSubtitle}
                   onChange={e => setNewSubtitle(e.target.value)}
-                  className="w-full px-3 py-2 bg-black/40 border border-[#10b981]/15 rounded-xl outline-none focus:border-emerald-500/40 text-white font-sans"
+                  className="w-full px-3 py-2 bg-emerald-950/5 border border-[#10b981]/15 rounded-xl outline-none focus:border-emerald-500/40 text-emerald-950 font-sans"
                 />
               </div>
 
@@ -509,7 +509,7 @@ export default function SettingsManager() {
                   placeholder="https://images.unsplash.com/..."
                   value={newImage}
                   onChange={e => setNewImage(e.target.value)}
-                  className="w-full px-3 py-2 bg-black/40 border border-[#10b981]/15 rounded-xl outline-none focus:border-emerald-500/40 text-white font-mono"
+                  className="w-full px-3 py-2 bg-emerald-950/5 border border-[#10b981]/15 rounded-xl outline-none focus:border-emerald-500/40 text-emerald-950 font-mono"
                 />
               </div>
 
@@ -540,7 +540,7 @@ export default function SettingsManager() {
                 required
                 value={contact.address}
                 onChange={e => setContact({ ...contact, address: e.target.value })}
-                className="w-full px-3 py-2 bg-black/40 border border-[#10b981]/15 rounded-xl outline-none focus:border-emerald-500/40 text-white resize-none font-sans leading-relaxed text-xs"
+                className="w-full px-3 py-2 bg-emerald-950/5 border border-[#10b981]/15 rounded-xl outline-none focus:border-emerald-500/40 text-emerald-950 resize-none font-sans leading-relaxed text-xs"
               />
             </div>
 
@@ -552,7 +552,7 @@ export default function SettingsManager() {
                   required
                   value={contact.phone}
                   onChange={e => setContact({ ...contact, phone: e.target.value })}
-                  className="w-full px-3 py-2 bg-black/40 border border-[#10b981]/15 rounded-xl outline-none focus:border-emerald-500/40 text-white font-mono"
+                  className="w-full px-3 py-2 bg-emerald-950/5 border border-[#10b981]/15 rounded-xl outline-none focus:border-emerald-500/40 text-emerald-950 font-mono"
                 />
               </div>
               <div className="space-y-1">
@@ -562,7 +562,7 @@ export default function SettingsManager() {
                   required
                   value={contact.whatsapp}
                   onChange={e => setContact({ ...contact, whatsapp: e.target.value })}
-                  className="w-full px-3 py-2 bg-black/40 border border-[#10b981]/15 rounded-xl outline-none focus:border-emerald-500/40 text-white font-mono"
+                  className="w-full px-3 py-2 bg-emerald-950/5 border border-[#10b981]/15 rounded-xl outline-none focus:border-emerald-500/40 text-emerald-950 font-mono"
                 />
               </div>
             </div>
@@ -575,7 +575,7 @@ export default function SettingsManager() {
                   required
                   value={contact.email}
                   onChange={e => setContact({ ...contact, email: e.target.value })}
-                  className="w-full px-3 py-2 bg-black/40 border border-[#10b981]/15 rounded-xl outline-none focus:border-emerald-500/40 text-white font-mono"
+                  className="w-full px-3 py-2 bg-emerald-950/5 border border-[#10b981]/15 rounded-xl outline-none focus:border-emerald-500/40 text-emerald-950 font-mono"
                 />
               </div>
               <div className="space-y-1">
@@ -585,7 +585,7 @@ export default function SettingsManager() {
                   required
                   value={contact.mapsLink}
                   onChange={e => setContact({ ...contact, mapsLink: e.target.value })}
-                  className="w-full px-3 py-2 bg-black/40 border border-[#10b981]/15 rounded-xl outline-none focus:border-emerald-500/40 text-white font-mono"
+                  className="w-full px-3 py-2 bg-emerald-950/5 border border-[#10b981]/15 rounded-xl outline-none focus:border-emerald-500/40 text-emerald-950 font-mono"
                 />
               </div>
             </div>
@@ -615,7 +615,7 @@ export default function SettingsManager() {
                 required
                 value={seo.title}
                 onChange={e => setSeo({ ...seo, title: e.target.value })}
-                className="w-full px-3 py-2 bg-black/40 border border-[#10b981]/15 rounded-xl outline-none focus:border-emerald-500/40 text-white font-sans font-bold"
+                className="w-full px-3 py-2 bg-emerald-950/5 border border-[#10b981]/15 rounded-xl outline-none focus:border-emerald-500/40 text-emerald-950 font-sans font-bold"
               />
             </div>
 
@@ -626,7 +626,7 @@ export default function SettingsManager() {
                 required
                 value={seo.keywords}
                 onChange={e => setSeo({ ...seo, keywords: e.target.value })}
-                className="w-full px-3 py-2 bg-black/40 border border-[#10b981]/15 rounded-xl outline-none focus:border-emerald-500/40 text-white font-sans"
+                className="w-full px-3 py-2 bg-emerald-950/5 border border-[#10b981]/15 rounded-xl outline-none focus:border-emerald-500/40 text-emerald-950 font-sans"
               />
             </div>
 
@@ -637,7 +637,7 @@ export default function SettingsManager() {
                 required
                 value={seo.description}
                 onChange={e => setSeo({ ...seo, description: e.target.value })}
-                className="w-full px-3 py-2 bg-black/40 border border-[#10b981]/15 rounded-xl outline-none focus:border-emerald-500/40 text-white font-sans resize-none leading-relaxed text-xs"
+                className="w-full px-3 py-2 bg-emerald-950/5 border border-[#10b981]/15 rounded-xl outline-none focus:border-emerald-500/40 text-emerald-950 font-sans resize-none leading-relaxed text-xs"
               />
             </div>
 

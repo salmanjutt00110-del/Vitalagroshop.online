@@ -183,7 +183,7 @@ export const WelcomeScreen = ({ onComplete }) => {
 
       {/* Layer 6: Glassmorphism Card Wrapper Container */}
       <div 
-        className="relative z-10 w-[90%] max-w-[420px] rounded-[36px] border border-white/10 p-8 sm:p-10 flex flex-col items-center gap-8 text-center"
+        className="relative z-10 w-[90%] max-w-[420px] rounded-[36px] border border-emerald-900/10 p-8 sm:p-10 flex flex-col items-center gap-8 text-center"
         style={{
           background: 'rgba(5, 15, 8, 0.45)',
           backdropFilter: 'blur(32px) saturate(180%)',
@@ -196,7 +196,7 @@ export const WelcomeScreen = ({ onComplete }) => {
 
         {/* 3D-effect Rotating Logo with light sweep shine */}
         <motion.div
-          className="relative w-28 h-28 rounded-2xl bg-white/[0.02] border border-white/10 flex items-center justify-center p-4 overflow-hidden"
+          className="relative w-28 h-28 rounded-2xl bg-white/70 border border-emerald-900/10 flex items-center justify-center p-4 overflow-hidden"
           animate={{
             rotateY: [0, 15, 0, -15, 0],
             rotateX: [0, 8, 0, -8, 0],
@@ -228,7 +228,7 @@ export const WelcomeScreen = ({ onComplete }) => {
 
         {/* Brand Text Header */}
         <div className="space-y-1">
-          <h1 className="text-white font-extrabold tracking-[0.25em] text-lg uppercase font-heading">
+          <h1 className="text-emerald-950 font-extrabold tracking-[0.25em] text-lg uppercase font-heading">
             Vital Agro
           </h1>
           <p className="text-[#4ade80] text-[9px] tracking-[0.3em] uppercase font-bold">
@@ -237,9 +237,9 @@ export const WelcomeScreen = ({ onComplete }) => {
         </div>
 
         {/* Loader Progress & Dynamic Console */}
-        <div className="w-full space-y-4 pt-4 border-t border-white/5">
+        <div className="w-full space-y-4 pt-4 border-t border-emerald-900/5">
           {/* Smooth Progress Bar */}
-          <div className="w-full h-[3px] bg-white/5 rounded-full overflow-hidden relative">
+          <div className="w-full h-[3px] bg-white/60 rounded-full overflow-hidden relative">
             <div 
               className="h-full rounded-full bg-gradient-to-r from-[#10b981] via-[#4ade80] to-[#a7f3d0] transition-all duration-100 ease-out"
               style={{

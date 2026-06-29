@@ -63,10 +63,10 @@ export default function MediaLibrary() {
   });
 
   return (
-    <div className="space-y-6 text-white text-left font-sans">
+    <div className="space-y-6 text-emerald-950 text-left font-sans">
       <div>
         <h2 className="text-xl font-bold tracking-wider uppercase text-emerald-400">Media & Document Library</h2>
-        <p className="text-white/40 text-xs mt-1">Upload and compress product labels, 3D files, banners, and brochures</p>
+        <p className="text-neutral-500 text-xs mt-1">Upload and compress product labels, 3D files, banners, and brochures</p>
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 items-start">
@@ -77,7 +77,7 @@ export default function MediaLibrary() {
           <div 
             onDragOver={handleDragOver}
             onDrop={handleDrop}
-            className="border-2 border-dashed border-white/5 hover:border-emerald-500/20 rounded-xl p-8 bg-black/50 flex flex-col items-center justify-center text-center cursor-pointer transition-all duration-300"
+            className="border-2 border-dashed border-emerald-900/5 hover:border-emerald-500/20 rounded-xl p-8 bg-emerald-950/10 flex flex-col items-center justify-center text-center cursor-pointer transition-all duration-300"
           >
             <Upload className="w-10 h-10 text-[#10B981] mb-3" />
             <span className="text-xs font-bold uppercase tracking-wider text-[#10B981] font-mono">Drag & Drop Files Here</span>
@@ -99,7 +99,7 @@ export default function MediaLibrary() {
                 placeholder="Search assets name..."
                 value={searchQuery}
                 onChange={e => setSearchQuery(e.target.value)}
-                className="w-full bg-black/50 border border-white/5 focus:border-[#10b981]/40 rounded-xl py-2 pl-9 pr-4 text-xs text-white outline-none font-mono"
+                className="w-full bg-emerald-950/10 border border-emerald-900/5 focus:border-[#10b981]/40 rounded-xl py-2 pl-9 pr-4 text-xs text-emerald-950 outline-none font-mono"
               />
             </div>
 
@@ -107,7 +107,7 @@ export default function MediaLibrary() {
             <div className="flex items-center gap-2 justify-between">
               
               {/* Filter Tabs */}
-              <div className="flex bg-black/55 border border-white/5 rounded-xl p-0.5 font-mono text-[9px] uppercase font-bold tracking-wider">
+              <div className="flex bg-black/55 border border-emerald-900/5 rounded-xl p-0.5 font-mono text-[9px] uppercase font-bold tracking-wider">
                 {['all', 'image', 'document', 'video'].map(tab => (
                   <button
                     key={tab}
@@ -115,7 +115,7 @@ export default function MediaLibrary() {
                     className={`px-2.5 py-1.5 rounded-lg transition-all cursor-pointer ${
                       activeFilterTab === tab 
                         ? 'bg-[#10B981] text-[#020503]'
-                        : 'text-neutral-500 hover:text-white'
+                        : 'text-neutral-500 hover:text-emerald-950'
                     }`}
                   >
                     {tab}
@@ -124,16 +124,16 @@ export default function MediaLibrary() {
               </div>
 
               {/* View mode toggle */}
-              <div className="flex bg-black border border-white/5 rounded-xl p-0.5">
+              <div className="flex bg-black border border-emerald-900/5 rounded-xl p-0.5">
                 <button
                   onClick={() => setViewMode('grid')}
-                  className={`p-1.5 rounded-lg transition-all cursor-pointer ${viewMode === 'grid' ? 'bg-white/10 text-white' : 'text-neutral-500'}`}
+                  className={`p-1.5 rounded-lg transition-all cursor-pointer ${viewMode === 'grid' ? 'bg-white/80 text-emerald-950' : 'text-neutral-500'}`}
                 >
                   <Grid size={13} />
                 </button>
                 <button
                   onClick={() => setViewMode('list')}
-                  className={`p-1.5 rounded-lg transition-all cursor-pointer ${viewMode === 'list' ? 'bg-white/10 text-white' : 'text-neutral-500'}`}
+                  className={`p-1.5 rounded-lg transition-all cursor-pointer ${viewMode === 'list' ? 'bg-white/80 text-emerald-950' : 'text-neutral-500'}`}
                 >
                   <List size={13} />
                 </button>
@@ -145,7 +145,7 @@ export default function MediaLibrary() {
 
           {/* Grid display */}
           {filteredMedia.length === 0 ? (
-            <div className="text-center py-20 border border-dashed border-white/5 rounded-xl font-mono text-neutral-500">
+            <div className="text-center py-20 border border-dashed border-emerald-900/5 rounded-xl font-mono text-neutral-500">
               No matching assets registered in library.
             </div>
           ) : viewMode === 'grid' ? (
@@ -154,15 +154,15 @@ export default function MediaLibrary() {
                 const isImage = item.type === 'image';
                 const isVideo = item.type === 'video';
                 return (
-                  <div key={item.id} className="p-4 bg-black/40 border border-[#10b981]/15 hover:bg-neutral-900/60 rounded-xl flex items-center justify-between gap-4 font-mono text-xs transition-all duration-150 relative group">
+                  <div key={item.id} className="p-4 bg-emerald-950/5 border border-[#10b981]/15 hover:bg-slate-50/80 rounded-xl flex items-center justify-between gap-4 font-mono text-xs transition-all duration-150 relative group">
                     <div className="flex items-center gap-3 min-w-0">
-                      <div className="w-12 h-12 bg-black/50 border border-[#10b981]/15 rounded-lg flex items-center justify-center shrink-0">
+                      <div className="w-12 h-12 bg-emerald-950/10 border border-[#10b981]/15 rounded-lg flex items-center justify-center shrink-0">
                         {isImage && <ImageIcon className="w-5 h-5 text-emerald-400" />}
                         {isVideo && <Video className="w-5 h-5 text-purple-400" />}
                         {item.type === 'document' && <FileText className="w-5 h-5 text-blue-400" />}
                       </div>
                       <div className="text-left min-w-0">
-                        <span className="text-white font-bold block truncate max-w-[120px]" title={item.name}>{item.name}</span>
+                        <span className="text-emerald-950 font-bold block truncate max-w-[120px]" title={item.name}>{item.name}</span>
                         <span className="text-neutral-500 text-[9px] block uppercase mt-0.5">{item.size} • {item.type}</span>
                       </div>
                     </div>
@@ -170,7 +170,7 @@ export default function MediaLibrary() {
                     <div className="flex gap-1.5 shrink-0">
                       <button
                         onClick={() => handleCopyLink(item)}
-                        className="p-2 bg-black/50 border border-[#10b981]/15 hover:bg-neutral-850 hover:border-white/10 rounded-lg text-neutral-500 hover:text-white transition-all cursor-pointer"
+                        className="p-2 bg-emerald-950/10 border border-[#10b981]/15 hover:bg-neutral-850 hover:border-emerald-900/10 rounded-lg text-neutral-500 hover:text-emerald-950 transition-all cursor-pointer"
                         title="Copy URL"
                       >
                         {copiedId === item.id ? <Check size={12} className="text-emerald-400" /> : <Copy size={12} />}
@@ -192,7 +192,7 @@ export default function MediaLibrary() {
             <div className="overflow-x-auto font-mono">
               <table className="w-full text-left border-collapse text-xs">
                 <thead>
-                  <tr className="border-b border-white/5 text-[9px] text-neutral-500 uppercase tracking-widest font-mono">
+                  <tr className="border-b border-emerald-900/5 text-[9px] text-neutral-500 uppercase tracking-widest font-mono">
                     <th className="py-2.5 px-3">Asset Details</th>
                     <th className="py-2.5 px-3">Size</th>
                     <th className="py-2.5 px-3">Type</th>
@@ -201,8 +201,8 @@ export default function MediaLibrary() {
                 </thead>
                 <tbody>
                   {filteredMedia.map(item => (
-                    <tr key={item.id} className="border-b border-white/5 hover:bg-neutral-900/40 transition-colors">
-                      <td className="py-3 px-3 text-white font-bold">{item.name}</td>
+                    <tr key={item.id} className="border-b border-emerald-900/5 hover:bg-slate-50/40 transition-colors">
+                      <td className="py-3 px-3 text-emerald-950 font-bold">{item.name}</td>
                       <td className="py-3 px-3 text-neutral-400">{item.size}</td>
                       <td className="py-3 px-3">
                         <span className={`px-2 py-0.5 rounded text-[8px] uppercase font-bold tracking-wider ${
@@ -217,7 +217,7 @@ export default function MediaLibrary() {
                         <div className="flex gap-1.5 justify-end">
                           <button
                             onClick={() => handleCopyLink(item)}
-                            className="p-1.5 bg-black/55 border border-[#10b981]/15 hover:bg-neutral-850 hover:border-white/10 rounded-lg text-neutral-500 hover:text-white transition-all cursor-pointer"
+                            className="p-1.5 bg-black/55 border border-[#10b981]/15 hover:bg-neutral-850 hover:border-emerald-900/10 rounded-lg text-neutral-500 hover:text-emerald-950 transition-all cursor-pointer"
                             title="Copy URL"
                           >
                             {copiedId === item.id ? <Check size={11} className="text-emerald-400" /> : <Copy size={11} />}

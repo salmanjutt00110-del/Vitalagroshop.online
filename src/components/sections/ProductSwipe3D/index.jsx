@@ -255,7 +255,7 @@ export default function ProductSwipe3D({ products: rawProducts, openCheckout, au
           ✦ {lang === 'en' ? 'OUR PRODUCTS' : 'ہماری مصنوعات'}
         </span>
 
-        <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-white leading-tight">
+        <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-emerald-950 leading-tight">
           {lang === 'en' ? 'Premium Collection' : 'پریمیئم کلیکشن'}
         </h2>
         <p className="text-[#5cb85c] mt-3 text-xs tracking-widest uppercase font-bold">
@@ -326,7 +326,7 @@ export default function ProductSwipe3D({ products: rawProducts, openCheckout, au
             setCurrentIndex(i);
           }}
         />
-        <p className="text-white/30 text-xs font-semibold uppercase tracking-wider font-mono">
+        <p className="text-neutral-400 text-xs font-semibold uppercase tracking-wider font-mono">
           {currentIndex + 1} / {total} {lang === 'en' ? 'products' : 'مصنوعات'}
         </p>
       </div>

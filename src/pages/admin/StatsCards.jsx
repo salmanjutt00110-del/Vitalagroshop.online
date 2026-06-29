@@ -70,7 +70,7 @@ export default function StatsCards({ stats, theme }) {
             {/* Top row: Icon and desc */}
             <div className="flex justify-between items-start gap-2 mb-3 relative z-10">
               <div 
-                className={`p-1.5 rounded-lg border flex items-center justify-center ${theme === 'light' ? 'bg-neutral-100 border-neutral-200' : 'bg-black/50'}`}
+                className={`p-1.5 rounded-lg border flex items-center justify-center ${theme === 'light' ? 'bg-neutral-100 border-neutral-200' : 'bg-emerald-950/10'}`}
                 style={theme !== 'light' ? { borderColor: `${card.color}25` } : {}}
               >
                 <Icon className="w-3.5 h-3.5" style={{ color: card.color }} />
@@ -82,7 +82,7 @@ export default function StatsCards({ stats, theme }) {
 
             {/* Value (Middle) */}
             <div className="text-left py-1 relative z-10">
-              <p className={`font-mono font-black text-xl tracking-tight truncate ${theme === 'light' ? 'text-black' : 'text-white'}`} title={String(card.value)}>
+              <p className={`font-mono font-black text-xl tracking-tight truncate ${theme === 'light' ? 'text-black' : 'text-emerald-950'}`} title={String(card.value)}>
                 {card.value}
               </p>
             </div>

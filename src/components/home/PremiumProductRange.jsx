@@ -168,7 +168,7 @@ export default function PremiumProductRange() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="text-3xl sm:text-5xl md:text-6xl font-black text-white tracking-tight leading-none"
+            className="text-3xl sm:text-5xl md:text-6xl font-black text-emerald-950 tracking-tight leading-none"
           >
             {lang === 'en' ? 'Our Flagship Solutions' : 'وائٹل کی فلیگ شپ پروڈکٹس'}
           </motion.h2>
@@ -178,7 +178,7 @@ export default function PremiumProductRange() {
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
-            className="text-white/45 mt-5 max-w-xl mx-auto text-sm sm:text-base leading-relaxed font-semibold"
+            className="text-emerald-950/45 mt-5 max-w-xl mx-auto text-sm sm:text-base leading-relaxed font-semibold"
           >
             {lang === 'en' 
               ? 'Formulated under expert international control to maximize agricultural yield, crop safety, and organic nourishment.' 
@@ -211,7 +211,7 @@ export default function PremiumProductRange() {
                   boxShadow: '0 25px 55px rgba(0,0,0,0.65), 0 0 25px rgba(34,197,94,0.18)',
                   borderColor: 'rgba(34,197,94,0.40)'
                 }}
-                className="flex flex-col justify-between rounded-3xl p-6 bg-gradient-to-b from-white/[0.04] to-white/[0.01] border border-white/10 backdrop-blur-3xl relative overflow-hidden group shadow-xl transition-all duration-300"
+                className="flex flex-col justify-between rounded-3xl p-6 bg-gradient-to-b from-white/[0.04] to-white/[0.01] border border-emerald-900/10 backdrop-blur-3xl relative overflow-hidden group shadow-xl transition-all duration-300"
                 style={{ perspective: '800px' }}
               >
                 {/* Visual Glass Sheen */}
@@ -225,14 +225,14 @@ export default function PremiumProductRange() {
                         ? (lang === 'en' ? 'Seed Care' : 'بیج کا تحفظ') 
                         : (lang === 'en' ? 'Plant Power' : 'پودوں کی غذائیت')}
                     </span>
-                    <span className="flex items-center gap-1 text-[10px] font-bold text-white/40 font-mono">
+                    <span className="flex items-center gap-1 text-[10px] font-bold text-neutral-500 font-mono">
                       <ShieldCheck size={11} className="text-[#4ade80]" />
                       100% ORIGINAL
                     </span>
                   </div>
 
                   {/* Bottle Showcase Frame */}
-                  <div className="relative aspect-[4/3] w-full flex items-center justify-center p-4 bg-white/[0.02] rounded-2xl border border-white/5 mb-6 overflow-hidden shadow-inner">
+                  <div className="relative aspect-[4/3] w-full flex items-center justify-center p-4 bg-white/70 rounded-2xl border border-emerald-900/5 mb-6 overflow-hidden shadow-inner">
                     <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(34,197,94,0.12)_0%,transparent_60%)] group-hover:scale-125 transition-transform duration-700 pointer-events-none" />
                     <img
                       src={prod.pngUrl || prod.imageUrl || `/products/${prod.slug}.webp`}
@@ -243,24 +243,24 @@ export default function PremiumProductRange() {
                   </div>
 
                   {/* Product Title */}
-                  <h3 className="text-xl font-black text-white leading-tight mb-2 group-hover:text-[#4ade80] transition-colors">
+                  <h3 className="text-xl font-black text-emerald-950 leading-tight mb-2 group-hover:text-[#4ade80] transition-colors">
                     {prodName}
                   </h3>
 
                   {/* Pricing Info */}
                   <div className="flex items-baseline gap-2 mb-3.5 font-mono">
                     <span className="text-lg font-black text-[#4ade80]">{priceLabel}</span>
-                    {sizeLabel && <span className="text-[10px] text-white/35 font-bold uppercase">({sizeLabel})</span>}
+                    {sizeLabel && <span className="text-[10px] text-neutral-400 font-bold uppercase">({sizeLabel})</span>}
                   </div>
 
                   {/* Short Description */}
-                  <p className="text-xs text-white/50 leading-relaxed font-semibold line-clamp-3 mb-6">
+                  <p className="text-xs text-neutral-500 leading-relaxed font-semibold line-clamp-3 mb-6">
                     {prodDesc}
                   </p>
                 </div>
 
                 {/* Tactile Action Panel */}
-                <div className="grid grid-cols-2 gap-3 mt-auto pt-4 border-t border-white/5 relative z-10">
+                <div className="grid grid-cols-2 gap-3 mt-auto pt-4 border-t border-emerald-900/5 relative z-10">
                   <button
                     type="button"
                     onClick={(e) => {
@@ -268,18 +268,18 @@ export default function PremiumProductRange() {
                       e.stopPropagation();
                       setActiveDetailsProduct(prod);
                     }}
-                    className="flex items-center justify-center gap-2 h-11 bg-white/5 hover:bg-white/10 border border-white/10 rounded-xl text-xs font-bold text-white transition-all active:scale-95 cursor-pointer shadow-sm group/btn"
+                    className="flex items-center justify-center gap-2 h-11 bg-white/60 hover:bg-white/80 border border-emerald-900/10 rounded-xl text-xs font-bold text-emerald-950 transition-all active:scale-95 cursor-pointer shadow-sm group/btn"
                   >
-                    <Eye size={13} className="text-white/60 group-hover/btn:text-[#4ade80] transition-colors" />
+                    <Eye size={13} className="text-neutral-600 group-hover/btn:text-[#4ade80] transition-colors" />
                     <span>{lang === 'en' ? 'Details' : 'تفصیلات'}</span>
                   </button>
 
                   <button
                     type="button"
                     onClick={(e) => handleOrder(e, prod)}
-                    className="flex items-center justify-center gap-2 h-11 bg-gradient-to-r from-[#22c55e] to-[#15803d] hover:shadow-[0_0_15px_rgba(34,197,94,0.35)] text-white rounded-xl text-xs font-black transition-all active:scale-95 cursor-pointer shadow-md"
+                    className="flex items-center justify-center gap-2 h-11 bg-gradient-to-r from-[#22c55e] to-[#15803d] hover:shadow-[0_0_15px_rgba(34,197,94,0.35)] text-emerald-950 rounded-xl text-xs font-black transition-all active:scale-95 cursor-pointer shadow-md"
                   >
-                    <ShoppingBag size={13} className="text-white" />
+                    <ShoppingBag size={13} className="text-emerald-950" />
                     <span>{lang === 'en' ? 'Order Now' : 'خریدیں'}</span>
                   </button>
                 </div>
@@ -293,7 +293,7 @@ export default function PremiumProductRange() {
         <div className="flex justify-center mt-12">
           <Link
             to="/products"
-            className="px-10 h-14 bg-gradient-to-r from-[#22c55e] to-[#16a34a] text-white rounded-full text-sm font-black uppercase tracking-widest shadow-xl flex items-center justify-center gap-2.5 cursor-pointer relative overflow-hidden group/more hover:scale-104 active:scale-98 transition-all hover:shadow-[0_8px_30px_rgba(34,197,94,0.50)]"
+            className="px-10 h-14 bg-gradient-to-r from-[#22c55e] to-[#16a34a] text-emerald-950 rounded-full text-sm font-black uppercase tracking-widest shadow-xl flex items-center justify-center gap-2.5 cursor-pointer relative overflow-hidden group/more hover:scale-104 active:scale-98 transition-all hover:shadow-[0_8px_30px_rgba(34,197,94,0.50)]"
           >
             {/* Shimmer glaze */}
             <div className="absolute inset-y-0 w-1/3 bg-gradient-to-r from-transparent via-white/20 to-transparent skew-x-12 -translate-x-full group-hover/more:animate-[shimmer_2.5s_infinite]" />

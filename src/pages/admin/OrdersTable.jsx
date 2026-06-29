@@ -158,11 +158,11 @@ export default function OrdersTable({ orders, activeFilter, theme }) {
     <div className="space-y-4 w-full text-left">
       
       {/* Redesigned Clean Enterprise Table */}
-      <div className={`overflow-x-auto rounded-2xl border ${theme === 'light' ? 'border-neutral-200 bg-white' : 'border-white/5 bg-black'}`}>
+      <div className={`overflow-x-auto rounded-2xl border ${theme === 'light' ? 'border-neutral-200 bg-white' : 'border-emerald-900/5 bg-black'}`}>
         <table className="w-full text-left border-collapse text-xs">
           <thead>
             <tr className={`border-b text-[9px] font-mono tracking-wider uppercase ${
-              theme === 'light' ? 'border-neutral-200 text-neutral-600 bg-neutral-50' : 'border-white/5 text-neutral-500 bg-[#121212]'
+              theme === 'light' ? 'border-neutral-200 text-neutral-600 bg-neutral-50' : 'border-emerald-900/5 text-neutral-500 bg-[#121212]'
             }`}>
               <th className="py-3.5 px-4 font-bold">Client & Order Ref</th>
               <th className="py-3.5 px-4 font-bold">Contact Channel</th>
@@ -177,7 +177,7 @@ export default function OrdersTable({ orders, activeFilter, theme }) {
           <tbody>
             {displayedOrders.length === 0 ? (
               <tr>
-                <td colSpan="8" className={`py-14 text-center border-b font-mono ${theme === 'light' ? 'border-neutral-200 text-neutral-500' : 'border-white/5 text-neutral-500'}`}>
+                <td colSpan="8" className={`py-14 text-center border-b font-mono ${theme === 'light' ? 'border-neutral-200 text-neutral-500' : 'border-emerald-900/5 text-neutral-500'}`}>
                   No records matching filter tab.
                 </td>
               </tr>
@@ -200,13 +200,13 @@ export default function OrdersTable({ orders, activeFilter, theme }) {
                   <tr 
                     key={order.id} 
                     className={`border-b transition-colors duration-150 ${
-                      theme === 'light' ? 'border-neutral-200 hover:bg-neutral-50' : 'border-white/5 hover:bg-neutral-900/60'
+                      theme === 'light' ? 'border-neutral-200 hover:bg-neutral-50' : 'border-emerald-900/5 hover:bg-slate-50/80'
                     }`}
                   >
                     {/* Client Name & ID */}
                     <td className="py-4 px-4">
                       <div>
-                        <span className={`font-bold block ${theme === 'light' ? 'text-black' : 'text-white'}`}>#{order.orderNumber}</span>
+                        <span className={`font-bold block ${theme === 'light' ? 'text-black' : 'text-emerald-950'}`}>#{order.orderNumber}</span>
                         <span className={`text-[10px] block font-sans mt-0.5 ${theme === 'light' ? 'text-neutral-600' : 'text-neutral-400'}`}>{customerName}</span>
                       </div>
                     </td>
@@ -215,7 +215,7 @@ export default function OrdersTable({ orders, activeFilter, theme }) {
                     <td className="py-4 px-4 font-mono">
                       <div className="space-y-1">
                         <a href={`tel:${customerPhone}`} className={`hover:underline block ${
-                          theme === 'light' ? 'text-neutral-700 hover:text-black' : 'text-neutral-300 hover:text-white'
+                          theme === 'light' ? 'text-neutral-700 hover:text-black' : 'text-neutral-300 hover:text-emerald-950'
                         }`}>{customerPhone}</a>
                         <button 
                           onClick={() => openWhatsApp(customerPhone, customerName)}
@@ -229,7 +229,7 @@ export default function OrdersTable({ orders, activeFilter, theme }) {
                     {/* City & Address */}
                     <td className="py-4 px-4">
                       <div className="space-y-1">
-                        <span className={`font-medium block ${theme === 'light' ? 'text-black' : 'text-white'}`}>{city}</span>
+                        <span className={`font-medium block ${theme === 'light' ? 'text-black' : 'text-emerald-950'}`}>{city}</span>
                         <span className={`text-[10px] block truncate max-w-[140px] ${theme === 'light' ? 'text-neutral-600' : 'text-neutral-500'}`} title={order.address}>{order.address}</span>
                       </div>
                     </td>
@@ -245,7 +245,7 @@ export default function OrdersTable({ orders, activeFilter, theme }) {
                     {/* Subtotal, delivery charges, remaining COD */}
                     <td className="py-4 px-4 font-mono">
                       <div className="space-y-0.5">
-                        <span className={`font-bold block ${theme === 'light' ? 'text-black' : 'text-white'}`}>PKR {grandTotal.toLocaleString()}</span>
+                        <span className={`font-bold block ${theme === 'light' ? 'text-black' : 'text-emerald-950'}`}>PKR {grandTotal.toLocaleString()}</span>
                         <span className={`text-[8px] block uppercase ${theme === 'light' ? 'text-neutral-600' : 'text-neutral-500'}`}>
                           Adv: {advancePaid} | COD: {remainingCod}
                         </span>
@@ -255,7 +255,7 @@ export default function OrdersTable({ orders, activeFilter, theme }) {
                     {/* Logistics Courier */}
                     <td className="py-4 px-4 font-sans">
                       <div>
-                        <span className={`font-semibold block ${theme === 'light' ? 'text-black' : 'text-white'}`}>{order.courier || 'Leopards'}</span>
+                        <span className={`font-semibold block ${theme === 'light' ? 'text-black' : 'text-emerald-950'}`}>{order.courier || 'Leopards'}</span>
                         <span className={`text-[9px] font-mono block mt-0.5 ${theme === 'light' ? 'text-neutral-600' : 'text-neutral-500'}`}>{order.trackingId || 'Unassigned'}</span>
                       </div>
                     </td>
@@ -280,7 +280,7 @@ export default function OrdersTable({ orders, activeFilter, theme }) {
                         className={`px-3.5 py-1.5 font-bold rounded-lg border transition-all text-[10px] uppercase cursor-pointer ${
                           theme === 'light'
                             ? 'bg-neutral-100 hover:bg-neutral-200 border-neutral-300 text-neutral-800'
-                            : 'bg-[#121212] hover:bg-neutral-800 border-white/10 hover:border-white/20 text-white'
+                            : 'bg-[#121212] hover:bg-neutral-800 border-emerald-900/10 hover:border-emerald-900/20 text-emerald-950'
                         }`}
                       >
                         View Details
@@ -306,10 +306,10 @@ export default function OrdersTable({ orders, activeFilter, theme }) {
               disabled={currentPage === 1}
               className={`px-3 py-1.5 rounded-lg border font-bold text-[9px] uppercase font-mono transition-all cursor-pointer ${
                 currentPage === 1
-                  ? 'opacity-40 cursor-not-allowed border-white/5 text-neutral-600'
+                  ? 'opacity-40 cursor-not-allowed border-emerald-900/5 text-neutral-600'
                   : theme === 'light'
                     ? 'bg-neutral-100 hover:bg-neutral-200 border-neutral-300 text-neutral-800'
-                    : 'bg-[#121212] hover:bg-neutral-800 border-white/10 text-white'
+                    : 'bg-[#121212] hover:bg-neutral-800 border-emerald-900/10 text-emerald-950'
               }`}
             >
               Previous
@@ -319,10 +319,10 @@ export default function OrdersTable({ orders, activeFilter, theme }) {
               disabled={currentPage === totalPages}
               className={`px-3 py-1.5 rounded-lg border font-bold text-[9px] uppercase font-mono transition-all cursor-pointer ${
                 currentPage === totalPages
-                  ? 'opacity-40 cursor-not-allowed border-white/5 text-neutral-600'
+                  ? 'opacity-40 cursor-not-allowed border-emerald-900/5 text-neutral-600'
                   : theme === 'light'
                     ? 'bg-neutral-100 hover:bg-neutral-200 border-neutral-300 text-neutral-800'
-                    : 'bg-[#121212] hover:bg-neutral-800 border-white/10 text-white'
+                    : 'bg-[#121212] hover:bg-neutral-800 border-emerald-900/10 text-emerald-950'
               }`}
             >
               Next
@@ -346,11 +346,11 @@ export default function OrdersTable({ orders, activeFilter, theme }) {
         const grandTotal = order.grandTotal || order.totalAmount || 0;
 
         return (
-          <div className={`fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm p-4 ${theme === 'light' ? 'text-neutral-800' : 'text-white'}`}>
+          <div className={`fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm p-4 ${theme === 'light' ? 'text-neutral-800' : 'text-emerald-950'}`}>
             <div className={`${c.modal} p-6 max-w-5xl w-full space-y-6 max-h-[92vh] overflow-y-auto text-left relative`}>
               
               {/* Top title */}
-              <div className={`flex justify-between items-center border-b pb-4 ${theme === 'light' ? 'border-neutral-200' : 'border-white/5'}`}>
+              <div className={`flex justify-between items-center border-b pb-4 ${theme === 'light' ? 'border-neutral-200' : 'border-emerald-900/5'}`}>
                 <div>
                   <h3 className={`font-extrabold text-sm uppercase tracking-widest font-mono ${theme === 'light' ? 'text-emerald-700' : 'text-[#10B981]'}`}>
                     Order Ledger #{order.orderNumber}
@@ -367,7 +367,7 @@ export default function OrdersTable({ orders, activeFilter, theme }) {
                   className={`w-7 h-7 rounded-lg border flex items-center justify-center cursor-pointer text-xs ${
                     theme === 'light'
                       ? 'bg-neutral-100 hover:bg-neutral-200 border-neutral-300 text-neutral-800'
-                      : 'bg-neutral-900 border border-white/5 hover:border-white/10 text-white'
+                      : 'bg-slate-50 border border-emerald-900/5 hover:border-emerald-900/10 text-emerald-950'
                   }`}
                 >
                   ✕
@@ -378,16 +378,16 @@ export default function OrdersTable({ orders, activeFilter, theme }) {
               <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 items-start text-xs">
                 
                 {/* Section 1: Customer Profile */}
-                <div className={`rounded-2xl p-5 space-y-4 border ${theme === 'light' ? 'bg-neutral-50 border-neutral-200' : 'bg-black/40 border-white/5'}`}>
+                <div className={`rounded-2xl p-5 space-y-4 border ${theme === 'light' ? 'bg-neutral-50 border-neutral-200' : 'bg-emerald-950/5 border-emerald-900/5'}`}>
                   <h4 className={`font-bold uppercase tracking-wider text-[11px] border-b pb-2 flex items-center gap-1.5 ${
-                    theme === 'light' ? 'text-emerald-700 border-neutral-200' : 'text-[#10B981] border-white/5'
+                    theme === 'light' ? 'text-emerald-700 border-neutral-200' : 'text-[#10B981] border-emerald-900/5'
                   }`}>
                     <User size={13} /> Customer Details
                   </h4>
                   <div className={`space-y-3 font-mono text-[11px] ${theme === 'light' ? 'text-neutral-700' : 'text-neutral-300'}`}>
                     <div>
                       <span className="text-[9px] text-neutral-500 uppercase block">Client Name</span>
-                      <span className={`font-bold block ${theme === 'light' ? 'text-black' : 'text-white'}`}>{customerName}</span>
+                      <span className={`font-bold block ${theme === 'light' ? 'text-black' : 'text-emerald-950'}`}>{customerName}</span>
                     </div>
                     <div>
                       <span className="text-[9px] text-neutral-500 uppercase block">Phone Contact</span>
@@ -398,7 +398,7 @@ export default function OrdersTable({ orders, activeFilter, theme }) {
                     </div>
                     <div>
                       <span className="text-[9px] text-neutral-500 uppercase block">Shipping Coordinates</span>
-                      <span className={`block leading-relaxed ${theme === 'light' ? 'text-neutral-800' : 'text-white'}`}>{address}</span>
+                      <span className={`block leading-relaxed ${theme === 'light' ? 'text-neutral-800' : 'text-emerald-950'}`}>{address}</span>
                       <a 
                         href={`https://maps.google.com/?q=${encodeURIComponent(city + ', ' + address)}`} 
                         target="_blank" 
@@ -408,48 +408,48 @@ export default function OrdersTable({ orders, activeFilter, theme }) {
                         <Map size={11} /> Google Map
                       </a>
                     </div>
-                    <div className={`grid grid-cols-2 gap-2 border-t pt-3 ${theme === 'light' ? 'border-neutral-200' : 'border-white/5'}`}>
+                    <div className={`grid grid-cols-2 gap-2 border-t pt-3 ${theme === 'light' ? 'border-neutral-200' : 'border-emerald-900/5'}`}>
                       <div>
                         <span className="text-[9px] text-neutral-500 uppercase block">City</span>
-                        <span className={`block ${theme === 'light' ? 'text-neutral-800' : 'text-white'}`}>{city}</span>
+                        <span className={`block ${theme === 'light' ? 'text-neutral-800' : 'text-emerald-950'}`}>{city}</span>
                       </div>
                       <div>
                         <span className="text-[9px] text-neutral-500 uppercase block">Province</span>
-                        <span className={`block ${theme === 'light' ? 'text-neutral-800' : 'text-white'}`}>{order.province || order.customer?.province || 'Punjab'}</span>
+                        <span className={`block ${theme === 'light' ? 'text-neutral-800' : 'text-emerald-950'}`}>{order.province || order.customer?.province || 'Punjab'}</span>
                       </div>
                     </div>
                   </div>
                 </div>
 
                 {/* Section 2: Product payloads & COD rules */}
-                <div className={`rounded-2xl p-5 space-y-4 border ${theme === 'light' ? 'bg-neutral-50 border-neutral-200' : 'bg-black/40 border-white/5'}`}>
+                <div className={`rounded-2xl p-5 space-y-4 border ${theme === 'light' ? 'bg-neutral-50 border-neutral-200' : 'bg-emerald-950/5 border-emerald-900/5'}`}>
                   <h4 className={`font-bold uppercase tracking-wider text-[11px] border-b pb-2 ${
-                    theme === 'light' ? 'text-emerald-700 border-neutral-200' : 'text-[#10B981] border-white/5'
+                    theme === 'light' ? 'text-emerald-700 border-neutral-200' : 'text-[#10B981] border-emerald-900/5'
                   }`}>
                     📦 Order Payload
                   </h4>
                   
                   <div className="space-y-3">
-                    <div className={`p-3 border rounded-xl text-left ${theme === 'light' ? 'bg-neutral-100 border-neutral-200' : 'bg-neutral-900 border-white/5'}`}>
-                      <span className={`font-bold block leading-tight ${theme === 'light' ? 'text-black' : 'text-white'}`}>{productName}</span>
+                    <div className={`p-3 border rounded-xl text-left ${theme === 'light' ? 'bg-neutral-100 border-neutral-200' : 'bg-slate-50 border-emerald-900/5'}`}>
+                      <span className={`font-bold block leading-tight ${theme === 'light' ? 'text-black' : 'text-emerald-950'}`}>{productName}</span>
                       <span className={`text-[10px] block mt-1 uppercase font-mono ${theme === 'light' ? 'text-neutral-500' : 'text-neutral-400'}`}>Size: {order.packSize || 'N/A'} • Qty: {order.quantity || 1}</span>
                     </div>
 
-                    <div className={`space-y-2 pt-3 border-t font-mono text-[11px] ${theme === 'light' ? 'border-neutral-200 text-neutral-700' : 'border-white/5 text-neutral-300'}`}>
+                    <div className={`space-y-2 pt-3 border-t font-mono text-[11px] ${theme === 'light' ? 'border-neutral-200 text-neutral-700' : 'border-emerald-900/5 text-neutral-300'}`}>
                       <div className="flex justify-between">
                         <span>Items Subtotal:</span>
-                        <span className={`font-bold ${theme === 'light' ? 'text-black' : 'text-white'}`}>PKR {(grandTotal - (isOnline ? 0 : 299)).toLocaleString()}</span>
+                        <span className={`font-bold ${theme === 'light' ? 'text-black' : 'text-emerald-950'}`}>PKR {(grandTotal - (isOnline ? 0 : 299)).toLocaleString()}</span>
                       </div>
                       <div className="flex justify-between">
                         <span>Delivery Charges:</span>
                         {isOnline ? (
                           <span className="text-[#10B981] font-bold">PKR 0 (PROMO)</span>
                         ) : (
-                          <span className={`font-bold ${theme === 'light' ? 'text-black' : 'text-white'}`}>PKR 299</span>
+                          <span className={`font-bold ${theme === 'light' ? 'text-black' : 'text-emerald-950'}`}>PKR 299</span>
                         )}
                       </div>
-                      <div className={`flex justify-between border-t border-dashed pt-2 text-xs ${theme === 'light' ? 'border-neutral-300' : 'border-white/10'}`}>
-                        <span className={`font-bold ${theme === 'light' ? 'text-black' : 'text-white'}`}>Grand Total:</span>
+                      <div className={`flex justify-between border-t border-dashed pt-2 text-xs ${theme === 'light' ? 'border-neutral-300' : 'border-emerald-900/10'}`}>
+                        <span className={`font-bold ${theme === 'light' ? 'text-black' : 'text-emerald-950'}`}>Grand Total:</span>
                         <span className={`font-extrabold ${theme === 'light' ? 'text-emerald-700' : 'text-[#10B981]'}`}>PKR {grandTotal.toLocaleString()}</span>
                       </div>
                     </div>
@@ -471,7 +471,7 @@ export default function OrdersTable({ orders, activeFilter, theme }) {
                             <button
                               onClick={() => handleVerifyAdvance(order.id, 'approved')}
                               className={`px-2 py-1 font-extrabold text-[8px] rounded uppercase cursor-pointer ${
-                                theme === 'light' ? 'bg-emerald-600 hover:bg-emerald-700 text-white shadow-sm' : 'bg-[#10B981] hover:bg-[#059669] text-black'
+                                theme === 'light' ? 'bg-emerald-600 hover:bg-emerald-700 text-emerald-950 shadow-sm' : 'bg-[#10B981] hover:bg-[#059669] text-black'
                               }`}
                             >
                               Approve PKR 299
@@ -490,9 +490,9 @@ export default function OrdersTable({ orders, activeFilter, theme }) {
                 </div>
 
                 {/* Section 3: Receipt Screenshot */}
-                <div className={`rounded-2xl p-5 space-y-4 border ${theme === 'light' ? 'bg-neutral-50 border-neutral-200' : 'bg-black/40 border-white/5'}`}>
+                <div className={`rounded-2xl p-5 space-y-4 border ${theme === 'light' ? 'bg-neutral-50 border-neutral-200' : 'bg-emerald-950/5 border-emerald-900/5'}`}>
                   <h4 className={`font-bold uppercase tracking-wider text-[11px] border-b pb-2 ${
-                    theme === 'light' ? 'text-emerald-700 border-neutral-200' : 'text-[#10B981] border-white/5'
+                    theme === 'light' ? 'text-emerald-700 border-neutral-200' : 'text-[#10B981] border-emerald-900/5'
                   }`}>
                     <DollarSign size={13} className="inline mr-1" /> Receipt Screen Proof
                   </h4>
@@ -501,13 +501,13 @@ export default function OrdersTable({ orders, activeFilter, theme }) {
                     <div className={`flex justify-between items-center text-[9px] font-mono ${theme === 'light' ? 'text-neutral-600' : 'text-neutral-400'}`}>
                       <span>Interactive Zoom</span>
                       <div className="flex gap-1">
-                        <button onClick={() => setZoom(prev => Math.max(0.5, prev - 0.25))} className={`px-1.5 py-0.5 border rounded cursor-pointer ${theme === 'light' ? 'bg-neutral-200 border-neutral-300 text-black' : 'bg-neutral-900 border-white/5 text-white'}`}>-</button>
-                        <button onClick={() => setZoom(prev => Math.min(2, prev + 0.25))} className={`px-1.5 py-0.5 border rounded cursor-pointer ${theme === 'light' ? 'bg-neutral-200 border-neutral-300 text-black' : 'bg-neutral-900 border-white/5 text-white'}`}></button>
+                        <button onClick={() => setZoom(prev => Math.max(0.5, prev - 0.25))} className={`px-1.5 py-0.5 border rounded cursor-pointer ${theme === 'light' ? 'bg-neutral-200 border-neutral-300 text-black' : 'bg-slate-50 border-emerald-900/5 text-emerald-950'}`}>-</button>
+                        <button onClick={() => setZoom(prev => Math.min(2, prev + 0.25))} className={`px-1.5 py-0.5 border rounded cursor-pointer ${theme === 'light' ? 'bg-neutral-200 border-neutral-300 text-black' : 'bg-slate-50 border-emerald-900/5 text-emerald-950'}`}></button>
                       </div>
                     </div>
 
                     <div className={`aspect-[3/4] border rounded-xl overflow-hidden flex items-center justify-center relative ${
-                      theme === 'light' ? 'border-neutral-200 bg-neutral-100' : 'border-white/5 bg-neutral-950'
+                      theme === 'light' ? 'border-neutral-200 bg-neutral-100' : 'border-emerald-900/5 bg-white'
                     }`}>
                       <img 
                         src={order.proofScreenshotURL || order.paymentDetails?.receiptBase64 || order.paymentScreenshot || 'https://placehold.co/360x640/121212/10b981?text=TID+Proof+Receipt'} 
@@ -517,9 +517,9 @@ export default function OrdersTable({ orders, activeFilter, theme }) {
                       />
                     </div>
 
-                    <div className={`p-3 border rounded-xl text-left font-mono ${theme === 'light' ? 'bg-neutral-100 border-neutral-200' : 'bg-neutral-900 border-white/5'}`}>
+                    <div className={`p-3 border rounded-xl text-left font-mono ${theme === 'light' ? 'bg-neutral-100 border-neutral-200' : 'bg-slate-50 border-emerald-900/5'}`}>
                       <span className="text-[8px] text-neutral-500 uppercase block">Transaction TID</span>
-                      <span className={`font-bold block truncate ${theme === 'light' ? 'text-black' : 'text-white'}`}>{order.tidString || order.paymentDetails?.refId || order.paymentTID || 'N/A'}</span>
+                      <span className={`font-bold block truncate ${theme === 'light' ? 'text-black' : 'text-emerald-950'}`}>{order.tidString || order.paymentDetails?.refId || order.paymentTID || 'N/A'}</span>
                     </div>
                   </div>
                 </div>
@@ -527,9 +527,9 @@ export default function OrdersTable({ orders, activeFilter, theme }) {
               </div>
 
               {/* Rider Logistics & Reports */}
-              <div className={`grid grid-cols-1 md:grid-cols-2 gap-4 border-t pt-5 text-xs ${theme === 'light' ? 'border-neutral-200' : 'border-white/5'}`}>
+              <div className={`grid grid-cols-1 md:grid-cols-2 gap-4 border-t pt-5 text-xs ${theme === 'light' ? 'border-neutral-200' : 'border-emerald-900/5'}`}>
                 {/* Rider allocation form */}
-                <div className={`p-4 rounded-2xl space-y-3 border ${theme === 'light' ? 'bg-neutral-50 border-neutral-200' : 'bg-black/30 border-white/5'}`}>
+                <div className={`p-4 rounded-2xl space-y-3 border ${theme === 'light' ? 'bg-neutral-50 border-neutral-200' : 'bg-black/30 border-emerald-900/5'}`}>
                   <h5 className={`font-bold uppercase tracking-wider flex items-center gap-1.5 ${theme === 'light' ? 'text-emerald-700' : 'text-[#10B981]'}`}>
                     <Truck size={13} /> Logistics Rider Assignment
                   </h5>
@@ -540,7 +540,7 @@ export default function OrdersTable({ orders, activeFilter, theme }) {
                         value={courierName}
                         onChange={e => setCourierName(e.target.value)}
                         className={`w-full px-2 py-1.5 border rounded-lg text-xs outline-none ${
-                          theme === 'light' ? 'bg-white border-neutral-300 text-neutral-800' : 'bg-[#121212] border-white/5 text-white'
+                          theme === 'light' ? 'bg-white border-neutral-300 text-neutral-800' : 'bg-[#121212] border-emerald-900/5 text-emerald-950'
                         }`}
                       >
                         <option value="Leopards">Leopards</option>
@@ -557,7 +557,7 @@ export default function OrdersTable({ orders, activeFilter, theme }) {
                         value={trackingId}
                         onChange={e => setTrackingId(e.target.value)}
                         className={`w-full px-2 py-1 border rounded-lg text-xs outline-none ${
-                          theme === 'light' ? 'bg-white border-neutral-300 text-neutral-800' : 'bg-[#121212] border-white/5 text-white'
+                          theme === 'light' ? 'bg-white border-neutral-300 text-neutral-800' : 'bg-[#121212] border-emerald-900/5 text-emerald-950'
                         }`}
                       />
                     </div>
@@ -568,7 +568,7 @@ export default function OrdersTable({ orders, activeFilter, theme }) {
                         setTrackingId('');
                       }}
                       className={`px-3.5 py-1.5 font-extrabold text-[9px] rounded-lg cursor-pointer ${
-                        theme === 'light' ? 'bg-emerald-600 hover:bg-emerald-700 text-white shadow-sm' : 'bg-[#10B981] hover:bg-[#059669] text-black'
+                        theme === 'light' ? 'bg-emerald-600 hover:bg-emerald-700 text-emerald-950 shadow-sm' : 'bg-[#10B981] hover:bg-[#059669] text-black'
                       }`}
                     >
                       Dispatch
@@ -583,7 +583,7 @@ export default function OrdersTable({ orders, activeFilter, theme }) {
                     className={`px-4 py-2.5 border rounded-xl font-bold uppercase transition-all flex items-center gap-1.5 cursor-pointer ${
                       theme === 'light'
                         ? 'bg-white hover:bg-neutral-100 border-neutral-200 text-neutral-800 shadow-sm'
-                        : 'bg-neutral-900 border border-white/5 hover:border-white/10 text-white'
+                        : 'bg-slate-50 border border-emerald-900/5 hover:border-emerald-900/10 text-emerald-950'
                     }`}
                   >
                     <Download size={13} /> Download Invoice
@@ -593,7 +593,7 @@ export default function OrdersTable({ orders, activeFilter, theme }) {
                     className={`px-4 py-2.5 border rounded-xl font-bold uppercase transition-all flex items-center gap-1.5 cursor-pointer ${
                       theme === 'light'
                         ? 'bg-white hover:bg-neutral-100 border-neutral-200 text-neutral-800 shadow-sm'
-                        : 'bg-neutral-900 border border-white/5 hover:border-white/10 text-white'
+                        : 'bg-slate-50 border border-emerald-900/5 hover:border-emerald-900/10 text-emerald-950'
                     }`}
                   >
                     <Printer size={13} /> Print Invoice
@@ -602,7 +602,7 @@ export default function OrdersTable({ orders, activeFilter, theme }) {
               </div>
 
               {/* Status Action Buttons */}
-              <div className={`flex flex-wrap justify-between items-center border-t pt-5 gap-3 ${theme === 'light' ? 'border-neutral-200' : 'border-white/5'}`}>
+              <div className={`flex flex-wrap justify-between items-center border-t pt-5 gap-3 ${theme === 'light' ? 'border-neutral-200' : 'border-emerald-900/5'}`}>
                 <div className="flex gap-2">
                   <select
                     value={order.status}
@@ -610,7 +610,7 @@ export default function OrdersTable({ orders, activeFilter, theme }) {
                     className={`px-3.5 py-2 rounded-xl border font-mono text-[10px] uppercase font-bold cursor-pointer outline-none ${
                       theme === 'light'
                         ? 'bg-white border-neutral-300 text-neutral-800'
-                        : 'bg-neutral-900 border border-white/10 text-white'
+                        : 'bg-slate-50 border border-emerald-900/10 text-emerald-950'
                     }`}
                   >
                     {Object.entries(STATUS_LABELS).map(([k, v]) => (

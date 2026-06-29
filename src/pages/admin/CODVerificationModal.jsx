@@ -50,12 +50,12 @@ export default function CODVerificationModal({ receiptUrl, order, onClose, onVer
           className={`${c.modal} w-full max-w-6xl h-[90vh] flex flex-col md:flex-row overflow-hidden border border-[#10B981]/20`}
         >
           {/* Left Side: Image Viewer */}
-          <div className="flex-1 bg-black/50 relative overflow-hidden flex flex-col border-r border-white/5">
+          <div className="flex-1 bg-emerald-950/10 relative overflow-hidden flex flex-col border-r border-emerald-900/5">
             <div className="absolute top-4 right-4 z-10 flex flex-col gap-2">
-              <button onClick={handleZoomIn} className="p-3 bg-white/10 hover:bg-white/20 rounded-xl backdrop-blur-md transition-all text-white shadow-lg border border-white/10">
+              <button onClick={handleZoomIn} className="p-3 bg-white/80 hover:bg-white/20 rounded-xl backdrop-blur-md transition-all text-emerald-950 shadow-lg border border-emerald-900/10">
                 <ZoomIn size={20} />
               </button>
-              <button onClick={handleZoomOut} className="p-3 bg-white/10 hover:bg-white/20 rounded-xl backdrop-blur-md transition-all text-white shadow-lg border border-white/10">
+              <button onClick={handleZoomOut} className="p-3 bg-white/80 hover:bg-white/20 rounded-xl backdrop-blur-md transition-all text-emerald-950 shadow-lg border border-emerald-900/10">
                 <ZoomOut size={20} />
               </button>
             </div>
@@ -78,16 +78,16 @@ export default function CODVerificationModal({ receiptUrl, order, onClose, onVer
           {/* Right Side: Verification Controls */}
           <div className="w-full md:w-[400px] flex flex-col bg-black/60 relative z-20">
             {/* Header */}
-            <div className="p-6 border-b border-white/5 flex items-center justify-between">
+            <div className="p-6 border-b border-emerald-900/5 flex items-center justify-between">
               <div>
-                <h2 className="text-lg font-black text-white uppercase tracking-widest">
+                <h2 className="text-lg font-black text-emerald-950 uppercase tracking-widest">
                   Verify Payment
                 </h2>
                 <p className="text-neutral-400 text-xs mt-1 font-mono">
                   Order #{order?.orderNumber}
                 </p>
               </div>
-              <button onClick={onClose} className="p-2 hover:bg-white/10 rounded-full transition-colors text-neutral-400 hover:text-white">
+              <button onClick={onClose} className="p-2 hover:bg-white/80 rounded-full transition-colors text-neutral-400 hover:text-emerald-950">
                 <X size={20} />
               </button>
             </div>
@@ -101,7 +101,7 @@ export default function CODVerificationModal({ receiptUrl, order, onClose, onVer
                 <div className="grid grid-cols-3 gap-2">
                   <button 
                     onClick={() => setStatus('approved')}
-                    className={`flex flex-col items-center justify-center p-3 rounded-xl border transition-all ${status === 'approved' ? 'bg-[#10B981]/20 border-[#10B981] text-[#32D74B]' : 'bg-white/5 border-transparent text-neutral-400 hover:bg-white/10'}`}
+                    className={`flex flex-col items-center justify-center p-3 rounded-xl border transition-all ${status === 'approved' ? 'bg-[#10B981]/20 border-[#10B981] text-[#32D74B]' : 'bg-white/60 border-transparent text-neutral-400 hover:bg-white/80'}`}
                   >
                     <CheckCircle size={20} className="mb-2" />
                     <span className="text-[10px] font-bold uppercase tracking-wider">Approve</span>
@@ -109,7 +109,7 @@ export default function CODVerificationModal({ receiptUrl, order, onClose, onVer
                   
                   <button 
                     onClick={() => setStatus('rejected')}
-                    className={`flex flex-col items-center justify-center p-3 rounded-xl border transition-all ${status === 'rejected' ? 'bg-red-500/20 border-red-500 text-red-400' : 'bg-white/5 border-transparent text-neutral-400 hover:bg-white/10'}`}
+                    className={`flex flex-col items-center justify-center p-3 rounded-xl border transition-all ${status === 'rejected' ? 'bg-red-500/20 border-red-500 text-red-400' : 'bg-white/60 border-transparent text-neutral-400 hover:bg-white/80'}`}
                   >
                     <XCircle size={20} className="mb-2" />
                     <span className="text-[10px] font-bold uppercase tracking-wider">Reject</span>
@@ -117,7 +117,7 @@ export default function CODVerificationModal({ receiptUrl, order, onClose, onVer
                   
                   <button 
                     onClick={() => setStatus('pending')}
-                    className={`flex flex-col items-center justify-center p-3 rounded-xl border transition-all ${status === 'pending' ? 'bg-yellow-500/20 border-yellow-500 text-yellow-400' : 'bg-white/5 border-transparent text-neutral-400 hover:bg-white/10'}`}
+                    className={`flex flex-col items-center justify-center p-3 rounded-xl border transition-all ${status === 'pending' ? 'bg-yellow-500/20 border-yellow-500 text-yellow-400' : 'bg-white/60 border-transparent text-neutral-400 hover:bg-white/80'}`}
                   >
                     <Clock size={20} className="mb-2" />
                     <span className="text-[10px] font-bold uppercase tracking-wider">Pending</span>
@@ -142,7 +142,7 @@ export default function CODVerificationModal({ receiptUrl, order, onClose, onVer
             </div>
 
             {/* Footer */}
-            <div className="p-6 border-t border-white/5 bg-black/40">
+            <div className="p-6 border-t border-emerald-900/5 bg-emerald-950/5">
               <button 
                 onClick={handleSave}
                 className="w-full py-3.5 rounded-xl bg-gradient-to-r from-[#10B981] to-[#8AD65A] text-black font-extrabold uppercase tracking-widest shadow-[0_0_20px_rgba(16,185,129,0.3)] hover:shadow-[0_0_30px_rgba(16,185,129,0.5)] transition-all flex items-center justify-center gap-2"
