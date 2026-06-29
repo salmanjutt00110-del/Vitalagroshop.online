@@ -356,26 +356,23 @@ html, body {
   transition: left 1.2s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-/* True Premium Glassmorphism Cards */
+/* True Premium Cards (Optimized for Performance & Light Theme) */
 .premium-glass-card {
-  background: rgba(255, 255, 255, 0.10) !important;
-  backdrop-filter: blur(18px) saturate(180%) !important;
-  -webkit-backdrop-filter: blur(18px) saturate(180%) !important;
-  border: 1px solid rgba(255, 255, 255, 0.15) !important;
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.04) !important;
+  background: #ffffff !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  border: 1px solid rgba(16, 36, 21, 0.08) !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03) !important;
   transition: transform 300ms cubic-bezier(0.2, 0.8, 0.2, 1),
               border-color 300ms cubic-bezier(0.2, 0.8, 0.2, 1),
-              box-shadow 300ms cubic-bezier(0.2, 0.8, 0.2, 1),
-              background-color 300ms cubic-bezier(0.2, 0.8, 0.2, 1) !important;
-  transform-style: preserve-3d;
-  perspective: 1000px;
+              box-shadow 300ms cubic-bezier(0.2, 0.8, 0.2, 1) !important;
   will-change: transform, box-shadow, border-color;
 }
 .premium-glass-card:hover {
-  transform: translateY(-4px) scale(1.01) !important;
-  background: rgba(255, 255, 255, 0.20) !important;
-  border-color: rgba(15, 123, 59, 0.15) !important;
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.06), 0 0 30px rgba(15, 123, 59, 0.05) !important;
+  transform: translateY(-4px) !important;
+  background: #ffffff !important;
+  border-color: rgba(15, 123, 59, 0.2) !important;
+  box-shadow: 0 12px 32px rgba(15, 123, 59, 0.08) !important;
 }
 
 /* Animated gradient overlay shift class */

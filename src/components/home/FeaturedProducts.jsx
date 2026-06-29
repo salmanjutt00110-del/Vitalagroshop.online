@@ -70,11 +70,7 @@ export default function FeaturedProducts() {
               className="group"
             >
               <div
-                className="rounded-[16px] sm:rounded-[24px] overflow-hidden border border-emerald-900/10 relative flex flex-col h-full premium-glass-card"
-                style={{
-                  backdropFilter: 'blur(24px)',
-                  WebkitBackdropFilter: 'blur(24px)',
-                }}
+                className="rounded-[16px] sm:rounded-[24px] overflow-hidden border border-[#102415]/10 relative flex flex-col h-full premium-glass-card"
               >
                 {/* Glare sweep */}
                 <div className="absolute inset-0 z-[5] pointer-events-none overflow-hidden rounded-[24px]">
@@ -109,18 +105,18 @@ export default function FeaturedProducts() {
                 </div>
 
                 {/* Info */}
-                <div className="px-2.5 sm:px-5 pb-3 sm:pb-5 flex flex-col flex-1">
-                  <h3 className="text-[10px] sm:text-sm lg:text-base font-black text-emerald-950 text-center line-clamp-1 group-hover:text-emerald-300 transition-colors">
+                <div className="px-2.5 sm:px-5 pb-3 sm:pb-5 flex flex-col flex-1 bg-white">
+                  <h3 className="text-[10px] sm:text-sm lg:text-base font-black text-[#1E1E1E] text-center line-clamp-1 group-hover:text-[#0F7B3B] transition-colors">
                     {product.name_en}
                   </h3>
                   {product.name_ur && (lang === 'ur' || lang === 'pb') && (
-                    <p className="text-[9px] sm:text-xs text-emerald-400 text-center font-bold mt-0.5" dir="rtl" style={{ fontFamily: "'Jameel Noori Nastaleeq', 'Noto Nastaliq Urdu', serif" }}>
+                    <p className="text-[9px] sm:text-xs text-[#0F7B3B] text-center font-bold mt-0.5" dir="rtl" style={{ fontFamily: "'Jameel Noori Nastaleeq', 'Noto Nastaliq Urdu', serif" }}>
                       {product.name_ur}
                     </p>
                   )}
 
                   <div className="flex items-center justify-center mt-1.5 sm:mt-3">
-                    <span className="text-emerald-400 font-black text-xs sm:text-lg font-mono">
+                    <span className="text-[#102415] font-black text-xs sm:text-lg font-mono">
                       {product.price === 0 ? 'On Request' : `₨${product.price.toLocaleString()}`}
                     </span>
                   </div>
@@ -144,7 +140,7 @@ export default function FeaturedProducts() {
                   {/* Mobile: single details button */}
                   <button
                     onClick={() => setActiveDetailsProduct(product)}
-                    className="sm:hidden mt-2 w-full py-1.5 rounded-lg text-[8px] font-black text-emerald-400 border border-emerald-500/25 bg-emerald-500/5 tracking-wider uppercase cursor-pointer active:scale-95 transition-all"
+                    className="sm:hidden mt-2 w-full py-1.5 rounded-lg text-[8px] font-black text-[#0F7B3B] border border-[#0F7B3B]/20 bg-[#0F7B3B]/5 hover:bg-[#0F7B3B]/10 tracking-wider uppercase cursor-pointer active:scale-95 transition-all"
                   >
                     Details
                   </button>

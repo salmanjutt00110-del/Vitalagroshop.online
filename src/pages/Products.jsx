@@ -204,7 +204,7 @@ const ProductGridCard = React.memo(({ product, openCheckout, lang }) => {
 
         {/* === GLARE SWEEP on hover === */}
         <div className="absolute inset-0 z-[5] pointer-events-none overflow-hidden rounded-[24px]">
-          <div style={{ transitionDuration: '1.4s' }} className="absolute inset-0 w-[200%] h-full bg-gradient-to-r from-transparent via-white/[0.08] to-transparent -translate-x-full group-hover:translate-x-full transition-transform ease-out" />
+          <div className="absolute inset-0 w-[200%] h-full bg-gradient-to-r from-transparent via-white/40 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-out" />
         </div>
 
         {/* === PREMIUM PRICE TAG COUPON === */}
@@ -226,10 +226,10 @@ const ProductGridCard = React.memo(({ product, openCheckout, lang }) => {
         <motion.div variants={imageVariants} className="relative w-full pt-5 pb-2 px-4 z-10">
           {/* Category label at top-left */}
           <div className="flex items-center gap-1.5 mb-3">
-            <span className="text-[8px] font-black tracking-[0.15em] px-2.5 py-1 rounded-lg border border-emerald-500/25 bg-emerald-500/10 text-emerald-400 uppercase backdrop-blur-sm">
+            <span className="text-[8px] font-black tracking-[0.15em] px-2.5 py-1 rounded-lg border border-[#0F7B3B]/15 bg-[#0F7B3B]/10 text-[#0F7B3B] uppercase">
               {getCategoryLabel(product.category)}
             </span>
-            <span className="text-[8px] font-black tracking-[0.15em] px-2.5 py-1 rounded-lg border border-emerald-900/10 bg-white/60 text-neutral-500 uppercase backdrop-blur-sm">
+            <span className="text-[8px] font-black tracking-[0.15em] px-2.5 py-1 rounded-lg border border-[#102415]/10 bg-[#F8FAF8] text-[#5A5A5A] uppercase">
               {product.status?.en || 'PREMIUM'}
             </span>
           </div>
@@ -287,17 +287,17 @@ const ProductGridCard = React.memo(({ product, openCheckout, lang }) => {
         >
           <div className="space-y-2.5 sm:space-y-4">
             {nameUr && (lang === 'ur' || lang === 'pb') && (
-              <h3 className="text-emerald-400 font-extrabold text-sm sm:text-2xl leading-normal text-center select-none min-h-[1.25rem] sm:min-h-[1.75rem]" style={{ fontFamily: "'Jameel Noori Nastaleeq', 'Noto Nastaliq Urdu', serif" }} dir="rtl">
+              <h3 className="text-[#0F7B3B] font-extrabold text-sm sm:text-2xl leading-normal text-center select-none min-h-[1.25rem] sm:min-h-[1.75rem]" style={{ fontFamily: "'Jameel Noori Nastaleeq', 'Noto Nastaliq Urdu', serif" }} dir="rtl">
                 {nameUr}
               </h3>
             )}
             
-            <h4 className="text-emerald-950 font-extrabold text-xs sm:text-lg leading-tight group-hover:text-emerald-300 transition-colors duration-300 text-center line-clamp-1">
+            <h4 className="text-[#1E1E1E] font-extrabold text-xs sm:text-lg leading-tight group-hover:text-[#0F7B3B] transition-colors duration-300 text-center line-clamp-1">
               {nameEn}
             </h4>
 
             <div className="flex justify-center">
-              <span className="text-[7.5px] sm:text-[10px] font-mono font-black text-emerald-300/80 uppercase bg-emerald-950/50 border border-emerald-500/15 px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-lg tracking-wider inline-block truncate max-w-full text-center">
+              <span className="text-[7.5px] sm:text-[10px] font-mono font-black text-[#5A5A5A] uppercase bg-[#F8FAF8] border border-[#102415]/10 px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-lg tracking-wider inline-block truncate max-w-full text-center">
                 {product.genericName?.en || product.activeIngredient || 'BIOTECH FORMULA'}
               </span>
             </div>
@@ -341,17 +341,17 @@ const ProductGridCard = React.memo(({ product, openCheckout, lang }) => {
               <div className="flex items-center justify-between">
                 <div className="flex flex-col">
                   <div className="flex items-baseline gap-1.5">
-                    <span className="text-emerald-400 font-black text-sm sm:text-xl font-mono leading-none tracking-tight">
+                    <span className="text-[#102415] font-black text-sm sm:text-xl font-mono leading-none tracking-tight">
                       {activePrice === 0 ? 'On Request' : `₨ ${activePrice.toLocaleString()}`}
                     </span>
                     {activePrice > 0 && oldPrice && oldPrice > activePrice && (
-                      <span className="text-emerald-950/25 line-through text-[9px] sm:text-[11px] font-mono leading-none">
+                      <span className="text-[#5A5A5A] line-through text-[9px] sm:text-[11px] font-mono leading-none">
                         ₨{oldPrice.toLocaleString()}
                       </span>
                     )}
                   </div>
                   {activePrice > 0 && oldPrice && oldPrice > activePrice && (
-                    <span className="text-[8px] sm:text-[9px] text-emerald-400/70 font-bold mt-1">
+                    <span className="text-[8px] sm:text-[9px] text-[#0F7B3B] font-bold mt-1">
                       Save ₨{(oldPrice - activePrice).toLocaleString()}
                     </span>
                   )}

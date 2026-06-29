@@ -50,76 +50,63 @@ export default function PremiumProductCard({ product }) {
   return (
     <motion.div
       layout
-      whileHover={{ y: -8 }}
-      transition={{ duration: 0.35, ease: [0.25, 0.46, 0.45, 0.94] }}
+      whileHover={{ y: -6 }}
+      transition={{ duration: 0.3, ease: 'easeOut' }}
       onClick={toggleExpand}
-      className="w-full relative group overflow-hidden flex flex-col h-full rounded-[28px] border border-white/[0.08] hover:border-emerald-500/25 transition-colors duration-500 cursor-pointer"
-      style={{
-        background: 'linear-gradient(165deg, rgba(16, 185, 129, 0.04) 0%, rgba(5, 9, 6, 0.85) 30%, rgba(5, 9, 6, 0.9) 100%)',
-        backdropFilter: 'blur(20px)',
-        WebkitBackdropFilter: 'blur(20px)',
-      }}
+      className="w-full relative group overflow-hidden flex flex-col h-full rounded-[24px] bg-white border border-[#102415]/10 hover:border-[#0F7B3B]/30 hover:shadow-[0_12px_32px_rgba(15,123,59,0.08)] transition-all duration-300 cursor-pointer"
     >
-      {/* Ambient glow on hover */}
-      <div className="absolute -top-20 -right-20 w-40 h-40 bg-emerald-500/[0.06] rounded-full blur-[60px] opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
-      
-      {/* Glare sweep on hover */}
-      <div className="absolute inset-0 z-[5] pointer-events-none overflow-hidden rounded-[28px]">
-        <div style={{ transitionDuration: '1.6s' }} className="absolute inset-0 w-[200%] h-full bg-gradient-to-r from-transparent via-white/[0.06] to-transparent -translate-x-full group-hover:translate-x-full transition-transform ease-out" />
+      {/* Glare sweep on hover - optimized */}
+      <div className="absolute inset-0 z-[5] pointer-events-none overflow-hidden rounded-[24px]">
+        <div className="absolute inset-0 w-[200%] h-full bg-gradient-to-r from-transparent via-white/40 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-out" />
       </div>
 
       <div className="p-5 sm:p-6 flex flex-col flex-1">
         {/* Category & Premium Tag */}
         <div className="flex justify-between items-center mb-4 relative z-10">
-          <span className="px-2.5 py-1 text-[9px] font-black uppercase tracking-[0.12em] text-[#4ade80] bg-[#22c55e]/10 border border-[#22c55e]/20 rounded-lg backdrop-blur-sm truncate max-w-[55%]">
+          <span className="px-2.5 py-1 text-[9px] font-black uppercase tracking-[0.12em] text-[#0F7B3B] bg-[#0F7B3B]/10 border border-[#0F7B3B]/15 rounded-lg truncate max-w-[55%]">
             {getCategoryLabel(product.category)}
           </span>
-          <span className="px-2.5 py-1 text-[9px] font-black uppercase tracking-[0.12em] text-[#4ade80] bg-[#22c55e]/10 border border-[#22c55e]/20 rounded-lg backdrop-blur-sm truncate max-w-[45%]">
+          <span className="px-2.5 py-1 text-[9px] font-black uppercase tracking-[0.12em] text-[#0F7B3B] bg-[#0F7B3B]/10 border border-[#0F7B3B]/15 rounded-lg truncate max-w-[45%]">
             {lang === 'en' ? 'PREMIUM QUALITY' : 'پریمیم کوالٹی'}
           </span>
         </div>
 
         {/* Product Image — Floating Bottle */}
-        <div className="relative aspect-[4/3] w-full flex items-center justify-center mb-5 rounded-2xl overflow-hidden bg-gradient-to-b from-white/[0.02] to-transparent border border-white/[0.05]">
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_60%,rgba(16,185,129,0.08)_0%,transparent_65%)] group-hover:scale-110 transition-transform duration-700 pointer-events-none" />
+        <div className="relative aspect-[4/3] w-full flex items-center justify-center mb-5 rounded-2xl overflow-hidden bg-gradient-to-b from-[#F8FAF8] to-white border border-[#102415]/5">
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_60%,rgba(15,123,59,0.04)_0%,transparent_65%)] group-hover:scale-105 transition-transform duration-500 pointer-events-none" />
           
           <motion.div
-            animate={{ y: [0, -7, 0] }}
-            transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut" }}
+            animate={{ y: [0, -4, 0] }}
+            transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
             className="relative z-10 flex items-center justify-center h-32 sm:h-36 w-full"
           >
             <BlurUpImage
               src={product.pngUrl || product.imageUrl}
               alt={prodNameEn}
-              className="max-h-full w-auto object-contain select-none pointer-events-none"
-              style={{
-                filter: 'drop-shadow(0 12px 20px rgba(0,0,0,0.5)) drop-shadow(0 0 8px rgba(16,185,129,0.15))'
-              }}
+              className="max-h-full w-auto object-contain select-none pointer-events-none drop-shadow-[0_8px_16px_rgba(0,0,0,0.15)]"
             />
           </motion.div>
-
-          <div className="absolute bottom-2 left-1/2 -translate-x-1/2 w-[55%] h-2.5 bg-emerald-500/15 rounded-full blur-[5px] pointer-events-none group-hover:bg-emerald-500/25 transition-colors duration-500 animate-pulse" />
         </div>
 
         {/* Product Name */}
         <div className="space-y-1 mb-3 relative z-10 text-left">
           {prodNameUr && (
             <h3 
-              className="text-emerald-400 font-extrabold text-base leading-snug"
+              className="text-[#0F7B3B] font-extrabold text-base leading-snug"
               style={{ fontFamily: "'Jameel Noori Nastaleeq', 'Noto Nastaliq Urdu', serif" }}
               dir="rtl"
             >
               {prodNameUr}
             </h3>
           )}
-          <h4 className="text-emerald-950 font-black text-sm leading-tight group-hover:text-emerald-300 transition-colors duration-300 line-clamp-1">
+          <h4 className="text-[#1E1E1E] font-black text-sm leading-tight group-hover:text-[#0F7B3B] transition-colors duration-300 line-clamp-1">
             {prodNameEn}
           </h4>
         </div>
 
         {/* Generic Chemical Formulation Badge */}
         <div className="flex justify-start mb-4">
-          <span className="text-[9px] font-mono font-bold text-emerald-300/80 bg-emerald-950/30 border border-emerald-500/15 px-2.5 py-1 rounded-lg tracking-wider inline-block truncate max-w-full">
+          <span className="text-[9px] font-mono font-bold text-[#5A5A5A] bg-[#F8FAF8] border border-[#102415]/10 px-2.5 py-1 rounded-lg tracking-wider inline-block truncate max-w-full">
             {product.activeIngredient || 'BIOTECH FORMULATION'}
           </span>
         </div>
@@ -135,9 +122,9 @@ export default function PremiumProductCard({ product }) {
                 exit={{ opacity: 0, y: -10 }}
                 transition={{ duration: 0.2 }}
                 onClick={toggleExpand}
-                className="w-full flex items-center justify-center gap-2 h-11 rounded-xl border border-emerald-500/30 hover:border-emerald-400/60 bg-emerald-500/5 hover:bg-emerald-500/10 text-emerald-400 text-xs font-black uppercase tracking-wider transition-all duration-300 cursor-pointer active:scale-[0.98]"
+                className="w-full flex items-center justify-center gap-2 h-11 rounded-xl border border-[#0F7B3B]/20 hover:border-[#0F7B3B]/40 bg-[#0F7B3B]/5 hover:bg-[#0F7B3B]/10 text-[#0F7B3B] text-xs font-black uppercase tracking-wider transition-all duration-300 cursor-pointer active:scale-[0.98]"
               >
-                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse shadow-[0_0_8px_rgba(52,211,153,0.8)]" />
+                <span className="w-1.5 h-1.5 rounded-full bg-[#39D98A] animate-pulse shadow-[0_0_8px_rgba(57,217,138,0.8)]" />
                 {lang === 'en' ? 'VIEW PRICING & BUY' : 'قیمت دیکھیں اور خریدیں'}
               </motion.button>
             ) : (
@@ -170,8 +157,8 @@ export default function PremiumProductCard({ product }) {
                             }}
                             className={`px-3 py-1.5 rounded-xl text-[10px] font-black border transition-all duration-300 cursor-pointer ${
                               isActive
-                                ? 'bg-emerald-500/15 text-emerald-400 border-emerald-500 shadow-md shadow-emerald-500/5'
-                                : 'bg-white/60 text-neutral-500 border-emerald-900/10 hover:bg-white/80 hover:border-emerald-900/20'
+                                ? 'bg-[#0F7B3B]/10 text-[#0F7B3B] border-[#0F7B3B] shadow-sm'
+                                : 'bg-[#F8FAF8] text-[#5A5A5A] border-[#102415]/10 hover:bg-[#0F7B3B]/5 hover:border-[#0F7B3B]/30'
                             }`}
                           >
                             {szName}
@@ -185,20 +172,20 @@ export default function PremiumProductCard({ product }) {
                 {/* Price & Quantity Row */}
                 <div className="flex items-center justify-between">
                   {/* Price */}
-                  <span className="text-[#22d3ee] font-black text-lg sm:text-xl font-mono">
+                  <span className="text-[#102415] font-black text-lg sm:text-xl font-mono">
                     {currentPrice === 0 ? 'On Request' : `Rs ${currentPrice.toLocaleString()}`}
                   </span>
 
                   {/* Quantity Adjustment */}
-                  <div className="flex items-center gap-1.5 bg-white/90 rounded-xl border border-emerald-900/10 px-1.5 py-1">
+                  <div className="flex items-center gap-1.5 bg-[#F8FAF8] rounded-xl border border-[#102415]/10 px-1.5 py-1">
                     <button
                       onClick={(e) => { e.stopPropagation(); setQuantity(q => Math.max(1, q - 1)); }}
-                      className="w-7 h-7 rounded-lg bg-white/60 hover:bg-white/15 text-emerald-950 text-sm flex items-center justify-center transition-all font-bold cursor-pointer active:scale-90"
+                      className="w-7 h-7 rounded-lg bg-white hover:bg-[#102415]/5 text-[#1E1E1E] text-sm flex items-center justify-center transition-all font-bold cursor-pointer active:scale-90"
                     >−</button>
-                    <span className="text-emerald-950 text-xs font-black w-5 text-center font-mono">{quantity}</span>
+                    <span className="text-[#1E1E1E] text-xs font-black w-5 text-center font-mono">{quantity}</span>
                     <button
                       onClick={(e) => { e.stopPropagation(); setQuantity(q => q + 1); }}
-                      className="w-7 h-7 rounded-lg bg-emerald-500/15 hover:bg-emerald-500/30 text-emerald-300 text-sm flex items-center justify-center transition-all font-bold cursor-pointer active:scale-90"
+                      className="w-7 h-7 rounded-lg bg-[#0F7B3B]/10 hover:bg-[#0F7B3B]/20 text-[#0F7B3B] text-sm flex items-center justify-center transition-all font-bold cursor-pointer active:scale-90"
                     >+</button>
                   </div>
                 </div>
@@ -207,7 +194,7 @@ export default function PremiumProductCard({ product }) {
                 <div className="grid grid-cols-2 gap-2">
                   <button
                     onClick={handleBuyNow}
-                    className="flex items-center justify-center gap-1.5 h-11 bg-gradient-to-r from-emerald-500 to-[#76C945] hover:shadow-[0_4px_15px_rgba(16,185,129,0.3)] text-black rounded-xl text-[10px] font-black uppercase tracking-wider transition-all active:scale-95 cursor-pointer shadow-md"
+                    className="flex items-center justify-center gap-1.5 h-11 bg-gradient-to-r from-[#1FAF5A] to-[#0F7B3B] hover:shadow-[0_4px_15px_rgba(15,123,59,0.3)] text-white rounded-xl text-[10px] font-black uppercase tracking-wider transition-all active:scale-95 cursor-pointer"
                   >
                     <ShoppingBag className="w-3.5 h-3.5" />
                     {lang === 'en' ? 'Buy Now' : 'خریدیں'}
@@ -215,7 +202,7 @@ export default function PremiumProductCard({ product }) {
                   <Link
                     to={`/products/${product.slug || product.id}`}
                     onClick={(e) => e.stopPropagation()}
-                    className="flex items-center justify-center gap-1 h-11 bg-white/60 hover:bg-white/80 border border-emerald-900/10 hover:border-emerald-500/30 rounded-xl text-[10px] font-bold text-emerald-950 transition-all active:scale-95 cursor-pointer backdrop-blur-sm"
+                    className="flex items-center justify-center gap-1 h-11 bg-[#F8FAF8] hover:bg-white border border-[#102415]/10 hover:border-[#0F7B3B]/30 rounded-xl text-[10px] font-bold text-[#1E1E1E] transition-all active:scale-95 cursor-pointer"
                   >
                     {lang === 'en' ? 'Details' : 'تفصیلات'}
                     <ChevronRight className="w-3.5 h-3.5" />
@@ -225,7 +212,7 @@ export default function PremiumProductCard({ product }) {
                 {/* Collapse Link */}
                 <button
                   onClick={toggleExpand}
-                  className="w-full text-center text-[10px] font-bold text-neutral-500 hover:text-emerald-400 transition-colors uppercase tracking-wider pt-1 flex items-center justify-center gap-1 cursor-pointer"
+                  className="w-full text-center text-[10px] font-bold text-[#5A5A5A] hover:text-[#0F7B3B] transition-colors uppercase tracking-wider pt-1 flex items-center justify-center gap-1 cursor-pointer"
                 >
                   ▲ {lang === 'en' ? 'HIDE' : 'چھپائیں'}
                 </button>
