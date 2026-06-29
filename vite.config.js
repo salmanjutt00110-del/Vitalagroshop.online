@@ -41,7 +41,8 @@ export default defineConfig({
             if (id.includes('lucide-react')) {
               return 'vendor-icons';
             }
-            if (id.includes('react-dom') || id.includes('react-router')) {
+            const coreReactPackages = ['react', 'react-dom', 'react-router', 'react-router-dom', 'scheduler', '@remix-run/router'];
+            if (coreReactPackages.some(pkg => id.includes(`node_modules/${pkg}/`) || id.includes(`node_modules\\${pkg}\\`))) {
               return 'vendor-react-core';
             }
             return 'vendor-utils';
