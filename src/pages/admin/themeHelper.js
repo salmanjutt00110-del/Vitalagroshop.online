@@ -1,0 +1,70 @@
+export const getThemeClasses = (theme) => {
+  if (theme === 'light') {
+    return {
+      wrapper: "min-h-screen bg-[#F3F4F6] text-neutral-800 font-sans flex overflow-hidden relative",
+      sidebar: "bg-white border-r border-neutral-200 text-neutral-800 shadow-sm",
+      sidebarItemActive: "bg-emerald-50 text-emerald-700 border-l-4 border-emerald-600 shadow-sm",
+      sidebarItemInactive: "text-neutral-600 hover:text-neutral-900 hover:bg-neutral-100",
+      header: "sticky top-0 bg-white/80 border-b border-neutral-200 z-30 backdrop-blur-md",
+      card: "bg-white border border-neutral-200 rounded-2xl p-5 shadow-sm text-neutral-800",
+      tableHeader: "bg-neutral-50 border-b border-neutral-200 text-neutral-600 font-bold",
+      tableRow: "border-b border-neutral-100 hover:bg-neutral-50/80 text-neutral-700",
+      input: "bg-white border border-neutral-300 text-neutral-800 placeholder:text-neutral-400 focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 outline-none transition-all",
+      textPrimary: "text-neutral-900 font-black",
+      textMuted: "text-neutral-500 font-medium",
+      badge: "bg-neutral-100 text-neutral-700 border border-neutral-200 font-bold",
+      accentButton: "bg-emerald-600 hover:bg-emerald-700 text-white font-extrabold shadow-sm",
+      accentText: "text-emerald-600 font-bold",
+      borderAccent: "border-neutral-200",
+      bgSubtle: "bg-neutral-50",
+      modal: "bg-white border border-neutral-200 text-neutral-800 shadow-2xl rounded-3xl",
+      textLight: "text-neutral-800",
+      textWhite: "text-black",
+    };
+  } else if (theme === 'dark') {
+    return {
+      wrapper: "min-h-screen bg-[#0F172A] text-slate-200 font-sans flex overflow-hidden relative",
+      sidebar: "bg-[#1E293B] border-r border-slate-700 text-slate-200",
+      sidebarItemActive: "bg-slate-800 text-emerald-400 border-l-4 border-emerald-500 shadow-md",
+      sidebarItemInactive: "text-slate-400 hover:text-slate-100 hover:bg-slate-800/60",
+      header: "sticky top-0 bg-[#1E293B]/90 border-b border-slate-700 z-30 backdrop-blur-md",
+      card: "bg-[#1E293B] border border-slate-700 rounded-2xl p-5 shadow-lg text-slate-200",
+      tableHeader: "bg-slate-800 border-b border-slate-700 text-slate-300 font-bold",
+      tableRow: "border-b border-slate-800/80 hover:bg-slate-800/40 text-slate-300",
+      input: "bg-slate-900 border border-slate-700 text-slate-200 placeholder:text-slate-500 focus:border-emerald-500 outline-none transition-all",
+      textPrimary: "text-slate-100 font-black",
+      textMuted: "text-slate-400 font-medium",
+      badge: "bg-slate-800 text-slate-300 border border-slate-700 font-bold",
+      accentButton: "bg-emerald-600 hover:bg-emerald-700 text-white font-extrabold shadow-md",
+      accentText: "text-emerald-400 font-bold",
+      borderAccent: "border-slate-700",
+      bgSubtle: "bg-slate-900",
+      modal: "bg-[#1E293B] border border-slate-700 text-slate-100 shadow-2xl rounded-3xl",
+      textLight: "text-slate-200",
+      textWhite: "text-white",
+    };
+  } else {
+    // Default luxury green/website theme (Apple, Stripe, Shopify aesthetic)
+    return {
+      wrapper: "min-h-screen bg-[#040A06] text-neutral-200 font-sans flex overflow-hidden relative",
+      sidebar: "bg-black/40 border-r border-white/5 backdrop-blur-2xl h-screen flex flex-col justify-between transition-all duration-300 relative z-40 select-none shadow-[4px_0_24px_rgba(0,0,0,0.4)]",
+      sidebarItemActive: "bg-gradient-to-r from-[#10B981]/20 to-transparent text-[#32D74B] border-l-[3px] border-[#32D74B] shadow-[inset_0_0_20px_rgba(50,215,75,0.05)]",
+      sidebarItemInactive: "text-neutral-400 hover:text-white hover:bg-white/5 transition-all duration-300",
+      header: "sticky top-0 bg-black/30 border-b border-white/5 px-6 py-4 flex items-center justify-between z-30 backdrop-blur-2xl select-none shadow-sm",
+      card: "bg-black/40 backdrop-blur-2xl border border-white/10 rounded-[24px] p-6 space-y-4 shadow-[0_8px_32px_rgba(0,0,0,0.4)] text-left hover:border-[#10B981]/30 hover:shadow-[0_8px_40px_rgba(16,185,129,0.15)] transition-all duration-500",
+      tableHeader: "bg-black/50 border-b border-white/10 text-[10px] font-bold text-neutral-400 tracking-[0.15em] uppercase px-4 py-3",
+      tableRow: "border-b border-white/5 hover:bg-white/5 text-neutral-300 transition-colors duration-200",
+      input: "bg-black/50 border border-white/10 text-white placeholder:text-neutral-600 focus:border-[#32D74B]/50 focus:ring-1 focus:ring-[#32D74B]/20 outline-none rounded-xl transition-all shadow-inner",
+      textPrimary: "text-white font-black tracking-tight",
+      textMuted: "text-neutral-400 font-medium",
+      badge: "bg-[#10B981]/10 border border-[#10B981]/20 text-[#32D74B] font-bold rounded-lg px-2.5 py-1 text-[10px] uppercase tracking-widest",
+      accentButton: "bg-gradient-to-r from-[#10B981] to-[#8AD65A] hover:to-[#10B981] text-black font-extrabold shadow-[0_0_20px_rgba(16,185,129,0.3)] hover:shadow-[0_0_30px_rgba(16,185,129,0.5)] hover:scale-105 active:scale-95 transition-all duration-300 rounded-xl px-5 py-2.5",
+      accentText: "text-transparent bg-clip-text bg-gradient-to-r from-[#10B981] to-[#8AD65A] font-black",
+      borderAccent: "border-white/10",
+      bgSubtle: "bg-black/30",
+      modal: "bg-black/80 backdrop-blur-3xl border border-white/10 text-white shadow-[0_30px_70px_rgba(0,0,0,0.6),0_0_50px_rgba(16,185,129,0.1)] rounded-[32px] overflow-hidden transform-gpu",
+      textLight: "text-neutral-300",
+      textWhite: "text-white",
+    };
+  }
+};

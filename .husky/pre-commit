@@ -1,0 +1,1 @@
+node scripts/pre-commit-audit.js && npm run lint

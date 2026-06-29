@@ -1,0 +1,69 @@
+{
+  "name": "Product",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Product name"
+    },
+    "category": {
+      "type": "string",
+      "enum": [
+        "insecticide",
+        "herbicide",
+        "fungicide",
+        "plant_nutrition",
+        "growth_promoter",
+        "special_product"
+      ],
+      "description": "Product category"
+    },
+    "description": {
+      "type": "string",
+      "description": "Product description"
+    },
+    "benefits": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Product benefits"
+    },
+    "recommended_crops": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Recommended crops"
+    },
+    "dosage": {
+      "type": "string",
+      "description": "Dosage information"
+    },
+    "packaging": {
+      "type": "string",
+      "description": "Packaging sizes"
+    },
+    "active_ingredient": {
+      "type": "string",
+      "description": "Active ingredient"
+    },
+    "formulation": {
+      "type": "string",
+      "description": "Formulation type"
+    },
+    "image_url": {
+      "type": "string",
+      "description": "Product image URL"
+    },
+    "featured": {
+      "type": "boolean",
+      "default": false,
+      "description": "Featured product"
+    }
+  },
+  "required": [
+    "name",
+    "category"
+  ]
+}

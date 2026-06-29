@@ -1,0 +1,112 @@
+/* Touch improvements & prevent layout issues */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+/* Apply tap styling and touch action optimizations to interactive elements only */
+a, button, input, select, textarea, [role="button"], .touch-target {
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+
+html, body {
+  overflow-x: hidden;
+  overscroll-behavior-y: auto;
+  overscroll-behavior-x: none;
+  -webkit-overflow-scrolling: touch;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Body and Root - avoid white flash */
+html, body, #root {
+  background-color: #061406 !important;
+  min-height: 100svh;
+}
+
+/* iOS Safe Area Padding */
+.safe-top    { padding-top:    env(safe-area-inset-top, 0px);    }
+.safe-bottom { padding-bottom: env(safe-area-inset-bottom, 16px); }
+
+/* Prevent input zoom on focus (iOS) */
+input, select, textarea, button {
+  font-size: 16px;
+}
+@media (max-width: 640px) {
+  input, select, textarea {
+    font-size: 16px !important;
+  }
+}
+
+/* Hardware GPU Acceleration */
+.animate-gpu {
+  will-change: transform;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+.scroll-container {
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Scrollbar Hide utilities */
+.no-scrollbar::-webkit-scrollbar,
+.no-scroll::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar,
+.no-scroll {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Floating Action Button (FAB) Mobile Alignments */
+.fab-group {
+  position: fixed;
+  right: 16px;
+  bottom: calc(24px + env(safe-area-inset-bottom, 0px));
+  z-index: 40;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* Bottom Sheet Handle */
+.sheet-handle {
+  width: 40px;
+  height: 4px;
+  background: rgba(255,255,255,0.2);
+  border-radius: 99px;
+  margin: 12px auto 8px;
+}
+
+/* Touch Targets (Minimum standard tap size for interactive control elements) */
+button, [role="button"], .touch-target {
+  min-height: 44px;
+  min-width: 44px;
+}
+
+/* Card Swipe - Disable Selection during drag */
+.swipe-card {
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+/* Mobile loading screen fixes */
+@media (max-width: 640px) {
+  /* Truck preloader scene on mobile */
+  .truck-scene {
+    transform: scale(0.85);
+    transform-origin: center bottom;
+  }
+
+  /* Progress bar container sizing */
+  .progress-bar-container {
+    width: calc(100vw - 48px) !important;
+    max-width: 320px;
+  }
+}

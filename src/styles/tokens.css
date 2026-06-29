@@ -1,0 +1,59 @@
+/* src/styles/tokens.css */
+/* Premium design tokens */
+:root {
+  /* Color palette */
+  --color-primary-dark: hsl(150, 40%, 5%); /* deep luxury dark green */
+  --color-primary: hsl(150, 45%, 12%);
+  --color-primary-light: hsl(150, 30%, 20%);
+  --color-accent: hsl(48, 95%, 55%); /* vibrant accent gold */
+  --color-glass-bg: hsla(150, 30%, 15%, 0.45);
+  --color-glass-border: hsla(150, 30%, 90%, 0.2);
+  --color-text-primary: #e1e8e0;
+  --color-text-secondary: #c3c9c1;
+
+  /* Typography */
+  --font-primary: 'Inter', sans-serif;
+  --font-heading: 'Outfit', sans-serif;
+  --font-size-base: 1rem;
+  --font-size-lg: 1.125rem;
+  --font-size-xl: 1.25rem;
+
+  /* Shadows */
+  --shadow-glass: 0 4px 30px rgba(0, 0, 0, 0.5);
+  --shadow-card: 0 12px 30px rgba(0, 0, 0, 0.4);
+  --shadow-button: 0 6px 12px rgba(0, 0, 0, 0.3);
+
+  /* Border radius */
+  --radius-sm: 0.5rem;
+  --radius-md: 1rem;
+  --radius-lg: 1.5rem;
+
+  /* Transition */
+  --transition-fast: 0.15s ease-out;
+  --transition-medium: 0.3s ease-out;
+
+  /* Particle & glow settings (used in canvas) */
+  --particle-count: 80;
+  --glow-intensity: 0.7;
+}
+
+/* Global resets and base styles */
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-primary);
+  color: var(--color-text-primary);
+  background: linear-gradient(135deg, var(--color-primary-dark), var(--color-primary));
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+
+/* Utility classes for glass effect */
+.glass {
+  background: var(--color-glass-bg);
+  backdrop-filter: blur(12px) saturate(150%);
+  -webkit-backdrop-filter: blur(12px) saturate(150%);
+  border: 1px solid var(--color-glass-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-glass);
+}

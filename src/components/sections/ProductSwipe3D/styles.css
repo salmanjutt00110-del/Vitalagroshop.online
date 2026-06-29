@@ -1,0 +1,9 @@
+/* CSS for 3D perspective and card animations */
+.product-swipe-section {
+  backface-visibility: hidden;
+}
+
+.swipe-card-3d {
+  transform-style: preserve-3d;
+  perspective: 1200px;
+}

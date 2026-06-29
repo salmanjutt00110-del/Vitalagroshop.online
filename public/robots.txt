@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+# Block admin panel files and dashboard from search indexes
+Disallow: /admin
+Disallow: /admin/*
+
+Sitemap: https://vital-agro.vercel.app/sitemap.xml
