@@ -276,11 +276,11 @@ export default function HeroContent() {
                 onClick={() => openModal('fatty')}
                 className="rounded-[32px] p-6 border flex flex-col items-center w-[185px] h-[275px] sm:w-[215px] sm:h-[315px] justify-between cursor-pointer hover:shadow-[#76C945]/15 hover:border-[#76C945]/30 transition-all duration-300 relative overflow-hidden"
                 style={{
-                  background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.01) 100%)',
-                  backdropFilter: 'blur(24px)',
-                  WebkitBackdropFilter: 'blur(24px)',
-                  borderColor: 'rgba(255, 255, 255, 0.1)',
-                  boxShadow: '0 30px 60px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.06)'
+                  background: 'rgba(255, 255, 255, 0.10)',
+                  backdropFilter: 'blur(18px)',
+                  WebkitBackdropFilter: 'blur(18px)',
+                  borderColor: 'rgba(255, 255, 255, 0.15)',
+                  boxShadow: '0 20px 40px rgba(0,0,0,0.08), inset 0 1px 0 rgba(255,255,255,0.2)'
                 }}
                 animate={{ y: [-6, 6, -6] }}
                 transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut' }}
@@ -314,11 +314,11 @@ export default function HeroContent() {
                 onClick={() => openModal('super-4g')}
                 className="rounded-2xl p-4 border flex flex-col items-center w-[125px] h-[175px] justify-between cursor-pointer hover:shadow-[#76C945]/10 hover:border-[#76C945]/30 transition-all duration-300 relative overflow-hidden"
                 style={{
-                  background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.04) 0%, rgba(255, 255, 255, 0.01) 100%)',
-                  backdropFilter: 'blur(20px)',
-                  WebkitBackdropFilter: 'blur(20px)',
-                  borderColor: 'rgba(255, 255, 255, 0.08)',
-                  boxShadow: '0 20px 40px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.05)'
+                  background: 'rgba(255, 255, 255, 0.10)',
+                  backdropFilter: 'blur(18px)',
+                  WebkitBackdropFilter: 'blur(18px)',
+                  borderColor: 'rgba(255, 255, 255, 0.15)',
+                  boxShadow: '0 20px 40px rgba(0,0,0,0.08), inset 0 1px 0 rgba(255,255,255,0.2)'
                 }}
                 animate={{ y: [4, -8, 4] }}
                 transition={{ duration: 4.2, repeat: Infinity, ease: 'easeInOut', delay: 0.3 }}
@@ -350,11 +350,11 @@ export default function HeroContent() {
                 onClick={() => openModal('aaqab')}
                 className="rounded-2xl p-4 border flex flex-col items-center w-[125px] h-[175px] justify-between cursor-pointer hover:shadow-[#76C945]/10 hover:border-[#76C945]/30 transition-all duration-300 relative overflow-hidden"
                 style={{
-                  background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.04) 0%, rgba(255, 255, 255, 0.01) 100%)',
-                  backdropFilter: 'blur(20px)',
-                  WebkitBackdropFilter: 'blur(20px)',
-                  borderColor: 'rgba(255, 255, 255, 0.08)',
-                  boxShadow: '0 20px 40px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.05)'
+                  background: 'rgba(255, 255, 255, 0.10)',
+                  backdropFilter: 'blur(18px)',
+                  WebkitBackdropFilter: 'blur(18px)',
+                  borderColor: 'rgba(255, 255, 255, 0.15)',
+                  boxShadow: '0 20px 40px rgba(0,0,0,0.08), inset 0 1px 0 rgba(255,255,255,0.2)'
                 }}
                 animate={{ y: [-6, 10, -6] }}
                 transition={{ duration: 4.6, repeat: Infinity, ease: 'easeInOut', delay: 0.8 }}

@@ -73,18 +73,15 @@ export default function Navbar() {
           style={{
             maxWidth: 680,
             marginLeft: 'auto',
-            marginRight: 'auto',
-            borderRadius: 22,
-            overflow: 'hidden',
-            /* Premium Solid White Navbar */
-            background: '#ffffff',
-            backdropFilter: 'none',
-            WebkitBackdropFilter: 'none',
-            border: '1px solid rgba(16, 185, 129, 0.25)',
+            /* Premium Glassmorphism Navbar (Apple/Stripe Quality) */
+            background: 'rgba(255, 255, 255, 0.10)',
+            backdropFilter: 'blur(18px) saturate(180%)',
+            WebkitBackdropFilter: 'blur(18px) saturate(180%)',
+            border: '1px solid rgba(255, 255, 255, 0.15)',
             boxShadow: [
-              '0 4px 15px rgba(0,0,0,0.05)',
-              '0 10px 30px rgba(0,0,0,0.08)',
-              '0 0 20px rgba(16,185,129,0.1)',
+              '0 4px 15px rgba(0,0,0,0.03)',
+              '0 10px 30px rgba(0,0,0,0.05)',
+              'inset 0 1px 0 rgba(255,255,255,0.2)',
             ].join(', '),
           }}
         >
