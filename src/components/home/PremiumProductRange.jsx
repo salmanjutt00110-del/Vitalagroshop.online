@@ -215,7 +215,7 @@ export default function PremiumProductRange() {
                 style={{ perspective: '800px' }}
               >
                 {/* Visual Glass Sheen */}
-                <div className="absolute inset-0 w-1/2 bg-gradient-to-r from-transparent via-white/5 to-transparent skew-x-12 -translate-x-full group-hover:translate-x-[250%] transition-transform duration-[1.8s] ease-in-out pointer-events-none" />
+                <div style={{ transitionDuration: '1.8s' }} className="absolute inset-0 w-1/2 bg-gradient-to-r from-transparent via-white/5 to-transparent skew-x-12 -translate-x-full group-hover:translate-x-[250%] transition-transform ease-in-out pointer-events-none" />
 
                 <div>
                   {/* Category Badge & Quality Seal */}

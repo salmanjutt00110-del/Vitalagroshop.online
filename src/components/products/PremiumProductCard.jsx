@@ -65,7 +65,7 @@ export default function PremiumProductCard({ product }) {
       
       {/* Glare sweep on hover */}
       <div className="absolute inset-0 z-[5] pointer-events-none overflow-hidden rounded-[28px]">
-        <div className="absolute inset-0 w-[200%] h-full bg-gradient-to-r from-transparent via-white/[0.06] to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-[1.6s] ease-out" />
+        <div style={{ transitionDuration: '1.6s' }} className="absolute inset-0 w-[200%] h-full bg-gradient-to-r from-transparent via-white/[0.06] to-transparent -translate-x-full group-hover:translate-x-full transition-transform ease-out" />
       </div>
 
       <div className="p-5 sm:p-6 flex flex-col flex-1">

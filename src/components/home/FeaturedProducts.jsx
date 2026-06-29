@@ -78,7 +78,7 @@ export default function FeaturedProducts() {
               >
                 {/* Glare sweep */}
                 <div className="absolute inset-0 z-[5] pointer-events-none overflow-hidden rounded-[24px]">
-                  <div className="absolute inset-0 w-[200%] h-full bg-gradient-to-r from-transparent via-white/[0.06] to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-[1.4s] ease-out" />
+                  <div style={{ transitionDuration: '1.4s' }} className="absolute inset-0 w-[200%] h-full bg-gradient-to-r from-transparent via-white/[0.06] to-transparent -translate-x-full group-hover:translate-x-full transition-transform ease-out" />
                 </div>
 
                 {/* === PREMIUM PRICE TAG COUPON === */}

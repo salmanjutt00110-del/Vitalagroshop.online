@@ -27,13 +27,7 @@ export default defineConfig({
   },
   build: {
     target: 'esnext', // Use modern JS syntax for smaller bundles
-    minify: 'terser',
-    terserOptions: {
-      compress: {
-        drop_console: true, // Remove console logs in production for speed
-        drop_debugger: true,
-      },
-    },
+    
     rollupOptions: {
       output: {
         manualChunks(id) {
