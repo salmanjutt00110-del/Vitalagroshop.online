@@ -76,18 +76,15 @@ export default function Navbar() {
             marginRight: 'auto',
             borderRadius: 22,
             overflow: 'hidden',
-            /* Premium Light 3D glass */
-            background: 'rgba(255, 255, 255, 0.65)',
-            backdropFilter: 'blur(36px) saturate(200%) brightness(115%)',
-            WebkitBackdropFilter: 'blur(36px) saturate(200%) brightness(115%)',
-            border: '1px solid rgba(16, 185, 129, 0.15)',
+            /* Premium Solid White Navbar */
+            background: '#ffffff',
+            backdropFilter: 'none',
+            WebkitBackdropFilter: 'none',
+            border: '1px solid rgba(16, 185, 129, 0.25)',
             boxShadow: [
-              '0 4px 6px rgba(0,0,0,0.02)',
-              '0 10px 40px rgba(0,0,0,0.06)',
-              '0 0 0 1px rgba(255,255,255,0.4)',
-              '0 0 30px rgba(16,185,129,0.08)',
-              'inset 0 1px 0 rgba(255,255,255,0.8)',
-              'inset 0 -1px 0 rgba(0,0,0,0.02)',
+              '0 4px 15px rgba(0,0,0,0.05)',
+              '0 10px 30px rgba(0,0,0,0.08)',
+              '0 0 20px rgba(16,185,129,0.1)',
             ].join(', '),
           }}
         >
@@ -161,7 +158,7 @@ export default function Navbar() {
                   transition={{ type: 'spring', stiffness: 320, damping: 22 }}
                   style={{
                     height: 42, width: 'auto', objectFit: 'contain',
-                    filter: 'drop-shadow(0 2px 4px rgba(0,0,0,0.1)) invert(1) hue-rotate(180deg)', /* Make logo dark if it's white */
+                    filter: 'drop-shadow(0 2px 4px rgba(0,0,0,0.05)) invert(1) hue-rotate(180deg)',
                     cursor: 'pointer',
                   }}
                 />
@@ -243,8 +240,8 @@ export default function Navbar() {
                       width: 18, height: 18, borderRadius: '50%',
                       display: 'flex', alignItems: 'center', justifycontent: 'center',
                       fontSize: 9, fontWeight: 900, color: '#fff',
-                      background: 'linear-gradient(135deg, #22c55e, #16a34a)',
-                      boxShadow: '0 0 10px rgba(34,197,94,0.7)',
+                      background: 'linear-gradient(135deg, #059669, #047857)',
+                      boxShadow: '0 0 10px rgba(16,185,129,0.5)',
                     }}
                   >
                     {cartCount}
