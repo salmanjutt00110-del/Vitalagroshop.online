@@ -150,8 +150,8 @@ export default function TrackOrder() {
     <div className="min-h-screen pt-28 pb-20 bg-slate-50 text-emerald-950 relative select-none overflow-hidden flex flex-col items-center justify-start px-4">
       {/* Background Glows */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden z-0 opacity-40">
-        <div className="absolute top-[-20%] left-[-20%] w-[80%] h-[80%] rounded-full blur-[150px] bg-[#76C945]/10" />
-        <div className="absolute bottom-[-20%] right-[-20%] w-[80%] h-[80%] rounded-full blur-[150px] bg-[#8AD65A]/5" />
+        <div className="absolute top-[-20%] left-[-20%] w-[80%] h-[80%] rounded-full blur-[150px] bg-[#0E7A43]/10" />
+        <div className="absolute bottom-[-20%] right-[-20%] w-[80%] h-[80%] rounded-full blur-[150px] bg-[#18C964]/5" />
       </div>
 
       <div className="w-full max-w-xl z-10">
@@ -167,7 +167,7 @@ export default function TrackOrder() {
 
       {/* Input Search Container */}
       <div className="w-full max-w-xl backdrop-blur-xl bg-neutral-955/60 border border-emerald-900/10 shadow-[0_0_30px_rgba(16,185,129,0.1)] text-emerald-950 rounded-3xl p-6 sm:p-8 space-y-6 relative overflow-hidden z-10 bg-slate-50/80">
-        <div className="absolute top-0 right-0 w-32 h-32 bg-[#76C945]/5 filter blur-2xl rounded-full pointer-events-none" />
+        <div className="absolute top-0 right-0 w-32 h-32 bg-[#0E7A43]/5 filter blur-2xl rounded-full pointer-events-none" />
         
         {/* Heading */}
         <div className="text-center">
@@ -194,7 +194,7 @@ export default function TrackOrder() {
                 placeholder="E.g., VA-2026-0001"
                 value={searchCode}
                 onChange={(e) => setSearchCode(e.target.value.toUpperCase())}
-                className="w-full px-5 py-4 rounded-2xl text-emerald-950 text-sm bg-white/60 border border-emerald-900/10 outline-none placeholder:text-emerald-950/20 font-mono tracking-widest focus:border-[#76C945] focus:bg-white/80 transition-all duration-300"
+                className="w-full px-5 py-4 rounded-2xl text-emerald-950 text-sm bg-white/60 border border-emerald-900/10 outline-none placeholder:text-emerald-950/20 font-mono tracking-widest focus:border-[#0E7A43] focus:bg-white/80 transition-all duration-300"
               />
             </div>
           </div>
@@ -268,7 +268,7 @@ export default function TrackOrder() {
                     {/* Circle dot icon */}
                     <span className={`absolute -left-[43px] top-0.5 w-6 h-6 rounded-full flex items-center justify-center border transition-all duration-300 ${
                       isCompleted 
-                        ? 'bg-[#76C945] border-[#76C945] text-[#0A2E1F] shadow-[0_0_10px_rgba(118,201,69,0.3)] font-black text-xs' 
+                        ? 'bg-[#0E7A43] border-[#0E7A43] text-[#0A2E1F] shadow-[0_0_10px_rgba(15, 123, 59,0.3)] font-black text-xs' 
                         : isCompletedGlowing
                           ? 'bg-emerald-500 border-emerald-500 text-emerald-950 shadow-[0_0_15px_#10b981]'
                           : isActivePulse

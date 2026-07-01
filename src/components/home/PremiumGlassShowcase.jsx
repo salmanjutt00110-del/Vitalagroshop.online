@@ -183,7 +183,7 @@ export default function PremiumGlassShowcase() {
 
   // Dynamic Background glow highlights based on active product category
   const activeGlowColors = useMemo(() => {
-    if (!activeProduct) return { from: 'rgba(118, 201, 69, 0.12)', to: 'rgba(138, 214, 90, 0.04)' };
+    if (!activeProduct) return { from: 'rgba(15, 123, 59, 0.12)', to: 'rgba(138, 214, 90, 0.04)' };
     switch (activeProduct.category) {
       case 'insecticide':
         return { from: 'rgba(59, 130, 246, 0.12)', to: 'rgba(96, 165, 250, 0.04)' }; // Blue
@@ -195,7 +195,7 @@ export default function PremiumGlassShowcase() {
       case 'seed-treatment':
       case 'growth_promoter':
       default:
-        return { from: 'rgba(118, 201, 69, 0.12)', to: 'rgba(138, 214, 90, 0.04)' }; // Green
+        return { from: 'rgba(15, 123, 59, 0.12)', to: 'rgba(138, 214, 90, 0.04)' }; // Green
     }
   }, [activeProduct]);
 
@@ -239,7 +239,7 @@ export default function PremiumGlassShowcase() {
       ctx.moveTo(0, -size);
       ctx.quadraticCurveTo(size / 1.5, 0, 0, size);
       ctx.quadraticCurveTo(-size / 1.5, 0, 0, -size);
-      ctx.fillStyle = `rgba(118, 201, 69, ${opacity * 0.65})`;
+      ctx.fillStyle = `rgba(15, 123, 59, ${opacity * 0.65})`;
       ctx.fill();
       ctx.restore();
     };
@@ -580,7 +580,7 @@ Thank You.`;
                 onMouseMove={handleMagneticHover}
                 onMouseLeave={handleMagneticLeave}
                 onClick={triggerBuyNow}
-                className="w-full py-3.5 bg-gradient-to-r from-[#39D98A] to-[#1FAF5A] hover:shadow-[0_4px_15px_rgba(57,217,138,0.3)] text-[#061509] rounded-xl text-xs sm:text-sm font-black flex items-center justify-center gap-1.5 transition-all"
+                className="w-full py-3.5 bg-gradient-to-r from-[#39D98A] to-[#18C964] hover:shadow-[0_4px_15px_rgba(57,217,138,0.3)] text-[#061509] rounded-xl text-xs sm:text-sm font-black flex items-center justify-center gap-1.5 transition-all"
               >
                 <span>{l.buyNow}</span>
               </button>
@@ -699,7 +699,7 @@ Thank You.`;
                     key={idx}
                     onClick={() => setCurrentIndex(idx)}
                     className={`h-1.5 rounded-full transition-all duration-300 ${
-                      idx === currentIndex ? 'w-6 bg-[#76C945]' : 'w-2 bg-white/20 hover:bg-white/40'
+                      idx === currentIndex ? 'w-6 bg-[#0E7A43]' : 'w-2 bg-white/20 hover:bg-white/40'
                     }`}
                   />
                 ))}

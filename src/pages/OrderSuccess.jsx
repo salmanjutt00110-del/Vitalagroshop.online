@@ -160,7 +160,7 @@ export default function OrderSuccess() {
     return (
       <div className="min-h-screen flex items-center justify-center bg-[#071910] text-emerald-950">
         <div className="flex flex-col items-center gap-3">
-          <div className="w-10 h-10 rounded-full border-4 border-[#76C945] border-t-transparent animate-spin" />
+          <div className="w-10 h-10 rounded-full border-4 border-[#0E7A43] border-t-transparent animate-spin" />
           <p className="text-xs text-neutral-500 tracking-wider">Finalizing Order Success State...</p>
         </div>
       </div>
@@ -177,7 +177,7 @@ export default function OrderSuccess() {
               ? 'We were unable to locate this order registry. It may still be syncing to Firestore database nodes.'
               : 'آرڈر کی تفصیلات فی الحال دستیاب نہیں ہیں۔ ہو سکتا ہے یہ آرڈر ابھی ڈیٹا بیس کے ساتھ ہم آہنگ ہو رہا ہو۔'}
           </p>
-          <Link to="/products" className="inline-flex items-center gap-2 px-6 py-3 bg-[#76C945] hover:bg-[#8AD65A] text-[#0A2E1F] rounded-full text-sm font-black transition-colors">
+          <Link to="/products" className="inline-flex items-center gap-2 px-6 py-3 bg-[#0E7A43] hover:bg-[#18C964] text-[#0A2E1F] rounded-full text-sm font-black transition-colors">
             <ShoppingBag size={16} />
             <span>{lang === 'en' ? 'Explore Catalog' : 'پروڈکٹس دیکھیں'}</span>
           </Link>
@@ -213,12 +213,12 @@ export default function OrderSuccess() {
         {/* Animated Check Circle Banner */}
         <div className="relative w-24 h-24 mx-auto mb-8 flex items-center justify-center">
           <motion.div 
-            className="absolute inset-0 rounded-full bg-emerald-500/10 dark:bg-[#5cb85c]/10 border-2 border-dashed border-[#5cb85c]/40"
+            className="absolute inset-0 rounded-full bg-emerald-500/10 dark:bg-[#0E7A43]/10 border-2 border-dashed border-[#0E7A43]/40"
             animate={{ rotate: 360 }}
             transition={{ duration: 12, repeat: Infinity, ease: 'linear' }}
           />
           <motion.div 
-            className="absolute inset-2 rounded-full bg-gradient-to-tr from-[#2d6a2d] to-[#5cb85c] flex items-center justify-center shadow-lg shadow-[#5cb85c]/30"
+            className="absolute inset-2 rounded-full bg-gradient-to-tr from-[#2d6a2d] to-[#0E7A43] flex items-center justify-center shadow-lg shadow-[#0E7A43]/30"
             initial={{ scale: 0 }}
             animate={{ scale: 1 }}
             transition={{ type: 'spring', stiffness: 260, damping: 15 }}
@@ -277,7 +277,7 @@ export default function OrderSuccess() {
             </div>
             <button
               onClick={() => downloadInvoice(order)}
-              className="flex items-center gap-1.5 px-4 py-2.5 bg-[#5cb85c]/10 dark:bg-[#5cb85c]/15 border border-[#5cb85c]/20 hover:bg-[#5cb85c]/25 text-[#2d6a2d] dark:text-emerald-600 rounded-xl text-xs font-black transition-colors"
+              className="flex items-center gap-1.5 px-4 py-2.5 bg-[#0E7A43]/10 dark:bg-[#0E7A43]/15 border border-[#0E7A43]/20 hover:bg-[#0E7A43]/25 text-[#2d6a2d] dark:text-emerald-600 rounded-xl text-xs font-black transition-colors"
             >
               <FileDown size={14} />
               <span>{lang === 'en' ? 'Download Receipt' : 'رسید ڈاؤن لوڈ کریں'}</span>
@@ -355,7 +355,7 @@ export default function OrderSuccess() {
 
           <Link
             to={`/track/${order.id}`}
-            className="flex items-center justify-center gap-2 px-6 py-4 bg-[#76C945] hover:bg-[#8AD65A] text-[#0A2E1F] rounded-full font-black text-sm transition-colors shadow-lg shadow-[#76C945]/15"
+            className="flex items-center justify-center gap-2 px-6 py-4 bg-[#0E7A43] hover:bg-[#18C964] text-[#0A2E1F] rounded-full font-black text-sm transition-colors shadow-lg shadow-[#0E7A43]/15"
           >
             <span>{lang === 'en' ? 'Track Your Order' : 'آرڈر ٹریک کریں'}</span>
             <ArrowRight size={16} />

@@ -42,8 +42,8 @@ export default function AnimatedLogo({ isDark }) {
           className="absolute inset-0 rounded-xl blur-xl"
           style={{
             background: isDark
-              ? 'radial-gradient(ellipse, rgba(118,201,69,0.35) 0%, transparent 70%)'
-              : 'radial-gradient(ellipse, rgba(118,201,69,0.2) 0%, transparent 70%)',
+              ? 'radial-gradient(ellipse, rgba(15, 123, 59,0.35) 0%, transparent 70%)'
+              : 'radial-gradient(ellipse, rgba(15, 123, 59,0.2) 0%, transparent 70%)',
             transform: 'translateZ(-8px) scale(1.3)',
           }}
           animate={{ opacity: [0.5, 1, 0.5] }}
@@ -69,7 +69,7 @@ export default function AnimatedLogo({ isDark }) {
             transform: 'translateZ(8px)',
             filter: isDark
               ? 'brightness(10) saturate(0)'
-              : 'brightness(1) drop-shadow(0 2px 8px rgba(118,201,69,0.3))',
+              : 'brightness(1) drop-shadow(0 2px 8px rgba(15, 123, 59,0.3))',
             transition: 'filter 0.5s ease',
           }}
           animate={{ rotateZ: [0, 0.5, -0.5, 0] }}

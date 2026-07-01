@@ -321,7 +321,7 @@ export default function CheckoutPage() {
           </p>
           <Link
             to="/products"
-            className="inline-flex items-center justify-center w-full px-6 py-4 bg-[#76C945] hover:bg-[#8AD65A] text-[#0A2E1F] rounded-2xl text-sm font-black transition-colors"
+            className="inline-flex items-center justify-center w-full px-6 py-4 bg-[#0E7A43] hover:bg-[#18C964] text-[#0A2E1F] rounded-2xl text-sm font-black transition-colors"
           >
             {lang === 'en' ? 'Explore Products' : 'پروڈکٹس دیکھیں'}
           </Link>
@@ -342,8 +342,8 @@ export default function CheckoutPage() {
 
       {/* Background Ambient Glows */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden z-0 opacity-40">
-        <div className="absolute top-[-20%] left-[-20%] w-[80%] h-[80%] rounded-full blur-[150px] bg-[#76C945]/8" />
-        <div className="absolute bottom-[-20%] right-[-20%] w-[80%] h-[80%] rounded-full blur-[150px] bg-[#8AD65A]/4" />
+        <div className="absolute top-[-20%] left-[-20%] w-[80%] h-[80%] rounded-full blur-[150px] bg-[#0E7A43]/8" />
+        <div className="absolute bottom-[-20%] right-[-20%] w-[80%] h-[80%] rounded-full blur-[150px] bg-[#18C964]/4" />
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -382,7 +382,7 @@ export default function CheckoutPage() {
                       <span className="text-base shrink-0">🚚</span>
                       <p className="font-bold">
                         {lang === 'en' ? 'Cash on Delivery Surcharge: ' : 'کیش آن ڈیلیوری چارج: '} 
-                        <span className="text-emerald-950 font-black font-mono-tabular">PKR 299</span>
+                        <span className="text-emerald-950 font-black font-mono-tabular">Rs. 299</span>
                       </p>
                     </div>
                     <div className="flex items-center gap-2">
@@ -399,7 +399,7 @@ export default function CheckoutPage() {
             {/* Address Details Container */}
             <div className="premium-glass-card rounded-3xl p-6 sm:p-8 shadow-2xl space-y-6">
               <div className="flex items-center gap-3 pb-4 border-b border-emerald-900/5">
-                <div className="w-8 h-8 rounded-lg bg-[#76C945]/10 flex items-center justify-center text-emerald-600">
+                <div className="w-8 h-8 rounded-lg bg-[#0E7A43]/10 flex items-center justify-center text-emerald-600">
                   <MapPin size={16} />
                 </div>
                 <h2 className="text-lg font-black tracking-tight uppercase">
@@ -518,8 +518,8 @@ export default function CheckoutPage() {
                       </h4>
                       <p className="mt-1 text-[11px] text-neutral-300 leading-relaxed font-sans">
                         {lang === 'en' 
-                          ? `100% Free shipping applied. Please transfer exactly PKR ${grandTotal.toLocaleString()} to the account below and submit the transaction ID and receipt.`
-                          : `مفت ڈلیوری لاگو ہو چکی ہے۔ برائے مہربانی کل رقم PKR ${grandTotal.toLocaleString()} نیچے دیے گئے اکاؤنٹ پر ٹرانسفر کر کے رسید اپ لوڈ کریں۔`
+                          ? `100% Free shipping applied. Please transfer exactly Rs. ${grandTotal.toLocaleString()} to the account below and submit the transaction ID and receipt.`
+                          : `مفت ڈلیوری لاگو ہو چکی ہے۔ برائے مہربانی کل رقم Rs. ${grandTotal.toLocaleString()} نیچے دیے گئے اکاؤنٹ پر ٹرانسفر کر کے رسید اپ لوڈ کریں۔`
                         }
                       </p>
                     </div>
@@ -731,7 +731,7 @@ export default function CheckoutPage() {
                       </h4>
                       <p className="mt-1 text-[11px] text-neutral-300 leading-relaxed font-sans">
                         {lang === 'en'
-                          ? `A shipping fee of PKR 299 applies to Cash on Delivery orders. You will pay the courier rider upon receiving the package. Want free shipping? Choose Bank Transfer payment!`
+                          ? `A shipping fee of Rs. 299 applies to Cash on Delivery orders. You will pay the courier rider upon receiving the package. Want free shipping? Choose Bank Transfer payment!`
                           : `کیش آن ڈیلیوری آرڈر پر 299 روپے شپنگ چارج لاگو ہیں۔ آپ کوریئر رائڈر کو پارسل ملنے پر ادائیگی کریں گے۔ کیا آپ مفت شپنگ چاہتے ہیں؟ ایڈوانس بینک ٹرانفر منتخب کریں!`}
                       </p>
                     </div>
@@ -758,7 +758,7 @@ export default function CheckoutPage() {
                             {lang === 'en' ? 'Shipping Surcharge' : 'ڈلیوری فیس'}
                           </span>
                           <span className="text-xs font-extrabold text-amber-500 mt-1 block font-mono-tabular">
-                            PKR 299
+                            Rs. 299
                           </span>
                         </div>
                       </div>
@@ -802,7 +802,7 @@ export default function CheckoutPage() {
                         </h5>
                         <p className="text-[10px] text-neutral-400 font-sans leading-relaxed">
                           {lang === 'en' 
-                            ? 'Please transfer the mandatory 299 PKR pre-confirmation delivery charges to any of our official bank accounts below to confirm your Cash on Delivery order:'
+                            ? 'Please transfer the mandatory Rs. 299 pre-confirmation delivery charges to any of our official bank accounts below to confirm your Cash on Delivery order:'
                             : 'براہ کرم اپنا کیش آن ڈیلیوری آرڈر کنفرم کرنے کے لیے لازمی 299 روپے ڈلیوری چارجز درج ذیل کسی بھی بینک اکاؤنٹ میں ٹرانسفر کریں:'}
                         </p>
                       </div>
@@ -863,7 +863,7 @@ export default function CheckoutPage() {
               <div className="absolute top-0 right-0 w-32 h-32 bg-emerald-500/[0.02] filter blur-3xl rounded-full" />
               
               <div className="flex items-center gap-3 pb-4 border-b border-emerald-900/5">
-                <div className="w-8 h-8 rounded-lg bg-[#76C945]/10 flex items-center justify-center text-emerald-600">
+                <div className="w-8 h-8 rounded-lg bg-[#0E7A43]/10 flex items-center justify-center text-emerald-600">
                   <ShoppingBag size={16} />
                 </div>
                 <h2 className="text-lg font-black tracking-tight uppercase">
@@ -891,7 +891,7 @@ export default function CheckoutPage() {
                       <h3 className="text-sm sm:text-base font-extrabold truncate text-emerald-950">{product.name}</h3>
                       <p className="text-neutral-500 text-[10px] sm:text-xs font-mono truncate">{product.formula}</p>
                       <p className="text-emerald-600 text-xs sm:text-sm font-black font-mono mt-1">
-                        {product.price === 0 ? (lang === 'en' ? 'On Request' : 'درخواست پر') : `PKR ${product.price.toLocaleString()}`}
+                        {product.price === 0 ? (lang === 'en' ? 'On Request' : 'قیمت طلب کریں') : `Rs. ${product.price.toLocaleString()}`}
                       </p>
                     </div>
                   </div>
@@ -926,12 +926,12 @@ export default function CheckoutPage() {
                             </div>
                             <div className="mt-2.5">
                               {oldPrice > sizePrice && sizePrice !== 0 && (
-                                <span className="text-[9px] text-neutral-400 line-through mr-1 font-mono block">
-                                  PKR {oldPrice.toLocaleString()}
+                                <span className="text-[9px] text-[#5A5A5A]/50 line-through mr-1 font-mono block">
+                                  Rs. {oldPrice.toLocaleString()}
                                 </span>
                               )}
                               <span className="text-xs font-black font-mono text-emerald-600 block animate-pulse">
-                                {sizePrice === 0 ? (lang === 'en' ? 'On Request' : 'درخواست پر') : `PKR ${sizePrice.toLocaleString()}`}
+                                {sizePrice === 0 ? (lang === 'en' ? 'On Request' : 'قیمت طلب کریں') : `Rs. ${sizePrice.toLocaleString()}`}
                               </span>
                             </div>
                             {isSelected && (
@@ -986,11 +986,11 @@ export default function CheckoutPage() {
                          <h4 className="text-xs sm:text-sm font-extrabold truncate text-emerald-950">{item?.name?.[lang] || item?.name}</h4>
                          <p className="text-[9px] text-emerald-600 font-black uppercase tracking-wider">{item?.size?.size}</p>
                         <p className="text-neutral-500 text-[10px] mt-0.5 font-sans">
-                          Qty: {item?.quantity} × PKR {Number(item?.size?.price || item?.size?.rate || 0).toLocaleString()}
+                          Qty: {item?.quantity} × Rs. {Number(item?.size?.price || item?.size?.rate || 0).toLocaleString()}
                         </p>
                       </div>
                       <span className="text-xs sm:text-sm font-black font-mono shrink-0">
-                        PKR {(Number(item?.size?.price || item?.size?.rate || 0) * item?.quantity).toLocaleString()}
+                        Rs. {(Number(item?.size?.price || item?.size?.rate || 0) * item?.quantity).toLocaleString()}
                       </span>
                     </div>
                   ))}
@@ -1004,7 +1004,7 @@ export default function CheckoutPage() {
                 <div className="grid grid-cols-[1fr_auto] gap-4 items-center h-8 text-left">
                   <span className="text-neutral-400 font-bold font-sans">{lang === 'en' ? 'Product Total' : 'پروڈکٹ ٹوٹل'}</span>
                   <span className="text-emerald-950 font-mono-tabular text-right text-base font-extrabold">
-                    {subtotal === 0 ? (lang === 'en' ? 'On Request' : 'درخواست پر') : `PKR ${subtotal.toLocaleString()}`}
+                    {subtotal === 0 ? (lang === 'en' ? 'On Request' : 'قیمت طلب کریں') : `Rs. ${subtotal.toLocaleString()}`}
                   </span>
                 </div>
 
@@ -1012,7 +1012,7 @@ export default function CheckoutPage() {
                 <div className="grid grid-cols-[1fr_auto] gap-4 items-center h-8 text-left">
                   <span className="text-neutral-400 font-bold font-sans">{lang === 'en' ? 'Discount' : 'رعایت'}</span>
                   <span className={`font-mono-tabular text-right text-base font-extrabold ${discount > 0 ? 'text-emerald-400' : 'text-neutral-500'}`}>
-                    {discount > 0 ? `- PKR ${discount.toLocaleString()}` : 'PKR 0'}
+                    {discount > 0 ? `- Rs. ${discount.toLocaleString()}` : 'Rs. 0'}
                   </span>
                 </div>
 
@@ -1028,7 +1028,7 @@ export default function CheckoutPage() {
                   </div>
                   <div className="text-right">
                     {subtotal === 0 ? (
-                      <span className="text-[#5cb85c] font-black uppercase text-xs tracking-wider block font-sans">
+                      <span className="text-[#0E7A43] font-black uppercase text-xs tracking-wider block font-sans">
                         {lang === 'en' ? 'Calculated on Quote' : 'کوٹیشن پر طے ہوگا'}
                       </span>
                     ) : delivery === 0 ? (
@@ -1037,7 +1037,7 @@ export default function CheckoutPage() {
                       </span>
                     ) : (
                       <span className="text-emerald-950 font-mono-tabular text-right text-base font-extrabold block">
-                        PKR {delivery.toLocaleString()}
+                        Rs. {delivery.toLocaleString()}
                       </span>
                     )}
                   </div>
@@ -1053,7 +1053,7 @@ export default function CheckoutPage() {
                     </span>
                     {payment === 'cod' && subtotal !== 0 && (
                       <span className="block text-[8px] text-neutral-500 font-mono uppercase tracking-wider">
-                        Includes 299 PKR COD Surcharge
+                        Includes Rs. 299 COD Surcharge
                       </span>
                     )}
                     {payment !== 'cod' && subtotal !== 0 && (
@@ -1063,7 +1063,7 @@ export default function CheckoutPage() {
                     )}
                   </div>
                   <span className="text-emerald-400 font-black text-xl font-mono-tabular tracking-wider text-right animate-pulse">
-                    {subtotal === 0 ? (lang === 'en' ? 'On Request' : 'درخواست پر') : `PKR ${grandTotal.toLocaleString()}`}
+                    {subtotal === 0 ? (lang === 'en' ? 'On Request' : 'قیمت طلب کریں') : `Rs. ${grandTotal.toLocaleString()}`}
                   </span>
                 </div>
               </div>
@@ -1127,7 +1127,7 @@ Thank You.`;
                     <span className="text-emerald-700 text-sm">🔒</span>
                     <span>{lang === 'en' ? 'SSL Secure 256-bit Connection' : 'محفوظ SSL کنکشن'}</span>
                   </div>
-                  <span className="text-emerald-700 font-black text-[9px] tracking-wider uppercase bg-[#76C945]/10 px-2 py-0.5 rounded">
+                  <span className="text-emerald-700 font-black text-[9px] tracking-wider uppercase bg-[#0E7A43]/10 px-2 py-0.5 rounded">
                     ACTIVE
                   </span>
                 </div>

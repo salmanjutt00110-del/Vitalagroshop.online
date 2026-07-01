@@ -18,7 +18,7 @@ export default function HeroBackground({ videoRef }) {
   }, []);
 
   return (
-    <div className="absolute inset-0 overflow-hidden select-none pointer-events-none z-0 bg-white">
+    <div className="absolute inset-0 overflow-hidden select-none pointer-events-none z-0 bg-[#EAFBF3]">
       {/* 1. Background video loop */}
       <div className="absolute inset-0 w-full h-full">
         <video
@@ -37,11 +37,16 @@ export default function HeroBackground({ videoRef }) {
         </video>
       </div>
 
-      {/* 2. Minimal gradient overlay for text readability */}
-      <div className="absolute inset-0 z-[1] bg-black/10" />
+      {/* 2. Premium green gradient overlay for depth & readability */}
+      <div 
+        className="absolute inset-0 z-[1]" 
+        style={{
+          background: 'linear-gradient(135deg, rgba(16,36,21,0.3) 0%, rgba(15,123,59,0.12) 40%, rgba(248,250,248,0.2) 80%, rgba(248,250,248,0.35) 100%)',
+        }}
+      />
 
-      {/* Premium Vignette / Depth */}
-      <div className="absolute inset-0 z-[1] bg-[radial-gradient(ellipse_at_center,transparent_40%,rgba(16,36,21,0.1)_100%)]" />
+      {/* Cinematic Vignette / Depth */}
+      <div className="absolute inset-0 z-[1] bg-[radial-gradient(ellipse_at_center,transparent_35%,rgba(16,36,21,0.18)_100%)]" />
 
       {/* 3. Cinematic Drifting Fog Layers (Optimized with natural gradient fades, no expensive blur filter) */}
       <div className="absolute inset-0 z-[2] pointer-events-none">
@@ -49,7 +54,7 @@ export default function HeroBackground({ videoRef }) {
           <motion.div
             className="absolute bottom-[5%] left-[-20%] w-[140%] h-[35%] opacity-25"
             style={{
-              background: 'radial-gradient(ellipse at center, rgba(118,201,69,0.06) 0%, rgba(118,201,69,0) 70%)',
+              background: 'radial-gradient(ellipse at center, rgba(15,123,59,0.04) 0%, rgba(15,123,59,0) 70%)',
               willChange: 'transform, opacity',
             }}
             animate={{ 
@@ -65,7 +70,7 @@ export default function HeroBackground({ videoRef }) {
       <div 
         className="absolute top-[20%] left-[55%] w-[450px] h-[450px] rounded-full z-[2] pointer-events-none opacity-20"
         style={{
-          background: 'radial-gradient(circle at center, rgba(118, 201, 69, 0.15) 0%, rgba(118, 201, 69, 0) 70%)',
+          background: 'radial-gradient(circle at center, rgba(15, 123, 59, 0.1) 0%, rgba(15, 123, 59, 0) 70%)',
         }}
       />
 

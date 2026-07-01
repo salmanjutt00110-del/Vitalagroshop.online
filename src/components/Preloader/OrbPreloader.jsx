@@ -319,7 +319,7 @@ export const OrbPreloader = ({ onComplete }) => {
             {/* Orb label */}
             <div className="absolute bottom-0 inset-x-0 flex justify-center pointer-events-none">
               <motion.span
-                className="text-[#5cb85c] text-[8px] tracking-[0.3em] uppercase font-bold"
+                className="text-[#0E7A43] text-[8px] tracking-[0.3em] uppercase font-bold"
                 animate={{ opacity: [0.4, 0.8, 0.4] }}
                 transition={{ duration: 2.5, repeat: Infinity }}
               >
@@ -336,7 +336,7 @@ export const OrbPreloader = ({ onComplete }) => {
               style={{
                 fontSize: '3rem',
                 lineHeight: 1,
-                color: '#5cb85c',
+                color: '#0E7A43',
                 textShadow: '0 0 25px rgba(92,184,92,0.6)',
                 fontVariantNumeric: 'tabular-nums',
               }}
@@ -352,7 +352,7 @@ export const OrbPreloader = ({ onComplete }) => {
               <motion.div
                 className="h-full rounded-full"
                 style={{
-                  background: 'linear-gradient(90deg, #1a5c1a 0%, #5cb85c 50%, #7de87d 100%)',
+                  background: 'linear-gradient(90deg, #1a5c1a 0%, #0E7A43 50%, #7de87d 100%)',
                   boxShadow: '0 0 12px rgba(92,184,92,0.7)',
                 }}
                 animate={{ width: `${pct}%` }}

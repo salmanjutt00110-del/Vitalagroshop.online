@@ -10,11 +10,34 @@ gsap.registerPlugin(ScrollTrigger);
 export default function SmoothScroll({ children }) {
   const location = useLocation();
 
-  // 1. Initialize Lenis once on mount (Bypassed for native GPU-accelerated lag-free scrolling)
+  // 1. Initialize Lenis once on mount
   useEffect(() => {
-    // We rely on native browser GPU scroll compositing for butter-smooth 60FPS performance.
-    // This prevents main-thread script execution from lagging the scrolling action.
-    return;
+    const lenis = new Lenis({
+      duration: 1.1,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      orientation: 'vertical',
+      gestureOrientation: 'vertical',
+      smoothWheel: true,
+      wheelMultiplier: 0.95,
+      touchMultiplier: 1.2,
+    });
+
+    window.lenisInstance = lenis;
+
+    lenis.on('scroll', ScrollTrigger.update);
+
+    const updateRaf = (time) => {
+      lenis.raf(time * 1000);
+    };
+    gsap.ticker.add(updateRaf);
+
+    gsap.ticker.lagSmoothing(0);
+
+    return () => {
+      gsap.ticker.remove(updateRaf);
+      lenis.destroy();
+      window.lenisInstance = null;
+    };
   }, []);
 
   // 2. Handle routing updates (reset scroll position & bind new parallax elements)

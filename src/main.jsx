@@ -35,7 +35,7 @@ if (import.meta.env.DEV) {
     console.warn(
       `%c[Vital Agro] Missing Dev Env Keys: ${missingKeys.join(', ')}\n%cRun the application using Local Fallback or set these in your .env.local file.`,
       "color: #ffcc00; font-weight: bold; font-size: 14px;",
-      "color: #8AD65A; font-size: 12px;"
+      "color: #18C964; font-size: 12px;"
     );
   }
 }

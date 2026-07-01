@@ -19,14 +19,14 @@ export default function QualitySection() {
   return (
     <section className="py-24 relative overflow-hidden">
       {/* Premium gradient background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-[#76C945]/[0.03] via-background to-[#C5A059]/[0.03] pointer-events-none" />
+      <div className="absolute inset-0 bg-gradient-to-br from-[#0E7A43]/[0.03] via-background to-[#C5A059]/[0.03] pointer-events-none" />
       
       {/* Subtle floating background elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         {[...Array(6)].map((_, i) => (
           <motion.div
             key={i}
-            className="absolute rounded-full bg-[#76C945]/5"
+            className="absolute rounded-full bg-[#0E7A43]/5"
             style={{
               width: 80 + i * 40,
               height: 80 + i * 40,
@@ -90,9 +90,9 @@ export default function QualitySection() {
                     maxTilt={3}
                     glow={true}
                     lift={true}
-                    className="flex gap-5 p-4 bg-white/40 hover:bg-white/90 border-[#0A2E1F]/5 hover:border-[#76C945]/20 hover:shadow-lg transition-all duration-300"
+                    className="flex gap-5 p-4 bg-white/40 hover:bg-white/90 border-[#0A2E1F]/5 hover:border-[#0E7A43]/20 hover:shadow-lg transition-all duration-300"
                   >
-                    <div className="flex-shrink-0 w-14 h-14 rounded-2xl bg-[#0A2E1F] text-emerald-950 flex items-center justify-center font-black text-sm group-hover:bg-[#76C945] group-hover:text-[#0A2E1F] transition-all duration-300 shadow-md">
+                    <div className="flex-shrink-0 w-14 h-14 rounded-2xl bg-[#0A2E1F] text-emerald-950 flex items-center justify-center font-black text-sm group-hover:bg-[#0E7A43] group-hover:text-[#0A2E1F] transition-all duration-300 shadow-md">
                       <step.icon className="w-6 h-6 text-emerald-700 group-hover:text-[#0A2E1F] transition-colors" />
                     </div>
                     <div>
@@ -129,7 +129,7 @@ export default function QualitySection() {
                 className="w-full h-full object-contain p-8"
                 loading="lazy"
               />
-              <div className="absolute inset-0 bg-gradient-to-tr from-[#0A2E1F]/30 via-transparent to-[#76C945]/5" />
+              <div className="absolute inset-0 bg-gradient-to-tr from-[#0A2E1F]/30 via-transparent to-[#0E7A43]/5" />
             </GlassCard>
 
             {/* Floating Science Badges */}

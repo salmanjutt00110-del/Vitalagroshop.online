@@ -23,7 +23,7 @@ export default function WhyChooseUs() {
   return (
     <section className="py-24 relative overflow-hidden bg-[#061406] text-emerald-950">
       {/* Background radial highlights */}
-      <div className="absolute top-[-10%] right-[-10%] w-[350px] h-[350px] bg-[#76C945]/12 rounded-full filter blur-[100px] pointer-events-none select-none" />
+      <div className="absolute top-[-10%] right-[-10%] w-[350px] h-[350px] bg-[#0E7A43]/12 rounded-full filter blur-[100px] pointer-events-none select-none" />
       <div className="absolute bottom-[-10%] left-[-10%] w-[300px] h-[300px] bg-[#C5A059]/5 rounded-full filter blur-[80px] pointer-events-none select-none" />
 
       {/* Decorative grid pattern */}
@@ -72,10 +72,10 @@ export default function WhyChooseUs() {
               transition={{ duration: 0.8 }}
               className="w-full relative rounded-3xl overflow-hidden border border-emerald-900/10 bg-white/70 flex flex-col justify-between p-8 group shadow-2xl min-h-[360px] hover-3d-card"
             >
-              <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(118,201,69,0.15)_0%,transparent_60%)]" />
+              <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(15, 123, 59,0.15)_0%,transparent_60%)]" />
               
               <div className="relative z-10 space-y-2">
-                <span className="text-[10px] font-black uppercase text-emerald-600 tracking-widest bg-[#76C945]/15 border border-[#76C945]/20 px-3 py-1 rounded-full">
+                <span className="text-[10px] font-black uppercase text-emerald-600 tracking-widest bg-[#0E7A43]/15 border border-[#0E7A43]/20 px-3 py-1 rounded-full">
                   Premium Standards
                 </span>
                 <h3 className="text-xl font-black text-emerald-950 mt-3">Advanced Agrochemical Science</h3>
@@ -125,13 +125,13 @@ export default function WhyChooseUs() {
                   whileHover={{
                     scale: 1.04,
                     translateZ: 30,
-                    boxShadow: '0 25px 50px rgba(0, 0, 0, 0.45), 0 0 35px rgba(118, 201, 69, 0.25)',
+                    boxShadow: '0 25px 50px rgba(0, 0, 0, 0.45), 0 0 35px rgba(15, 123, 59, 0.25)',
                   }}
                   transition={{ type: "spring", stiffness: 300, damping: 20 }}
-                  className="w-full p-5 bg-white/70 hover:bg-white/[0.06] border-emerald-900/5 hover:border-[#76C945]/20 shadow-xl transition-all duration-300"
+                  className="w-full p-5 bg-white/70 hover:bg-white/[0.06] border-emerald-900/5 hover:border-[#0E7A43]/20 shadow-xl transition-all duration-300"
                 >
                   <div className="flex gap-4 items-start h-full">
-                    <div className="w-11 h-11 rounded-xl bg-[#76C945]/15 border border-[#76C945]/20 flex items-center justify-center shrink-0">
+                    <div className="w-11 h-11 rounded-xl bg-[#0E7A43]/15 border border-[#0E7A43]/20 flex items-center justify-center shrink-0">
                       <reason.icon className="w-5 h-5 text-emerald-600" />
                     </div>
                     <div className="space-y-1">

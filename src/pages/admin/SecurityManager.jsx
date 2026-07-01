@@ -41,7 +41,7 @@ export default function SecurityManager({ theme }) {
       {/* Header section */}
       <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-4">
         <div>
-          <h1 className="text-3xl font-black text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-[#8AD65A] uppercase tracking-widest drop-shadow-md">
+          <h1 className="text-3xl font-black text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-[#18C964] uppercase tracking-widest drop-shadow-md">
             Security & Access Control
           </h1>
           <p className="text-neutral-400 font-mono text-xs mt-1">Manage RBAC, monitor telemetry, and enforce system security</p>

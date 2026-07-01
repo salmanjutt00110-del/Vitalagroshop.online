@@ -52,7 +52,7 @@ export default function GlassCard({
         ref={cardRef}
         className={`relative bg-white/60 border rounded-[26px] shadow-[0_20px_60px_rgba(0,0,0,0.08)] overflow-hidden transition-all duration-300 ${
           lift ? 'hover:-translate-y-2' : ''
-        } ${glow ? 'hover:border-[#76C945]/30' : ''} ${className}`}
+        } ${glow ? 'hover:border-[#0E7A43]/30' : ''} ${className}`}
         style={{
           ...borderStyle,
           rotateX: tilt ? rotateX : 0,

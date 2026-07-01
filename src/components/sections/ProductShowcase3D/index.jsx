@@ -169,7 +169,7 @@ const CROP_TRANSLATIONS = {
 
 const PRODUCTS = Object.values(PRODUCTS_DATA).map((p) => {
   const themeInfo = PRODUCT_THEMES[p.slug] || {
-    theme: '#5cb85c',
+    theme: '#0E7A43',
     themeBg: '#020c02',
     tagline: 'Premium Agricultural Solution',
     crops: ['All Crops']

@@ -140,7 +140,7 @@ export default function BioCanvas({ isHovered = false, isSuccess = false }) {
       const cy = height / 2 - state.cameraY;
 
       // Draw grid backdrop in 3D
-      ctx.strokeStyle = 'rgba(118, 201, 69, 0.015)';
+      ctx.strokeStyle = 'rgba(15, 123, 59, 0.015)';
       ctx.lineWidth = 1;
       const gridSize = 80;
       for (let x = -gridSize * 3; x < width + gridSize * 3; x += gridSize) {

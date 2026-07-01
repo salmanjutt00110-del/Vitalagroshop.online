@@ -58,7 +58,7 @@ export default function HoloChart({ stats }) {
   const statusBars = [
     { label: 'Pending Approval', count: stats.pending, color: '#f59e0b' },
     { label: 'Confirmed Orders', count: stats.confirmed, color: '#60a5fa' },
-    { label: 'Delivered', count: stats.delivered, color: '#8ad65a' },
+    { label: 'Delivered', count: stats.delivered, color: '#18C964' },
   ];
 
   return (
@@ -99,7 +99,7 @@ export default function HoloChart({ stats }) {
         <div className="flex justify-between items-center border-b border-emerald-900/5 pb-4" style={{ transform: 'translateZ(20px)' }}>
           <div className="flex items-center gap-2">
             <div className="p-2 bg-[#10b981]/15 rounded-xl border border-[#10b981]/30">
-              <Activity className="w-4 h-4 text-[#8ad65a] animate-pulse" />
+              <Activity className="w-4 h-4 text-[#18C964] animate-pulse" />
             </div>
             <div className="text-left">
               <h3 className="font-extrabold text-xs tracking-widest font-mono text-emerald-950 uppercase">System Telemetry</h3>
@@ -120,7 +120,7 @@ export default function HoloChart({ stats }) {
             className="absolute w-40 h-40 rounded-full border border-dashed border-[#10b981]/20 flex items-center justify-center"
             style={{ transform: `rotate(${rotation}deg)` }}
           >
-            <div className="absolute top-0 w-2 h-2 bg-[#8ad65a] rounded-full shadow-[0_0_10px_#8ad65a]" />
+            <div className="absolute top-0 w-2 h-2 bg-[#18C964] rounded-full shadow-[0_0_10px_#18C964]" />
             <div className="absolute inset-2 border border-dotted border-blue-500/10 rounded-full" />
           </div>
           
@@ -142,7 +142,7 @@ export default function HoloChart({ stats }) {
             <span className="text-3xl font-black font-mono text-emerald-950 block tracking-tighter">
               {liveNumbers.cpu}%
             </span>
-            <span className="text-[8px] text-[#8ad65a] font-mono tracking-widest uppercase block animate-pulse">
+            <span className="text-[8px] text-[#18C964] font-mono tracking-widest uppercase block animate-pulse">
               SYNC ACTIVE
             </span>
           </div>
@@ -188,7 +188,7 @@ export default function HoloChart({ stats }) {
               <Terminal className="w-3.5 h-3.5 text-emerald-400" />
               LOG TELEMETRY
             </span>
-            <span className="text-[#8ad65a] animate-pulse">NODE_01_OK</span>
+            <span className="text-[#18C964] animate-pulse">NODE_01_OK</span>
           </div>
           <div className="space-y-1">
             <p className="truncate text-emerald-400/80">✓ FETCH: orders snapshot loaded successfully</p>

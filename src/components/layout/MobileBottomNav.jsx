@@ -47,7 +47,7 @@ export const MobileBottomNav = () => {
               {isActive && (
                 <motion.div
                   layoutId="bottom-tab-line"
-                  className="absolute top-0 inset-x-6 h-[2px] rounded-full bg-[#5cb85c]"
+                  className="absolute top-0 inset-x-6 h-[2px] rounded-full bg-[#0E7A43]"
                   style={{ boxShadow: '0 0 8px rgba(92,184,92,0.8)' }}
                 />
               )}
@@ -55,7 +55,7 @@ export const MobileBottomNav = () => {
               {/* Label — TEXT ONLY, CLEAN */}
               <span
                 className={`relative z-10 text-xs font-semibold transition-all duration-300 ${
-                  isActive ? 'text-[#5cb85c]' : 'text-neutral-500'
+                  isActive ? 'text-[#0E7A43]' : 'text-neutral-500'
                 }`}
               >
                 {tab.label}

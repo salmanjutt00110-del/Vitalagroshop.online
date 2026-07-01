@@ -74,7 +74,7 @@ function FloatingLeaf({ index, mouse }) {
       scale={data.scale}
     >
       <meshStandardMaterial
-        color="#76C945"
+        color="#0E7A43"
         roughness={0.5}
         metalness={0.15}
         side={THREE.DoubleSide}
@@ -94,7 +94,7 @@ function MouseLight({ mouse }) {
     lightRef.current.position.y += (targetY - lightRef.current.position.y) * 0.1;
   });
 
-  return <pointLight ref={lightRef} intensity={1.6} distance={14} color="#76C945" />;
+  return <pointLight ref={lightRef} intensity={1.6} distance={14} color="#0E7A43" />;
 }
 
 export default function HeroCanvas() {

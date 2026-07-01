@@ -21,9 +21,9 @@ html {
   -webkit-overflow-scrolling: touch;
 }
 
-/* Body and Root - avoid white flash */
+/* Body and Root - avoid flash */
 html, body, #root {
-  background-color: #061406 !important;
+  background-color: #F8FAF8 !important;
   min-height: 100svh;
 }
 

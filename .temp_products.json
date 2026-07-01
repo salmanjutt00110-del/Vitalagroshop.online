@@ -1,0 +1,5439 @@
+{
+  "conference-gold-fs": {
+    "name": {
+      "en": "CONFERENCE GOLD - 20% FS",
+      "ur": "کانفرنس گولڈ"
+    },
+    "category": "seed-treatment",
+    "sizes": [
+      {
+        "size": "100 ML",
+        "price": 740,
+        "oldPrice": 740,
+        "sku": "VA-CONFERENCE-GOLD-FS-100ML",
+        "weight": "0.1kg",
+        "stockStatus": "In Stock"
+      },
+      {
+        "size": "50 ML",
+        "price": 740,
+        "oldPrice": 399,
+        "sku": "VA-CONFERENCE-GOLD-FS-50ML",
+        "weight": "0.05kg",
+        "stockStatus": "In Stock"
+      }
+    ],
+    "formulation": "METALAXYL+FLUDIOXONIL+THIA",
+    "activeIngredient": "METALAXYL+FLUDIOXONIL+THIA",
+    "crops": [
+      {
+        "name": {
+          "en": "Cotton",
+          "ur": "کپاس"
+        },
+        "icon": "🌱"
+      },
+      {
+        "name": {
+          "en": "Rice",
+          "ur": "دھان"
+        },
+        "icon": "🌾"
+      },
+      {
+        "name": {
+          "en": "Maize",
+          "ur": "مکئی"
+        },
+        "icon": "🌽"
+      },
+      {
+        "name": {
+          "en": "Wheat",
+          "ur": "گندم"
+        },
+        "icon": "🌾"
+      },
+      {
+        "name": {
+          "en": "Potato",
+          "ur": "آلو"
+        },
+        "icon": "🌱"
+      }
+    ]
+  },
+  "easy-grow-sc": {
+    "name": {
+      "en": "EASY GROW - 20%SC",
+      "ur": "ایزی گرو"
+    },
+    "category": "seed-treatment",
+    "sizes": [
+      {
+        "size": "200 ML",
+        "price": 370,
+        "oldPrice": 370,
+        "sku": "VA-EASY-GROW-SC-200ML",
+        "weight": "0.2kg",
+        "stockStatus": "In Stock"
+      },
+      {
+        "size": "100 ML",
+        "price": 245,
+        "oldPrice": 245,
+        "sku": "VA-EASY-GROW-SC-100ML",
+        "weight": "0.1kg",
+        "stockStatus": "In Stock"
+      }
+    ],
+    "formulation": "CLOTHIANIDIN",
+    "activeIngredient": "CLOTHIANIDIN",
+    "crops": [
+      {
+        "name": {
+          "en": "Cotton",
+          "ur": "کپاس"
+        },
+        "icon": "🌱"
+      },
+      {
+        "name": {
+          "en": "Rice",
+          "ur": "دھان"
+        },
+        "icon": "🌾"
+      },
+      {
+        "name": {
+          "en": "Sugarcane",
+          "ur": "کماد"
+        },
+        "icon": "🌱"
+      },
+      {
+        "name": {
+          "en": "Maize",
+          "ur": "مکئی"
+        },
+        "icon": "🌽"
+      },
+      {
+        "name": {
+          "en": "Vegetables",
+          "ur": "سبزیاں"
+        },
+        "icon": "🥦"
+      },
+      {
+        "name": {
+          "en": "Citrus",
+          "ur": "ترشاوہ پھل"
+        },
+        "icon": "🌱"
+      }
+    ]
+  },
+  "green-vision": {
+    "name": {
+      "en": "GREEN VISION 70% WP",
+      "ur": "گرین ویژن"
+    },
+    "category": "fungicide",
+    "sizes": [
+      {
+        "size": "250 GM",
+        "price": 499,
+        "oldPrice": 499,
+        "stockStatus": "In Stock",
+        "sku": "VA-GREEN-VISION-250GM",
+        "weight": "0.25kg"
+      },
+      {
+        "size": "1 KG",
+        "price": 4099,
+        "oldPrice": 4099,
+        "stockStatus": "In Stock",
+        "sku": "VA-GREEN-VISION-1KG",
+        "weight": "0.001kg"
+      }
+    ],
+    "formulation": "METRIBUZIN 70%WP",
+    "activeIngredient": "METRIBUZIN 70%WP",
+    "crops": [
+      {
+        "name": {
+          "en": "Cotton",
+          "ur": "کپاس"
+        },
+        "icon": "🌱"
+      },
+      {
+        "name": {
+          "en": "Rice",
+          "ur": "دھان"
+        },
+        "icon": "🌾"
+      },
+      {
+        "name": {
+          "en": "Sugarcane",
+          "ur": "کماد"
+        },
+        "icon": "🌱"
+      },
+      {
+        "name": {
+          "en": "Maize",
+          "ur": "مکئی"
+        },
+        "icon": "🌽"
+      },
+      {
+        "name": {
+          "en": "Vegetables",
+          "ur": "سبزیاں"
+        },
+        "icon": "🥦"
+      },
+      {
+        "name": {
+          "en": "Citrus",
+          "ur": "ترشاوہ پھل"
+        },
+        "icon": "🌱"
+      }
+    ]
+  },
+  "moorqa": {
+    "name": {
+      "en": "MOORQA - 72% WP",
+      "ur": "مورقہ"
+    },
+    "category": "fungicide",
+    "sizes": [
+      {
+        "size": "1 KG",
+        "price": 1799,
+        "oldPrice": 1799,
+        "stockStatus": "In Stock",
+        "sku": "VA-MOORQA-1KG",
+        "weight": "0.001kg"
+      },
+      {
+        "size": "25 KG",
+        "price": 0,
+        "oldPrice": 0,
+        "stockStatus": "In Stock",
+        "sku": "VA-MOORQA-25KG",
+        "weight": "0.025kg"
+      }
+    ],
+    "formulation": "Metalaxyl + Mancozeb",
+    "activeIngredient": "Metalaxyl + Mancozeb",
+    "crops": [
+      {
+        "name": {
+          "en": "Cotton",
+          "ur": "کپاس"
+        },
+        "icon": "🌱"
+      },
+      {
+        "name": {
+          "en": "Rice",
+          "ur": "دھان"
+        },
+        "icon": "🌾"
+      },
+      {
+        "name": {
+          "en": "Maize",
+          "ur": "مکئی"
+        },
+        "icon": "🌽"
+      },
+      {
+        "name": {
+          "en": "Wheat",
+          "ur": "گندم"
+        },
+        "icon": "🌾"
+      },
+      {
+        "name": {
+          "en": "Potato",
+          "ur": "آلو"
+        },
+        "icon": "🌱"
+      }
+    ]
+  },
+  "moorqa-super": {
+    "name": {
+      "en": "MOORQA SUPER - 50%WP",
+      "ur": "مورقہ سُپر"
+    },
+    "category": "fungicide",
+    "sizes": [
+      {
+        "size": "1 KG",
+        "price": 1499,
+        "oldPrice": 1499,
+        "stockStatus": "In Stock",
+        "sku": "VA-MOORQA-SUPER-1KG",
+        "weight": "0.001kg"
+      },
+      {
+        "size": "25 KG",
+        "price": 0,
+        "oldPrice": 0,
+        "stockStatus": "In Stock",
+        "sku": "VA-MOORQA-SUPER-25KG",
+        "weight": "0.025kg"
+      }
+    ],
+    "formulation": "DIMETHMORPH + MANCOZEB",
+    "activeIngredient": "DIMETHMORPH + MANCOZEB",
+    "crops": [
+      {
+        "name": {
+          "en": "Potato",
+          "ur": "آلو"
+        },
+        "icon": "🌱"
+      },
+      {
+        "name": {
+          "en": "Tomato",
+          "ur": "ٹماٹر"
+        },
+        "icon": "🌱"
+      },
+      {
+        "name": {
+          "en": "Rice",
+          "ur": "دھان"
+        },
+        "icon": "🌾"
+      },
+      {
+        "name": {
+          "en": "Wheat",
+          "ur": "گندم"
+        },
+        "icon": "🌾"
+      },
+      {
+        "name": {
+          "en": "Vegetables",
+          "ur": "سبزیاں"
+        },
+        "icon": "🥦"
+      },
+      {
+        "name": {
+          "en": "Mango",
+          "ur": "آم"
+        },
+        "icon": "🍊"
+      },
+      {
+        "name": {
+          "en": "Citrus",
+          "ur": "ترشاوہ پھل"
+        },
+        "icon": "🌱"
+      }
+    ]
+  },
+  "collab": {
+    "name": {
+      "en": "COLLAB - 47% WP",
+      "ur": "کول لیب"
+    },
+    "category": "fungicide",
+    "sizes": [
+      {
+        "size": "250 GM",
+        "price": 850,
+        "oldPrice": 850,
+        "sku": "VA-COLLAB-250GM",
+        "weight": "0.25kg",
+        "stockStatus": "In Stock"
+      },
+      {
+        "size": "25 KG",
+        "price": 850,
+        "oldPrice": 71000,
+        "sku": "VA-COLLAB-25KG",
+        "weight": "25kg",
+        "stockStatus": "In Stock"
+      }
+    ],
+    "formulation": "Kasugamycin+Coperoxy",
+    "activeIngredient": "Kasugamycin+Coperoxy",
+    "crops": [
+      {
+        "name": {
+          "en": "Cotton",
+          "ur": "کپاس"
+        },
+        "icon": "🌱"
+      },
+      {
+        "name": {
+          "en": "Rice",
+          "ur": "دھان"
+        },
+        "icon": "🌾"
+      },
+      {
+        "name": {
+          "en": "Sugarcane",
+          "ur": "کماد"
+        },
+        "icon": "🌱"
+      },
+      {
+        "name": {
+          "en": "Maize",
+          "ur": "مکئی"
+        },
+        "icon": "🌽"
+      },
+      {
+        "name": {
+          "en": "Vegetables",
+          "ur": "سبزیاں"
+        },
+        "icon": "🥦"
+      },
+      {
+        "name": {
+          "en": "Citrus",
+          "ur": "ترشاوہ پھل"
+        },
+        "icon": "🌱"
+      }
+    ]
+  },
+  "clay": {
+    "name": {
+      "en": "CLAY - 56% SC",
+      "ur": "کلے"
+    },
+    "category": "fungicide",
+    "sizes": [
+      {
+        "size": "250 ML",
+        "price": 730,
+        "oldPrice": 730,
+        "sku": "VA-CLAY-250ML",
+        "weight": "0.25kg",
+        "stockStatus": "In Stock"
+      }
+    ],
+    "formulation": "Azoxystrobin + Chlorothalonil",
+    "activeIngredient": "Azoxystrobin + Chlorothalonil",
+    "crops": [
+      {
+        "name": {
+          "en": "Potato",
+          "ur": "آلو"
+        },
+        "icon": "🌱"
+      },
+      {
+        "name": {
+          "en": "Tomato",
+          "ur": "ٹماٹر"
+        },
+        "icon": "🌱"
+      },
+      {
+        "name": {
+          "en": "Rice",
+          "ur": "دھان"
+        },
+        "icon": "🌾"
+      },
+      {
+        "name": {
+          "en": "Wheat",
+          "ur": "گندم"
+        },
+        "icon": "🌾"
+      },
+      {
+        "name": {
+          "en": "Vegetables",
+          "ur": "سبزیاں"
+        },
+        "icon": "🥦"
+      },
+      {
+        "name": {
+          "en": "Mango",
+          "ur": "آم"
+        },
+        "icon": "🍊"
+      },
+      {
+        "name": {
+          "en": "Citrus",
+          "ur": "ترشاوہ پھل"
+        },
+        "icon": "🌱"
+      }
+    ]
+  },
+  "farbasin": {
+    "name": {
+      "en": "FARBASIN - 80% WDG",
+      "ur": "فربہ سن"
+    },
+    "category": "fungicide",
+    "sizes": [
+      {
+        "size": "1 KG",
+        "price": 699,
+        "oldPrice": 699,
+        "sku": "VA-FARBASIN-1KG",
+        "weight": "1kg",
+        "stockStatus": "In Stock"
+      },
+      {
+        "size": "2 KG",
+        "price": 699,
+        "oldPrice": 1350,
+        "sku": "VA-FARBASIN-2KG",
+        "weight": "2kg",
+        "stockStatus": "In Stock"
+      },
+      {
+        "size": "25 KG",
+        "price": 699,
+        "oldPrice": 15399,
+        "sku": "VA-FARBASIN-25KG",
+        "weight": "25kg",
+        "stockStatus": "In Stock"
+      }
+    ],
+    "formulation": "Sulphur",
+    "activeIngredient": "Sulphur",
+    "crops": [
+      {
+        "name": {
+          "en": "Potato",
+          "ur": "آلو"
+        },
+        "icon": "🌱"
+      },
+      {
+        "name": {
+          "en": "Tomato",
+          "ur": "ٹماٹر"
+        },
+        "icon": "🌱"
+      },
+      {
+        "name": {
+          "en": "Rice",
+          "ur": "دھان"
+        },
+        "icon": "🌾"
+      },
+      {
+        "name": {
+          "en": "Wheat",
+          "ur": "گندم"
+        },
+        "icon": "🌾"
+      },
+      {
+        "name": {
+          "en": "Vegetables",
+          "ur": "سبزیاں"
+        },
+        "icon": "🥦"
+      },
+      {
+        "name": {
+          "en": "Mango",
+          "ur": "آم"
+        },
+        "icon": "🍊"
+      },
+      {
+        "name": {
+          "en": "Citrus",
+          "ur": "ترشاوہ پھل"
+        },
+        "icon": "🌱"
+      }
+    ]
+  },
+  "tussle-extra": {
+    "name": {
+      "en": "TUSSLE EXTRA - 45%WP",
+      "ur": "ٹسل ایکسٹرا"
+    },
+    "category": "fungicide",
+    "sizes": [
+      {
+        "size": "75 GM",
+        "price": 570,
+        "oldPrice": 570,
+        "sku": "VA-TUSSLE-EXTRA-75GM",
+        "weight": "0.075kg",
+        "stockStatus": "In Stock"
+      }
+    ],
+    "formulation": "PYRACLOSTROBIN + TEBUCONAZOLE",
+    "activeIngredient": "PYRACLOSTROBIN + TEBUCONAZOLE",
+    "crops": [
+      {
+        "name": {
+          "en": "Potato",
+          "ur": "آلو"
+        },
+        "icon": "🌱"
+      },
+      {
+        "name": {
+          "en": "Tomato",
+          "ur": "ٹماٹر"
+        },
+        "icon": "🌱"
+      },
+      {
+        "name": {
+          "en": "Rice",
+          "ur": "دھان"
+        },
+        "icon": "🌾"
+      },
+      {
+        "name": {
+          "en": "Wheat",
+          "ur": "گندم"
+        },
+        "icon": "🌾"
+      },
+      {
+        "name": {
+          "en": "Vegetables",
+          "ur": "سبزیاں"
+        },
+        "icon": "🥦"
+      },
+      {
+        "name": {
+          "en": "Mango",
+          "ur": "آم"
+        },
+        "icon": "🍊"
+      },
+      {
+        "name": {
+          "en": "Citrus",
+          "ur": "ترشاوہ پھل"
+        },
+        "icon": "🌱"
+      }
+    ]
+  },
+  "solid-super": {
+    "name": {
+      "en": "SOLID SUPER - 50% SC",
+      "ur": "سولِڈ سُپر"
+    },
+    "category": "fungicide",
+    "sizes": [
+      {
+        "size": "100 ML",
+        "price": 515,
+        "oldPrice": 515,
+        "sku": "VA-SOLID-SUPER-100ML",
+        "weight": "0.1kg",
+        "stockStatus": "In Stock"
+      }
+    ],
+    "formulation": "AZOXYSTROBIN + TEBUCONAZOL",
+    "activeIngredient": "AZOXYSTROBIN + TEBUCONAZOL",
+    "crops": [
+      {
+        "name": {
+          "en": "Potato",
+          "ur": "آلو"
+        },
+        "icon": "🌱"
+      },
+      {
+        "name": {
+          "en": "Tomato",
+          "ur": "ٹماٹر"
+        },
+        "icon": "🌱"
+      },
+      {
+        "name": {
+          "en": "Rice",
+          "ur": "دھان"
+        },
+        "icon": "🌾"
+      },
+      {
+        "name": {
+          "en": "Wheat",
+          "ur": "گندم"
+        },
+        "icon": "🌾"
+      },
+      {
+        "name": {
+          "en": "Vegetables",
+          "ur": "سبزیاں"
+        },
+        "icon": "🥦"
+      },
+      {
+        "name": {
+          "en": "Mango",
+          "ur": "آم"
+        },
+        "icon": "🍊"
+      },
+      {
+        "name": {
+          "en": "Citrus",
+          "ur": "ترشاوہ پھل"
+        },
+        "icon": "🌱"
+      }
+    ]
+  },
+  "solid-32": {
+    "name": {
+      "en": "SOLID 32.5%SC",
+      "ur": "سولِڈ"
+    },
+    "category": "fungicide",
+    "sizes": [
+      {
+        "size": "200 ML",
+        "price": 699,
+        "oldPrice": 699,
+        "sku": "VA-SOLID-32-200ML",
+        "weight": "0.2kg",
+        "stockStatus": "In Stock"
+      }
+    ],
+    "formulation": "AZOXY+DIFENACONAZOL 32.5%SC",
+    "activeIngredient": "AZOXY+DIFENACONAZOL 32.5%SC",
+    "crops": [
+      {
+        "name": {
+          "en": "Cotton",
+          "ur": "کپاس"
+        },
+        "icon": "🌱"
+      },
+      {
+        "name": {
+          "en": "Rice",
+          "ur": "دھان"
+        },
+        "icon": "🌾"
+      },
+      {
+        "name": {
+          "en": "Sugarcane",
+          "ur": "کماد"
+        },
+        "icon": "🌱"
+      },
+      {
+        "name": {
+          "en": "Maize",
+          "ur": "مکئی"
+        },
+        "icon": "🌽"
+      },
+      {
+        "name": {
+          "en": "Vegetables",
+          "ur": "سبزیاں"
+        },
+        "icon": "🥦"
+      },
+      {
+        "name": {
+          "en": "Citrus",
+          "ur": "ترشاوہ پھل"
+        },
+        "icon": "🌱"
+      }
+    ]
+  },
+  "tussle-70": {
+    "name": {
+      "en": "TUSSLE - 70% WP",
+      "ur": "ٹسل"
+    },
+    "category": "fungicide",
+    "sizes": [
+      {
+        "size": "400 GM",
+        "price": 870,
+        "oldPrice": 870,
+        "sku": "VA-TUSSLE-70-400GM",
+        "weight": "0.4kg",
+        "stockStatus": "In Stock"
+      },
+      {
+        "size": "25 KG",
+        "price": 870,
+        "oldPrice": 47000,
+        "sku": "VA-TUSSLE-70-25KG",
+        "weight": "25kg",
+        "stockStatus": "In Stock"
+      }
+    ],
+    "formulation": "Thiophanate Methyl",
+    "activeIngredient": "Thiophanate Methyl",
+    "crops": [
+      {
+        "name": {
+          "en": "Potato",
+          "ur": "آلو"
+        },
+        "icon": "🌱"
+      },
+      {
+        "name": {
+          "en": "Tomato",
+          "ur": "ٹماٹر"
+        },
+        "icon": "🌱"
+      },
+      {
+        "name": {
+          "en": "Rice",
+          "ur": "دھان"
+        },
+        "icon": "🌾"
+      },
+      {
+        "name": {
+          "en": "Wheat",
+          "ur": "گندم"
+        },
+        "icon": "🌾"
+      },
+      {
+        "name": {
+          "en": "Vegetables",
+          "ur": "سبزیاں"
+        },
+        "icon": "🥦"
+      },
+      {
+        "name": {
+          "en": "Mango",
+          "ur": "آم"
+        },
+        "icon": "🍊"
+      },
+      {
+        "name": {
+          "en": "Citrus",
+          "ur": "ترشاوہ پھل"
+        },
+        "icon": "🌱"
+      }
+    ]
+  },
+  "work-15": {
+    "name": {
+      "en": "WORK - 15%EC",
+      "ur": "ورک"
+    },
+    "category": "herbicide",
+    "sizes": [
+      {
+        "size": "500 ML",
+        "price": 1100,
+        "oldPrice": 1100,
+        "sku": "VA-WORK-15-500ML",
+        "weight": "0.5kg",
+        "stockStatus": "In Stock"
+      }
+    ],
+    "formulation": "Quizalofop-P-Ethyl",
+    "activeIngredient": "Quizalofop-P-Ethyl",
+    "crops": [
+      {
+        "name": {
+          "en": "Cotton",
+          "ur": "کپاس"
+        },
+        "icon": "🌱"
+      },
+      {
+        "name": {
+          "en": "Sugarcane",
+          "ur": "کماد"
+        },
+        "icon": "🌱"
+      },
+      {
+        "name": {
+          "en": "Soybean",
+          "ur": "سویا بین"
+        },
+        "icon": "🌱"
+      },
+      {
+        "name": {
+          "en": "Vegetables",
+          "ur": "سبزیاں"
+        },
+        "icon": "🥦"
+      }
+    ]
+  },
+  "horizon-90": {
+    "name": {
+      "en": "HORIZON - 90% EC",
+      "ur": "ہارائزن"
+    },
+    "category": "herbicide",
+    "sizes": [
+      {
+        "size": "300ML",
+        "price": 780,
+        "oldPrice": 780,
+        "sku": "VA-HORIZON-90-300ML",
+        "weight": "0.3kg",
+        "stockStatus": "In Stock"
+      }
+    ],
+    "formulation": "ACETOCHOLE 90% EC",
+    "activeIngredient": "ACETOCHOLE 90% EC",
+    "crops": [
+      {
+        "name": {
+          "en": "Cotton",
+          "ur": "کپاس"
+        },
+        "icon": "🌱"
+      },
+      {
+        "name": {
+          "en": "Sugarcane",
+          "ur": "کماد"
+        },
+        "icon": "🌱"
+      },
+      {
+        "name": {
+          "en": "Soybean",
+          "ur": "سویا بین"
+        },
+        "icon": "🌱"
+      },
+      {
+        "name": {
+          "en": "Vegetables",
+          "ur": "سبزیاں"
+        },
+        "icon": "🥦"
+      }
+    ]
+  },
+  "douhaa-335": {
+    "name": {
+      "en": "DOUHAA-3--335 SE",
+      "ur": "دوحہ"
+    },
+    "category": "herbicide",
+    "sizes": [
+      {
+        "size": "750 ML",
+        "price": 1199,
+        "oldPrice": 1199,
+        "sku": "VA-DOUHAA-335-750ML",
+        "weight": "0.75kg",
+        "stockStatus": "In Stock"
+      }
+    ],
+    "formulation": "ATRAZINE +MESOTRINE+PROPISOCHALOR 335 SE",
+    "activeIngredient": "ATRAZINE +MESOTRINE+PROPISOCHALOR 335 SE",
+    "crops": [
+      {
+        "name": {
+          "en": "Maize",
+          "ur": "مکئی"
+        },
+        "icon": "🌽"
+      },
+      {
+        "name": {
+          "en": "Sugarcane",
+          "ur": "کماد"
+        },
+        "icon": "🌱"
+      }
+    ]
+  },
+  "douha-plus": {
+    "name": {
+      "en": "DOUHA PLUS - 30% SC",
+      "ur": "دوحہ پلس"
+    },
+    "category": "herbicide",
+    "sizes": [
+      {
+        "size": "35 ML",
+        "price": 999,
+        "oldPrice": 999,
+        "sku": "VA-DOUHA-PLUS-35ML",
+        "weight": "0.035kg",
+        "stockStatus": "In Stock"
+      }
+    ],
+    "formulation": "Topramezone 30%",
+    "activeIngredient": "Topramezone 30%",
+    "crops": [
+      {
+        "name": {
+          "en": "Cotton",
+          "ur": "کپاس"
+        },
+        "icon": "🌱"
+      },
+      {
+        "name": {
+          "en": "Rice",
+          "ur": "دھان"
+        },
+        "icon": "🌾"
+      },
+      {
+        "name": {
+          "en": "Sugarcane",
+          "ur": "کماد"
+        },
+        "icon": "🌱"
+      },
+      {
+        "name": {
+          "en": "Maize",
+          "ur": "مکئی"
+        },
+        "icon": "🌽"
+      },
+      {
+        "name": {
+          "en": "Vegetables",
+          "ur": "سبزیاں"
+        },
+        "icon": "🥦"
+      },
+      {
+        "name": {
+          "en": "Citrus",
+          "ur": "ترشاوہ پھل"
+        },
+        "icon": "🌱"
+      }
+    ]
+  },
+  "faalq-extra": {
+    "name": {
+      "en": "FAALQ EXTRA - 30% WP",
+      "ur": "فلق ایکسٹرا"
+    },
+    "category": "herbicide",
+    "sizes": [
+      {
+        "size": "100 GM",
+        "price": 740,
+        "oldPrice": 740,
+        "sku": "VA-FAALQ-EXTRA-100GM",
+        "weight": "0.1kg",
+        "stockStatus": "In Stock"
+      }
+    ],
+    "formulation": "Pyrazosulf 10% + Bispy 20% wp",
+    "activeIngredient": "Pyrazosulf 10% + Bispy 20% wp",
+    "crops": [
+      {
+        "name": {
+          "en": "Cotton",
+          "ur": "کپاس"
+        },
+        "icon": "🌱"
+      },
+      {
+        "name": {
+          "en": "Rice",
+          "ur": "دھان"
+        },
+        "icon": "🌾"
+      },
+      {
+        "name": {
+          "en": "Sugarcane",
+          "ur": "کماد"
+        },
+        "icon": "🌱"
+      },
+      {
+        "name": {
+          "en": "Maize",
+          "ur": "مکئی"
+        },
+        "icon": "🌽"
+      },
+      {
+        "name": {
+          "en": "Vegetables",
+          "ur": "سبزیاں"
+        },
+        "icon": "🥦"
+      },
+      {
+        "name": {
+          "en": "Citrus",
+          "ur": "ترشاوہ پھل"
+        },
+        "icon": "🌱"
+      }
+    ]
+  },
+  "faalq-30": {
+    "name": {
+      "en": "FAALQ - 30% WP",
+      "ur": "فلق"
+    },
+    "category": "herbicide",
+    "sizes": [
+      {
+        "size": "100 GM",
+        "price": 699,
+        "oldPrice": 699,
+        "sku": "VA-FAALQ-30-100GM",
+        "weight": "0.1kg",
+        "stockStatus": "In Stock"
+      }
+    ],
+    "formulation": "Bensulfuron-M + Bispyribac Sodium 30%WP",
+    "activeIngredient": "Bensulfuron-M + Bispyribac Sodium 30%WP",
+    "crops": [
+      {
+        "name": {
+          "en": "Rice",
+          "ur": "دھان"
+        },
+        "icon": "🌾"
+      }
+    ]
+  },
+  "saar": {
+    "name": {
+      "en": "SAAR 16% KPP",
+      "ur": "ثار"
+    },
+    "category": "herbicide",
+    "sizes": [
+      {
+        "size": "350 GM",
+        "price": 780,
+        "oldPrice": 780,
+        "sku": "VA-SAAR-350GM",
+        "weight": "0.35kg",
+        "stockStatus": "In Stock"
+      }
+    ],
+    "formulation": "Bensulfuron+Acetoclor",
+    "activeIngredient": "Bensulfuron+Acetoclor",
+    "crops": [
+      {
+        "name": {
+          "en": "Rice",
+          "ur": "دھان"
+        },
+        "icon": "🌾"
+      }
+    ]
+  },
+  "tokyo-6": {
+    "name": {
+      "en": "TOKYO 6%WG",
+      "ur": "ٹوکیو"
+    },
+    "category": "herbicide",
+    "sizes": [
+      {
+        "size": "100 GM",
+        "price": 0,
+        "oldPrice": 0,
+        "sku": "VA-TOKYO-6-100GM",
+        "weight": "0.1kg",
+        "stockStatus": "In Stock"
+      }
+    ],
+    "formulation": "Lodosulfuron+Methyl+Mesosulfuron",
+    "activeIngredient": "Lodosulfuron+Methyl+Mesosulfuron",
+    "crops": [
+      {
+        "name": {
+          "en": "Wheat",
+          "ur": "گندم"
+        },
+        "icon": "🌾"
+      }
+    ]
+  },
+  "work-extra": {
+    "name": {
+      "en": "WORK EXTRA - 60% WG",
+      "ur": "ورک ایکسٹرا"
+    },
+    "category": "herbicide",
+    "sizes": [
+      {
+        "size": "20 GM",
+        "price": 0,
+        "oldPrice": 0,
+        "stockStatus": "In Stock",
+        "sku": "VA-WORK-EXTRA-20GM",
+        "weight": "0.02kg"
+      }
+    ],
+    "formulation": "ETHAKSISULFURON",
+    "activeIngredient": "ETHAKSISULFURON",
+    "crops": [
+      {
+        "name": {
+          "en": "Cotton",
+          "ur": "کپاس"
+        },
+        "icon": "🌱"
+      },
+      {
+        "name": {
+          "en": "Sugarcane",
+          "ur": "کماد"
+        },
+        "icon": "🌱"
+      },
+      {
+        "name": {
+          "en": "Soybean",
+          "ur": "سویا بین"
+        },
+        "icon": "🌱"
+      },
+      {
+        "name": {
+          "en": "Vegetables",
+          "ur": "سبزیاں"
+        },
+        "icon": "🥦"
+      }
+    ]
+  },
+  "yelowex-super": {
+    "name": {
+      "en": "YELOWEX SUPER - 42% EC",
+      "ur": "یلو ایکس"
+    },
+    "category": "herbicide",
+    "sizes": [
+      {
+        "size": "800 ML",
+        "price": 1060,
+        "oldPrice": 1060,
+        "sku": "VA-YELOWEX-SUPER-800ML",
+        "weight": "0.8kg",
+        "stockStatus": "In Stock"
+      }
+    ],
+    "formulation": "Pendimeth + Acetochlor",
+    "activeIngredient": "Pendimeth + Acetochlor",
+    "crops": [
+      {
+        "name": {
+          "en": "Cotton",
+          "ur": "کپاس"
+        },
+        "icon": "🌱"
+      },
+      {
+        "name": {
+          "en": "Rice",
+          "ur": "دھان"
+        },
+        "icon": "🌾"
+      },
+      {
+        "name": {
+          "en": "Sugarcane",
+          "ur": "کماد"
+        },
+        "icon": "🌱"
+      },
+      {
+        "name": {
+          "en": "Maize",
+          "ur": "مکئی"
+        },
+        "icon": "🌽"
+      },
+      {
+        "name": {
+          "en": "Vegetables",
+          "ur": "سبزیاں"
+        },
+        "icon": "🥦"
+      },
+      {
+        "name": {
+          "en": "Citrus",
+          "ur": "ترشاوہ پھل"
+        },
+        "icon": "🌱"
+      }
+    ]
+  },
+  "aaqab": {
+    "name": {
+      "en": "AAQAB 1.8% EC",
+      "ur": "عقاب"
+    },
+    "category": "insecticide",
+    "sizes": [
+      {
+        "size": "400 ML",
+        "price": 599,
+        "oldPrice": 599,
+        "sku": "VA-AAQAB-400ML",
+        "weight": "0.4kg",
+        "stockStatus": "In Stock"
+      }
+    ],
+    "formulation": "ABAMECTIN",
+    "activeIngredient": "ABAMECTIN",
+    "crops": [
+      {
+        "name": {
+          "en": "Cotton",
+          "ur": "کپاس"
+        },
+        "icon": "🌱"
+      },
+      {
+        "name": {
+          "en": "Rice",
+          "ur": "دھان"
+        },
+        "icon": "🌾"
+      },
+      {
+        "name": {
+          "en": "Sugarcane",
+          "ur": "کماد"
+        },
+        "icon": "🌱"
+      },
+      {
+        "name": {
+          "en": "Maize",
+          "ur": "مکئی"
+        },
+        "icon": "🌽"
+      },
+      {
+        "name": {
+          "en": "Vegetables",
+          "ur": "سبزیاں"
+        },
+        "icon": "🥦"
+      },
+      {
+        "name": {
+          "en": "Citrus",
+          "ur": "ترشاوہ پھل"
+        },
+        "icon": "🌱"
+      }
+    ]
+  },
+  "accewait": {
+    "name": {
+      "en": "ACCEWAIT - 75% SP",
+      "ur": "ایسیویٹ"
+    },
+    "category": "insecticide",
+    "sizes": [
+      {
+        "size": "250 GM",
+        "price": 660,
+        "oldPrice": 660,
+        "sku": "VA-ACCEWAIT-250GM",
+        "weight": "0.25kg",
+        "stockStatus": "In Stock"
+      }
+    ],
+    "formulation": "Acephate",
+    "activeIngredient": "Acephate",
+    "crops": [
+      {
+        "name": {
+          "en": "Cotton",
+          "ur": "کپاس"
+        },
+        "icon": "🌱"
+      },
+      {
+        "name": {
+          "en": "Rice",
+          "ur": "دھان"
+        },
+        "icon": "🌾"
+      },
+      {
+        "name": {
+          "en": "Sugarcane",
+          "ur": "کماد"
+        },
+        "icon": "🌱"
+      },
+      {
+        "name": {
+          "en": "Maize",
+          "ur": "مکئی"
+        },
+        "icon": "🌽"
+      },
+      {
+        "name": {
+          "en": "Vegetables",
+          "ur": "سبزیاں"
+        },
+        "icon": "🥦"
+      },
+      {
+        "name": {
+          "en": "Citrus",
+          "ur": "ترشاوہ پھل"
+        },
+        "icon": "🌱"
+      }
+    ]
+  },
+  "advance-26": {
+    "name": {
+      "en": "ADVANCE 26% WDG",
+      "ur": "ایڈوانس"
+    },
+    "category": "insecticide",
+    "sizes": [
+      {
+        "size": "150 GM",
+        "price": 399,
+        "oldPrice": 399,
+        "sku": "VA-ADVANCE-26-150GM",
+        "weight": "0.15kg",
+        "stockStatus": "In Stock"
+      }
+    ],
+    "formulation": "ACETAMAPRID + Lambda",
+    "activeIngredient": "ACETAMAPRID + Lambda",
+    "crops": [
+      {
+        "name": {
+          "en": "Cotton",
+          "ur": "کپاس"
+        },
+        "icon": "🌱"
+      },
+      {
+        "name": {
+          "en": "Rice",
+          "ur": "دھان"
+        },
+        "icon": "🌾"
+      },
+      {
+        "name": {
+          "en": "Sugarcane",
+          "ur": "کماد"
+        },
+        "icon": "🌱"
+      },
+      {
+        "name": {
+          "en": "Maize",
+          "ur": "مکئی"
+        },
+        "icon": "🌽"
+      },
+      {
+        "name": {
+          "en": "Vegetables",
+          "ur": "سبزیاں"
+        },
+        "icon": "🥦"
+      },
+      {
+        "name": {
+          "en": "Citrus",
+          "ur": "ترشاوہ پھل"
+        },
+        "icon": "🌱"
+      }
+    ]
+  },
+  "brinkozen": {
+    "name": {
+      "en": "BRINKOZEN - 10% EC",
+      "ur": "برینکوزن"
+    },
+    "category": "insecticide",
+    "sizes": [
+      {
+        "size": "500 ML",
+        "price": 799,
+        "oldPrice": 799,
+        "sku": "VA-BRINKOZEN-500ML",
+        "weight": "0.5kg",
+        "stockStatus": "In Stock"
+      },
+      {
+        "size": "1 LTR",
+        "price": 799,
+        "oldPrice": 1480,
+        "sku": "VA-BRINKOZEN-1LTR",
+        "weight": "1kg",
+        "stockStatus": "In Stock"
+      }
+    ],
+    "formulation": "Bifethrin",
+    "activeIngredient": "Bifethrin",
+    "crops": [
+      {
+        "name": {
+          "en": "Cotton",
+          "ur": "کپاس"
+        },
+        "icon": "🌱"
+      },
+      {
+        "name": {
+          "en": "Rice",
+          "ur": "دھان"
+        },
+        "icon": "🌾"
+      },
+      {
+        "name": {
+          "en": "Sugarcane",
+          "ur": "کماد"
+        },
+        "icon": "🌱"
+      },
+      {
+        "name": {
+          "en": "Maize",
+          "ur": "مکئی"
+        },
+        "icon": "🌽"
+      },
+      {
+        "name": {
+          "en": "Vegetables",
+          "ur": "سبزیاں"
+        },
+        "icon": "🥦"
+      },
+      {
+        "name": {
+          "en": "Citrus",
+          "ur": "ترشاوہ پھل"
+        },
+        "icon": "🌱"
+      }
+    ]
+  },
+  "bi-metic": {
+    "name": {
+      "en": "BI-METIC 40% EC",
+      "ur": "بائی میٹک"
+    },
+    "category": "insecticide",
+    "sizes": [
+      {
+        "size": "400 ML",
+        "price": 720,
+        "oldPrice": 720,
+        "sku": "VA-BI-METIC-400ML",
+        "weight": "0.4kg",
+        "stockStatus": "In Stock"
+      }
+    ],
+    "formulation": "DIMETHOATE",
+    "activeIngredient": "DIMETHOATE",
+    "crops": [
+      {
+        "name": {
+          "en": "Cotton",
+          "ur": "کپاس"
+        },
+        "icon": "🌱"
+      },
+      {
+        "name": {
+          "en": "Rice",
+          "ur": "دھان"
+        },
+        "icon": "🌾"
+      },
+      {
+        "name": {
+          "en": "Sugarcane",
+          "ur": "کماد"
+        },
+        "icon": "🌱"
+      },
+      {
+        "name": {
+          "en": "Maize",
+          "ur": "مکئی"
+        },
+        "icon": "🌽"
+      },
+      {
+        "name": {
+          "en": "Vegetables",
+          "ur": "سبزیاں"
+        },
+        "icon": "🥦"
+      },
+      {
+        "name": {
+          "en": "Citrus",
+          "ur": "ترشاوہ پھل"
+        },
+        "icon": "🌱"
+      }
+    ]
+  },
+  "conference-25": {
+    "name": {
+      "en": "CONFERENCE - 25% WP",
+      "ur": "کانفرنس"
+    },
+    "category": "insecticide",
+    "sizes": [
+      {
+        "size": "200 GM",
+        "price": 430,
+        "oldPrice": 430,
+        "sku": "VA-CONFERENCE-25-200GM",
+        "weight": "0.2kg",
+        "stockStatus": "In Stock"
+      }
+    ],
+    "formulation": "Imidacloprid",
+    "activeIngredient": "Imidacloprid",
+    "crops": [
+      {
+        "name": {
+          "en": "Cotton",
+          "ur": "کپاس"
+        },
+        "icon": "🌱"
+      },
+      {
+        "name": {
+          "en": "Rice",
+          "ur": "دھان"
+        },
+        "icon": "🌾"
+      },
+      {
+        "name": {
+          "en": "Sugarcane",
+          "ur": "کماد"
+        },
+        "icon": "🌱"
+      },
+      {
+        "name": {
+          "en": "Maize",
+          "ur": "مکئی"
+        },
+        "icon": "🌽"
+      },
+      {
+        "name": {
+          "en": "Vegetables",
+          "ur": "سبزیاں"
+        },
+        "icon": "🥦"
+      },
+      {
+        "name": {
+          "en": "Citrus",
+          "ur": "ترشاوہ پھل"
+        },
+        "icon": "🌱"
+      }
+    ]
+  },
+  "cloromac-gold": {
+    "name": {
+      "en": "CLOROMAC GOLD 360% SC",
+      "ur": "کلورومیک گولڈ"
+    },
+    "category": "insecticide",
+    "sizes": [
+      {
+        "size": "200 ML",
+        "price": 950,
+        "oldPrice": 950,
+        "sku": "VA-CLOROMAC-GOLD-200ML",
+        "weight": "0.2kg",
+        "stockStatus": "In Stock"
+      }
+    ],
+    "formulation": "CHLOREFENAPYR IMPORTED SPECIAL FORMULATION",
+    "activeIngredient": "CHLOREFENAPYR IMPORTED SPECIAL FORMULATION",
+    "crops": [
+      {
+        "name": {
+          "en": "Cotton",
+          "ur": "کپاس"
+        },
+        "icon": "🌱"
+      },
+      {
+        "name": {
+          "en": "Rice",
+          "ur": "دھان"
+        },
+        "icon": "🌾"
+      },
+      {
+        "name": {
+          "en": "Sugarcane",
+          "ur": "کماد"
+        },
+        "icon": "🌱"
+      },
+      {
+        "name": {
+          "en": "Maize",
+          "ur": "مکئی"
+        },
+        "icon": "🌽"
+      },
+      {
+        "name": {
+          "en": "Vegetables",
+          "ur": "سبزیاں"
+        },
+        "icon": "🥦"
+      },
+      {
+        "name": {
+          "en": "Citrus",
+          "ur": "ترشاوہ پھل"
+        },
+        "icon": "🌱"
+      }
+    ]
+  },
+  "cloromac-plus": {
+    "name": {
+      "en": "CLOROMAC PLUS 10% WDG -",
+      "ur": "کلورومیک"
+    },
+    "category": "insecticide",
+    "sizes": [
+      {
+        "size": "350 GM",
+        "price": 0,
+        "oldPrice": 0,
+        "sku": "VA-CLOROMAC-PLUS-350GM",
+        "weight": "0.35kg",
+        "stockStatus": "In Stock"
+      }
+    ],
+    "formulation": "CHLOREFENAPYR WDG",
+    "activeIngredient": "CHLOREFENAPYR WDG",
+    "crops": [
+      {
+        "name": {
+          "en": "Cotton",
+          "ur": "کپاس"
+        },
+        "icon": "🌱"
+      },
+      {
+        "name": {
+          "en": "Rice",
+          "ur": "دھان"
+        },
+        "icon": "🌾"
+      },
+      {
+        "name": {
+          "en": "Sugarcane",
+          "ur": "کماد"
+        },
+        "icon": "🌱"
+      },
+      {
+        "name": {
+          "en": "Maize",
+          "ur": "مکئی"
+        },
+        "icon": "🌽"
+      },
+      {
+        "name": {
+          "en": "Vegetables",
+          "ur": "سبزیاں"
+        },
+        "icon": "🥦"
+      },
+      {
+        "name": {
+          "en": "Citrus",
+          "ur": "ترشاوہ پھل"
+        },
+        "icon": "🌱"
+      }
+    ]
+  },
+  "code-10": {
+    "name": {
+      "en": "CODE- 10% EC",
+      "ur": "کوڈ"
+    },
+    "category": "insecticide",
+    "sizes": [
+      {
+        "size": "1 LTR",
+        "price": 1060,
+        "oldPrice": 1060,
+        "sku": "VA-CODE-10-1LTR",
+        "weight": "1kg",
+        "stockStatus": "In Stock"
+      }
+    ],
+    "formulation": "Cypermethrin 10 EC",
+    "activeIngredient": "Cypermethrin 10 EC",
+    "crops": [
+      {
+        "name": {
+          "en": "Cotton",
+          "ur": "کپاس"
+        },
+        "icon": "🌱"
+      },
+      {
+        "name": {
+          "en": "Rice",
+          "ur": "دھان"
+        },
+        "icon": "🌾"
+      },
+      {
+        "name": {
+          "en": "Sugarcane",
+          "ur": "کماد"
+        },
+        "icon": "🌱"
+      },
+      {
+        "name": {
+          "en": "Maize",
+          "ur": "مکئی"
+        },
+        "icon": "🌽"
+      },
+      {
+        "name": {
+          "en": "Vegetables",
+          "ur": "سبزیاں"
+        },
+        "icon": "🥦"
+      },
+      {
+        "name": {
+          "en": "Citrus",
+          "ur": "ترشاوہ پھل"
+        },
+        "icon": "🌱"
+      }
+    ]
+  },
+  "dr-pp": {
+    "name": {
+      "en": "DR. P.P - 30% SC",
+      "ur": "ڈاکٹر پی پی"
+    },
+    "category": "insecticide",
+    "sizes": [
+      {
+        "size": "75 ML",
+        "price": 520,
+        "oldPrice": 520,
+        "sku": "VA-DR-PP-75ML",
+        "weight": "0.075kg",
+        "stockStatus": "In Stock"
+      },
+      {
+        "size": "150 ML",
+        "price": 520,
+        "oldPrice": 899,
+        "sku": "VA-DR-PP-150ML",
+        "weight": "0.15kg",
+        "stockStatus": "In Stock"
+      }
+    ],
+    "formulation": "Dinotefuan",
+    "activeIngredient": "Dinotefuan",
+    "crops": [
+      {
+        "name": {
+          "en": "Cotton",
+          "ur": "کپاس"
+        },
+        "icon": "🌱"
+      },
+      {
+        "name": {
+          "en": "Rice",
+          "ur": "دھان"
+        },
+        "icon": "🌾"
+      },
+      {
+        "name": {
+          "en": "Sugarcane",
+          "ur": "کماد"
+        },
+        "icon": "🌱"
+      },
+      {
+        "name": {
+          "en": "Maize",
+          "ur": "مکئی"
+        },
+        "icon": "🌽"
+      },
+      {
+        "name": {
+          "en": "Vegetables",
+          "ur": "سبزیاں"
+        },
+        "icon": "🥦"
+      },
+      {
+        "name": {
+          "en": "Citrus",
+          "ur": "ترشاوہ پھل"
+        },
+        "icon": "🌱"
+      }
+    ]
+  },
+  "diffa-gold-plus": {
+    "name": {
+      "en": "DIFFA GOLD PLUS 50%SC",
+      "ur": "دفا گولڈ پلس"
+    },
+    "category": "insecticide",
+    "sizes": [
+      {
+        "size": "200 ML",
+        "price": 799,
+        "oldPrice": 799,
+        "sku": "VA-DIFFA-GOLD-PLUS-200ML",
+        "weight": "0.2kg",
+        "stockStatus": "In Stock"
+      },
+      {
+        "size": "400 ML",
+        "price": 799,
+        "oldPrice": 1420,
+        "sku": "VA-DIFFA-GOLD-PLUS-400ML",
+        "weight": "0.4kg",
+        "stockStatus": "In Stock"
+      }
+    ],
+    "formulation": "Diafenthuron",
+    "activeIngredient": "Diafenthuron",
+    "crops": [
+      {
+        "name": {
+          "en": "Cotton",
+          "ur": "کپاس"
+        },
+        "icon": "🌱"
+      },
+      {
+        "name": {
+          "en": "Rice",
+          "ur": "دھان"
+        },
+        "icon": "🌾"
+      },
+      {
+        "name": {
+          "en": "Sugarcane",
+          "ur": "کماد"
+        },
+        "icon": "🌱"
+      },
+      {
+        "name": {
+          "en": "Maize",
+          "ur": "مکئی"
+        },
+        "icon": "🌽"
+      },
+      {
+        "name": {
+          "en": "Vegetables",
+          "ur": "سبزیاں"
+        },
+        "icon": "🥦"
+      },
+      {
+        "name": {
+          "en": "Citrus",
+          "ur": "ترشاوہ پھل"
+        },
+        "icon": "🌱"
+      }
+    ]
+  },
+  "fly-over-gold": {
+    "name": {
+      "en": "FLY OVER GOLD 50% WG",
+      "ur": "فالئی اورگولڈ"
+    },
+    "category": "insecticide",
+    "sizes": [
+      {
+        "size": "60 GM",
+        "price": 799,
+        "oldPrice": 799,
+        "sku": "VA-FLY-OVER-GOLD-60GM",
+        "weight": "0.06kg",
+        "stockStatus": "In Stock"
+      },
+      {
+        "size": "120 GM",
+        "price": 799,
+        "oldPrice": 1520,
+        "sku": "VA-FLY-OVER-GOLD-120GM",
+        "weight": "0.12kg",
+        "stockStatus": "In Stock"
+      }
+    ],
+    "formulation": "Flonicamid",
+    "activeIngredient": "Flonicamid",
+    "crops": [
+      {
+        "name": {
+          "en": "Cotton",
+          "ur": "کپاس"
+        },
+        "icon": "🌱"
+      },
+      {
+        "name": {
+          "en": "Rice",
+          "ur": "دھان"
+        },
+        "icon": "🌾"
+      },
+      {
+        "name": {
+          "en": "Sugarcane",
+          "ur": "کماد"
+        },
+        "icon": "🌱"
+      },
+      {
+        "name": {
+          "en": "Maize",
+          "ur": "مکئی"
+        },
+        "icon": "🌽"
+      },
+      {
+        "name": {
+          "en": "Vegetables",
+          "ur": "سبزیاں"
+        },
+        "icon": "🥦"
+      },
+      {
+        "name": {
+          "en": "Citrus",
+          "ur": "ترشاوہ پھل"
+        },
+        "icon": "🌱"
+      }
+    ]
+  },
+  "gorajin": {
+    "name": {
+      "en": "GORAJIN - 15% WP",
+      "ur": "گوراجن"
+    },
+    "category": "insecticide",
+    "sizes": [
+      {
+        "size": "80 GM",
+        "price": 840,
+        "oldPrice": 840,
+        "sku": "VA-GORAJIN-80GM",
+        "weight": "0.08kg",
+        "stockStatus": "In Stock"
+      },
+      {
+        "size": "40 GM",
+        "price": 840,
+        "oldPrice": 470,
+        "sku": "VA-GORAJIN-40GM",
+        "weight": "0.04kg",
+        "stockStatus": "In Stock"
+      }
+    ],
+    "formulation": "Emamectin Benzoate + Chlorfluazuron",
+    "activeIngredient": "Emamectin Benzoate + Chlorfluazuron",
+    "crops": [
+      {
+        "name": {
+          "en": "Cotton",
+          "ur": "کپاس"
+        },
+        "icon": "🌱"
+      },
+      {
+        "name": {
+          "en": "Rice",
+          "ur": "دھان"
+        },
+        "icon": "🌾"
+      },
+      {
+        "name": {
+          "en": "Sugarcane",
+          "ur": "کماد"
+        },
+        "icon": "🌱"
+      },
+      {
+        "name": {
+          "en": "Maize",
+          "ur": "مکئی"
+        },
+        "icon": "🌽"
+      },
+      {
+        "name": {
+          "en": "Vegetables",
+          "ur": "سبزیاں"
+        },
+        "icon": "🥦"
+      },
+      {
+        "name": {
+          "en": "Citrus",
+          "ur": "ترشاوہ پھل"
+        },
+        "icon": "🌱"
+      }
+    ]
+  },
+  "jidaar-80": {
+    "name": {
+      "en": "JIDAAR - 80% SP",
+      "ur": "جِدار"
+    },
+    "category": "insecticide",
+    "sizes": [
+      {
+        "size": "250 GM",
+        "price": 0,
+        "oldPrice": 0,
+        "sku": "VA-JIDAAR-80-250GM",
+        "weight": "0.25kg",
+        "stockStatus": "In Stock"
+      }
+    ],
+    "formulation": "Trichlorfon",
+    "activeIngredient": "Trichlorfon",
+    "crops": [
+      {
+        "name": {
+          "en": "Cotton",
+          "ur": "کپاس"
+        },
+        "icon": "🌱"
+      },
+      {
+        "name": {
+          "en": "Rice",
+          "ur": "دھان"
+        },
+        "icon": "🌾"
+      },
+      {
+        "name": {
+          "en": "Sugarcane",
+          "ur": "کماد"
+        },
+        "icon": "🌱"
+      },
+      {
+        "name": {
+          "en": "Maize",
+          "ur": "مکئی"
+        },
+        "icon": "🌽"
+      },
+      {
+        "name": {
+          "en": "Vegetables",
+          "ur": "سبزیاں"
+        },
+        "icon": "🥦"
+      },
+      {
+        "name": {
+          "en": "Citrus",
+          "ur": "ترشاوہ پھل"
+        },
+        "icon": "🌱"
+      }
+    ]
+  },
+  "lykodaa": {
+    "name": {
+      "en": "LYKODAA - 2.5% EC",
+      "ur": "الئکوڈا"
+    },
+    "category": "insecticide",
+    "sizes": [
+      {
+        "size": "500 ML",
+        "price": 510,
+        "oldPrice": 510,
+        "sku": "VA-LYKODAA-500ML",
+        "weight": "0.5kg",
+        "stockStatus": "In Stock"
+      },
+      {
+        "size": "1 LTR",
+        "price": 510,
+        "oldPrice": 899,
+        "sku": "VA-LYKODAA-1LTR",
+        "weight": "1kg",
+        "stockStatus": "In Stock"
+      }
+    ],
+    "formulation": "LambdaCyhalothrin",
+    "activeIngredient": "LambdaCyhalothrin",
+    "crops": [
+      {
+        "name": {
+          "en": "Cotton",
+          "ur": "کپاس"
+        },
+        "icon": "🌱"
+      },
+      {
+        "name": {
+          "en": "Rice",
+          "ur": "دھان"
+        },
+        "icon": "🌾"
+      },
+      {
+        "name": {
+          "en": "Sugarcane",
+          "ur": "کماد"
+        },
+        "icon": "🌱"
+      },
+      {
+        "name": {
+          "en": "Maize",
+          "ur": "مکئی"
+        },
+        "icon": "🌽"
+      },
+      {
+        "name": {
+          "en": "Vegetables",
+          "ur": "سبزیاں"
+        },
+        "icon": "🥦"
+      },
+      {
+        "name": {
+          "en": "Citrus",
+          "ur": "ترشاوہ پھل"
+        },
+        "icon": "🌱"
+      }
+    ]
+  },
+  "mission-extra": {
+    "name": {
+      "en": "MISSION EXTRA - 5%SC",
+      "ur": "مشن ایکسٹرا"
+    },
+    "category": "insecticide",
+    "sizes": [
+      {
+        "size": "480 ML",
+        "price": 835,
+        "oldPrice": 835,
+        "sku": "VA-MISSION-EXTRA-480ML",
+        "weight": "0.48kg",
+        "stockStatus": "In Stock"
+      }
+    ],
+    "formulation": "Fipronil",
+    "activeIngredient": "Fipronil",
+    "crops": [
+      {
+        "name": {
+          "en": "Cotton",
+          "ur": "کپاس"
+        },
+        "icon": "🌱"
+      },
+      {
+        "name": {
+          "en": "Rice",
+          "ur": "دھان"
+        },
+        "icon": "🌾"
+      },
+      {
+        "name": {
+          "en": "Sugarcane",
+          "ur": "کماد"
+        },
+        "icon": "🌱"
+      },
+      {
+        "name": {
+          "en": "Maize",
+          "ur": "مکئی"
+        },
+        "icon": "🌽"
+      },
+      {
+        "name": {
+          "en": "Vegetables",
+          "ur": "سبزیاں"
+        },
+        "icon": "🥦"
+      },
+      {
+        "name": {
+          "en": "Citrus",
+          "ur": "ترشاوہ پھل"
+        },
+        "icon": "🌱"
+      }
+    ]
+  },
+  "purifizin": {
+    "name": {
+      "en": "PURIFIZIN 25% WP",
+      "ur": "پیوری فیژن"
+    },
+    "category": "insecticide",
+    "sizes": [
+      {
+        "size": "900 GM",
+        "price": 1199,
+        "oldPrice": 1199,
+        "sku": "VA-PURIFIZIN-900GM",
+        "weight": "0.9kg",
+        "stockStatus": "In Stock"
+      }
+    ],
+    "formulation": "BUPROFIZEN",
+    "activeIngredient": "BUPROFIZEN",
+    "crops": [
+      {
+        "name": {
+          "en": "Cotton",
+          "ur": "کپاس"
+        },
+        "icon": "🌱"
+      },
+      {
+        "name": {
+          "en": "Rice",
+          "ur": "دھان"
+        },
+        "icon": "🌾"
+      },
+      {
+        "name": {
+          "en": "Sugarcane",
+          "ur": "کماد"
+        },
+        "icon": "🌱"
+      },
+      {
+        "name": {
+          "en": "Maize",
+          "ur": "مکئی"
+        },
+        "icon": "🌽"
+      },
+      {
+        "name": {
+          "en": "Vegetables",
+          "ur": "سبزیاں"
+        },
+        "icon": "🥦"
+      },
+      {
+        "name": {
+          "en": "Citrus",
+          "ur": "ترشاوہ پھل"
+        },
+        "icon": "🌱"
+      }
+    ]
+  },
+  "peso-gold": {
+    "name": {
+      "en": "PESO GOLD 10.8% EC",
+      "ur": "پیسو گولڈ"
+    },
+    "category": "insecticide",
+    "sizes": [
+      {
+        "size": "500 ML",
+        "price": 850,
+        "oldPrice": 850,
+        "sku": "VA-PESO-GOLD-500ML",
+        "weight": "0.5kg",
+        "stockStatus": "In Stock"
+      }
+    ],
+    "formulation": "PYRIPROXIFEN",
+    "activeIngredient": "PYRIPROXIFEN",
+    "crops": [
+      {
+        "name": {
+          "en": "Cotton",
+          "ur": "کپاس"
+        },
+        "icon": "🌱"
+      },
+      {
+        "name": {
+          "en": "Rice",
+          "ur": "دھان"
+        },
+        "icon": "🌾"
+      },
+      {
+        "name": {
+          "en": "Sugarcane",
+          "ur": "کماد"
+        },
+        "icon": "🌱"
+      },
+      {
+        "name": {
+          "en": "Maize",
+          "ur": "مکئی"
+        },
+        "icon": "🌽"
+      },
+      {
+        "name": {
+          "en": "Vegetables",
+          "ur": "سبزیاں"
+        },
+        "icon": "🥦"
+      },
+      {
+        "name": {
+          "en": "Citrus",
+          "ur": "ترشاوہ پھل"
+        },
+        "icon": "🌱"
+      }
+    ]
+  },
+  "peso-gold-plus": {
+    "name": {
+      "en": "PESO GOLD PLUS 20% WDG",
+      "ur": "پیسو گولڈ پلس"
+    },
+    "category": "insecticide",
+    "sizes": [
+      {
+        "size": "200 GM",
+        "price": 570,
+        "oldPrice": 570,
+        "sku": "VA-PESO-GOLD-PLUS-200GM",
+        "weight": "0.2kg",
+        "stockStatus": "In Stock"
+      }
+    ],
+    "formulation": "PYRIPROXIFEN WDG",
+    "activeIngredient": "PYRIPROXIFEN WDG",
+    "crops": [
+      {
+        "name": {
+          "en": "Cotton",
+          "ur": "کپاس"
+        },
+        "icon": "🌱"
+      },
+      {
+        "name": {
+          "en": "Rice",
+          "ur": "دھان"
+        },
+        "icon": "🌾"
+      },
+      {
+        "name": {
+          "en": "Sugarcane",
+          "ur": "کماد"
+        },
+        "icon": "🌱"
+      },
+      {
+        "name": {
+          "en": "Maize",
+          "ur": "مکئی"
+        },
+        "icon": "🌽"
+      },
+      {
+        "name": {
+          "en": "Vegetables",
+          "ur": "سبزیاں"
+        },
+        "icon": "🥦"
+      },
+      {
+        "name": {
+          "en": "Citrus",
+          "ur": "ترشاوہ پھل"
+        },
+        "icon": "🌱"
+      }
+    ]
+  },
+  "pushup": {
+    "name": {
+      "en": "PUSHUP 25% WG",
+      "ur": "پشپ"
+    },
+    "category": "insecticide",
+    "sizes": [
+      {
+        "size": "48 GM",
+        "price": 230,
+        "oldPrice": 230,
+        "sku": "VA-PUSHUP-48GM",
+        "weight": "0.048kg",
+        "stockStatus": "In Stock"
+      }
+    ],
+    "formulation": "Thiamethoxam",
+    "activeIngredient": "Thiamethoxam",
+    "crops": [
+      {
+        "name": {
+          "en": "Cotton",
+          "ur": "کپاس"
+        },
+        "icon": "🌱"
+      },
+      {
+        "name": {
+          "en": "Rice",
+          "ur": "دھان"
+        },
+        "icon": "🌾"
+      },
+      {
+        "name": {
+          "en": "Sugarcane",
+          "ur": "کماد"
+        },
+        "icon": "🌱"
+      },
+      {
+        "name": {
+          "en": "Maize",
+          "ur": "مکئی"
+        },
+        "icon": "🌽"
+      },
+      {
+        "name": {
+          "en": "Vegetables",
+          "ur": "سبزیاں"
+        },
+        "icon": "🥦"
+      },
+      {
+        "name": {
+          "en": "Citrus",
+          "ur": "ترشاوہ پھل"
+        },
+        "icon": "🌱"
+      }
+    ]
+  },
+  "josh": {
+    "name": {
+      "en": "JOSH 45% WG",
+      "ur": "جوش"
+    },
+    "category": "insecticide",
+    "sizes": [
+      {
+        "size": "80 GM",
+        "price": 699,
+        "oldPrice": 699,
+        "sku": "VA-JOSH-80GM",
+        "weight": "0.08kg",
+        "stockStatus": "In Stock"
+      }
+    ],
+    "formulation": "SEGA PEST C (EMA+LUFEN) 45% WG",
+    "activeIngredient": "SEGA PEST C (EMA+LUFEN) 45% WG",
+    "crops": [
+      {
+        "name": {
+          "en": "Cotton",
+          "ur": "کپاس"
+        },
+        "icon": "🌱"
+      },
+      {
+        "name": {
+          "en": "Rice",
+          "ur": "دھان"
+        },
+        "icon": "🌾"
+      },
+      {
+        "name": {
+          "en": "Sugarcane",
+          "ur": "کماد"
+        },
+        "icon": "🌱"
+      },
+      {
+        "name": {
+          "en": "Maize",
+          "ur": "مکئی"
+        },
+        "icon": "🌽"
+      },
+      {
+        "name": {
+          "en": "Vegetables",
+          "ur": "سبزیاں"
+        },
+        "icon": "🥦"
+      },
+      {
+        "name": {
+          "en": "Citrus",
+          "ur": "ترشاوہ پھل"
+        },
+        "icon": "🌱"
+      }
+    ]
+  },
+  "sonami": {
+    "name": {
+      "en": "SONAMI 35% - SC",
+      "ur": "سونامی"
+    },
+    "category": "insecticide",
+    "sizes": [
+      {
+        "size": "150 ML",
+        "price": 1899,
+        "oldPrice": 1899,
+        "sku": "VA-SONAMI-150ML",
+        "weight": "0.15kg",
+        "stockStatus": "In Stock"
+      }
+    ],
+    "formulation": "FLONICAMID10.5%+ SPIROTETRAMAT24.5% 35%SC",
+    "activeIngredient": "FLONICAMID10.5%+ SPIROTETRAMAT24.5% 35%SC",
+    "crops": [
+      {
+        "name": {
+          "en": "Cotton",
+          "ur": "کپاس"
+        },
+        "icon": "🌱"
+      },
+      {
+        "name": {
+          "en": "Rice",
+          "ur": "دھان"
+        },
+        "icon": "🌾"
+      },
+      {
+        "name": {
+          "en": "Sugarcane",
+          "ur": "کماد"
+        },
+        "icon": "🌱"
+      },
+      {
+        "name": {
+          "en": "Maize",
+          "ur": "مکئی"
+        },
+        "icon": "🌽"
+      },
+      {
+        "name": {
+          "en": "Vegetables",
+          "ur": "سبزیاں"
+        },
+        "icon": "🥦"
+      },
+      {
+        "name": {
+          "en": "Citrus",
+          "ur": "ترشاوہ پھل"
+        },
+        "icon": "🌱"
+      }
+    ]
+  },
+  "super-killer": {
+    "name": {
+      "en": "SUPER KILLER 11.6% SC",
+      "ur": "سُپرکیلر"
+    },
+    "category": "insecticide",
+    "sizes": [
+      {
+        "size": "100 ML",
+        "price": 499,
+        "oldPrice": 499,
+        "sku": "VA-SUPER-KILLER-100ML",
+        "weight": "0.1kg",
+        "stockStatus": "In Stock"
+      }
+    ],
+    "formulation": "EMAMECTIN BENZOATE 2.6%+ CHLORANTRANLIPROLE 9%",
+    "activeIngredient": "EMAMECTIN BENZOATE 2.6%+ CHLORANTRANLIPROLE 9%",
+    "crops": [
+      {
+        "name": {
+          "en": "Cotton",
+          "ur": "کپاس"
+        },
+        "icon": "🌱"
+      },
+      {
+        "name": {
+          "en": "Rice",
+          "ur": "دھان"
+        },
+        "icon": "🌾"
+      },
+      {
+        "name": {
+          "en": "Sugarcane",
+          "ur": "کماد"
+        },
+        "icon": "🌱"
+      },
+      {
+        "name": {
+          "en": "Maize",
+          "ur": "مکئی"
+        },
+        "icon": "🌽"
+      },
+      {
+        "name": {
+          "en": "Vegetables",
+          "ur": "سبزیاں"
+        },
+        "icon": "🥦"
+      },
+      {
+        "name": {
+          "en": "Citrus",
+          "ur": "ترشاوہ پھل"
+        },
+        "icon": "🌱"
+      }
+    ]
+  },
+  "tallons-super": {
+    "name": {
+      "en": "TALLONS SUPER 21% EC",
+      "ur": "ٹیلونز سپر"
+    },
+    "category": "insecticide",
+    "sizes": [
+      {
+        "size": "800 ML",
+        "price": 1199,
+        "oldPrice": 1199,
+        "sku": "VA-TALLONS-SUPER-800ML",
+        "weight": "0.8kg",
+        "stockStatus": "In Stock"
+      }
+    ],
+    "formulation": "Triazophos + Lambda Cyh",
+    "activeIngredient": "Triazophos + Lambda Cyh",
+    "crops": [
+      {
+        "name": {
+          "en": "Cotton",
+          "ur": "کپاس"
+        },
+        "icon": "🌱"
+      },
+      {
+        "name": {
+          "en": "Rice",
+          "ur": "دھان"
+        },
+        "icon": "🌾"
+      },
+      {
+        "name": {
+          "en": "Sugarcane",
+          "ur": "کماد"
+        },
+        "icon": "🌱"
+      },
+      {
+        "name": {
+          "en": "Maize",
+          "ur": "مکئی"
+        },
+        "icon": "🌽"
+      },
+      {
+        "name": {
+          "en": "Vegetables",
+          "ur": "سبزیاں"
+        },
+        "icon": "🥦"
+      },
+      {
+        "name": {
+          "en": "Citrus",
+          "ur": "ترشاوہ پھل"
+        },
+        "icon": "🌱"
+      }
+    ]
+  },
+  "thorax": {
+    "name": {
+      "en": "THORAX - 12% SC",
+      "ur": "تھوریکس"
+    },
+    "category": "insecticide",
+    "sizes": [
+      {
+        "size": "200 ML",
+        "price": 430,
+        "oldPrice": 430,
+        "sku": "VA-THORAX-200ML",
+        "weight": "0.2kg",
+        "stockStatus": "In Stock"
+      }
+    ],
+    "formulation": "Abamectin + Thiamethoxam",
+    "activeIngredient": "Abamectin + Thiamethoxam",
+    "crops": [
+      {
+        "name": {
+          "en": "Cotton",
+          "ur": "کپاس"
+        },
+        "icon": "🌱"
+      },
+      {
+        "name": {
+          "en": "Rice",
+          "ur": "دھان"
+        },
+        "icon": "🌾"
+      },
+      {
+        "name": {
+          "en": "Sugarcane",
+          "ur": "کماد"
+        },
+        "icon": "🌱"
+      },
+      {
+        "name": {
+          "en": "Maize",
+          "ur": "مکئی"
+        },
+        "icon": "🌽"
+      },
+      {
+        "name": {
+          "en": "Vegetables",
+          "ur": "سبزیاں"
+        },
+        "icon": "🥦"
+      },
+      {
+        "name": {
+          "en": "Citrus",
+          "ur": "ترشاوہ پھل"
+        },
+        "icon": "🌱"
+      }
+    ]
+  },
+  "fe-fa": {
+    "name": {
+      "en": "FE-FA - 22% ZC (WANDAL)",
+      "ur": "ونڈال"
+    },
+    "category": "insecticide",
+    "sizes": [
+      {
+        "size": "150 ML",
+        "price": 660,
+        "oldPrice": 660,
+        "sku": "VA-FE-FA-150ML",
+        "weight": "0.15kg",
+        "stockStatus": "In Stock"
+      }
+    ],
+    "formulation": "Thiamethoxam + Lambda Cyhl",
+    "activeIngredient": "Thiamethoxam + Lambda Cyhl",
+    "crops": [
+      {
+        "name": {
+          "en": "Cotton",
+          "ur": "کپاس"
+        },
+        "icon": "🌱"
+      },
+      {
+        "name": {
+          "en": "Rice",
+          "ur": "دھان"
+        },
+        "icon": "🌾"
+      },
+      {
+        "name": {
+          "en": "Sugarcane",
+          "ur": "کماد"
+        },
+        "icon": "🌱"
+      },
+      {
+        "name": {
+          "en": "Maize",
+          "ur": "مکئی"
+        },
+        "icon": "🌽"
+      },
+      {
+        "name": {
+          "en": "Vegetables",
+          "ur": "سبزیاں"
+        },
+        "icon": "🥦"
+      },
+      {
+        "name": {
+          "en": "Citrus",
+          "ur": "ترشاوہ پھل"
+        },
+        "icon": "🌱"
+      }
+    ]
+  },
+  "unit": {
+    "name": {
+      "en": "UNIT 25%SL",
+      "ur": "یونٹ"
+    },
+    "category": "insecticide",
+    "sizes": [
+      {
+        "size": "250ML",
+        "price": 810,
+        "oldPrice": 810,
+        "sku": "VA-UNIT-250ML",
+        "weight": "0.25kg",
+        "stockStatus": "In Stock"
+      }
+    ],
+    "formulation": "SURPRISE (NITENPYRAM+BIFEN) 25% SL",
+    "activeIngredient": "SURPRISE (NITENPYRAM+BIFEN) 25% SL",
+    "crops": [
+      {
+        "name": {
+          "en": "Cotton",
+          "ur": "کپاس"
+        },
+        "icon": "🌱"
+      },
+      {
+        "name": {
+          "en": "Rice",
+          "ur": "دھان"
+        },
+        "icon": "🌾"
+      },
+      {
+        "name": {
+          "en": "Sugarcane",
+          "ur": "کماد"
+        },
+        "icon": "🌱"
+      },
+      {
+        "name": {
+          "en": "Maize",
+          "ur": "مکئی"
+        },
+        "icon": "🌽"
+      },
+      {
+        "name": {
+          "en": "Vegetables",
+          "ur": "سبزیاں"
+        },
+        "icon": "🥦"
+      },
+      {
+        "name": {
+          "en": "Citrus",
+          "ur": "ترشاوہ پھل"
+        },
+        "icon": "🌱"
+      }
+    ]
+  },
+  "ultra-nanoo": {
+    "name": {
+      "en": "ULTRA NANOO 5 - 50%SG",
+      "ur": "الٹرانینو"
+    },
+    "category": "insecticide",
+    "sizes": [
+      {
+        "size": "50 GM",
+        "price": 340,
+        "oldPrice": 340,
+        "sku": "VA-ULTRA-NANOO-50GM",
+        "weight": "0.05kg",
+        "stockStatus": "In Stock"
+      }
+    ],
+    "formulation": "INSTANT SUPPER (NITENPYRAM) 50% SG",
+    "activeIngredient": "INSTANT SUPPER (NITENPYRAM) 50% SG",
+    "crops": [
+      {
+        "name": {
+          "en": "Cotton",
+          "ur": "کپاس"
+        },
+        "icon": "🌱"
+      },
+      {
+        "name": {
+          "en": "Rice",
+          "ur": "دھان"
+        },
+        "icon": "🌾"
+      },
+      {
+        "name": {
+          "en": "Sugarcane",
+          "ur": "کماد"
+        },
+        "icon": "🌱"
+      },
+      {
+        "name": {
+          "en": "Maize",
+          "ur": "مکئی"
+        },
+        "icon": "🌽"
+      },
+      {
+        "name": {
+          "en": "Vegetables",
+          "ur": "سبزیاں"
+        },
+        "icon": "🥦"
+      },
+      {
+        "name": {
+          "en": "Citrus",
+          "ur": "ترشاوہ پھل"
+        },
+        "icon": "🌱"
+      }
+    ]
+  },
+  "shelly": {
+    "name": {
+      "en": "SHELLY 687.5 G/L SC",
+      "ur": "شیلی"
+    },
+    "category": "fungicide",
+    "sizes": [
+      {
+        "size": "400 ML",
+        "price": 1899,
+        "oldPrice": 1899,
+        "sku": "VA-SHELLY-400ML",
+        "weight": "0.4kg",
+        "stockStatus": "In Stock"
+      }
+    ],
+    "formulation": "PROPAMOCARB+FLUOPICOLIDE 68.76%SC",
+    "activeIngredient": "PROPAMOCARB+FLUOPICOLIDE 68.76%SC",
+    "crops": [
+      {
+        "name": {
+          "en": "Cotton",
+          "ur": "کپاس"
+        },
+        "icon": "🌱"
+      },
+      {
+        "name": {
+          "en": "Rice",
+          "ur": "دھان"
+        },
+        "icon": "🌾"
+      },
+      {
+        "name": {
+          "en": "Sugarcane",
+          "ur": "کماد"
+        },
+        "icon": "🌱"
+      },
+      {
+        "name": {
+          "en": "Maize",
+          "ur": "مکئی"
+        },
+        "icon": "🌽"
+      },
+      {
+        "name": {
+          "en": "Vegetables",
+          "ur": "سبزیاں"
+        },
+        "icon": "🥦"
+      },
+      {
+        "name": {
+          "en": "Citrus",
+          "ur": "ترشاوہ پھل"
+        },
+        "icon": "🌱"
+      }
+    ]
+  },
+  "master": {
+    "name": {
+      "en": "MASTER 18.7% WG",
+      "ur": "ماسٹر"
+    },
+    "category": "fungicide",
+    "sizes": [
+      {
+        "size": "250 GM",
+        "price": 0,
+        "oldPrice": 0,
+        "stockStatus": "In Stock",
+        "sku": "VA-MASTER-250GM",
+        "weight": "0.25kg"
+      }
+    ],
+    "formulation": "PIVOT 18.7% WG",
+    "activeIngredient": "PIVOT 18.7% WG",
+    "crops": [
+      {
+        "name": {
+          "en": "Cotton",
+          "ur": "کپاس"
+        },
+        "icon": "🌱"
+      },
+      {
+        "name": {
+          "en": "Rice",
+          "ur": "دھان"
+        },
+        "icon": "🌾"
+      },
+      {
+        "name": {
+          "en": "Sugarcane",
+          "ur": "کماد"
+        },
+        "icon": "🌱"
+      },
+      {
+        "name": {
+          "en": "Maize",
+          "ur": "مکئی"
+        },
+        "icon": "🌽"
+      },
+      {
+        "name": {
+          "en": "Vegetables",
+          "ur": "سبزیاں"
+        },
+        "icon": "🥦"
+      },
+      {
+        "name": {
+          "en": "Citrus",
+          "ur": "ترشاوہ پھل"
+        },
+        "icon": "🌱"
+      }
+    ]
+  },
+  "dollar": {
+    "name": {
+      "en": "DOLLAR 23.2% OD",
+      "ur": "ڈالر"
+    },
+    "category": "fungicide",
+    "sizes": [
+      {
+        "size": "500 ML",
+        "price": 0,
+        "oldPrice": 0,
+        "stockStatus": "In Stock",
+        "sku": "VA-DOLLAR-500ML",
+        "weight": "0.5kg"
+      }
+    ],
+    "formulation": "FUSHU 23.2% OD",
+    "activeIngredient": "FUSHU 23.2% OD",
+    "crops": [
+      {
+        "name": {
+          "en": "Cotton",
+          "ur": "کپاس"
+        },
+        "icon": "🌱"
+      },
+      {
+        "name": {
+          "en": "Rice",
+          "ur": "دھان"
+        },
+        "icon": "🌾"
+      },
+      {
+        "name": {
+          "en": "Sugarcane",
+          "ur": "کماد"
+        },
+        "icon": "🌱"
+      },
+      {
+        "name": {
+          "en": "Maize",
+          "ur": "مکئی"
+        },
+        "icon": "🌽"
+      },
+      {
+        "name": {
+          "en": "Vegetables",
+          "ur": "سبزیاں"
+        },
+        "icon": "🥦"
+      },
+      {
+        "name": {
+          "en": "Citrus",
+          "ur": "ترشاوہ پھل"
+        },
+        "icon": "🌱"
+      }
+    ]
+  },
+  "woxy": {
+    "name": {
+      "en": "WOXY 32% SC",
+      "ur": "ووکسی"
+    },
+    "category": "fungicide",
+    "sizes": [
+      {
+        "size": "200 ML",
+        "price": 1399,
+        "oldPrice": 1399,
+        "sku": "VA-WOXY-200ML",
+        "weight": "0.2kg",
+        "stockStatus": "In Stock"
+      }
+    ],
+    "formulation": "AZOXYSTROBIN+PROPICONAZOLE 32%",
+    "activeIngredient": "AZOXYSTROBIN+PROPICONAZOLE 32%",
+    "crops": [
+      {
+        "name": {
+          "en": "Potato",
+          "ur": "آلو"
+        },
+        "icon": "🌱"
+      },
+      {
+        "name": {
+          "en": "Tomato",
+          "ur": "ٹماٹر"
+        },
+        "icon": "🌱"
+      },
+      {
+        "name": {
+          "en": "Rice",
+          "ur": "دھان"
+        },
+        "icon": "🌾"
+      },
+      {
+        "name": {
+          "en": "Wheat",
+          "ur": "گندم"
+        },
+        "icon": "🌾"
+      },
+      {
+        "name": {
+          "en": "Vegetables",
+          "ur": "سبزیاں"
+        },
+        "icon": "🥦"
+      },
+      {
+        "name": {
+          "en": "Mango",
+          "ur": "آم"
+        },
+        "icon": "🍊"
+      },
+      {
+        "name": {
+          "en": "Citrus",
+          "ur": "ترشاوہ پھل"
+        },
+        "icon": "🌱"
+      }
+    ]
+  },
+  "deft": {
+    "name": {
+      "en": "DEFT 10% WP",
+      "ur": "ڈیفٹ"
+    },
+    "category": "herbicide",
+    "sizes": [
+      {
+        "size": "40 GM",
+        "price": 0,
+        "oldPrice": 0,
+        "stockStatus": "In Stock",
+        "sku": "VA-DEFT-40GM",
+        "weight": "0.04kg"
+      }
+    ],
+    "formulation": "METSULFURON METHYL 10%WP",
+    "activeIngredient": "METSULFURON METHYL 10%WP",
+    "crops": [
+      {
+        "name": {
+          "en": "Cotton",
+          "ur": "کپاس"
+        },
+        "icon": "🌱"
+      },
+      {
+        "name": {
+          "en": "Rice",
+          "ur": "دھان"
+        },
+        "icon": "🌾"
+      },
+      {
+        "name": {
+          "en": "Sugarcane",
+          "ur": "کماد"
+        },
+        "icon": "🌱"
+      },
+      {
+        "name": {
+          "en": "Maize",
+          "ur": "مکئی"
+        },
+        "icon": "🌽"
+      },
+      {
+        "name": {
+          "en": "Vegetables",
+          "ur": "سبزیاں"
+        },
+        "icon": "🥦"
+      },
+      {
+        "name": {
+          "en": "Citrus",
+          "ur": "ترشاوہ پھل"
+        },
+        "icon": "🌱"
+      }
+    ]
+  },
+  "taleb": {
+    "name": {
+      "en": "TALEB 25%OD",
+      "ur": "طالب"
+    },
+    "category": "herbicide",
+    "sizes": [
+      {
+        "size": "360 ML",
+        "price": 0,
+        "oldPrice": 0,
+        "stockStatus": "In Stock",
+        "sku": "VA-TALEB-360ML",
+        "weight": "0.36kg"
+      }
+    ],
+    "formulation": "TRI ULTRA (FSLM+MESO+MCPA) 25%OD",
+    "activeIngredient": "TRI ULTRA (FSLM+MESO+MCPA) 25%OD",
+    "crops": [
+      {
+        "name": {
+          "en": "Cotton",
+          "ur": "کپاس"
+        },
+        "icon": "🌱"
+      },
+      {
+        "name": {
+          "en": "Rice",
+          "ur": "دھان"
+        },
+        "icon": "🌾"
+      },
+      {
+        "name": {
+          "en": "Sugarcane",
+          "ur": "کماد"
+        },
+        "icon": "🌱"
+      },
+      {
+        "name": {
+          "en": "Maize",
+          "ur": "مکئی"
+        },
+        "icon": "🌽"
+      },
+      {
+        "name": {
+          "en": "Vegetables",
+          "ur": "سبزیاں"
+        },
+        "icon": "🥦"
+      },
+      {
+        "name": {
+          "en": "Citrus",
+          "ur": "ترشاوہ پھل"
+        },
+        "icon": "🌱"
+      }
+    ]
+  },
+  "vital-gold-plus": {
+    "name": {
+      "en": "VITAL GOLD PLUS 48% SC",
+      "ur": "وائٹل گولڈ پلس"
+    },
+    "category": "herbicide",
+    "sizes": [
+      {
+        "size": "350 ML",
+        "price": 0,
+        "oldPrice": 0,
+        "stockStatus": "In Stock",
+        "sku": "VA-VITAL-GOLD-PLUS-350ML",
+        "weight": "0.35kg"
+      }
+    ],
+    "formulation": "Fluroxypyr Meptyl 11.42 + Florasulam 0.37 + Mcpa 33.84 (48sc)",
+    "activeIngredient": "Fluroxypyr Meptyl 11.42 + Florasulam 0.37 + Mcpa 33.84 (48sc)",
+    "crops": [
+      {
+        "name": {
+          "en": "Cotton",
+          "ur": "کپاس"
+        },
+        "icon": "🌱"
+      },
+      {
+        "name": {
+          "en": "Rice",
+          "ur": "دھان"
+        },
+        "icon": "🌾"
+      },
+      {
+        "name": {
+          "en": "Sugarcane",
+          "ur": "کماد"
+        },
+        "icon": "🌱"
+      },
+      {
+        "name": {
+          "en": "Maize",
+          "ur": "مکئی"
+        },
+        "icon": "🌽"
+      },
+      {
+        "name": {
+          "en": "Vegetables",
+          "ur": "سبزیاں"
+        },
+        "icon": "🥦"
+      },
+      {
+        "name": {
+          "en": "Citrus",
+          "ur": "ترشاوہ پھل"
+        },
+        "icon": "🌱"
+      }
+    ]
+  },
+  "genny-ultra": {
+    "name": {
+      "en": "GENNY ULTRA 88.8%WSG",
+      "ur": "جینی الٹرا"
+    },
+    "category": "herbicide",
+    "sizes": [
+      {
+        "size": "1 KG",
+        "price": 0,
+        "oldPrice": 0,
+        "stockStatus": "In Stock",
+        "sku": "VA-GENNY-ULTRA-1KG",
+        "weight": "0.001kg"
+      },
+      {
+        "size": "500 GM",
+        "price": 0,
+        "oldPrice": 0,
+        "stockStatus": "In Stock",
+        "sku": "VA-GENNY-ULTRA-500GM",
+        "weight": "0.5kg"
+      }
+    ],
+    "formulation": "GLYPHOSATE 88.8%WSG",
+    "activeIngredient": "GLYPHOSATE 88.8%WSG",
+    "crops": [
+      {
+        "name": {
+          "en": "Cotton",
+          "ur": "کپاس"
+        },
+        "icon": "🌱"
+      },
+      {
+        "name": {
+          "en": "Sugarcane",
+          "ur": "کماد"
+        },
+        "icon": "🌱"
+      },
+      {
+        "name": {
+          "en": "Soybean",
+          "ur": "سویا بین"
+        },
+        "icon": "🌱"
+      },
+      {
+        "name": {
+          "en": "Vegetables",
+          "ur": "سبزیاں"
+        },
+        "icon": "🥦"
+      }
+    ]
+  },
+  "data": {
+    "name": {
+      "en": "DATA 12% SC",
+      "ur": "ڈیٹا"
+    },
+    "category": "insecticide",
+    "sizes": [
+      {
+        "size": "200 ML",
+        "price": 899,
+        "oldPrice": 899,
+        "sku": "VA-DATA-200ML",
+        "weight": "0.2kg",
+        "stockStatus": "In Stock"
+      }
+    ],
+    "formulation": "CHLORANILIPROLE + DELTAMETHRIN 12%SC",
+    "activeIngredient": "CHLORANILIPROLE + DELTAMETHRIN 12%SC",
+    "crops": [
+      {
+        "name": {
+          "en": "Cotton",
+          "ur": "کپاس"
+        },
+        "icon": "🌱"
+      },
+      {
+        "name": {
+          "en": "Rice",
+          "ur": "دھان"
+        },
+        "icon": "🌾"
+      },
+      {
+        "name": {
+          "en": "Sugarcane",
+          "ur": "کماد"
+        },
+        "icon": "🌱"
+      },
+      {
+        "name": {
+          "en": "Maize",
+          "ur": "مکئی"
+        },
+        "icon": "🌽"
+      },
+      {
+        "name": {
+          "en": "Vegetables",
+          "ur": "سبزیاں"
+        },
+        "icon": "🥦"
+      },
+      {
+        "name": {
+          "en": "Citrus",
+          "ur": "ترشاوہ پھل"
+        },
+        "icon": "🌱"
+      }
+    ]
+  },
+  "fatty": {
+    "name": {
+      "en": "Fatty",
+      "ur": "فیٹی"
+    },
+    "category": "plant-nutrition",
+    "sizes": [
+      {
+        "size": "500 ML",
+        "price": 750,
+        "oldPrice": 750,
+        "sku": "VA-FATT-500ML",
+        "weight": "0.5kg",
+        "stockStatus": "In Stock"
+      }
+    ],
+    "formulation": "10% SL",
+    "activeIngredient": "Organic Fatty Acids & Micronutrients",
+    "crops": [
+      {
+        "name": {
+          "en": "Cotton",
+          "ur": "کپاس"
+        },
+        "icon": "🌱"
+      },
+      {
+        "name": {
+          "en": "Rice",
+          "ur": "دھان"
+        },
+        "icon": "🌾"
+      },
+      {
+        "name": {
+          "en": "Wheat",
+          "ur": "گندم"
+        },
+        "icon": "🌾"
+      },
+      {
+        "name": {
+          "en": "Maize",
+          "ur": "مکئی"
+        },
+        "icon": "🌽"
+      },
+      {
+        "name": {
+          "en": "Citrus",
+          "ur": "ترشاوہ پھل"
+        },
+        "icon": "🍊"
+      },
+      {
+        "name": {
+          "en": "Mango",
+          "ur": "آم"
+        },
+        "icon": "🥭"
+      },
+      {
+        "name": {
+          "en": "Vegetables",
+          "ur": "سبزیاں"
+        },
+        "icon": "🥦"
+      }
+    ]
+  },
+  "vac-zinc": {
+    "name": {
+      "en": "VAC Zinc",
+      "ur": "وی اے سی زنک"
+    },
+    "category": "plant-nutrition",
+    "sizes": [
+      {
+        "size": "3 LTR",
+        "price": 850,
+        "oldPrice": 850,
+        "sku": "VA-VACZ-3LTR",
+        "weight": "3kg",
+        "stockStatus": "In Stock"
+      },
+      {
+        "size": "20 LTR",
+        "price": 850,
+        "oldPrice": 4550,
+        "sku": "VA-VACZ-20LTR",
+        "weight": "20kg",
+        "stockStatus": "In Stock"
+      },
+      {
+        "size": "200 LTR",
+        "price": 850,
+        "oldPrice": 45000,
+        "sku": "VA-VACZ-200LTR",
+        "weight": "200kg",
+        "stockStatus": "In Stock"
+      }
+    ],
+    "formulation": "12% Powder",
+    "activeIngredient": "Chelated Zinc (Zn-EDTA 12%)",
+    "crops": [
+      {
+        "name": {
+          "en": "Rice",
+          "ur": "دھان"
+        },
+        "icon": "🌾"
+      },
+      {
+        "name": {
+          "en": "Cotton",
+          "ur": "کپاس"
+        },
+        "icon": "🌱"
+      },
+      {
+        "name": {
+          "en": "Wheat",
+          "ur": "گندم"
+        },
+        "icon": "🌾"
+      },
+      {
+        "name": {
+          "en": "Maize",
+          "ur": "مکئی"
+        },
+        "icon": "🌽"
+      },
+      {
+        "name": {
+          "en": "Citrus",
+          "ur": "ترشاوہ پھل"
+        },
+        "icon": "🍊"
+      },
+      {
+        "name": {
+          "en": "Potato",
+          "ur": "آلو"
+        },
+        "icon": "🥔"
+      }
+    ]
+  },
+  "sector": {
+    "name": {
+      "en": "Sector",
+      "ur": "سیکٹر"
+    },
+    "category": "herbicide",
+    "sizes": [
+      {
+        "size": "4 KG",
+        "price": 1050,
+        "oldPrice": 1050,
+        "sku": "VA-SECT-4KG",
+        "weight": "4kg",
+        "stockStatus": "In Stock"
+      }
+    ],
+    "formulation": "16% WP",
+    "activeIngredient": "Acetochlor 14% + Bensulfuron Methyl 2%",
+    "crops": [
+      {
+        "name": {
+          "en": "Rice (Transplanted)",
+          "ur": "دھان (قاد)"
+        },
+        "icon": "🌾"
+      },
+      {
+        "name": {
+          "en": "Rice (Direct Seeded)",
+          "ur": "دھان (براہِ راست)"
+        },
+        "icon": "🌾"
+      },
+      {
+        "name": {
+          "en": "Maize",
+          "ur": "مکئی"
+        },
+        "icon": "🌽"
+      }
+    ]
+  },
+  "output": {
+    "name": {
+      "en": "Output",
+      "ur": "آؤٹ پٹ"
+    },
+    "category": "plant-nutrition",
+    "sizes": [
+      {
+        "size": "2 KG",
+        "price": 1510,
+        "oldPrice": 1510,
+        "sku": "VA-OUTP-2KG",
+        "weight": "2kg",
+        "stockStatus": "In Stock"
+      },
+      {
+        "size": "8 KG",
+        "price": 1510,
+        "oldPrice": 1999,
+        "sku": "VA-OUTP-8KG",
+        "weight": "8kg",
+        "stockStatus": "In Stock"
+      },
+      {
+        "size": "20 KG",
+        "price": 1510,
+        "oldPrice": 4600,
+        "sku": "VA-OUTP-20KG",
+        "weight": "20kg",
+        "stockStatus": "In Stock"
+      }
+    ],
+    "formulation": "PK Liquid Concentrate",
+    "activeIngredient": "Phosphorus + Potassium + Boron",
+    "crops": [
+      {
+        "name": {
+          "en": "Potato",
+          "ur": "آلو"
+        },
+        "icon": "🥔"
+      },
+      {
+        "name": {
+          "en": "Citrus",
+          "ur": "ترشاوہ پھل"
+        },
+        "icon": "🍊"
+      },
+      {
+        "name": {
+          "en": "Mango",
+          "ur": "آم"
+        },
+        "icon": "🥭"
+      },
+      {
+        "name": {
+          "en": "Tomato",
+          "ur": "ٹماٹر"
+        },
+        "icon": "🍅"
+      },
+      {
+        "name": {
+          "en": "Chilli",
+          "ur": "مرچ"
+        },
+        "icon": "🌶️"
+      },
+      {
+        "name": {
+          "en": "Rice",
+          "ur": "دھان"
+        },
+        "icon": "🌾"
+      }
+    ]
+  },
+  "super-4g": {
+    "name": {
+      "en": "Super 4G",
+      "ur": "سوپر فور جی"
+    },
+    "category": "insecticide",
+    "sizes": [
+      {
+        "size": "8 KG",
+        "price": 1250,
+        "oldPrice": 1250,
+        "sku": "VA-SUPE-8KG",
+        "weight": "8kg",
+        "stockStatus": "In Stock"
+      }
+    ],
+    "formulation": "4% Granular",
+    "activeIngredient": "Cartap Hydrochloride 4%",
+    "crops": [
+      {
+        "name": {
+          "en": "Rice",
+          "ur": "دھان"
+        },
+        "icon": "🌾"
+      },
+      {
+        "name": {
+          "en": "Sugarcane",
+          "ur": "کماد"
+        },
+        "icon": "🎋"
+      },
+      {
+        "name": {
+          "en": "Maize",
+          "ur": "مکئی"
+        },
+        "icon": "🌽"
+      }
+    ]
+  },
+  "vac-sop": {
+    "name": {
+      "en": "VAC SOP",
+      "ur": "ویک ایس او پی"
+    },
+    "category": "plant-nutrition",
+    "sizes": [
+      {
+        "size": "25 KG",
+        "price": 9200,
+        "oldPrice": 9200,
+        "sku": "VA-VACS-25KG",
+        "weight": "25kg",
+        "stockStatus": "In Stock"
+      },
+      {
+        "size": "10 KG",
+        "price": 9200,
+        "oldPrice": 3800,
+        "sku": "VA-VACS-10KG",
+        "weight": "10kg",
+        "stockStatus": "In Stock"
+      }
+    ],
+    "formulation": "Potash (K₂O) + Sulphur",
+    "activeIngredient": "Potassium Sulphate (K2O 50% + S 17.5%)",
+    "crops": [
+      {
+        "name": {
+          "en": "Cotton",
+          "ur": "کپاس"
+        },
+        "icon": "🌱"
+      },
+      {
+        "name": {
+          "en": "Sugarcane",
+          "ur": "کماد"
+        },
+        "icon": "🎋"
+      },
+      {
+        "name": {
+          "en": "Vegetables",
+          "ur": "سبزیاں"
+        },
+        "icon": "🥦"
+      },
+      {
+        "name": {
+          "en": "Fruits",
+          "ur": "پھل"
+        },
+        "icon": "🍊"
+      },
+      {
+        "name": {
+          "en": "Rice",
+          "ur": "دھان"
+        },
+        "icon": "🌾"
+      }
+    ]
+  },
+  "vac-map": {
+    "name": {
+      "en": "VAC MAP",
+      "ur": "ویک میپ"
+    },
+    "category": "plant-nutrition",
+    "sizes": [
+      {
+        "size": "25 KG",
+        "price": 13999,
+        "oldPrice": 13999,
+        "sku": "VA-VACM-25KG",
+        "weight": "25kg",
+        "stockStatus": "In Stock"
+      },
+      {
+        "size": "10 KG",
+        "price": 5700,
+        "oldPrice": 5700,
+        "sku": "VA-VACM-10KG",
+        "weight": "10kg",
+        "stockStatus": "In Stock"
+      }
+    ],
+    "formulation": "Mono Ammonium Phosphate (MAP)",
+    "activeIngredient": "Nitrogen (N) 12% + Phosphorus (P₂O₅) 81%",
+    "crops": [
+      {
+        "name": {
+          "en": "All Crops",
+          "ur": "تمام فصلیں"
+        },
+        "icon": "🌱"
+      },
+      {
+        "name": {
+          "en": "Wheat",
+          "ur": "گندم"
+        },
+        "icon": "🌾"
+      },
+      {
+        "name": {
+          "en": "Cotton",
+          "ur": "کپاس"
+        },
+        "icon": "🌱"
+      },
+      {
+        "name": {
+          "en": "Sugarcane",
+          "ur": "کماد"
+        },
+        "icon": "🎋"
+      },
+      {
+        "name": {
+          "en": "Vegetables",
+          "ur": "سبزیاں"
+        },
+        "icon": "🥦"
+      }
+    ]
+  },
+  "defeater-soil-conditioner": {
+    "name": {
+      "en": "Defeater Soil",
+      "ur": "ڈیفیٹر سوائل"
+    },
+    "category": "plant-nutrition",
+    "sizes": [
+      {
+        "size": "20 LTR",
+        "price": 3480,
+        "oldPrice": 3480,
+        "stockStatus": "In Stock",
+        "sku": "VA-DEFE-20LTR",
+        "weight": "20kg"
+      },
+      {
+        "size": "200 LTR",
+        "price": 0,
+        "oldPrice": 0,
+        "stockStatus": "In Stock",
+        "sku": "VA-DEFE-200LTR",
+        "weight": "200kg"
+      }
+    ],
+    "formulation": "Potassium Humate Liquid",
+    "activeIngredient": "Potassium (K₂O) 3.1% + Humic Acid 30%",
+    "crops": [
+      {
+        "name": {
+          "en": "Cotton",
+          "ur": "کپاس"
+        },
+        "icon": "🌱"
+      },
+      {
+        "name": {
+          "en": "Sugarcane",
+          "ur": "کماد"
+        },
+        "icon": "🎋"
+      },
+      {
+        "name": {
+          "en": "Potato",
+          "ur": "آلو"
+        },
+        "icon": "🥔"
+      },
+      {
+        "name": {
+          "en": "Vegetables",
+          "ur": "سبزیاں"
+        },
+        "icon": "🥦"
+      },
+      {
+        "name": {
+          "en": "Fruits",
+          "ur": "پھل"
+        },
+        "icon": "🍊"
+      }
+    ]
+  },
+  "sonehri-potash-30": {
+    "name": {
+      "en": "Sonehri Potash",
+      "ur": "سنہری پوٹاش"
+    },
+    "category": "plant-nutrition",
+    "sizes": [
+      {
+        "size": "1 LTR",
+        "price": 970,
+        "oldPrice": 970,
+        "sku": "VA-SONE-1LTR",
+        "weight": "1kg",
+        "stockStatus": "In Stock"
+      },
+      {
+        "size": "3 LTR",
+        "price": 970,
+        "oldPrice": 1900,
+        "sku": "VA-SONE-3LTR",
+        "weight": "3kg",
+        "stockStatus": "In Stock"
+      },
+      {
+        "size": "20 LTR",
+        "price": 970,
+        "oldPrice": 11930,
+        "sku": "VA-SONE-20LTR",
+        "weight": "20kg",
+        "stockStatus": "In Stock"
+      },
+      {
+        "size": "200 LTR",
+        "price": 970,
+        "oldPrice": 117500,
+        "sku": "VA-SONE-200LTR",
+        "weight": "200kg",
+        "stockStatus": "In Stock"
+      }
+    ],
+    "formulation": "Liquid Fertilizer Soluble Concentrate",
+    "activeIngredient": "Potash (K₂O) 30% + Micro Elements",
+    "crops": [
+      {
+        "name": {
+          "en": "Cotton",
+          "ur": "کپاس"
+        },
+        "icon": "🌱"
+      },
+      {
+        "name": {
+          "en": "Sugarcane",
+          "ur": "کماد"
+        },
+        "icon": "🎋"
+      },
+      {
+        "name": {
+          "en": "Potato",
+          "ur": "آلو"
+        },
+        "icon": "🥔"
+      },
+      {
+        "name": {
+          "en": "Chilli",
+          "ur": "مرچ"
+        },
+        "icon": "🌶️"
+      },
+      {
+        "name": {
+          "en": "Vegetables",
+          "ur": "سبزیاں"
+        },
+        "icon": "🥦"
+      }
+    ]
+  },
+  "defeater-potassium-humate": {
+    "name": {
+      "en": "Defeater Humate",
+      "ur": "ڈیفیٹر ہیومیٹ"
+    },
+    "category": "plant-nutrition",
+    "sizes": [
+      {
+        "size": "4 LTR",
+        "price": 740,
+        "oldPrice": 740,
+        "sku": "VA-DEFE-4LTR",
+        "weight": "4kg",
+        "stockStatus": "In Stock"
+      },
+      {
+        "size": "20 LTR",
+        "price": 740,
+        "oldPrice": 3599,
+        "sku": "VA-DEFE-20LTR",
+        "weight": "20kg",
+        "stockStatus": "In Stock"
+      },
+      {
+        "size": "200 LTR",
+        "price": 740,
+        "oldPrice": 32200,
+        "sku": "VA-DEFE-200LTR",
+        "weight": "200kg",
+        "stockStatus": "In Stock"
+      }
+    ],
+    "formulation": "13.5% SL Liquid Concentrate",
+    "activeIngredient": "Potassium Humate + Fulvic Acid",
+    "crops": [
+      {
+        "name": {
+          "en": "All Crops",
+          "ur": "تمام فصلیں"
+        },
+        "icon": "🌱"
+      },
+      {
+        "name": {
+          "en": "Cotton",
+          "ur": "کپاس"
+        },
+        "icon": "🌱"
+      },
+      {
+        "name": {
+          "en": "Wheat",
+          "ur": "گندم"
+        },
+        "icon": "🌾"
+      },
+      {
+        "name": {
+          "en": "Rice",
+          "ur": "دھان"
+        },
+        "icon": "🌾"
+      },
+      {
+        "name": {
+          "en": "Vegetables",
+          "ur": "سبزیاں"
+        },
+        "icon": "🥦"
+      }
+    ]
+  },
+  "setting-npk": {
+    "name": {
+      "en": "Setting NPK",
+      "ur": "سیٹنگ این پی کے"
+    },
+    "category": "plant-nutrition",
+    "sizes": [
+      {
+        "size": "1 KG",
+        "price": 699,
+        "oldPrice": 699,
+        "sku": "VA-SETT-1KG",
+        "weight": "1kg",
+        "stockStatus": "In Stock"
+      },
+      {
+        "size": "25 KG",
+        "price": 699,
+        "oldPrice": 15230,
+        "sku": "VA-SETT-25KG",
+        "weight": "25kg",
+        "stockStatus": "In Stock"
+      }
+    ],
+    "formulation": "Balanced Water Soluble NPK 20-20-20",
+    "activeIngredient": "Nitrogen (20%) + Phosphorus (20%) + Potash (20%)",
+    "crops": [
+      {
+        "name": {
+          "en": "All Crops",
+          "ur": "تمام فصلیں"
+        },
+        "icon": "🌱"
+      },
+      {
+        "name": {
+          "en": "Fruits",
+          "ur": "پھل"
+        },
+        "icon": "🍊"
+      },
+      {
+        "name": {
+          "en": "Vegetables",
+          "ur": "سبزیاں"
+        },
+        "icon": "🥦"
+      },
+      {
+        "name": {
+          "en": "Cotton",
+          "ur": "کپاس"
+        },
+        "icon": "🌱"
+      },
+      {
+        "name": {
+          "en": "Sugarcane",
+          "ur": "کماد"
+        },
+        "icon": "🎋"
+      }
+    ]
+  },
+  "baqa": {
+    "name": {
+      "en": "BAQA - 10% EC",
+      "ur": "BAQA"
+    },
+    "category": "insecticide",
+    "sizes": [
+      {
+        "size": "250 ML",
+        "price": 699,
+        "oldPrice": 699,
+        "stockStatus": "In Stock",
+        "sku": "VA-BAQA-250ML",
+        "weight": "0.25kg"
+      },
+      {
+        "size": "1 L",
+        "price": 2399,
+        "oldPrice": 2399,
+        "stockStatus": "In Stock",
+        "sku": "VA-BAQA-1L",
+        "weight": "1kg"
+      }
+    ],
+    "formulation": "Emulsifiable Concentrate",
+    "activeIngredient": "Premium Active Compound",
+    "crops": [
+      {
+        "name": {
+          "en": "Cotton",
+          "ur": "کپاس"
+        },
+        "icon": "🌱"
+      },
+      {
+        "name": {
+          "en": "Rice",
+          "ur": "دھان"
+        },
+        "icon": "🌾"
+      },
+      {
+        "name": {
+          "en": "Maize",
+          "ur": "مکئی"
+        },
+        "icon": "🌽"
+      },
+      {
+        "name": {
+          "en": "Wheat",
+          "ur": "گندم"
+        },
+        "icon": "🌾"
+      }
+    ]
+  },
+  "bi-matic": {
+    "name": {
+      "en": "BI MATIC - 10% EC",
+      "ur": "BI MATIC"
+    },
+    "category": "insecticide",
+    "sizes": [
+      {
+        "size": "250 ML",
+        "price": 699,
+        "oldPrice": 699,
+        "stockStatus": "In Stock",
+        "sku": "VA-BI-MATIC-250ML",
+        "weight": "0.25kg"
+      },
+      {
+        "size": "1 L",
+        "price": 2399,
+        "oldPrice": 2399,
+        "stockStatus": "In Stock",
+        "sku": "VA-BI-MATIC-1L",
+        "weight": "1kg"
+      }
+    ],
+    "formulation": "Emulsifiable Concentrate",
+    "activeIngredient": "Premium Active Compound",
+    "crops": [
+      {
+        "name": {
+          "en": "Cotton",
+          "ur": "کپاس"
+        },
+        "icon": "🌱"
+      },
+      {
+        "name": {
+          "en": "Rice",
+          "ur": "دھان"
+        },
+        "icon": "🌾"
+      },
+      {
+        "name": {
+          "en": "Maize",
+          "ur": "مکئی"
+        },
+        "icon": "🌽"
+      },
+      {
+        "name": {
+          "en": "Wheat",
+          "ur": "گندم"
+        },
+        "icon": "🌾"
+      }
+    ]
+  },
+  "brankosen": {
+    "name": {
+      "en": "BRANKOSEN - 10% EC",
+      "ur": "BRANKOSEN"
+    },
+    "category": "insecticide",
+    "sizes": [
+      {
+        "size": "250 ML",
+        "price": 699,
+        "oldPrice": 699,
+        "stockStatus": "In Stock",
+        "sku": "VA-BRANKOSEN-250ML",
+        "weight": "0.25kg"
+      },
+      {
+        "size": "1 L",
+        "price": 2399,
+        "oldPrice": 2399,
+        "stockStatus": "In Stock",
+        "sku": "VA-BRANKOSEN-1L",
+        "weight": "1kg"
+      }
+    ],
+    "formulation": "Emulsifiable Concentrate",
+    "activeIngredient": "Premium Active Compound",
+    "crops": [
+      {
+        "name": {
+          "en": "Cotton",
+          "ur": "کپاس"
+        },
+        "icon": "🌱"
+      },
+      {
+        "name": {
+          "en": "Rice",
+          "ur": "دھان"
+        },
+        "icon": "🌾"
+      },
+      {
+        "name": {
+          "en": "Maize",
+          "ur": "مکئی"
+        },
+        "icon": "🌽"
+      },
+      {
+        "name": {
+          "en": "Wheat",
+          "ur": "گندم"
+        },
+        "icon": "🌾"
+      }
+    ]
+  },
+  "cloro-mac": {
+    "name": {
+      "en": "CLORO MAC - 10% EC",
+      "ur": "CLORO MAC"
+    },
+    "category": "insecticide",
+    "sizes": [
+      {
+        "size": "250 ML",
+        "price": 699,
+        "oldPrice": 699,
+        "stockStatus": "In Stock",
+        "sku": "VA-CLORO-MAC-250ML",
+        "weight": "0.25kg"
+      },
+      {
+        "size": "1 L",
+        "price": 2399,
+        "oldPrice": 2399,
+        "stockStatus": "In Stock",
+        "sku": "VA-CLORO-MAC-1L",
+        "weight": "1kg"
+      }
+    ],
+    "formulation": "Emulsifiable Concentrate",
+    "activeIngredient": "Premium Active Compound",
+    "crops": [
+      {
+        "name": {
+          "en": "Cotton",
+          "ur": "کپاس"
+        },
+        "icon": "🌱"
+      },
+      {
+        "name": {
+          "en": "Rice",
+          "ur": "دھان"
+        },
+        "icon": "🌾"
+      },
+      {
+        "name": {
+          "en": "Maize",
+          "ur": "مکئی"
+        },
+        "icon": "🌽"
+      },
+      {
+        "name": {
+          "en": "Wheat",
+          "ur": "گندم"
+        },
+        "icon": "🌾"
+      }
+    ]
+  },
+  "conference": {
+    "name": {
+      "en": "CONFERENCE - 10% EC",
+      "ur": "CONFERENCE"
+    },
+    "category": "seed-treatment",
+    "sizes": [
+      {
+        "size": "250 ML",
+        "price": 699,
+        "oldPrice": 699,
+        "stockStatus": "In Stock",
+        "sku": "VA-CONFERENCE-250ML",
+        "weight": "0.25kg"
+      },
+      {
+        "size": "1 L",
+        "price": 2399,
+        "oldPrice": 2399,
+        "stockStatus": "In Stock",
+        "sku": "VA-CONFERENCE-1L",
+        "weight": "1kg"
+      }
+    ],
+    "formulation": "Emulsifiable Concentrate",
+    "activeIngredient": "Premium Active Compound",
+    "crops": [
+      {
+        "name": {
+          "en": "Cotton",
+          "ur": "کپاس"
+        },
+        "icon": "🌱"
+      },
+      {
+        "name": {
+          "en": "Rice",
+          "ur": "دھان"
+        },
+        "icon": "🌾"
+      },
+      {
+        "name": {
+          "en": "Maize",
+          "ur": "مکئی"
+        },
+        "icon": "🌽"
+      },
+      {
+        "name": {
+          "en": "Wheat",
+          "ur": "گندم"
+        },
+        "icon": "🌾"
+      }
+    ]
+  },
+  "cool-lab": {
+    "name": {
+      "en": "COOL LAB - 10% EC",
+      "ur": "COOL LAB"
+    },
+    "category": "insecticide",
+    "sizes": [
+      {
+        "size": "250 ML",
+        "price": 699,
+        "oldPrice": 699,
+        "stockStatus": "In Stock",
+        "sku": "VA-COOL-LAB-250ML",
+        "weight": "0.25kg"
+      },
+      {
+        "size": "1 L",
+        "price": 2399,
+        "oldPrice": 2399,
+        "stockStatus": "In Stock",
+        "sku": "VA-COOL-LAB-1L",
+        "weight": "1kg"
+      }
+    ],
+    "formulation": "Emulsifiable Concentrate",
+    "activeIngredient": "Premium Active Compound",
+    "crops": [
+      {
+        "name": {
+          "en": "Cotton",
+          "ur": "کپاس"
+        },
+        "icon": "🌱"
+      },
+      {
+        "name": {
+          "en": "Rice",
+          "ur": "دھان"
+        },
+        "icon": "🌾"
+      },
+      {
+        "name": {
+          "en": "Maize",
+          "ur": "مکئی"
+        },
+        "icon": "🌽"
+      },
+      {
+        "name": {
+          "en": "Wheat",
+          "ur": "گندم"
+        },
+        "icon": "🌾"
+      }
+    ]
+  },
+  "douhaa-extra": {
+    "name": {
+      "en": "DOUHAA EXTRA - 10% EC",
+      "ur": "DOUHAA EXTRA"
+    },
+    "category": "insecticide",
+    "sizes": [
+      {
+        "size": "250 ML",
+        "price": 699,
+        "oldPrice": 699,
+        "stockStatus": "In Stock",
+        "sku": "VA-DOUHAA-EXTRA-250ML",
+        "weight": "0.25kg"
+      },
+      {
+        "size": "1 L",
+        "price": 2399,
+        "oldPrice": 2399,
+        "stockStatus": "In Stock",
+        "sku": "VA-DOUHAA-EXTRA-1L",
+        "weight": "1kg"
+      }
+    ],
+    "formulation": "Emulsifiable Concentrate",
+    "activeIngredient": "Premium Active Compound",
+    "crops": [
+      {
+        "name": {
+          "en": "Cotton",
+          "ur": "کپاس"
+        },
+        "icon": "🌱"
+      },
+      {
+        "name": {
+          "en": "Rice",
+          "ur": "دھان"
+        },
+        "icon": "🌾"
+      },
+      {
+        "name": {
+          "en": "Maize",
+          "ur": "مکئی"
+        },
+        "icon": "🌽"
+      },
+      {
+        "name": {
+          "en": "Wheat",
+          "ur": "گندم"
+        },
+        "icon": "🌾"
+      }
+    ]
+  },
+  "fefa": {
+    "name": {
+      "en": "FEFA - 10% EC",
+      "ur": "FEFA"
+    },
+    "category": "insecticide",
+    "sizes": [
+      {
+        "size": "250 ML",
+        "price": 699,
+        "oldPrice": 699,
+        "stockStatus": "In Stock",
+        "sku": "VA-FEFA-250ML",
+        "weight": "0.25kg"
+      },
+      {
+        "size": "1 L",
+        "price": 2399,
+        "oldPrice": 2399,
+        "stockStatus": "In Stock",
+        "sku": "VA-FEFA-1L",
+        "weight": "1kg"
+      }
+    ],
+    "formulation": "Emulsifiable Concentrate",
+    "activeIngredient": "Premium Active Compound",
+    "crops": [
+      {
+        "name": {
+          "en": "Cotton",
+          "ur": "کپاس"
+        },
+        "icon": "🌱"
+      },
+      {
+        "name": {
+          "en": "Rice",
+          "ur": "دھان"
+        },
+        "icon": "🌾"
+      },
+      {
+        "name": {
+          "en": "Maize",
+          "ur": "مکئی"
+        },
+        "icon": "🌽"
+      },
+      {
+        "name": {
+          "en": "Wheat",
+          "ur": "گندم"
+        },
+        "icon": "🌾"
+      }
+    ]
+  },
+  "mission-gold": {
+    "name": {
+      "en": "MISSION GOLD - 10% EC",
+      "ur": "MISSION GOLD"
+    },
+    "category": "insecticide",
+    "sizes": [
+      {
+        "size": "250 ML",
+        "price": 699,
+        "oldPrice": 699,
+        "stockStatus": "In Stock",
+        "sku": "VA-MISSION-GOLD-250ML",
+        "weight": "0.25kg"
+      },
+      {
+        "size": "1 L",
+        "price": 2399,
+        "oldPrice": 2399,
+        "stockStatus": "In Stock",
+        "sku": "VA-MISSION-GOLD-1L",
+        "weight": "1kg"
+      }
+    ],
+    "formulation": "Emulsifiable Concentrate",
+    "activeIngredient": "Premium Active Compound",
+    "crops": [
+      {
+        "name": {
+          "en": "Cotton",
+          "ur": "کپاس"
+        },
+        "icon": "🌱"
+      },
+      {
+        "name": {
+          "en": "Rice",
+          "ur": "دھان"
+        },
+        "icon": "🌾"
+      },
+      {
+        "name": {
+          "en": "Maize",
+          "ur": "مکئی"
+        },
+        "icon": "🌽"
+      },
+      {
+        "name": {
+          "en": "Wheat",
+          "ur": "گندم"
+        },
+        "icon": "🌾"
+      }
+    ]
+  },
+  "moon-link": {
+    "name": {
+      "en": "MOON LINK - 10% EC",
+      "ur": "MOON LINK"
+    },
+    "category": "insecticide",
+    "sizes": [
+      {
+        "size": "250 ML",
+        "price": 699,
+        "oldPrice": 699,
+        "stockStatus": "In Stock",
+        "sku": "VA-MOON-LINK-250ML",
+        "weight": "0.25kg"
+      },
+      {
+        "size": "1 L",
+        "price": 2399,
+        "oldPrice": 2399,
+        "stockStatus": "In Stock",
+        "sku": "VA-MOON-LINK-1L",
+        "weight": "1kg"
+      }
+    ],
+    "formulation": "Emulsifiable Concentrate",
+    "activeIngredient": "Premium Active Compound",
+    "crops": [
+      {
+        "name": {
+          "en": "Cotton",
+          "ur": "کپاس"
+        },
+        "icon": "🌱"
+      },
+      {
+        "name": {
+          "en": "Rice",
+          "ur": "دھان"
+        },
+        "icon": "🌾"
+      },
+      {
+        "name": {
+          "en": "Maize",
+          "ur": "مکئی"
+        },
+        "icon": "🌽"
+      },
+      {
+        "name": {
+          "en": "Wheat",
+          "ur": "گندم"
+        },
+        "icon": "🌾"
+      }
+    ]
+  },
+  "nafiz": {
+    "name": {
+      "en": "NAFIZ - 10% EC",
+      "ur": "NAFIZ"
+    },
+    "category": "insecticide",
+    "sizes": [
+      {
+        "size": "250 ML",
+        "price": 699,
+        "oldPrice": 699,
+        "stockStatus": "In Stock",
+        "sku": "VA-NAFIZ-250ML",
+        "weight": "0.25kg"
+      },
+      {
+        "size": "1 L",
+        "price": 2399,
+        "oldPrice": 2399,
+        "stockStatus": "In Stock",
+        "sku": "VA-NAFIZ-1L",
+        "weight": "1kg"
+      }
+    ],
+    "formulation": "Emulsifiable Concentrate",
+    "activeIngredient": "Premium Active Compound",
+    "crops": [
+      {
+        "name": {
+          "en": "Cotton",
+          "ur": "کپاس"
+        },
+        "icon": "🌱"
+      },
+      {
+        "name": {
+          "en": "Rice",
+          "ur": "دھان"
+        },
+        "icon": "🌾"
+      },
+      {
+        "name": {
+          "en": "Maize",
+          "ur": "مکئی"
+        },
+        "icon": "🌽"
+      },
+      {
+        "name": {
+          "en": "Wheat",
+          "ur": "گندم"
+        },
+        "icon": "🌾"
+      }
+    ]
+  },
+  "olive-mix": {
+    "name": {
+      "en": "OLIVE MIX - 10% EC",
+      "ur": "OLIVE MIX"
+    },
+    "category": "insecticide",
+    "sizes": [
+      {
+        "size": "250 ML",
+        "price": 699,
+        "oldPrice": 699,
+        "stockStatus": "In Stock",
+        "sku": "VA-OLIVE-MIX-250ML",
+        "weight": "0.25kg"
+      },
+      {
+        "size": "1 L",
+        "price": 2399,
+        "oldPrice": 2399,
+        "stockStatus": "In Stock",
+        "sku": "VA-OLIVE-MIX-1L",
+        "weight": "1kg"
+      }
+    ],
+    "formulation": "Emulsifiable Concentrate",
+    "activeIngredient": "Premium Active Compound",
+    "crops": [
+      {
+        "name": {
+          "en": "Cotton",
+          "ur": "کپاس"
+        },
+        "icon": "🌱"
+      },
+      {
+        "name": {
+          "en": "Rice",
+          "ur": "دھان"
+        },
+        "icon": "🌾"
+      },
+      {
+        "name": {
+          "en": "Maize",
+          "ur": "مکئی"
+        },
+        "icon": "🌽"
+      },
+      {
+        "name": {
+          "en": "Wheat",
+          "ur": "گندم"
+        },
+        "icon": "🌾"
+      }
+    ]
+  },
+  "peaso-gold": {
+    "name": {
+      "en": "PEASO GOLD - 10% EC",
+      "ur": "PEASO GOLD"
+    },
+    "category": "insecticide",
+    "sizes": [
+      {
+        "size": "250 ML",
+        "price": 699,
+        "oldPrice": 699,
+        "stockStatus": "In Stock",
+        "sku": "VA-PEASO-GOLD-250ML",
+        "weight": "0.25kg"
+      },
+      {
+        "size": "1 L",
+        "price": 2399,
+        "oldPrice": 2399,
+        "stockStatus": "In Stock",
+        "sku": "VA-PEASO-GOLD-1L",
+        "weight": "1kg"
+      }
+    ],
+    "formulation": "Emulsifiable Concentrate",
+    "activeIngredient": "Premium Active Compound",
+    "crops": [
+      {
+        "name": {
+          "en": "Cotton",
+          "ur": "کپاس"
+        },
+        "icon": "🌱"
+      },
+      {
+        "name": {
+          "en": "Rice",
+          "ur": "دھان"
+        },
+        "icon": "🌾"
+      },
+      {
+        "name": {
+          "en": "Maize",
+          "ur": "مکئی"
+        },
+        "icon": "🌽"
+      },
+      {
+        "name": {
+          "en": "Wheat",
+          "ur": "گندم"
+        },
+        "icon": "🌾"
+      }
+    ]
+  },
+  "pulip": {
+    "name": {
+      "en": "PULIP - 10% EC",
+      "ur": "PULIP"
+    },
+    "category": "insecticide",
+    "sizes": [
+      {
+        "size": "250 ML",
+        "price": 699,
+        "oldPrice": 699,
+        "stockStatus": "In Stock",
+        "sku": "VA-PULIP-250ML",
+        "weight": "0.25kg"
+      },
+      {
+        "size": "1 L",
+        "price": 2399,
+        "oldPrice": 2399,
+        "stockStatus": "In Stock",
+        "sku": "VA-PULIP-1L",
+        "weight": "1kg"
+      }
+    ],
+    "formulation": "Emulsifiable Concentrate",
+    "activeIngredient": "Premium Active Compound",
+    "crops": [
+      {
+        "name": {
+          "en": "Cotton",
+          "ur": "کپاس"
+        },
+        "icon": "🌱"
+      },
+      {
+        "name": {
+          "en": "Rice",
+          "ur": "دھان"
+        },
+        "icon": "🌾"
+      },
+      {
+        "name": {
+          "en": "Maize",
+          "ur": "مکئی"
+        },
+        "icon": "🌽"
+      },
+      {
+        "name": {
+          "en": "Wheat",
+          "ur": "گندم"
+        },
+        "icon": "🌾"
+      }
+    ]
+  },
+  "push-up": {
+    "name": {
+      "en": "PUSH UP - 10% EC",
+      "ur": "PUSH UP"
+    },
+    "category": "insecticide",
+    "sizes": [
+      {
+        "size": "250 ML",
+        "price": 699,
+        "oldPrice": 699,
+        "stockStatus": "In Stock",
+        "sku": "VA-PUSH-UP-250ML",
+        "weight": "0.25kg"
+      },
+      {
+        "size": "1 L",
+        "price": 2399,
+        "oldPrice": 2399,
+        "stockStatus": "In Stock",
+        "sku": "VA-PUSH-UP-1L",
+        "weight": "1kg"
+      }
+    ],
+    "formulation": "Emulsifiable Concentrate",
+    "activeIngredient": "Premium Active Compound",
+    "crops": [
+      {
+        "name": {
+          "en": "Cotton",
+          "ur": "کپاس"
+        },
+        "icon": "🌱"
+      },
+      {
+        "name": {
+          "en": "Rice",
+          "ur": "دھان"
+        },
+        "icon": "🌾"
+      },
+      {
+        "name": {
+          "en": "Maize",
+          "ur": "مکئی"
+        },
+        "icon": "🌽"
+      },
+      {
+        "name": {
+          "en": "Wheat",
+          "ur": "گندم"
+        },
+        "icon": "🌾"
+      }
+    ]
+  },
+  "sabeel": {
+    "name": {
+      "en": "SABEEL - 10% EC",
+      "ur": "SABEEL"
+    },
+    "category": "insecticide",
+    "sizes": [
+      {
+        "size": "250 ML",
+        "price": 699,
+        "oldPrice": 699,
+        "stockStatus": "In Stock",
+        "sku": "VA-SABEEL-250ML",
+        "weight": "0.25kg"
+      },
+      {
+        "size": "1 L",
+        "price": 2399,
+        "oldPrice": 2399,
+        "stockStatus": "In Stock",
+        "sku": "VA-SABEEL-1L",
+        "weight": "1kg"
+      }
+    ],
+    "formulation": "Emulsifiable Concentrate",
+    "activeIngredient": "Premium Active Compound",
+    "crops": [
+      {
+        "name": {
+          "en": "Cotton",
+          "ur": "کپاس"
+        },
+        "icon": "🌱"
+      },
+      {
+        "name": {
+          "en": "Rice",
+          "ur": "دھان"
+        },
+        "icon": "🌾"
+      },
+      {
+        "name": {
+          "en": "Maize",
+          "ur": "مکئی"
+        },
+        "icon": "🌽"
+      },
+      {
+        "name": {
+          "en": "Wheat",
+          "ur": "گندم"
+        },
+        "icon": "🌾"
+      }
+    ]
+  },
+  "ultranano": {
+    "name": {
+      "en": "ULTRANANO - 10% EC",
+      "ur": "ULTRANANO"
+    },
+    "category": "insecticide",
+    "sizes": [
+      {
+        "size": "250 ML",
+        "price": 699,
+        "oldPrice": 699,
+        "stockStatus": "In Stock",
+        "sku": "VA-ULTRANANO-250ML",
+        "weight": "0.25kg"
+      },
+      {
+        "size": "1 L",
+        "price": 2399,
+        "oldPrice": 2399,
+        "stockStatus": "In Stock",
+        "sku": "VA-ULTRANANO-1L",
+        "weight": "1kg"
+      }
+    ],
+    "formulation": "Emulsifiable Concentrate",
+    "activeIngredient": "Premium Active Compound",
+    "crops": [
+      {
+        "name": {
+          "en": "Cotton",
+          "ur": "کپاس"
+        },
+        "icon": "🌱"
+      },
+      {
+        "name": {
+          "en": "Rice",
+          "ur": "دھان"
+        },
+        "icon": "🌾"
+      },
+      {
+        "name": {
+          "en": "Maize",
+          "ur": "مکئی"
+        },
+        "icon": "🌽"
+      },
+      {
+        "name": {
+          "en": "Wheat",
+          "ur": "گندم"
+        },
+        "icon": "🌾"
+      }
+    ]
+  },
+  "vital-phos": {
+    "name": {
+      "en": "VITAL PHOS - 10% EC",
+      "ur": "VITAL PHOS"
+    },
+    "category": "plant-nutrition",
+    "sizes": [
+      {
+        "size": "10 LTR",
+        "price": 6650,
+        "oldPrice": 6650,
+        "sku": "VA-VITAL-PHOS-10LTR",
+        "weight": "10kg",
+        "stockStatus": "In Stock"
+      },
+      {
+        "size": "20 LTR",
+        "price": 6650,
+        "oldPrice": 12999,
+        "sku": "VA-VITAL-PHOS-20LTR",
+        "weight": "20kg",
+        "stockStatus": "In Stock"
+      }
+    ],
+    "formulation": "Emulsifiable Concentrate",
+    "activeIngredient": "Premium Active Compound",
+    "crops": [
+      {
+        "name": {
+          "en": "Cotton",
+          "ur": "کپاس"
+        },
+        "icon": "🌱"
+      },
+      {
+        "name": {
+          "en": "Rice",
+          "ur": "دھان"
+        },
+        "icon": "🌾"
+      },
+      {
+        "name": {
+          "en": "Maize",
+          "ur": "مکئی"
+        },
+        "icon": "🌽"
+      },
+      {
+        "name": {
+          "en": "Wheat",
+          "ur": "گندم"
+        },
+        "icon": "🌾"
+      }
+    ]
+  }
+}

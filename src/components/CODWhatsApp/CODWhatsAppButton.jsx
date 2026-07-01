@@ -165,7 +165,7 @@ Thank You.`;
         {Array.from({ length: 5 }).map((_, i) => (
           <motion.span
             key={i}
-            className="absolute rounded-full bg-[#8AD65A] opacity-30 pointer-events-none"
+            className="absolute rounded-full bg-[#18C964] opacity-30 pointer-events-none"
             style={{
               width: 2 + (i % 2) * 2,
               height: 2 + (i % 2) * 2,

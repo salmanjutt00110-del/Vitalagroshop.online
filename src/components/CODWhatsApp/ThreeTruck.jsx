@@ -39,7 +39,7 @@ function TruckModel({ progress }) {
       <mesh position={[0, 0.75, -0.6]} castShadow receiveShadow>
         <boxGeometry args={[1.6, 1.1, 2.0]} />
         <meshStandardMaterial 
-          color="#5cb85c" 
+          color="#0E7A43" 
           roughness={0.2}
           metalness={0.1}
         />
@@ -210,7 +210,7 @@ export default function ThreeTruck({ progress = 0 }) {
           angle={0.6} 
           penumbra={0.5} 
           intensity={1.0} 
-          color="#8AD65A" 
+          color="#18C964" 
         />
 
         {/* Dynamic Truck */}
@@ -222,7 +222,7 @@ export default function ThreeTruck({ progress = 0 }) {
           scale={[1.5, 0.5, 3]}
           size={2}
           speed={1.5}
-          color="#76C945"
+          color="#0E7A43"
           position={[0, -0.3, -0.8]}
         />
       </Canvas>

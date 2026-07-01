@@ -261,7 +261,7 @@ export default function ThreeDProductViewer({ imageUrl, name }) {
     <div className="relative w-full h-full flex items-center justify-center select-none">
       {loading && (
         <div className="absolute inset-0 flex items-center justify-center bg-[#0A2E1F]/10 backdrop-blur-md rounded-2xl z-10">
-          <div className="w-10 h-10 rounded-full border-4 border-[#76C945] border-t-transparent animate-spin" />
+          <div className="w-10 h-10 rounded-full border-4 border-[#0E7A43] border-t-transparent animate-spin" />
         </div>
       )}
       <div 

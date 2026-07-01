@@ -119,7 +119,7 @@ export default function AIDiseaseScanner() {
         >
           <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full
             bg-[rgba(45,106,45,0.25)] border border-[rgba(92,184,92,0.3)]
-            text-[#5cb85c] text-[11px] tracking-[0.2em] uppercase font-bold mb-5 shadow-inner">
+            text-[#0E7A43] text-[11px] tracking-[0.2em] uppercase font-bold mb-5 shadow-inner">
             🤖 AI DISEASE SCANNER
           </span>
           <h1 className="text-3xl md:text-4xl font-black text-emerald-950 mb-3 tracking-tight">
@@ -143,7 +143,7 @@ export default function AIDiseaseScanner() {
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.2, duration: 0.6 }}
             className={`relative rounded-3xl overflow-hidden min-h-[380px] transition-all duration-300 ${
-              dragOver ? 'border-[#5cb85c] bg-[rgba(92,184,92,0.05)] scale-[1.01]' : 'border-emerald-900/5 bg-white/80'
+              dragOver ? 'border-[#0E7A43] bg-[rgba(92,184,92,0.05)] scale-[1.01]' : 'border-emerald-900/5 bg-white/80'
             }`}
             style={{
               backdropFilter: 'blur(20px)',
@@ -187,7 +187,7 @@ export default function AIDiseaseScanner() {
                   {scanning && (
                     <div className="absolute inset-0 z-20 pointer-events-none overflow-hidden rounded-2xl">
                       <motion.div
-                        className="w-full h-1 bg-gradient-to-r from-transparent via-[#5cb85c] to-transparent shadow-[0_0_15px_#5cb85c]"
+                        className="w-full h-1 bg-gradient-to-r from-transparent via-[#0E7A43] to-transparent shadow-[0_0_15px_#0E7A43]"
                         animate={{ top: ["0%", "100%", "0%"] }}
                         transition={{ duration: 2.2, repeat: Infinity, ease: "linear" }}
                         style={{ position: 'absolute', left: 0 }}
@@ -216,7 +216,7 @@ export default function AIDiseaseScanner() {
                     animate={{ y: [0, -6, 0] }}
                     transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' }}
                   >
-                    <Camera size={32} className="text-[#5cb85c]" />
+                    <Camera size={32} className="text-[#0E7A43]" />
                   </motion.div>
                   <p className="text-emerald-950 font-semibold text-base mb-2">
                     {lang === 'en' ? 'Take Photo or Upload Image' : 'تصویر لیں یا فائل اپ لوڈ کریں'}
@@ -225,7 +225,7 @@ export default function AIDiseaseScanner() {
                     {lang === 'en' ? 'PNG, JPG, JPEG · up to 10MB' : 'پی این جی، جے پی جی · 10 ایم بی تک'}
                   </p>
                   <div className="mt-4 px-5 py-2 rounded-full border border-[rgba(92,184,92,0.3)]
-                    text-[#5cb85c] text-xs font-bold inline-block
+                    text-[#0E7A43] text-xs font-bold inline-block
                     group-hover:bg-[rgba(92,184,92,0.1)] transition-colors">
                     {lang === 'en' ? 'Choose File' : 'فائل منتخب کریں'}
                   </div>
@@ -277,13 +277,13 @@ const ScanningAnimation = ({ lang }) => (
       {[1, 2, 3].map((i) => (
         <motion.div
           key={i}
-          className="absolute inset-0 rounded-full border-2 border-[#5cb85c]"
+          className="absolute inset-0 rounded-full border-2 border-[#0E7A43]"
           animate={{ scale: [1, 2.5], opacity: [0.8, 0] }}
           transition={{ duration: 2, repeat: Infinity, delay: i * 0.55, ease: 'easeOut' }}
         />
       ))}
       <div className="absolute inset-0 rounded-full
-        bg-[rgba(45,106,45,0.2)] border-2 border-[#5cb85c]
+        bg-[rgba(45,106,45,0.2)] border-2 border-[#0E7A43]
         flex items-center justify-center text-3xl">
         <motion.div
           animate={{ rotate: 360 }}
@@ -306,7 +306,7 @@ const ScanningAnimation = ({ lang }) => (
     {/* Scanning progress bar */}
     <div className="mt-6 w-full max-w-xs h-1.5 rounded-full bg-white/80 overflow-hidden">
       <motion.div
-        className="h-full rounded-full bg-[#5cb85c]"
+        className="h-full rounded-full bg-[#0E7A43]"
         animate={{ width: ['0%', '100%'] }}
         transition={{ duration: 3, ease: 'easeInOut', repeat: Infinity }}
       />
@@ -353,7 +353,7 @@ const ScanResults = ({ result, lang }) => (
         flex items-center justify-center text-lg shadow-inner">🔬</div>
       <div>
         <p className="text-emerald-950 font-black text-sm">{lang === 'en' ? 'Diagnosis Complete' : 'تشخیص مکمل ہو گئی'}</p>
-        <p className="text-[#5cb85c] text-[11px] font-bold font-mono">
+        <p className="text-[#0E7A43] text-[11px] font-bold font-mono">
           {result.confidence}% {lang === 'en' ? 'confidence' : 'یقین دہانی'}
         </p>
       </div>
@@ -395,7 +395,7 @@ const ScanResults = ({ result, lang }) => (
       <ul className="space-y-2">
         {result.treatments?.map((t, i) => (
           <li key={i} className="text-emerald-950/75 text-xs flex gap-2.5 leading-relaxed items-start">
-            <span className="text-[#5cb85c] text-sm shrink-0">✓</span>
+            <span className="text-[#0E7A43] text-sm shrink-0">✓</span>
             <span>{t}</span>
           </li>
         ))}
@@ -405,7 +405,7 @@ const ScanResults = ({ result, lang }) => (
     {/* Vital Agro Products */}
     {result.suggestedProducts?.length > 0 && (
       <div className="pt-2 border-t border-emerald-900/5">
-        <p className="text-[#5cb85c] text-[10px] uppercase tracking-widest font-black mb-3">
+        <p className="text-[#0E7A43] text-[10px] uppercase tracking-widest font-black mb-3">
           ✦ {lang === 'en' ? 'Vital Agro Recommends' : 'وائٹل ایگرو کی تجویز کردہ پروڈکٹس'}
         </p>
         <div className="space-y-2.5">
@@ -422,7 +422,7 @@ const ScanResults = ({ result, lang }) => (
                 className="w-12 h-12 object-contain shrink-0 drop-shadow-md" />
               <div className="flex-1 min-w-0">
                 <p className="text-emerald-950 text-xs font-bold truncate">{product.name}</p>
-                <p className="text-[#5cb85c] text-[11px] font-mono font-bold mt-0.5">
+                <p className="text-[#0E7A43] text-[11px] font-mono font-bold mt-0.5">
                   PKR {product.price?.toLocaleString()} →
                 </p>
               </div>

@@ -10,6 +10,10 @@ const AppContext = createContext({
   setCatalogLoaded: () => {},
   activeDetailsProduct: null,
   setActiveDetailsProduct: () => {},
+  isGlobalSearchOpen: false,
+  setIsGlobalSearchOpen: () => {},
+  globalSearchQuery: '',
+  setGlobalSearchQuery: () => {},
 });
 
 export const AppProvider = ({ children }) => {
@@ -25,6 +29,8 @@ export const AppProvider = ({ children }) => {
 
   const [catalogLoaded, setCatalogLoaded] = useState(false);
   const [activeDetailsProduct, setActiveDetailsProduct] = useState(null);
+  const [isGlobalSearchOpen, setIsGlobalSearchOpen] = useState(false);
+  const [globalSearchQuery, setGlobalSearchQuery] = useState('');
 
   const handleCompleteInitialLoad = () => {
     setIsInitialLoadComplete(true);
@@ -50,6 +56,10 @@ export const AppProvider = ({ children }) => {
       setCatalogLoaded,
       activeDetailsProduct,
       setActiveDetailsProduct,
+      isGlobalSearchOpen,
+      setIsGlobalSearchOpen,
+      globalSearchQuery,
+      setGlobalSearchQuery,
     }}>
       {children}
     </AppContext.Provider>

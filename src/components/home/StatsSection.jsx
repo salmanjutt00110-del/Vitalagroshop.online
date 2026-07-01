@@ -8,7 +8,7 @@ import CountUp from '@/components/ui/CountUp';
 const statColors = [
   { bg: 'bg-[#2d7a2d]/10', icon: 'text-[#2d7a2d]', glow: 'hover:shadow-[#2d7a2d]/5' },
   { bg: 'bg-[#3d8c3d]/10', icon: 'text-[#3d8c3d]', glow: 'hover:shadow-[#3d8c3d]/5' },
-  { bg: 'bg-[#5cb85c]/10', icon: 'text-[#5cb85c]', glow: 'hover:shadow-[#5cb85c]/5' },
+  { bg: 'bg-[#0E7A43]/10', icon: 'text-[#0E7A43]', glow: 'hover:shadow-[#0E7A43]/5' },
   { bg: 'bg-[#2d7a2d]/10', icon: 'text-[#2d7a2d]', glow: 'hover:shadow-[#2d7a2d]/5' },
   { bg: 'bg-[#3d8c3d]/10', icon: 'text-[#3d8c3d]', glow: 'hover:shadow-[#3d8c3d]/5' },
 ];
@@ -35,7 +35,7 @@ export default function StatsSection() {
           className="bg-white/80 backdrop-blur-xl rounded-3xl shadow-2xl shadow-black/5 border border-border/60 p-8 sm:p-12 relative overflow-hidden"
         >
           {/* Subtle gradient shine */}
-          <div className="absolute inset-0 bg-gradient-to-br from-[#76C945]/[0.03] via-transparent to-[#C5A059]/[0.03] rounded-3xl" />
+          <div className="absolute inset-0 bg-gradient-to-br from-[#0E7A43]/[0.03] via-transparent to-[#C5A059]/[0.03] rounded-3xl" />
 
           <div className="relative grid grid-cols-2 lg:grid-cols-5 gap-6 [&>*:last-child:nth-child(odd)]:col-span-2 lg:[&>*:last-child:nth-child(odd)]:col-span-1 [&>*:last-child:nth-child(odd)]:max-w-[50%] lg:[&>*:last-child:nth-child(odd)]:max-w-none [&>*:last-child:nth-child(odd)]:mx-auto lg:[&>*:last-child:nth-child(odd)]:mx-0 w-full">
             {STATS.map((stat, i) => (

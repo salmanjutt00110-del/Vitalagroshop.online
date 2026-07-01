@@ -10,7 +10,7 @@ import vitalGroupLogo from '@/assets/vital group.webp';
 import tagLogo from '@/assets/tag logo.webp';
 
 // Custom modern leaf vector icon for premium 3D Leaf System
-const LeafIcon = ({ className, color = "#76C945" }) => (
+const LeafIcon = ({ className, color = "#0E7A43" }) => (
   <svg className={className} viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
     <path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 3.5 2 5.5a7 7 0 0 1-10 12.5z" fill={`${color}22`} />
     <path d="M19 2c-2.26 4.33-5.27 7.14-8 10" />
@@ -92,9 +92,9 @@ export default function Footer() {
       id="premium-footer"
       role="contentinfo" 
       aria-label="Vital Agro Enterprise Footer"
-      className="relative text-emerald-950 overflow-hidden pt-36 transition-colors duration-500 z-10"
+      className="relative text-white/80 overflow-hidden pt-36 transition-colors duration-500 z-10"
       style={{
-        background: `radial-gradient(circle at 50% 120%, rgba(118, 201, 69, 0.12) 0%, #030805 100%)`,
+        background: `radial-gradient(circle at 50% 120%, rgba(15, 123, 59, 0.12) 0%, #030805 100%)`,
         paddingBottom: 'calc(env(safe-area-inset-bottom, 0px) + 3rem)'
       }}
     >
@@ -103,14 +103,14 @@ export default function Footer() {
 
       {/* Decorative Particle Backdrop Engine */}
       <div className="absolute inset-0 pointer-events-none select-none overflow-hidden z-0 opacity-40">
-        <div className="absolute w-[600px] h-[600px] bg-[#76C945]/5 rounded-full blur-[120px] -bottom-48 -left-48" />
+        <div className="absolute w-[600px] h-[600px] bg-[#0E7A43]/5 rounded-full blur-[120px] -bottom-48 -left-48" />
         <div className="absolute w-[600px] h-[600px] bg-[#C5A059]/5 rounded-full blur-[120px] -bottom-48 -right-48" />
         
         {/* Animated Dust Loops — reduced to 5 for performance */}
         {[...Array(5)].map((_, i) => (
           <div
             key={i}
-            className="absolute w-1.5 h-1.5 rounded-full bg-[#8AD65A]/20"
+            className="absolute w-1.5 h-1.5 rounded-full bg-[#18C964]/20"
             style={{
               left: `${20 + i * 15}%`,
               top: `${30 + i * 12}%`,
@@ -139,7 +139,7 @@ export default function Footer() {
             }}
           >
             <LeafIcon 
-              className="drop-shadow-[0_0_15px_#76C945]" 
+              className="drop-shadow-[0_0_15px_#0E7A43]" 
               style={{ width: leaf.size, height: leaf.size }} 
             />
           </div>
@@ -166,7 +166,7 @@ export default function Footer() {
             className="lg:col-span-4 p-6 rounded-[28px] bg-gradient-to-b from-white/[0.04] to-white/[0.01] border border-emerald-900/10 backdrop-blur-3xl flex flex-col justify-between relative overflow-hidden group shadow-2xl transition-all duration-300"
             style={{
               transform: cardTilt.index === 1 ? `perspective(1000px) rotateX(${cardTilt.y * -1}deg) rotateY(${cardTilt.x}deg) translateZ(10px)` : 'none',
-              boxShadow: cardTilt.index === 1 ? '0 25px 55px rgba(0,0,0,0.65), 0 0 20px rgba(118,201,69,0.15)' : 'none',
+              boxShadow: cardTilt.index === 1 ? '0 25px 55px rgba(0,0,0,0.65), 0 0 20px rgba(15, 123, 59,0.15)' : 'none',
               transition: cardTilt.index === 1 ? 'none' : 'all 0.5s ease'
             }}
           >
@@ -199,280 +199,280 @@ export default function Footer() {
                 </div>
               </div>
 
-              {/* Tagline Reveal */}
-              <p className="text-neutral-600 text-sm leading-relaxed mb-6 font-medium pr-2">
-                {t.footer.desc}
-              </p>
-            </div>
-
-            {/* Social Icons Card Embedded */}
-            <div className="space-y-3 mt-4">
-              <span className="text-[9px] font-black tracking-widest text-emerald-700 uppercase block">Follow Our Nodes</span>
-              <div className="flex gap-2.5">
-                {SOCIAL_LINKS.map((social) => (
-                  <motion.a
-                    key={social.id}
-                    href={social.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    whileHover={{ scale: 1.12, rotate: 8 }}
-                    whileTap={{ scale: 0.95 }}
-                    className={`w-10 h-10 rounded-full bg-white/60 border border-emerald-900/10 flex items-center justify-center text-neutral-600 hover:text-emerald-950 transition-all duration-300 ${social.colorClass}`}
-                    aria-label={`Follow us on ${social.label}`}
-                  >
-                    <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                      <path d={social.svgPath} />
-                    </svg>
-                  </motion.a>
-                ))}
-              </div>
+               {/* Tagline Reveal */}
+               <p className="text-white/70 text-sm leading-relaxed mb-6 font-medium pr-2">
+                 {t.footer.desc}
+               </p>
+             </div>
+ 
+             {/* Social Icons Card Embedded */}
+             <div className="space-y-3 mt-4">
+               <span className="text-[9px] font-black tracking-widest text-[#39D98A] uppercase block">Follow Our Nodes</span>
+               <div className="flex gap-2.5">
+                 {SOCIAL_LINKS.map((social) => (
+                   <motion.a
+                     key={social.id}
+                     href={social.url}
+                     target="_blank"
+                     rel="noopener noreferrer"
+                     whileHover={{ scale: 1.12, rotate: 8 }}
+                     whileTap={{ scale: 0.95 }}
+                     className={`w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-white/60 hover:text-white transition-all duration-300 ${social.colorClass}`}
+                     aria-label={`Follow us on ${social.label}`}
+                   >
+                     <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                       <path d={social.svgPath} />
+                     </svg>
+                   </motion.a>
+                 ))}
+               </div>
+             </div>
+           </div>
+ 
+           {/* Card 2: Quick Links (lg:col-span-2) */}
+           <div
+             onMouseMove={(e) => handleCardMove(e, 2)}
+             onMouseLeave={handleCardLeave}
+             className="lg:col-span-2 p-6 rounded-[28px] bg-gradient-to-b from-white/[0.04] to-white/[0.01] border border-white/5 backdrop-blur-3xl flex flex-col justify-between relative overflow-hidden group shadow-2xl transition-all duration-300"
+             style={{
+               transform: cardTilt.index === 2 ? `perspective(1000px) rotateX(${cardTilt.y * -1}deg) rotateY(${cardTilt.x}deg) translateZ(10px)` : 'none',
+               boxShadow: cardTilt.index === 2 ? '0 25px 55px rgba(0,0,0,0.65), 0 0 20px rgba(15, 123, 59,0.1)' : 'none',
+               transition: cardTilt.index === 2 ? 'none' : 'all 0.5s ease'
+             }}
+           >
+             <div>
+               <h4 className="text-xs font-black tracking-widest uppercase text-[#39D98A] mb-6">{t.footer.quickLinks}</h4>
+               <ul className="space-y-4">
+                 {QUICK_LINKS.map((link) => (
+                   <li key={link.path}>
+                     <Link
+                       to={link.path}
+                       className="text-white/70 hover:text-white text-sm transition-all duration-300 flex items-center gap-2 group/link select-none"
+                     >
+                       <span className="w-1.5 h-1.5 rounded-full bg-[#39D98A]/40 group-hover/link:bg-[#39D98A] group-hover/link:scale-125 transition-all" />
+                       <span className="group-hover/link:translate-x-1.5 transition-transform duration-300 flex items-center gap-1">
+                         {link.label}
+                         <ArrowUpRight className="w-3 h-3 opacity-0 scale-75 group-hover/link:opacity-100 group-hover/link:scale-100 transition-all duration-300" />
+                       </span>
+                     </Link>
+                   </li>
+                 ))}
+               </ul>
+             </div>
+           </div>
+ 
+           {/* Card 3: Categories Pills (lg:col-span-3) */}
+           <div
+             onMouseMove={(e) => handleCardMove(e, 3)}
+             onMouseLeave={handleCardLeave}
+             className="lg:col-span-3 p-6 rounded-[28px] bg-gradient-to-b from-white/[0.04] to-white/[0.01] border border-white/5 backdrop-blur-3xl flex flex-col justify-between relative overflow-hidden group shadow-2xl transition-all duration-300"
+             style={{
+               transform: cardTilt.index === 3 ? `perspective(1000px) rotateX(${cardTilt.y * -1}deg) rotateY(${cardTilt.x}deg) translateZ(10px)` : 'none',
+               boxShadow: cardTilt.index === 3 ? '0 25px 55px rgba(0,0,0,0.65), 0 0 20px rgba(15, 123, 59,0.1)' : 'none',
+               transition: cardTilt.index === 3 ? 'none' : 'all 0.5s ease'
+             }}
+           >
+             <div>
+               <h4 className="text-xs font-black tracking-widest uppercase text-[#39D98A] mb-5">{t.footer.categories}</h4>
+               <div className="flex flex-wrap gap-2.5">
+                 {FOOTER_CATEGORIES.map((cat) => (
+                   <Link
+                     key={cat.slug}
+                     to={`/products?category=${cat.slug}`}
+                     className="px-3 py-1.5 rounded-xl text-[10px] font-black uppercase tracking-wider bg-white/5 border border-white/10 text-white/80 hover:bg-[#0E7A43] hover:text-white hover:border-[#0E7A43] hover:shadow-[0_0_15px_rgba(15,123,59,0.25)] transition-all duration-300 transform hover:scale-105"
+                   >
+                     {t.categories[cat.key] || cat.slug}
+                   </Link>
+                 ))}
+               </div>
+             </div>
+             
+             <div className="text-[10px] text-white/40 font-mono mt-6">
+               VITAL AGRO INDEX SYSTEM v11
+             </div>
+           </div>
+ 
+           {/* Card 4: Contact & Hours (lg:col-span-3) */}
+           <div
+             onMouseMove={(e) => handleCardMove(e, 4)}
+             onMouseLeave={handleCardLeave}
+             className="lg:col-span-3 p-6 rounded-[28px] bg-gradient-to-b from-white/[0.04] to-white/[0.01] border border-white/5 backdrop-blur-3xl flex flex-col justify-between relative overflow-hidden group shadow-2xl transition-all duration-300"
+             style={{
+               transform: cardTilt.index === 4 ? `perspective(1000px) rotateX(${cardTilt.y * -1}deg) rotateY(${cardTilt.x}deg) translateZ(10px)` : 'none',
+               boxShadow: cardTilt.index === 4 ? '0 25px 55px rgba(0,0,0,0.65), 0 0 20px rgba(15, 123, 59,0.1)' : 'none',
+               transition: cardTilt.index === 4 ? 'none' : 'all 0.5s ease'
+             }}
+           >
+             <div className="space-y-4">
+               <h4 className="text-xs font-black tracking-widest uppercase text-[#39D98A] mb-2">{t.footer.contact}</h4>
+               
+               <ul className="space-y-3.5 text-left">
+                 {/* Location */}
+                 <li className="flex gap-3 text-xs items-start group/contact">
+                   <div className="w-9 h-9 rounded-xl bg-white/5 flex items-center justify-center shrink-0 border border-white/10 group-hover/contact:bg-[#0E7A43]/20 group-hover/contact:border-[#0E7A43]/40 transition-all duration-300">
+                     <MapPin className="w-4 h-4 text-white/60 group-hover/contact:text-[#39D98A] transition-colors" />
+                   </div>
+                   <a
+                     href="https://www.google.com/maps/dir/?api=1&destination=Plot+No.+50+%26+56%2C+Vital+Office%2C+Haroonabad%2C+Distt.+Bahawalnagar%2C+Pakistan"
+                     target="_blank"
+                     rel="noopener noreferrer"
+                     className="text-white/70 hover:text-white leading-relaxed font-semibold hover:underline"
+                   >
+                     Plot 50 & 56, Vital Office, Haroonabad, Bahawalnagar, Pakistan
+                   </a>
+                 </li>
+ 
+                 {/* Phone */}
+                 <li className="flex gap-3 text-xs items-center group/contact">
+                   <div className="w-9 h-9 rounded-xl bg-white/5 flex items-center justify-center shrink-0 border border-white/10 group-hover/contact:bg-[#0E7A43]/20 group-hover/contact:border-[#0E7A43]/40 transition-all duration-300">
+                     <Phone className="w-4 h-4 text-white/60 group-hover/contact:text-[#39D98A] transition-colors" />
+                   </div>
+                   <a href="tel:+920632253137" className="text-white/70 hover:text-white leading-none font-mono font-bold">
+                     063-2253137
+                   </a>
+                 </li>
+ 
+                 {/* Email */}
+                 <li className="flex gap-3 text-xs items-center group/contact">
+                   <div className="w-9 h-9 rounded-xl bg-white/5 flex items-center justify-center shrink-0 border border-white/10 group-hover/contact:bg-[#0E7A43]/20 group-hover/contact:border-[#0E7A43]/40 transition-all duration-300">
+                     <Mail className="w-4 h-4 text-white/60 group-hover/contact:text-[#39D98A] transition-colors" />
+                   </div>
+                   <a href="mailto:info@vitalagro.com.pk" className="text-white/70 hover:text-white leading-none font-semibold">
+                     info@vitalagro.com.pk
+                   </a>
+                 </li>
+ 
+                 {/* Working Hours */}
+                 <li className="flex gap-3 text-xs items-center group/contact">
+                   <div className="w-9 h-9 rounded-xl bg-white/5 flex items-center justify-center shrink-0 border border-white/10">
+                     <Clock className="w-4 h-4 text-white/60" />
+                   </div>
+                   <span className="text-white/70 font-semibold leading-tight">
+                     Mon - Sat: 9 AM - 6 PM
+                   </span>
+                 </li>
+               </ul>
+             </div>
+ 
+             {/* Premium 3D Dealer CTA Button */}
+             <div className="mt-5 relative">
+               <motion.button
+                 onClick={handleDealerClick}
+                 disabled={dealerState !== 'idle'}
+                 whileHover={{ scale: 1.03 }}
+                 whileTap={{ scale: 0.98 }}
+                 className="w-full relative overflow-hidden py-3 rounded-2xl bg-gradient-to-r from-[#0E7A43] to-[#18C964] hover:shadow-[0_0_20px_rgba(15,123,59,0.35)] text-white font-black text-xs uppercase tracking-widest transition-all duration-300 cursor-pointer flex items-center justify-center gap-2 border border-white/10"
+               >
+                 {/* Liquid Sweep glare */}
+                 <div className="absolute inset-y-0 w-1/3 bg-gradient-to-r from-transparent via-white/20 to-transparent skew-x-12 -translate-x-full animate-[shimmer_3s_infinite]" />
+ 
+                 {dealerState === 'idle' && (
+                   <>
+                     <span>Become a Dealer</span>
+                     <ArrowUpRight size={14} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                   </>
+                 )}
+ 
+                 {dealerState === 'loading' && (
+                   <>
+                     <RefreshCw size={14} className="animate-spin text-white" />
+                     <span>Connecting...</span>
+                   </>
+                 )}
+ 
+                 {dealerState === 'success' && (
+                   <>
+                     <Check size={14} className="text-white font-black" />
+                     <span>SUCCESS ✓</span>
+                   </>
+                 )}
+               </motion.button>
+             </div>
+           </div>
+ 
+         </div>
+ 
+         {/* Dynamic Certification Badges Card Row */}
+         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12 items-stretch">
+           {/* TAG Certification Badge Card */}
+           <div 
+             onMouseMove={(e) => handleCardMove(e, 5)}
+             onMouseLeave={handleCardLeave}
+             className="md:col-span-2 p-5 rounded-[26px] bg-gradient-to-b from-white/[0.04] to-white/[0.01] border border-white/5 backdrop-blur-2xl flex flex-col sm:flex-row items-center justify-between gap-6 overflow-hidden relative group shadow-xl"
+             style={{
+               transform: cardTilt.index === 5 ? `perspective(1000px) rotateX(${cardTilt.y * -0.6}deg) rotateY(${cardTilt.x * 0.6}deg) translateZ(5px)` : 'none',
+               boxShadow: cardTilt.index === 5 ? '0 20px 45px rgba(0,0,0,0.5), 0 0 25px rgba(15, 123, 59,0.08)' : 'none',
+               transition: cardTilt.index === 5 ? 'none' : 'all 0.5s ease'
+             }}
+           >
+             <div className="space-y-2 text-center sm:text-left">
+               <span className="px-2.5 py-0.5 rounded-full bg-[#C5A059]/10 border border-[#C5A059]/25 text-[#C5A059] text-[9px] font-black uppercase tracking-widest inline-block">
+                 Verified Quality Standard
+               </span>
+               <h4 className="text-sm font-extrabold text-[#F8FAF8]">ISO 9001:2015 Certification</h4>
+               <p className="text-[10px] text-white/70 leading-relaxed max-w-md">
+                 Our raw chemicals are certified for chemical compositions, active ingredients density, and organic environmental safety parameters.
+               </p>
+             </div>
+ 
+             <div className="flex items-center gap-4 bg-white/5 border border-white/10 rounded-2xl p-3 shadow-inner">
+               <div className="bg-white/80 rounded-xl px-2 py-1 flex items-center justify-center shrink-0">
+                 <img
+                   src={tagLogo}
+                   alt="TAG Certification Badge Logo"
+                   className="h-8 w-auto object-contain drop-shadow"
+                   loading="lazy"
+                 />
+               </div>
+               <div className="text-left font-mono">
+                 <span className="text-[8px] text-[#39D98A] block font-black">CERTIFICATE NO</span>
+                 <span className="text-xs font-black text-[#F8FAF8]">TAG-9001-QA</span>
+               </div>
+             </div>
+           </div>
+ 
+           {/* Group Node Membership card */}
+           <div 
+             onMouseMove={(e) => handleCardMove(e, 6)}
+             onMouseLeave={handleCardLeave}
+             className="p-5 rounded-[26px] bg-gradient-to-b from-white/[0.04] to-white/[0.01] border border-white/5 backdrop-blur-2xl flex flex-col justify-between overflow-hidden relative group shadow-xl"
+             style={{
+               transform: cardTilt.index === 6 ? `perspective(1000px) rotateX(${cardTilt.y * -0.6}deg) rotateY(${cardTilt.x * 0.6}deg) translateZ(5px)` : 'none',
+               boxShadow: cardTilt.index === 6 ? '0 20px 45px rgba(0,0,0,0.5), 0 0 25px rgba(197,160,89,0.08)' : 'none',
+               transition: cardTilt.index === 6 ? 'none' : 'all 0.5s ease'
+             }}
+           >
+             <div className="space-y-1 text-left">
+               <span className="text-[9px] font-black tracking-widest text-[#39D98A] uppercase block">Corporation Node</span>
+               <h5 className="text-xs font-extrabold text-[#F8FAF8]">Member of Vital Group</h5>
+             </div>
+             
+             <p className="text-[10px] text-white/70 leading-normal my-2.5 text-left">
+               Leveraging massive national logistical reach and agricultural retail networks across Punjab and Sindh.
+             </p>
+ 
+             <div className="flex items-center justify-between pt-2 border-t border-white/5 font-mono text-[9px] text-[#39D98A] font-black">
+               <span>EST. 2011</span>
+               <span>HAROONABAD, PK</span>
+             </div>
+           </div>
+         </div>
+ 
+         {/* Bottom copyright divider & Company Info strip */}
+         <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-5 relative z-10">
+           <p className="text-white/40 text-xs font-semibold select-none">
+             &copy; {new Date().getFullYear()} Vital Agro Chemical Industries (Pvt.) Ltd. All rights reserved.
+           </p>
+           
+           <div className="flex items-center gap-4 bg-white/5 border border-white/10 rounded-full px-4.5 py-1.5 shadow-sm">
+             <div className="bg-white/15 rounded-md px-1.5 py-0.5 shrink-0 flex items-center justify-center">
+               <img src={vitalAgroLogo} alt="VA" className="h-5 w-auto drop-shadow-sm" loading="lazy" />
+             </div>
+             <p className="text-white/60 text-[10px] uppercase tracking-wider font-mono">
+               {t.footer.tagline}
+             </p>
             </div>
           </div>
-
-          {/* Card 2: Quick Links (lg:col-span-2) */}
-          <div
-            onMouseMove={(e) => handleCardMove(e, 2)}
-            onMouseLeave={handleCardLeave}
-            className="lg:col-span-2 p-6 rounded-[28px] bg-gradient-to-b from-white/[0.04] to-white/[0.01] border border-emerald-900/10 backdrop-blur-3xl flex flex-col justify-between relative overflow-hidden group shadow-2xl transition-all duration-300"
-            style={{
-              transform: cardTilt.index === 2 ? `perspective(1000px) rotateX(${cardTilt.y * -1}deg) rotateY(${cardTilt.x}deg) translateZ(10px)` : 'none',
-              boxShadow: cardTilt.index === 2 ? '0 25px 55px rgba(0,0,0,0.65), 0 0 20px rgba(118,201,69,0.1)' : 'none',
-              transition: cardTilt.index === 2 ? 'none' : 'all 0.5s ease'
-            }}
-          >
-            <div>
-              <h4 className="text-xs font-black tracking-widest uppercase text-emerald-700 mb-6">{t.footer.quickLinks}</h4>
-              <ul className="space-y-4">
-                {QUICK_LINKS.map((link) => (
-                  <li key={link.path}>
-                    <Link
-                      to={link.path}
-                      className="text-neutral-600 hover:text-emerald-950 text-sm transition-all duration-300 flex items-center gap-2 group/link select-none"
-                    >
-                      <span className="w-1.5 h-1.5 rounded-full bg-[#76C945]/40 group-hover/link:bg-[#76C945] group-hover/link:scale-125 transition-all" />
-                      <span className="group-hover/link:translate-x-1.5 transition-transform duration-300 flex items-center gap-1">
-                        {link.label}
-                        <ArrowUpRight className="w-3 h-3 opacity-0 scale-75 group-hover/link:opacity-100 group-hover/link:scale-100 transition-all duration-300" />
-                      </span>
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
-
-          {/* Card 3: Categories Pills (lg:col-span-3) */}
-          <div
-            onMouseMove={(e) => handleCardMove(e, 3)}
-            onMouseLeave={handleCardLeave}
-            className="lg:col-span-3 p-6 rounded-[28px] bg-gradient-to-b from-white/[0.04] to-white/[0.01] border border-emerald-900/10 backdrop-blur-3xl flex flex-col justify-between relative overflow-hidden group shadow-2xl transition-all duration-300"
-            style={{
-              transform: cardTilt.index === 3 ? `perspective(1000px) rotateX(${cardTilt.y * -1}deg) rotateY(${cardTilt.x}deg) translateZ(10px)` : 'none',
-              boxShadow: cardTilt.index === 3 ? '0 25px 55px rgba(0,0,0,0.65), 0 0 20px rgba(118,201,69,0.1)' : 'none',
-              transition: cardTilt.index === 3 ? 'none' : 'all 0.5s ease'
-            }}
-          >
-            <div>
-              <h4 className="text-xs font-black tracking-widest uppercase text-emerald-700 mb-5">{t.footer.categories}</h4>
-              <div className="flex flex-wrap gap-2.5">
-                {FOOTER_CATEGORIES.map((cat) => (
-                  <Link
-                    key={cat.slug}
-                    to={`/products?category=${cat.slug}`}
-                    className="px-3.5 py-2 rounded-xl text-xs font-bold bg-white/60 border border-emerald-900/5 text-neutral-700 hover:bg-gradient-to-r hover:from-[#76C945] hover:to-[#5cb85c] hover:text-[#0A2E1F] hover:border-[#76C945] hover:shadow-[0_0_15px_rgba(118,201,69,0.35)] transition-all duration-300 transform hover:scale-105"
-                  >
-                    {t.categories[cat.key] || cat.slug}
-                  </Link>
-                ))}
-              </div>
-            </div>
-            
-            <div className="text-[10px] text-neutral-500 font-mono mt-6">
-              VITAL AGRO INDEX SYSTEM v11
-            </div>
-          </div>
-
-          {/* Card 4: Contact & Hours (lg:col-span-3) */}
-          <div
-            onMouseMove={(e) => handleCardMove(e, 4)}
-            onMouseLeave={handleCardLeave}
-            className="lg:col-span-3 p-6 rounded-[28px] bg-gradient-to-b from-white/[0.04] to-white/[0.01] border border-emerald-900/10 backdrop-blur-3xl flex flex-col justify-between relative overflow-hidden group shadow-2xl transition-all duration-300"
-            style={{
-              transform: cardTilt.index === 4 ? `perspective(1000px) rotateX(${cardTilt.y * -1}deg) rotateY(${cardTilt.x}deg) translateZ(10px)` : 'none',
-              boxShadow: cardTilt.index === 4 ? '0 25px 55px rgba(0,0,0,0.65), 0 0 20px rgba(118,201,69,0.1)' : 'none',
-              transition: cardTilt.index === 4 ? 'none' : 'all 0.5s ease'
-            }}
-          >
-            <div className="space-y-4">
-              <h4 className="text-xs font-black tracking-widest uppercase text-emerald-700 mb-2">{t.footer.contact}</h4>
-              
-              <ul className="space-y-3.5">
-                {/* Location */}
-                <li className="flex gap-3 text-xs items-start group/contact">
-                  <div className="w-9 h-9 rounded-xl bg-white/60 flex items-center justify-center shrink-0 border border-emerald-900/5 group-hover/contact:bg-[#76C945]/15 group-hover/contact:border-[#76C945]/20 transition-all duration-300">
-                    <MapPin className="w-4 h-4 text-neutral-500 group-hover/contact:text-emerald-600 transition-colors" />
-                  </div>
-                  <a
-                    href="https://www.google.com/maps/dir/?api=1&destination=Plot+No.+50+%26+56%2C+Vital+Office%2C+Haroonabad%2C+Distt.+Bahawalnagar%2C+Pakistan"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-neutral-600 hover:text-emerald-950 leading-relaxed font-semibold hover:underline"
-                  >
-                    Plot 50 & 56, Vital Office, Haroonabad, Bahawalnagar, Pakistan
-                  </a>
-                </li>
-
-                {/* Phone */}
-                <li className="flex gap-3 text-xs items-center group/contact">
-                  <div className="w-9 h-9 rounded-xl bg-white/60 flex items-center justify-center shrink-0 border border-emerald-900/5 group-hover/contact:bg-[#76C945]/15 group-hover/contact:border-[#76C945]/20 transition-all duration-300">
-                    <Phone className="w-4 h-4 text-neutral-500 group-hover/contact:text-emerald-600 transition-colors" />
-                  </div>
-                  <a href="tel:+920632253137" className="text-neutral-600 hover:text-emerald-950 leading-none font-mono font-bold">
-                    063-2253137
-                  </a>
-                </li>
-
-                {/* Email */}
-                <li className="flex gap-3 text-xs items-center group/contact">
-                  <div className="w-9 h-9 rounded-xl bg-white/60 flex items-center justify-center shrink-0 border border-emerald-900/5 group-hover/contact:bg-[#76C945]/15 group-hover/contact:border-[#76C945]/20 transition-all duration-300">
-                    <Mail className="w-4 h-4 text-neutral-500 group-hover/contact:text-emerald-600 transition-colors" />
-                  </div>
-                  <a href="mailto:info@vitalagro.com.pk" className="text-neutral-600 hover:text-emerald-950 leading-none font-semibold">
-                    info@vitalagro.com.pk
-                  </a>
-                </li>
-
-                {/* Working Hours */}
-                <li className="flex gap-3 text-xs items-center group/contact">
-                  <div className="w-9 h-9 rounded-xl bg-white/60 flex items-center justify-center shrink-0 border border-emerald-900/5">
-                    <Clock className="w-4 h-4 text-neutral-500" />
-                  </div>
-                  <span className="text-neutral-600 font-semibold leading-tight">
-                    Mon - Sat: 9 AM - 6 PM
-                  </span>
-                </li>
-              </ul>
-            </div>
-
-            {/* Premium 3D Dealer CTA Button */}
-            <div className="mt-5 relative">
-              <motion.button
-                onClick={handleDealerClick}
-                disabled={dealerState !== 'idle'}
-                whileHover={{ scale: 1.03 }}
-                whileTap={{ scale: 0.98 }}
-                className="w-full relative overflow-hidden py-3 rounded-2xl bg-gradient-to-r from-[#76C945] to-[#5cb85c] hover:shadow-[0_0_20px_rgba(118,201,69,0.35)] text-[#0A2E1F] font-black text-xs uppercase tracking-widest transition-all duration-300 cursor-pointer flex items-center justify-center gap-2"
-              >
-                {/* Liquid Sweep glare */}
-                <div className="absolute inset-y-0 w-1/3 bg-gradient-to-r from-transparent via-white/20 to-transparent skew-x-12 -translate-x-full animate-[shimmer_3s_infinite]" />
-
-                {dealerState === 'idle' && (
-                  <>
-                    <span>Become a Dealer</span>
-                    <ArrowUpRight size={14} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-                  </>
-                )}
-
-                {dealerState === 'loading' && (
-                  <>
-                    <RefreshCw size={14} className="animate-spin text-[#0A2E1F]" />
-                    <span>Connecting...</span>
-                  </>
-                )}
-
-                {dealerState === 'success' && (
-                  <>
-                    <Check size={14} className="text-[#0A2E1F] font-black" />
-                    <span>SUCCESS ✓</span>
-                  </>
-                )}
-              </motion.button>
-            </div>
-          </div>
-
-        </div>
-
-        {/* Dynamic Certification Badges Card Row */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12 items-stretch">
-          {/* TAG Certification Badge Card */}
-          <div 
-            onMouseMove={(e) => handleCardMove(e, 5)}
-            onMouseLeave={handleCardLeave}
-            className="md:col-span-2 p-5 rounded-[26px] bg-gradient-to-b from-white/[0.04] to-white/[0.01] border border-emerald-900/10 backdrop-blur-2xl flex flex-col sm:flex-row items-center justify-between gap-6 overflow-hidden relative group shadow-xl"
-            style={{
-              transform: cardTilt.index === 5 ? `perspective(1000px) rotateX(${cardTilt.y * -0.6}deg) rotateY(${cardTilt.x * 0.6}deg) translateZ(5px)` : 'none',
-              boxShadow: cardTilt.index === 5 ? '0 20px 45px rgba(0,0,0,0.5), 0 0 25px rgba(118,201,69,0.08)' : 'none',
-              transition: cardTilt.index === 5 ? 'none' : 'all 0.5s ease'
-            }}
-          >
-            <div className="space-y-2 text-center sm:text-left">
-              <span className="px-2.5 py-0.5 rounded-full bg-[#C5A059]/10 border border-[#C5A059]/25 text-[#C5A059] text-[9px] font-black uppercase tracking-widest inline-block">
-                Verified Quality Standard
-              </span>
-              <h4 className="text-sm font-extrabold text-emerald-950">ISO 9001:2015 Certification</h4>
-              <p className="text-[10px] text-neutral-500 leading-relaxed max-w-md">
-                Our raw chemicals are certified for chemical compositions, active ingredients density, and organic environmental safety parameters.
-              </p>
-            </div>
-
-            <div className="flex items-center gap-4 bg-white/60 border border-emerald-900/5 rounded-2xl p-3 shadow-inner">
-              <div className="bg-white/80 rounded-xl px-2 py-1 flex items-center justify-center shrink-0">
-                <img
-                  src={tagLogo}
-                  alt="TAG Certification Badge Logo"
-                  className="h-8 w-auto object-contain drop-shadow"
-                  loading="lazy"
-                />
-              </div>
-              <div className="text-left font-mono">
-                <span className="text-[8px] text-neutral-400 block font-black">CERTIFICATE NO</span>
-                <span className="text-xs font-black text-emerald-950">TAG-9001-QA</span>
-              </div>
-            </div>
-          </div>
-
-          {/* Group Node Membership card */}
-          <div 
-            onMouseMove={(e) => handleCardMove(e, 6)}
-            onMouseLeave={handleCardLeave}
-            className="p-5 rounded-[26px] bg-gradient-to-b from-white/[0.04] to-white/[0.01] border border-emerald-900/10 backdrop-blur-2xl flex flex-col justify-between overflow-hidden relative group shadow-xl"
-            style={{
-              transform: cardTilt.index === 6 ? `perspective(1000px) rotateX(${cardTilt.y * -0.6}deg) rotateY(${cardTilt.x * 0.6}deg) translateZ(5px)` : 'none',
-              boxShadow: cardTilt.index === 6 ? '0 20px 45px rgba(0,0,0,0.5), 0 0 25px rgba(197,160,89,0.08)' : 'none',
-              transition: cardTilt.index === 6 ? 'none' : 'all 0.5s ease'
-            }}
-          >
-            <div className="space-y-1">
-              <span className="text-[9px] font-black tracking-widest text-emerald-600 uppercase block">Corporation Node</span>
-              <h5 className="text-xs font-extrabold text-emerald-950">Member of Vital Group</h5>
-            </div>
-            
-            <p className="text-[10px] text-neutral-500 leading-normal my-2.5">
-              Leveraging massive national logistical reach and agricultural retail networks across Punjab and Sindh.
-            </p>
-
-            <div className="flex items-center justify-between pt-2 border-t border-emerald-900/5 font-mono text-[9px] text-emerald-600 font-black">
-              <span>EST. 2011</span>
-              <span>HAROONABAD, PK</span>
-            </div>
-          </div>
-        </div>
-
-        {/* Bottom copyright divider & Company Info strip */}
-        <div className="border-t border-emerald-900/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-5 relative z-10">
-          <p className="text-neutral-500 text-xs font-semibold select-none">
-            &copy; {new Date().getFullYear()} Vital Agro Chemical Industries (Pvt.) Ltd. All rights reserved.
-          </p>
-          
-          <div className="flex items-center gap-4 bg-white/80 border border-emerald-900/5 rounded-full px-4.5 py-1.5 shadow-sm">
-            <div className="bg-white/15 rounded-md px-1.5 py-0.5 shrink-0 flex items-center justify-center">
-              <img src={vitalAgroLogo} alt="VA" className="h-5 w-auto drop-shadow-sm" loading="lazy" />
-            </div>
-            <p className="text-neutral-500 text-[10px] uppercase tracking-wider font-mono">
-              {t.footer.tagline}
-            </p>
-          </div>
-        </div>
 
       </div>
 
@@ -540,11 +540,11 @@ function ScrollToTopOrb() {
           onClick={scrollToTop}
           onMouseEnter={() => setHovered(true)}
           onMouseLeave={() => setHovered(false)}
-          className="fixed bottom-6 right-6 w-11 h-11 rounded-full bg-black/60 border border-emerald-900/20 flex items-center justify-center backdrop-blur-xl shadow-[0_10px_25px_rgba(0,0,0,0.5)] hover:border-[#76C945] hover:shadow-[0_0_20px_#76C945] transition-all cursor-pointer z-50 text-emerald-950 group"
+          className="fixed bottom-6 right-6 w-11 h-11 rounded-full bg-black/60 border border-emerald-900/20 flex items-center justify-center backdrop-blur-xl shadow-[0_10px_25px_rgba(0,0,0,0.5)] hover:border-[#0E7A43] hover:shadow-[0_0_20px_#0E7A43] transition-all cursor-pointer z-50 text-emerald-950 group"
           aria-label="Scroll to top of the page"
         >
           {/* Circular ping animation */}
-          <div className="absolute inset-0 rounded-full border border-[#76C945]/30 group-hover:animate-ping opacity-0 group-hover:opacity-100 transition-all" />
+          <div className="absolute inset-0 rounded-full border border-[#0E7A43]/30 group-hover:animate-ping opacity-0 group-hover:opacity-100 transition-all" />
           <motion.div
             animate={hovered ? { y: [0, -3, 0] } : {}}
             transition={{ repeat: Infinity, duration: 1.2, ease: "easeInOut" }}

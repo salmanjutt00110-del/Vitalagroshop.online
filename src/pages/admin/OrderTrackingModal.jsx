@@ -95,7 +95,7 @@ export default function OrderTrackingModal({ order, onClose, onUpdateStatus, the
                     initial={{ width: 0 }}
                     animate={{ width: `${(currentStageIdx / (STAGES.length - 1)) * 100}%` }}
                     transition={{ duration: 1, ease: "easeInOut" }}
-                    className="h-full bg-gradient-to-r from-[#10B981] to-[#8AD65A] shadow-[0_0_10px_rgba(16,185,129,0.8)]"
+                    className="h-full bg-gradient-to-r from-[#10B981] to-[#18C964] shadow-[0_0_10px_rgba(16,185,129,0.8)]"
                   />
                 )}
               </div>
@@ -221,7 +221,7 @@ export default function OrderTrackingModal({ order, onClose, onUpdateStatus, the
                     <button
                       onClick={handleDispatch}
                       disabled={!trackingId || currentStageIdx >= 2}
-                      className={`w-full py-3 rounded-xl font-bold uppercase tracking-widest text-xs transition-all ${!trackingId || currentStageIdx >= 2 ? 'bg-neutral-800 text-neutral-500 cursor-not-allowed' : 'bg-gradient-to-r from-[#10B981] to-[#8AD65A] text-black shadow-[0_0_15px_rgba(16,185,129,0.3)] hover:scale-[1.02]'}`}
+                      className={`w-full py-3 rounded-xl font-bold uppercase tracking-widest text-xs transition-all ${!trackingId || currentStageIdx >= 2 ? 'bg-neutral-800 text-neutral-500 cursor-not-allowed' : 'bg-gradient-to-r from-[#10B981] to-[#18C964] text-black shadow-[0_0_15px_rgba(16,185,129,0.3)] hover:scale-[1.02]'}`}
                     >
                       {currentStageIdx >= 2 ? 'Already Dispatched' : 'Confirm Dispatch'}
                     </button>

@@ -117,7 +117,7 @@ export default function HeroContent() {
           {/* Tagline Badge — cinematic fade-in */}
           <motion.div
             variants={itemReveal}
-            className="inline-flex items-center gap-3 px-4 py-1.5 rounded-full bg-white/80 border border-emerald-900/20 text-neutral-700 text-xs sm:text-sm mb-4 lg:mb-8"
+            className="inline-flex items-center gap-3 px-4 py-1.5 rounded-full bg-[#EAFBF3]/85 backdrop-blur-sm border border-[#0E7A43]/[0.1] text-[#5A5A5A] text-xs sm:text-sm mb-4 lg:mb-8"
             style={{ willChange: 'transform, opacity' }}
           >
             <div className="bg-white/20 rounded-md px-1.5 py-0.5">
@@ -136,7 +136,7 @@ export default function HeroContent() {
               transition={{ duration: 8, repeat: Infinity, ease: 'linear' }}
               className="flex items-center"
             >
-              <Leaf className="w-4 h-4 text-emerald-700" />
+              <Leaf className="w-4 h-4 text-[#0E7A43]" />
             </motion.div>
             <span>{t.hero.badge}</span>
           </motion.div>
@@ -145,11 +145,11 @@ export default function HeroContent() {
           <h1 className="mb-4 lg:mb-6 tracking-tight" data-speed="0.04">
             <AnimatedText
               text={t.hero.heading1}
-              className="text-3xl xs:text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-extrabold text-emerald-950 leading-tight block"
+              className="text-3xl xs:text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-extrabold text-[#0a331c] leading-tight block"
             />
             <AnimatedText
               text={t.hero.heading2}
-              className="text-3xl xs:text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-extrabold leading-tight block text-transparent bg-clip-text bg-gradient-to-r from-[#76C945] to-[#C5A059]"
+              className="text-3xl xs:text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-extrabold leading-tight block text-transparent bg-clip-text bg-gradient-to-r from-[#39D98A] to-[#C5A059]"
               delay={0.2}
             />
           </h1>
@@ -157,7 +157,7 @@ export default function HeroContent() {
           {/* Subheading — smooth reveal */}
           <motion.p
             variants={itemReveal}
-            className="text-base sm:text-lg lg:text-xl text-neutral-600 max-w-lg mb-6 lg:mb-10 leading-relaxed mx-auto lg:mx-0 font-medium"
+            className="text-base sm:text-lg lg:text-xl text-[#5A5A5A] max-w-lg mb-6 lg:mb-10 leading-relaxed mx-auto lg:mx-0 font-medium"
             style={{ willChange: 'transform, opacity' }}
           >
             {t.hero.sub}
@@ -199,7 +199,7 @@ export default function HeroContent() {
           {/* Stats Counters */}
           <motion.div
             variants={itemReveal}
-            className="flex flex-wrap gap-4 sm:gap-6 mt-8 pt-6 lg:mt-12 lg:pt-8 border-t border-emerald-900/10 w-full justify-center lg:justify-start"
+            className="flex flex-wrap gap-4 sm:gap-6 mt-8 pt-6 lg:mt-12 lg:pt-8 border-t border-[#0E7A43]/[0.08] w-full justify-center lg:justify-start"
           >
             {[
               { to: 15, suffix: '+', label: t.hero.years },
@@ -212,10 +212,10 @@ export default function HeroContent() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 1.2 + i * 0.15, ease: [0.16, 1, 0.3, 1] }}
               >
-                <div className="text-2xl sm:text-3xl font-black text-emerald-600">
+                <div className="text-2xl sm:text-3xl font-black text-[#0E7A43]">
                   <CountUp from={0} to={stat.to} suffix={stat.suffix} />
                 </div>
-                <div className="text-neutral-500 mt-1 font-semibold tracking-wide" style={{ fontSize: 'clamp(11px, 3vw, 13px)' }}>{stat.label}</div>
+                <div className="text-[#5A5A5A] mt-1 font-semibold tracking-wide" style={{ fontSize: 'clamp(11px, 3vw, 13px)' }}>{stat.label}</div>
               </motion.div>
             ))}
           </motion.div>
@@ -232,7 +232,7 @@ export default function HeroContent() {
             {/* Volumetric Green Glow Ring */}
             <motion.div
               className="absolute inset-0 rounded-full blur-[90px] opacity-25 pointer-events-none"
-              style={{ background: 'radial-gradient(circle, rgba(118,201,69,0.35) 0%, transparent 70%)' }}
+              style={{ background: 'radial-gradient(circle, rgba(15,123,59,0.2) 0%, transparent 70%)' }}
               animate={{ 
                 scale: [1, 1.12, 1],
                 opacity: [0.2, 0.35, 0.2]
@@ -245,11 +245,11 @@ export default function HeroContent() {
               {[...Array(6)].map((_, i) => (
                 <motion.div
                   key={i}
-                  className="absolute w-1.5 h-1.5 rounded-full bg-[#76C945]"
+                  className="absolute w-1.5 h-1.5 rounded-full bg-[#39D98A]"
                   style={{
                     left: `${20 + i * 15}%`,
                     bottom: '15%',
-                    boxShadow: '0 0 8px rgba(118,201,69,0.8), 0 0 15px rgba(118,201,69,0.4)',
+                    boxShadow: '0 0 8px rgba(57,217,138,0.6), 0 0 12px rgba(57,217,138,0.3)',
                   }}
                   animate={{
                     y: [0, -200],
@@ -274,7 +274,7 @@ export default function HeroContent() {
             >
               <motion.div
                 onClick={() => openModal('fatty')}
-                className="rounded-[32px] p-6 border flex flex-col items-center w-[185px] h-[275px] sm:w-[215px] sm:h-[315px] justify-between cursor-pointer hover:shadow-[#76C945]/15 hover:border-[#76C945]/30 transition-all duration-300 relative overflow-hidden"
+                className="rounded-[32px] p-6 border flex flex-col items-center w-[185px] h-[275px] sm:w-[215px] sm:h-[315px] justify-between cursor-pointer hover:shadow-[#0E7A43]/15 hover:border-[#0E7A43]/30 transition-all duration-300 relative overflow-hidden"
                 style={{
                   background: 'rgba(255, 255, 255, 0.10)',
                   backdropFilter: 'blur(18px)',
@@ -284,7 +284,7 @@ export default function HeroContent() {
                 }}
                 animate={{ y: [-6, 6, -6] }}
                 transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut' }}
-                whileHover={{ scale: 1.04, boxShadow: '0 25px 60px rgba(118,201,69,0.18)' }}
+                whileHover={{ scale: 1.04, boxShadow: '0 25px 60px rgba(15, 123, 59,0.18)' }}
               >
                 <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/[0.03] to-transparent pointer-events-none" />
                 <div className="flex-1 flex items-center justify-center p-2">
@@ -295,7 +295,7 @@ export default function HeroContent() {
                     className="h-40 sm:h-52 w-auto object-contain drop-shadow-[0_12px_24px_rgba(0,0,0,0.4)]"
                   />
                 </div>
-                <span className="text-emerald-950 font-bold text-xs bg-[#76C945]/20 px-3.5 py-1.5 rounded-full border border-[#76C945]/30 mt-2 z-10 backdrop-blur-sm">
+                <span className="text-[#0a331c] font-bold text-xs bg-[#0E7A43]/15 px-3.5 py-1.5 rounded-full border border-[#0E7A43]/20 mt-2 z-10 backdrop-blur-sm">
                   Fatty
                 </span>
               </motion.div>
@@ -312,7 +312,7 @@ export default function HeroContent() {
             >
               <motion.div
                 onClick={() => openModal('super-4g')}
-                className="rounded-2xl p-4 border flex flex-col items-center w-[125px] h-[175px] justify-between cursor-pointer hover:shadow-[#76C945]/10 hover:border-[#76C945]/30 transition-all duration-300 relative overflow-hidden"
+                className="rounded-2xl p-4 border flex flex-col items-center w-[125px] h-[175px] justify-between cursor-pointer hover:shadow-[#0E7A43]/10 hover:border-[#0E7A43]/30 transition-all duration-300 relative overflow-hidden"
                 style={{
                   background: 'rgba(255, 255, 255, 0.10)',
                   backdropFilter: 'blur(18px)',
@@ -331,7 +331,7 @@ export default function HeroContent() {
                     className="h-28 w-auto object-contain drop-shadow-[0_6px_12px_rgba(0,0,0,0.35)]"
                   />
                 </div>
-                <span className="text-emerald-950 font-bold text-[10px] bg-[#C5A059]/25 px-2.5 py-0.5 rounded-full mt-1 border border-[#C5A059]/30 z-10">
+                <span className="text-[#0a331c] font-bold text-[10px] bg-[#C5A059]/20 px-2.5 py-0.5 rounded-full mt-1 border border-[#C5A059]/25 z-10">
                   Super 4G
                 </span>
               </motion.div>
@@ -348,7 +348,7 @@ export default function HeroContent() {
             >
               <motion.div
                 onClick={() => openModal('aaqab')}
-                className="rounded-2xl p-4 border flex flex-col items-center w-[125px] h-[175px] justify-between cursor-pointer hover:shadow-[#76C945]/10 hover:border-[#76C945]/30 transition-all duration-300 relative overflow-hidden"
+                className="rounded-2xl p-4 border flex flex-col items-center w-[125px] h-[175px] justify-between cursor-pointer hover:shadow-[#0E7A43]/10 hover:border-[#0E7A43]/30 transition-all duration-300 relative overflow-hidden"
                 style={{
                   background: 'rgba(255, 255, 255, 0.10)',
                   backdropFilter: 'blur(18px)',
@@ -367,7 +367,7 @@ export default function HeroContent() {
                     className="h-28 w-auto object-contain drop-shadow-[0_6px_12px_rgba(0,0,0,0.35)]"
                   />
                 </div>
-                <span className="text-emerald-950 font-bold text-[10px] bg-[#76C945]/20 px-2.5 py-0.5 rounded-full mt-1 border border-[#76C945]/35 z-10">
+                <span className="text-[#0a331c] font-bold text-[10px] bg-[#0E7A43]/12 px-2.5 py-0.5 rounded-full mt-1 border border-[#0E7A43]/18 z-10">
                   AAQAAB
                 </span>
               </motion.div>

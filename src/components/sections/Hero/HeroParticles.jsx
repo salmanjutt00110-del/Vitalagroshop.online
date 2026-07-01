@@ -51,7 +51,7 @@ export default function HeroParticles() {
         // Draw particle with brand green color and animated opacity
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(118, 201, 69, ${p.opacity})`;
+        ctx.fillStyle = `rgba(15, 123, 59, ${p.opacity})`;
         ctx.fill();
 
         // Update positions

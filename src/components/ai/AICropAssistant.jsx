@@ -152,7 +152,7 @@ export default function AICropAssistant() {
         onClick={handleToggleOpen}
         whileHover={{ scale: 1.08 }}
         whileTap={{ scale: 0.95 }}
-        className="w-14 h-14 bg-gradient-to-tr from-[#1e5c1e] to-[#76C945] text-emerald-950 rounded-full flex items-center justify-center shadow-[0_10px_30px_rgba(118,201,69,0.35)] border border-[#76C945]/40 relative overflow-hidden"
+        className="w-14 h-14 bg-gradient-to-tr from-[#1e5c1e] to-[#0E7A43] text-emerald-950 rounded-full flex items-center justify-center shadow-[0_10px_30px_rgba(15, 123, 59,0.35)] border border-[#0E7A43]/40 relative overflow-hidden"
         style={{ touchAction: 'manipulation' }}
       >
         <motion.div
@@ -193,13 +193,13 @@ export default function AICropAssistant() {
             {/* Header */}
             <div className="p-4 border-b border-emerald-900/5 bg-gradient-to-r from-white/[0.04] to-transparent flex items-center justify-between">
               <div className="flex items-center gap-2.5">
-                <div className="w-9 h-9 bg-[#76C945]/15 border border-[#76C945]/30 rounded-xl flex items-center justify-center text-emerald-600">
+                <div className="w-9 h-9 bg-[#0E7A43]/15 border border-[#0E7A43]/30 rounded-xl flex items-center justify-center text-emerald-600">
                   <Sprout size={18} className="animate-pulse" />
                 </div>
                 <div>
                   <h4 className="text-emerald-950 font-bold text-sm tracking-wide flex items-center gap-1.5">
                     Vital Agro Advisor
-                    <span className="flex items-center px-1.5 py-0.5 rounded-full bg-[#76C945]/15 text-emerald-600 text-[8px] font-black uppercase">
+                    <span className="flex items-center px-1.5 py-0.5 rounded-full bg-[#0E7A43]/15 text-emerald-600 text-[8px] font-black uppercase">
                       24/7 AI
                     </span>
                   </h4>
@@ -220,13 +220,13 @@ export default function AICropAssistant() {
                   <div className={`w-8 h-8 rounded-xl flex items-center justify-center shrink-0 border ${
                     m.role === 'user' 
                       ? 'bg-white/8 border-emerald-900/10 text-emerald-950' 
-                      : 'bg-[#76C945]/10 border-[#76C945]/30 text-emerald-600'
+                      : 'bg-[#0E7A43]/10 border-[#0E7A43]/30 text-emerald-600'
                   }`}>
                     {m.role === 'user' ? <User size={14} /> : <Bot size={14} />}
                   </div>
                   <div className={`max-w-[75%] rounded-2xl p-3.5 text-xs sm:text-[13px] leading-relaxed whitespace-pre-line ${
                     m.role === 'user'
-                      ? 'bg-gradient-to-r from-[#225c22] to-[#2d7a2d] text-emerald-950 border border-[#76C945]/20 rounded-tr-none'
+                      ? 'bg-gradient-to-r from-[#225c22] to-[#2d7a2d] text-emerald-950 border border-[#0E7A43]/20 rounded-tr-none'
                       : 'bg-white/60 text-emerald-950/95 border border-emerald-900/5 rounded-tl-none'
                   }`}>
                     <div>{m.text}</div>
@@ -251,7 +251,7 @@ export default function AICropAssistant() {
 
               {isLoading && (
                 <div className="flex gap-2.5">
-                  <div className="w-8 h-8 rounded-xl bg-[#76C945]/10 border-[#76C945]/30 text-emerald-600 flex items-center justify-center shrink-0">
+                  <div className="w-8 h-8 rounded-xl bg-[#0E7A43]/10 border-[#0E7A43]/30 text-emerald-600 flex items-center justify-center shrink-0">
                     <Bot size={14} className="animate-spin" />
                   </div>
                   <div className="bg-white/60 border border-emerald-900/5 rounded-2xl rounded-tl-none p-4 flex gap-1.5 items-center">
@@ -277,7 +277,7 @@ export default function AICropAssistant() {
                       <button
                         key={idx}
                         onClick={() => handleSendMessage(p[lang])}
-                        className="w-full text-left p-2.5 bg-white/60 border border-emerald-900/5 hover:border-[#76C945]/40 hover:bg-white/8 rounded-xl text-[10px] sm:text-xs text-neutral-600 hover:text-emerald-950 transition-all flex items-center gap-1.5"
+                        className="w-full text-left p-2.5 bg-white/60 border border-emerald-900/5 hover:border-[#0E7A43]/40 hover:bg-white/8 rounded-xl text-[10px] sm:text-xs text-neutral-600 hover:text-emerald-950 transition-all flex items-center gap-1.5"
                       >
                         <Sparkles size={10} className="text-emerald-600 shrink-0" />
                         <span className="truncate">{p[lang]}</span>
@@ -288,7 +288,7 @@ export default function AICropAssistant() {
               )}
 
               {/* TextInput Form */}
-              <div className="flex items-center gap-2 bg-white/60 rounded-2xl border border-emerald-900/5 p-1.5 focus-within:border-[#76C945]/40 transition-colors">
+              <div className="flex items-center gap-2 bg-white/60 rounded-2xl border border-emerald-900/5 p-1.5 focus-within:border-[#0E7A43]/40 transition-colors">
                 <input
                   type="text"
                   placeholder={lang === 'en' ? 'Ask about crops, diseases...' : 'فصلوں یا بیماریوں کے بارے میں پوچھیں...'}
@@ -300,7 +300,7 @@ export default function AICropAssistant() {
                 <button
                   onClick={() => handleSendMessage()}
                   disabled={!input.trim() || isLoading}
-                  className="w-9 h-9 bg-[#76C945] hover:bg-[#8AD65A] disabled:bg-white/80 text-[#0A2E1F] disabled:text-neutral-400 rounded-xl flex items-center justify-center transition-colors shrink-0"
+                  className="w-9 h-9 bg-[#0E7A43] hover:bg-[#18C964] disabled:bg-white/80 text-[#0A2E1F] disabled:text-neutral-400 rounded-xl flex items-center justify-center transition-colors shrink-0"
                 >
                   <Send size={14} />
                 </button>

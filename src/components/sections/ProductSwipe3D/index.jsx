@@ -128,7 +128,7 @@ export default function ProductSwipe3D({ products: rawProducts, openCheckout, au
       
       const categoryLabel = p.category ? p.category.replace('_', ' ').toUpperCase() : '';
       const themeInfo = PRODUCT_THEMES[p.slug || p.id] || {
-        theme: '#5cb85c',
+        theme: '#0E7A43',
         themeBg: '#020c02',
         tagline: 'Premium Agricultural Solution'
       };
@@ -250,7 +250,7 @@ export default function ProductSwipe3D({ products: rawProducts, openCheckout, au
       >
         <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full
           bg-[rgba(45,106,45,0.2)] border border-[rgba(92,184,92,0.3)]
-          text-[#5cb85c] text-xs tracking-[0.15em] uppercase font-semibold mb-5 shadow-inner"
+          text-[#0E7A43] text-xs tracking-[0.15em] uppercase font-semibold mb-5 shadow-inner"
         >
           ✦ {lang === 'en' ? 'OUR PRODUCTS' : 'ہماری مصنوعات'}
         </span>
@@ -258,7 +258,7 @@ export default function ProductSwipe3D({ products: rawProducts, openCheckout, au
         <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-emerald-950 leading-tight">
           {lang === 'en' ? 'Premium Collection' : 'پریمیئم کلیکشن'}
         </h2>
-        <p className="text-[#5cb85c] mt-3 text-xs tracking-widest uppercase font-bold">
+        <p className="text-[#0E7A43] mt-3 text-xs tracking-widest uppercase font-bold">
           {lang === 'en' ? 'Drag or Swipe to explore ←→' : 'دیکھنے کے لیے سوائپ یا ڈریگ کریں ←→'}
         </p>
       </motion.div>

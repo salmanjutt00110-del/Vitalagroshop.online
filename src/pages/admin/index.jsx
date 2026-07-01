@@ -1150,14 +1150,21 @@ export default function AdminDashboard() {
 
             {/* Quick search input */}
             <div className="relative w-44 sm:w-56 md:w-64">
-              <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-3.5 h-3.5 text-neutral-500" />
+              <button
+                type="button"
+                onClick={() => document.getElementById('portal-search-input')?.focus()}
+                className="absolute left-3 top-1/2 -translate-y-1/2 text-neutral-500 hover:text-[#0E7A43] transition-colors cursor-pointer flex items-center justify-center"
+                aria-label="Focus search"
+              >
+                <Search className="w-3.5 h-3.5" />
+              </button>
               <input
                 id="portal-search-input"
                 type="text"
                 placeholder="Search portal..."
                 value={search}
                 onChange={e => setSearch(e.target.value)}
-                className={`pl-8 pr-12 py-1.5 rounded-lg text-[11px] outline-none w-full transition-all ${c.input}`}
+                className={`pl-8 pr-12 py-1.5 rounded-lg text-[11px] outline-none w-full transition-all focus:ring-1 focus:ring-[#0E7A43]/30 ${c.input}`}
               />
               <div className="absolute right-2 top-1/2 -translate-y-1/2 px-1.5 py-0.5 rounded bg-white/80 border border-emerald-900/10 text-[8px] font-mono text-neutral-500 hidden sm:block">
                 Ctrl+K

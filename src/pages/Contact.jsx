@@ -325,11 +325,11 @@ export default function Contact() {
         }} />
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center z-10">
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
-            <span className="text-xs font-black tracking-widest uppercase text-emerald-700 bg-[#76C945]/10 px-3 py-1 rounded-full">{cTrans.badge}</span>
-            <h1 className="text-4xl xs:text-5xl sm:text-6xl lg:text-7xl font-black text-emerald-950 mt-5 mb-4 uppercase tracking-tight">
+            <span className="text-xs font-black tracking-widest uppercase text-[#18C964] bg-[#18C964]/10 border border-[#18C964]/20 px-3 py-1 rounded-full">{cTrans.badge}</span>
+            <h1 className="text-4xl xs:text-5xl sm:text-6xl lg:text-7xl font-black text-white mt-5 mb-4 uppercase tracking-tight">
               {cTrans.title}
             </h1>
-            <p className="text-neutral-600 text-sm sm:text-base max-w-xl mx-auto leading-relaxed">
+            <p className="text-neutral-300 text-sm sm:text-base max-w-xl mx-auto leading-relaxed">
               {cTrans.sub}
             </p>
           </motion.div>
@@ -434,7 +434,7 @@ export default function Contact() {
               className="lg:col-span-3"
             >
               <div className="bg-white/70 border border-emerald-900/5 backdrop-blur-3xl rounded-3xl p-8 sm:p-10 shadow-2xl relative overflow-hidden text-left">
-                <div className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-emerald-500 via-[#76C945] to-teal-500" />
+                <div className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-emerald-500 via-[#0E7A43] to-teal-500" />
                 <div className="absolute top-0 right-0 w-32 h-32 bg-emerald-500/[0.02] filter blur-3xl rounded-full pointer-events-none" />
                 
                 <h3 className="text-2xl font-black text-emerald-950 mb-6 uppercase tracking-wide flex items-center gap-2">

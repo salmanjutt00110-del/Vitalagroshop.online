@@ -3,7 +3,7 @@ import json
 from app import app
 from models import db, Product
 
-json_path = r"C:\Users\salma\.gemini\antigravity-ide\brain\c346366f-d904-4309-8993-1dded7e3533c\scratch\products.json"
+json_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "products.json")
 
 def sync_products_to_db():
     print(f"Reading products data from {json_path}...")

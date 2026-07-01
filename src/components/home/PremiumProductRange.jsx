@@ -19,7 +19,7 @@ export default function PremiumProductRange() {
   useEffect(() => {
     const loadProducts = () => {
       const allProducts = Object.values(PRODUCTS_DATA).filter(p => p.id || p.slug);
-      const featuredIds = ['easy-grow-gold', 'fatty', 'easy-grow-sc', 'aaqab', 'conference-gold-fs', 'conference'];
+      const featuredIds = ['easy-grow-gold', 'fatty', 'aaqab', 'conference-gold-fs'];
       
       const featured = allProducts.filter(p => featuredIds.includes(p.id) || featuredIds.includes(p.slug));
       

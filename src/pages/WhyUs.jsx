@@ -15,9 +15,9 @@ export default function WhyUs() {
         }} />
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
-            <span className="text-sm font-bold tracking-widest uppercase text-emerald-700">The Vital Difference</span>
-            <h1 className="text-3xl xs:text-4xl sm:text-5xl font-extrabold text-emerald-950 mt-4 mb-4">Why Choose Vital Agro</h1>
-            <p className="text-neutral-600 text-lg max-w-2xl mx-auto">
+            <span className="text-sm font-bold tracking-widest uppercase text-[#18C964]">The Vital Difference</span>
+            <h1 className="text-3xl xs:text-4xl sm:text-5xl font-extrabold text-white mt-4 mb-4">Why Choose Vital Agro</h1>
+            <p className="text-neutral-300 text-lg max-w-2xl mx-auto">
               {"Discover what makes us Pakistan's most trusted agricultural solutions provider."}
             </p>
           </motion.div>

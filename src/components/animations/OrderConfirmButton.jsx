@@ -166,7 +166,7 @@ export const OrderConfirmButton = ({ onConfirm, disabled }) => {
             {/* Label */}
             <motion.span
               className="absolute right-5 top-1/2 -translate-y-1/2
-                text-[#5cb85c] text-[11px] font-bold tracking-wider"
+                text-[#0E7A43] text-[11px] font-bold tracking-wider"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.7 }}
@@ -192,8 +192,8 @@ export const OrderConfirmButton = ({ onConfirm, disabled }) => {
                 <motion.div key={i}
                   className="absolute top-1/2 left-1/2 rounded-full"
                   style={{ width: 4+Math.random()*3, height: 4+Math.random()*3,
-                    background: '#5cb85c',
-                    boxShadow: '0 0 6px #5cb85c' }}
+                    background: '#0E7A43',
+                    boxShadow: '0 0 6px #0E7A43' }}
                   initial={{ x: 0, y: 0, opacity: 1, scale: 1 }}
                   animate={{
                     x: Math.cos((angle*Math.PI)/180)*dist,
@@ -210,7 +210,7 @@ export const OrderConfirmButton = ({ onConfirm, disabled }) => {
               flex items-center justify-center"
               style={{
                 background: 'rgba(5,18,5,0.98)',
-                border: '2px solid #5cb85c',
+                border: '2px solid #0E7A43',
                 boxShadow: [
                   '0 0 25px rgba(92,184,92,0.7)',
                   '0 0 70px rgba(92,184,92,0.3)',
@@ -222,7 +222,7 @@ export const OrderConfirmButton = ({ onConfirm, disabled }) => {
               <motion.span
                 className="font-bold tracking-[0.18em] text-sm"
                 style={{
-                  color: '#5cb85c',
+                  color: '#0E7A43',
                   textShadow: '0 0 20px rgba(92,184,92,0.9)',
                 }}
                 initial={{ opacity: 0, y: 6 }}

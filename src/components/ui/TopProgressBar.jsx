@@ -40,7 +40,7 @@ export const TopProgressBar = () => {
           <motion.div
             className="h-full"
             style={{
-              background: 'linear-gradient(90deg, #2d6a2d, #5cb85c, #7de87d)',
+              background: 'linear-gradient(90deg, #2d6a2d, #0E7A43, #7de87d)',
               boxShadow: '0 0 10px rgba(92,184,92,0.8)',
             }}
             animate={{ width: `${progress}%` }}
@@ -49,7 +49,7 @@ export const TopProgressBar = () => {
           {/* Glow dot at progress end */}
           <motion.div
             className="absolute top-1/2 -translate-y-1/2 w-3 h-3
-              rounded-full bg-[#5cb85c]"
+              rounded-full bg-[#0E7A43]"
             style={{
               left: `${progress}%`,
               boxShadow: '0 0 8px rgba(92,184,92,1)',

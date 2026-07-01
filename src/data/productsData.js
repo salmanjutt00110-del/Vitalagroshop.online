@@ -31,15 +31,42 @@ import sonehriPotashPng from '@/vital product/sonehri-potash.webp';
 import defeaterHumatePng from '@/vital product/defeater-humate.webp';
 import settingPng from '@/vital product/setting.webp';
 
-// Slugs of products that do not have physical photos (will use dynamic SVG placeholders)
-export const PENDING_IMAGES = ["nito-75", "toofan", "jidaar-plus", "waqb", "gt-warrior", "gt-warrior-super", "hallin", "jolen", "jollen-extra", "joban", "pixa", "rapid", "faalq-gold", "index", "metafin-super", "work-plus"];
+// Slugs of products that do not have their own unique physical photos (will use dynamic SVG placeholders)
+// These products currently have image files copied from other products which display WRONG bottles
+export const PENDING_IMAGES = [
+  // Were copies of easy-grow.webp
+  'gt-warrior-super', 'gt-warrior',
+  // Were copies of dr-pp.webp
+  'hallin', 'metafin-super', 'jolen',
+  // Were copies of farbasin.webp
+  'toofan', 'joban',
+  // Were copies of purifizin.webp
+  'nito-75', 'waqb',
+  // Were copies of douha-extra.webp
+  'jollen-extra',
+  // Were copies of vac-zinc.webp
+  'tab-gibberellic', 'tab-zinc',
+  // Were copies of vac-map.webp (same as atem/calcium/vital-urea)
+  'atem', 'calcium', 'vital-urea',
+  // Were copies of vital-gold.webp
+  'vital-gold', 'vital-phos',
+];
 
 // Simple SVG dynamic placeholder function on green brand background
 export const getProductImage = (product) => {
   const slug = product.slug || product.id;
   
-  if (PENDING_IMAGES.includes(slug)) {
-    const name = typeof product.name === 'object' ? (product.name.en || '') : (product.name || '');
+  // Helper to check if a path is a valid image URL/path
+  const isValidPath = (path) => {
+    if (!path || typeof path !== 'string') return false;
+    const p = path.trim();
+    return p.startsWith('/') || p.startsWith('http://') || p.startsWith('https://') || p.startsWith('data:') || p.startsWith('blob:') || p.startsWith('static/');
+  };
+
+  const hasImage = (product.pngUrl && isValidPath(product.pngUrl)) || (product.imageUrl && isValidPath(product.imageUrl));
+
+  if (!hasImage || PENDING_IMAGES.includes(slug)) {
+    const nameEn = typeof product.name === 'object' ? (product.name.en || '') : (product.name || '');
     const category = product.category || '';
     const svg = `
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="100%" height="100%">
@@ -50,21 +77,14 @@ export const getProductImage = (product) => {
           </linearGradient>
         </defs>
         <rect width="100%" height="100%" fill="url(#grad)" rx="16"/>
-        <rect x="10" y="10" width="380" height="380" fill="none" stroke="#76C945" stroke-width="1.5" stroke-dasharray="8" rx="12" opacity="0.3"/>
-        <text x="50%" y="45%" dominant-baseline="middle" text-anchor="middle" fill="#76C945" font-family="monospace, sans-serif" font-size="24" font-weight="900" letter-spacing="1">${name.toUpperCase()}</text>
-        <text x="50%" y="55%" dominant-baseline="middle" text-anchor="middle" fill="#5cb85c" font-family="sans-serif" font-size="12" font-weight="700" letter-spacing="2" opacity="0.8">${category.toUpperCase().replace('_', ' ')}</text>
-        <text x="50%" y="85%" dominant-baseline="middle" text-anchor="middle" fill="#ffffff" font-family="sans-serif" font-size="10" font-weight="bold" opacity="0.3" letter-spacing="1">VITAL AGRO • IMAGE PENDING</text>
+        <rect x="10" y="10" width="380" height="380" fill="none" stroke="#0E7A43" stroke-width="1.5" stroke-dasharray="8" rx="12" opacity="0.3"/>
+        <text x="50%" y="45%" dominant-baseline="middle" text-anchor="middle" fill="#0E7A43" font-family="monospace, sans-serif" font-size="20" font-weight="900" letter-spacing="1">${nameEn.toUpperCase()}</text>
+        <text x="50%" y="55%" dominant-baseline="middle" text-anchor="middle" fill="#0E7A43" font-family="sans-serif" font-size="12" font-weight="700" letter-spacing="2" opacity="0.8">${category.toUpperCase().replace('_', ' ')}</text>
+        <text x="50%" y="82%" dominant-baseline="middle" text-anchor="middle" fill="#ffffff" font-family="sans-serif" font-size="11" font-weight="bold" opacity="0.35" letter-spacing="1.5">IMAGE COMING SOON</text>
       </svg>
     `;
     return `data:image/svg+xml;utf8,${encodeURIComponent(svg)}`;
   }
-
-  // Helper to check if a path is a valid image URL/path
-  const isValidPath = (path) => {
-    if (!path || typeof path !== 'string') return false;
-    const p = path.trim();
-    return p.startsWith('/') || p.startsWith('http://') || p.startsWith('https://') || p.startsWith('data:');
-  };
 
   const getWebpUrl = (url) => {
     if (url && typeof url === 'string') {
@@ -84,8 +104,147 @@ export const getProductImage = (product) => {
 };
 
 export const PRODUCTS_DATA = {
-
-
+  "easy-grow-gold": {
+    "id": "easy-grow-gold",
+    "slug": "easy-grow-gold",
+    "name": {
+      "en": "EAZY GROW GOLD - 12%WP",
+      "ur": "ایزی گرو گولڈ"
+    },
+    "genericName": {
+      "en": "DIFENOCONAZL + VALIDAMYCIN",
+      "ur": "DIFENOCONAZL + VALIDAMYCIN"
+    },
+    "category": "seed-treatment",
+    "tagline": "DIFENOCONAZL + VALIDAMYCIN — Advanced Seed Protection",
+    "imageUrl": "",
+    "pngUrl": "/products/easy-grow-gold.png",
+    "rating": 4.8,
+    "importedFormulaBadge": true,
+    "premiumProductBadge": true,
+    "researchBasedBadge": true,
+    "shortDesc": {
+      "en": "Premium seed treatment compound combining DIFENOCONAZL + VALIDAMYCIN for complete protection against seed-borne and soil-borne diseases. Promotes early seedling vigor.",
+      "ur": "بیج کی صفائی اور صحت مند بڑھوتری کے لیے DIFENOCONAZL + VALIDAMYCIN کا بہترین سسٹمک فارمولا جو فصل کی ابتدائی جڑوں کو فنگس اور بیماریوں سے بچاتا ہے۔"
+    },
+    "seoTitle": "EAZY GROW GOLD - 12%WP | Premium Agrochemical | Vital Agro",
+    "seoDescription": "Buy EAZY GROW GOLD - 12%WP online. Highly effective formula for pest and crop management. Cash on delivery available.",
+    "sizes": [
+      {
+        "size": "120 GM",
+        "price": 365,
+        "oldPrice": 365,
+        "sku": "VA-EASY_GROW_GOLD-120GM",
+        "weight": "0.12kg",
+        "stockStatus": "In Stock"
+      }
+    ],
+    "formulation": "DIFENOCONAZL + VALIDAMYCIN",
+    "activeIngredient": "DIFENOCONAZL + VALIDAMYCIN",
+    "packaging": "120 GM",
+    "productCode": "VA-EASY_GROW_GOLD-120GM",
+    "status": {
+      "en": "Premium Quality Compound",
+      "ur": "اعلیٰ معیار کا مرکب"
+    },
+    "description": {
+      "en": "Premium seed treatment compound combining DIFENOCONAZL + VALIDAMYCIN for complete protection against seed-borne and soil-borne diseases. Promotes early seedling vigor. It is a highly specialized chemical compound designed under strict international quality controls to maximize your crop yields.",
+      "ur": "بیج کی صفائی اور صحت مند بڑھوتری کے لیے DIFENOCONAZL + VALIDAMYCIN کا بہترین سسٹمک فارمولا جو فصل کی ابتدائی جڑوں کو فنگس اور بیماریوں سے بچاتا ہے۔ یہ پودے کی بہترین نشوونما اور تحفظ کے لیے عالمی معیار کے مطابق تیار کیا گیا مرکب ہے۔"
+    },
+    "features": {
+      "en": [
+        "Protects young seedlings from seed rot",
+        "Controls early sucking pests and damping off",
+        "Improves seedling survival rate",
+        "Enables strong root establishment"
+      ],
+      "ur": [
+        "بیج کو گلنے سڑنے اور فنگس سے محفوظ رکھتا ہے",
+        "ابتدائی چوسنے والے کیڑوں کا مکمل خاتمہ کرتا ہے",
+        "جڑوں کے پھیلاؤ کو بہتر بناتا ہے",
+        "پودے کی فی ایکڑ تعداد پوری کرنے میں مددگار"
+      ]
+    },
+    "benefits": {
+      "en": [
+        "Protects young seedlings from seed rot",
+        "Controls early sucking pests and damping off",
+        "Improves seedling survival rate",
+        "Enables strong root establishment"
+      ],
+      "ur": [
+        "بیج کو گلنے سڑنے اور فنگس سے محفوظ رکھتا ہے",
+        "ابتدائی چوسنے والے کیڑوں کا مکمل خاتمہ کرتا ہے",
+        "جڑوں کے پھیلاؤ کو بہتر بناتا ہے",
+        "پودے کی فی ایکڑ تعداد پوری کرنے میں مددگار"
+      ]
+    },
+    "crops": [
+      {
+        "name": {
+          "en": "Cotton",
+          "ur": "کپاس"
+        },
+        "icon": "🌱"
+      },
+      {
+        "name": {
+          "en": "Rice",
+          "ur": "دھان"
+        },
+        "icon": "🌾"
+      },
+      {
+        "name": {
+          "en": "Maize",
+          "ur": "مکئی"
+        },
+        "icon": "🌽"
+      },
+      {
+        "name": {
+          "en": "Wheat",
+          "ur": "گندم"
+        },
+        "icon": "🌾"
+      },
+      {
+        "name": {
+          "en": "Potato",
+          "ur": "آلو"
+        },
+        "icon": "🌱"
+      }
+    ],
+    "application": {
+      "en": "Apply as a foliar spray or through irrigation as recommended. Complete foliage coverage is essential for maximum efficacy. Avoid spraying during the midday heat.",
+      "ur": "تجویز کردہ خوراک کے مطابق پتوں پر اسپرے کریں یا آبپاشی کے ساتھ فلڈ کریں۔ زیادہ گرمی کے دوران اسپرے کرنے سے گریز کریں۔"
+    },
+    "specs": {
+      "type": {
+        "en": "Seed Treatment",
+        "ur": "Seed Treatment"
+      },
+      "storage": {
+        "en": "Store in cool, dry ventilated place away from children.",
+        "ur": "ٹھنڈی اور خشک جگہ پر بچوں کی پہنچ سے دور رکھیں"
+      }
+    },
+    "safety": {
+      "en": [
+        "Avoid inhalation and skin contact.",
+        "Wear protective gloves and mask during spray.",
+        "Wash hands thoroughly after use."
+      ],
+      "ur": [
+        "دوا کو سونگھنے اور جلد پر گرنے سے بچائیں۔",
+        "مکسنگ اور سپرے کے دوران دستانے اور ماسک کا استعمال کریں۔",
+        "استعمال کے بعد ہاتھ صابن سے اچھی طرح دھوئیں۔"
+      ]
+    },
+    "price": 365,
+    "oldPrice": 365
+  },
   "conference-gold-fs": {
     "id": "conference-gold-fs",
     "slug": "conference-gold-fs",
@@ -113,26 +272,26 @@ export const PRODUCTS_DATA = {
     "seoDescription": "Buy CONFERENCE GOLD - 20% FS online. Highly effective formula for pest and crop management. Cash on delivery available.",
     "sizes": [
       {
-            "size": "100 ML",
-            "price": 740,
-            "oldPrice": 740,
-            "sku": "VA-CONFERENCE-GOLD-FS-100ML",
-            "weight": "0.1kg",
-            "stockStatus": "In Stock"
+        "size": "100 ML",
+        "price": 740,
+        "oldPrice": 740,
+        "sku": "VA-CONFERENCE_GOLD_FS-100ML",
+        "weight": "0.1kg",
+        "stockStatus": "In Stock"
       },
       {
-            "size": "50 ML",
-            "price": 740,
-            "oldPrice": 399,
-            "sku": "VA-CONFERENCE-GOLD-FS-50ML",
-            "weight": "0.05kg",
-            "stockStatus": "In Stock"
+        "size": "50 ML",
+        "price": 399,
+        "oldPrice": 399,
+        "sku": "VA-CONFERENCE_GOLD_FS-50ML",
+        "weight": "0.05kg",
+        "stockStatus": "In Stock"
       }
-],
+    ],
     "formulation": "METALAXYL+FLUDIOXONIL+THIA",
     "activeIngredient": "METALAXYL+FLUDIOXONIL+THIA",
-    "packaging": "50 ML",
-    "productCode": "VA-CONFERENCE-GOLD-FS-50ML",
+    "packaging": "100 ML, 50 ML",
+    "productCode": "VA-CONFERENCE_GOLD_FS-100ML",
     "status": {
       "en": "Premium Quality Compound",
       "ur": "اعلیٰ معیار کا مرکب"
@@ -231,14 +390,15 @@ export const PRODUCTS_DATA = {
         "مکسنگ اور سپرے کے دوران دستانے اور ماسک کا استعمال کریں۔",
         "استعمال کے بعد ہاتھ صابن سے اچھی طرح دھوئیں۔"
       ]
-    }
+    },
+    "price": 740,
+    "oldPrice": 740
   },
-
   "easy-grow-sc": {
     "id": "easy-grow-sc",
     "slug": "easy-grow-sc",
     "name": {
-      "en": "EASY GROW - 20%SC",
+      "en": "EAZY GROW - 20%SC",
       "ur": "ایزی گرو"
     },
     "genericName": {
@@ -257,30 +417,30 @@ export const PRODUCTS_DATA = {
       "en": "High-efficacy insecticide with CLOTHIANIDIN offering rapid knockdown and long residual control against sucking and chewing pests.",
       "ur": "فصلوں کو چوسنے اور چبانے والے کیڑوں (سفید مکھی، تھرپس، چست تیلا اور سنڈیوں) سے محفوظ رکھنے کے لیے CLOTHIANIDIN کا جدید فارمولا۔"
     },
-    "seoTitle": "EASY GROW - 20%SC | Premium Agrochemical | Vital Agro",
-    "seoDescription": "Buy EASY GROW - 20%SC online. Highly effective formula for pest and crop management. Cash on delivery available.",
+    "seoTitle": "EAZY GROW - 20%SC | Premium Agrochemical | Vital Agro",
+    "seoDescription": "Buy EAZY GROW - 20%SC online. Highly effective formula for pest and crop management. Cash on delivery available.",
     "sizes": [
       {
-            "size": "200 ML",
-            "price": 370,
-            "oldPrice": 370,
-            "sku": "VA-EASY-GROW-SC-200ML",
-            "weight": "0.2kg",
-            "stockStatus": "In Stock"
+        "size": "200 ML",
+        "price": 370,
+        "oldPrice": 370,
+        "sku": "VA-EASY_GROW_SC-200ML",
+        "weight": "0.2kg",
+        "stockStatus": "In Stock"
       },
       {
-            "size": "100 ML",
-            "price": 245,
-            "oldPrice": 245,
-            "sku": "VA-EASY-GROW-SC-100ML",
-            "weight": "0.1kg",
-            "stockStatus": "In Stock"
+        "size": "100 ML",
+        "price": 220,
+        "oldPrice": 220,
+        "sku": "VA-EASY_GROW_SC-100ML",
+        "weight": "0.1kg",
+        "stockStatus": "In Stock"
       }
-],
+    ],
     "formulation": "CLOTHIANIDIN",
     "activeIngredient": "CLOTHIANIDIN",
     "packaging": "200 ML, 100 ML",
-    "productCode": "VA-EASY-GROW-SC-200ML",
+    "productCode": "VA-EASY_GROW_SC-200ML",
     "status": {
       "en": "Premium Quality Compound",
       "ur": "اعلیٰ معیار کا مرکب"
@@ -386,9 +546,10 @@ export const PRODUCTS_DATA = {
         "مکسنگ اور سپرے کے دوران دستانے اور ماسک کا استعمال کریں۔",
         "استعمال کے بعد ہاتھ صابن سے اچھی طرح دھوئیں۔"
       ]
-    }
+    },
+    "price": 370,
+    "oldPrice": 370
   },
-
   "green-vision": {
     "id": "green-vision",
     "slug": "green-vision",
@@ -417,25 +578,25 @@ export const PRODUCTS_DATA = {
     "sizes": [
       {
         "size": "250 GM",
-        "price": 499,
-        "oldPrice": 499,
-        "stockStatus": "In Stock",
-        "sku": "VA-GREEN-VISION-250GM",
-        "weight": "0.25kg"
+        "price": 1140,
+        "oldPrice": 1140,
+        "sku": "VA-GREEN_VISION-250GM",
+        "weight": "0.25kg",
+        "stockStatus": "In Stock"
       },
       {
         "size": "1 KG",
-        "price": 4099,
-        "oldPrice": 4099,
-        "stockStatus": "In Stock",
-        "sku": "VA-GREEN-VISION-1KG",
-        "weight": "0.001kg"
+        "price": 4070,
+        "oldPrice": 4070,
+        "sku": "VA-GREEN_VISION-1KG",
+        "weight": "1.0kg",
+        "stockStatus": "In Stock"
       }
     ],
     "formulation": "METRIBUZIN 70%WP",
     "activeIngredient": "METRIBUZIN 70%WP",
     "packaging": "250 GM, 1 KG",
-    "productCode": "VA-GREEN-VISION-250GM",
+    "productCode": "VA-GREEN_VISION-250GM",
     "status": {
       "en": "Premium Quality Compound",
       "ur": "اعلیٰ معیار کا مرکب"
@@ -541,9 +702,10 @@ export const PRODUCTS_DATA = {
         "مکسنگ اور سپرے کے دوران دستانے اور ماسک کا استعمال کریں۔",
         "استعمال کے بعد ہاتھ صابن سے اچھی طرح دھوئیں۔"
       ]
-    }
+    },
+    "price": 1140,
+    "oldPrice": 1140
   },
-
   "moorqa": {
     "id": "moorqa",
     "slug": "moorqa",
@@ -571,26 +733,34 @@ export const PRODUCTS_DATA = {
     "seoDescription": "Buy MOORQA - 72% WP online. Highly effective formula for pest and crop management. Cash on delivery available.",
     "sizes": [
       {
+        "size": "250 GM",
+        "price": 430,
+        "oldPrice": 430,
+        "sku": "VA-MOORQA-250GM",
+        "weight": "0.25kg",
+        "stockStatus": "In Stock"
+      },
+      {
         "size": "1 KG",
-        "price": 1799,
-        "oldPrice": 1799,
-        "stockStatus": "In Stock",
+        "price": 1780,
+        "oldPrice": 1780,
         "sku": "VA-MOORQA-1KG",
-        "weight": "0.001kg"
+        "weight": "1.0kg",
+        "stockStatus": "In Stock"
       },
       {
         "size": "25 KG",
-        "price": 0,
-        "oldPrice": 0,
-        "stockStatus": "In Stock",
+        "price": 42200,
+        "oldPrice": 42200,
         "sku": "VA-MOORQA-25KG",
-        "weight": "0.025kg"
+        "weight": "25.0kg",
+        "stockStatus": "In Stock"
       }
     ],
     "formulation": "Metalaxyl + Mancozeb",
     "activeIngredient": "Metalaxyl + Mancozeb",
-    "packaging": "1 KG, 25 KG",
-    "productCode": "VA-MOORQA-1KG",
+    "packaging": "250 GM, 1 KG, 25 KG",
+    "productCode": "VA-MOORQA-250GM",
     "status": {
       "en": "Premium Quality Compound",
       "ur": "اعلیٰ معیار کا مرکب"
@@ -689,9 +859,10 @@ export const PRODUCTS_DATA = {
         "مکسنگ اور سپرے کے دوران دستانے اور ماسک کا استعمال کریں۔",
         "استعمال کے بعد ہاتھ صابن سے اچھی طرح دھوئیں۔"
       ]
-    }
+    },
+    "price": 430,
+    "oldPrice": 430
   },
-
   "moorqa-super": {
     "id": "moorqa-super",
     "slug": "moorqa-super",
@@ -720,25 +891,25 @@ export const PRODUCTS_DATA = {
     "sizes": [
       {
         "size": "1 KG",
-        "price": 1499,
-        "oldPrice": 1499,
-        "stockStatus": "In Stock",
-        "sku": "VA-MOORQA-SUPER-1KG",
-        "weight": "0.001kg"
+        "price": 1480,
+        "oldPrice": 1480,
+        "sku": "VA-MOORQA_SUPER-1KG",
+        "weight": "1.0kg",
+        "stockStatus": "In Stock"
       },
       {
         "size": "25 KG",
-        "price": 0,
-        "oldPrice": 0,
-        "stockStatus": "In Stock",
-        "sku": "VA-MOORQA-SUPER-25KG",
-        "weight": "0.025kg"
+        "price": 36000,
+        "oldPrice": 36000,
+        "sku": "VA-MOORQA_SUPER-25KG",
+        "weight": "25.0kg",
+        "stockStatus": "In Stock"
       }
     ],
     "formulation": "DIMETHMORPH + MANCOZEB",
     "activeIngredient": "DIMETHMORPH + MANCOZEB",
     "packaging": "1 KG, 25 KG",
-    "productCode": "VA-MOORQA-SUPER-1KG",
+    "productCode": "VA-MOORQA_SUPER-1KG",
     "status": {
       "en": "Premium Quality Compound",
       "ur": "اعلیٰ معیار کا مرکب"
@@ -851,9 +1022,10 @@ export const PRODUCTS_DATA = {
         "مکسنگ اور سپرے کے دوران دستانے اور ماسک کا استعمال کریں۔",
         "استعمال کے بعد ہاتھ صابن سے اچھی طرح دھوئیں۔"
       ]
-    }
+    },
+    "price": 1480,
+    "oldPrice": 1480
   },
-
   "collab": {
     "id": "collab",
     "slug": "collab",
@@ -881,22 +1053,14 @@ export const PRODUCTS_DATA = {
     "seoDescription": "Buy COLLAB - 47% WP online. Highly effective formula for pest and crop management. Cash on delivery available.",
     "sizes": [
       {
-            "size": "250 GM",
-            "price": 850,
-            "oldPrice": 850,
-            "sku": "VA-COLLAB-250GM",
-            "weight": "0.25kg",
-            "stockStatus": "In Stock"
-      },
-      {
-            "size": "25 KG",
-            "price": 850,
-            "oldPrice": 71000,
-            "sku": "VA-COLLAB-25KG",
-            "weight": "25kg",
-            "stockStatus": "In Stock"
+        "size": "250 GM",
+        "price": 799,
+        "oldPrice": 799,
+        "sku": "VA-COLLAB-250GM",
+        "weight": "0.25kg",
+        "stockStatus": "In Stock"
       }
-],
+    ],
     "formulation": "Kasugamycin+Coperoxy",
     "activeIngredient": "Kasugamycin+Coperoxy",
     "packaging": "250 GM",
@@ -1006,9 +1170,10 @@ export const PRODUCTS_DATA = {
         "مکسنگ اور سپرے کے دوران دستانے اور ماسک کا استعمال کریں۔",
         "استعمال کے بعد ہاتھ صابن سے اچھی طرح دھوئیں۔"
       ]
-    }
+    },
+    "price": 799,
+    "oldPrice": 799
   },
-
   "clay": {
     "id": "clay",
     "slug": "clay",
@@ -1036,17 +1201,17 @@ export const PRODUCTS_DATA = {
     "seoDescription": "Buy CLAY - 56% SC online. Highly effective formula for pest and crop management. Cash on delivery available.",
     "sizes": [
       {
-            "size": "250 ML",
-            "price": 730,
-            "oldPrice": 730,
-            "sku": "VA-CLAY-250ML",
-            "weight": "0.25kg",
-            "stockStatus": "In Stock"
+        "size": "250 ML",
+        "price": 700,
+        "oldPrice": 700,
+        "sku": "VA-CLAY-250ML",
+        "weight": "0.25kg",
+        "stockStatus": "In Stock"
       }
-],
+    ],
     "formulation": "Azoxystrobin + Chlorothalonil",
     "activeIngredient": "Azoxystrobin + Chlorothalonil",
-    "packaging": "250 ML, 1 KG",
+    "packaging": "250 ML",
     "productCode": "VA-CLAY-250ML",
     "status": {
       "en": "Premium Quality Compound",
@@ -1160,9 +1325,10 @@ export const PRODUCTS_DATA = {
         "مکسنگ اور سپرے کے دوران دستانے اور ماسک کا استعمال کریں۔",
         "استعمال کے بعد ہاتھ صابن سے اچھی طرح دھوئیں۔"
       ]
-    }
+    },
+    "price": 700,
+    "oldPrice": 700
   },
-
   "farbasin": {
     "id": "farbasin",
     "slug": "farbasin",
@@ -1190,34 +1356,34 @@ export const PRODUCTS_DATA = {
     "seoDescription": "Buy FARBASIN - 80% WDG online. Highly effective formula for pest and crop management. Cash on delivery available.",
     "sizes": [
       {
-            "size": "1 KG",
-            "price": 699,
-            "oldPrice": 699,
-            "sku": "VA-FARBASIN-1KG",
-            "weight": "1kg",
-            "stockStatus": "In Stock"
+        "size": "1 KG",
+        "price": 499,
+        "oldPrice": 499,
+        "sku": "VA-FARBASIN-1KG",
+        "weight": "1.0kg",
+        "stockStatus": "In Stock"
       },
       {
-            "size": "2 KG",
-            "price": 699,
-            "oldPrice": 1350,
-            "sku": "VA-FARBASIN-2KG",
-            "weight": "2kg",
-            "stockStatus": "In Stock"
+        "size": "2 KG",
+        "price": 899,
+        "oldPrice": 899,
+        "sku": "VA-FARBASIN-2KG",
+        "weight": "2.0kg",
+        "stockStatus": "In Stock"
       },
       {
-            "size": "25 KG",
-            "price": 699,
-            "oldPrice": 15399,
-            "sku": "VA-FARBASIN-25KG",
-            "weight": "25kg",
-            "stockStatus": "In Stock"
+        "size": "25 KG",
+        "price": 10550,
+        "oldPrice": 10550,
+        "sku": "VA-FARBASIN-25KG",
+        "weight": "25.0kg",
+        "stockStatus": "In Stock"
       }
-],
+    ],
     "formulation": "Sulphur",
     "activeIngredient": "Sulphur",
-    "packaging": "2 KG, 25 KG",
-    "productCode": "VA-FARBASIN-2KG",
+    "packaging": "1 KG, 2 KG, 25 KG",
+    "productCode": "VA-FARBASIN-1KG",
     "status": {
       "en": "Premium Quality Compound",
       "ur": "اعلیٰ معیار کا مرکب"
@@ -1330,9 +1496,102 @@ export const PRODUCTS_DATA = {
         "مکسنگ اور سپرے کے دوران دستانے اور ماسک کا استعمال کریں۔",
         "استعمال کے بعد ہاتھ صابن سے اچھی طرح دھوئیں۔"
       ]
-    }
+    },
+    "price": 499,
+    "oldPrice": 499
   },
-
+  "jidaar-plus": {
+    "imageUrl": "/products/jidaar-plus.webp",
+    "pngUrl": "/products/jidaar-plus.webp",
+    "rating": 4.8,
+    "importedFormulaBadge": true,
+    "premiumProductBadge": true,
+    "researchBasedBadge": true,
+    "seoTitle": "JIDAAR PLUS - 50% WDG | Premium Agrochemical | Vital Agro",
+    "seoDescription": "Buy JIDAAR PLUS - 50% WDG online. Highly effective formula for pest and crop management. Cash on delivery available.",
+    "packaging": "80 GM",
+    "productCode": "VA-JIDAAR_PLUS-80GM",
+    "status": {
+      "en": "Premium Quality Compound",
+      "ur": "اعلیٰ معیار کا مرکب"
+    },
+    "description": {
+      "en": "Premium systemic protection for controlling sucking pests and fungal root incursions. Premium agrochemical compound designed under strict international quality controls to maximize your crop yields and ensure complete plant protection.",
+      "ur": "سسٹمک پروٹیکشن جو پودے کی جڑوں کو فنگس اور کیڑوں سے محفوظ رکھتی ہے۔ پودے کی بہترین نشوونما اور تحفظ کے لیے عالمی معیار کے مطابق تیار کیا گیا مرکب جو فصل کی پیداوار بڑھاتا ہے۔"
+    },
+    "features": {
+      "en": [
+        "Ensures robust crop vigor and health",
+        "Increases crop survival and yield capacity",
+        "Strengthens defense mechanism of the plant"
+      ],
+      "ur": [
+        "فصل کی بہترین نشوونما اور صحت کو یقینی بناتا ہے",
+        "پیداواری صلاحیت اور قوت مدافعت کو بڑھاتا ہے",
+        "پودے کے دفاعی نظام کو مضبوط کرتا ہے"
+      ]
+    },
+    "crops": [
+      {
+        "name": {
+          "en": "Cotton",
+          "ur": "کپاس"
+        },
+        "icon": "🌱"
+      },
+      {
+        "name": {
+          "en": "Rice",
+          "ur": "دھان"
+        },
+        "icon": "🌾"
+      },
+      {
+        "name": {
+          "en": "Maize",
+          "ur": "مکئی"
+        },
+        "icon": "🌽"
+      },
+      {
+        "name": {
+          "en": "Wheat",
+          "ur": "گندم"
+        },
+        "icon": "🌾"
+      }
+    ],
+    "name": {
+      "en": "JIDAAR PLUS - 50% WDG",
+      "ur": "جدار پلس"
+    },
+    "genericName": {
+      "en": "CLOTHIANIDIN",
+      "ur": "CLOTHIANIDIN"
+    },
+    "category": "fungicide",
+    "tagline": "Advanced Systemic Fungicide Protection",
+    "activeIngredient": "CLOTHIANIDIN",
+    "formulation": "CLOTHIANIDIN",
+    "shortDesc": {
+      "en": "Premium systemic protection for controlling sucking pests and fungal root incursions.",
+      "ur": "سسٹمک پروٹیکشن جو پودے کی جڑوں کو فنگس اور کیڑوں سے محفوظ رکھتی ہے۔"
+    },
+    "id": "jidaar-plus",
+    "slug": "jidaar-plus",
+    "sizes": [
+      {
+        "size": "80 GM",
+        "price": 510,
+        "oldPrice": 510,
+        "sku": "VA-JIDAAR_PLUS-80GM",
+        "weight": "0.08kg",
+        "stockStatus": "In Stock"
+      }
+    ],
+    "price": 510,
+    "oldPrice": 510
+  },
   "tussle-extra": {
     "id": "tussle-extra",
     "slug": "tussle-extra",
@@ -1360,18 +1619,18 @@ export const PRODUCTS_DATA = {
     "seoDescription": "Buy TUSSLE EXTRA - 45%WP online. Highly effective formula for pest and crop management. Cash on delivery available.",
     "sizes": [
       {
-            "size": "75 GM",
-            "price": 570,
-            "oldPrice": 570,
-            "sku": "VA-TUSSLE-EXTRA-75GM",
-            "weight": "0.075kg",
-            "stockStatus": "In Stock"
+        "size": "75 GM",
+        "price": 550,
+        "oldPrice": 550,
+        "sku": "VA-TUSSLE_EXTRA-75GM",
+        "weight": "0.075kg",
+        "stockStatus": "In Stock"
       }
-],
+    ],
     "formulation": "PYRACLOSTROBIN + TEBUCONAZOLE",
     "activeIngredient": "PYRACLOSTROBIN + TEBUCONAZOLE",
     "packaging": "75 GM",
-    "productCode": "VA-TUSSLE-EXTRA-75GM",
+    "productCode": "VA-TUSSLE_EXTRA-75GM",
     "status": {
       "en": "Premium Quality Compound",
       "ur": "اعلیٰ معیار کا مرکب"
@@ -1484,9 +1743,10 @@ export const PRODUCTS_DATA = {
         "مکسنگ اور سپرے کے دوران دستانے اور ماسک کا استعمال کریں۔",
         "استعمال کے بعد ہاتھ صابن سے اچھی طرح دھوئیں۔"
       ]
-    }
+    },
+    "price": 550,
+    "oldPrice": 550
   },
-
   "solid-super": {
     "id": "solid-super",
     "slug": "solid-super",
@@ -1514,18 +1774,18 @@ export const PRODUCTS_DATA = {
     "seoDescription": "Buy SOLID SUPER - 50% SC online. Highly effective formula for pest and crop management. Cash on delivery available.",
     "sizes": [
       {
-            "size": "100 ML",
-            "price": 515,
-            "oldPrice": 515,
-            "sku": "VA-SOLID-SUPER-100ML",
-            "weight": "0.1kg",
-            "stockStatus": "In Stock"
+        "size": "100 ML",
+        "price": 495,
+        "oldPrice": 495,
+        "sku": "VA-SOLID_SUPER-100ML",
+        "weight": "0.1kg",
+        "stockStatus": "In Stock"
       }
-],
+    ],
     "formulation": "AZOXYSTROBIN + TEBUCONAZOL",
     "activeIngredient": "AZOXYSTROBIN + TEBUCONAZOL",
     "packaging": "100 ML",
-    "productCode": "VA-SOLID-SUPER-100ML",
+    "productCode": "VA-SOLID_SUPER-100ML",
     "status": {
       "en": "Premium Quality Compound",
       "ur": "اعلیٰ معیار کا مرکب"
@@ -1638,9 +1898,10 @@ export const PRODUCTS_DATA = {
         "مکسنگ اور سپرے کے دوران دستانے اور ماسک کا استعمال کریں۔",
         "استعمال کے بعد ہاتھ صابن سے اچھی طرح دھوئیں۔"
       ]
-    }
+    },
+    "price": 495,
+    "oldPrice": 495
   },
-
   "solid-32": {
     "id": "solid-32",
     "slug": "solid-32",
@@ -1668,18 +1929,18 @@ export const PRODUCTS_DATA = {
     "seoDescription": "Buy SOLID 32.5%SC online. Highly effective formula for pest and crop management. Cash on delivery available.",
     "sizes": [
       {
-            "size": "200 ML",
-            "price": 699,
-            "oldPrice": 699,
-            "sku": "VA-SOLID-32-200ML",
-            "weight": "0.2kg",
-            "stockStatus": "In Stock"
+        "size": "200 ML",
+        "price": 700,
+        "oldPrice": 700,
+        "sku": "VA-SOLID_32-200ML",
+        "weight": "0.2kg",
+        "stockStatus": "In Stock"
       }
-],
+    ],
     "formulation": "AZOXY+DIFENACONAZOL 32.5%SC",
     "activeIngredient": "AZOXY+DIFENACONAZOL 32.5%SC",
     "packaging": "200 ML",
-    "productCode": "VA-SOLID-32-200ML",
+    "productCode": "VA-SOLID_32-200ML",
     "status": {
       "en": "Premium Quality Compound",
       "ur": "اعلیٰ معیار کا مرکب"
@@ -1785,9 +2046,10 @@ export const PRODUCTS_DATA = {
         "مکسنگ اور سپرے کے دوران دستانے اور ماسک کا استعمال کریں۔",
         "استعمال کے بعد ہاتھ صابن سے اچھی طرح دھوئیں۔"
       ]
-    }
+    },
+    "price": 700,
+    "oldPrice": 700
   },
-
   "tussle-70": {
     "id": "tussle-70",
     "slug": "tussle-70",
@@ -1815,26 +2077,26 @@ export const PRODUCTS_DATA = {
     "seoDescription": "Buy TUSSLE - 70% WP online. Highly effective formula for pest and crop management. Cash on delivery available.",
     "sizes": [
       {
-            "size": "400 GM",
-            "price": 870,
-            "oldPrice": 870,
-            "sku": "VA-TUSSLE-70-400GM",
-            "weight": "0.4kg",
-            "stockStatus": "In Stock"
+        "size": "400 GM",
+        "price": 835,
+        "oldPrice": 835,
+        "sku": "VA-TUSSLE_70-400GM",
+        "weight": "0.4kg",
+        "stockStatus": "In Stock"
       },
       {
-            "size": "25 KG",
-            "price": 870,
-            "oldPrice": 47000,
-            "sku": "VA-TUSSLE-70-25KG",
-            "weight": "25kg",
-            "stockStatus": "In Stock"
+        "size": "25 KG",
+        "price": 50000,
+        "oldPrice": 50000,
+        "sku": "VA-TUSSLE_70-25KG",
+        "weight": "25.0kg",
+        "stockStatus": "In Stock"
       }
-],
+    ],
     "formulation": "Thiophanate Methyl",
     "activeIngredient": "Thiophanate Methyl",
     "packaging": "400 GM, 25 KG",
-    "productCode": "VA-TUSSLE-70-400GM",
+    "productCode": "VA-TUSSLE_70-400GM",
     "status": {
       "en": "Premium Quality Compound",
       "ur": "اعلیٰ معیار کا مرکب"
@@ -1947,9 +2209,10 @@ export const PRODUCTS_DATA = {
         "مکسنگ اور سپرے کے دوران دستانے اور ماسک کا استعمال کریں۔",
         "استعمال کے بعد ہاتھ صابن سے اچھی طرح دھوئیں۔"
       ]
-    }
+    },
+    "price": 835,
+    "oldPrice": 835
   },
-
   "work-15": {
     "id": "work-15",
     "slug": "work-15",
@@ -1977,18 +2240,18 @@ export const PRODUCTS_DATA = {
     "seoDescription": "Buy WORK - 15%EC online. Highly effective formula for pest and crop management. Cash on delivery available.",
     "sizes": [
       {
-            "size": "500 ML",
-            "price": 1100,
-            "oldPrice": 1100,
-            "sku": "VA-WORK-15-500ML",
-            "weight": "0.5kg",
-            "stockStatus": "In Stock"
+        "size": "500 ML",
+        "price": 1050,
+        "oldPrice": 1050,
+        "sku": "VA-WORK_15-500ML",
+        "weight": "0.5kg",
+        "stockStatus": "In Stock"
       }
-],
+    ],
     "formulation": "Quizalofop-P-Ethyl",
     "activeIngredient": "Quizalofop-P-Ethyl",
     "packaging": "500 ML",
-    "productCode": "VA-WORK-15-500ML",
+    "productCode": "VA-WORK_15-500ML",
     "status": {
       "en": "Premium Quality Compound",
       "ur": "اعلیٰ معیار کا مرکب"
@@ -2080,9 +2343,10 @@ export const PRODUCTS_DATA = {
         "مکسنگ اور سپرے کے دوران دستانے اور ماسک کا استعمال کریں۔",
         "استعمال کے بعد ہاتھ صابن سے اچھی طرح دھوئیں۔"
       ]
-    }
+    },
+    "price": 1050,
+    "oldPrice": 1050
   },
-
   "horizon-90": {
     "id": "horizon-90",
     "slug": "horizon-90",
@@ -2110,18 +2374,18 @@ export const PRODUCTS_DATA = {
     "seoDescription": "Buy HORIZON - 90% EC online. Highly effective formula for pest and crop management. Cash on delivery available.",
     "sizes": [
       {
-            "size": "300ML",
-            "price": 780,
-            "oldPrice": 780,
-            "sku": "VA-HORIZON-90-300ML",
-            "weight": "0.3kg",
-            "stockStatus": "In Stock"
+        "size": "300 ML",
+        "price": 740,
+        "oldPrice": 740,
+        "sku": "VA-HORIZON_90-300ML",
+        "weight": "0.3kg",
+        "stockStatus": "In Stock"
       }
-],
+    ],
     "formulation": "ACETOCHOLE 90% EC",
     "activeIngredient": "ACETOCHOLE 90% EC",
-    "packaging": "300ML",
-    "productCode": "VA-HORIZON-90-300ML",
+    "packaging": "300 ML",
+    "productCode": "VA-HORIZON_90-300ML",
     "status": {
       "en": "Premium Quality Compound",
       "ur": "اعلیٰ معیار کا مرکب"
@@ -2213,9 +2477,10 @@ export const PRODUCTS_DATA = {
         "مکسنگ اور سپرے کے دوران دستانے اور ماسک کا استعمال کریں۔",
         "استعمال کے بعد ہاتھ صابن سے اچھی طرح دھوئیں۔"
       ]
-    }
+    },
+    "price": 740,
+    "oldPrice": 740
   },
-
   "douhaa-335": {
     "id": "douhaa-335",
     "slug": "douhaa-335",
@@ -2243,18 +2508,18 @@ export const PRODUCTS_DATA = {
     "seoDescription": "Buy DOUHAA-3--335 SE online. Highly effective formula for pest and crop management. Cash on delivery available.",
     "sizes": [
       {
-            "size": "750 ML",
-            "price": 1199,
-            "oldPrice": 1199,
-            "sku": "VA-DOUHAA-335-750ML",
-            "weight": "0.75kg",
-            "stockStatus": "In Stock"
+        "size": "750 ML",
+        "price": 1240,
+        "oldPrice": 1240,
+        "sku": "VA-DOUHAA_335-750ML",
+        "weight": "0.75kg",
+        "stockStatus": "In Stock"
       }
-],
+    ],
     "formulation": "ATRAZINE +MESOTRINE+PROPISOCHALOR 335 SE",
     "activeIngredient": "ATRAZINE +MESOTRINE+PROPISOCHALOR 335 SE",
     "packaging": "750 ML",
-    "productCode": "VA-DOUHAA-335-750ML",
+    "productCode": "VA-DOUHAA_335-750ML",
     "status": {
       "en": "Premium Quality Compound",
       "ur": "اعلیٰ معیار کا مرکب"
@@ -2332,9 +2597,10 @@ export const PRODUCTS_DATA = {
         "مکسنگ اور سپرے کے دوران دستانے اور ماسک کا استعمال کریں۔",
         "استعمال کے بعد ہاتھ صابن سے اچھی طرح دھوئیں۔"
       ]
-    }
+    },
+    "price": 1240,
+    "oldPrice": 1240
   },
-
   "douha-plus": {
     "id": "douha-plus",
     "slug": "douha-plus",
@@ -2362,18 +2628,18 @@ export const PRODUCTS_DATA = {
     "seoDescription": "Buy DOUHA PLUS - 30% SC online. Highly effective formula for pest and crop management. Cash on delivery available.",
     "sizes": [
       {
-            "size": "35 ML",
-            "price": 999,
-            "oldPrice": 999,
-            "sku": "VA-DOUHA-PLUS-35ML",
-            "weight": "0.035kg",
-            "stockStatus": "In Stock"
+        "size": "35 ML",
+        "price": 1190,
+        "oldPrice": 1190,
+        "sku": "VA-DOUHA_PLUS-35ML",
+        "weight": "0.035kg",
+        "stockStatus": "In Stock"
       }
-],
+    ],
     "formulation": "Topramezone 30%",
     "activeIngredient": "Topramezone 30%",
     "packaging": "35 ML",
-    "productCode": "VA-DOUHA-PLUS-35ML",
+    "productCode": "VA-DOUHA_PLUS-35ML",
     "status": {
       "en": "Premium Quality Compound",
       "ur": "اعلیٰ معیار کا مرکب"
@@ -2479,9 +2745,10 @@ export const PRODUCTS_DATA = {
         "مکسنگ اور سپرے کے دوران دستانے اور ماسک کا استعمال کریں۔",
         "استعمال کے بعد ہاتھ صابن سے اچھی طرح دھوئیں۔"
       ]
-    }
+    },
+    "price": 1190,
+    "oldPrice": 1190
   },
-
   "faalq-extra": {
     "id": "faalq-extra",
     "slug": "faalq-extra",
@@ -2509,18 +2776,18 @@ export const PRODUCTS_DATA = {
     "seoDescription": "Buy FAALQ EXTRA - 30% WP online. Highly effective formula for pest and crop management. Cash on delivery available.",
     "sizes": [
       {
-            "size": "100 GM",
-            "price": 740,
-            "oldPrice": 740,
-            "sku": "VA-FAALQ-EXTRA-100GM",
-            "weight": "0.1kg",
-            "stockStatus": "In Stock"
+        "size": "100 GM",
+        "price": 710,
+        "oldPrice": 710,
+        "sku": "VA-FAALQ_EXTRA-100GM",
+        "weight": "0.1kg",
+        "stockStatus": "In Stock"
       }
-],
+    ],
     "formulation": "Pyrazosulf 10% + Bispy 20% wp",
     "activeIngredient": "Pyrazosulf 10% + Bispy 20% wp",
     "packaging": "100 GM",
-    "productCode": "VA-FAALQ-EXTRA-100GM",
+    "productCode": "VA-FAALQ_EXTRA-100GM",
     "status": {
       "en": "Premium Quality Compound",
       "ur": "اعلیٰ معیار کا مرکب"
@@ -2626,9 +2893,10 @@ export const PRODUCTS_DATA = {
         "مکسنگ اور سپرے کے دوران دستانے اور ماسک کا استعمال کریں۔",
         "استعمال کے بعد ہاتھ صابن سے اچھی طرح دھوئیں۔"
       ]
-    }
+    },
+    "price": 710,
+    "oldPrice": 710
   },
-
   "faalq-30": {
     "id": "faalq-30",
     "slug": "faalq-30",
@@ -2656,18 +2924,18 @@ export const PRODUCTS_DATA = {
     "seoDescription": "Buy FAALQ - 30% WP online. Highly effective formula for pest and crop management. Cash on delivery available.",
     "sizes": [
       {
-            "size": "100 GM",
-            "price": 699,
-            "oldPrice": 699,
-            "sku": "VA-FAALQ-30-100GM",
-            "weight": "0.1kg",
-            "stockStatus": "In Stock"
+        "size": "100 GM",
+        "price": 670,
+        "oldPrice": 670,
+        "sku": "VA-FAALQ_30-100GM",
+        "weight": "0.1kg",
+        "stockStatus": "In Stock"
       }
-],
+    ],
     "formulation": "Bensulfuron-M + Bispyribac Sodium 30%WP",
     "activeIngredient": "Bensulfuron-M + Bispyribac Sodium 30%WP",
     "packaging": "100 GM",
-    "productCode": "VA-FAALQ-30-100GM",
+    "productCode": "VA-FAALQ_30-100GM",
     "status": {
       "en": "Premium Quality Compound",
       "ur": "اعلیٰ معیار کا مرکب"
@@ -2738,9 +3006,10 @@ export const PRODUCTS_DATA = {
         "مکسنگ اور سپرے کے دوران دستانے اور ماسک کا استعمال کریں۔",
         "استعمال کے بعد ہاتھ صابن سے اچھی طرح دھوئیں۔"
       ]
-    }
+    },
+    "price": 670,
+    "oldPrice": 670
   },
-
   "saar": {
     "id": "saar",
     "slug": "saar",
@@ -2768,14 +3037,14 @@ export const PRODUCTS_DATA = {
     "seoDescription": "Buy SAAR 16% KPP online. Highly effective formula for pest and crop management. Cash on delivery available.",
     "sizes": [
       {
-            "size": "350 GM",
-            "price": 780,
-            "oldPrice": 780,
-            "sku": "VA-SAAR-350GM",
-            "weight": "0.35kg",
-            "stockStatus": "In Stock"
+        "size": "350 GM",
+        "price": 750,
+        "oldPrice": 750,
+        "sku": "VA-SAAR-350GM",
+        "weight": "0.35kg",
+        "stockStatus": "In Stock"
       }
-],
+    ],
     "formulation": "Bensulfuron+Acetoclor",
     "activeIngredient": "Bensulfuron+Acetoclor",
     "packaging": "350 GM",
@@ -2850,9 +3119,10 @@ export const PRODUCTS_DATA = {
         "مکسنگ اور سپرے کے دوران دستانے اور ماسک کا استعمال کریں۔",
         "استعمال کے بعد ہاتھ صابن سے اچھی طرح دھوئیں۔"
       ]
-    }
+    },
+    "price": 750,
+    "oldPrice": 750
   },
-
   "tokyo-6": {
     "id": "tokyo-6",
     "slug": "tokyo-6",
@@ -2880,18 +3150,18 @@ export const PRODUCTS_DATA = {
     "seoDescription": "Buy TOKYO 6%WG online. Highly effective formula for pest and crop management. Cash on delivery available.",
     "sizes": [
       {
-            "size": "100 GM",
-            "price": 0,
-            "oldPrice": 0,
-            "sku": "VA-TOKYO-6-100GM",
-            "weight": "0.1kg",
-            "stockStatus": "In Stock"
+        "size": "100 GM",
+        "price": 999,
+        "oldPrice": 999,
+        "sku": "VA-TOKYO_6-100GM",
+        "weight": "0.1kg",
+        "stockStatus": "In Stock"
       }
-],
+    ],
     "formulation": "Lodosulfuron+Methyl+Mesosulfuron",
     "activeIngredient": "Lodosulfuron+Methyl+Mesosulfuron",
     "packaging": "100 GM",
-    "productCode": "VA-TOKYO-6-100GM",
+    "productCode": "VA-TOKYO_6-100GM",
     "status": {
       "en": "Premium Quality Compound",
       "ur": "اعلیٰ معیار کا مرکب"
@@ -2962,142 +3232,10 @@ export const PRODUCTS_DATA = {
         "مکسنگ اور سپرے کے دوران دستانے اور ماسک کا استعمال کریں۔",
         "استعمال کے بعد ہاتھ صابن سے اچھی طرح دھوئیں۔"
       ]
-    }
+    },
+    "price": 999,
+    "oldPrice": 999
   },
-
-  "work-extra": {
-    "id": "work-extra",
-    "slug": "work-extra",
-    "name": {
-      "en": "WORK EXTRA - 60% WG",
-      "ur": "ورک ایکسٹرا"
-    },
-    "genericName": {
-      "en": "ETHAKSISULFURON",
-      "ur": "ETHAKSISULFURON"
-    },
-    "category": "herbicide",
-    "tagline": "ETHAKSISULFURON — Elite Weed Control Formula",
-    "imageUrl": "/products/work-extra.png",
-    "pngUrl": "/products/work-extra.png",
-    "rating": 4.8,
-    "importedFormulaBadge": true,
-    "premiumProductBadge": true,
-    "researchBasedBadge": true,
-    "shortDesc": {
-      "en": "Selective post-emergence/pre-emergence herbicide with ETHAKSISULFURON for control of annual grasses and broadleaf weeds. High crop safety.",
-      "ur": "جڑی بوٹیوں کی تلفی کے لیے ETHAKSISULFURON کا ایک بہترین اور منتخب فارمولا جو فصل کو نقصان پہنچائے بغیر جڑی بوٹیوں کا جڑ سے خاتمہ کرتا ہے۔"
-    },
-    "seoTitle": "WORK EXTRA - 60% WG | Premium Agrochemical | Vital Agro",
-    "seoDescription": "Buy WORK EXTRA - 60% WG online. Highly effective formula for pest and crop management. Cash on delivery available.",
-    "sizes": [
-      {
-        "size": "20 GM",
-        "price": 0,
-        "oldPrice": 0,
-        "stockStatus": "In Stock",
-        "sku": "VA-WORK-EXTRA-20GM",
-        "weight": "0.02kg"
-      }
-    ],
-    "formulation": "ETHAKSISULFURON",
-    "activeIngredient": "ETHAKSISULFURON",
-    "packaging": "20 GM",
-    "productCode": "VA-WORK-EXTRA-20GM",
-    "status": {
-      "en": "Premium Quality Compound",
-      "ur": "اعلیٰ معیار کا مرکب"
-    },
-    "description": {
-      "en": "Selective post-emergence/pre-emergence herbicide with ETHAKSISULFURON for control of annual grasses and broadleaf weeds. High crop safety. It is a highly specialized chemical compound designed under strict international quality controls to maximize your crop yields.",
-      "ur": "جڑی بوٹیوں کی تلفی کے لیے ETHAKSISULFURON کا ایک بہترین اور منتخب فارمولا جو فصل کو نقصان پہنچائے بغیر جڑی بوٹیوں کا جڑ سے خاتمہ کرتا ہے۔ یہ پودے کی بہترین نشوونما اور تحفظ کے لیے عالمی معیار کے مطابق تیار کیا گیا مرکب ہے۔"
-    },
-    "features": {
-      "en": [
-        "Controls wide spectrum of grasses and broadleaf weeds",
-        "Highly selective with excellent crop tolerance",
-        "Fast action on target weed species",
-        "Long residual control in soil"
-      ],
-      "ur": [
-        "چوڑے اور نوکیلے پتے والی جڑی بوٹیوں کا مکمل خاتمہ کرتا ہے",
-        "فصل کے لیے بالکل محفوظ اور بے ضرر ہے",
-        "سپرے کے چند دنوں کے اندر اثر شروع ہو جاتا ہے",
-        "جڑی بوٹیوں کو دوبارہ اگنے سے روکتا ہے"
-      ]
-    },
-    "benefits": {
-      "en": [
-        "Controls wide spectrum of grasses and broadleaf weeds",
-        "Highly selective with excellent crop tolerance",
-        "Fast action on target weed species",
-        "Long residual control in soil"
-      ],
-      "ur": [
-        "چوڑے اور نوکیلے پتے والی جڑی بوٹیوں کا مکمل خاتمہ کرتا ہے",
-        "فصل کے لیے بالکل محفوظ اور بے ضرر ہے",
-        "سپرے کے چند دنوں کے اندر اثر شروع ہو جاتا ہے",
-        "جڑی بوٹیوں کو دوبارہ اگنے سے روکتا ہے"
-      ]
-    },
-    "crops": [
-      {
-        "name": {
-          "en": "Cotton",
-          "ur": "کپاس"
-        },
-        "icon": "🌱"
-      },
-      {
-        "name": {
-          "en": "Sugarcane",
-          "ur": "کماد"
-        },
-        "icon": "🌱"
-      },
-      {
-        "name": {
-          "en": "Soybean",
-          "ur": "سویا بین"
-        },
-        "icon": "🌱"
-      },
-      {
-        "name": {
-          "en": "Vegetables",
-          "ur": "سبزیاں"
-        },
-        "icon": "🥦"
-      }
-    ],
-    "application": {
-      "en": "Apply as a foliar spray or through irrigation as recommended. Complete foliage coverage is essential for maximum efficacy. Avoid spraying during the midday heat.",
-      "ur": "تجویز کردہ خوراک کے مطابق پتوں پر اسپرے کریں یا آبپاشی کے ساتھ فلڈ کریں۔ زیادہ گرمی کے دوران اسپرے کرنے سے گریز کریں۔"
-    },
-    "specs": {
-      "type": {
-        "en": "Herbicide",
-        "ur": "Herbicide"
-      },
-      "storage": {
-        "en": "Store in cool, dry ventilated place away from children.",
-        "ur": "ٹھنڈی اور خشک جگہ پر بچوں کی پہنچ سے دور رکھیں"
-      }
-    },
-    "safety": {
-      "en": [
-        "Avoid inhalation and skin contact.",
-        "Wear protective gloves and mask during spray.",
-        "Wash hands thoroughly after use."
-      ],
-      "ur": [
-        "دوا کو سونگھنے اور جلد پر گرنے سے بچائیں۔",
-        "مکسنگ اور سپرے کے دوران دستانے اور ماسک کا استعمال کریں۔",
-        "استعمال کے بعد ہاتھ صابن سے اچھی طرح دھوئیں۔"
-      ]
-    }
-  },
-
   "yelowex-super": {
     "id": "yelowex-super",
     "slug": "yelowex-super",
@@ -3125,18 +3263,18 @@ export const PRODUCTS_DATA = {
     "seoDescription": "Buy YELOWEX SUPER - 42% EC online. Highly effective formula for pest and crop management. Cash on delivery available.",
     "sizes": [
       {
-            "size": "800 ML",
-            "price": 1060,
-            "oldPrice": 1060,
-            "sku": "VA-YELOWEX-SUPER-800ML",
-            "weight": "0.8kg",
-            "stockStatus": "In Stock"
+        "size": "800 ML",
+        "price": 999,
+        "oldPrice": 999,
+        "sku": "VA-YELOWEX_SUPER-800ML",
+        "weight": "0.8kg",
+        "stockStatus": "In Stock"
       }
-],
+    ],
     "formulation": "Pendimeth + Acetochlor",
     "activeIngredient": "Pendimeth + Acetochlor",
     "packaging": "800 ML",
-    "productCode": "VA-YELOWEX-SUPER-800ML",
+    "productCode": "VA-YELOWEX_SUPER-800ML",
     "status": {
       "en": "Premium Quality Compound",
       "ur": "اعلیٰ معیار کا مرکب"
@@ -3242,9 +3380,10 @@ export const PRODUCTS_DATA = {
         "مکسنگ اور سپرے کے دوران دستانے اور ماسک کا استعمال کریں۔",
         "استعمال کے بعد ہاتھ صابن سے اچھی طرح دھوئیں۔"
       ]
-    }
+    },
+    "price": 999,
+    "oldPrice": 999
   },
-
   "aaqab": {
     "id": "aaqab",
     "slug": "aaqab",
@@ -3272,14 +3411,14 @@ export const PRODUCTS_DATA = {
     "seoDescription": "Buy AAQAB 1.8% EC online. Highly effective formula for pest and crop management. Cash on delivery available.",
     "sizes": [
       {
-            "size": "400 ML",
-            "price": 599,
-            "oldPrice": 599,
-            "sku": "VA-AAQAB-400ML",
-            "weight": "0.4kg",
-            "stockStatus": "In Stock"
+        "size": "400 ML",
+        "price": 575,
+        "oldPrice": 575,
+        "sku": "VA-AAQAB-400ML",
+        "weight": "0.4kg",
+        "stockStatus": "In Stock"
       }
-],
+    ],
     "formulation": "ABAMECTIN",
     "activeIngredient": "ABAMECTIN",
     "packaging": "400 ML",
@@ -3389,9 +3528,10 @@ export const PRODUCTS_DATA = {
         "مکسنگ اور سپرے کے دوران دستانے اور ماسک کا استعمال کریں۔",
         "استعمال کے بعد ہاتھ صابن سے اچھی طرح دھوئیں۔"
       ]
-    }
+    },
+    "price": 575,
+    "oldPrice": 575
   },
-
   "accewait": {
     "id": "accewait",
     "slug": "accewait",
@@ -3419,14 +3559,14 @@ export const PRODUCTS_DATA = {
     "seoDescription": "Buy ACCEWAIT - 75% SP online. Highly effective formula for pest and crop management. Cash on delivery available.",
     "sizes": [
       {
-            "size": "250 GM",
-            "price": 660,
-            "oldPrice": 660,
-            "sku": "VA-ACCEWAIT-250GM",
-            "weight": "0.25kg",
-            "stockStatus": "In Stock"
+        "size": "250 GM",
+        "price": 670,
+        "oldPrice": 670,
+        "sku": "VA-ACCEWAIT-250GM",
+        "weight": "0.25kg",
+        "stockStatus": "In Stock"
       }
-],
+    ],
     "formulation": "Acephate",
     "activeIngredient": "Acephate",
     "packaging": "250 GM",
@@ -3536,9 +3676,10 @@ export const PRODUCTS_DATA = {
         "مکسنگ اور سپرے کے دوران دستانے اور ماسک کا استعمال کریں۔",
         "استعمال کے بعد ہاتھ صابن سے اچھی طرح دھوئیں۔"
       ]
-    }
+    },
+    "price": 670,
+    "oldPrice": 670
   },
-
   "advance-26": {
     "id": "advance-26",
     "slug": "advance-26",
@@ -3566,18 +3707,18 @@ export const PRODUCTS_DATA = {
     "seoDescription": "Buy ADVANCE 26% WDG online. Highly effective formula for pest and crop management. Cash on delivery available.",
     "sizes": [
       {
-            "size": "150 GM",
-            "price": 399,
-            "oldPrice": 399,
-            "sku": "VA-ADVANCE-26-150GM",
-            "weight": "0.15kg",
-            "stockStatus": "In Stock"
+        "size": "150 GM",
+        "price": 399,
+        "oldPrice": 399,
+        "sku": "VA-ADVANCE_26-150GM",
+        "weight": "0.15kg",
+        "stockStatus": "In Stock"
       }
-],
+    ],
     "formulation": "ACETAMAPRID + Lambda",
     "activeIngredient": "ACETAMAPRID + Lambda",
     "packaging": "150 GM",
-    "productCode": "VA-ADVANCE-26-150GM",
+    "productCode": "VA-ADVANCE_26-150GM",
     "status": {
       "en": "Premium Quality Compound",
       "ur": "اعلیٰ معیار کا مرکب"
@@ -3683,9 +3824,10 @@ export const PRODUCTS_DATA = {
         "مکسنگ اور سپرے کے دوران دستانے اور ماسک کا استعمال کریں۔",
         "استعمال کے بعد ہاتھ صابن سے اچھی طرح دھوئیں۔"
       ]
-    }
+    },
+    "price": 399,
+    "oldPrice": 399
   },
-
   "brinkozen": {
     "id": "brinkozen",
     "slug": "brinkozen",
@@ -3713,22 +3855,22 @@ export const PRODUCTS_DATA = {
     "seoDescription": "Buy BRINKOZEN - 10% EC online. Highly effective formula for pest and crop management. Cash on delivery available.",
     "sizes": [
       {
-            "size": "500 ML",
-            "price": 799,
-            "oldPrice": 799,
-            "sku": "VA-BRINKOZEN-500ML",
-            "weight": "0.5kg",
-            "stockStatus": "In Stock"
+        "size": "500 ML",
+        "price": 799,
+        "oldPrice": 799,
+        "sku": "VA-BRINKOZEN-500ML",
+        "weight": "0.5kg",
+        "stockStatus": "In Stock"
       },
       {
-            "size": "1 LTR",
-            "price": 799,
-            "oldPrice": 1480,
-            "sku": "VA-BRINKOZEN-1LTR",
-            "weight": "1kg",
-            "stockStatus": "In Stock"
+        "size": "1 LTR",
+        "price": 1510,
+        "oldPrice": 1510,
+        "sku": "VA-BRINKOZEN-1LTR",
+        "weight": "1.0kg",
+        "stockStatus": "In Stock"
       }
-],
+    ],
     "formulation": "Bifethrin",
     "activeIngredient": "Bifethrin",
     "packaging": "500 ML, 1 LTR",
@@ -3838,9 +3980,10 @@ export const PRODUCTS_DATA = {
         "مکسنگ اور سپرے کے دوران دستانے اور ماسک کا استعمال کریں۔",
         "استعمال کے بعد ہاتھ صابن سے اچھی طرح دھوئیں۔"
       ]
-    }
+    },
+    "price": 799,
+    "oldPrice": 799
   },
-
   "bi-metic": {
     "id": "bi-metic",
     "slug": "bi-metic",
@@ -3868,18 +4011,18 @@ export const PRODUCTS_DATA = {
     "seoDescription": "Buy BI-METIC 40% EC online. Highly effective formula for pest and crop management. Cash on delivery available.",
     "sizes": [
       {
-            "size": "400 ML",
-            "price": 720,
-            "oldPrice": 720,
-            "sku": "VA-BI-METIC-400ML",
-            "weight": "0.4kg",
-            "stockStatus": "In Stock"
+        "size": "400 ML",
+        "price": 730,
+        "oldPrice": 730,
+        "sku": "VA-BI_METIC-400ML",
+        "weight": "0.4kg",
+        "stockStatus": "In Stock"
       }
-],
+    ],
     "formulation": "DIMETHOATE",
     "activeIngredient": "DIMETHOATE",
     "packaging": "400 ML",
-    "productCode": "VA-BI-METIC-400ML",
+    "productCode": "VA-BI_METIC-400ML",
     "status": {
       "en": "Premium Quality Compound",
       "ur": "اعلیٰ معیار کا مرکب"
@@ -3985,9 +4128,10 @@ export const PRODUCTS_DATA = {
         "مکسنگ اور سپرے کے دوران دستانے اور ماسک کا استعمال کریں۔",
         "استعمال کے بعد ہاتھ صابن سے اچھی طرح دھوئیں۔"
       ]
-    }
+    },
+    "price": 730,
+    "oldPrice": 730
   },
-
   "conference-25": {
     "id": "conference-25",
     "slug": "conference-25",
@@ -4015,18 +4159,18 @@ export const PRODUCTS_DATA = {
     "seoDescription": "Buy CONFERENCE - 25% WP online. Highly effective formula for pest and crop management. Cash on delivery available.",
     "sizes": [
       {
-            "size": "200 GM",
-            "price": 430,
-            "oldPrice": 430,
-            "sku": "VA-CONFERENCE-25-200GM",
-            "weight": "0.2kg",
-            "stockStatus": "In Stock"
+        "size": "200 GM",
+        "price": 440,
+        "oldPrice": 440,
+        "sku": "VA-CONFERENCE_25-200GM",
+        "weight": "0.2kg",
+        "stockStatus": "In Stock"
       }
-],
+    ],
     "formulation": "Imidacloprid",
     "activeIngredient": "Imidacloprid",
     "packaging": "200 GM",
-    "productCode": "VA-CONFERENCE-25-200GM",
+    "productCode": "VA-CONFERENCE_25-200GM",
     "status": {
       "en": "Premium Quality Compound",
       "ur": "اعلیٰ معیار کا مرکب"
@@ -4132,9 +4276,10 @@ export const PRODUCTS_DATA = {
         "مکسنگ اور سپرے کے دوران دستانے اور ماسک کا استعمال کریں۔",
         "استعمال کے بعد ہاتھ صابن سے اچھی طرح دھوئیں۔"
       ]
-    }
+    },
+    "price": 440,
+    "oldPrice": 440
   },
-
   "cloromac-gold": {
     "id": "cloromac-gold",
     "slug": "cloromac-gold",
@@ -4162,18 +4307,18 @@ export const PRODUCTS_DATA = {
     "seoDescription": "Buy CLOROMAC GOLD 360% SC online. Highly effective formula for pest and crop management. Cash on delivery available.",
     "sizes": [
       {
-            "size": "200 ML",
-            "price": 950,
-            "oldPrice": 950,
-            "sku": "VA-CLOROMAC-GOLD-200ML",
-            "weight": "0.2kg",
-            "stockStatus": "In Stock"
+        "size": "200 ML",
+        "price": 940,
+        "oldPrice": 940,
+        "sku": "VA-CLOROMAC_GOLD-200ML",
+        "weight": "0.2kg",
+        "stockStatus": "In Stock"
       }
-],
+    ],
     "formulation": "CHLOREFENAPYR IMPORTED SPECIAL FORMULATION",
     "activeIngredient": "CHLOREFENAPYR IMPORTED SPECIAL FORMULATION",
     "packaging": "200 ML",
-    "productCode": "VA-CLOROMAC-GOLD-200ML",
+    "productCode": "VA-CLOROMAC_GOLD-200ML",
     "status": {
       "en": "Premium Quality Compound",
       "ur": "اعلیٰ معیار کا مرکب"
@@ -4279,14 +4424,15 @@ export const PRODUCTS_DATA = {
         "مکسنگ اور سپرے کے دوران دستانے اور ماسک کا استعمال کریں۔",
         "استعمال کے بعد ہاتھ صابن سے اچھی طرح دھوئیں۔"
       ]
-    }
+    },
+    "price": 940,
+    "oldPrice": 940
   },
-
   "cloromac-plus": {
     "id": "cloromac-plus",
     "slug": "cloromac-plus",
     "name": {
-      "en": "CLOROMAC PLUS 10% WDG -",
+      "en": "CLOROMAC PLUS 10% WDG",
       "ur": "کلورومیک"
     },
     "genericName": {
@@ -4305,22 +4451,22 @@ export const PRODUCTS_DATA = {
       "en": "High-efficacy insecticide with CHLOREFENAPYR WDG offering rapid knockdown and long residual control against sucking and chewing pests.",
       "ur": "فصلوں کو چوسنے اور چبانے والے کیڑوں (سفید مکھی، تھرپس، چست تیلا اور سنڈیوں) سے محفوظ رکھنے کے لیے CHLOREFENAPYR WDG کا جدید فارمولا۔"
     },
-    "seoTitle": "CLOROMAC PLUS 10% WDG - | Premium Agrochemical | Vital Agro",
-    "seoDescription": "Buy CLOROMAC PLUS 10% WDG - online. Highly effective formula for pest and crop management. Cash on delivery available.",
+    "seoTitle": "CLOROMAC PLUS 10% WDG | Premium Agrochemical | Vital Agro",
+    "seoDescription": "Buy CLOROMAC PLUS 10% WDG online. Highly effective formula for pest and crop management. Cash on delivery available.",
     "sizes": [
       {
-            "size": "350 GM",
-            "price": 0,
-            "oldPrice": 0,
-            "sku": "VA-CLOROMAC-PLUS-350GM",
-            "weight": "0.35kg",
-            "stockStatus": "In Stock"
+        "size": "350 GM",
+        "price": 699,
+        "oldPrice": 699,
+        "sku": "VA-CLOROMAC_PLUS-350GM",
+        "weight": "0.35kg",
+        "stockStatus": "In Stock"
       }
-],
+    ],
     "formulation": "CHLOREFENAPYR WDG",
     "activeIngredient": "CHLOREFENAPYR WDG",
     "packaging": "350 GM",
-    "productCode": "VA-CLOROMAC-PLUS-350GM",
+    "productCode": "VA-CLOROMAC_PLUS-350GM",
     "status": {
       "en": "Premium Quality Compound",
       "ur": "اعلیٰ معیار کا مرکب"
@@ -4426,9 +4572,10 @@ export const PRODUCTS_DATA = {
         "مکسنگ اور سپرے کے دوران دستانے اور ماسک کا استعمال کریں۔",
         "استعمال کے بعد ہاتھ صابن سے اچھی طرح دھوئیں۔"
       ]
-    }
+    },
+    "price": 699,
+    "oldPrice": 699
   },
-
   "code-10": {
     "id": "code-10",
     "slug": "code-10",
@@ -4456,18 +4603,18 @@ export const PRODUCTS_DATA = {
     "seoDescription": "Buy CODE- 10% EC online. Highly effective formula for pest and crop management. Cash on delivery available.",
     "sizes": [
       {
-            "size": "1 LTR",
-            "price": 1060,
-            "oldPrice": 1060,
-            "sku": "VA-CODE-10-1LTR",
-            "weight": "1kg",
-            "stockStatus": "In Stock"
+        "size": "1 LTR",
+        "price": 999,
+        "oldPrice": 999,
+        "sku": "VA-CODE_10-1LTR",
+        "weight": "1.0kg",
+        "stockStatus": "In Stock"
       }
-],
+    ],
     "formulation": "Cypermethrin 10 EC",
     "activeIngredient": "Cypermethrin 10 EC",
     "packaging": "1 LTR",
-    "productCode": "VA-CODE-10-1LTR",
+    "productCode": "VA-CODE_10-1LTR",
     "status": {
       "en": "Premium Quality Compound",
       "ur": "اعلیٰ معیار کا مرکب"
@@ -4573,9 +4720,10 @@ export const PRODUCTS_DATA = {
         "مکسنگ اور سپرے کے دوران دستانے اور ماسک کا استعمال کریں۔",
         "استعمال کے بعد ہاتھ صابن سے اچھی طرح دھوئیں۔"
       ]
-    }
+    },
+    "price": 999,
+    "oldPrice": 999
   },
-
   "dr-pp": {
     "id": "dr-pp",
     "slug": "dr-pp",
@@ -4603,26 +4751,26 @@ export const PRODUCTS_DATA = {
     "seoDescription": "Buy DR. P.P - 30% SC online. Highly effective formula for pest and crop management. Cash on delivery available.",
     "sizes": [
       {
-            "size": "75 ML",
-            "price": 520,
-            "oldPrice": 520,
-            "sku": "VA-DR-PP-75ML",
-            "weight": "0.075kg",
-            "stockStatus": "In Stock"
+        "size": "75 ML",
+        "price": 499,
+        "oldPrice": 499,
+        "sku": "VA-DR_PP-75ML",
+        "weight": "0.075kg",
+        "stockStatus": "In Stock"
       },
       {
-            "size": "150 ML",
-            "price": 520,
-            "oldPrice": 899,
-            "sku": "VA-DR-PP-150ML",
-            "weight": "0.15kg",
-            "stockStatus": "In Stock"
+        "size": "150 ML",
+        "price": 899,
+        "oldPrice": 899,
+        "sku": "VA-DR_PP-150ML",
+        "weight": "0.15kg",
+        "stockStatus": "In Stock"
       }
-],
+    ],
     "formulation": "Dinotefuan",
     "activeIngredient": "Dinotefuan",
     "packaging": "75 ML, 150 ML",
-    "productCode": "VA-DR-PP-75ML",
+    "productCode": "VA-DR_PP-75ML",
     "status": {
       "en": "Premium Quality Compound",
       "ur": "اعلیٰ معیار کا مرکب"
@@ -4728,14 +4876,15 @@ export const PRODUCTS_DATA = {
         "مکسنگ اور سپرے کے دوران دستانے اور ماسک کا استعمال کریں۔",
         "استعمال کے بعد ہاتھ صابن سے اچھی طرح دھوئیں۔"
       ]
-    }
+    },
+    "price": 499,
+    "oldPrice": 499
   },
-
   "diffa-gold-plus": {
     "id": "diffa-gold-plus",
     "slug": "diffa-gold-plus",
     "name": {
-      "en": "DIFFA GOLD PLUS 50%SC",
+      "en": "DIFFA GOLD PLUS - 50%SC",
       "ur": "دفا گولڈ پلس"
     },
     "genericName": {
@@ -4754,30 +4903,30 @@ export const PRODUCTS_DATA = {
       "en": "High-efficacy insecticide with Diafenthuron offering rapid knockdown and long residual control against sucking and chewing pests.",
       "ur": "فصلوں کو چوسنے اور چبانے والے کیڑوں (سفید مکھی، تھرپس، چست تیلا اور سنڈیوں) سے محفوظ رکھنے کے لیے Diafenthuron کا جدید فارمولا۔"
     },
-    "seoTitle": "DIFFA GOLD PLUS 50%SC | Premium Agrochemical | Vital Agro",
-    "seoDescription": "Buy DIFFA GOLD PLUS 50%SC online. Highly effective formula for pest and crop management. Cash on delivery available.",
+    "seoTitle": "DIFFA GOLD PLUS - 50%SC | Premium Agrochemical | Vital Agro",
+    "seoDescription": "Buy DIFFA GOLD PLUS - 50%SC online. Highly effective formula for pest and crop management. Cash on delivery available.",
     "sizes": [
       {
-            "size": "200 ML",
-            "price": 799,
-            "oldPrice": 799,
-            "sku": "VA-DIFFA-GOLD-PLUS-200ML",
-            "weight": "0.2kg",
-            "stockStatus": "In Stock"
+        "size": "200 ML",
+        "price": 799,
+        "oldPrice": 799,
+        "sku": "VA-DIFFA_GOLD_PLUS-200ML",
+        "weight": "0.2kg",
+        "stockStatus": "In Stock"
       },
       {
-            "size": "400 ML",
-            "price": 799,
-            "oldPrice": 1420,
-            "sku": "VA-DIFFA-GOLD-PLUS-400ML",
-            "weight": "0.4kg",
-            "stockStatus": "In Stock"
+        "size": "400 ML",
+        "price": 1480,
+        "oldPrice": 1480,
+        "sku": "VA-DIFFA_GOLD_PLUS-400ML",
+        "weight": "0.4kg",
+        "stockStatus": "In Stock"
       }
-],
+    ],
     "formulation": "Diafenthuron",
     "activeIngredient": "Diafenthuron",
     "packaging": "200 ML, 400 ML",
-    "productCode": "VA-DIFFA-GOLD-PLUS-200ML",
+    "productCode": "VA-DIFFA_GOLD_PLUS-200ML",
     "status": {
       "en": "Premium Quality Compound",
       "ur": "اعلیٰ معیار کا مرکب"
@@ -4883,9 +5032,10 @@ export const PRODUCTS_DATA = {
         "مکسنگ اور سپرے کے دوران دستانے اور ماسک کا استعمال کریں۔",
         "استعمال کے بعد ہاتھ صابن سے اچھی طرح دھوئیں۔"
       ]
-    }
+    },
+    "price": 799,
+    "oldPrice": 799
   },
-
   "fly-over-gold": {
     "id": "fly-over-gold",
     "slug": "fly-over-gold",
@@ -4913,26 +5063,26 @@ export const PRODUCTS_DATA = {
     "seoDescription": "Buy FLY OVER GOLD 50% WG online. Highly effective formula for pest and crop management. Cash on delivery available.",
     "sizes": [
       {
-            "size": "60 GM",
-            "price": 799,
-            "oldPrice": 799,
-            "sku": "VA-FLY-OVER-GOLD-60GM",
-            "weight": "0.06kg",
-            "stockStatus": "In Stock"
+        "size": "60 GM",
+        "price": 799,
+        "oldPrice": 799,
+        "sku": "VA-FLY_OVER_GOLD-60GM",
+        "weight": "0.06kg",
+        "stockStatus": "In Stock"
       },
       {
-            "size": "120 GM",
-            "price": 799,
-            "oldPrice": 1520,
-            "sku": "VA-FLY-OVER-GOLD-120GM",
-            "weight": "0.12kg",
-            "stockStatus": "In Stock"
+        "size": "120 GM",
+        "price": 1520,
+        "oldPrice": 1520,
+        "sku": "VA-FLY_OVER_GOLD-120GM",
+        "weight": "0.12kg",
+        "stockStatus": "In Stock"
       }
-],
+    ],
     "formulation": "Flonicamid",
     "activeIngredient": "Flonicamid",
-    "packaging": "60 GM, 120 GM, 1 LTR",
-    "productCode": "VA-FLY-OVER-GOLD-60GM",
+    "packaging": "60 GM, 120 GM",
+    "productCode": "VA-FLY_OVER_GOLD-60GM",
     "status": {
       "en": "Premium Quality Compound",
       "ur": "اعلیٰ معیار کا مرکب"
@@ -5038,9 +5188,210 @@ export const PRODUCTS_DATA = {
         "مکسنگ اور سپرے کے دوران دستانے اور ماسک کا استعمال کریں۔",
         "استعمال کے بعد ہاتھ صابن سے اچھی طرح دھوئیں۔"
       ]
-    }
+    },
+    "price": 799,
+    "oldPrice": 799
   },
-
+  "gt-warrior": {
+    "imageUrl": "/products/gt-warrior.webp",
+    "pngUrl": "/products/gt-warrior.webp",
+    "rating": 4.8,
+    "importedFormulaBadge": true,
+    "premiumProductBadge": true,
+    "researchBasedBadge": true,
+    "seoTitle": "GT WARRIOR - 3% SC | Premium Agrochemical | Vital Agro",
+    "seoDescription": "Buy GT WARRIOR - 3% SC online. Highly effective formula for pest and crop management. Cash on delivery available.",
+    "packaging": "200 ML, 400 ML, 1 LTR",
+    "productCode": "VA-GT_WARRIOR-200ML",
+    "status": {
+      "en": "Premium Quality Compound",
+      "ur": "اعلیٰ معیار کا مرکب"
+    },
+    "description": {
+      "en": "Controls bollworms and chewing pests with quick knockdown actions. Premium agrochemical compound designed under strict international quality controls to maximize your crop yields and ensure complete plant protection.",
+      "ur": "چبانے والے کیڑوں اور سنڈیوں کو سیکنڈوں میں ختم کرنے والی موثر دوا۔ پودے کی بہترین نشوونما اور تحفظ کے لیے عالمی معیار کے مطابق تیار کیا گیا مرکب جو فصل کی پیداوار بڑھاتا ہے۔"
+    },
+    "features": {
+      "en": [
+        "Ensures robust crop vigor and health",
+        "Increases crop survival and yield capacity",
+        "Strengthens defense mechanism of the plant"
+      ],
+      "ur": [
+        "فصل کی بہترین نشوونما اور صحت کو یقینی بناتا ہے",
+        "پیداواری صلاحیت اور قوت مدافعت کو بڑھاتا ہے",
+        "پودے کے دفاعی نظام کو مضبوط کرتا ہے"
+      ]
+    },
+    "crops": [
+      {
+        "name": {
+          "en": "Cotton",
+          "ur": "کپاس"
+        },
+        "icon": "🌱"
+      },
+      {
+        "name": {
+          "en": "Rice",
+          "ur": "دھان"
+        },
+        "icon": "🌾"
+      },
+      {
+        "name": {
+          "en": "Maize",
+          "ur": "مکئی"
+        },
+        "icon": "🌽"
+      },
+      {
+        "name": {
+          "en": "Wheat",
+          "ur": "گندم"
+        },
+        "icon": "🌾"
+      }
+    ],
+    "name": {
+      "en": "GT WARRIOR - 3% SC",
+      "ur": "جی ٹی واریئر"
+    },
+    "genericName": {
+      "en": "EMAMECTIN BENZOATE",
+      "ur": "EMAMECTIN BENZOATE"
+    },
+    "category": "insecticide",
+    "tagline": "Trusted Insect Protection System",
+    "activeIngredient": "EMAMECTIN BENZOATE",
+    "formulation": "EMAMECTIN BENZOATE",
+    "shortDesc": {
+      "en": "Controls bollworms and chewing pests with quick knockdown actions.",
+      "ur": "چبانے والے کیڑوں اور سنڈیوں کو سیکنڈوں میں ختم کرنے والی موثر دوا۔"
+    },
+    "id": "gt-warrior",
+    "slug": "gt-warrior",
+    "sizes": [
+      {
+        "size": "200 ML",
+        "price": 260,
+        "oldPrice": 260,
+        "sku": "VA-GT_WARRIOR-200ML",
+        "weight": "0.2kg",
+        "stockStatus": "In Stock"
+      },
+      {
+        "size": "400 ML",
+        "price": 440,
+        "oldPrice": 440,
+        "sku": "VA-GT_WARRIOR-400ML",
+        "weight": "0.4kg",
+        "stockStatus": "In Stock"
+      },
+      {
+        "size": "1 LTR",
+        "price": 930,
+        "oldPrice": 930,
+        "sku": "VA-GT_WARRIOR-1LTR",
+        "weight": "1.0kg",
+        "stockStatus": "In Stock"
+      }
+    ],
+    "price": 260,
+    "oldPrice": 260
+  },
+  "gt-warrior-super": {
+    "imageUrl": "/products/gt-warrior-super.webp",
+    "pngUrl": "/products/gt-warrior-super.webp",
+    "rating": 4.8,
+    "importedFormulaBadge": true,
+    "premiumProductBadge": true,
+    "researchBasedBadge": true,
+    "seoTitle": "GT WARRIOR SUPER -10% SC | Premium Agrochemical | Vital Agro",
+    "seoDescription": "Buy GT WARRIOR SUPER -10% SC online. Highly effective formula for pest and crop management. Cash on delivery available.",
+    "packaging": "150 ML",
+    "productCode": "VA-GT_WARRIOR_SUPER-150ML",
+    "status": {
+      "en": "Premium Quality Compound",
+      "ur": "اعلیٰ معیار کا مرکب"
+    },
+    "description": {
+      "en": "Eradicates chewing caterpillars and armyworms instantly with long residual control. Premium agrochemical compound designed under strict international quality controls to maximize your crop yields and ensure complete plant protection.",
+      "ur": "فوجی سنڈی اور چبانے والے کیڑوں کا فوراً اور دیرپا خاتمہ کرنے والا دہرا فارمولا۔ پودے کی بہترین نشوونما اور تحفظ کے لیے عالمی معیار کے مطابق تیار کیا گیا مرکب جو فصل کی پیداوار بڑھاتا ہے۔"
+    },
+    "features": {
+      "en": [
+        "Ensures robust crop vigor and health",
+        "Increases crop survival and yield capacity",
+        "Strengthens defense mechanism of the plant"
+      ],
+      "ur": [
+        "فصل کی بہترین نشوونما اور صحت کو یقینی بناتا ہے",
+        "پیداواری صلاحیت اور قوت مدافعت کو بڑھاتا ہے",
+        "پودے کے دفاعی نظام کو مضبوط کرتا ہے"
+      ]
+    },
+    "crops": [
+      {
+        "name": {
+          "en": "Cotton",
+          "ur": "کپاس"
+        },
+        "icon": "🌱"
+      },
+      {
+        "name": {
+          "en": "Rice",
+          "ur": "دھان"
+        },
+        "icon": "🌾"
+      },
+      {
+        "name": {
+          "en": "Maize",
+          "ur": "مکئی"
+        },
+        "icon": "🌽"
+      },
+      {
+        "name": {
+          "en": "Wheat",
+          "ur": "گندم"
+        },
+        "icon": "🌾"
+      }
+    ],
+    "name": {
+      "en": "GT WARRIOR SUPER -10% SC",
+      "ur": "جی ٹی واریئر سُپر"
+    },
+    "genericName": {
+      "en": "EMAMECTIN + LUFENURON",
+      "ur": "EMAMECTIN + LUFENURON"
+    },
+    "category": "insecticide",
+    "tagline": "Dual Action Premium Insecticide",
+    "activeIngredient": "EMAMECTIN + LUFENURON",
+    "formulation": "EMAMECTIN + LUFENURON",
+    "shortDesc": {
+      "en": "Eradicates chewing caterpillars and armyworms instantly with long residual control.",
+      "ur": "فوجی سنڈی اور چبانے والے کیڑوں کا فوراً اور دیرپا خاتمہ کرنے والا دہرا فارمولا۔"
+    },
+    "id": "gt-warrior-super",
+    "slug": "gt-warrior-super",
+    "sizes": [
+      {
+        "size": "150 ML",
+        "price": 499,
+        "oldPrice": 499,
+        "sku": "VA-GT_WARRIOR_SUPER-150ML",
+        "weight": "0.15kg",
+        "stockStatus": "In Stock"
+      }
+    ],
+    "price": 499,
+    "oldPrice": 499
+  },
   "gorajin": {
     "id": "gorajin",
     "slug": "gorajin",
@@ -5068,25 +5419,25 @@ export const PRODUCTS_DATA = {
     "seoDescription": "Buy GORAJIN - 15% WP online. Highly effective formula for pest and crop management. Cash on delivery available.",
     "sizes": [
       {
-            "size": "80 GM",
-            "price": 840,
-            "oldPrice": 840,
-            "sku": "VA-GORAJIN-80GM",
-            "weight": "0.08kg",
-            "stockStatus": "In Stock"
+        "size": "80 GM",
+        "price": 880,
+        "oldPrice": 880,
+        "sku": "VA-GORAJIN-80GM",
+        "weight": "0.08kg",
+        "stockStatus": "In Stock"
       },
       {
-            "size": "40 GM",
-            "price": 840,
-            "oldPrice": 470,
-            "sku": "VA-GORAJIN-40GM",
-            "weight": "0.04kg",
-            "stockStatus": "In Stock"
+        "size": "40 GM",
+        "price": 500,
+        "oldPrice": 500,
+        "sku": "VA-GORAJIN-40GM",
+        "weight": "0.04kg",
+        "stockStatus": "In Stock"
       }
-],
+    ],
     "formulation": "Emamectin Benzoate + Chlorfluazuron",
     "activeIngredient": "Emamectin Benzoate + Chlorfluazuron",
-    "packaging": "80 GM, 40 GM, 200 ML",
+    "packaging": "80 GM, 40 GM",
     "productCode": "VA-GORAJIN-80GM",
     "status": {
       "en": "Premium Quality Compound",
@@ -5193,9 +5544,118 @@ export const PRODUCTS_DATA = {
         "مکسنگ اور سپرے کے دوران دستانے اور ماسک کا استعمال کریں۔",
         "استعمال کے بعد ہاتھ صابن سے اچھی طرح دھوئیں۔"
       ]
-    }
+    },
+    "price": 880,
+    "oldPrice": 880
   },
-
+  "hallin": {
+    "imageUrl": "/products/hallin.webp",
+    "pngUrl": "/products/hallin.webp",
+    "rating": 4.8,
+    "importedFormulaBadge": true,
+    "premiumProductBadge": true,
+    "researchBasedBadge": true,
+    "seoTitle": "HALLIN - 5% EC | Premium Agrochemical | Vital Agro",
+    "seoDescription": "Buy HALLIN - 5% EC online. Highly effective formula for pest and crop management. Cash on delivery available.",
+    "packaging": "200 ML, 400 ML, 1 LTR",
+    "productCode": "VA-HALLIN-200ML",
+    "status": {
+      "en": "Premium Quality Compound",
+      "ur": "اعلیٰ معیار کا مرکب"
+    },
+    "description": {
+      "en": "Disrupts the growth cycle of caterpillars and chewing pests inside vegetables and cotton crops. Premium agrochemical compound designed under strict international quality controls to maximize your crop yields and ensure complete plant protection.",
+      "ur": "کیڑوں کی نشوونما روکنے اور ان کا مستقل خاتمہ کرنے والا چٹن بلاکر۔ پودے کی بہترین نشوونما اور تحفظ کے لیے عالمی معیار کے مطابق تیار کیا گیا مرکب جو فصل کی پیداوار بڑھاتا ہے۔"
+    },
+    "features": {
+      "en": [
+        "Ensures robust crop vigor and health",
+        "Increases crop survival and yield capacity",
+        "Strengthens defense mechanism of the plant"
+      ],
+      "ur": [
+        "فصل کی بہترین نشوونما اور صحت کو یقینی بناتا ہے",
+        "پیداواری صلاحیت اور قوت مدافعت کو بڑھاتا ہے",
+        "پودے کے دفاعی نظام کو مضبوط کرتا ہے"
+      ]
+    },
+    "crops": [
+      {
+        "name": {
+          "en": "Cotton",
+          "ur": "کپاس"
+        },
+        "icon": "🌱"
+      },
+      {
+        "name": {
+          "en": "Rice",
+          "ur": "دھان"
+        },
+        "icon": "🌾"
+      },
+      {
+        "name": {
+          "en": "Maize",
+          "ur": "مکئی"
+        },
+        "icon": "🌽"
+      },
+      {
+        "name": {
+          "en": "Wheat",
+          "ur": "گندم"
+        },
+        "icon": "🌾"
+      }
+    ],
+    "name": {
+      "en": "HALLIN - 5% EC",
+      "ur": "ہیلن"
+    },
+    "genericName": {
+      "en": "LUFENURON",
+      "ur": "LUFENURON"
+    },
+    "category": "insecticide",
+    "tagline": "Chitin Synthesis Inhibitor for Caterpillars",
+    "activeIngredient": "LUFENURON",
+    "formulation": "LUFENURON",
+    "shortDesc": {
+      "en": "Disrupts the growth cycle of caterpillars and chewing pests inside vegetables and cotton crops.",
+      "ur": "کیڑوں کی نشوونما روکنے اور ان کا مستقل خاتمہ کرنے والا چٹن بلاکر۔"
+    },
+    "id": "hallin",
+    "slug": "hallin",
+    "sizes": [
+      {
+        "size": "200 ML",
+        "price": 310,
+        "oldPrice": 310,
+        "sku": "VA-HALLIN-200ML",
+        "weight": "0.2kg",
+        "stockStatus": "In Stock"
+      },
+      {
+        "size": "400 ML",
+        "price": 499,
+        "oldPrice": 499,
+        "sku": "VA-HALLIN-400ML",
+        "weight": "0.4kg",
+        "stockStatus": "In Stock"
+      },
+      {
+        "size": "1 LTR",
+        "price": 1099,
+        "oldPrice": 1099,
+        "sku": "VA-HALLIN-1LTR",
+        "weight": "1.0kg",
+        "stockStatus": "In Stock"
+      }
+    ],
+    "price": 310,
+    "oldPrice": 310
+  },
   "jidaar-80": {
     "id": "jidaar-80",
     "slug": "jidaar-80",
@@ -5223,18 +5683,18 @@ export const PRODUCTS_DATA = {
     "seoDescription": "Buy JIDAAR - 80% SP online. Highly effective formula for pest and crop management. Cash on delivery available.",
     "sizes": [
       {
-            "size": "250 GM",
-            "price": 0,
-            "oldPrice": 0,
-            "sku": "VA-JIDAAR-80-250GM",
-            "weight": "0.25kg",
-            "stockStatus": "In Stock"
+        "size": "250 GM",
+        "price": 700,
+        "oldPrice": 700,
+        "sku": "VA-JIDAAR_80-250GM",
+        "weight": "0.25kg",
+        "stockStatus": "In Stock"
       }
-],
+    ],
     "formulation": "Trichlorfon",
     "activeIngredient": "Trichlorfon",
     "packaging": "250 GM",
-    "productCode": "VA-JIDAAR-80-250GM",
+    "productCode": "VA-JIDAAR_80-250GM",
     "status": {
       "en": "Premium Quality Compound",
       "ur": "اعلیٰ معیار کا مرکب"
@@ -5340,9 +5800,10 @@ export const PRODUCTS_DATA = {
         "مکسنگ اور سپرے کے دوران دستانے اور ماسک کا استعمال کریں۔",
         "استعمال کے بعد ہاتھ صابن سے اچھی طرح دھوئیں۔"
       ]
-    }
+    },
+    "price": 700,
+    "oldPrice": 700
   },
-
   "lykodaa": {
     "id": "lykodaa",
     "slug": "lykodaa",
@@ -5370,26 +5831,34 @@ export const PRODUCTS_DATA = {
     "seoDescription": "Buy LYKODAA - 2.5% EC online. Highly effective formula for pest and crop management. Cash on delivery available.",
     "sizes": [
       {
-            "size": "500 ML",
-            "price": 510,
-            "oldPrice": 510,
-            "sku": "VA-LYKODAA-500ML",
-            "weight": "0.5kg",
-            "stockStatus": "In Stock"
+        "size": "250 ML",
+        "price": 299,
+        "oldPrice": 299,
+        "sku": "VA-LYKODAA-250ML",
+        "weight": "0.25kg",
+        "stockStatus": "In Stock"
       },
       {
-            "size": "1 LTR",
-            "price": 510,
-            "oldPrice": 899,
-            "sku": "VA-LYKODAA-1LTR",
-            "weight": "1kg",
-            "stockStatus": "In Stock"
+        "size": "500 ML",
+        "price": 490,
+        "oldPrice": 490,
+        "sku": "VA-LYKODAA-500ML",
+        "weight": "0.5kg",
+        "stockStatus": "In Stock"
+      },
+      {
+        "size": "1 LTR",
+        "price": 850,
+        "oldPrice": 850,
+        "sku": "VA-LYKODAA-1LTR",
+        "weight": "1.0kg",
+        "stockStatus": "In Stock"
       }
-],
+    ],
     "formulation": "LambdaCyhalothrin",
     "activeIngredient": "LambdaCyhalothrin",
-    "packaging": "500 ML, 1 LTR",
-    "productCode": "VA-LYKODAA-500ML",
+    "packaging": "250 ML, 500 ML, 1 LTR",
+    "productCode": "VA-LYKODAA-250ML",
     "status": {
       "en": "Premium Quality Compound",
       "ur": "اعلیٰ معیار کا مرکب"
@@ -5495,9 +5964,10 @@ export const PRODUCTS_DATA = {
         "مکسنگ اور سپرے کے دوران دستانے اور ماسک کا استعمال کریں۔",
         "استعمال کے بعد ہاتھ صابن سے اچھی طرح دھوئیں۔"
       ]
-    }
+    },
+    "price": 299,
+    "oldPrice": 299
   },
-
   "mission-extra": {
     "id": "mission-extra",
     "slug": "mission-extra",
@@ -5525,18 +5995,18 @@ export const PRODUCTS_DATA = {
     "seoDescription": "Buy MISSION EXTRA - 5%SC online. Highly effective formula for pest and crop management. Cash on delivery available.",
     "sizes": [
       {
-            "size": "480 ML",
-            "price": 835,
-            "oldPrice": 835,
-            "sku": "VA-MISSION-EXTRA-480ML",
-            "weight": "0.48kg",
-            "stockStatus": "In Stock"
+        "size": "480 ML",
+        "price": 840,
+        "oldPrice": 840,
+        "sku": "VA-MISSION_EXTRA-480ML",
+        "weight": "0.48kg",
+        "stockStatus": "In Stock"
       }
-],
+    ],
     "formulation": "Fipronil",
     "activeIngredient": "Fipronil",
     "packaging": "480 ML",
-    "productCode": "VA-MISSION-EXTRA-480ML",
+    "productCode": "VA-MISSION_EXTRA-480ML",
     "status": {
       "en": "Premium Quality Compound",
       "ur": "اعلیٰ معیار کا مرکب"
@@ -5642,9 +6112,10 @@ export const PRODUCTS_DATA = {
         "مکسنگ اور سپرے کے دوران دستانے اور ماسک کا استعمال کریں۔",
         "استعمال کے بعد ہاتھ صابن سے اچھی طرح دھوئیں۔"
       ]
-    }
+    },
+    "price": 840,
+    "oldPrice": 840
   },
-
   "purifizin": {
     "id": "purifizin",
     "slug": "purifizin",
@@ -5672,14 +6143,14 @@ export const PRODUCTS_DATA = {
     "seoDescription": "Buy PURIFIZIN 25% WP online. Highly effective formula for pest and crop management. Cash on delivery available.",
     "sizes": [
       {
-            "size": "900 GM",
-            "price": 1199,
-            "oldPrice": 1199,
-            "sku": "VA-PURIFIZIN-900GM",
-            "weight": "0.9kg",
-            "stockStatus": "In Stock"
+        "size": "900 GM",
+        "price": 1170,
+        "oldPrice": 1170,
+        "sku": "VA-PURIFIZIN-900GM",
+        "weight": "0.9kg",
+        "stockStatus": "In Stock"
       }
-],
+    ],
     "formulation": "BUPROFIZEN",
     "activeIngredient": "BUPROFIZEN",
     "packaging": "900 GM",
@@ -5789,9 +6260,10 @@ export const PRODUCTS_DATA = {
         "مکسنگ اور سپرے کے دوران دستانے اور ماسک کا استعمال کریں۔",
         "استعمال کے بعد ہاتھ صابن سے اچھی طرح دھوئیں۔"
       ]
-    }
+    },
+    "price": 1170,
+    "oldPrice": 1170
   },
-
   "peso-gold": {
     "id": "peso-gold",
     "slug": "peso-gold",
@@ -5819,18 +6291,18 @@ export const PRODUCTS_DATA = {
     "seoDescription": "Buy PESO GOLD 10.8% EC online. Highly effective formula for pest and crop management. Cash on delivery available.",
     "sizes": [
       {
-            "size": "500 ML",
-            "price": 850,
-            "oldPrice": 850,
-            "sku": "VA-PESO-GOLD-500ML",
-            "weight": "0.5kg",
-            "stockStatus": "In Stock"
+        "size": "500 ML",
+        "price": 830,
+        "oldPrice": 830,
+        "sku": "VA-PESO_GOLD-500ML",
+        "weight": "0.5kg",
+        "stockStatus": "In Stock"
       }
-],
+    ],
     "formulation": "PYRIPROXIFEN",
     "activeIngredient": "PYRIPROXIFEN",
     "packaging": "500 ML",
-    "productCode": "VA-PESO-GOLD-500ML",
+    "productCode": "VA-PESO_GOLD-500ML",
     "status": {
       "en": "Premium Quality Compound",
       "ur": "اعلیٰ معیار کا مرکب"
@@ -5936,9 +6408,10 @@ export const PRODUCTS_DATA = {
         "مکسنگ اور سپرے کے دوران دستانے اور ماسک کا استعمال کریں۔",
         "استعمال کے بعد ہاتھ صابن سے اچھی طرح دھوئیں۔"
       ]
-    }
+    },
+    "price": 830,
+    "oldPrice": 830
   },
-
   "peso-gold-plus": {
     "id": "peso-gold-plus",
     "slug": "peso-gold-plus",
@@ -5966,18 +6439,18 @@ export const PRODUCTS_DATA = {
     "seoDescription": "Buy PESO GOLD PLUS 20% WDG online. Highly effective formula for pest and crop management. Cash on delivery available.",
     "sizes": [
       {
-            "size": "200 GM",
-            "price": 570,
-            "oldPrice": 570,
-            "sku": "VA-PESO-GOLD-PLUS-200GM",
-            "weight": "0.2kg",
-            "stockStatus": "In Stock"
+        "size": "200 GM",
+        "price": 555,
+        "oldPrice": 555,
+        "sku": "VA-PESO_GOLD_PLUS-200GM",
+        "weight": "0.2kg",
+        "stockStatus": "In Stock"
       }
-],
+    ],
     "formulation": "PYRIPROXIFEN WDG",
     "activeIngredient": "PYRIPROXIFEN WDG",
     "packaging": "200 GM",
-    "productCode": "VA-PESO-GOLD-PLUS-200GM",
+    "productCode": "VA-PESO_GOLD_PLUS-200GM",
     "status": {
       "en": "Premium Quality Compound",
       "ur": "اعلیٰ معیار کا مرکب"
@@ -6083,9 +6556,10 @@ export const PRODUCTS_DATA = {
         "مکسنگ اور سپرے کے دوران دستانے اور ماسک کا استعمال کریں۔",
         "استعمال کے بعد ہاتھ صابن سے اچھی طرح دھوئیں۔"
       ]
-    }
+    },
+    "price": 555,
+    "oldPrice": 555
   },
-
   "pushup": {
     "id": "pushup",
     "slug": "pushup",
@@ -6113,14 +6587,14 @@ export const PRODUCTS_DATA = {
     "seoDescription": "Buy PUSHUP 25% WG online. Highly effective formula for pest and crop management. Cash on delivery available.",
     "sizes": [
       {
-            "size": "48 GM",
-            "price": 230,
-            "oldPrice": 230,
-            "sku": "VA-PUSHUP-48GM",
-            "weight": "0.048kg",
-            "stockStatus": "In Stock"
+        "size": "48 GM",
+        "price": 199,
+        "oldPrice": 199,
+        "sku": "VA-PUSHUP-48GM",
+        "weight": "0.048kg",
+        "stockStatus": "In Stock"
       }
-],
+    ],
     "formulation": "Thiamethoxam",
     "activeIngredient": "Thiamethoxam",
     "packaging": "48 GM",
@@ -6230,9 +6704,10 @@ export const PRODUCTS_DATA = {
         "مکسنگ اور سپرے کے دوران دستانے اور ماسک کا استعمال کریں۔",
         "استعمال کے بعد ہاتھ صابن سے اچھی طرح دھوئیں۔"
       ]
-    }
+    },
+    "price": 199,
+    "oldPrice": 199
   },
-
   "josh": {
     "id": "josh",
     "slug": "josh",
@@ -6260,14 +6735,14 @@ export const PRODUCTS_DATA = {
     "seoDescription": "Buy JOSH 45% WG online. Highly effective formula for pest and crop management. Cash on delivery available.",
     "sizes": [
       {
-            "size": "80 GM",
-            "price": 699,
-            "oldPrice": 699,
-            "sku": "VA-JOSH-80GM",
-            "weight": "0.08kg",
-            "stockStatus": "In Stock"
+        "size": "80 GM",
+        "price": 699,
+        "oldPrice": 699,
+        "sku": "VA-JOSH-80GM",
+        "weight": "0.08kg",
+        "stockStatus": "In Stock"
       }
-],
+    ],
     "formulation": "SEGA PEST C (EMA+LUFEN) 45% WG",
     "activeIngredient": "SEGA PEST C (EMA+LUFEN) 45% WG",
     "packaging": "80 GM",
@@ -6377,9 +6852,10 @@ export const PRODUCTS_DATA = {
         "مکسنگ اور سپرے کے دوران دستانے اور ماسک کا استعمال کریں۔",
         "استعمال کے بعد ہاتھ صابن سے اچھی طرح دھوئیں۔"
       ]
-    }
+    },
+    "price": 699,
+    "oldPrice": 699
   },
-
   "sonami": {
     "id": "sonami",
     "slug": "sonami",
@@ -6407,14 +6883,14 @@ export const PRODUCTS_DATA = {
     "seoDescription": "Buy SONAMI 35% - SC online. Highly effective formula for pest and crop management. Cash on delivery available.",
     "sizes": [
       {
-            "size": "150 ML",
-            "price": 1899,
-            "oldPrice": 1899,
-            "sku": "VA-SONAMI-150ML",
-            "weight": "0.15kg",
-            "stockStatus": "In Stock"
+        "size": "150 ML",
+        "price": 1899,
+        "oldPrice": 1899,
+        "sku": "VA-SONAMI-150ML",
+        "weight": "0.15kg",
+        "stockStatus": "In Stock"
       }
-],
+    ],
     "formulation": "FLONICAMID10.5%+ SPIROTETRAMAT24.5% 35%SC",
     "activeIngredient": "FLONICAMID10.5%+ SPIROTETRAMAT24.5% 35%SC",
     "packaging": "150 ML",
@@ -6524,9 +7000,10 @@ export const PRODUCTS_DATA = {
         "مکسنگ اور سپرے کے دوران دستانے اور ماسک کا استعمال کریں۔",
         "استعمال کے بعد ہاتھ صابن سے اچھی طرح دھوئیں۔"
       ]
-    }
+    },
+    "price": 1899,
+    "oldPrice": 1899
   },
-
   "super-killer": {
     "id": "super-killer",
     "slug": "super-killer",
@@ -6554,18 +7031,18 @@ export const PRODUCTS_DATA = {
     "seoDescription": "Buy SUPER KILLER 11.6% SC online. Highly effective formula for pest and crop management. Cash on delivery available.",
     "sizes": [
       {
-            "size": "100 ML",
-            "price": 499,
-            "oldPrice": 499,
-            "sku": "VA-SUPER-KILLER-100ML",
-            "weight": "0.1kg",
-            "stockStatus": "In Stock"
+        "size": "100 ML",
+        "price": 499,
+        "oldPrice": 499,
+        "sku": "VA-SUPER_KILLER-100ML",
+        "weight": "0.1kg",
+        "stockStatus": "In Stock"
       }
-],
+    ],
     "formulation": "EMAMECTIN BENZOATE 2.6%+ CHLORANTRANLIPROLE 9%",
     "activeIngredient": "EMAMECTIN BENZOATE 2.6%+ CHLORANTRANLIPROLE 9%",
     "packaging": "100 ML",
-    "productCode": "VA-SUPER-KILLER-100ML",
+    "productCode": "VA-SUPER_KILLER-100ML",
     "status": {
       "en": "Premium Quality Compound",
       "ur": "اعلیٰ معیار کا مرکب"
@@ -6671,9 +7148,10 @@ export const PRODUCTS_DATA = {
         "مکسنگ اور سپرے کے دوران دستانے اور ماسک کا استعمال کریں۔",
         "استعمال کے بعد ہاتھ صابن سے اچھی طرح دھوئیں۔"
       ]
-    }
+    },
+    "price": 499,
+    "oldPrice": 499
   },
-
   "tallons-super": {
     "id": "tallons-super",
     "slug": "tallons-super",
@@ -6701,18 +7179,18 @@ export const PRODUCTS_DATA = {
     "seoDescription": "Buy TALLONS SUPER 21% EC online. Highly effective formula for pest and crop management. Cash on delivery available.",
     "sizes": [
       {
-            "size": "800 ML",
-            "price": 1199,
-            "oldPrice": 1199,
-            "sku": "VA-TALLONS-SUPER-800ML",
-            "weight": "0.8kg",
-            "stockStatus": "In Stock"
+        "size": "800 ML",
+        "price": 1160,
+        "oldPrice": 1160,
+        "sku": "VA-TALLONS_SUPER-800ML",
+        "weight": "0.8kg",
+        "stockStatus": "In Stock"
       }
-],
+    ],
     "formulation": "Triazophos + Lambda Cyh",
     "activeIngredient": "Triazophos + Lambda Cyh",
     "packaging": "800 ML",
-    "productCode": "VA-TALLONS-SUPER-800ML",
+    "productCode": "VA-TALLONS_SUPER-800ML",
     "status": {
       "en": "Premium Quality Compound",
       "ur": "اعلیٰ معیار کا مرکب"
@@ -6818,9 +7296,10 @@ export const PRODUCTS_DATA = {
         "مکسنگ اور سپرے کے دوران دستانے اور ماسک کا استعمال کریں۔",
         "استعمال کے بعد ہاتھ صابن سے اچھی طرح دھوئیں۔"
       ]
-    }
+    },
+    "price": 1160,
+    "oldPrice": 1160
   },
-
   "thorax": {
     "id": "thorax",
     "slug": "thorax",
@@ -6848,14 +7327,14 @@ export const PRODUCTS_DATA = {
     "seoDescription": "Buy THORAX - 12% SC online. Highly effective formula for pest and crop management. Cash on delivery available.",
     "sizes": [
       {
-            "size": "200 ML",
-            "price": 430,
-            "oldPrice": 430,
-            "sku": "VA-THORAX-200ML",
-            "weight": "0.2kg",
-            "stockStatus": "In Stock"
+        "size": "200 ML",
+        "price": 415,
+        "oldPrice": 415,
+        "sku": "VA-THORAX-200ML",
+        "weight": "0.2kg",
+        "stockStatus": "In Stock"
       }
-],
+    ],
     "formulation": "Abamectin + Thiamethoxam",
     "activeIngredient": "Abamectin + Thiamethoxam",
     "packaging": "200 ML",
@@ -6965,9 +7444,10 @@ export const PRODUCTS_DATA = {
         "مکسنگ اور سپرے کے دوران دستانے اور ماسک کا استعمال کریں۔",
         "استعمال کے بعد ہاتھ صابن سے اچھی طرح دھوئیں۔"
       ]
-    }
+    },
+    "price": 415,
+    "oldPrice": 415
   },
-
   "fe-fa": {
     "id": "fe-fa",
     "slug": "fe-fa",
@@ -6995,18 +7475,18 @@ export const PRODUCTS_DATA = {
     "seoDescription": "Buy FE-FA - 22% ZC (WANDAL) online. Highly effective formula for pest and crop management. Cash on delivery available.",
     "sizes": [
       {
-            "size": "150 ML",
-            "price": 660,
-            "oldPrice": 660,
-            "sku": "VA-FE-FA-150ML",
-            "weight": "0.15kg",
-            "stockStatus": "In Stock"
+        "size": "150 ML",
+        "price": 660,
+        "oldPrice": 660,
+        "sku": "VA-FE_FA-150ML",
+        "weight": "0.15kg",
+        "stockStatus": "In Stock"
       }
-],
+    ],
     "formulation": "Thiamethoxam + Lambda Cyhl",
     "activeIngredient": "Thiamethoxam + Lambda Cyhl",
     "packaging": "150 ML",
-    "productCode": "VA-FE-FA-150ML",
+    "productCode": "VA-FE_FA-150ML",
     "status": {
       "en": "Premium Quality Compound",
       "ur": "اعلیٰ معیار کا مرکب"
@@ -7112,9 +7592,10 @@ export const PRODUCTS_DATA = {
         "مکسنگ اور سپرے کے دوران دستانے اور ماسک کا استعمال کریں۔",
         "استعمال کے بعد ہاتھ صابن سے اچھی طرح دھوئیں۔"
       ]
-    }
+    },
+    "price": 660,
+    "oldPrice": 660
   },
-
   "unit": {
     "id": "unit",
     "slug": "unit",
@@ -7142,17 +7623,17 @@ export const PRODUCTS_DATA = {
     "seoDescription": "Buy UNIT 25%SL online. Highly effective formula for pest and crop management. Cash on delivery available.",
     "sizes": [
       {
-            "size": "250ML",
-            "price": 810,
-            "oldPrice": 810,
-            "sku": "VA-UNIT-250ML",
-            "weight": "0.25kg",
-            "stockStatus": "In Stock"
+        "size": "250 ML",
+        "price": 810,
+        "oldPrice": 810,
+        "sku": "VA-UNIT-250ML",
+        "weight": "0.25kg",
+        "stockStatus": "In Stock"
       }
-],
+    ],
     "formulation": "SURPRISE (NITENPYRAM+BIFEN) 25% SL",
     "activeIngredient": "SURPRISE (NITENPYRAM+BIFEN) 25% SL",
-    "packaging": "250ML",
+    "packaging": "250 ML",
     "productCode": "VA-UNIT-250ML",
     "status": {
       "en": "Premium Quality Compound",
@@ -7259,9 +7740,10 @@ export const PRODUCTS_DATA = {
         "مکسنگ اور سپرے کے دوران دستانے اور ماسک کا استعمال کریں۔",
         "استعمال کے بعد ہاتھ صابن سے اچھی طرح دھوئیں۔"
       ]
-    }
+    },
+    "price": 810,
+    "oldPrice": 810
   },
-
   "ultra-nanoo": {
     "id": "ultra-nanoo",
     "slug": "ultra-nanoo",
@@ -7289,18 +7771,18 @@ export const PRODUCTS_DATA = {
     "seoDescription": "Buy ULTRA NANOO 5 - 50%SG online. Highly effective formula for pest and crop management. Cash on delivery available.",
     "sizes": [
       {
-            "size": "50 GM",
-            "price": 340,
-            "oldPrice": 340,
-            "sku": "VA-ULTRA-NANOO-50GM",
-            "weight": "0.05kg",
-            "stockStatus": "In Stock"
+        "size": "50 GM",
+        "price": 340,
+        "oldPrice": 340,
+        "sku": "VA-ULTRA_NANOO-50GM",
+        "weight": "0.05kg",
+        "stockStatus": "In Stock"
       }
-],
+    ],
     "formulation": "INSTANT SUPPER (NITENPYRAM) 50% SG",
     "activeIngredient": "INSTANT SUPPER (NITENPYRAM) 50% SG",
     "packaging": "50 GM",
-    "productCode": "VA-ULTRA-NANOO-50GM",
+    "productCode": "VA-ULTRA_NANOO-50GM",
     "status": {
       "en": "Premium Quality Compound",
       "ur": "اعلیٰ معیار کا مرکب"
@@ -7406,82 +7888,39 @@ export const PRODUCTS_DATA = {
         "مکسنگ اور سپرے کے دوران دستانے اور ماسک کا استعمال کریں۔",
         "استعمال کے بعد ہاتھ صابن سے اچھی طرح دھوئیں۔"
       ]
-    }
+    },
+    "price": 340,
+    "oldPrice": 340
   },
-
-  "shelly": {
-    "id": "shelly",
-    "slug": "shelly",
-    "name": {
-      "en": "SHELLY 687.5 G/L SC",
-      "ur": "شیلی"
-    },
-    "genericName": {
-      "en": "PROPAMOCARB+FLUOPICOLIDE 68.76%SC",
-      "ur": "PROPAMOCARB+FLUOPICOLIDE 68.76%SC"
-    },
-    "category": "fungicide",
-    "tagline": "PROPAMOCARB+FLUOPICOLIDE 68.76%SC — Ultimate Insect Pest Defeater",
-    "imageUrl": "/products/shelly.png",
-    "pngUrl": "/products/shelly.png",
+  "faalq-gold": {
+    "imageUrl": "/products/faalq-gold.webp",
+    "pngUrl": "/products/faalq-gold.webp",
     "rating": 4.8,
     "importedFormulaBadge": true,
     "premiumProductBadge": true,
     "researchBasedBadge": true,
-    "shortDesc": {
-      "en": "High-efficacy insecticide with PROPAMOCARB+FLUOPICOLIDE 68.76%SC offering rapid knockdown and long residual control against sucking and chewing pests.",
-      "ur": "فصلوں کو چوسنے اور چبانے والے کیڑوں (سفید مکھی، تھرپس، چست تیلا اور سنڈیوں) سے محفوظ رکھنے کے لیے PROPAMOCARB+FLUOPICOLIDE 68.76%SC کا جدید فارمولا۔"
-    },
-    "seoTitle": "SHELLY 687.5 G/L SC | Premium Agrochemical | Vital Agro",
-    "seoDescription": "Buy SHELLY 687.5 G/L SC online. Highly effective formula for pest and crop management. Cash on delivery available.",
-    "sizes": [
-      {
-            "size": "400 ML",
-            "price": 1899,
-            "oldPrice": 1899,
-            "sku": "VA-SHELLY-400ML",
-            "weight": "0.4kg",
-            "stockStatus": "In Stock"
-      }
-],
-    "formulation": "PROPAMOCARB+FLUOPICOLIDE 68.76%SC",
-    "activeIngredient": "PROPAMOCARB+FLUOPICOLIDE 68.76%SC",
-    "packaging": "400 ML",
-    "productCode": "VA-SHELLY-400ML",
+    "seoTitle": "FAALQ GOLD 6% OD | Premium Agrochemical | Vital Agro",
+    "seoDescription": "Buy FAALQ GOLD 6% OD online. Highly effective formula for pest and crop management. Cash on delivery available.",
+    "packaging": "600 ML",
+    "productCode": "VA-FAALQ_GOLD-600ML",
     "status": {
       "en": "Premium Quality Compound",
       "ur": "اعلیٰ معیار کا مرکب"
     },
     "description": {
-      "en": "High-efficacy insecticide with PROPAMOCARB+FLUOPICOLIDE 68.76%SC offering rapid knockdown and long residual control against sucking and chewing pests. It is a highly specialized chemical compound designed under strict international quality controls to maximize your crop yields.",
-      "ur": "فصلوں کو چوسنے اور چبانے والے کیڑوں (سفید مکھی، تھرپس، چست تیلا اور سنڈیوں) سے محفوظ رکھنے کے لیے PROPAMOCARB+FLUOPICOLIDE 68.76%SC کا جدید فارمولا۔ یہ پودے کی بہترین نشوونما اور تحفظ کے لیے عالمی معیار کے مطابق تیار کیا گیا مرکب ہے۔"
+      "en": "Cleans broadleaf, grassy, and sedge weeds from rice fields in a single application. Premium agrochemical compound designed under strict international quality controls to maximize your crop yields and ensure complete plant protection.",
+      "ur": "دھان کی فصل سے جڑی بوٹیوں کو ختم کرنے کا جدید آئل بیسڈ فارمولا۔ پودے کی بہترین نشوونما اور تحفظ کے لیے عالمی معیار کے مطابق تیار کیا گیا مرکب جو فصل کی پیداوار بڑھاتا ہے۔"
     },
     "features": {
       "en": [
-        "Fast knockdown of target insect pests",
-        "Controls both adult and juvenile stages",
-        "Dual systemic and contact action",
-        "Excellent resistance management tool"
+        "Ensures robust crop vigor and health",
+        "Increases crop survival and yield capacity",
+        "Strengthens defense mechanism of the plant"
       ],
       "ur": [
-        "نقصان دہ کیڑوں کا چند گھنٹوں میں فوری اور موثر خاتمہ",
-        "کیڑوں کے انڈوں، بچوں اور بڑوں پر یکساں اثر",
-        "فصل کی رگ رگ میں سرایت کر کے طویل تحفظ دینا",
-        "کیڑوں میں قوت مدافعت بننے سے روکتا ہے"
-      ]
-    },
-    "benefits": {
-      "en": [
-        "Fast knockdown of target insect pests",
-        "Controls both adult and juvenile stages",
-        "Dual systemic and contact action",
-        "Excellent resistance management tool"
-      ],
-      "ur": [
-        "نقصان دہ کیڑوں کا چند گھنٹوں میں فوری اور موثر خاتمہ",
-        "کیڑوں کے انڈوں، بچوں اور بڑوں پر یکساں اثر",
-        "فصل کی رگ رگ میں سرایت کر کے طویل تحفظ دینا",
-        "کیڑوں میں قوت مدافعت بننے سے روکتا ہے"
+        "فصل کی بہترین نشوونما اور صحت کو یقینی بناتا ہے",
+        "پیداواری صلاحیت اور قوت مدافعت کو بڑھاتا ہے",
+        "پودے کے دفاعی نظام کو مضبوط کرتا ہے"
       ]
     },
     "crops": [
@@ -7501,451 +7940,10 @@ export const PRODUCTS_DATA = {
       },
       {
         "name": {
-          "en": "Sugarcane",
-          "ur": "کماد"
-        },
-        "icon": "🌱"
-      },
-      {
-        "name": {
           "en": "Maize",
           "ur": "مکئی"
         },
         "icon": "🌽"
-      },
-      {
-        "name": {
-          "en": "Vegetables",
-          "ur": "سبزیاں"
-        },
-        "icon": "🥦"
-      },
-      {
-        "name": {
-          "en": "Citrus",
-          "ur": "ترشاوہ پھل"
-        },
-        "icon": "🌱"
-      }
-    ],
-    "application": {
-      "en": "Apply as a foliar spray or through irrigation as recommended. Complete foliage coverage is essential for maximum efficacy. Avoid spraying during the midday heat.",
-      "ur": "تجویز کردہ خوراک کے مطابق پتوں پر اسپرے کریں یا آبپاشی کے ساتھ فلڈ کریں۔ زیادہ گرمی کے دوران اسپرے کرنے سے گریز کریں۔"
-    },
-    "specs": {
-      "type": {
-        "en": "Fungicide",
-        "ur": "Fungicide"
-      },
-      "storage": {
-        "en": "Store in cool, dry ventilated place away from children.",
-        "ur": "ٹھنڈی اور خشک جگہ پر بچوں کی پہنچ سے دور رکھیں"
-      }
-    },
-    "safety": {
-      "en": [
-        "Avoid inhalation and skin contact.",
-        "Wear protective gloves and mask during spray.",
-        "Wash hands thoroughly after use."
-      ],
-      "ur": [
-        "دوا کو سونگھنے اور جلد پر گرنے سے بچائیں۔",
-        "مکسنگ اور سپرے کے دوران دستانے اور ماسک کا استعمال کریں۔",
-        "استعمال کے بعد ہاتھ صابن سے اچھی طرح دھوئیں۔"
-      ]
-    }
-  },
-
-  "master": {
-    "id": "master",
-    "slug": "master",
-    "name": {
-      "en": "MASTER 18.7% WG",
-      "ur": "ماسٹر"
-    },
-    "genericName": {
-      "en": "PIVOT 18.7% WG",
-      "ur": "PIVOT 18.7% WG"
-    },
-    "category": "fungicide",
-    "tagline": "PIVOT 18.7% WG — Ultimate Insect Pest Defeater",
-    "imageUrl": "/products/master.png",
-    "pngUrl": "/products/master.png",
-    "rating": 4.8,
-    "importedFormulaBadge": true,
-    "premiumProductBadge": true,
-    "researchBasedBadge": true,
-    "shortDesc": {
-      "en": "High-efficacy insecticide with PIVOT 18.7% WG offering rapid knockdown and long residual control against sucking and chewing pests.",
-      "ur": "فصلوں کو چوسنے اور چبانے والے کیڑوں (سفید مکھی، تھرپس، چست تیلا اور سنڈیوں) سے محفوظ رکھنے کے لیے PIVOT 18.7% WG کا جدید فارمولا۔"
-    },
-    "seoTitle": "MASTER 18.7% WG | Premium Agrochemical | Vital Agro",
-    "seoDescription": "Buy MASTER 18.7% WG online. Highly effective formula for pest and crop management. Cash on delivery available.",
-    "sizes": [
-      {
-        "size": "250 GM",
-        "price": 0,
-        "oldPrice": 0,
-        "stockStatus": "In Stock",
-        "sku": "VA-MASTER-250GM",
-        "weight": "0.25kg"
-      }
-    ],
-    "formulation": "PIVOT 18.7% WG",
-    "activeIngredient": "PIVOT 18.7% WG",
-    "packaging": "250 GM",
-    "productCode": "VA-MASTER-250GM",
-    "status": {
-      "en": "Premium Quality Compound",
-      "ur": "اعلیٰ معیار کا مرکب"
-    },
-    "description": {
-      "en": "High-efficacy insecticide with PIVOT 18.7% WG offering rapid knockdown and long residual control against sucking and chewing pests. It is a highly specialized chemical compound designed under strict international quality controls to maximize your crop yields.",
-      "ur": "فصلوں کو چوسنے اور چبانے والے کیڑوں (سفید مکھی، تھرپس، چست تیلا اور سنڈیوں) سے محفوظ رکھنے کے لیے PIVOT 18.7% WG کا جدید فارمولا۔ یہ پودے کی بہترین نشوونما اور تحفظ کے لیے عالمی معیار کے مطابق تیار کیا گیا مرکب ہے۔"
-    },
-    "features": {
-      "en": [
-        "Fast knockdown of target insect pests",
-        "Controls both adult and juvenile stages",
-        "Dual systemic and contact action",
-        "Excellent resistance management tool"
-      ],
-      "ur": [
-        "نقصان دہ کیڑوں کا چند گھنٹوں میں فوری اور موثر خاتمہ",
-        "کیڑوں کے انڈوں، بچوں اور بڑوں پر یکساں اثر",
-        "فصل کی رگ رگ میں سرایت کر کے طویل تحفظ دینا",
-        "کیڑوں میں قوت مدافعت بننے سے روکتا ہے"
-      ]
-    },
-    "benefits": {
-      "en": [
-        "Fast knockdown of target insect pests",
-        "Controls both adult and juvenile stages",
-        "Dual systemic and contact action",
-        "Excellent resistance management tool"
-      ],
-      "ur": [
-        "نقصان دہ کیڑوں کا چند گھنٹوں میں فوری اور موثر خاتمہ",
-        "کیڑوں کے انڈوں، بچوں اور بڑوں پر یکساں اثر",
-        "فصل کی رگ رگ میں سرایت کر کے طویل تحفظ دینا",
-        "کیڑوں میں قوت مدافعت بننے سے روکتا ہے"
-      ]
-    },
-    "crops": [
-      {
-        "name": {
-          "en": "Cotton",
-          "ur": "کپاس"
-        },
-        "icon": "🌱"
-      },
-      {
-        "name": {
-          "en": "Rice",
-          "ur": "دھان"
-        },
-        "icon": "🌾"
-      },
-      {
-        "name": {
-          "en": "Sugarcane",
-          "ur": "کماد"
-        },
-        "icon": "🌱"
-      },
-      {
-        "name": {
-          "en": "Maize",
-          "ur": "مکئی"
-        },
-        "icon": "🌽"
-      },
-      {
-        "name": {
-          "en": "Vegetables",
-          "ur": "سبزیاں"
-        },
-        "icon": "🥦"
-      },
-      {
-        "name": {
-          "en": "Citrus",
-          "ur": "ترشاوہ پھل"
-        },
-        "icon": "🌱"
-      }
-    ],
-    "application": {
-      "en": "Apply as a foliar spray or through irrigation as recommended. Complete foliage coverage is essential for maximum efficacy. Avoid spraying during the midday heat.",
-      "ur": "تجویز کردہ خوراک کے مطابق پتوں پر اسپرے کریں یا آبپاشی کے ساتھ فلڈ کریں۔ زیادہ گرمی کے دوران اسپرے کرنے سے گریز کریں۔"
-    },
-    "specs": {
-      "type": {
-        "en": "Fungicide",
-        "ur": "Fungicide"
-      },
-      "storage": {
-        "en": "Store in cool, dry ventilated place away from children.",
-        "ur": "ٹھنڈی اور خشک جگہ پر بچوں کی پہنچ سے دور رکھیں"
-      }
-    },
-    "safety": {
-      "en": [
-        "Avoid inhalation and skin contact.",
-        "Wear protective gloves and mask during spray.",
-        "Wash hands thoroughly after use."
-      ],
-      "ur": [
-        "دوا کو سونگھنے اور جلد پر گرنے سے بچائیں۔",
-        "مکسنگ اور سپرے کے دوران دستانے اور ماسک کا استعمال کریں۔",
-        "استعمال کے بعد ہاتھ صابن سے اچھی طرح دھوئیں۔"
-      ]
-    }
-  },
-
-  "dollar": {
-    "id": "dollar",
-    "slug": "dollar",
-    "name": {
-      "en": "DOLLAR 23.2% OD",
-      "ur": "ڈالر"
-    },
-    "genericName": {
-      "en": "FUSHU 23.2% OD",
-      "ur": "FUSHU 23.2% OD"
-    },
-    "category": "fungicide",
-    "tagline": "FUSHU 23.2% OD — Ultimate Insect Pest Defeater",
-    "imageUrl": "/products/dollar.png",
-    "pngUrl": "/products/dollar.png",
-    "rating": 4.8,
-    "importedFormulaBadge": true,
-    "premiumProductBadge": true,
-    "researchBasedBadge": true,
-    "shortDesc": {
-      "en": "High-efficacy insecticide with FUSHU 23.2% OD offering rapid knockdown and long residual control against sucking and chewing pests.",
-      "ur": "فصلوں کو چوسنے اور چبانے والے کیڑوں (سفید مکھی، تھرپس، چست تیلا اور سنڈیوں) سے محفوظ رکھنے کے لیے FUSHU 23.2% OD کا جدید فارمولا۔"
-    },
-    "seoTitle": "DOLLAR 23.2% OD | Premium Agrochemical | Vital Agro",
-    "seoDescription": "Buy DOLLAR 23.2% OD online. Highly effective formula for pest and crop management. Cash on delivery available.",
-    "sizes": [
-      {
-        "size": "500 ML",
-        "price": 0,
-        "oldPrice": 0,
-        "stockStatus": "In Stock",
-        "sku": "VA-DOLLAR-500ML",
-        "weight": "0.5kg"
-      }
-    ],
-    "formulation": "FUSHU 23.2% OD",
-    "activeIngredient": "FUSHU 23.2% OD",
-    "packaging": "500 ML",
-    "productCode": "VA-DOLLAR-500ML",
-    "status": {
-      "en": "Premium Quality Compound",
-      "ur": "اعلیٰ معیار کا مرکب"
-    },
-    "description": {
-      "en": "High-efficacy insecticide with FUSHU 23.2% OD offering rapid knockdown and long residual control against sucking and chewing pests. It is a highly specialized chemical compound designed under strict international quality controls to maximize your crop yields.",
-      "ur": "فصلوں کو چوسنے اور چبانے والے کیڑوں (سفید مکھی، تھرپس، چست تیلا اور سنڈیوں) سے محفوظ رکھنے کے لیے FUSHU 23.2% OD کا جدید فارمولا۔ یہ پودے کی بہترین نشوونما اور تحفظ کے لیے عالمی معیار کے مطابق تیار کیا گیا مرکب ہے۔"
-    },
-    "features": {
-      "en": [
-        "Fast knockdown of target insect pests",
-        "Controls both adult and juvenile stages",
-        "Dual systemic and contact action",
-        "Excellent resistance management tool"
-      ],
-      "ur": [
-        "نقصان دہ کیڑوں کا چند گھنٹوں میں فوری اور موثر خاتمہ",
-        "کیڑوں کے انڈوں، بچوں اور بڑوں پر یکساں اثر",
-        "فصل کی رگ رگ میں سرایت کر کے طویل تحفظ دینا",
-        "کیڑوں میں قوت مدافعت بننے سے روکتا ہے"
-      ]
-    },
-    "benefits": {
-      "en": [
-        "Fast knockdown of target insect pests",
-        "Controls both adult and juvenile stages",
-        "Dual systemic and contact action",
-        "Excellent resistance management tool"
-      ],
-      "ur": [
-        "نقصان دہ کیڑوں کا چند گھنٹوں میں فوری اور موثر خاتمہ",
-        "کیڑوں کے انڈوں، بچوں اور بڑوں پر یکساں اثر",
-        "فصل کی رگ رگ میں سرایت کر کے طویل تحفظ دینا",
-        "کیڑوں میں قوت مدافعت بننے سے روکتا ہے"
-      ]
-    },
-    "crops": [
-      {
-        "name": {
-          "en": "Cotton",
-          "ur": "کپاس"
-        },
-        "icon": "🌱"
-      },
-      {
-        "name": {
-          "en": "Rice",
-          "ur": "دھان"
-        },
-        "icon": "🌾"
-      },
-      {
-        "name": {
-          "en": "Sugarcane",
-          "ur": "کماد"
-        },
-        "icon": "🌱"
-      },
-      {
-        "name": {
-          "en": "Maize",
-          "ur": "مکئی"
-        },
-        "icon": "🌽"
-      },
-      {
-        "name": {
-          "en": "Vegetables",
-          "ur": "سبزیاں"
-        },
-        "icon": "🥦"
-      },
-      {
-        "name": {
-          "en": "Citrus",
-          "ur": "ترشاوہ پھل"
-        },
-        "icon": "🌱"
-      }
-    ],
-    "application": {
-      "en": "Apply as a foliar spray or through irrigation as recommended. Complete foliage coverage is essential for maximum efficacy. Avoid spraying during the midday heat.",
-      "ur": "تجویز کردہ خوراک کے مطابق پتوں پر اسپرے کریں یا آبپاشی کے ساتھ فلڈ کریں۔ زیادہ گرمی کے دوران اسپرے کرنے سے گریز کریں۔"
-    },
-    "specs": {
-      "type": {
-        "en": "Fungicide",
-        "ur": "Fungicide"
-      },
-      "storage": {
-        "en": "Store in cool, dry ventilated place away from children.",
-        "ur": "ٹھنڈی اور خشک جگہ پر بچوں کی پہنچ سے دور رکھیں"
-      }
-    },
-    "safety": {
-      "en": [
-        "Avoid inhalation and skin contact.",
-        "Wear protective gloves and mask during spray.",
-        "Wash hands thoroughly after use."
-      ],
-      "ur": [
-        "دوا کو سونگھنے اور جلد پر گرنے سے بچائیں۔",
-        "مکسنگ اور سپرے کے دوران دستانے اور ماسک کا استعمال کریں۔",
-        "استعمال کے بعد ہاتھ صابن سے اچھی طرح دھوئیں۔"
-      ]
-    }
-  },
-
-  "woxy": {
-    "id": "woxy",
-    "slug": "woxy",
-    "name": {
-      "en": "WOXY 32% SC",
-      "ur": "ووکسی"
-    },
-    "genericName": {
-      "en": "AZOXYSTROBIN+PROPICONAZOLE 32%",
-      "ur": "AZOXYSTROBIN+PROPICONAZOLE 32%"
-    },
-    "category": "fungicide",
-    "tagline": "AZOXYSTROBIN+PROPICONAZOLE 32% — Complete Disease Management Shield",
-    "imageUrl": "/products/woxy.png",
-    "pngUrl": "/products/woxy.png",
-    "rating": 4.8,
-    "importedFormulaBadge": true,
-    "premiumProductBadge": true,
-    "researchBasedBadge": true,
-    "shortDesc": {
-      "en": "Advanced systemic and contact fungicide with AZOXYSTROBIN+PROPICONAZOLE 32% to prevent and cure blights, downy mildew, powdery mildew, and rusts.",
-      "ur": "پھپھوند اور فنگس کی بیماریوں (جھلساؤ، کنگی اور بلاسٹ) کے خلاف AZOXYSTROBIN+PROPICONAZOLE 32% کا سسٹمک اور حفاظتی اثر والا شاندار مرکب۔"
-    },
-    "seoTitle": "WOXY 32% SC | Premium Agrochemical | Vital Agro",
-    "seoDescription": "Buy WOXY 32% SC online. Highly effective formula for pest and crop management. Cash on delivery available.",
-    "sizes": [
-      {
-            "size": "200 ML",
-            "price": 1399,
-            "oldPrice": 1399,
-            "sku": "VA-WOXY-200ML",
-            "weight": "0.2kg",
-            "stockStatus": "In Stock"
-      }
-],
-    "formulation": "AZOXYSTROBIN+PROPICONAZOLE 32%",
-    "activeIngredient": "AZOXYSTROBIN+PROPICONAZOLE 32%",
-    "packaging": "200 ML",
-    "productCode": "VA-WOXY-200ML",
-    "status": {
-      "en": "Premium Quality Compound",
-      "ur": "اعلیٰ معیار کا مرکب"
-    },
-    "description": {
-      "en": "Advanced systemic and contact fungicide with AZOXYSTROBIN+PROPICONAZOLE 32% to prevent and cure blights, downy mildew, powdery mildew, and rusts. It is a highly specialized chemical compound designed under strict international quality controls to maximize your crop yields.",
-      "ur": "پھپھوند اور فنگس کی بیماریوں (جھلساؤ، کنگی اور بلاسٹ) کے خلاف AZOXYSTROBIN+PROPICONAZOLE 32% کا سسٹمک اور حفاظتی اثر والا شاندار مرکب۔ یہ پودے کی بہترین نشوونما اور تحفظ کے لیے عالمی معیار کے مطابق تیار کیا گیا مرکب ہے۔"
-    },
-    "features": {
-      "en": [
-        "Dual systemic and contact curative action",
-        "Halts disease progression and prevents spore formation",
-        "Promotes stay-green effect and improves plant health",
-        "Highly rainfast once absorbed by leaves"
-      ],
-      "ur": [
-        "بیماری کے خلاف دوہرا سسٹمک اور حفاظتی عمل فراہم کرتا ہے",
-        "فنگس کے بیج (سپورز) بننے کے عمل کو فوری روکتا ہے",
-        "پتوں کو صحت مند اور لش گرین رکھتا ہے",
-        "سپرے کے بعد بارش سے بھی اثر ختم نہیں ہوتا"
-      ]
-    },
-    "benefits": {
-      "en": [
-        "Dual systemic and contact curative action",
-        "Halts disease progression and prevents spore formation",
-        "Promotes stay-green effect and improves plant health",
-        "Highly rainfast once absorbed by leaves"
-      ],
-      "ur": [
-        "بیماری کے خلاف دوہرا سسٹمک اور حفاظتی عمل فراہم کرتا ہے",
-        "فنگس کے بیج (سپورز) بننے کے عمل کو فوری روکتا ہے",
-        "پتوں کو صحت مند اور لش گرین رکھتا ہے",
-        "سپرے کے بعد بارش سے بھی اثر ختم نہیں ہوتا"
-      ]
-    },
-    "crops": [
-      {
-        "name": {
-          "en": "Potato",
-          "ur": "آلو"
-        },
-        "icon": "🌱"
-      },
-      {
-        "name": {
-          "en": "Tomato",
-          "ur": "ٹماٹر"
-        },
-        "icon": "🌱"
-      },
-      {
-        "name": {
-          "en": "Rice",
-          "ur": "دھان"
-        },
-        "icon": "🌾"
       },
       {
         "name": {
@@ -7953,5915 +7951,37 @@ export const PRODUCTS_DATA = {
           "ur": "گندم"
         },
         "icon": "🌾"
-      },
-      {
-        "name": {
-          "en": "Vegetables",
-          "ur": "سبزیاں"
-        },
-        "icon": "🥦"
-      },
-      {
-        "name": {
-          "en": "Mango",
-          "ur": "آم"
-        },
-        "icon": "🍊"
-      },
-      {
-        "name": {
-          "en": "Citrus",
-          "ur": "ترشاوہ پھل"
-        },
-        "icon": "🌱"
       }
     ],
-    "application": {
-      "en": "Apply as a foliar spray or through irrigation as recommended. Complete foliage coverage is essential for maximum efficacy. Avoid spraying during the midday heat.",
-      "ur": "تجویز کردہ خوراک کے مطابق پتوں پر اسپرے کریں یا آبپاشی کے ساتھ فلڈ کریں۔ زیادہ گرمی کے دوران اسپرے کرنے سے گریز کریں۔"
-    },
-    "specs": {
-      "type": {
-        "en": "Fungicide",
-        "ur": "Fungicide"
-      },
-      "storage": {
-        "en": "Store in cool, dry ventilated place away from children.",
-        "ur": "ٹھنڈی اور خشک جگہ پر بچوں کی پہنچ سے دور رکھیں"
-      }
-    },
-    "safety": {
-      "en": [
-        "Avoid inhalation and skin contact.",
-        "Wear protective gloves and mask during spray.",
-        "Wash hands thoroughly after use."
-      ],
-      "ur": [
-        "دوا کو سونگھنے اور جلد پر گرنے سے بچائیں۔",
-        "مکسنگ اور سپرے کے دوران دستانے اور ماسک کا استعمال کریں۔",
-        "استعمال کے بعد ہاتھ صابن سے اچھی طرح دھوئیں۔"
-      ]
-    }
-  },
-
-  "deft": {
-    "id": "deft",
-    "slug": "deft",
     "name": {
-      "en": "DEFT 10% WP",
-      "ur": "ڈیفٹ"
+      "en": "FAALQ GOLD 6% OD",
+      "ur": "فالکن گولڈ"
     },
     "genericName": {
-      "en": "METSULFURON METHYL 10%WP",
-      "ur": "METSULFURON METHYL 10%WP"
+      "en": "BISPYRIBAC SODIUM 6% OD",
+      "ur": "BISPYRIBAC SODIUM 6% OD"
     },
     "category": "herbicide",
-    "tagline": "METSULFURON METHYL 10%WP — Ultimate Insect Pest Defeater",
-    "imageUrl": "",
-    "pngUrl": "/products/deft.png",
-    "rating": 4.8,
-    "importedFormulaBadge": true,
-    "premiumProductBadge": true,
-    "researchBasedBadge": true,
+    "tagline": "Advanced Post-Emergence Herbicide for Rice",
+    "activeIngredient": "BISPYRIBAC SODIUM 6% OD",
+    "formulation": "BISPYRIBAC SODIUM 6% OD",
     "shortDesc": {
-      "en": "High-efficacy insecticide with METSULFURON METHYL 10%WP offering rapid knockdown and long residual control against sucking and chewing pests.",
-      "ur": "فصلوں کو چوسنے اور چبانے والے کیڑوں (سفید مکھی، تھرپس، چست تیلا اور سنڈیوں) سے محفوظ رکھنے کے لیے METSULFURON METHYL 10%WP کا جدید فارمولا۔"
+      "en": "Cleans broadleaf, grassy, and sedge weeds from rice fields in a single application.",
+      "ur": "دھان کی فصل سے جڑی بوٹیوں کو ختم کرنے کا جدید آئل بیسڈ فارمولا۔"
     },
-    "seoTitle": "DEFT 10% WP | Premium Agrochemical | Vital Agro",
-    "seoDescription": "Buy DEFT 10% WP online. Highly effective formula for pest and crop management. Cash on delivery available.",
+    "id": "faalq-gold",
+    "slug": "faalq-gold",
     "sizes": [
       {
-        "size": "40 GM",
-        "price": 0,
-        "oldPrice": 0,
-        "stockStatus": "In Stock",
-        "sku": "VA-DEFT-40GM",
-        "weight": "0.04kg"
-      }
-    ],
-    "formulation": "METSULFURON METHYL 10%WP",
-    "activeIngredient": "METSULFURON METHYL 10%WP",
-    "packaging": "40 GM",
-    "productCode": "VA-DEFT-40GM",
-    "status": {
-      "en": "Premium Quality Compound",
-      "ur": "اعلیٰ معیار کا مرکب"
-    },
-    "description": {
-      "en": "High-efficacy insecticide with METSULFURON METHYL 10%WP offering rapid knockdown and long residual control against sucking and chewing pests. It is a highly specialized chemical compound designed under strict international quality controls to maximize your crop yields.",
-      "ur": "فصلوں کو چوسنے اور چبانے والے کیڑوں (سفید مکھی، تھرپس، چست تیلا اور سنڈیوں) سے محفوظ رکھنے کے لیے METSULFURON METHYL 10%WP کا جدید فارمولا۔ یہ پودے کی بہترین نشوونما اور تحفظ کے لیے عالمی معیار کے مطابق تیار کیا گیا مرکب ہے۔"
-    },
-    "features": {
-      "en": [
-        "Fast knockdown of target insect pests",
-        "Controls both adult and juvenile stages",
-        "Dual systemic and contact action",
-        "Excellent resistance management tool"
-      ],
-      "ur": [
-        "نقصان دہ کیڑوں کا چند گھنٹوں میں فوری اور موثر خاتمہ",
-        "کیڑوں کے انڈوں، بچوں اور بڑوں پر یکساں اثر",
-        "فصل کی رگ رگ میں سرایت کر کے طویل تحفظ دینا",
-        "کیڑوں میں قوت مدافعت بننے سے روکتا ہے"
-      ]
-    },
-    "benefits": {
-      "en": [
-        "Fast knockdown of target insect pests",
-        "Controls both adult and juvenile stages",
-        "Dual systemic and contact action",
-        "Excellent resistance management tool"
-      ],
-      "ur": [
-        "نقصان دہ کیڑوں کا چند گھنٹوں میں فوری اور موثر خاتمہ",
-        "کیڑوں کے انڈوں، بچوں اور بڑوں پر یکساں اثر",
-        "فصل کی رگ رگ میں سرایت کر کے طویل تحفظ دینا",
-        "کیڑوں میں قوت مدافعت بننے سے روکتا ہے"
-      ]
-    },
-    "crops": [
-      {
-        "name": {
-          "en": "Cotton",
-          "ur": "کپاس"
-        },
-        "icon": "🌱"
-      },
-      {
-        "name": {
-          "en": "Rice",
-          "ur": "دھان"
-        },
-        "icon": "🌾"
-      },
-      {
-        "name": {
-          "en": "Sugarcane",
-          "ur": "کماد"
-        },
-        "icon": "🌱"
-      },
-      {
-        "name": {
-          "en": "Maize",
-          "ur": "مکئی"
-        },
-        "icon": "🌽"
-      },
-      {
-        "name": {
-          "en": "Vegetables",
-          "ur": "سبزیاں"
-        },
-        "icon": "🥦"
-      },
-      {
-        "name": {
-          "en": "Citrus",
-          "ur": "ترشاوہ پھل"
-        },
-        "icon": "🌱"
-      }
-    ],
-    "application": {
-      "en": "Apply as a foliar spray or through irrigation as recommended. Complete foliage coverage is essential for maximum efficacy. Avoid spraying during the midday heat.",
-      "ur": "تجویز کردہ خوراک کے مطابق پتوں پر اسپرے کریں یا آبپاشی کے ساتھ فلڈ کریں۔ زیادہ گرمی کے دوران اسپرے کرنے سے گریز کریں۔"
-    },
-    "specs": {
-      "type": {
-        "en": "Herbicide",
-        "ur": "Herbicide"
-      },
-      "storage": {
-        "en": "Store in cool, dry ventilated place away from children.",
-        "ur": "ٹھنڈی اور خشک جگہ پر بچوں کی پہنچ سے دور رکھیں"
-      }
-    },
-    "safety": {
-      "en": [
-        "Avoid inhalation and skin contact.",
-        "Wear protective gloves and mask during spray.",
-        "Wash hands thoroughly after use."
-      ],
-      "ur": [
-        "دوا کو سونگھنے اور جلد پر گرنے سے بچائیں۔",
-        "مکسنگ اور سپرے کے دوران دستانے اور ماسک کا استعمال کریں۔",
-        "استعمال کے بعد ہاتھ صابن سے اچھی طرح دھوئیں۔"
-      ]
-    }
-  },
-
-  "taleb": {
-    "id": "taleb",
-    "slug": "taleb",
-    "name": {
-      "en": "TALEB 25%OD",
-      "ur": "طالب"
-    },
-    "genericName": {
-      "en": "TRI ULTRA (FSLM+MESO+MCPA) 25%OD",
-      "ur": "TRI ULTRA (FSLM+MESO+MCPA) 25%OD"
-    },
-    "category": "herbicide",
-    "tagline": "TRI ULTRA (FSLM+MESO+MCPA) 25%OD — Ultimate Insect Pest Defeater",
-    "imageUrl": "/products/taleb.png",
-    "pngUrl": "/products/taleb.png",
-    "rating": 4.8,
-    "importedFormulaBadge": true,
-    "premiumProductBadge": true,
-    "researchBasedBadge": true,
-    "shortDesc": {
-      "en": "High-efficacy insecticide with TRI ULTRA (FSLM+MESO+MCPA) 25%OD offering rapid knockdown and long residual control against sucking and chewing pests.",
-      "ur": "فصلوں کو چوسنے اور چبانے والے کیڑوں (سفید مکھی، تھرپس، چست تیلا اور سنڈیوں) سے محفوظ رکھنے کے لیے TRI ULTRA (FSLM+MESO+MCPA) 25%OD کا جدید فارمولا۔"
-    },
-    "seoTitle": "TALEB 25%OD | Premium Agrochemical | Vital Agro",
-    "seoDescription": "Buy TALEB 25%OD online. Highly effective formula for pest and crop management. Cash on delivery available.",
-    "sizes": [
-      {
-        "size": "360 ML",
-        "price": 0,
-        "oldPrice": 0,
-        "stockStatus": "In Stock",
-        "sku": "VA-TALEB-360ML",
-        "weight": "0.36kg"
-      }
-    ],
-    "formulation": "TRI ULTRA (FSLM+MESO+MCPA) 25%OD",
-    "activeIngredient": "TRI ULTRA (FSLM+MESO+MCPA) 25%OD",
-    "packaging": "360 ML",
-    "productCode": "VA-TALEB-360ML",
-    "status": {
-      "en": "Premium Quality Compound",
-      "ur": "اعلیٰ معیار کا مرکب"
-    },
-    "description": {
-      "en": "High-efficacy insecticide with TRI ULTRA (FSLM+MESO+MCPA) 25%OD offering rapid knockdown and long residual control against sucking and chewing pests. It is a highly specialized chemical compound designed under strict international quality controls to maximize your crop yields.",
-      "ur": "فصلوں کو چوسنے اور چبانے والے کیڑوں (سفید مکھی، تھرپس، چست تیلا اور سنڈیوں) سے محفوظ رکھنے کے لیے TRI ULTRA (FSLM+MESO+MCPA) 25%OD کا جدید فارمولا۔ یہ پودے کی بہترین نشوونما اور تحفظ کے لیے عالمی معیار کے مطابق تیار کیا گیا مرکب ہے۔"
-    },
-    "features": {
-      "en": [
-        "Fast knockdown of target insect pests",
-        "Controls both adult and juvenile stages",
-        "Dual systemic and contact action",
-        "Excellent resistance management tool"
-      ],
-      "ur": [
-        "نقصان دہ کیڑوں کا چند گھنٹوں میں فوری اور موثر خاتمہ",
-        "کیڑوں کے انڈوں، بچوں اور بڑوں پر یکساں اثر",
-        "فصل کی رگ رگ میں سرایت کر کے طویل تحفظ دینا",
-        "کیڑوں میں قوت مدافعت بننے سے روکتا ہے"
-      ]
-    },
-    "benefits": {
-      "en": [
-        "Fast knockdown of target insect pests",
-        "Controls both adult and juvenile stages",
-        "Dual systemic and contact action",
-        "Excellent resistance management tool"
-      ],
-      "ur": [
-        "نقصان دہ کیڑوں کا چند گھنٹوں میں فوری اور موثر خاتمہ",
-        "کیڑوں کے انڈوں، بچوں اور بڑوں پر یکساں اثر",
-        "فصل کی رگ رگ میں سرایت کر کے طویل تحفظ دینا",
-        "کیڑوں میں قوت مدافعت بننے سے روکتا ہے"
-      ]
-    },
-    "crops": [
-      {
-        "name": {
-          "en": "Cotton",
-          "ur": "کپاس"
-        },
-        "icon": "🌱"
-      },
-      {
-        "name": {
-          "en": "Rice",
-          "ur": "دھان"
-        },
-        "icon": "🌾"
-      },
-      {
-        "name": {
-          "en": "Sugarcane",
-          "ur": "کماد"
-        },
-        "icon": "🌱"
-      },
-      {
-        "name": {
-          "en": "Maize",
-          "ur": "مکئی"
-        },
-        "icon": "🌽"
-      },
-      {
-        "name": {
-          "en": "Vegetables",
-          "ur": "سبزیاں"
-        },
-        "icon": "🥦"
-      },
-      {
-        "name": {
-          "en": "Citrus",
-          "ur": "ترشاوہ پھل"
-        },
-        "icon": "🌱"
-      }
-    ],
-    "application": {
-      "en": "Apply as a foliar spray or through irrigation as recommended. Complete foliage coverage is essential for maximum efficacy. Avoid spraying during the midday heat.",
-      "ur": "تجویز کردہ خوراک کے مطابق پتوں پر اسپرے کریں یا آبپاشی کے ساتھ فلڈ کریں۔ زیادہ گرمی کے دوران اسپرے کرنے سے گریز کریں۔"
-    },
-    "specs": {
-      "type": {
-        "en": "Herbicide",
-        "ur": "Herbicide"
-      },
-      "storage": {
-        "en": "Store in cool, dry ventilated place away from children.",
-        "ur": "ٹھنڈی اور خشک جگہ پر بچوں کی پہنچ سے دور رکھیں"
-      }
-    },
-    "safety": {
-      "en": [
-        "Avoid inhalation and skin contact.",
-        "Wear protective gloves and mask during spray.",
-        "Wash hands thoroughly after use."
-      ],
-      "ur": [
-        "دوا کو سونگھنے اور جلد پر گرنے سے بچائیں۔",
-        "مکسنگ اور سپرے کے دوران دستانے اور ماسک کا استعمال کریں۔",
-        "استعمال کے بعد ہاتھ صابن سے اچھی طرح دھوئیں۔"
-      ]
-    }
-  },
-
-  "vital-gold-plus": {
-    "id": "vital-gold-plus",
-    "slug": "vital-gold-plus",
-    "name": {
-      "en": "VITAL GOLD PLUS 48% SC",
-      "ur": "وائٹل گولڈ پلس"
-    },
-    "genericName": {
-      "en": "Fluroxypyr Meptyl 11.42 + Florasulam 0.37 + Mcpa 33.84 (48sc)",
-      "ur": "Fluroxypyr Meptyl 11.42 + Florasulam 0.37 + Mcpa 33.84 (48sc)"
-    },
-    "category": "herbicide",
-    "tagline": "Fluroxypyr Meptyl 11.42 + Florasulam 0.37 + Mcpa 33.84 (48sc) — Ultimate Insect Pest Defeater",
-    "imageUrl": "",
-    "pngUrl": "/products/vital-gold-plus.png",
-    "rating": 4.8,
-    "importedFormulaBadge": true,
-    "premiumProductBadge": true,
-    "researchBasedBadge": true,
-    "shortDesc": {
-      "en": "High-efficacy insecticide with Fluroxypyr Meptyl 11.42 + Florasulam 0.37 + Mcpa 33.84 (48sc) offering rapid knockdown and long residual control against sucking and chewing pests.",
-      "ur": "فصلوں کو چوسنے اور چبانے والے کیڑوں (سفید مکھی، تھرپس، چست تیلا اور سنڈیوں) سے محفوظ رکھنے کے لیے Fluroxypyr Meptyl 11.42 + Florasulam 0.37 + Mcpa 33.84 (48sc) کا جدید فارمولا۔"
-    },
-    "seoTitle": "VITAL GOLD PLUS 48% SC | Premium Agrochemical | Vital Agro",
-    "seoDescription": "Buy VITAL GOLD PLUS 48% SC online. Highly effective formula for pest and crop management. Cash on delivery available.",
-    "sizes": [
-      {
-        "size": "350 ML",
-        "price": 0,
-        "oldPrice": 0,
-        "stockStatus": "In Stock",
-        "sku": "VA-VITAL-GOLD-PLUS-350ML",
-        "weight": "0.35kg"
-      }
-    ],
-    "formulation": "Fluroxypyr Meptyl 11.42 + Florasulam 0.37 + Mcpa 33.84 (48sc)",
-    "activeIngredient": "Fluroxypyr Meptyl 11.42 + Florasulam 0.37 + Mcpa 33.84 (48sc)",
-    "packaging": "350 ML",
-    "productCode": "VA-VITAL-GOLD-PLUS-350ML",
-    "status": {
-      "en": "Premium Quality Compound",
-      "ur": "اعلیٰ معیار کا مرکب"
-    },
-    "description": {
-      "en": "High-efficacy insecticide with Fluroxypyr Meptyl 11.42 + Florasulam 0.37 + Mcpa 33.84 (48sc) offering rapid knockdown and long residual control against sucking and chewing pests. It is a highly specialized chemical compound designed under strict international quality controls to maximize your crop yields.",
-      "ur": "فصلوں کو چوسنے اور چبانے والے کیڑوں (سفید مکھی، تھرپس، چست تیلا اور سنڈیوں) سے محفوظ رکھنے کے لیے Fluroxypyr Meptyl 11.42 + Florasulam 0.37 + Mcpa 33.84 (48sc) کا جدید فارمولا۔ یہ پودے کی بہترین نشوونما اور تحفظ کے لیے عالمی معیار کے مطابق تیار کیا گیا مرکب ہے۔"
-    },
-    "features": {
-      "en": [
-        "Fast knockdown of target insect pests",
-        "Controls both adult and juvenile stages",
-        "Dual systemic and contact action",
-        "Excellent resistance management tool"
-      ],
-      "ur": [
-        "نقصان دہ کیڑوں کا چند گھنٹوں میں فوری اور موثر خاتمہ",
-        "کیڑوں کے انڈوں، بچوں اور بڑوں پر یکساں اثر",
-        "فصل کی رگ رگ میں سرایت کر کے طویل تحفظ دینا",
-        "کیڑوں میں قوت مدافعت بننے سے روکتا ہے"
-      ]
-    },
-    "benefits": {
-      "en": [
-        "Fast knockdown of target insect pests",
-        "Controls both adult and juvenile stages",
-        "Dual systemic and contact action",
-        "Excellent resistance management tool"
-      ],
-      "ur": [
-        "نقصان دہ کیڑوں کا چند گھنٹوں میں فوری اور موثر خاتمہ",
-        "کیڑوں کے انڈوں، بچوں اور بڑوں پر یکساں اثر",
-        "فصل کی رگ رگ میں سرایت کر کے طویل تحفظ دینا",
-        "کیڑوں میں قوت مدافعت بننے سے روکتا ہے"
-      ]
-    },
-    "crops": [
-      {
-        "name": {
-          "en": "Cotton",
-          "ur": "کپاس"
-        },
-        "icon": "🌱"
-      },
-      {
-        "name": {
-          "en": "Rice",
-          "ur": "دھان"
-        },
-        "icon": "🌾"
-      },
-      {
-        "name": {
-          "en": "Sugarcane",
-          "ur": "کماد"
-        },
-        "icon": "🌱"
-      },
-      {
-        "name": {
-          "en": "Maize",
-          "ur": "مکئی"
-        },
-        "icon": "🌽"
-      },
-      {
-        "name": {
-          "en": "Vegetables",
-          "ur": "سبزیاں"
-        },
-        "icon": "🥦"
-      },
-      {
-        "name": {
-          "en": "Citrus",
-          "ur": "ترشاوہ پھل"
-        },
-        "icon": "🌱"
-      }
-    ],
-    "application": {
-      "en": "Apply as a foliar spray or through irrigation as recommended. Complete foliage coverage is essential for maximum efficacy. Avoid spraying during the midday heat.",
-      "ur": "تجویز کردہ خوراک کے مطابق پتوں پر اسپرے کریں یا آبپاشی کے ساتھ فلڈ کریں۔ زیادہ گرمی کے دوران اسپرے کرنے سے گریز کریں۔"
-    },
-    "specs": {
-      "type": {
-        "en": "Herbicide",
-        "ur": "Herbicide"
-      },
-      "storage": {
-        "en": "Store in cool, dry ventilated place away from children.",
-        "ur": "ٹھنڈی اور خشک جگہ پر بچوں کی پہنچ سے دور رکھیں"
-      }
-    },
-    "safety": {
-      "en": [
-        "Avoid inhalation and skin contact.",
-        "Wear protective gloves and mask during spray.",
-        "Wash hands thoroughly after use."
-      ],
-      "ur": [
-        "دوا کو سونگھنے اور جلد پر گرنے سے بچائیں۔",
-        "مکسنگ اور سپرے کے دوران دستانے اور ماسک کا استعمال کریں۔",
-        "استعمال کے بعد ہاتھ صابن سے اچھی طرح دھوئیں۔"
-      ]
-    }
-  },
-
-  "genny-ultra": {
-    "id": "genny-ultra",
-    "slug": "genny-ultra",
-    "name": {
-      "en": "GENNY ULTRA 88.8%WSG",
-      "ur": "جینی الٹرا"
-    },
-    "genericName": {
-      "en": "GLYPHOSATE 88.8%WSG",
-      "ur": "GLYPHOSATE 88.8%WSG"
-    },
-    "category": "herbicide",
-    "tagline": "GLYPHOSATE 88.8%WSG — Elite Weed Control Formula",
-    "imageUrl": "/products/genny.png",
-    "pngUrl": "/products/genny.png",
-    "rating": 4.8,
-    "importedFormulaBadge": true,
-    "premiumProductBadge": true,
-    "researchBasedBadge": true,
-    "shortDesc": {
-      "en": "Selective post-emergence/pre-emergence herbicide with GLYPHOSATE 88.8%WSG for control of annual grasses and broadleaf weeds. High crop safety.",
-      "ur": "جڑی بوٹیوں کی تلفی کے لیے GLYPHOSATE 88.8%WSG کا ایک بہترین اور منتخب فارمولا جو فصل کو نقصان پہنچائے بغیر جڑی بوٹیوں کا جڑ سے خاتمہ کرتا ہے۔"
-    },
-    "seoTitle": "GENNY ULTRA 88.8%WSG | Premium Agrochemical | Vital Agro",
-    "seoDescription": "Buy GENNY ULTRA 88.8%WSG online. Highly effective formula for pest and crop management. Cash on delivery available.",
-    "sizes": [
-      {
-        "size": "1 KG",
-        "price": 0,
-        "oldPrice": 0,
-        "stockStatus": "In Stock",
-        "sku": "VA-GENNY-ULTRA-1KG",
-        "weight": "0.001kg"
-      },
-      {
-        "size": "500 GM",
-        "price": 0,
-        "oldPrice": 0,
-        "stockStatus": "In Stock",
-        "sku": "VA-GENNY-ULTRA-500GM",
-        "weight": "0.5kg"
-      }
-    ],
-    "formulation": "GLYPHOSATE 88.8%WSG",
-    "activeIngredient": "GLYPHOSATE 88.8%WSG",
-    "packaging": "1 KG, 500 GM",
-    "productCode": "VA-GENNY-ULTRA-1KG",
-    "status": {
-      "en": "Premium Quality Compound",
-      "ur": "اعلیٰ معیار کا مرکب"
-    },
-    "description": {
-      "en": "Selective post-emergence/pre-emergence herbicide with GLYPHOSATE 88.8%WSG for control of annual grasses and broadleaf weeds. High crop safety. It is a highly specialized chemical compound designed under strict international quality controls to maximize your crop yields.",
-      "ur": "جڑی بوٹیوں کی تلفی کے لیے GLYPHOSATE 88.8%WSG کا ایک بہترین اور منتخب فارمولا جو فصل کو نقصان پہنچائے بغیر جڑی بوٹیوں کا جڑ سے خاتمہ کرتا ہے۔ یہ پودے کی بہترین نشوونما اور تحفظ کے لیے عالمی معیار کے مطابق تیار کیا گیا مرکب ہے۔"
-    },
-    "features": {
-      "en": [
-        "Controls wide spectrum of grasses and broadleaf weeds",
-        "Highly selective with excellent crop tolerance",
-        "Fast action on target weed species",
-        "Long residual control in soil"
-      ],
-      "ur": [
-        "چوڑے اور نوکیلے پتے والی جڑی بوٹیوں کا مکمل خاتمہ کرتا ہے",
-        "فصل کے لیے بالکل محفوظ اور بے ضرر ہے",
-        "سپرے کے چند دنوں کے اندر اثر شروع ہو جاتا ہے",
-        "جڑی بوٹیوں کو دوبارہ اگنے سے روکتا ہے"
-      ]
-    },
-    "benefits": {
-      "en": [
-        "Controls wide spectrum of grasses and broadleaf weeds",
-        "Highly selective with excellent crop tolerance",
-        "Fast action on target weed species",
-        "Long residual control in soil"
-      ],
-      "ur": [
-        "چوڑے اور نوکیلے پتے والی جڑی بوٹیوں کا مکمل خاتمہ کرتا ہے",
-        "فصل کے لیے بالکل محفوظ اور بے ضرر ہے",
-        "سپرے کے چند دنوں کے اندر اثر شروع ہو جاتا ہے",
-        "جڑی بوٹیوں کو دوبارہ اگنے سے روکتا ہے"
-      ]
-    },
-    "crops": [
-      {
-        "name": {
-          "en": "Cotton",
-          "ur": "کپاس"
-        },
-        "icon": "🌱"
-      },
-      {
-        "name": {
-          "en": "Sugarcane",
-          "ur": "کماد"
-        },
-        "icon": "🌱"
-      },
-      {
-        "name": {
-          "en": "Soybean",
-          "ur": "سویا بین"
-        },
-        "icon": "🌱"
-      },
-      {
-        "name": {
-          "en": "Vegetables",
-          "ur": "سبزیاں"
-        },
-        "icon": "🥦"
-      }
-    ],
-    "application": {
-      "en": "Apply as a foliar spray or through irrigation as recommended. Complete foliage coverage is essential for maximum efficacy. Avoid spraying during the midday heat.",
-      "ur": "تجویز کردہ خوراک کے مطابق پتوں پر اسپرے کریں یا آبپاشی کے ساتھ فلڈ کریں۔ زیادہ گرمی کے دوران اسپرے کرنے سے گریز کریں۔"
-    },
-    "specs": {
-      "type": {
-        "en": "Herbicide",
-        "ur": "Herbicide"
-      },
-      "storage": {
-        "en": "Store in cool, dry ventilated place away from children.",
-        "ur": "ٹھنڈی اور خشک جگہ پر بچوں کی پہنچ سے دور رکھیں"
-      }
-    },
-    "safety": {
-      "en": [
-        "Avoid inhalation and skin contact.",
-        "Wear protective gloves and mask during spray.",
-        "Wash hands thoroughly after use."
-      ],
-      "ur": [
-        "دوا کو سونگھنے اور جلد پر گرنے سے بچائیں۔",
-        "مکسنگ اور سپرے کے دوران دستانے اور ماسک کا استعمال کریں۔",
-        "استعمال کے بعد ہاتھ صابن سے اچھی طرح دھوئیں۔"
-      ]
-    }
-  },
-
-  "data": {
-    "id": "data",
-    "slug": "data",
-    "name": {
-      "en": "DATA 12% SC",
-      "ur": "ڈیٹا"
-    },
-    "genericName": {
-      "en": "CHLORANILIPROLE + DELTAMETHRIN 12%SC",
-      "ur": "CHLORANILIPROLE + DELTAMETHRIN 12%SC"
-    },
-    "category": "insecticide",
-    "tagline": "CHLORANILIPROLE + DELTAMETHRIN 12%SC — Ultimate Insect Pest Defeater",
-    "imageUrl": "/products/data.png",
-    "pngUrl": "/products/data.png",
-    "rating": 4.8,
-    "importedFormulaBadge": true,
-    "premiumProductBadge": true,
-    "researchBasedBadge": true,
-    "shortDesc": {
-      "en": "High-efficacy insecticide with CHLORANILIPROLE + DELTAMETHRIN 12%SC offering rapid knockdown and long residual control against sucking and chewing pests.",
-      "ur": "فصلوں کو چوسنے اور چبانے والے کیڑوں (سفید مکھی، تھرپس، چست تیلا اور سنڈیوں) سے محفوظ رکھنے کے لیے CHLORANILIPROLE + DELTAMETHRIN 12%SC کا جدید فارمولا۔"
-    },
-    "seoTitle": "DATA 12% SC | Premium Agrochemical | Vital Agro",
-    "seoDescription": "Buy DATA 12% SC online. Highly effective formula for pest and crop management. Cash on delivery available.",
-    "sizes": [
-      {
-            "size": "200 ML",
-            "price": 899,
-            "oldPrice": 899,
-            "sku": "VA-DATA-200ML",
-            "weight": "0.2kg",
-            "stockStatus": "In Stock"
-      }
-],
-    "formulation": "CHLORANILIPROLE + DELTAMETHRIN 12%SC",
-    "activeIngredient": "CHLORANILIPROLE + DELTAMETHRIN 12%SC",
-    "packaging": "200 ML",
-    "productCode": "VA-DATA-200ML",
-    "status": {
-      "en": "Premium Quality Compound",
-      "ur": "اعلیٰ معیار کا مرکب"
-    },
-    "description": {
-      "en": "High-efficacy insecticide with CHLORANILIPROLE + DELTAMETHRIN 12%SC offering rapid knockdown and long residual control against sucking and chewing pests. It is a highly specialized chemical compound designed under strict international quality controls to maximize your crop yields.",
-      "ur": "فصلوں کو چوسنے اور چبانے والے کیڑوں (سفید مکھی، تھرپس، چست تیلا اور سنڈیوں) سے محفوظ رکھنے کے لیے CHLORANILIPROLE + DELTAMETHRIN 12%SC کا جدید فارمولا۔ یہ پودے کی بہترین نشوونما اور تحفظ کے لیے عالمی معیار کے مطابق تیار کیا گیا مرکب ہے۔"
-    },
-    "features": {
-      "en": [
-        "Fast knockdown of target insect pests",
-        "Controls both adult and juvenile stages",
-        "Dual systemic and contact action",
-        "Excellent resistance management tool"
-      ],
-      "ur": [
-        "نقصان دہ کیڑوں کا چند گھنٹوں میں فوری اور موثر خاتمہ",
-        "کیڑوں کے انڈوں، بچوں اور بڑوں پر یکساں اثر",
-        "فصل کی رگ رگ میں سرایت کر کے طویل تحفظ دینا",
-        "کیڑوں میں قوت مدافعت بننے سے روکتا ہے"
-      ]
-    },
-    "benefits": {
-      "en": [
-        "Fast knockdown of target insect pests",
-        "Controls both adult and juvenile stages",
-        "Dual systemic and contact action",
-        "Excellent resistance management tool"
-      ],
-      "ur": [
-        "نقصان دہ کیڑوں کا چند گھنٹوں میں فوری اور موثر خاتمہ",
-        "کیڑوں کے انڈوں، بچوں اور بڑوں پر یکساں اثر",
-        "فصل کی رگ رگ میں سرایت کر کے طویل تحفظ دینا",
-        "کیڑوں میں قوت مدافعت بننے سے روکتا ہے"
-      ]
-    },
-    "crops": [
-      {
-        "name": {
-          "en": "Cotton",
-          "ur": "کپاس"
-        },
-        "icon": "🌱"
-      },
-      {
-        "name": {
-          "en": "Rice",
-          "ur": "دھان"
-        },
-        "icon": "🌾"
-      },
-      {
-        "name": {
-          "en": "Sugarcane",
-          "ur": "کماد"
-        },
-        "icon": "🌱"
-      },
-      {
-        "name": {
-          "en": "Maize",
-          "ur": "مکئی"
-        },
-        "icon": "🌽"
-      },
-      {
-        "name": {
-          "en": "Vegetables",
-          "ur": "سبزیاں"
-        },
-        "icon": "🥦"
-      },
-      {
-        "name": {
-          "en": "Citrus",
-          "ur": "ترشاوہ پھل"
-        },
-        "icon": "🌱"
-      }
-    ],
-    "application": {
-      "en": "Apply as a foliar spray or through irrigation as recommended. Complete foliage coverage is essential for maximum efficacy. Avoid spraying during the midday heat.",
-      "ur": "تجویز کردہ خوراک کے مطابق پتوں پر اسپرے کریں یا آبپاشی کے ساتھ فلڈ کریں۔ زیادہ گرمی کے دوران اسپرے کرنے سے گریز کریں۔"
-    },
-    "specs": {
-      "type": {
-        "en": "Insecticide",
-        "ur": "Insecticide"
-      },
-      "storage": {
-        "en": "Store in cool, dry ventilated place away from children.",
-        "ur": "ٹھنڈی اور خشک جگہ پر بچوں کی پہنچ سے دور رکھیں"
-      }
-    },
-    "safety": {
-      "en": [
-        "Avoid inhalation and skin contact.",
-        "Wear protective gloves and mask during spray.",
-        "Wash hands thoroughly after use."
-      ],
-      "ur": [
-        "دوا کو سونگھنے اور جلد پر گرنے سے بچائیں۔",
-        "مکسنگ اور سپرے کے دوران دستانے اور ماسک کا استعمال کریں۔",
-        "استعمال کے بعد ہاتھ صابن سے اچھی طرح دھوئیں۔"
-      ]
-    }
-  },
-
-  "fatty": {
-    "id": "fatty",
-    "genericName": {
-      "en": "Bio-Stimulant",
-      "ur": "بایوسٹیمولینٹ"
-    },
-    "pricing": [
-      {
-        "size": "500ml",
-        "rate": "750",
-        "carton": "24"
-      }
-    ],
-    "slug": "fatty",
-    "name": {
-      "en": "Fatty",
-      "ur": "فیٹی"
-    },
-    "category": "plant-nutrition",
-    "imageUrl": "/products/fatty.png",
-    "pngUrl": "/products/fatty.png",
-    "rating": 4.9,
-    "importedFormulaBadge": true,
-    "premiumProductBadge": true,
-    "researchBasedBadge": true,
-    "shortDesc": {
-      "en": "Fatty is an organic plant nutrition bio-stimulant that enhances vegetative growth and crop tolerance to stress.",
-      "ur": "فیٹی ایک نامیاتی بائیو اسٹیمولینٹ ہے جو فصل کی بڑھوتری اور شدید موسمی حالات کا مقابلہ کرنے کی صلاحیت کو بڑھاتا ہے۔"
-    },
-    "seoTitle": "Fatty Bio-Stimulant & Plant Nutrition | Vital Agro",
-    "seoDescription": "Buy Fatty Bio-Stimulant online. Promotes crop growth, cell division, and drought tolerance using organic fatty acids. Available in multiple pack sizes.",
-    "sizes": [
-      {
-            "size": "500 ML",
-            "price": 750,
-            "oldPrice": 750,
-            "sku": "VA-FATT-500ML",
-            "weight": "0.5kg",
-            "stockStatus": "In Stock"
-      }
-],
-    "formulation": "10% SL",
-    "activeIngredient": "Organic Fatty Acids & Micronutrients",
-    "packaging": "250ml, 500ml, 1L",
-    "productCode": "VA-FAT-01",
-    "status": {
-      "en": "Premium Imported Formula",
-      "ur": "پریمیئم درآمد شدہ فارمولا"
-    },
-    "description": {
-      "en": "Fatty is a world-class plant nutrition solution and bio-stimulant formulated with premium organic fatty acids and highly bio-available chelated micronutrients. It plays a critical role in optimizing cell division, accelerating chloroplast development, and improving leaf thickness. By providing the plant with direct lipid block precursors, it bypasses metabolic energy pathways, allowing crops to thrive under harsh climatic conditions, extreme temperatures, and water stress.",
-      "ur": "فیٹی پودوں کی نشوونما اور بائیو سٹیمولینٹ کا ایک عالمی معیار کا حل ہے جو بہترین نامیاتی فیٹی ایسڈز اور فوری جذب ہونے والے چیلیٹڈ مائیکرو نیوٹرینٹس سے تیار کیا گیا ہے۔ یہ خلیوں کی تقسیم کو تیز کرنے، کلوروفل کی مقدار بڑھانے اور پتے کی چوڑائی و موٹائی کو بہتر بنانے میں اہم کردار ادا کرتا ہے۔ پودے کو براہ راست لپڈ بلاکس فراہم کر کے، یہ میٹابولک توانائی کے طویل عمل کو کم کرتا ہے، جس سے فصلیں شدید موسم، شدید درجہ حرارت اور پانی کی کمی کے دوران بھی سرسبز و شاداب رہتی ہیں۔"
-    },
-    "features": {
-      "en": [
-        "Rapid absorption through leaf stomata",
-        "Boosts chlorophyll production within 48 hours",
-        "Improves crop defense against heat & drought",
-        "Formulated with premium imported ingredients",
-        "Optimizes energy pathways during cell division"
-      ],
-      "ur": [
-        "پتوں کے مساموں کے ذریعے فوری جذب ہونا",
-        "48 گھنٹوں کے اندر کلوروفل کی پیداوار میں اضافہ",
-        "شدید گرمی اور خشک سالی کے خلاف فصل کی قوت مدافعت کو بہتر بنانا",
-        "درآمد شدہ اور اعلیٰ معیار کے اجزاء سے تیار کردہ",
-        "خلیوں کی تقسیم کے دوران پودے کی توانائی کو محفوظ بنانا"
-      ]
-    },
-    "benefits": {
-      "en": [
-        "Enhances overall plant growth and vegetative vigor",
-        "Improves fruit-setting, sizing, and uniform coloring",
-        "Reduces flower and fruit drop under stressful conditions",
-        "Increases crop yield by up to 15-20%",
-        "Improves root development and soil nutrient absorption"
-      ],
-      "ur": [
-        "پودے کی مجموعی نشوونما اور بڑھوتری میں اضافہ کرتا ہے",
-        "پھل بننے، سائز بڑھانے اور یکساں رنگ لانے میں مدد کرتا ہے",
-        "شدید موسمی حالات میں پھول اور پھل گرنے سے روکتا ہے",
-        "فصل کی پیداوار میں 15 سے 20 فیصد تک اضافہ کرتا ہے",
-        "جڑوں کی نشوونما اور زمین سے غذائی اجزاء جذب کرنے کی صلاحیت بڑھاتا ہے"
-      ]
-    },
-    "crops": [
-      {
-        "name": {
-          "en": "Cotton",
-          "ur": "کپاس"
-        },
-        "icon": "🌱"
-      },
-      {
-        "name": {
-          "en": "Rice",
-          "ur": "دھان"
-        },
-        "icon": "🌾"
-      },
-      {
-        "name": {
-          "en": "Wheat",
-          "ur": "گندم"
-        },
-        "icon": "🌾"
-      },
-      {
-        "name": {
-          "en": "Maize",
-          "ur": "مکئی"
-        },
-        "icon": "🌽"
-      },
-      {
-        "name": {
-          "en": "Citrus",
-          "ur": "ترشاوہ پھل"
-        },
-        "icon": "🍊"
-      },
-      {
-        "name": {
-          "en": "Mango",
-          "ur": "آم"
-        },
-        "icon": "🥭"
-      },
-      {
-        "name": {
-          "en": "Vegetables",
-          "ur": "سبزیاں"
-        },
-        "icon": "🥦"
-      }
-    ],
-    "application": {
-      "en": "Foliar Spray. Dissolve the recommended dosage in clean water and apply thoroughly on the leaves. Ensure complete coverage of the canopy. Avoid spraying during midday heat; early morning or late evening applications yield maximum efficacy. Mixing with standard insecticides and fungicides is permissible, but run a jar test first.",
-      "ur": "بذریعہ فولیر سپرے۔ تجویز کردہ خوراک کو صاف پانی میں حل کریں اور پتوں پر اچھی طرح سپرے کریں۔ پورے پودے پر یکساں سپرے کو یقینی بنائیں۔ دوپہر کی شدید دھوپ میں سپرے کرنے سے گریز کریں؛ صبح سویرے یا شام کے وقت سپرے کرنے سے بہترین نتائج حاصل ہوتے ہیں۔ عام کیڑے مار اور فنگس کش ادویات کے ساتھ ملایا جا سکتا ہے، لیکن پہلے چھوٹے پیمانے پر چیک کر لیں۔"
-    },
-    "dosageTable": [
-      {
-        "crop": {
-          "en": "Cotton",
-          "ur": "کپاس"
-        },
-        "dosage": {
-          "en": "250 ml / Acre",
-          "ur": "250 ملی لیٹر فی ایکڑ"
-        },
-        "water": {
-          "en": "100-120 Liters",
-          "ur": "100-120 لیٹر"
-        },
-        "timing": {
-          "en": "Squaring & Flowering stage",
-          "ur": "پھول اور ڈوڈی بننے کے وقت"
-        },
-        "frequency": {
-          "en": "2 applications (15 days apart)",
-          "ur": "2 بار سپرے (15 دن کے وقفے سے)"
-        }
-      },
-      {
-        "crop": {
-          "en": "Rice",
-          "ur": "دھان"
-        },
-        "dosage": {
-          "en": "250 ml / Acre",
-          "ur": "250 ملی لیٹر فی ایکڑ"
-        },
-        "water": {
-          "en": "100-120 Liters",
-          "ur": "100-120 لیٹر"
-        },
-        "timing": {
-          "en": "Tillering & Panicle initiation",
-          "ur": "شاخیں بننے اور گوبھ کی حالت میں"
-        },
-        "frequency": {
-          "en": "2 applications",
-          "ur": "2 بار سپرے"
-        }
-      },
-      {
-        "crop": {
-          "en": "Vegetables",
-          "ur": "سبزیاں"
-        },
-        "dosage": {
-          "en": "200-250 ml / Acre",
-          "ur": "200-250 ملی لیٹر فی ایکڑ"
-        },
-        "water": {
-          "en": "100 Liters",
-          "ur": "100 لیٹر"
-        },
-        "timing": {
-          "en": "Before flowering & fruit set",
-          "ur": "پھول آنے اور پھل بننے سے پہلے"
-        },
-        "frequency": {
-          "en": "Every 12-15 days",
-          "ur": "ہر 12 سے 15 دن بعد"
-        }
-      },
-      {
-        "crop": {
-          "en": "Citrus & Mango",
-          "ur": "ترشاوہ پھل اور آم"
-        },
-        "dosage": {
-          "en": "1.5-2 ml / Liter water",
-          "ur": "1.5-2 ملی لیٹر فی لیٹر پانی"
-        },
-        "water": {
-          "en": "As required for canopy",
-          "ur": "درختوں کے حجم کے مطابق"
-        },
-        "timing": {
-          "en": "Post-harvest & fruit formation",
-          "ur": "برداشت کے بعد اور پھل بننے پر"
-        },
-        "frequency": {
-          "en": "3-4 applications yearly",
-          "ur": "سال میں 3 سے 4 بار"
-        }
-      }
-    ],
-    "specs": {
-      "type": {
-        "en": "Organic Plant Nutritional Liquid",
-        "ur": "نامیاتی مائع پلانٹ نیوٹریشن"
-      },
-      "formulation": {
-        "en": "SL (Soluble Liquid)",
-        "ur": "ایس ایل (حل پذیر مائع)"
-      },
-      "composition": {
-        "en": "Organic Fatty Acids 10% + Amino Acids 5% + Micronutrients 2%",
-        "ur": "نامیاتی فیٹی ایسڈز 10% + امینو ایسڈز 5% + مائیکرو نیوٹرینٹس 2%"
-      },
-      "appearance": {
-        "en": "Dark Amber Viscous Liquid",
-        "ur": "گہرا زرد گاڑھا مائع"
-      },
-      "storage": {
-        "en": "Store in cool, dry place away from foodstuff under 35°C",
-        "ur": "خوراک سے دور، ٹھنڈی اور خشک جگہ پر 35 ڈگری سے نیچے رکھیں"
-      },
-      "shelfLife": {
-        "en": "3 Years from Manufacturing Date",
-        "ur": "تیاری کی تاریخ سے 3 سال"
-      },
-      "packing": {
-        "en": "250ml, 500ml, 1 Liter PE Bottles",
-        "ur": "250 ملی لیٹر، 500 ملی لیٹر، 1 لیٹر بوتلیں"
-      },
-      "compatibility": {
-        "en": "Compatible with neutral fertilizers and chemicals. Avoid alkaline mixes.",
-        "ur": "عام کھادوں اور ادویات کے ساتھ ملایا جا سکتا ہے۔ الکلائن مکسچر سے بچیں۔"
-      }
-    },
-    "safety": {
-      "en": [
-        "Keep out of reach of children and domestic animals.",
-        "Wear protective gloves, mask, and goggles during mixing and spraying.",
-        "Wash hands and face thoroughly with soap and water after application.",
-        "In case of eye contact, flush with clean water for 15 minutes.",
-        "Dispose of empty bottles safely according to local regulations."
-      ],
-      "ur": [
-        "بچوں اور پالتو جانوروں کی پہنچ سے دور رکھیں۔",
-        "مکسنگ اور سپرے کے دوران حفاظتی دستانے، ماسک اور عینک کا استعمال کریں۔",
-        "سپرے کے بعد ہاتھ اور منہ صابن اور پانی سے اچھی طرح دھوئیں۔",
-        "آنکھوں میں جانے کی صورت میں 15 منٹ تک صاف پانی سے دھوئیں۔",
-        "خالی بوتلوں کو مقامی قوانین کے مطابق محفوظ طریقے سے تلف کریں۔"
-      ]
-    },
-    "faqs": {
-      "en": [
-        {
-          "q": "What is Fatty and how does it work?",
-          "a": "Fatty is an organic plant growth promoter. It provides direct energy precursors (organic fatty acids) to crops, helping them optimize cell division and maintain vigor under stress without spending excessive metabolic energy."
-        },
-        {
-          "q": "Can I mix Fatty with insecticides or fungicides?",
-          "a": "Yes. Fatty is compatible with most standard chemical inputs. Always perform a small jar compatibility test before mixing in the spray tank."
-        },
-        {
-          "q": "When is the best time of day to spray Fatty?",
-          "a": "Early morning or late afternoon is best. Avoid spraying in the noon heat to prevent evaporation and maximize leaf absorption."
-        },
-        {
-          "q": "How many days should I wait between sprays?",
-          "a": "Generally, wait 12 to 15 days between applications depending on the crop's physiological state and environmental conditions."
-        },
-        {
-          "q": "What crops benefit most from Fatty?",
-          "a": "Cotton, Rice, Wheat, Vegetables, Citrus, and Mango benefit immensely, showing better branching, leaf greenness, and yield."
-        },
-        {
-          "q": "Does Fatty have any side effects on crops?",
-          "a": "No. When used at the recommended dosage, it is safe for crops and does not cause leaf burning."
-        },
-        {
-          "q": "How long does it take to see visible results?",
-          "a": "You will notice darker green leaves, enhanced vigor, and improved plant turgor within 48 to 72 hours of application."
-        },
-        {
-          "q": "What is the shelf life of Fatty?",
-          "a": "Fatty has a shelf life of 3 years from the date of manufacture when stored in cool, dry conditions in its original packaging."
-        },
-        {
-          "q": "Does Fatty help during water shortage or drought?",
-          "a": "Yes. Fatty strengthens the cell membrane and limits transpiration losses, making the crop highly resilient to drought."
-        }
-      ],
-      "ur": [
-        {
-          "q": "فیٹی کیا ہے اور یہ کیسے کام کرتا ہے؟",
-          "a": "فیٹی ایک نامیاتی پودوں کا ہارمون اور گروتھ پروموٹر ہے۔ یہ پودوں کو براہ راست نامیاتی فیٹی ایسڈز فراہم کرتا ہے، جس سے وہ دباؤ کے دوران بھی توانائی خرچ کیے بغیر خلیوں کی تقسیم اور بڑھوتری کو بہتر بناتے ہیں۔"
-        },
-        {
-          "q": "کیا میں فیٹی کو کیڑے مار یا فنگس کش ادویات کے ساتھ ملا سکتا ہوں؟",
-          "a": "جی ہاں۔ فیٹی زیادہ تر ادویات کے ساتھ مطابقت رکھتا ہے۔ سپرے ٹینک میں مکس کرنے سے پہلے ہمیشہ چھوٹے برتن میں چیک کر لیں۔"
-        },
-        {
-          "q": "فیٹی سپرے کرنے کا بہترین وقت کون سا ہے؟",
-          "a": "صبح سویرے یا شام کے وقت سپرے کرنا بہترین ہے۔ دوپہر کی شدید گرمی میں سپرے سے گریز کریں تاکہ پتے دوا کو اچھی طرح جذب کر سکیں۔"
-        },
-        {
-          "q": "دو سپرے کے درمیان کتنے دنوں کا وقفہ ہونا چاہیے؟",
-          "a": "عام طور پر فصل کی حالت اور موسم کے لحاظ سے 12 سے 15 دن کا وقفہ رکھیں۔"
-        },
-        {
-          "q": "فیٹی سے کن فصلوں کو سب سے زیادہ فائدہ ہوتا ہے؟",
-          "a": "کپاس، دھان، گندم، سبزیوں، ترشاوہ پھلوں اور آم کو زبردست فائدہ ہوتا ہے، جس سے پتے سرسبز اور پیداوار زیادہ ہوتی ہے۔"
-        },
-        {
-          "q": "کیا فیٹی کے فصل پر کوئی مضر اثرات ہیں؟",
-          "a": "نہیں۔ تجویز کردہ مقدار کے مطابق استعمال کرنے سے یہ فصل کے لیے بالکل محفوظ ہے اور پتے نہیں جھلستے۔"
-        },
-        {
-          "q": "کتنے عرصے میں واضح نتائج نظر آتے ہیں؟",
-          "a": "سپرے کے 48 سے 72 گھنٹوں کے اندر پتے گہرے سبز، تروتازہ اور پودے صحت مند نظر آنے لگتے ہیں۔"
-        },
-        {
-          "q": "فیٹی کی میعاد (شیلف لائف) کتنی ہے؟",
-          "a": "اصل پیکنگ میں اور ٹھنڈی جگہ پر رکھنے کی صورت میں فیٹی کی میعاد تیاری کی تاریخ سے 3 سال ہے۔"
-        },
-        {
-          "q": "کیا فیٹی پانی کی کمی یا خشک سالی کے دوران مدد کرتا ہے؟",
-          "a": "جی ہاں۔ یہ خلیوں کی جھلی کو مضبوط کرتا ہے اور پانی کے بخارات بن کر اڑنے کے عمل کو سست کرتا ہے، جس سے فصل سوکے کا مقابلہ کرتی ہے۔"
-        }
-      ]
-    }
-  },
-
-  "vac-zinc": {
-    "id": "vac-zinc",
-    "genericName": {
-      "en": "Zinc",
-      "ur": "زنک"
-    },
-    "pricing": [
-      {
-        "size": "10 Liter",
-        "rate": "6650",
-        "carton": "1"
-      },
-      {
-        "size": "20 Liter",
-        "rate": "12999",
-        "carton": "1"
-      }
-    ],
-    "slug": "vac-zinc",
-    "name": {
-      "en": "VAC Zinc",
-      "ur": "وی اے سی زنک"
-    },
-    "category": "plant-nutrition",
-    "imageUrl": "/products/vac-zinc.png",
-    "pngUrl": "/products/vac-zinc.png",
-    "rating": 4.8,
-    "importedFormulaBadge": false,
-    "premiumProductBadge": true,
-    "researchBasedBadge": true,
-    "shortDesc": {
-      "en": "Vac Zinc is a highly concentrated zinc supplement to resolve zinc deficiencies and boost grain filling.",
-      "ur": "ویک زنک پودوں میں زنک کی کمی کو پورا کرنے اور دانوں کی بھرائی کو یقینی بنانے کے لیے بہترین مائع زنک ہے۔"
-    },
-    "seoTitle": "Vac Zinc Highly Concentrated Supplement | Vital Agro",
-    "seoDescription": "Boost crop yield, enzymatic activity, and root health with Vac Zinc liquid supplement. Formulated for paddy rice, maize, and wheat. Shop local or buy online.",
-    "sizes": [
-      {
-            "size": "3 LTR",
-            "price": 850,
-            "oldPrice": 850,
-            "sku": "VA-VACZ-3LTR",
-            "weight": "3kg",
-            "stockStatus": "In Stock"
-      },
-      {
-            "size": "20 LTR",
-            "price": 850,
-            "oldPrice": 4550,
-            "sku": "VA-VACZ-20LTR",
-            "weight": "20kg",
-            "stockStatus": "In Stock"
-      },
-      {
-            "size": "200 LTR",
-            "price": 850,
-            "oldPrice": 45000,
-            "sku": "VA-VACZ-200LTR",
-            "weight": "200kg",
-            "stockStatus": "In Stock"
-      }
-],
-    "formulation": "12% Powder",
-    "activeIngredient": "Chelated Zinc (Zn-EDTA 12%)",
-    "packaging": "250g, 500g, 1kg",
-    "productCode": "VA-VZ-07",
-    "status": {
-      "en": "High Efficacy Chelated Zinc",
-      "ur": "چیلیٹڈ زنک پاؤڈر فارمولا"
-    },
-    "description": {
-      "en": "VAC Zinc is a high-purity, fully chelated Zinc EDTA (12%) fertilizer designed for quick correction of Zinc deficiencies in crops. Zinc is a vital component of plant enzymes, playing a major role in auxin production, protein synthesis, and chlorophyll formation. In alkaline and calcareous soils common in Pakistan, soil-applied zinc often becomes locked. VAC Zinc's EDTA chelation shell prevents it from binding to soil carbonates, ensuring 100% absorption and translocation through leaves or soil drenching, resulting in rapid crop greening, starch creation, and increased grain weight.",
-      "ur": "وی اے سی زنک ایک اعلیٰ ترین اور خالص ترین چیلیٹڈ زنک ای ڈی ٹی اے (12٪) کھاد ہے جو فصلوں میں زنک کی کمی کو تیزی سے پورا کرتی ہے۔ زنک پودے کے انزائمز کا اہم حصہ ہے جو کلوروفل، پروٹین اور آکسن ہارمونز بنانے میں اہم ترین کردار ادا کرتا ہے۔ پاکستان کی کلراٹھی اور الکلائن زمینوں میں عام زنک فکس (مقفل) ہو جاتا ہے؛ جبکہ چیلیٹڈ زنک زمین میں ضائع نہیں ہوتا اور پتوں یا جڑوں کے ذریعے پودے کو 100٪ دستیاب ہوتا ہے، جس سے فصل کا پیلا پن دور ہوتا ہے اور دانے کا وزن بڑھتا ہے۔"
-    },
-    "features": {
-      "en": [
-        "100% water-soluble chelated Zinc (EDTA-Zn 12%)",
-        "Prevents soil locking in alkaline and lime-rich soils",
-        "Triggers chlorophyll synthesis and grain starch creation",
-        "Fully systemic, enters plant tissue within 1 hour",
-        "Compatible with standard liquid fertilizer mixes"
-      ],
-      "ur": [
-        "پانی میں 100٪ حل پذیر چیلیٹڈ زنک (EDTA 12%)",
-        "الکلائن اور چونا دار زمینوں میں زنک کو ضائع ہونے سے بچانا",
-        "کلوروفل بننے اور دانے کی بھرائی کے عمل کو تیز کرنا",
-        "سسٹمک خصوصیات, سپرے کے 1 گھنٹے کے اندر جذب ہو جانا",
-        "دیگر مائع کھادوں اور ادویات کے ساتھ آسانی سے مکس ہو جانا"
-      ]
-    },
-    "benefits": {
-      "en": [
-        "Cures 'Khaira' disease in Paddy Rice effectively",
-        "Promotes uniform plant height, tillering, and branching",
-        "Increases leaf size and photosynthetic output",
-        "Boosts final grain weight and carbohydrate contents",
-        "Improves crop resistance to environmental cooling shocks"
-      ],
-      "ur": [
-        "دھان (چاول) کی فصل میں زنک کی کمی سے ہونے والی 'خیرا' بیماری کا خاتمہ کرتا ہے",
-        "پودے کے قد کو یکساں رکھتا ہے اور نئی شاخیں بناتا ہے",
-        "پتے کے سائز کو بڑا کر کے خوراک بنانے کی صلاحیت بڑھاتا ہے",
-        "اناج کے دانوں کے وزن اور نشاستہ (کاربوہائیڈریٹس) میں اضافہ کرتا ہے",
-        "سردی اور ناگہانی موسموں کے خلاف فصل کی قوت مدافعت بڑھاتا ہے"
-      ]
-    },
-    "crops": [
-      {
-        "name": {
-          "en": "Rice",
-          "ur": "دھان"
-        },
-        "icon": "🌾"
-      },
-      {
-        "name": {
-          "en": "Cotton",
-          "ur": "کپاس"
-        },
-        "icon": "🌱"
-      },
-      {
-        "name": {
-          "en": "Wheat",
-          "ur": "گندم"
-        },
-        "icon": "🌾"
-      },
-      {
-        "name": {
-          "en": "Maize",
-          "ur": "مکئی"
-        },
-        "icon": "🌽"
-      },
-      {
-        "name": {
-          "en": "Citrus",
-          "ur": "ترشاوہ پھل"
-        },
-        "icon": "🍊"
-      },
-      {
-        "name": {
-          "en": "Potato",
-          "ur": "آلو"
-        },
-        "icon": "🥔"
-      }
-    ],
-    "application": {
-      "en": "Foliar spray or soil broadcasting. Dissolve the powder in clean water for spraying, or mix with dry sand/NPK fertilizer to broadcast in flooded fields during irrigation.",
-      "ur": "بذریعہ فولیر سپرے یا چھٹہ۔ سپرے کے لیے پاؤڈر کو صاف پانی میں حل کریں، یا چھٹہ کے لیے خشک ریت یا ڈی اے پی/یوریا کھاد کے ساتھ ملا کر پانی لگے کھیت میں ڈالیں۔"
-    },
-    "dosageTable": [
-      {
-        "crop": {
-          "en": "Rice (Paddy)",
-          "ur": "دھان"
-        },
-        "dosage": {
-          "en": "250-300 g / Acre",
-          "ur": "250-300 گرام فی ایکڑ"
-        },
-        "water": {
-          "en": "100-120 Liters (or Broadcast)",
-          "ur": "100-120 لیٹر (یا چھٹہ)"
-        },
-        "timing": {
-          "en": "15-20 days after transplanting",
-          "ur": "پنیری کی منتقلی کے 15 سے 20 دن بعد"
-        },
-        "frequency": {
-          "en": "1-2 applications",
-          "ur": "1 سے 2 بار"
-        }
-      },
-      {
-        "crop": {
-          "en": "Cotton & Maize",
-          "ur": "کپاس اور مکئی"
-        },
-        "dosage": {
-          "en": "200-250 g / Acre",
-          "ur": "200-250 گرام فی ایکڑ"
-        },
-        "water": {
-          "en": "100 Liters",
-          "ur": "100 لیٹر"
-        },
-        "timing": {
-          "en": "During early leaf development stages",
-          "ur": "پتوں کی ابتدائی بڑھوتری کے وقت"
-        },
-        "frequency": {
-          "en": "1 application",
-          "ur": "1 سپرے"
-        }
-      },
-      {
-        "crop": {
-          "en": "Citrus & Fruit Trees",
-          "ur": "ترشاوہ پھل اور درخت"
-        },
-        "dosage": {
-          "en": "1-1.5 g / Liter water",
-          "ur": "1-1.5 گرام فی لیٹر پانی"
-        },
-        "water": {
-          "en": "Complete coverage of leaves",
-          "ur": "پتوں کو اچھی طرح تر کریں"
-        },
-        "timing": {
-          "en": "Before spring flush & fruit set",
-          "ur": "بہار کی نئی کونپلوں اور پھل بننے پر"
-        },
-        "frequency": {
-          "en": "2 applications yearly",
-          "ur": "سال میں 2 بار"
-        }
-      }
-    ],
-    "specs": {
-      "type": {
-        "en": "Chelated Micronutrient Powder",
-        "ur": "چیلیٹڈ مائیکرو نیوٹرینٹ پاؤڈر"
-      },
-      "formulation": {
-        "en": "SP (Soluble Powder)",
-        "ur": "ایس پی (قابلِ حل پاؤڈر)"
-      },
-      "composition": {
-        "en": "Zinc EDTA complex (Zn content 12%)",
-        "ur": "زنک ای ڈی ٹی اے کمپلیکس (زنک مقدار 12٪)"
-      },
-      "appearance": {
-        "en": "White free-flowing crystalline powder",
-        "ur": "سفید چمکدار پاؤڈر"
-      },
-      "storage": {
-        "en": "Store in dry place, protect from humidity and moisture",
-        "ur": "خشک جگہ پر رکھیں، نمی اور سلیب سے محفوظ رکھیں"
-      },
-      "shelfLife": {
-        "en": "5 Years from manufacture",
-        "ur": "تیاری سے 5 سال"
-      },
-      "packing": {
-        "en": "250g, 500g, 1kg Laminated Foil Packs",
-        "ur": "250g، 500g، 1kg سلور لفافے"
-      },
-      "compatibility": {
-        "en": "Fully compatible with urea, NPK, and insecticides. Avoid mixing with phosphate liquids directly in concentrated form.",
-        "ur": "یوریا، این پی کے اور کیڑے مار ادویات کے ساتھ آسانی سے ملایا جا سکتا ہے۔ فاسفیٹ والے مائع کھادوں کے ساتھ براہ راست مرتکز حالت میں نہ ملائیں۔"
-      }
-    },
-    "safety": {
-      "en": [
-        "Do not inhale powder dust. Wear face mask during weighing and mixing.",
-        "Wash hands and face with soap and water after handling.",
-        "Store in original air-tight packaging to avoid moisture absorption.",
-        "Keep in dry locked cabinet away from children.",
-        "Dispose of packaging safely, do not burn."
-      ],
-      "ur": [
-        "پاؤڈر کی دھول سانس میں لے جانے سے بچیں۔ تولنے اور حل کرتے وقت ماسک پہنیں۔",
-        "دوا کو ہاتھ لگانے کے بعد ہاتھ اور منہ صابن سے اچھی طرح دھوئیں۔",
-        "اصل لفافے میں بند رکھیں تاکہ ہوا کی نمی سے پاؤڈر خراب نہ ہو۔",
-        "بچوں سے دور خشک اور مقفل جگہ پر رکھیں۔",
-        "خالی پیکٹوں کو محفوظ طریقے سے تلف کریں، جلانے سے گریز کریں۔"
-      ]
-    },
-    "faqs": {
-      "en": [
-        {
-          "q": "Why choose Chelated Zinc (EDTA) over Zinc Sulphate?",
-          "a": "Zinc sulphate gets fixed (locked) easily in alkaline soils (pH > 7.5). Chelated zinc has a protective ring that keeps it soluble and active for root or leaf absorption."
-        },
-        {
-          "q": "How does VAC Zinc cure Rice 'Khaira' disease?",
-          "a": "Rice Khaira disease is caused directly by zinc deficiency, leading to rusty brown leaves. VAC Zinc supplies instant zinc, greening the leaves within 4-5 days."
-        },
-        {
-          "q": "Can I mix VAC Zinc with DAP fertilizer?",
-          "a": "Do not mix zinc directly with concentrated DAP liquid as they react and precipitate. However, you can broadcast them separately or apply VAC Zinc as a foliar spray."
-        },
-        {
-          "q": "Is VAC Zinc fully water soluble?",
-          "a": "Yes. It dissolves completely without leaving any residues, making it perfect for drip systems and foliar spray nozzles."
-        },
-        {
-          "q": "What is the shelf life of the chelated powder?",
-          "a": "It has an excellent shelf life of 5 years, provided it is kept dry in its original packaging."
-        },
-        {
-          "q": "Can we use it on wheat during booting?",
-          "a": "Yes, spraying VAC Zinc on wheat at booting increases spike length and grain count per spike."
-        },
-        {
-          "q": "Does VAC Zinc affect soil pH?",
-          "a": "No. Since it is highly chelated and used in small quantities, it does not alter soil pH."
-        },
-        {
-          "q": "Is EDTA safe for the soil?",
-          "a": "Yes, EDTA is biodegradable over time and does not harm soil micro-flora when applied at the recommended dose."
-        }
-      ],
-      "ur": [
-        {
-          "q": "زنک سلفیٹ کے مقابلے میں چیلیٹڈ زنک (EDTA) کیوں بہتر ہے؟",
-          "a": "عام زنک سلفیٹ الکلائن زمینوں میں جم جاتا ہے اور پودے کو نہیں ملتا۔ چیلیٹڈ زنک کے گرد حفاظتی غلاف ہوتا ہے جو اسے ضائع ہونے سے بچاتا ہے۔"
-        },
-        {
-          "q": "وی اے سی زنک چاول کی 'خیرا' بیماری کا علاج کیسے کرتا ہے؟",
-          "a": "چاول کی خیرا بیماری زنک کی کمی سے ہوتی ہے جس سے پتے بھورے ہو جائیں گے۔ یہ زنک کی کمی کو پورا کر کے 4 سے 5 دن میں پتے ہرے کرتا ہے۔"
-        },
-        {
-          "q": "کیا میں وی اے سی زنک کو ڈی اے پی کھاد کے ساتھ ملا سکتا ہوں؟",
-          "a": "ڈی اے پی اور زنک کو براہِ راست پانی میں گاڑھا مکس نہ کریں کیونکہ یہ آپس میں کیمیائی ردعمل کرتے ہیں۔ انہیں الگ الگ استعمال کریں یا زنک کا سپرے کریں۔"
-        },
-        {
-          "q": "کیا وی اے سی زنک پانی میں مکمل حل ہو جاتا ہے؟",
-          "a": "جی ہاں۔ یہ پانی میں مکمل طور پر حل ہو جاتا ہے اور سپرے والی مشین کے نوزل کو بند نہیں کرتا۔"
-        },
-        {
-          "q": "اس پاؤڈر کی میعاد کتنی ہے؟",
-          "a": "خشک جگہ پر رکھنے کی صورت میں اس کی میعاد تیاری کی تاریخ سے 5 سال ہے۔"
-        },
-        {
-          "q": "کیا گندم پر گوبھ کے وقت اس کا سپرے کیا جا سکتا ہے؟",
-          "a": "جی ہاں، گندم پر گوبھ کے وقت زنک کا سپرے سٹا لمبا کرتا ہے اور دانے موٹے اور وزنی بناتا ہے۔"
-        },
-        {
-          "q": "کیا یہ زمین کی پی ایچ (pH) کو تبدیل کرتا ہے؟",
-          "a": "نہیں۔ یہ انتہائی چیلیٹڈ ہے اور کم مقدار میں استعمال ہوتا ہے، اس لیے زمین کی پی ایچ پر کوئی اثر نہیں ڈالتا۔"
-        },
-        {
-          "q": "کیا ای ڈی ٹی اے (EDTA) زمین کے لیے محفوظ ہے؟",
-          "a": "جی ہاں، یہ زمین کے قدرتی ماحول اور جراثیموں کو نقصان نہیں پہنچاتا اور وقت کے ساتھ تحلیل ہو جاتا ہے۔"
-        }
-      ]
-    }
-  },
-
-  "sector": {
-    "id": "sector",
-    "genericName": {
-      "en": "Crop Supplement",
-      "ur": "فصل کا ضامن سپلیمنٹ"
-    },
-    "pricing": [
-      {
-        "size": "4 KG",
-        "rate": "1050",
-        "carton": "1"
-      }
-    ],
-    "slug": "sector",
-    "name": {
-      "en": "Sector",
-      "ur": "سیکٹر"
-    },
-    "category": "herbicide",
-    "imageUrl": "/products/sector.png",
-    "pngUrl": "/products/sector.png",
-    "rating": 4.7,
-    "importedFormulaBadge": false,
-    "premiumProductBadge": true,
-    "researchBasedBadge": true,
-    "shortDesc": {
-      "en": "Sector is a premium soil supplement rich in essential minerals for vegetative growth and soil health.",
-      "ur": "سیکٹر زمین کی زرخیزی بڑھانے اور فصل کو بنیادی معدنیات فراہم کرنے کے لیے ایک شاندار زمینی سپلیمنٹ ہے۔"
-    },
-    "seoTitle": "Sector Soil Mineral Supplement | Vital Agro",
-    "seoDescription": "Improve soil texture, crop vigor, and nutrient uptake with Sector soil granules. Packed with rich chelated secondary and trace elements. 4KG and 8KG packs.",
-    "sizes": [
-      {
-            "size": "4 KG",
-            "price": 1050,
-            "oldPrice": 1050,
-            "sku": "VA-SECT-4KG",
-            "weight": "4kg",
-            "stockStatus": "In Stock"
-      }
-],
-    "formulation": "16% WP",
-    "activeIngredient": "Acetochlor 14% + Bensulfuron Methyl 2%",
-    "packaging": "100g, 150g, 250g",
-    "productCode": "VA-SEC-08",
-    "status": {
-      "en": "Selective Pre & Post Herbicide",
-      "ur": "چوڑی پتی اور جڑی بوٹی مار دوا"
-    },
-    "description": {
-      "en": "Sector is a high-performance selective pre-emergence and early post-emergence herbicide designed for controlling broadleaf weeds and sedges in direct-seeded and transplanted rice and maize crops. By combining Acetochlor (inhibiting protein synthesis and cell division in emerging weed shoots) with Bensulfuron Methyl (blocking acetolactate synthase to halt cell division in root and shoot tips), Sector delivers complete weed control without affecting crop vigor, establishing a clean field for crop roots to grow.",
-      "ur": "سیکٹر ایک بہترین اور موثر سلیکٹیو پری ایمرجنس (اگنے سے پہلے) اور ارلی پوسٹ ایمرجنس جڑی بوٹی مار دوا ہے جو دھان (چاول) اور مکئی کی فصلوں میں چوڑی پتی والی جڑی بوٹیوں اور ڈیلے دار گھاس کو کنٹرول کرتی ہے۔ ایسیٹوکلور جڑی بوٹیوں کے خلیوں کی تقسیم کو روکتا ہے اور بین سلفوران میتھائل جڑی بوٹیوں کی جڑوں کی نشوونما بند کرتا ہے۔ سیکٹر کے استعمال سے جڑی بوٹیاں اگ ہی نہیں پاتیں، جس سے فصل کو بڑھنے کے لیے زیادہ جگہ، روشنی اور خوراک ملتی ہے۔"
-    },
-    "features": {
-      "en": [
-        "Selective action: kills weeds, safe for target crops",
-        "Dual active ingredients control grasses and broadleaf weeds",
-        "Prevents weed germination by forming a soil barrier",
-        "Effective in both direct-seeded and transplanted rice fields",
-        "Easy mix powder formulation with clean dispersion"
-      ],
-      "ur": [
-        "سلیکٹیو عمل: صرف جڑی بوٹیوں کا خاتمہ، فصل کے لیے محفوظ",
-        "چوڑی پتی اور ڈیلے دار گھاس کے لیے دوہرا عمل",
-        "زمین پر حفاظتی تہہ بنا کر جڑی بوٹیوں کو اگنے سے روکنا",
-        "دھان کی قاد اور براہِ راست بیج والی فصل دونوں میں موثر",
-        "پانی میں آسانی سے گھل جانے والا پاؤڈر فارمولا"
-      ]
-    },
-    "benefits": {
-      "en": [
-        "Ensures zero competition from weeds during critical early growth",
-        "Reduces manual labor and weeding costs significantly",
-        "Controls tough weeds like Cyperus difformis and Marsilea quadrifolia",
-        "Maintains soil nutrients solely for the crop's benefit",
-        "Promotes maximum crop plant population and field uniform spread"
-      ],
-      "ur": [
-        "ابتدائی نازک مرحلے پر جڑی بوٹیوں کے مقابلے کو ختم کرتا ہے",
-        "گوڈی کی مزدوری اور جڑی بوٹی نکالنے کے اخراجات بچاتا ہے",
-        "سخت جان ڈیلے، گھاس اور چوڑے پتے والی جڑی بوٹیوں کا تدارک کرتا ہے",
-        "زمین کی پوری کھاد اور طاقت صرف فصل کو ملنے دیتا ہے",
-        "فصل کے پودوں کی تعداد پوری رکھتا ہے اور یکساں بڑھوتری دیتا ہے"
-      ]
-    },
-    "crops": [
-      {
-        "name": {
-          "en": "Rice (Transplanted)",
-          "ur": "دھان (قاد)"
-        },
-        "icon": "🌾"
-      },
-      {
-        "name": {
-          "en": "Rice (Direct Seeded)",
-          "ur": "دھان (براہِ راست)"
-        },
-        "icon": "🌾"
-      },
-      {
-        "name": {
-          "en": "Maize",
-          "ur": "مکئی"
-        },
-        "icon": "🌽"
-      }
-    ],
-    "application": {
-      "en": "Ensure fields are leveled. Apply within 3 to 7 days of transplanting rice. The field soil must have standing water (2-3 inches deep) for 4-5 days after application to maintain the chemical barrier. Do not drain.",
-      "ur": "کھیت کا ہموار ہونا ضروری ہے۔ دھان کی منتقلی کے 3 سے 7 دن کے اندر استعمال کریں۔ استعمال کے بعد کھیت میں 2 سے 3 انچ کھڑا پانی 4 سے 5 دن تک برقرار رکھیں تاکہ جڑی بوٹیوں کو اگنے سے روکا جا سکے۔ پانی نہ نکالیں۔"
-    },
-    "dosageTable": [
-      {
-        "crop": {
-          "en": "Transplanted Rice",
-          "ur": "دھان (قاد)"
-        },
-        "dosage": {
-          "en": "150 g / Acre",
-          "ur": "150 گرام فی ایکڑ"
-        },
-        "water": {
-          "en": "Mixed with dry sand / broadcast",
-          "ur": "خشک ریت کے ساتھ ملا کر چھٹہ کریں"
-        },
-        "timing": {
-          "en": "3-7 days after transplanting",
-          "ur": "پنیری کی منتقلی کے 3 سے 7 دن کے اندر"
-        },
-        "frequency": {
-          "en": "1 application per crop cycle",
-          "ur": "ہر فصل پر صرف 1 بار استعمال"
-        }
-      },
-      {
-        "crop": {
-          "en": "Direct-Seeded Rice",
-          "ur": "براہِ راست کاشتہ دھان"
-        },
-        "dosage": {
-          "en": "150 g / Acre",
-          "ur": "150 گرام فی ایکڑ"
-        },
-        "water": {
-          "en": "100-120 Liters (Spray)",
-          "ur": "100-120 لیٹر پانی (سپرے)"
-        },
-        "timing": {
-          "en": "Before weed emergence (pre-emergence)",
-          "ur": "جڑی بوٹی اگنے سے پہلے (پری ایمرجنس)"
-        },
-        "frequency": {
-          "en": "1 application",
-          "ur": "1 سپرے"
-        }
-      }
-    ],
-    "specs": {
-      "type": {
-        "en": "Selective Pre-Emergence Herbicide",
-        "ur": "سلیکٹیو جڑی بوٹی مار دوا"
-      },
-      "formulation": {
-        "en": "WP (Wettable Powder)",
-        "ur": "ڈبلیو پی (قابلِ تر پاؤڈر)"
-      },
-      "composition": {
-        "en": "Acetochlor 14% + Bensulfuron Methyl 2%",
-        "ur": "ایسیٹوکلور 14% + بین سلفوران میتھائل 2%"
-      },
-      "appearance": {
-        "en": "Fine white to light grey powder",
-        "ur": "سفید یا ہلکا مٹیالا پاؤڈر"
-      },
-      "storage": {
-        "en": "Store locked away from food, seeds and child access under 30°C",
-        "ur": "بچوں، بیجوں اور خوراک سے دور تالے والی خشک جگہ پر 30 ڈگری سے نیچے رکھیں"
-      },
-      "shelfLife": {
-        "en": "2 Years",
-        "ur": "2 سال"
-      },
-      "packing": {
-        "en": "100g, 150g Pouches",
-        "ur": "100g، 150g پاؤچ"
-      },
-      "compatibility": {
-        "en": "Do not mix with liquid insecticides or foliar fertilizers. Apply independently.",
-        "ur": "مائع کیڑے مار ادویات یا اسپرے والی کھادوں کے ساتھ نہ ملائیں۔ الگ استعمال کریں۔"
-      }
-    },
-    "safety": {
-      "en": [
-        "Extremely harmful if swallowed. Wear safety rubber boots and gloves.",
-        "Ensure no water flows into adjacent crops after application.",
-        "Do not inhale powder dust. Wear face mask during application.",
-        "Toxic to fish; keep away from active ponds and aquaculture channels.",
-        "Wash application clothes separately after spray."
-      ],
-      "ur": [
-        "نگلنے کی صورت میں انتہائی نقصان دہ ہے۔ ربڑ کے بوٹ اور دستانے پہنیں۔",
-        "دوا کے بعد کھیت کا پانی ہمسایہ فصلوں کی طرف نہ جانے دیں۔",
-        "پاؤڈر کی دھول سے بچیں۔ استعمال کے وقت چہرے پر ماسک لگائیں۔",
-        "مچھلیوں کے لیے زہریلا ہے؛ تالابوں اور نہروں کے قریب استعمال سے گریز کریں۔",
-        "استعمال کے بعد کپڑوں کو الگ سے اچھی طرح دھو لیں۔"
-      ]
-    },
-    "faqs": {
-      "en": [
-        {
-          "q": "How does Sector selective herbicide work?",
-          "a": "Sector targets enzymes unique to emerging weeds. It creates a chemical layer on the soil surface that kills weeds as they try to germinate, leaving the rice crop unharmed."
-        },
-        {
-          "q": "Why is standing water necessary after using Sector?",
-          "a": "Standing water (2-3 inches) holds the herbicide molecules in a uniform layer across the soil, preventing weeds from penetrating through. Keeping water for 4-5 days is critical."
-        },
-        {
-          "q": "What happens if the field dries out too early?",
-          "a": "If the soil dries, the herbicide barrier breaks, allowing weeds to germinate and grow. Water management is key to success."
-        },
-        {
-          "q": "Can I use Sector on cotton or wheat?",
-          "a": "No. Sector is a highly selective herbicide formulated strictly for Rice and Maize. Applying it to wheat or cotton will cause severe crop damage."
-        },
-        {
-          "q": "What weeds does it control?",
-          "a": "It controls broadleaf weeds (like Ghandi Booti, Sanji) and sedges (like Deela/Cyperus) in paddy fields."
-        },
-        {
-          "q": "What is the formulation type WP?",
-          "a": "WP stands for Wettable Powder. It is a dry powder formulation that disperses easily in water to form a stable suspension for spraying or broadcasting."
-        },
-        {
-          "q": "How many days after transplanting should it be applied?",
-          "a": "Apply between 3 to 7 days after transplanting rice. Applying too late (after weeds have grown) reduces its efficacy."
-        },
-        {
-          "q": "Is it safe to touch the powder directly?",
-          "a": "No, always wear protective rubber gloves and wash hands thoroughly with soap if contact occurs."
-        }
-      ],
-      "ur": [
-        {
-          "q": "سیکٹر جڑی بوٹی مار دوا کیسے کام کرتی ہے؟",
-          "a": "سیکٹر زمین کی سطح پر ایک کیمیائی تہہ بنا دیتا ہے۔ جب جڑی بوٹیاں اگنے کی کوشش کرتی ہیں تو وہ اس زہر کو جذب کر کے مر جاتی ہیں، جبکہ دھان کی فصل محفوظ رہتی ہے۔"
-        },
-        {
-          "q": "سیکٹر کے استعمال کے بعد کھیت میں پانی کھڑا رکھنا کیوں ضروری ہے؟",
-          "a": "2 سے 3 انچ پانی کھڑا رکھنے سے دوا زمین پر یکساں پھیلی رہتی ہے۔ اگر پانی سوکھ جائے تو جڑی بوٹیاں اگ سکتی ہیں۔ اس لیے 4 سے 5 دن پانی کھڑا رکھیں۔"
-        },
-        {
-          "q": "اگر کھیت جلدی سوکھ جائے تو کیا ہوگا؟",
-          "a": "اگر پانی جلدی سوکھ گیا تو دوا کا اثر کمزور ہو جائے گا اور جڑی بوٹیاں اگ آئیں گی۔ پانی کا انتظام اس دوا کی کامیابی کی چابی ہے۔"
-        },
-        {
-          "q": "کیا میں سیکٹر کو کپاس یا گندم پر استعمال کر سکتا ہوں؟",
-          "a": "ہرگز نہیں! سیکٹر صرف دھان اور مکئی کے لیے مخصوص ہے۔ کپاس یا گندم پر استعمال کرنے سے فصل تباہ ہو سکتی ہے۔"
-        },
-        {
-          "q": "یہ کن جڑی بوٹیوں کو ختم کرتا ہے؟",
-          "a": "یہ چوڑی پتی والی جڑی بوٹیوں (جیسے غنڈی بوٹی) اور ڈیلے دار گھاس (ڈیلا) کا مکمل خاتمہ کرتا ہے۔"
-        },
-        {
-          "q": "ڈبلیو پی (WP) فارمولیشن سے کیا مراد ہے؟",
-          "a": "ڈبلیو پی کا مطلب ویٹیبل پاؤڈر (قابلِ حل پاؤڈر) ہے۔ یہ ایسا پاؤڈر ہے جو پانی میں ڈالنے پر مائع مکسچر بن جاتا ہے جسے سپرے یا ریت میں ملا کر چھٹہ کیا جا سکتا ہے۔"
-        },
-        {
-          "q": "منتقلی کے کتنے دن بعد اسے ڈالنا چاہیے؟",
-          "a": "پنیری منتقل کرنے کے 3 سے 7 دن کے اندر ڈالیں۔ جڑی بوٹیاں بڑی ہونے کے بعد ڈالنے سے رزلٹ نہیں ملتا۔"
-        },
-        {
-          "q": "کیا پاؤڈر کو براہ راست ہاتھ لگا سکتے ہیں؟",
-          "a": "نہیں، ہمیشہ ربڑ کے دستانے پہنیں اور ہاتھ پر لگنے کی صورت میں فوراً صابن سے دھو لیں۔"
-        }
-      ]
-    }
-  },
-
-  "output": {
-    "id": "output",
-    "genericName": {
-      "en": "Potassium Humate / Humic Acid",
-      "ur": "پوٹاشیم ہیومیٹ / ہیومک ایسڈ"
-    },
-    "pricing": [
-      {
-        "size": "1 KG",
-        "rate": "699",
-        "carton": "1"
-      },
-      {
-        "size": "25 KG",
-        "rate": "15230",
-        "carton": "1"
-      }
-    ],
-    "slug": "output",
-    "name": {
-      "en": "Output",
-      "ur": "آؤٹ پٹ"
-    },
-    "category": "plant-nutrition",
-    "imageUrl": "/products/output.png",
-    "pngUrl": "/products/output.png",
-    "rating": 4.8,
-    "importedFormulaBadge": false,
-    "premiumProductBadge": true,
-    "researchBasedBadge": true,
-    "shortDesc": {
-      "en": "Output Humic Acid stimulates soil biological activity, improves root mass, and enhances fertilizer efficiency.",
-      "ur": "آؤٹ پٹ ہیومک ایسڈ زمین کے نامیاتی مادے کو بڑھاتا ہے، جڑوں کو وسعت دیتا ہے اور کھادوں کی کارکردگی کو بہتر بناتا ہے۔"
-    },
-    "seoTitle": "Output Humic Acid Soil Granules | Vital Agro",
-    "seoDescription": "Increase root volume and NPK absorption efficiency. Output organic humic acid stimulates soil microbes, unlocks phosphate, and builds crop resilience.",
-    "sizes": [
-      {
-            "size": "2 KG",
-            "price": 1510,
-            "oldPrice": 1510,
-            "sku": "VA-OUTP-2KG",
-            "weight": "2kg",
-            "stockStatus": "In Stock"
-      },
-      {
-            "size": "8 KG",
-            "price": 1510,
-            "oldPrice": 1999,
-            "sku": "VA-OUTP-8KG",
-            "weight": "8kg",
-            "stockStatus": "In Stock"
-      },
-      {
-            "size": "20 KG",
-            "price": 1510,
-            "oldPrice": 4600,
-            "sku": "VA-OUTP-20KG",
-            "weight": "20kg",
-            "stockStatus": "In Stock"
-      }
-],
-    "formulation": "PK Liquid Concentrate",
-    "activeIngredient": "Phosphorus + Potassium + Boron",
-    "packaging": "250ml, 500ml, 1L",
-    "productCode": "VA-OUT-09",
-    "status": {
-      "en": "Elite Fruiting & Flowering Catalyst",
-      "ur": "پیداوار اور پھل بڑھانے والا مائع"
-    },
-    "description": {
-      "en": "Output is a premium physiological enhancer and fruit-sizing optimizer containing highly concentrated, bio-available Phosphorus, Potassium, and Boron. Formulated specifically for the reproductive stages of crops, Output stimulates flower initiation, enhances pollen tube elongation (preventing flower drop), accelerates starch translocation to tubers/grains, and builds crop cellular strength. Highly recommended for potatoes, citrus, mangoes, and vegetable crops to achieve premium market-grade sizes, uniform color, and maximum yield weight.",
-      "ur": "آؤٹ پٹ پودوں کے پھل بننے اور سائز بڑھانے کا ایک اعلیٰ درجے کا فارمولا ہے جس میں فاسفورس، پوٹاشیم اور بوران کی زیادہ مقدار شامل ہے۔ یہ فصل کے تولیدی مرحلے (پھول اور پھل بننے کے وقت) پر استعمال کیا جاتا ہے، جس سے پھول گرنے کا عمل رکتا ہے، نشاستہ پتے سے دانے اور پھل کی طرف تیزی سے منتقل ہوتا ہے اور پودے کے خلیات مضبوط ہوتے ہیں۔ آلو، ٹماٹر، مرچ، آم اور مالٹے کی فصل کے لیے انتہائی موزوں ہے تاکہ چمکدار رنگ، بڑا سائز اور وزنی پیداوار حاصل کی جا سکے۔"
-    },
-    "features": {
-      "en": [
-        "Highly concentrated bio-active Phosphorus and Potassium",
-        "Enriched with Boron to optimize pollination and fruit set",
-        "Promotes fast translocation of sugars to fruits and grains",
-        "Improves crop shell hardness and storage shelf life",
-        "Quickly absorbed foliar formulation, leaves no leaf stains"
-      ],
-      "ur": [
-        "فوری اثر کرنے والے فاسفورس اور پوٹاشیم کا بھرپور مرکب",
-        "بہتر پولینیشن اور پھل بننے کے لیے بوران سے آراستہ",
-        "شکر اور نشاستے کو پتے سے پھل اور دانے کی طرف تیزی سے منتقل کرنا",
-        "پھل کے چھلکے کی مضبوطی اور اسٹوریج کی مدت کو بڑھانا",
-        "پتوں کے ذریعے تیزی سے جذب ہونا، پتے پر داغ نہ بنانا"
-      ]
-    },
-    "benefits": {
-      "en": [
-        "Prevents flower shedding in vegetables and fruit orchards",
-        "Increases potato tuber size and starch content",
-        "Improves sweetness (Brix index) and coloring of fruits",
-        "Boosts final crop harvest weight by up to 20%",
-        "Strengthens crop stalks, preventing lodging in windy conditions"
-      ],
-      "ur": [
-        "سبزیوں اور باغات میں پھول گرنے کے عمل کو روکتا ہے",
-        "آلو کے سائز (کپڑے) کو بڑا کرتا ہے اور نشاستہ بڑھاتا ہے",
-        "پھل کی مٹھاس، چمک اور رنگت کو شاندار بناتا ہے",
-        "فصل کی حتمی پیداوار کے وزن میں 20 فیصد تک اضافہ کرتا ہے",
-        "پودے کے تنے کو مضبوط کر کے تیز ہوا میں فصل گرنے (لاجنگ) سے بچاتا ہے"
-      ]
-    },
-    "crops": [
-      {
-        "name": {
-          "en": "Potato",
-          "ur": "آلو"
-        },
-        "icon": "🥔"
-      },
-      {
-        "name": {
-          "en": "Citrus",
-          "ur": "ترشاوہ پھل"
-        },
-        "icon": "🍊"
-      },
-      {
-        "name": {
-          "en": "Mango",
-          "ur": "آم"
-        },
-        "icon": "🥭"
-      },
-      {
-        "name": {
-          "en": "Tomato",
-          "ur": "ٹماٹر"
-        },
-        "icon": "🍅"
-      },
-      {
-        "name": {
-          "en": "Chilli",
-          "ur": "مرچ"
-        },
-        "icon": "🌶️"
-      },
-      {
-        "name": {
-          "en": "Rice",
-          "ur": "دھان"
-        },
-        "icon": "🌾"
-      }
-    ],
-    "application": {
-      "en": "Foliar spray. Start spraying at the pre-flowering stage, repeat during fruit formation and sizing. Dilute in clean water. Avoid mixing directly with thick oils or highly acidic chemicals.",
-      "ur": "بذریعہ فولیر سپرے۔ پھول آنے سے پہلے سپرے شروع کریں، اور پھل بننے و سائز بڑھنے کے دوران دوبارہ کریں۔ صاف پانی میں حل کریں۔ تیزابی ادویات یا گاڑھے تیل والے محلول کے ساتھ براہِ راست مکس نہ کریں۔"
-    },
-    "dosageTable": [
-      {
-        "crop": {
-          "en": "Potato",
-          "ur": "آلو"
-        },
-        "dosage": {
-          "en": "500-800 ml / Acre",
-          "ur": "500-800 ملی لیٹر فی ایکڑ"
-        },
-        "water": {
-          "en": "100-120 Liters",
-          "ur": "100-120 لیٹر"
-        },
-        "timing": {
-          "en": "Tuber initiation & sizing stage",
-          "ur": "آلو کے بننے اور سائز بڑھنے کے دوران"
-        },
-        "frequency": {
-          "en": "2 applications (12 days apart)",
-          "ur": "2 بار سپرے (12 دن کے وقفے سے)"
-        }
-      },
-      {
-        "crop": {
-          "en": "Citrus & Mango",
-          "ur": "ترشاوہ پھل اور آم"
-        },
-        "dosage": {
-          "en": "2.5 ml / Liter water",
-          "ur": "2.5 ملی لیٹر فی لیٹر پانی"
-        },
-        "water": {
-          "en": "Thorough spray on canopy",
-          "ur": "پودوں کو اچھی طرح تر کریں"
-        },
-        "timing": {
-          "en": "At fruit setting & sizing stages",
-          "ur": "پھل بننے اور سائز بڑھنے کے مرحلے پر"
-        },
-        "frequency": {
-          "en": "3 applications",
-          "ur": "3 بار سپرے"
-        }
-      },
-      {
-        "crop": {
-          "en": "Tomato & Chilli",
-          "ur": "ٹماٹر اور مرچ"
-        },
-        "dosage": {
-          "en": "300-400 ml / Acre",
-          "ur": "300-400 ملی لیٹر فی ایکڑ"
-        },
-        "water": {
-          "en": "100 Liters",
-          "ur": "100 لیٹر"
-        },
-        "timing": {
-          "en": "Pre-flowering & fruit set",
-          "ur": "پھول آنے سے پہلے اور پھل بننے پر"
-        },
-        "frequency": {
-          "en": "Every 10-12 days",
-          "ur": "ہر 10 سے 12 دن بعد"
-        }
-      }
-    ],
-    "specs": {
-      "type": {
-        "en": "Fruiting and Sizing Liquid Booster",
-        "ur": "پھل بڑھانے والا مائع بوسٹر"
-      },
-      "formulation": {
-        "en": "Soluble Concentrate (Liquid)",
-        "ur": "قابلِ حل مائع کنسنٹریٹ"
-      },
-      "composition": {
-        "en": "Phosphorus (P2O5) 20% + Potassium (K2O) 30% + Boron 1%",
-        "ur": "فاسفورس (P2O5) 20% + پوٹاشیم (K2O) 30% + بوران 1%"
-      },
-      "appearance": {
-        "en": "Viscous transparent pale liquid",
-        "ur": "گاڑھا شفاف پیلا مائع"
-      },
-      "storage": {
-        "en": "Store in cool dry ventilated warehouse under 35°C",
-        "ur": "ٹھنڈے اور ہوادار گودام میں 35 ڈگری سے نیچے رکھیں"
-      },
-      "shelfLife": {
-        "en": "3 Years",
-        "ur": "3 سال"
-      },
-      "packing": {
-        "en": "250ml, 500ml, 1 Liter Bottles",
-        "ur": "250ml، 500ml، 1 لیٹر بوتلیں"
-      },
-      "compatibility": {
-        "en": "Highly compatible with NPK foliar feeds. Avoid mixing with calcium liquids directly.",
-        "ur": "این پی کے سپرے کے ساتھ ہم آہنگ ہے۔ کیلشیم والے مائع کے ساتھ مکس نہ کریں۔"
-      }
-    },
-    "safety": {
-      "en": [
-        "Wear rubber gloves and mask during spray preparation.",
-        "Wash face and hands with soap and water after application.",
-        "In case of contact with eyes, flush with water immediately.",
-        "Store tightly closed in its original container away from food.",
-        "Keep away from children and farm animals."
-      ],
-      "ur": [
-        "سپرے کی تیاری کے دوران ربڑ کے دستانے اور ماسک پہنیں۔",
-        "استعمال کے بعد چہرہ اور ہاتھ صابن اور پانی سے دھو لیں۔",
-        "آنکھوں میں جانے کی صورت میں فوراً پانی سے آنکھیں دھوئیں۔",
-        "اصل بوتل میں بند رکھ کر خوراک سے دور اسٹور کریں۔",
-        "بچوں اور پالتو جانوروں سے دور رکھیں۔"
-      ]
-    },
-    "faqs": {
-      "en": [
-        {
-          "q": "What is Output and how does it help crops?",
-          "a": "Output is a concentrated PK (Phosphorus & Potassium) liquid booster enriched with Boron. It accelerates flowering, prevents flower drop, and increases fruit weight."
-        },
-        {
-          "q": "Why is Boron included in Output?",
-          "a": "Boron is critical for pollen tube growth, which ensures complete pollination and prevents flowers from falling off without setting fruit."
-        },
-        {
-          "q": "When should I spray Output on potatoes?",
-          "a": "Spray at tuber initiation (when tiny potatoes start forming) and repeat 12-15 days later to boost sizing and potato weight."
-        },
-        {
-          "q": "Can Output be mixed with insecticides?",
-          "a": "Yes, it is highly compatible with most common crop protection sprays. Always check compatibility with a jar test first."
-        },
-        {
-          "q": "Does it help crop quality in Citrus?",
-          "a": "Yes, the Potassium in Output increases juice content, peel shine, and fruit size in citrus fruits."
-        },
-        {
-          "q": "What is the benefit of liquid PK over granular potash?",
-          "a": "Liquid foliar PK is absorbed immediately through leaves, delivering nutrients within hours during critical flowering stages, whereas soil granules take weeks to dissolve."
-        },
-        {
-          "q": "How many sprays are recommended for mangoes?",
-          "a": "We recommend 3 sprays: at pre-flowering (bud stage), fruit setting (pea size), and during fruit development."
-        },
-        {
-          "q": "Can Output burn crop leaves?",
-          "a": "No, it is formulated with organic complexes, making it highly safe for leaves when sprayed at the recommended dosage."
-        }
-      ],
-      "ur": [
-        {
-          "q": "آؤٹ پٹ کیا ہے اور یہ فصل کی کیسے مدد کرتا ہے؟",
-          "a": "آؤٹ پٹ فاسفورس، پوٹاشیم اور بوران کا طاقتور مائع مرکب ہے۔ یہ پھول لانے، پھول گرنے سے روکنے اور پھل کا وزن بڑھانے میں مدد کرتا ہے۔"
-        },
-        {
-          "q": "آؤٹ پٹ میں بوران کیوں شامل کیا گیا ہے؟",
-          "a": "بوران پولینیشن (نر اور مادہ ملاپ) کے عمل کو کامیاب بناتا ہے جس سے پھول گرنے سے بچتے ہیں اور پھل بنتا ہے۔"
-        },
-        {
-          "q": "آلو پر آؤٹ پٹ کب سپرے کرنا چاہیے؟",
-          "a": "جب آلو بننا شروع ہوں (ٹیوبر انیشیشن) تب سپرے کریں اور 12 سے 15 دن بعد دہرائیں تاکہ آلو کا سائز موٹا ہو۔"
-        },
-        {
-          "q": "کیا آؤٹ پٹ کو کیڑے مار دوا کے ساتھ ملا سکتے ہیں؟",
-          "a": "جی ہاں۔ یہ زیادہ تر سپرے کے ساتھ ہم آہنگ ہے۔ استعمال سے پہلے چھوٹا ٹیسٹ کر لیں۔"
-        },
-        {
-          "q": "کیا یہ مالٹے کے باغات کے لیے فائدہ مند ہے؟",
-          "a": "جی ہاں، اس میں موجود پوٹاشیم مالٹے کا رس، چھلکے کی چمک اور پھل کا سائز بڑھاتا ہے۔"
-        },
-        {
-          "q": "عام کھادوں کے مقابلے میں مائع پوٹاشیم کا کیا فائدہ ہے؟",
-          "a": "پتوں پر سپرے کرنے سے یہ چند گھنٹوں میں جذب ہو کر فوری اثر دکھاتا ہے، جبکہ زمین میں ڈالی گئی کھاد حل ہونے میں ہفتے لیتی ہے۔"
-        },
-        {
-          "q": "آم کے باغات کے لیے کتنے سپرے تجویز کیے گئے ہیں؟",
-          "a": "3 سپرے تجویز کیے گئے ہیں: بور آنے پر، پھل بننے کے وقت (مٹر کے دانے جتنا) اور پھل کے بڑھنے کے دوران۔"
-        },
-        {
-          "q": "کیا آؤٹ پٹ سپرے سے پتے جھلس سکتے ہیں؟",
-          "a": "نہیں، یہ پودے کے لیے انتہائی محفوظ طریقے سے تیار کیا گیا ہے اور پتے نہیں جلاتا۔"
-        }
-      ]
-    }
-  },
-
-  "super-4g": {
-    "id": "super-4g",
-    "genericName": {
-      "en": "Chlorantraniliprole + Thiamethoxam",
-      "ur": "کلورینٹرانیلی پرول + تھایامیتھوکسام"
-    },
-    "pricing": [
-      {
-        "size": "8 KG",
-        "rate": "1250",
-        "carton": "4"
-      }
-    ],
-    "slug": "super-4g",
-    "name": {
-      "en": "Super 4G",
-      "ur": "سوپر فور جی"
-    },
-    "category": "insecticide",
-    "imageUrl": "/products/4g.png",
-    "pngUrl": "/products/4g.png",
-    "rating": 4.9,
-    "importedFormulaBadge": true,
-    "premiumProductBadge": true,
-    "researchBasedBadge": true,
-    "shortDesc": {
-      "en": "Super 4G is a soil-applied systemic granular insecticide for controlling stem borers in rice and sugarcane.",
-      "ur": "سوپر فور جی دھان اور کماد میں تنے کی سنڈی اور ڈیڈ ہارٹ کی روک تھام کے لیے ایک دانے دار سسٹمک دوا ہے۔"
-    },
-    "seoTitle": "Super 4G Granular Stem Borer Control | Vital Agro",
-    "seoDescription": "Stop stem borer attack and dead hearts in rice paddy and sugarcane. Super 4G granular systemic insecticide. Safe for earthworms. Broadcast with urea.",
-    "sizes": [
-      {
-            "size": "8 KG",
-            "price": 1250,
-            "oldPrice": 1250,
-            "sku": "VA-SUPE-8KG",
-            "weight": "8kg",
-            "stockStatus": "In Stock"
-      }
-],
-    "formulation": "4% Granular",
-    "activeIngredient": "Cartap Hydrochloride 4%",
-    "packaging": "4kg, 8kg Bags",
-    "productCode": "VA-S4G-10",
-    "status": {
-      "en": "Soil Granular Protection Elite",
-      "ur": "دانے دار مٹی کا محافظ زہر"
-    },
-    "description": {
-      "en": "Super 4G is a premium soil-applied granular systemic insecticide containing Cartap Hydrochloride (4%). Specifically formulated to protect cereal crops like rice, maize, and sugarcane from soil pests, stem borers, and root feeders, it works through root absorption. Upon application, the crop roots absorb the chemical, translocating it throughout the plant tissues. This systemic barrier paralyses chewing larvae that attempt to bore into the stem, protecting early-stage crop establishment and tillering.",
-      "ur": "سوپر فور جی مٹی میں استعمال ہونے والا ایک بہترین اور دیرپا سسٹمک دانے دار کیڑے مار زہر ہے جس میں کارٹاپ ہائیڈروکلورائڈ (4٪) شامل ہے۔ یہ خاص طور پر چاول (دھان)، مکئی اور کماد کی فصلوں کو تنے کی سوراخ کرنے والی سنڈیوں (بوررز) اور جڑ کھانے والے کیڑوں سے بچانے کے لیے تیار کیا گیا ہے۔ چھٹہ کرنے پر پودے کی جڑیں زہر کو جذب کر کے پورے پودے کے تنے اور پتوں تک پہنچاتی ہیں، جس سے اندرونی سنڈیاں مفلوج ہو کر ہلاک ہو جاتی ہیں اور فصل کا تلا محفوظ رہتا ہے۔"
-    },
-    "features": {
-      "en": [
-        "Soil-applied systemic protection via root absorption",
-        "Controls stem borers, shoot borers, and root grubs",
-        "Slow-release granules ensure long residual activity (20+ days)",
-        "Excellent crop safety; does not impact root micro-flora",
-        "Uniform granule size allows easy broadcasting"
-      ],
-      "ur": [
-        "جڑوں کے ذریعے جذب ہونے والا سسٹمک زمینی تحفظ",
-        "تنے کی سنڈیوں، گوبھ کے کیڑوں اور زمینی سنڈیوں کا کنٹرول",
-        "دیر تک اثر رکھنے والے دانے (20 سے زائد دن تک اثر)",
-        "فصل کے لیے مکمل محفوظ، جڑوں کی نشوونما میں رکاوٹ نہیں بنتا",
-        "یکساں دانے دار سائز جس کا چھٹہ کرنا آسان ہے"
-      ]
-    },
-    "benefits": {
-      "en": [
-        "Prevents 'Dead Hearts' in Rice and Sugarcane crops",
-        "Supports maximum tillering and shoot proliferation",
-        "Reduces foliar spray requirement during early growth",
-        "Stabilizes yield potential by protecting early seedlings",
-        "Highly cost-effective soil application method"
-      ],
-      "ur": [
-        "دھان اور کماد میں گوبھ کی سوکھنے (ڈیڈ ہارٹ) کی بیماری کو روکتا ہے",
-        "فصل کے شگوفے بنانے اور پھیلاؤ میں بھرپور مدد کرتا ہے",
-        "ابتدائی بڑھوتری کے دوران پتوں پر سپرے کرنے کی ضرورت کم کرتا ہے",
-        "ابتدائی پودوں کو بچا کر فی ایکڑ پیداوار کی ضمانت دیتا ہے",
-        "مٹی میں استعمال کا انتہائی سستا اور آسان طریقہ ہے"
-      ]
-    },
-    "crops": [
-      {
-        "name": {
-          "en": "Rice",
-          "ur": "دھان"
-        },
-        "icon": "🌾"
-      },
-      {
-        "name": {
-          "en": "Sugarcane",
-          "ur": "کماد"
-        },
-        "icon": "🎋"
-      },
-      {
-        "name": {
-          "en": "Maize",
-          "ur": "مکئی"
-        },
-        "icon": "🌽"
-      }
-    ],
-    "application": {
-      "en": "Soil broadcast. Broadcast the granules uniformly in the field. For Rice, ensure standing water (1-2 inches) is present during and for 3-4 days after application to allow root uptake. Can be mixed with urea.",
-      "ur": "بذریعہ چھٹہ۔ دانے دار دوا کو پورے کھیت میں یکساں چھٹہ کریں۔ دھان کی فصل کے لیے چھٹہ کرتے وقت اور اس کے بعد 3 سے 4 دن تک 1 سے 2 انچ پانی کھڑا رکھیں تاکہ جڑیں دوا جذب کر سکیں۔ یوریا کھاد کے ساتھ ملا کر بھی ڈالا جا سکتا ہے۔"
-    },
-    "dosageTable": [
-      {
-        "crop": {
-          "en": "Rice (Paddy)",
-          "ur": "دھان"
-        },
-        "dosage": {
-          "en": "4 kg / Acre",
-          "ur": "4 کلوگرام فی ایکڑ"
-        },
-        "water": {
-          "en": "Broadcast in standing water",
-          "ur": "کھڑے پانی میں چھٹہ کریں"
-        },
-        "timing": {
-          "en": "25-35 days after transplanting",
-          "ur": "پنیری کی منتقلی کے 25 سے 35 دن بعد"
-        },
-        "frequency": {
-          "en": "1-2 applications per season",
-          "ur": "ہر سیزن میں 1 سے 2 بار"
-        }
-      },
-      {
-        "crop": {
-          "en": "Sugarcane",
-          "ur": "کماد"
-        },
-        "dosage": {
-          "en": "8 kg / Acre",
-          "ur": "8 کلوگرام فی ایکڑ"
-        },
-        "water": {
-          "en": "Broadcast around root zone & irrigate",
-          "ur": "جڑوں کے قریب چھٹہ کریں اور پانی دیں"
-        },
-        "timing": {
-          "en": "At sowing or shoot development stage",
-          "ur": "کاشت کے وقت یا کونپلیں نکلتے وقت"
-        },
-        "frequency": {
-          "en": "1 application",
-          "ur": "1 بار"
-        }
-      },
-      {
-        "crop": {
-          "en": "Maize",
-          "ur": "مکئی"
-        },
-        "dosage": {
-          "en": "4.5 kg / Acre",
-          "ur": "4.5 کلوگرام فی ایکڑ"
-        },
-        "water": {
-          "en": "Whorl application or broadcast",
-          "ur": "پودے کی گوبھ میں ڈالیں یا چھٹہ کریں"
-        },
-        "timing": {
-          "en": "20-30 days after sowing",
-          "ur": "کاشت کے 20 سے 30 دن بعد"
-        },
-        "frequency": {
-          "en": "1 application",
-          "ur": "1 بار"
-        }
-      }
-    ],
-    "specs": {
-      "type": {
-        "en": "Soil Systemic Insecticide",
-        "ur": "زمینی سسٹمک کیڑے مار دوا"
-      },
-      "formulation": {
-        "en": "G (Granules)",
-        "ur": "جی (دانے دار)"
-      },
-      "composition": {
-        "en": "Cartap Hydrochloride 4% w/w",
-        "ur": "کارٹاپ ہائیڈروکلورائڈ 4%"
-      },
-      "appearance": {
-        "en": "Spherical greyish-blue granules",
-        "ur": "گول مٹیالے نیلے دانے"
-      },
-      "storage": {
-        "en": "Store dry, away from sun, under lock and key below 30°C",
-        "ur": "دھوپ سے دور، خشک اور مقفل جگہ پر 30 ڈگری سے نیچے سٹور کریں"
-      },
-      "shelfLife": {
-        "en": "2 Years",
-        "ur": "2 سال"
-      },
-      "packing": {
-        "en": "4kg, 8kg Woven Poly Bags",
-        "ur": "4 کلو، 8 کلو بیگ"
-      },
-      "compatibility": {
-        "en": "Can be mixed with dry fertilizers (Urea, DAP). Do not mix with wet chemical sprays.",
-        "ur": "خشک کھادوں (یوریا، ڈی اے پی) کے ساتھ ملا سکتے ہیں۔ مائع سپرے کے ساتھ مکس نہ کریں۔"
-      }
-    },
-    "safety": {
-      "en": [
-        "Do not touch granules with bare hands. Wear protective gloves.",
-        "Wash legs, feet, and hands thoroughly after broadcasting.",
-        "Keep domestic animals away from treated field water for 4 days.",
-        "Do not reuse empty plastic bags; burn or destroy safely.",
-        "Toxic to fish; prevent runoff into fishing channels."
-      ],
-      "ur": [
-        "ننگے ہاتھوں سے دانوں کو نہ چھوئیں۔ حفاظتی دستانے پہنیں۔",
-        "چھٹہ دینے کے بعد ٹانگوں، پاؤں اور ہاتھوں کو صابن سے اچھی طرح دھوئیں۔",
-        "پالتو جانوروں کو 4 دن تک کھیت کے کھڑے پانی سے دور رکھیں۔",
-        "خالی توڑوں کو دوبارہ استعمال نہ کریں؛ جلا کر تلف کریں۔",
-        "مچھلیوں کے لیے زہریلا ہے؛ پانی ندی نالوں میں نہ جانے دیں۔"
-      ]
-    },
-    "faqs": {
-      "en": [
-        {
-          "q": "What is Super 4G and how is it applied?",
-          "a": "Super 4G is a systemic granular insecticide. It is broadcast directly onto the soil or standing water, where it is absorbed by crop roots."
-        },
-        {
-          "q": "How does Cartap Hydrochloride kill stem borers?",
-          "a": "Cartap blocks the synaptic receptors in the nervous system of insects. When borer larvae chew the borer-affected stems containing Cartap, they get paralyzed and die."
-        },
-        {
-          "q": "Why is water key to Super 4G efficacy in Rice?",
-          "a": "Standing water dissolves the granules, releasing the active ingredient into the soil root zone so the plant can absorb it. Dry soil will not absorb the chemical."
-        },
-        {
-          "q": "What are 'Dead Hearts'?",
-          "a": "Dead Heart is a condition in rice or sugarcane where stem borer larvae chew the inner core, causing the central leaf shoot to dry up and die."
-        },
-        {
-          "q": "Can we mix Super 4G with Urea fertilizer?",
-          "a": "Yes. Mixing Super 4G granules with Urea fertilizer during broadcasting is a common and safe practice."
-        },
-        {
-          "q": "How long does a single soil application protect the crop?",
-          "a": "It provides systemic protection for about 20 to 25 days after application."
-        },
-        {
-          "q": "Is it safe for earthworms in the soil?",
-          "a": "Yes. At recommended doses, it is safe for beneficial earthworms and does not harm soil texture."
-        },
-        {
-          "q": "Does Super 4G control whiteflies?",
-          "a": "No. It is a soil granular insecticide designed primarily for boring and soil pests, not for foliar sucking pests like whitefly."
-        }
-      ],
-      "ur": [
-        {
-          "q": "سوپر فور جی کیا ہے اور اسے کیسے استعمال کیا جاتا ہے؟",
-          "a": "سوپر فور جی ایک سسٹمک دانے دار دوا ہے۔ اسے براہ راست مٹی یا کھڑے پانی میں چھٹہ کیا جاتا ہے، جہاں سے جڑیں اسے چوس لیتی ہیں۔"
-        },
-        {
-          "q": "کارٹاپ ہائیڈروکلورائڈ تنے کی سنڈیوں کو کیسے مارتا ہے؟",
-          "a": "یہ کیڑوں کے اعصابی نظام کو بلاک کر دیتا ہے۔ جب سنڈیاں تنے کے اندر کھاتی ہیں تو زہر ان کے اندر جا کر انہیں مفلوج کر کے مار دیتا ہے۔"
-        },
-        {
-          "q": "چاول میں سپرے کے بجائے کھڑا پانی کیوں ضروری ہے؟",
-          "a": "پانی دانوں کو گھولتا ہے جس سے زہر جڑوں کے قریب پہنچتا ہے۔ خشک مٹی میں دوا پودے تک نہیں پہنچ پاتی  ہے۔"
-        },
-        {
-          "q": "ڈیڈ ہارٹ (Dead Heart) کیا ہوتا ہے؟",
-          "a": "تنے کی سنڈی جب اندرونی تنے کو کھاتی ہے تو پودے کی درمیانی گوبھ سوکھ کر مر جاتی ہے، اسے ڈیڈ ہارٹ کہتے ہیں۔"
-        },
-        {
-          "q": "کیا سوپر فور جی کو یوریا کھاد کے ساتھ ملا سکتے ہیں؟",
-          "a": "جی ہاں۔ چھٹہ کرتے وقت سوپر فور جی کے دانوں کو یوریا کے ساتھ ملانا بالکل محفوظ اور عام طریقہ ہے۔"
-        },
-        {
-          "q": "ایک بار ڈالنے سے کتنے دنوں تک اثر رہتا ہے؟",
-          "a": "مٹی میں ڈالنے کے بعد یہ تقریباً 20 سے 25 دنوں تک فصل کو محفوظ رکھتا ہے۔"
-        },
-        {
-          "q": "کیا یہ مٹی کے کینچووں (دوست کیڑوں) کے لیے نقصان دہ ہے؟",
-          "a": "نہیں۔ تجویز کردہ مقدار کے مطابق استعمال سے یہ کینچووں اور مٹی کی قدرتی زرخیزی کو نقصان نہیں پہنچاتا۔"
-        },
-        {
-          "q": "کیا یہ سفید مکھی پر اثر کرتا ہے؟",
-          "a": "نہیں۔ یہ مٹی میں ڈالنے والی دوا ہے جو تنے کے اندر رہنے والے کیڑوں کے لیے ہے، یہ سفید مکھی جیسے اڑنے والے کیڑوں پر اثر نہیں کرتی۔"
-        }
-      ]
-    }
-  },
-
-  "vac-sop": {
-    "id": "vac-sop",
-    "genericName": {
-      "en": "Sulphate of Potash (SOP)",
-      "ur": "سلفیٹ آف پوٹاش (SOP)"
-    },
-    "pricing": [
-      {
-        "size": "25 KG",
-        "rate": "3000",
-        "carton": "1"
-      }
-    ],
-    "slug": "vac-sop",
-    "name": {
-      "en": "VAC SOP",
-      "ur": "ویک ایس او پی"
-    },
-    "category": "plant-nutrition",
-    "imageUrl": "/products/vac-sop.png",
-    "pngUrl": "/products/vac-sop.png",
-    "rating": 4.9,
-    "importedFormulaBadge": true,
-    "premiumProductBadge": true,
-    "researchBasedBadge": true,
-    "shortDesc": {
-      "en": "VAC SOP is a premium 100% water soluble Sulphate of Potash fertilizer. With 50% K₂O content, it provides superior potassium nutrition without harmful chloride.",
-      "ur": "ویک ایس او پی ایک بہترین 100٪ پانی میں حل پذیر سلفیٹ آف پوٹاش کھاد ہے۔ 50٪ پوٹاشیم (K2O) کے ساتھ، یہ نقصان دہ کلورائیڈ کے بغیر پوٹاشیم غذائیت فراہم کرتی ہے۔"
-    },
-    "seoTitle": "VAC SOP Sulphate of Potash Fertilizer | Vital Agro",
-    "seoDescription": "Buy VAC SOP Sulphate of Potash fertilizer. 100% water soluble and chloride-free potassium nutrition. Boost crop yield, fruit weight, and stress tolerance.",
-    "sizes": [
-      {
-            "size": "25 KG",
-            "price": 9200,
-            "oldPrice": 9200,
-            "sku": "VA-VACS-25KG",
-            "weight": "25kg",
-            "stockStatus": "In Stock"
-      },
-      {
-            "size": "10 KG",
-            "price": 9200,
-            "oldPrice": 3800,
-            "sku": "VA-VACS-10KG",
-            "weight": "10kg",
-            "stockStatus": "In Stock"
-      }
-],
-    "formulation": "Potash (K₂O) + Sulphur",
-    "activeIngredient": "Potassium Sulphate (K2O 50% + S 17.5%)",
-    "packaging": "25 KG Bag",
-    "productCode": "VA-SOP-25KG",
-    "status": {
-      "en": "100% Water Soluble Imported SOP",
-      "ur": "100٪ پانی میں حل پذیر درآمد شدہ"
-    },
-    "description": {
-      "en": "VAC SOP is a premium 100% water soluble Sulphate of Potash fertilizer. With 50% K₂O content, it provides superior potassium nutrition without harmful chloride. Ideal for potassium-sensitive crops and high-value agriculture.",
-      "ur": "ویک ایس او پی ایک بہترین 100٪ پانی میں حل پذیر سلفیٹ آف پوٹاش کھاد ہے۔ 50٪ پوٹاشیم (K2O) کے ساتھ، یہ نقصان دہ کلورائیڈ کے بغیر بہترین پوٹاشیم غذائیت فراہم کرتی ہے۔ یہ پوٹاشیم کے لیے حساس اور قیمتی فصلوں کے لیے مثالی ہے۔"
-    },
-    "features": {
-      "en": [
-        "100% water soluble Sulphate of Potash",
-        "Free of harmful chloride elements",
-        "Rich in premium sulphur (17.5% S)",
-        "Quick absorption via drip & foliar",
-        "Improves overall crop resilience"
-      ],
-      "ur": [
-        "100٪ پانی میں حل پذیر سلفیٹ آف پوٹاش",
-        "نقصان دہ کلورائیڈ سے بالکل پاک",
-        "عمدہ سلفر (17.5٪) سے بھرپور",
-        "ڈرپ اور اسپرے کے لیے انتہائی موزوں",
-        "فصلوں کی موسمی حالات کے خلاف مدافعت میں اضافہ"
-      ]
-    },
-    "benefits": {
-      "en": [
-        "Enhances fruit size, color and taste",
-        "Improves crop drought resistance",
-        "Provides essential sulphur for protein synthesis",
-        "Maximizes post-harvest shelf life",
-        "Significantly increases crop yield"
-      ],
-      "ur": [
-        "پھل کا سائز، رنگ اور ذائقہ بہتر بناتا ہے",
-        "خشک سالی اور گرمی کے خلاف قوت مدافعت بڑھاتا ہے",
-        "پروٹین بنانے کے لیے ضروری سلفر فراہم کرتا ہے",
-        "پھلوں کی سٹوریج لائف (شیلف لائف) کو طول دیتا ہے",
-        "فصل کی مجموعی پیداوار میں نمایاں اضافہ کرتا ہے"
-      ]
-    },
-    "crops": [
-      {
-        "name": {
-          "en": "Cotton",
-          "ur": "کپاس"
-        },
-        "icon": "🌱"
-      },
-      {
-        "name": {
-          "en": "Sugarcane",
-          "ur": "کماد"
-        },
-        "icon": "🎋"
-      },
-      {
-        "name": {
-          "en": "Vegetables",
-          "ur": "سبزیاں"
-        },
-        "icon": "🥦"
-      },
-      {
-        "name": {
-          "en": "Fruits",
-          "ur": "پھل"
-        },
-        "icon": "🍊"
-      },
-      {
-        "name": {
-          "en": "Rice",
-          "ur": "دھان"
-        },
-        "icon": "🌾"
-      }
-    ],
-    "application": {
-      "en": "Foliar spray or drip irrigation fertigation. Apply during crop development stages.",
-      "ur": "فولیر سپرے یا ڈرپ آبپاشی فرٹیگیشن۔ فصل کی بڑھوتری کے مراحل کے دوران استعمال کریں۔"
-    },
-    "dosageTable": [
-      {
-        "crop": {
-          "en": "All Crops",
-          "ur": "تمام فصلیں"
-        },
-        "dosage": {
-          "en": "5-10 KG / Acre",
-          "ur": "5-10 کلوگرام فی ایکڑ"
-        },
-        "water": {
-          "en": "Through Fertigation",
-          "ur": "بذریعہ فرٹیگیشن"
-        },
-        "timing": {
-          "en": "During reproductive and sizing stages",
-          "ur": "پھل بننے اور سائز بڑھنے کے مراحل پر"
-        },
-        "frequency": {
-          "en": "2-3 applications",
-          "ur": "2 سے 3 بار"
-        }
-      }
-    ],
-    "specs": {
-      "type": {
-        "en": "Water Soluble SOP",
-        "ur": "پانی میں حل پذیر ایس او پی"
-      },
-      "formulation": {
-        "en": "Soluble Crystalline Powder",
-        "ur": "حل پذیر کرسٹلائن پاؤڈر"
-      },
-      "composition": {
-        "en": "Potash (K2O) 50% + Sulphur 17.5%",
-        "ur": "پوٹاش 50% + سلفر 17.5%"
-      },
-      "appearance": {
-        "en": "White crystalline powder",
-        "ur": "سفید کرسٹلائن پاؤڈر"
-      },
-      "storage": {
-        "en": "Store in cool, dry place away from humidity under 35°C",
-        "ur": "نمی سے محفوظ، ٹھنڈی اور خشک جگہ پر 35 ڈگری سے نیچے رکھیں"
-      },
-      "shelfLife": {
-        "en": "3 Years",
-        "ur": "3 سال"
-      },
-      "packing": {
-        "en": "25 KG Bag",
-        "ur": "25 کلوگرام بیگ"
-      },
-      "compatibility": {
-        "en": "Compatible with most water soluble fertilizers. Do not mix with calcium fertilizers.",
-        "ur": "زیادہ تر حل پذیر کھادوں کے ساتھ ملایا جا سکتا ہے۔ کیلشیم کھادوں کے ساتھ نہ ملائیں۔"
-      }
-    },
-    "safety": {
-      "en": [
-        "Avoid inhalation of dust.",
-        "Wear gloves when applying manually.",
-        "Wash hands after handling."
-      ],
-      "ur": [
-        "دھول کو سانس کے ذریعے اندر لے جانے سے بچیں۔",
-        "ہاتھ سے ڈالتے وقت دستانے پہنیں۔",
-        "استعمال کے بعد ہاتھ اچھی طرح دھوئیں۔"
-      ]
-    },
-    "faqs": {
-      "en": [
-        {
-          "q": "What is the primary benefit of VAC SOP?",
-          "a": "It provides high purity potassium and sulfur without any harmful chloride, improving yields and fruit quality."
-        }
-      ],
-      "ur": [
-        {
-          "q": "ویک ایس او پی کا بنیادی فائدہ کیا ہے؟",
-          "a": "یہ بغیر کسی نقصان دہ کلورائیڈ کے خالص پوٹاشیم اور سلفر فراہم کرتی ہے، جس سے پیداوار اور پھل کا معیار بہتر ہوتا ہے۔"
-        }
-      ]
-    }
-  },
-
-  "vac-map": {
-    "id": "vac-map",
-    "genericName": {
-      "en": "Mono Ammonium Phosphate (MAP)",
-      "ur": "مونو امونیم فاسفیٹ (MAP)"
-    },
-    "pricing": [
-      {
-        "size": "25 KG",
-        "rate": "2200",
-        "carton": "1"
-      }
-    ],
-    "slug": "vac-map",
-    "name": {
-      "en": "VAC MAP",
-      "ur": "ویک میپ"
-    },
-    "category": "plant-nutrition",
-    "imageUrl": "/products/vac-fertilizers.png",
-    "pngUrl": "/products/vac-fertilizers.png",
-    "rating": 4.8,
-    "importedFormulaBadge": true,
-    "premiumProductBadge": true,
-    "researchBasedBadge": true,
-    "shortDesc": {
-      "en": "VAC MAP is a high-grade Mono Ammonium Phosphate fertilizer with 81% phosphorus content. Imported Technical Grade quality ensures maximum solubility.",
-      "ur": "ویک میپ ایک اعلیٰ درجے کی مونو امونیم فاسفیٹ کھاد ہے جس میں 81٪ فاسفورس ہوتا ہے۔ درآمد شدہ ٹیکنیکل گریڈ کوالٹی مکمل حل پذیری کا ضامن ہے۔"
-    },
-    "seoTitle": "VAC MAP Mono Ammonium Phosphate | Vital Agro",
-    "seoDescription": "Buy VAC MAP premium fertilizer. 12% Nitrogen and 81% Phosphorus (P2O5). Technical Grade imported from China for maximum root growth and crop yield.",
-    "sizes": [
-      {
-            "size": "25 KG",
-            "price": 13999,
-            "oldPrice": 13999,
-            "sku": "VA-VACM-25KG",
-            "weight": "25kg",
-            "stockStatus": "In Stock"
-      },
-      {
-            "size": "10 KG",
-            "price": 5700,
-            "oldPrice": 5700,
-            "sku": "VA-VACM-10KG",
-            "weight": "10kg",
-            "stockStatus": "In Stock"
-      }
-],
-    "formulation": "Mono Ammonium Phosphate (MAP)",
-    "activeIngredient": "Nitrogen (N) 12% + Phosphorus (P₂O₅) 81%",
-    "packaging": "25 KG Bag",
-    "productCode": "VA-MAP-25KG",
-    "status": {
-      "en": "Technical Grade Imported MAP",
-      "ur": "درآمد شدہ ٹیکنیکل گریڈ کھاد"
-    },
-    "description": {
-      "en": "VAC MAP is a high-grade Mono Ammonium Phosphate fertilizer with 81% phosphorus content. Imported from China, Technical Grade quality ensures maximum solubility and crop uptake efficiency. Ideal for phosphorus-deficient soils.",
-      "ur": "ویک میپ ایک اعلیٰ درجے کی مونو امونیم فاسفیٹ کھاد ہے جس میں 81٪ فاسفورس ہوتا ہے۔ چین سے درآمد شدہ، ٹیکنیکل گریڈ کوالٹی مکمل حل پذیری اور فصل کی تیز ترین جذب کرنے کی صلاحیت کو یقینی بناتی ہے۔ یہ فاسفورس کی کمی والی زمینوں کے لیے بہترین ہے۔"
-    },
-    "features": {
-      "en": [
-        "Ultra-high phosphorus content (81% P₂O₅)",
-        "Promotes vigorous root development",
-        "Enhances early crop establishment",
-        "Fully water soluble — fertigable",
-        "Low pH helps in alkaline soil conditions"
-      ],
-      "ur": [
-        "انتہائی زیادہ فاسفورس مقدار (81% P₂O₅)",
-        "جڑوں کی تیز اور بھرپور نشوونما کو فروغ دینا",
-        "فصل کی ابتدائی بڑھوتری کو بہتر بنانا",
-        "پانی میں 100٪ حل پذیر - فلڈ یا سپرے کے لیے موزوں",
-        "کم پی ایچ (pH) کلراٹھی مٹی میں جڑوں کی مدد کرتا ہے"
-      ]
-    },
-    "benefits": {
-      "en": [
-        "Triggers strong root structure and tillering",
-        "Improves crop flowering and seed set",
-        "Helps plants establish quickly after transplanting",
-        "Highly efficient in alkaline Pakistani soils",
-        "Technical Grade purity ensures zero residue"
-      ],
-      "ur": [
-        "مضبوط جڑیں اور زیادہ شاخیں نکالنے میں مدد کرتا ہے",
-        "پھول آنے اور بیج بننے کے عمل کو بہتر بناتا ہے",
-        "منتقلی کے بعد پودوں کو تیزی سے جڑ پکڑنے میں مدد دیتا ہے",
-        "پاکستانی الکلائن مٹی کے لیے انتہائی موثر ہے",
-        "ٹیکنیکل گریڈ خالصیت کی وجہ سے کوئی باقیات نہیں چھوڑتا"
-      ]
-    },
-    "crops": [
-      {
-        "name": {
-          "en": "All Crops",
-          "ur": "تمام فصلیں"
-        },
-        "icon": "🌱"
-      },
-      {
-        "name": {
-          "en": "Wheat",
-          "ur": "گندم"
-        },
-        "icon": "🌾"
-      },
-      {
-        "name": {
-          "en": "Cotton",
-          "ur": "کپاس"
-        },
-        "icon": "🌱"
-      },
-      {
-        "name": {
-          "en": "Sugarcane",
-          "ur": "کماد"
-        },
-        "icon": "🎋"
-      },
-      {
-        "name": {
-          "en": "Vegetables",
-          "ur": "سبزیاں"
-        },
-        "icon": "🥦"
-      }
-    ],
-    "application": {
-      "en": "Foliar application or fertigation through drip system. Best applied during early growth and root establishment stages.",
-      "ur": "فولیر سپرے یا ڈرپ سسٹم کے ذریعے فرٹیگیشن۔ ابتدائی بڑھوتری اور جڑیں بننے کے مرحلے پر بہترین نتائج دیتا ہے۔"
-    },
-    "specs": {
-      "type": {
-        "en": "Technical Grade Fertilizer",
-        "ur": "ٹیکنیکل گریڈ کھاد"
-      },
-      "formulation": {
-        "en": "Soluble Crystals",
-        "ur": "حل پذیر کرسٹلز"
-      },
-      "composition": {
-        "en": "Nitrogen 12% + P2O5 81%",
-        "ur": "نائٹروجن 12% + فاسفورس 81%"
-      },
-      "appearance": {
-        "en": "White crystals",
-        "ur": "سفید کرسٹلز"
-      },
-      "storage": {
-        "en": "Store in cool dry warehouse away from moisture",
-        "ur": "ٹھنڈے اور خشک گودام میں نمی سے بچا کر رکھیں"
-      },
-      "shelfLife": {
-        "en": "3 Years",
-        "ur": "3 سال"
-      },
-      "packing": {
-        "en": "25 KG Bag",
-        "ur": "25 کلوگرام بیگ"
-      }
-    },
-    "safety": {
-      "en": [
-        "Avoid eye contact.",
-        "Use safety masks when mixing.",
-        "Keep away from children."
-      ],
-      "ur": [
-        "آنکھوں کے رابطے سے بچیں۔",
-        "مکسنگ کے دوران حفاظتی ماسک کا استعمال کریں۔",
-        "بچوں کی پہنچ سے دور رکھیں۔"
-      ]
-    },
-    "faqs": {
-      "en": [
-        {
-          "q": "Can VAC MAP be mixed with other fertilizers?",
-          "a": "Yes, it is highly compatible with other water soluble fertilizers except those containing calcium."
-        }
-      ],
-      "ur": [
-        {
-          "q": "کیا ویک میپ کو دوسری کھادوں کے ساتھ ملایا جا سکتا ہے؟",
-          "a": "جی ہاں، یہ کیلشیم پر مبنی کھادوں کے علاوہ دیگر تمام حل پذیر کھادوں کے ساتھ ملایا جا سکتا ہے۔"
-        }
-      ]
-    }
-  },
-
-  "defeater-soil-conditioner": {
-    "id": "defeater-soil-conditioner",
-    "genericName": {
-      "en": "Potassium Humate Liquid",
-      "ur": "پوٹاشیم ہیومیٹ مائع"
-    },
-    "pricing": [
-      {
-        "size": "20 LTR",
-        "rate": "3480",
-        "carton": "1"
-      },
-      {
-        "size": "200 LTR",
-        "rate": "32200",
-        "carton": "1"
-      }
-    ],
-    "slug": "defeater-soil-conditioner",
-    "name": {
-      "en": "Defeater Soil",
-      "ur": "ڈیفیٹر سوائل"
-    },
-    "category": "plant-nutrition",
-    "imageUrl": "/products/defeater.png",
-    "pngUrl": "/products/defeater.png",
-    "rating": 4.7,
-    "importedFormulaBadge": false,
-    "premiumProductBadge": true,
-    "researchBasedBadge": true,
-    "shortDesc": {
-      "en": "Defeater Soil Conditioner uses advanced Exfet Technology to improve soil structure, increase microbial activity and enhance nutrient availability.",
-      "ur": "ڈیفیٹر سوائل کنڈیشنر مٹی کی ساخت کو بہتر بنانے، مائکروبیل سرگرمی کو بڑھانے اور غذائی اجزاء کی دستیابی کے لیے ایکسفیٹ ٹیکنالوجی کا استعمال کرتا ہے۔"
-    },
-    "seoTitle": "Defeater Soil Conditioner | Vital Agro",
-    "seoDescription": "Buy Defeater Soil Conditioner with Exfet Technology. Formulated with Potassium Humate to optimize soil structure, water retention, and microbial activity.",
-    "sizes": [
-      {
-        "size": "20 LTR",
-        "price": 3480,
-        "oldPrice": 3480,
-        "stockStatus": "In Stock",
-        "sku": "VA-DEFE-20LTR",
-        "weight": "20kg"
-      },
-      {
-        "size": "200 LTR",
-        "price": 0,
-        "oldPrice": 0,
-        "stockStatus": "In Stock",
-        "sku": "VA-DEFE-200LTR",
-        "weight": "200kg"
-      }
-    ],
-    "formulation": "Potassium Humate Liquid",
-    "activeIngredient": "Potassium (K₂O) 3.1% + Humic Acid 30%",
-    "packaging": "20 LTR, 200 LTR Cans",
-    "productCode": "VA-DEF-SC",
-    "status": {
-      "en": "Exfet Technology Soil Conditioner",
-      "ur": "ایکسفیٹ ٹیکنالوجی مٹی کنڈیشنر"
-    },
-    "description": {
-      "en": "Defeater Soil Conditioner uses advanced Exfet Technology to improve soil structure, increase microbial activity and enhance nutrient availability. Potassium Humate complex revitalizes depleted soils for maximum crop performance.",
-      "ur": "ڈیفیٹر سوائل کنڈیشنر جدید ایکسفیٹ ٹیکنالوجی کے ذریعے زمین کی ساخت کو بہتر بناتا ہے، مفید جراثیم بڑھاتا ہے اور زمین میں موجود غذائی عناصر کو پودے کے لیے دستیاب کرتا ہے۔ یہ کمزور زمینوں کو دوبارہ زندہ کرتا ہے۔"
-    },
-    "features": {
-      "en": [
-        "Improves soil water retention capacity",
-        "Increases cation exchange capacity (CEC)",
-        "Stimulates beneficial soil microorganisms",
-        "Enhances nutrient uptake efficiency",
-        "Reduces soil compaction"
-      ],
-      "ur": [
-        "زمین کی پانی جذب رکھنے کی صلاحیت کو بہتر بنانا",
-        "مٹی کی کیٹ آئن ایکسچینج کی صلاحیت (CEC) میں اضافہ",
-        "زمین کے مفید بیکٹیریا اور جراثیم کو تیز کرنا",
-        "کھادوں کے جذب ہونے کی کارکردگی کو بڑھانا",
-        "زمین کی سختی اور چکناہٹ کو ختم کرنا"
-      ]
-    },
-    "benefits": {
-      "en": [
-        "Increases fertilizer efficiency, reducing wastage",
-        "Promotes massive white root development",
-        "Helps crops stand healthy during drought",
-        "Improves yield quality and weight",
-        "Maintains soil health for future crops"
-      ],
-      "ur": [
-        "کھادوں کے ضیاع کو روکتا ہے اور ان کی کارکردگی بڑھاتا ہے",
-        "جڑوں کے پھیلاؤ اور باریک سفید جڑیں بنانے میں مددگار",
-        "خشک سالی کے دوران فصل کو سوکے سے بچاتا ہے",
-        "اناج کے معیار اور وزن کو بہتر بناتا ہے",
-        "آئندہ فصلوں کے لیے زمین کی زرخیزی کو بحال رکھتا ہے"
-      ]
-    },
-    "crops": [
-      {
-        "name": {
-          "en": "Cotton",
-          "ur": "کپاس"
-        },
-        "icon": "🌱"
-      },
-      {
-        "name": {
-          "en": "Sugarcane",
-          "ur": "کماد"
-        },
-        "icon": "🎋"
-      },
-      {
-        "name": {
-          "en": "Potato",
-          "ur": "آلو"
-        },
-        "icon": "🥔"
-      },
-      {
-        "name": {
-          "en": "Vegetables",
-          "ur": "سبزیاں"
-        },
-        "icon": "🥦"
-      },
-      {
-        "name": {
-          "en": "Fruits",
-          "ur": "پھل"
-        },
-        "icon": "🍊"
-      }
-    ],
-    "application": {
-      "en": "Flood irrigation fertigation. Mix the recommended dose with irrigation water at the root zone.",
-      "ur": "آبپاشی کے پانی کے ساتھ فلڈ کریں۔ تجویز کردہ خوراک کو جڑوں تک پہنچائیں۔"
-    },
-    "specs": {
-      "type": {
-        "en": "Soil Biological Conditioner",
-        "ur": "زمین کا نامیاتی کنڈیشنر"
-      },
-      "formulation": {
-        "en": "Liquid Slurry Concentrate",
-        "ur": "گاڑھا مائع فارمولا"
-      },
-      "composition": {
-        "en": "Potassium (K2O) 3.1% w/w + Humic Acid 30% w/w",
-        "ur": "پوٹاشیم 3.1% + ہیومک ایسڈ 30%"
-      },
-      "appearance": {
-        "en": "Viscous dark brown liquid",
-        "ur": "گاڑھا گہرا بھورا مائع"
-      },
-      "storage": {
-        "en": "Store in cool place under 35°C",
-        "ur": "35 ڈگری سے نیچے ٹھنڈی جگہ پر رکھیں"
-      },
-      "shelfLife": {
-        "en": "3 Years",
-        "ur": "3 سال"
-      }
-    },
-    "safety": {
-      "en": [
-        "Wash hands with soap after flooding.",
-        "Avoid contact with eyes.",
-        "Keep container sealed when not in use."
-      ],
-      "ur": [
-        "فلڈ کرنے کے بعد ہاتھ صابن سے دھوئیں۔",
-        "آنکھوں میں جانے سے بچائیں۔",
-        "استعمال نہ ہونے پر کین کو بند رکھیں۔"
-      ]
-    },
-    "faqs": {
-      "en": [
-        {
-          "q": "How does Exfet Technology help?",
-          "a": "Exfet Technology enhances the penetration of humate active molecules deep into the soil profile, ensuring fast action."
-        }
-      ],
-      "ur": [
-        {
-          "q": "ایکسفیٹ ٹیکنالوجی کیسے مدد کرتی ہے؟",
-          "a": "ایکسفیٹ ٹیکنالوجی ہیومیٹ کے فعال مالیکیولز کو مٹی کی گہرائی تک پہنچاتی ہے جس سے جڑوں کو فوری فائدہ ہوتا ہے۔"
-        }
-      ]
-    }
-  },
-
-  "sonehri-potash-30": {
-    "id": "sonehri-potash-30",
-    "genericName": {
-      "en": "Potash 30% Liquid",
-      "ur": "پوٹاش 30 فیصد مائع"
-    },
-    "pricing": [
-      {
-        "size": "1 LTR",
-        "rate": "940",
-        "carton": "1"
-      },
-      {
-        "size": "3 LTR",
-        "rate": "1900",
-        "carton": "1"
-      },
-      {
-        "size": "20 LTR",
-        "rate": "11930",
-        "carton": "1"
-      }
-    ],
-    "slug": "sonehri-potash-30",
-    "name": {
-      "en": "Sonehri Potash",
-      "ur": "سنہری پوٹاش"
-    },
-    "category": "plant-nutrition",
-    "imageUrl": "/products/sonehri.png",
-    "pngUrl": "/products/sonehri.png",
-    "rating": 4.8,
-    "importedFormulaBadge": false,
-    "premiumProductBadge": true,
-    "researchBasedBadge": true,
-    "shortDesc": {
-      "en": "Sonehri Potash 30% is a premium crop supplement that provides high potassium concentration. Advanced Exfet Technology ensures rapid absorption.",
-      "ur": "سنہری پوٹاش 30٪ ایک بہترین فصل کا سپلیمنٹ ہے جو پوٹاشیم کی زیادہ مقدار فراہم کرتا ہے۔ جدید ایکسفیٹ ٹیکنالوجی اس کے فوری جذب کو یقینی بناتی ہے۔"
-    },
-    "seoTitle": "Sonehri Potash 30% Crop Supplement | Vital Agro",
-    "seoDescription": "Buy Sonehri Potash 30% online. High efficiency liquid potassium supplement enriched with microelements. Enhances fruit size, weight, and shelf life.",
-    "sizes": [
-      {
-            "size": "1 LTR",
-            "price": 970,
-            "oldPrice": 970,
-            "sku": "VA-SONE-1LTR",
-            "weight": "1kg",
-            "stockStatus": "In Stock"
-      },
-      {
-            "size": "3 LTR",
-            "price": 970,
-            "oldPrice": 1900,
-            "sku": "VA-SONE-3LTR",
-            "weight": "3kg",
-            "stockStatus": "In Stock"
-      },
-      {
-            "size": "20 LTR",
-            "price": 970,
-            "oldPrice": 11930,
-            "sku": "VA-SONE-20LTR",
-            "weight": "20kg",
-            "stockStatus": "In Stock"
-      },
-      {
-            "size": "200 LTR",
-            "price": 970,
-            "oldPrice": 117500,
-            "sku": "VA-SONE-200LTR",
-            "weight": "200kg",
-            "stockStatus": "In Stock"
-      }
-],
-    "formulation": "Liquid Fertilizer Soluble Concentrate",
-    "activeIngredient": "Potash (K₂O) 30% + Micro Elements",
-    "packaging": "1 LTR, 3 LTR, 20 LTR Cans",
-    "productCode": "VA-SNH-30",
-    "status": {
-      "en": "Premium Potash 30% Supplement",
-      "ur": "پریمیئم مائع پوٹاشیم 30٪"
-    },
-    "description": {
-      "en": "Sonehri Potash 30% is a premium crop supplement that provides high potassium concentration for enhanced crop quality. Advanced Exfet Technology ensures rapid absorption and maximum yield improvement. Ideal for fertigation and foliar application.",
-      "ur": "سنہری پوٹاش 30٪ ایک اعلیٰ کوالٹی کا مائع پوٹاشیم سپلیمنٹ ہے جو فصل کے آخری مراحل میں پوٹاش کی ضرورت کو پورا کرتا ہے۔ جدید ایکسفیٹ ٹیکنالوجی پتوں اور جڑوں کے ذریعے فوری جذب کو یقینی بناتی ہے جس سے پھل کا سائز اور وزن بڑھتا ہے۔"
-    },
-    "features": {
-      "en": [
-        "30% Potash for strong fruit development",
-        "Improves sugar content and quality",
-        "Reduces flower and fruit drop",
-        "Suitable for all fertigation systems",
-        "Exfet Technology for rapid absorption"
-      ],
-      "ur": [
-        "بہترین پھل بننے کے لیے 30٪ پوٹاشیم",
-        "پھلوں میں مٹھاس اور چمک کو بہتر بنانا",
-        "پھول اور پھل گرنے سے روکنا",
-        "تمام آبپاشی اور سپرے کے سسٹمز کے لیے موزوں",
-        "فوری اثر کے لیے ایکسفیٹ ٹیکنالوجی"
-      ]
-    },
-    "benefits": {
-      "en": [
-        "Accelerates grain filling in wheat & rice",
-        "Produces uniform, bright colored fruits",
-        "Improves crop defense against frost and heat",
-        "Increases crop market value and grade",
-        "Fully soluble, leaves no nozzle clogs"
-      ],
-      "ur": [
-        "گندم اور دھان میں دانے کی بھرائی کو تیز کرتا ہے",
-        "یکساں اور چمکدار رنگ کے پھل پیدا کرتا ہے",
-        "سردی اور گرمی کی لہر کے خلاف قوت مدافعت دیتا ہے",
-        "کاشتکار کو منڈی میں اچھا ریٹ اور درجہ ملتا ہے",
-        "پانی میں مکمل حل پذیر، نوزل بند نہیں کرتا"
-      ]
-    },
-    "crops": [
-      {
-        "name": {
-          "en": "Cotton",
-          "ur": "کپاس"
-        },
-        "icon": "🌱"
-      },
-      {
-        "name": {
-          "en": "Sugarcane",
-          "ur": "کماد"
-        },
-        "icon": "🎋"
-      },
-      {
-        "name": {
-          "en": "Potato",
-          "ur": "آلو"
-        },
-        "icon": "🥔"
-      },
-      {
-        "name": {
-          "en": "Chilli",
-          "ur": "مرچ"
-        },
-        "icon": "🌶️"
-      },
-      {
-        "name": {
-          "en": "Vegetables",
-          "ur": "سبزیاں"
-        },
-        "icon": "🥦"
-      }
-    ],
-    "application": {
-      "en": "Foliar spray or fertigation. Best applied during fruit development and ripening stages.",
-      "ur": "فولیر سپرے یا پانی کے ساتھ فلڈ کریں۔ پھل بننے اور پکنے کے مراحل پر سپرے کریں۔"
-    },
-    "specs": {
-      "type": {
-        "en": "Foliar & Fertigation Potash",
-        "ur": "فولیر اور فرٹیگیشن پوٹاش"
-      },
-      "formulation": {
-        "en": "Soluble Liquid",
-        "ur": "حل پذیر مائع"
-      },
-      "composition": {
-        "en": "Potash (K2O) 30% w/v + Trace elements",
-        "ur": "پوٹاش 30% + مائیکرو نیوٹرینٹس"
-      },
-      "appearance": {
-        "en": "Golden clear liquid",
-        "ur": "سنہری شفاف مائع"
-      },
-      "storage": {
-        "en": "Store below 30°C in original packaging",
-        "ur": "30 ڈگری سے نیچے اصل پیکنگ میں رکھیں"
-      }
-    },
-    "safety": {
-      "en": [
-        "Do not spray during peak sun hours.",
-        "Keep away from direct heat."
-      ],
-      "ur": [
-        "شدید دوپہر کے وقت سپرے سے گریز کریں۔",
-        "براہ راست تیز دھوپ اور گرمی سے دور رکھیں۔"
-      ]
-    },
-    "faqs": {
-      "en": [
-        {
-          "q": "When should we apply Sonehri Potash?",
-          "a": "Apply at grain filling in cereal crops, or fruit set stage in vegetable and fruit crops."
-        }
-      ],
-      "ur": [
-        {
-          "q": "سنہری پوٹاش کب استعمال کرنی چاہیے؟",
-          "a": "اناج کی فصلوں میں دانے بنتے وقت، اور سبزیوں و پھلوں میں پھل لگنے پر استعمال کریں۔"
-        }
-      ]
-    }
-  },
-
-  "defeater-potassium-humate": {
-    "id": "defeater-potassium-humate",
-    "genericName": {
-      "en": "Potassium Humate 13.5%",
-      "ur": "پوٹاشیم ہیومیٹ 13.5٪"
-    },
-    "pricing": [
-      {
-        "size": "4 LTR",
-        "rate": "680",
-        "carton": "1"
-      },
-      {
-        "size": "20 LTR",
-        "rate": "3480",
-        "carton": "1"
-      },
-      {
-        "size": "200 LTR",
-        "rate": "32200",
-        "carton": "1"
-      }
-    ],
-    "slug": "defeater-potassium-humate",
-    "name": {
-      "en": "Defeater Humate",
-      "ur": "ڈیفیٹر ہیومیٹ"
-    },
-    "category": "plant-nutrition",
-    "imageUrl": "/products/defeater-potassium.png",
-    "pngUrl": "/products/defeater-potassium.png",
-    "rating": 4.8,
-    "importedFormulaBadge": false,
-    "premiumProductBadge": true,
-    "researchBasedBadge": true,
-    "shortDesc": {
-      "en": "Defeater Potassium Humate Liquid is an advanced soil biological activator. Rich in Humic and Fulvic acids, it improves soil structure.",
-      "ur": "ڈیفیٹر پوٹاشیم ہیومیٹ مائع زمین کی حیاتیاتی زندگی کو بیدار کرتا ہے۔ ہیومک اور فلوک ایسڈ سے بھرپور، یہ زمین کی زرخیزی بڑھاتا ہے۔"
-    },
-    "seoTitle": "Defeater Potassium Humate Liquid | Vital Agro",
-    "seoDescription": "Shop Defeater Potassium Humate 13.5% liquid. Biological soil activator with Exfet Technology. Enhances root mass and nutrient availability.",
-    "sizes": [
-      {
-            "size": "4 LTR",
-            "price": 740,
-            "oldPrice": 740,
-            "sku": "VA-DEFE-4LTR",
-            "weight": "4kg",
-            "stockStatus": "In Stock"
-      },
-      {
-            "size": "20 LTR",
-            "price": 740,
-            "oldPrice": 3599,
-            "sku": "VA-DEFE-20LTR",
-            "weight": "20kg",
-            "stockStatus": "In Stock"
-      },
-      {
-            "size": "200 LTR",
-            "price": 740,
-            "oldPrice": 32200,
-            "sku": "VA-DEFE-200LTR",
-            "weight": "200kg",
-            "stockStatus": "In Stock"
-      }
-],
-    "formulation": "13.5% SL Liquid Concentrate",
-    "activeIngredient": "Potassium Humate + Fulvic Acid",
-    "packaging": "4 LTR, 20 LTR, 200 LTR Cans",
-    "productCode": "VA-DEF-PHM",
-    "status": {
-      "en": "Potassium Humate 13.5% SL",
-      "ur": "پوٹاشیم ہیومیٹ 13.5٪ مائع"
-    },
-    "description": {
-      "en": "Defeater Potassium Humate Liquid is an advanced soil biological activator. Rich in Humic and Fulvic acids, it dramatically improves soil structure and nutrient availability. Exfet Technology ensures deep soil penetration for lasting results.",
-      "ur": "ڈیفیٹر پوٹاشیم ہیومیٹ مائع ایک اعلیٰ معیار کا حیاتیاتی محرک ہے جو مٹی کی طبیعی ساخت کو نکھارتا ہے۔ یہ مٹی میں بند جپسم اور فاسفیٹ کو کھولتا ہے اور پودے کی جڑ کے بال (root hairs) کو خوراک چوسنے میں مدد دیتا ہے۔"
-    },
-    "features": {
-      "en": [
-        "High concentration Potassium Humate (13.5%)",
-        "Stimulates root growth and development",
-        "Improves soil water and nutrient retention",
-        "Activates beneficial soil microorganisms",
-        "Reduces soil pH in alkaline conditions"
-      ],
-      "ur": [
-        "پوٹاشیم ہیومیٹ کی بہترین مقدار (13.5%)",
-        "جڑوں کی نشوونما اور پھیلاؤ کو تیز کرنا",
-        "مٹی میں پانی اور کھادیں روکنے کی صلاحیت بڑھانا",
-        "زمین کے فائدہ مند جراثیم کو متحرک کرنا",
-        "کلراٹھی اور سخت مٹی کی ساخت نرم کرنا"
-      ]
-    },
-    "benefits": {
-      "en": [
-        "Enhances plant survival under temperature shock",
-        "Unlocks fixed nutrients in soil (especially Phosphate)",
-        "Increases organic matter content in crop root zones",
-        "Highly compatible with NPK and urea mixtures",
-        "Safe and natural organic supplement"
-      ],
-      "ur": [
-        "شدید گرمی اور کورا کے اثرات سے فصل کو محفوظ رکھتا ہے",
-        "زمین میں جمی کھادوں (فاسفورس) کو کھول کر جڑوں کو دیتا ہے",
-        "جڑ کے گرد نامیاتی مادے (آرگینک میٹر) میں اضافہ کرتا ہے",
-        "نائٹروجن اور این پی کے کھادوں کے ساتھ ملایا جا سکتا ہے",
-        "مکمل نامیاتی اور ماحول دوست دوا ہے"
-      ]
-    },
-    "crops": [
-      {
-        "name": {
-          "en": "All Crops",
-          "ur": "تمام فصلیں"
-        },
-        "icon": "🌱"
-      },
-      {
-        "name": {
-          "en": "Cotton",
-          "ur": "کپاس"
-        },
-        "icon": "🌱"
-      },
-      {
-        "name": {
-          "en": "Wheat",
-          "ur": "گندم"
-        },
-        "icon": "🌾"
-      },
-      {
-        "name": {
-          "en": "Rice",
-          "ur": "دھان"
-        },
-        "icon": "🌾"
-      },
-      {
-        "name": {
-          "en": "Vegetables",
-          "ur": "سبزیاں"
-        },
-        "icon": "🥦"
-      }
-    ],
-    "application": {
-      "en": "Flooding with first or second irrigation. Can also be applied via drip systems.",
-      "ur": "پہلی یا دوسری آبپاشی کے پانی کے ساتھ فلڈ کریں۔ ڈرپ آبپاشی کے ذریعے بھی دیا جا سکتا ہے۔"
-    },
-    "specs": {
-      "type": {
-        "en": "Biological Soil Stimulant",
-        "ur": "نامیاتی مٹی کا محرک"
-      },
-      "composition": {
-        "en": "Potassium Humate 13.5% + Humic & Fulvic organic matter",
-        "ur": "پوٹاشیم ہیومیٹ 13.5%"
-      },
-      "appearance": {
-        "en": "Black fluid liquid",
-        "ur": "سیاہ مائع"
-      },
-      "storage": {
-        "en": "Keep container tightly closed in cool place",
-        "ur": "بوتل کو اچھی طرح بند کر کے ٹھنڈی جگہ پر رکھیں"
-      }
-    },
-    "safety": {
-      "en": [
-        "Do not ingest.",
-        "Store away from food items.",
-        "Wash with clean water if splashed on eyes."
-      ],
-      "ur": [
-        "نگلنے سے گریز کریں۔",
-        "کھانے پینے کی چیزوں سے دور رکھیں۔",
-        "آنکھوں پر چھینٹے پڑنے کی صورت میں صاف پانی سے دھوئیں۔"
-      ]
-    },
-    "faqs": {
-      "en": [
-        {
-          "q": "Is Defeater Humate compatible with copper fungicides?",
-          "a": "No, avoid mixing humic acids directly with highly acidic copper fungicides."
-        }
-      ],
-      "ur": [
-        {
-          "q": "کیا ڈیفیٹر ہیومیٹ کو کاپر ادویات کے ساتھ ملا سکتے ہیں؟",
-          "a": "نہیں۔ ہیومک ایسڈ کو تیزابی کاپر فنگس کش ادویات کے ساتھ براہ راست ملانے سے گریز کریں۔"
-        }
-      ]
-    }
-  },
-
-  "setting-npk": {
-    "id": "setting-npk",
-    "genericName": {
-      "en": "Balanced NPK 20:20:20",
-      "ur": "متوازن این پی کے 20:20:20"
-    },
-    "pricing": [
-      {
-        "size": "1 KG",
-        "rate": "699",
-        "carton": "1"
-      },
-      {
-        "size": "25 KG",
-        "rate": "15230",
-        "carton": "1"
-      }
-    ],
-    "slug": "setting-npk",
-    "name": {
-      "en": "Setting NPK",
-      "ur": "سیٹنگ این پی کے"
-    },
-    "category": "plant-nutrition",
-    "imageUrl": "/products/setting.png",
-    "pngUrl": "/products/setting.png",
-    "rating": 4.9,
-    "importedFormulaBadge": true,
-    "premiumProductBadge": true,
-    "researchBasedBadge": true,
-    "shortDesc": {
-      "en": "Setting NPK 20:20:20 is a perfectly balanced complete fertilizer. Equal NPK ratios support all critical growth stages.",
-      "ur": "سیٹنگ این پی کے 20:20:20 ایک متوازن اور مکمل کھاد ہے۔ نائٹروجن، فاسفورس اور پوٹاش کی یکساں مقدار تمام مراحل پر فصل کو طاقت دیتی ہے۔"
-    },
-    "seoTitle": "Setting NPK 20:20:20 Fertilizer | Vital Agro",
-    "seoDescription": "Buy Setting NPK 20:20:20 balanced fertilizer. Fully water soluble. Promotes crop tillering, root growth, and grain filling. Order on WhatsApp or checkout.",
-    "sizes": [
-      {
-            "size": "1 KG",
-            "price": 699,
-            "oldPrice": 699,
-            "sku": "VA-SETT-1KG",
-            "weight": "1kg",
-            "stockStatus": "In Stock"
-      },
-      {
-            "size": "25 KG",
-            "price": 699,
-            "oldPrice": 15230,
-            "sku": "VA-SETT-25KG",
-            "weight": "25kg",
-            "stockStatus": "In Stock"
-      }
-],
-    "formulation": "Balanced Water Soluble NPK 20-20-20",
-    "activeIngredient": "Nitrogen (20%) + Phosphorus (20%) + Potash (20%)",
-    "packaging": "1 KG Bag, 25 KG Bag",
-    "productCode": "VA-SET-NPK",
-    "status": {
-      "en": "Complete Balanced NPK Nutrition",
-      "ur": "متوازن این پی کے فارمولا"
-    },
-    "description": {
-      "en": "Setting NPK 20:20:20 is a perfectly balanced complete fertilizer that provides equal proportions of all three primary macronutrients. Ideal for critical growth stages and as a general-purpose foliar and fertigation nutrient.",
-      "ur": "سیٹنگ این پی کے 20:20:20 ایک مکمل اور متوازن پانی میں حل پذیر کھاد ہے جو پودے کو نائٹروجن، فاسفورس اور پوٹاش کی برابر مقدار فراہم کرتی ہے۔ یہ فصل کے ہر نازک مرحلے (بڑھوتری، پھول اور پھل) پر پودے کی متوازن غذا کا ضامن ہے۔"
-    },
-    "features": {
-      "en": [
-        "Perfectly balanced 20:20:20 ratio",
-        "Supports all crop growth stages",
-        "Suitable for foliar spray and fertigation",
-        "Improves crop uniformity and yield",
-        "Premium imported formulation"
-      ],
-      "ur": [
-        "مکمل متوازن 20:20:20 تناسب",
-        "فصل کی نشوونما کے تمام مراحل کے لیے مفید",
-        "اسپرے اور ڈرپ کے ذریعے استعمال کے لیے موزوں",
-        "یکساں فصل اور بہتر پیداوار کا ضامن",
-        "اعلیٰ معیار کی درآمدی فارمولیشن"
-      ]
-    },
-    "benefits": {
-      "en": [
-        "Triggers fast tillering and green canopy formation",
-        "Provides quick response within 24-48 hours of spray",
-        "Completely water soluble with no nozzle blockage",
-        "Optimizes early growth and builds robust crop cells",
-        "Delivers higher weight and shine in vegetables & fruits"
-      ],
-      "ur": [
-        "تیزی سے شاخیں نکالنے اور لش گرین پتے بنانے میں مددگار",
-        "اسپرے کے 24 سے 48 گھنٹوں کے اندر فوری اثر دکھاتا ہے",
-        "پانی میں 100٪ حل پذیر، نوزل بند نہیں کرتا",
-        "ابتدائی نشوونما کو متوازن کرتا ہے اور سیلز کو طاقت دیتا ہے",
-        "سبزیوں اور پھلوں کے وزن اور چمک میں اضافہ کرتا ہے"
-      ]
-    },
-    "crops": [
-      {
-        "name": {
-          "en": "All Crops",
-          "ur": "تمام فصلیں"
-        },
-        "icon": "🌱"
-      },
-      {
-        "name": {
-          "en": "Fruits",
-          "ur": "پھل"
-        },
-        "icon": "🍊"
-      },
-      {
-        "name": {
-          "en": "Vegetables",
-          "ur": "سبزیاں"
-        },
-        "icon": "🥦"
-      },
-      {
-        "name": {
-          "en": "Cotton",
-          "ur": "کپاس"
-        },
-        "icon": "🌱"
-      },
-      {
-        "name": {
-          "en": "Sugarcane",
-          "ur": "کماد"
-        },
-        "icon": "🎋"
-      }
-    ],
-    "application": {
-      "en": "Foliar spray or drip irrigation fertigation. Apply at 10-15 day intervals during vegetative and flowering stages.",
-      "ur": "بذریعہ فولیر سپرے یا ڈرپ آبپاشی۔ شاخیں نکلنے اور پھول بنتے وقت 10 سے 15 دن کے وقفے سے استعمال کریں۔"
-    },
-    "specs": {
-      "type": {
-        "en": "Balanced Soluble Feed",
-        "ur": "متوازن حل پذیر کھاد"
-      },
-      "formulation": {
-        "en": "Crystalline Powder",
-        "ur": "کرسٹلائن پاؤڈر"
-      },
-      "composition": {
-        "en": "N:20% + P2O5:20% + K2O:20% + Trace Elements",
-        "ur": "نائٹروجن 20% + فاسفورس 20% + پوٹاش 20%"
-      },
-      "appearance": {
-        "en": "White or colored powder",
-        "ur": "سفید یا رنگدار پاؤڈر"
-      },
-      "storage": {
-        "en": "Keep bag tightly closed, away from moisture",
-        "ur": "تھیلے کو بند کر کے نمی سے بچا کر رکھیں"
-      }
-    },
-    "safety": {
-      "en": [
-        "Wear masks to avoid inhaling powder.",
-        "Store out of reach of children."
-      ],
-      "ur": [
-        "پاؤڈر کی دھول سانس کے ذریعے اندر لے جانے سے بچنے کے لیے ماسک پہنیں۔",
-        "بچوں کی پہنچ سے دور رکھیں۔"
-      ]
-    },
-    "faqs": {
-      "en": [
-        {
-          "q": "Can we spray Setting NPK during flowering?",
-          "a": "Yes, it provides balanced nutrients which support healthy flower formation without shock."
-        }
-      ],
-      "ur": [
-        {
-          "q": "کیا ہم پھول آنے پر سیٹنگ این پی کے کا سپرے کر سکتے ہیں؟",
-          "a": "جی ہاں، یہ متوازن خوراک دیتا ہے جس سے پھول گرنے سے محفوظ رہتے ہیں اور صحت مند بنتے ہیں۔"
-        }
-      ]
-    }
-  },
-
-  "baqa": {
-    "id": "baqa",
-    "slug": "baqa",
-    "name": {
-      "en": "BAQA - 10% EC",
-      "ur": "BAQA"
-    },
-    "genericName": {
-      "en": "Biotech Compound",
-      "ur": "بائیوٹیک فارمولا"
-    },
-    "category": "insecticide",
-    "tagline": "BAQA — Advanced Crop Solution",
-    "imageUrl": "/products/baqa.png",
-    "pngUrl": "/products/baqa.png",
-    "rating": 4.8,
-    "sizes": [
-      {
-        "size": "250 ML",
-        "price": 699,
-        "oldPrice": 699,
-        "stockStatus": "In Stock",
-        "sku": "VA-BAQA-250ML",
-        "weight": "0.25kg"
-      },
-      {
-        "size": "1 L",
-        "price": 2399,
-        "oldPrice": 2399,
-        "stockStatus": "In Stock",
-        "sku": "VA-BAQA-1L",
-        "weight": "1kg"
-      }
-    ],
-    "formulation": "Emulsifiable Concentrate",
-    "activeIngredient": "Premium Active Compound",
-    "packaging": "250 ML, 1 L",
-    "productCode": "VA-BAQA-250ML",
-    "status": {
-      "en": "Premium Quality Compound",
-      "ur": "اعلیٰ معیار کا مرکب"
-    },
-    "description": {
-      "en": "BAQA is a premium dynamic crop solution engineered under strict international standards to optimize harvest quality and yield.",
-      "ur": "BAQA ایک بہترین اور اعلیٰ معیار کا مرکب ہے جو عالمی معیار کے مطابق تیار کیا گیا ہے۔"
-    },
-    "features": {
-      "en": [
-        "Enhances crop resilience and vitality",
-        "Protects against standard stress factors",
-        "Improves overall yield quality"
-      ],
-      "ur": [
-        "فصل کی قوت مدافعت کو بڑھاتا ہے",
-        "بیماریوں اور کیڑوں سے محفوظ رکھتا ہے",
-        "پیداوار کی کوالٹی کو بہتر بناتا ہے"
-      ]
-    },
-    "benefits": {
-      "en": [
-        "Enhances crop resilience and vitality",
-        "Protects against standard stress factors",
-        "Improves overall yield quality"
-      ],
-      "ur": [
-        "فصل کی قوت مدافعت کو بڑھاتا ہے",
-        "بیماریوں اور کیڑوں سے محفوظ رکھتا ہے",
-        "پیداوار کی کوالٹی کو بہتر بناتا ہے"
-      ]
-    },
-    "crops": [
-      {
-        "name": {
-          "en": "Cotton",
-          "ur": "کپاس"
-        },
-        "icon": "🌱"
-      },
-      {
-        "name": {
-          "en": "Rice",
-          "ur": "دھان"
-        },
-        "icon": "🌾"
-      },
-      {
-        "name": {
-          "en": "Maize",
-          "ur": "مکئی"
-        },
-        "icon": "🌽"
-      },
-      {
-        "name": {
-          "en": "Wheat",
-          "ur": "گندم"
-        },
-        "icon": "🌾"
-      }
-    ],
-    "application": {
-      "en": "Apply as a foliar spray or through irrigation as recommended.",
-      "ur": "تجویز کردہ خوراک کے مطابق اسپرے کریں یا فلڈ کریں۔"
-    },
-    "specs": {
-      "type": {
-        "en": "INSECTICIDE",
-        "ur": "insecticide"
-      },
-      "storage": {
-        "en": "Store in cool, dry ventilated place away from children.",
-        "ur": "ٹھنڈی اور خشک جگہ پر بچوں کی پہنچ سے دور رکھیں"
-      }
-    },
-    "safety": {
-      "en": [
-        "Avoid inhalation and skin contact.",
-        "Wear protective gloves and mask during spray.",
-        "Wash hands thoroughly after use."
-      ],
-      "ur": [
-        "دوا کو سونگھنے اور جلد پر گرنے سے بچائیں۔",
-        "مکسنگ اور اسپرے کے دوران دستانے اور ماسک کا استعمال کریں۔",
-        "استعمال کے بعد ہاتھ صابن سے اچھی طرح دھوئیں۔"
-      ]
-    }
-  },
-
-  "bi-matic": {
-    "id": "bi-matic",
-    "slug": "bi-matic",
-    "name": {
-      "en": "BI MATIC - 10% EC",
-      "ur": "BI MATIC"
-    },
-    "genericName": {
-      "en": "Biotech Compound",
-      "ur": "بائیوٹیک فارمولا"
-    },
-    "category": "insecticide",
-    "tagline": "BI MATIC — Advanced Crop Solution",
-    "imageUrl": "/products/bi-matic.png",
-    "pngUrl": "/products/bi-matic.png",
-    "rating": 4.8,
-    "sizes": [
-      {
-        "size": "250 ML",
-        "price": 699,
-        "oldPrice": 699,
-        "stockStatus": "In Stock",
-        "sku": "VA-BI-MATIC-250ML",
-        "weight": "0.25kg"
-      },
-      {
-        "size": "1 L",
-        "price": 2399,
-        "oldPrice": 2399,
-        "stockStatus": "In Stock",
-        "sku": "VA-BI-MATIC-1L",
-        "weight": "1kg"
-      }
-    ],
-    "formulation": "Emulsifiable Concentrate",
-    "activeIngredient": "Premium Active Compound",
-    "packaging": "250 ML, 1 L",
-    "productCode": "VA-BI-MATIC-250ML",
-    "status": {
-      "en": "Premium Quality Compound",
-      "ur": "اعلیٰ معیار کا مرکب"
-    },
-    "description": {
-      "en": "BI MATIC is a premium dynamic crop solution engineered under strict international standards to optimize harvest quality and yield.",
-      "ur": "BI MATIC ایک بہترین اور اعلیٰ معیار کا مرکب ہے جو عالمی معیار کے مطابق تیار کیا گیا ہے۔"
-    },
-    "features": {
-      "en": [
-        "Enhances crop resilience and vitality",
-        "Protects against standard stress factors",
-        "Improves overall yield quality"
-      ],
-      "ur": [
-        "فصل کی قوت مدافعت کو بڑھاتا ہے",
-        "بیماریوں اور کیڑوں سے محفوظ رکھتا ہے",
-        "پیداوار کی کوالٹی کو بہتر بناتا ہے"
-      ]
-    },
-    "benefits": {
-      "en": [
-        "Enhances crop resilience and vitality",
-        "Protects against standard stress factors",
-        "Improves overall yield quality"
-      ],
-      "ur": [
-        "فصل کی قوت مدافعت کو بڑھاتا ہے",
-        "بیماریوں اور کیڑوں سے محفوظ رکھتا ہے",
-        "پیداوار کی کوالٹی کو بہتر بناتا ہے"
-      ]
-    },
-    "crops": [
-      {
-        "name": {
-          "en": "Cotton",
-          "ur": "کپاس"
-        },
-        "icon": "🌱"
-      },
-      {
-        "name": {
-          "en": "Rice",
-          "ur": "دھان"
-        },
-        "icon": "🌾"
-      },
-      {
-        "name": {
-          "en": "Maize",
-          "ur": "مکئی"
-        },
-        "icon": "🌽"
-      },
-      {
-        "name": {
-          "en": "Wheat",
-          "ur": "گندم"
-        },
-        "icon": "🌾"
-      }
-    ],
-    "application": {
-      "en": "Apply as a foliar spray or through irrigation as recommended.",
-      "ur": "تجویز کردہ خوراک کے مطابق اسپرے کریں یا فلڈ کریں۔"
-    },
-    "specs": {
-      "type": {
-        "en": "INSECTICIDE",
-        "ur": "insecticide"
-      },
-      "storage": {
-        "en": "Store in cool, dry ventilated place away from children.",
-        "ur": "ٹھنڈی اور خشک جگہ پر بچوں کی پہنچ سے دور رکھیں"
-      }
-    },
-    "safety": {
-      "en": [
-        "Avoid inhalation and skin contact.",
-        "Wear protective gloves and mask during spray.",
-        "Wash hands thoroughly after use."
-      ],
-      "ur": [
-        "دوا کو سونگھنے اور جلد پر گرنے سے بچائیں۔",
-        "مکسنگ اور اسپرے کے دوران دستانے اور ماسک کا استعمال کریں۔",
-        "استعمال کے بعد ہاتھ صابن سے اچھی طرح دھوئیں۔"
-      ]
-    }
-  },
-
-  "brankosen": {
-    "id": "brankosen",
-    "slug": "brankosen",
-    "name": {
-      "en": "BRANKOSEN - 10% EC",
-      "ur": "BRANKOSEN"
-    },
-    "genericName": {
-      "en": "Biotech Compound",
-      "ur": "بائیوٹیک فارمولا"
-    },
-    "category": "insecticide",
-    "tagline": "BRANKOSEN — Advanced Crop Solution",
-    "imageUrl": "/products/brankosen.png",
-    "pngUrl": "/products/brankosen.png",
-    "rating": 4.8,
-    "sizes": [
-      {
-        "size": "250 ML",
-        "price": 699,
-        "oldPrice": 699,
-        "stockStatus": "In Stock",
-        "sku": "VA-BRANKOSEN-250ML",
-        "weight": "0.25kg"
-      },
-      {
-        "size": "1 L",
-        "price": 2399,
-        "oldPrice": 2399,
-        "stockStatus": "In Stock",
-        "sku": "VA-BRANKOSEN-1L",
-        "weight": "1kg"
-      }
-    ],
-    "formulation": "Emulsifiable Concentrate",
-    "activeIngredient": "Premium Active Compound",
-    "packaging": "250 ML, 1 L",
-    "productCode": "VA-BRANKOSEN-250ML",
-    "status": {
-      "en": "Premium Quality Compound",
-      "ur": "اعلیٰ معیار کا مرکب"
-    },
-    "description": {
-      "en": "BRANKOSEN is a premium dynamic crop solution engineered under strict international standards to optimize harvest quality and yield.",
-      "ur": "BRANKOSEN ایک بہترین اور اعلیٰ معیار کا مرکب ہے جو عالمی معیار کے مطابق تیار کیا گیا ہے۔"
-    },
-    "features": {
-      "en": [
-        "Enhances crop resilience and vitality",
-        "Protects against standard stress factors",
-        "Improves overall yield quality"
-      ],
-      "ur": [
-        "فصل کی قوت مدافعت کو بڑھاتا ہے",
-        "بیماریوں اور کیڑوں سے محفوظ رکھتا ہے",
-        "پیداوار کی کوالٹی کو بہتر بناتا ہے"
-      ]
-    },
-    "benefits": {
-      "en": [
-        "Enhances crop resilience and vitality",
-        "Protects against standard stress factors",
-        "Improves overall yield quality"
-      ],
-      "ur": [
-        "فصل کی قوت مدافعت کو بڑھاتا ہے",
-        "بیماریوں اور کیڑوں سے محفوظ رکھتا ہے",
-        "پیداوار کی کوالٹی کو بہتر بناتا ہے"
-      ]
-    },
-    "crops": [
-      {
-        "name": {
-          "en": "Cotton",
-          "ur": "کپاس"
-        },
-        "icon": "🌱"
-      },
-      {
-        "name": {
-          "en": "Rice",
-          "ur": "دھان"
-        },
-        "icon": "🌾"
-      },
-      {
-        "name": {
-          "en": "Maize",
-          "ur": "مکئی"
-        },
-        "icon": "🌽"
-      },
-      {
-        "name": {
-          "en": "Wheat",
-          "ur": "گندم"
-        },
-        "icon": "🌾"
-      }
-    ],
-    "application": {
-      "en": "Apply as a foliar spray or through irrigation as recommended.",
-      "ur": "تجویز کردہ خوراک کے مطابق اسپرے کریں یا فلڈ کریں۔"
-    },
-    "specs": {
-      "type": {
-        "en": "INSECTICIDE",
-        "ur": "insecticide"
-      },
-      "storage": {
-        "en": "Store in cool, dry ventilated place away from children.",
-        "ur": "ٹھنڈی اور خشک جگہ پر بچوں کی پہنچ سے دور رکھیں"
-      }
-    },
-    "safety": {
-      "en": [
-        "Avoid inhalation and skin contact.",
-        "Wear protective gloves and mask during spray.",
-        "Wash hands thoroughly after use."
-      ],
-      "ur": [
-        "دوا کو سونگھنے اور جلد پر گرنے سے بچائیں۔",
-        "مکسنگ اور اسپرے کے دوران دستانے اور ماسک کا استعمال کریں۔",
-        "استعمال کے بعد ہاتھ صابن سے اچھی طرح دھوئیں۔"
-      ]
-    }
-  },
-
-  "cloro-mac": {
-    "id": "cloro-mac",
-    "slug": "cloro-mac",
-    "name": {
-      "en": "CLORO MAC - 10% EC",
-      "ur": "CLORO MAC"
-    },
-    "genericName": {
-      "en": "Biotech Compound",
-      "ur": "بائیوٹیک فارمولا"
-    },
-    "category": "insecticide",
-    "tagline": "CLORO MAC — Advanced Crop Solution",
-    "imageUrl": "/products/cloro-mac.png",
-    "pngUrl": "/products/cloro-mac.png",
-    "rating": 4.8,
-    "sizes": [
-      {
-        "size": "250 ML",
-        "price": 699,
-        "oldPrice": 699,
-        "stockStatus": "In Stock",
-        "sku": "VA-CLORO-MAC-250ML",
-        "weight": "0.25kg"
-      },
-      {
-        "size": "1 L",
-        "price": 2399,
-        "oldPrice": 2399,
-        "stockStatus": "In Stock",
-        "sku": "VA-CLORO-MAC-1L",
-        "weight": "1kg"
-      }
-    ],
-    "formulation": "Emulsifiable Concentrate",
-    "activeIngredient": "Premium Active Compound",
-    "packaging": "250 ML, 1 L",
-    "productCode": "VA-CLORO-MAC-250ML",
-    "status": {
-      "en": "Premium Quality Compound",
-      "ur": "اعلیٰ معیار کا مرکب"
-    },
-    "description": {
-      "en": "CLORO MAC is a premium dynamic crop solution engineered under strict international standards to optimize harvest quality and yield.",
-      "ur": "CLORO MAC ایک بہترین اور اعلیٰ معیار کا مرکب ہے جو عالمی معیار کے مطابق تیار کیا گیا ہے۔"
-    },
-    "features": {
-      "en": [
-        "Enhances crop resilience and vitality",
-        "Protects against standard stress factors",
-        "Improves overall yield quality"
-      ],
-      "ur": [
-        "فصل کی قوت مدافعت کو بڑھاتا ہے",
-        "بیماریوں اور کیڑوں سے محفوظ رکھتا ہے",
-        "پیداوار کی کوالٹی کو بہتر بناتا ہے"
-      ]
-    },
-    "benefits": {
-      "en": [
-        "Enhances crop resilience and vitality",
-        "Protects against standard stress factors",
-        "Improves overall yield quality"
-      ],
-      "ur": [
-        "فصل کی قوت مدافعت کو بڑھاتا ہے",
-        "بیماریوں اور کیڑوں سے محفوظ رکھتا ہے",
-        "پیداوار کی کوالٹی کو بہتر بناتا ہے"
-      ]
-    },
-    "crops": [
-      {
-        "name": {
-          "en": "Cotton",
-          "ur": "کپاس"
-        },
-        "icon": "🌱"
-      },
-      {
-        "name": {
-          "en": "Rice",
-          "ur": "دھان"
-        },
-        "icon": "🌾"
-      },
-      {
-        "name": {
-          "en": "Maize",
-          "ur": "مکئی"
-        },
-        "icon": "🌽"
-      },
-      {
-        "name": {
-          "en": "Wheat",
-          "ur": "گندم"
-        },
-        "icon": "🌾"
-      }
-    ],
-    "application": {
-      "en": "Apply as a foliar spray or through irrigation as recommended.",
-      "ur": "تجویز کردہ خوراک کے مطابق اسپرے کریں یا فلڈ کریں۔"
-    },
-    "specs": {
-      "type": {
-        "en": "INSECTICIDE",
-        "ur": "insecticide"
-      },
-      "storage": {
-        "en": "Store in cool, dry ventilated place away from children.",
-        "ur": "ٹھنڈی اور خشک جگہ پر بچوں کی پہنچ سے دور رکھیں"
-      }
-    },
-    "safety": {
-      "en": [
-        "Avoid inhalation and skin contact.",
-        "Wear protective gloves and mask during spray.",
-        "Wash hands thoroughly after use."
-      ],
-      "ur": [
-        "دوا کو سونگھنے اور جلد پر گرنے سے بچائیں۔",
-        "مکسنگ اور اسپرے کے دوران دستانے اور ماسک کا استعمال کریں۔",
-        "استعمال کے بعد ہاتھ صابن سے اچھی طرح دھوئیں۔"
-      ]
-    }
-  },
-
-  "conference": {
-    "id": "conference",
-    "slug": "conference",
-    "name": {
-      "en": "CONFERENCE - 10% EC",
-      "ur": "CONFERENCE"
-    },
-    "genericName": {
-      "en": "Biotech Compound",
-      "ur": "بائیوٹیک فارمولا"
-    },
-    "category": "seed-treatment",
-    "tagline": "CONFERENCE — Advanced Crop Solution",
-    "imageUrl": "/products/conference.png",
-    "pngUrl": "/products/conference.png",
-    "rating": 4.8,
-    "sizes": [
-      {
-        "size": "250 ML",
-        "price": 699,
-        "oldPrice": 699,
-        "stockStatus": "In Stock",
-        "sku": "VA-CONFERENCE-250ML",
-        "weight": "0.25kg"
-      },
-      {
-        "size": "1 L",
-        "price": 2399,
-        "oldPrice": 2399,
-        "stockStatus": "In Stock",
-        "sku": "VA-CONFERENCE-1L",
-        "weight": "1kg"
-      }
-    ],
-    "formulation": "Emulsifiable Concentrate",
-    "activeIngredient": "Premium Active Compound",
-    "packaging": "250 ML, 1 L",
-    "productCode": "VA-CONFERENCE-250ML",
-    "status": {
-      "en": "Premium Quality Compound",
-      "ur": "اعلیٰ معیار کا مرکب"
-    },
-    "description": {
-      "en": "CONFERENCE is a premium dynamic crop solution engineered under strict international standards to optimize harvest quality and yield.",
-      "ur": "CONFERENCE ایک بہترین اور اعلیٰ معیار کا مرکب ہے جو عالمی معیار کے مطابق تیار کیا گیا ہے۔"
-    },
-    "features": {
-      "en": [
-        "Enhances crop resilience and vitality",
-        "Protects against standard stress factors",
-        "Improves overall yield quality"
-      ],
-      "ur": [
-        "فصل کی قوت مدافعت کو بڑھاتا ہے",
-        "بیماریوں اور کیڑوں سے محفوظ رکھتا ہے",
-        "پیداوار کی کوالٹی کو بہتر بناتا ہے"
-      ]
-    },
-    "benefits": {
-      "en": [
-        "Enhances crop resilience and vitality",
-        "Protects against standard stress factors",
-        "Improves overall yield quality"
-      ],
-      "ur": [
-        "فصل کی قوت مدافعت کو بڑھاتا ہے",
-        "بیماریوں اور کیڑوں سے محفوظ رکھتا ہے",
-        "پیداوار کی کوالٹی کو بہتر بناتا ہے"
-      ]
-    },
-    "crops": [
-      {
-        "name": {
-          "en": "Cotton",
-          "ur": "کپاس"
-        },
-        "icon": "🌱"
-      },
-      {
-        "name": {
-          "en": "Rice",
-          "ur": "دھان"
-        },
-        "icon": "🌾"
-      },
-      {
-        "name": {
-          "en": "Maize",
-          "ur": "مکئی"
-        },
-        "icon": "🌽"
-      },
-      {
-        "name": {
-          "en": "Wheat",
-          "ur": "گندم"
-        },
-        "icon": "🌾"
-      }
-    ],
-    "application": {
-      "en": "Apply as a foliar spray or through irrigation as recommended.",
-      "ur": "تجویز کردہ خوراک کے مطابق اسپرے کریں یا فلڈ کریں۔"
-    },
-    "specs": {
-      "type": {
-        "en": "SEED TREATMENT",
-        "ur": "seed-treatment"
-      },
-      "storage": {
-        "en": "Store in cool, dry ventilated place away from children.",
-        "ur": "ٹھنڈی اور خشک جگہ پر بچوں کی پہنچ سے دور رکھیں"
-      }
-    },
-    "safety": {
-      "en": [
-        "Avoid inhalation and skin contact.",
-        "Wear protective gloves and mask during spray.",
-        "Wash hands thoroughly after use."
-      ],
-      "ur": [
-        "دوا کو سونگھنے اور جلد پر گرنے سے بچائیں۔",
-        "مکسنگ اور اسپرے کے دوران دستانے اور ماسک کا استعمال کریں۔",
-        "استعمال کے بعد ہاتھ صابن سے اچھی طرح دھوئیں۔"
-      ]
-    }
-  },
-
-  "cool-lab": {
-    "id": "cool-lab",
-    "slug": "cool-lab",
-    "name": {
-      "en": "COOL LAB - 10% EC",
-      "ur": "COOL LAB"
-    },
-    "genericName": {
-      "en": "Biotech Compound",
-      "ur": "بائیوٹیک فارمولا"
-    },
-    "category": "insecticide",
-    "tagline": "COOL LAB — Advanced Crop Solution",
-    "imageUrl": "/products/cool-lab.png",
-    "pngUrl": "/products/cool-lab.png",
-    "rating": 4.8,
-    "sizes": [
-      {
-        "size": "250 ML",
-        "price": 699,
-        "oldPrice": 699,
-        "stockStatus": "In Stock",
-        "sku": "VA-COOL-LAB-250ML",
-        "weight": "0.25kg"
-      },
-      {
-        "size": "1 L",
-        "price": 2399,
-        "oldPrice": 2399,
-        "stockStatus": "In Stock",
-        "sku": "VA-COOL-LAB-1L",
-        "weight": "1kg"
-      }
-    ],
-    "formulation": "Emulsifiable Concentrate",
-    "activeIngredient": "Premium Active Compound",
-    "packaging": "250 ML, 1 L",
-    "productCode": "VA-COOL-LAB-250ML",
-    "status": {
-      "en": "Premium Quality Compound",
-      "ur": "اعلیٰ معیار کا مرکب"
-    },
-    "description": {
-      "en": "COOL LAB is a premium dynamic crop solution engineered under strict international standards to optimize harvest quality and yield.",
-      "ur": "COOL LAB ایک بہترین اور اعلیٰ معیار کا مرکب ہے جو عالمی معیار کے مطابق تیار کیا گیا ہے۔"
-    },
-    "features": {
-      "en": [
-        "Enhances crop resilience and vitality",
-        "Protects against standard stress factors",
-        "Improves overall yield quality"
-      ],
-      "ur": [
-        "فصل کی قوت مدافعت کو بڑھاتا ہے",
-        "بیماریوں اور کیڑوں سے محفوظ رکھتا ہے",
-        "پیداوار کی کوالٹی کو بہتر بناتا ہے"
-      ]
-    },
-    "benefits": {
-      "en": [
-        "Enhances crop resilience and vitality",
-        "Protects against standard stress factors",
-        "Improves overall yield quality"
-      ],
-      "ur": [
-        "فصل کی قوت مدافعت کو بڑھاتا ہے",
-        "بیماریوں اور کیڑوں سے محفوظ رکھتا ہے",
-        "پیداوار کی کوالٹی کو بہتر بناتا ہے"
-      ]
-    },
-    "crops": [
-      {
-        "name": {
-          "en": "Cotton",
-          "ur": "کپاس"
-        },
-        "icon": "🌱"
-      },
-      {
-        "name": {
-          "en": "Rice",
-          "ur": "دھان"
-        },
-        "icon": "🌾"
-      },
-      {
-        "name": {
-          "en": "Maize",
-          "ur": "مکئی"
-        },
-        "icon": "🌽"
-      },
-      {
-        "name": {
-          "en": "Wheat",
-          "ur": "گندم"
-        },
-        "icon": "🌾"
-      }
-    ],
-    "application": {
-      "en": "Apply as a foliar spray or through irrigation as recommended.",
-      "ur": "تجویز کردہ خوراک کے مطابق اسپرے کریں یا فلڈ کریں۔"
-    },
-    "specs": {
-      "type": {
-        "en": "INSECTICIDE",
-        "ur": "insecticide"
-      },
-      "storage": {
-        "en": "Store in cool, dry ventilated place away from children.",
-        "ur": "ٹھنڈی اور خشک جگہ پر بچوں کی پہنچ سے دور رکھیں"
-      }
-    },
-    "safety": {
-      "en": [
-        "Avoid inhalation and skin contact.",
-        "Wear protective gloves and mask during spray.",
-        "Wash hands thoroughly after use."
-      ],
-      "ur": [
-        "دوا کو سونگھنے اور جلد پر گرنے سے بچائیں۔",
-        "مکسنگ اور اسپرے کے دوران دستانے اور ماسک کا استعمال کریں۔",
-        "استعمال کے بعد ہاتھ صابن سے اچھی طرح دھوئیں۔"
-      ]
-    }
-  },
-
-  "douhaa-extra": {
-    "id": "douhaa-extra",
-    "slug": "douhaa-extra",
-    "name": {
-      "en": "DOUHAA EXTRA - 10% EC",
-      "ur": "DOUHAA EXTRA"
-    },
-    "genericName": {
-      "en": "Biotech Compound",
-      "ur": "بائیوٹیک فارمولا"
-    },
-    "category": "insecticide",
-    "tagline": "DOUHAA EXTRA — Advanced Crop Solution",
-    "imageUrl": "/products/douhaa-extra.png",
-    "pngUrl": "/products/douhaa-extra.png",
-    "rating": 4.8,
-    "sizes": [
-      {
-        "size": "250 ML",
-        "price": 699,
-        "oldPrice": 699,
-        "stockStatus": "In Stock",
-        "sku": "VA-DOUHAA-EXTRA-250ML",
-        "weight": "0.25kg"
-      },
-      {
-        "size": "1 L",
-        "price": 2399,
-        "oldPrice": 2399,
-        "stockStatus": "In Stock",
-        "sku": "VA-DOUHAA-EXTRA-1L",
-        "weight": "1kg"
-      }
-    ],
-    "formulation": "Emulsifiable Concentrate",
-    "activeIngredient": "Premium Active Compound",
-    "packaging": "250 ML, 1 L",
-    "productCode": "VA-DOUHAA-EXTRA-250ML",
-    "status": {
-      "en": "Premium Quality Compound",
-      "ur": "اعلیٰ معیار کا مرکب"
-    },
-    "description": {
-      "en": "DOUHAA EXTRA is a premium dynamic crop solution engineered under strict international standards to optimize harvest quality and yield.",
-      "ur": "DOUHAA EXTRA ایک بہترین اور اعلیٰ معیار کا مرکب ہے جو عالمی معیار کے مطابق تیار کیا گیا ہے۔"
-    },
-    "features": {
-      "en": [
-        "Enhances crop resilience and vitality",
-        "Protects against standard stress factors",
-        "Improves overall yield quality"
-      ],
-      "ur": [
-        "فصل کی قوت مدافعت کو بڑھاتا ہے",
-        "بیماریوں اور کیڑوں سے محفوظ رکھتا ہے",
-        "پیداوار کی کوالٹی کو بہتر بناتا ہے"
-      ]
-    },
-    "benefits": {
-      "en": [
-        "Enhances crop resilience and vitality",
-        "Protects against standard stress factors",
-        "Improves overall yield quality"
-      ],
-      "ur": [
-        "فصل کی قوت مدافعت کو بڑھاتا ہے",
-        "بیماریوں اور کیڑوں سے محفوظ رکھتا ہے",
-        "پیداوار کی کوالٹی کو بہتر بناتا ہے"
-      ]
-    },
-    "crops": [
-      {
-        "name": {
-          "en": "Cotton",
-          "ur": "کپاس"
-        },
-        "icon": "🌱"
-      },
-      {
-        "name": {
-          "en": "Rice",
-          "ur": "دھان"
-        },
-        "icon": "🌾"
-      },
-      {
-        "name": {
-          "en": "Maize",
-          "ur": "مکئی"
-        },
-        "icon": "🌽"
-      },
-      {
-        "name": {
-          "en": "Wheat",
-          "ur": "گندم"
-        },
-        "icon": "🌾"
-      }
-    ],
-    "application": {
-      "en": "Apply as a foliar spray or through irrigation as recommended.",
-      "ur": "تجویز کردہ خوراک کے مطابق اسپرے کریں یا فلڈ کریں۔"
-    },
-    "specs": {
-      "type": {
-        "en": "INSECTICIDE",
-        "ur": "insecticide"
-      },
-      "storage": {
-        "en": "Store in cool, dry ventilated place away from children.",
-        "ur": "ٹھنڈی اور خشک جگہ پر بچوں کی پہنچ سے دور رکھیں"
-      }
-    },
-    "safety": {
-      "en": [
-        "Avoid inhalation and skin contact.",
-        "Wear protective gloves and mask during spray.",
-        "Wash hands thoroughly after use."
-      ],
-      "ur": [
-        "دوا کو سونگھنے اور جلد پر گرنے سے بچائیں۔",
-        "مکسنگ اور اسپرے کے دوران دستانے اور ماسک کا استعمال کریں۔",
-        "استعمال کے بعد ہاتھ صابن سے اچھی طرح دھوئیں۔"
-      ]
-    }
-  },
-
-  "fefa": {
-    "id": "fefa",
-    "slug": "fefa",
-    "name": {
-      "en": "FEFA - 10% EC",
-      "ur": "FEFA"
-    },
-    "genericName": {
-      "en": "Biotech Compound",
-      "ur": "بائیوٹیک فارمولا"
-    },
-    "category": "insecticide",
-    "tagline": "FEFA — Advanced Crop Solution",
-    "imageUrl": "/products/fefa.png",
-    "pngUrl": "/products/fefa.png",
-    "rating": 4.8,
-    "sizes": [
-      {
-        "size": "250 ML",
-        "price": 699,
-        "oldPrice": 699,
-        "stockStatus": "In Stock",
-        "sku": "VA-FEFA-250ML",
-        "weight": "0.25kg"
-      },
-      {
-        "size": "1 L",
-        "price": 2399,
-        "oldPrice": 2399,
-        "stockStatus": "In Stock",
-        "sku": "VA-FEFA-1L",
-        "weight": "1kg"
-      }
-    ],
-    "formulation": "Emulsifiable Concentrate",
-    "activeIngredient": "Premium Active Compound",
-    "packaging": "250 ML, 1 L",
-    "productCode": "VA-FEFA-250ML",
-    "status": {
-      "en": "Premium Quality Compound",
-      "ur": "اعلیٰ معیار کا مرکب"
-    },
-    "description": {
-      "en": "FEFA is a premium dynamic crop solution engineered under strict international standards to optimize harvest quality and yield.",
-      "ur": "FEFA ایک بہترین اور اعلیٰ معیار کا مرکب ہے جو عالمی معیار کے مطابق تیار کیا گیا ہے۔"
-    },
-    "features": {
-      "en": [
-        "Enhances crop resilience and vitality",
-        "Protects against standard stress factors",
-        "Improves overall yield quality"
-      ],
-      "ur": [
-        "فصل کی قوت مدافعت کو بڑھاتا ہے",
-        "بیماریوں اور کیڑوں سے محفوظ رکھتا ہے",
-        "پیداوار کی کوالٹی کو بہتر بناتا ہے"
-      ]
-    },
-    "benefits": {
-      "en": [
-        "Enhances crop resilience and vitality",
-        "Protects against standard stress factors",
-        "Improves overall yield quality"
-      ],
-      "ur": [
-        "فصل کی قوت مدافعت کو بڑھاتا ہے",
-        "بیماریوں اور کیڑوں سے محفوظ رکھتا ہے",
-        "پیداوار کی کوالٹی کو بہتر بناتا ہے"
-      ]
-    },
-    "crops": [
-      {
-        "name": {
-          "en": "Cotton",
-          "ur": "کپاس"
-        },
-        "icon": "🌱"
-      },
-      {
-        "name": {
-          "en": "Rice",
-          "ur": "دھان"
-        },
-        "icon": "🌾"
-      },
-      {
-        "name": {
-          "en": "Maize",
-          "ur": "مکئی"
-        },
-        "icon": "🌽"
-      },
-      {
-        "name": {
-          "en": "Wheat",
-          "ur": "گندم"
-        },
-        "icon": "🌾"
-      }
-    ],
-    "application": {
-      "en": "Apply as a foliar spray or through irrigation as recommended.",
-      "ur": "تجویز کردہ خوراک کے مطابق اسپرے کریں یا فلڈ کریں۔"
-    },
-    "specs": {
-      "type": {
-        "en": "INSECTICIDE",
-        "ur": "insecticide"
-      },
-      "storage": {
-        "en": "Store in cool, dry ventilated place away from children.",
-        "ur": "ٹھنڈی اور خشک جگہ پر بچوں کی پہنچ سے دور رکھیں"
-      }
-    },
-    "safety": {
-      "en": [
-        "Avoid inhalation and skin contact.",
-        "Wear protective gloves and mask during spray.",
-        "Wash hands thoroughly after use."
-      ],
-      "ur": [
-        "دوا کو سونگھنے اور جلد پر گرنے سے بچائیں۔",
-        "مکسنگ اور اسپرے کے دوران دستانے اور ماسک کا استعمال کریں۔",
-        "استعمال کے بعد ہاتھ صابن سے اچھی طرح دھوئیں۔"
-      ]
-    }
-  },
-
-  "mission-gold": {
-    "id": "mission-gold",
-    "slug": "mission-gold",
-    "name": {
-      "en": "MISSION GOLD - 10% EC",
-      "ur": "MISSION GOLD"
-    },
-    "genericName": {
-      "en": "Biotech Compound",
-      "ur": "بائیوٹیک فارمولا"
-    },
-    "category": "insecticide",
-    "tagline": "MISSION GOLD — Advanced Crop Solution",
-    "imageUrl": "/products/mission-gold.png",
-    "pngUrl": "/products/mission-gold.png",
-    "rating": 4.8,
-    "sizes": [
-      {
-        "size": "250 ML",
-        "price": 699,
-        "oldPrice": 699,
-        "stockStatus": "In Stock",
-        "sku": "VA-MISSION-GOLD-250ML",
-        "weight": "0.25kg"
-      },
-      {
-        "size": "1 L",
-        "price": 2399,
-        "oldPrice": 2399,
-        "stockStatus": "In Stock",
-        "sku": "VA-MISSION-GOLD-1L",
-        "weight": "1kg"
-      }
-    ],
-    "formulation": "Emulsifiable Concentrate",
-    "activeIngredient": "Premium Active Compound",
-    "packaging": "250 ML, 1 L",
-    "productCode": "VA-MISSION-GOLD-250ML",
-    "status": {
-      "en": "Premium Quality Compound",
-      "ur": "اعلیٰ معیار کا مرکب"
-    },
-    "description": {
-      "en": "MISSION GOLD is a premium dynamic crop solution engineered under strict international standards to optimize harvest quality and yield.",
-      "ur": "MISSION GOLD ایک بہترین اور اعلیٰ معیار کا مرکب ہے جو عالمی معیار کے مطابق تیار کیا گیا ہے۔"
-    },
-    "features": {
-      "en": [
-        "Enhances crop resilience and vitality",
-        "Protects against standard stress factors",
-        "Improves overall yield quality"
-      ],
-      "ur": [
-        "فصل کی قوت مدافعت کو بڑھاتا ہے",
-        "بیماریوں اور کیڑوں سے محفوظ رکھتا ہے",
-        "پیداوار کی کوالٹی کو بہتر بناتا ہے"
-      ]
-    },
-    "benefits": {
-      "en": [
-        "Enhances crop resilience and vitality",
-        "Protects against standard stress factors",
-        "Improves overall yield quality"
-      ],
-      "ur": [
-        "فصل کی قوت مدافعت کو بڑھاتا ہے",
-        "بیماریوں اور کیڑوں سے محفوظ رکھتا ہے",
-        "پیداوار کی کوالٹی کو بہتر بناتا ہے"
-      ]
-    },
-    "crops": [
-      {
-        "name": {
-          "en": "Cotton",
-          "ur": "کپاس"
-        },
-        "icon": "🌱"
-      },
-      {
-        "name": {
-          "en": "Rice",
-          "ur": "دھان"
-        },
-        "icon": "🌾"
-      },
-      {
-        "name": {
-          "en": "Maize",
-          "ur": "مکئی"
-        },
-        "icon": "🌽"
-      },
-      {
-        "name": {
-          "en": "Wheat",
-          "ur": "گندم"
-        },
-        "icon": "🌾"
-      }
-    ],
-    "application": {
-      "en": "Apply as a foliar spray or through irrigation as recommended.",
-      "ur": "تجویز کردہ خوراک کے مطابق اسپرے کریں یا فلڈ کریں۔"
-    },
-    "specs": {
-      "type": {
-        "en": "INSECTICIDE",
-        "ur": "insecticide"
-      },
-      "storage": {
-        "en": "Store in cool, dry ventilated place away from children.",
-        "ur": "ٹھنڈی اور خشک جگہ پر بچوں کی پہنچ سے دور رکھیں"
-      }
-    },
-    "safety": {
-      "en": [
-        "Avoid inhalation and skin contact.",
-        "Wear protective gloves and mask during spray.",
-        "Wash hands thoroughly after use."
-      ],
-      "ur": [
-        "دوا کو سونگھنے اور جلد پر گرنے سے بچائیں۔",
-        "مکسنگ اور اسپرے کے دوران دستانے اور ماسک کا استعمال کریں۔",
-        "استعمال کے بعد ہاتھ صابن سے اچھی طرح دھوئیں۔"
-      ]
-    }
-  },
-
-  "moon-link": {
-    "id": "moon-link",
-    "slug": "moon-link",
-    "name": {
-      "en": "MOON LINK - 10% EC",
-      "ur": "MOON LINK"
-    },
-    "genericName": {
-      "en": "Biotech Compound",
-      "ur": "بائیوٹیک فارمولا"
-    },
-    "category": "insecticide",
-    "tagline": "MOON LINK — Advanced Crop Solution",
-    "imageUrl": "/products/moon-link.png",
-    "pngUrl": "/products/moon-link.png",
-    "rating": 4.8,
-    "sizes": [
-      {
-        "size": "250 ML",
-        "price": 699,
-        "oldPrice": 699,
-        "stockStatus": "In Stock",
-        "sku": "VA-MOON-LINK-250ML",
-        "weight": "0.25kg"
-      },
-      {
-        "size": "1 L",
-        "price": 2399,
-        "oldPrice": 2399,
-        "stockStatus": "In Stock",
-        "sku": "VA-MOON-LINK-1L",
-        "weight": "1kg"
-      }
-    ],
-    "formulation": "Emulsifiable Concentrate",
-    "activeIngredient": "Premium Active Compound",
-    "packaging": "250 ML, 1 L",
-    "productCode": "VA-MOON-LINK-250ML",
-    "status": {
-      "en": "Premium Quality Compound",
-      "ur": "اعلیٰ معیار کا مرکب"
-    },
-    "description": {
-      "en": "MOON LINK is a premium dynamic crop solution engineered under strict international standards to optimize harvest quality and yield.",
-      "ur": "MOON LINK ایک بہترین اور اعلیٰ معیار کا مرکب ہے جو عالمی معیار کے مطابق تیار کیا گیا ہے۔"
-    },
-    "features": {
-      "en": [
-        "Enhances crop resilience and vitality",
-        "Protects against standard stress factors",
-        "Improves overall yield quality"
-      ],
-      "ur": [
-        "فصل کی قوت مدافعت کو بڑھاتا ہے",
-        "بیماریوں اور کیڑوں سے محفوظ رکھتا ہے",
-        "پیداوار کی کوالٹی کو بہتر بناتا ہے"
-      ]
-    },
-    "benefits": {
-      "en": [
-        "Enhances crop resilience and vitality",
-        "Protects against standard stress factors",
-        "Improves overall yield quality"
-      ],
-      "ur": [
-        "فصل کی قوت مدافعت کو بڑھاتا ہے",
-        "بیماریوں اور کیڑوں سے محفوظ رکھتا ہے",
-        "پیداوار کی کوالٹی کو بہتر بناتا ہے"
-      ]
-    },
-    "crops": [
-      {
-        "name": {
-          "en": "Cotton",
-          "ur": "کپاس"
-        },
-        "icon": "🌱"
-      },
-      {
-        "name": {
-          "en": "Rice",
-          "ur": "دھان"
-        },
-        "icon": "🌾"
-      },
-      {
-        "name": {
-          "en": "Maize",
-          "ur": "مکئی"
-        },
-        "icon": "🌽"
-      },
-      {
-        "name": {
-          "en": "Wheat",
-          "ur": "گندم"
-        },
-        "icon": "🌾"
-      }
-    ],
-    "application": {
-      "en": "Apply as a foliar spray or through irrigation as recommended.",
-      "ur": "تجویز کردہ خوراک کے مطابق اسپرے کریں یا فلڈ کریں۔"
-    },
-    "specs": {
-      "type": {
-        "en": "INSECTICIDE",
-        "ur": "insecticide"
-      },
-      "storage": {
-        "en": "Store in cool, dry ventilated place away from children.",
-        "ur": "ٹھنڈی اور خشک جگہ پر بچوں کی پہنچ سے دور رکھیں"
-      }
-    },
-    "safety": {
-      "en": [
-        "Avoid inhalation and skin contact.",
-        "Wear protective gloves and mask during spray.",
-        "Wash hands thoroughly after use."
-      ],
-      "ur": [
-        "دوا کو سونگھنے اور جلد پر گرنے سے بچائیں۔",
-        "مکسنگ اور اسپرے کے دوران دستانے اور ماسک کا استعمال کریں۔",
-        "استعمال کے بعد ہاتھ صابن سے اچھی طرح دھوئیں۔"
-      ]
-    }
-  },
-
-  "nafiz": {
-    "id": "nafiz",
-    "slug": "nafiz",
-    "name": {
-      "en": "NAFIZ - 10% EC",
-      "ur": "NAFIZ"
-    },
-    "genericName": {
-      "en": "Biotech Compound",
-      "ur": "بائیوٹیک فارمولا"
-    },
-    "category": "insecticide",
-    "tagline": "NAFIZ — Advanced Crop Solution",
-    "imageUrl": "/products/nafiz.png",
-    "pngUrl": "/products/nafiz.png",
-    "rating": 4.8,
-    "sizes": [
-      {
-        "size": "250 ML",
-        "price": 699,
-        "oldPrice": 699,
-        "stockStatus": "In Stock",
-        "sku": "VA-NAFIZ-250ML",
-        "weight": "0.25kg"
-      },
-      {
-        "size": "1 L",
-        "price": 2399,
-        "oldPrice": 2399,
-        "stockStatus": "In Stock",
-        "sku": "VA-NAFIZ-1L",
-        "weight": "1kg"
-      }
-    ],
-    "formulation": "Emulsifiable Concentrate",
-    "activeIngredient": "Premium Active Compound",
-    "packaging": "250 ML, 1 L",
-    "productCode": "VA-NAFIZ-250ML",
-    "status": {
-      "en": "Premium Quality Compound",
-      "ur": "اعلیٰ معیار کا مرکب"
-    },
-    "description": {
-      "en": "NAFIZ is a premium dynamic crop solution engineered under strict international standards to optimize harvest quality and yield.",
-      "ur": "NAFIZ ایک بہترین اور اعلیٰ معیار کا مرکب ہے جو عالمی معیار کے مطابق تیار کیا گیا ہے۔"
-    },
-    "features": {
-      "en": [
-        "Enhances crop resilience and vitality",
-        "Protects against standard stress factors",
-        "Improves overall yield quality"
-      ],
-      "ur": [
-        "فصل کی قوت مدافعت کو بڑھاتا ہے",
-        "بیماریوں اور کیڑوں سے محفوظ رکھتا ہے",
-        "پیداوار کی کوالٹی کو بہتر بناتا ہے"
-      ]
-    },
-    "benefits": {
-      "en": [
-        "Enhances crop resilience and vitality",
-        "Protects against standard stress factors",
-        "Improves overall yield quality"
-      ],
-      "ur": [
-        "فصل کی قوت مدافعت کو بڑھاتا ہے",
-        "بیماریوں اور کیڑوں سے محفوظ رکھتا ہے",
-        "پیداوار کی کوالٹی کو بہتر بناتا ہے"
-      ]
-    },
-    "crops": [
-      {
-        "name": {
-          "en": "Cotton",
-          "ur": "کپاس"
-        },
-        "icon": "🌱"
-      },
-      {
-        "name": {
-          "en": "Rice",
-          "ur": "دھان"
-        },
-        "icon": "🌾"
-      },
-      {
-        "name": {
-          "en": "Maize",
-          "ur": "مکئی"
-        },
-        "icon": "🌽"
-      },
-      {
-        "name": {
-          "en": "Wheat",
-          "ur": "گندم"
-        },
-        "icon": "🌾"
-      }
-    ],
-    "application": {
-      "en": "Apply as a foliar spray or through irrigation as recommended.",
-      "ur": "تجویز کردہ خوراک کے مطابق اسپرے کریں یا فلڈ کریں۔"
-    },
-    "specs": {
-      "type": {
-        "en": "INSECTICIDE",
-        "ur": "insecticide"
-      },
-      "storage": {
-        "en": "Store in cool, dry ventilated place away from children.",
-        "ur": "ٹھنڈی اور خشک جگہ پر بچوں کی پہنچ سے دور رکھیں"
-      }
-    },
-    "safety": {
-      "en": [
-        "Avoid inhalation and skin contact.",
-        "Wear protective gloves and mask during spray.",
-        "Wash hands thoroughly after use."
-      ],
-      "ur": [
-        "دوا کو سونگھنے اور جلد پر گرنے سے بچائیں۔",
-        "مکسنگ اور اسپرے کے دوران دستانے اور ماسک کا استعمال کریں۔",
-        "استعمال کے بعد ہاتھ صابن سے اچھی طرح دھوئیں۔"
-      ]
-    }
-  },
-
-  "olive-mix": {
-    "id": "olive-mix",
-    "slug": "olive-mix",
-    "name": {
-      "en": "OLIVE MIX - 10% EC",
-      "ur": "OLIVE MIX"
-    },
-    "genericName": {
-      "en": "Biotech Compound",
-      "ur": "بائیوٹیک فارمولا"
-    },
-    "category": "insecticide",
-    "tagline": "OLIVE MIX — Advanced Crop Solution",
-    "imageUrl": "/products/olive-mix.png",
-    "pngUrl": "/products/olive-mix.png",
-    "rating": 4.8,
-    "sizes": [
-      {
-        "size": "250 ML",
-        "price": 699,
-        "oldPrice": 699,
-        "stockStatus": "In Stock",
-        "sku": "VA-OLIVE-MIX-250ML",
-        "weight": "0.25kg"
-      },
-      {
-        "size": "1 L",
-        "price": 2399,
-        "oldPrice": 2399,
-        "stockStatus": "In Stock",
-        "sku": "VA-OLIVE-MIX-1L",
-        "weight": "1kg"
-      }
-    ],
-    "formulation": "Emulsifiable Concentrate",
-    "activeIngredient": "Premium Active Compound",
-    "packaging": "250 ML, 1 L",
-    "productCode": "VA-OLIVE-MIX-250ML",
-    "status": {
-      "en": "Premium Quality Compound",
-      "ur": "اعلیٰ معیار کا مرکب"
-    },
-    "description": {
-      "en": "OLIVE MIX is a premium dynamic crop solution engineered under strict international standards to optimize harvest quality and yield.",
-      "ur": "OLIVE MIX ایک بہترین اور اعلیٰ معیار کا مرکب ہے جو عالمی معیار کے مطابق تیار کیا گیا ہے۔"
-    },
-    "features": {
-      "en": [
-        "Enhances crop resilience and vitality",
-        "Protects against standard stress factors",
-        "Improves overall yield quality"
-      ],
-      "ur": [
-        "فصل کی قوت مدافعت کو بڑھاتا ہے",
-        "بیماریوں اور کیڑوں سے محفوظ رکھتا ہے",
-        "پیداوار کی کوالٹی کو بہتر بناتا ہے"
-      ]
-    },
-    "benefits": {
-      "en": [
-        "Enhances crop resilience and vitality",
-        "Protects against standard stress factors",
-        "Improves overall yield quality"
-      ],
-      "ur": [
-        "فصل کی قوت مدافعت کو بڑھاتا ہے",
-        "بیماریوں اور کیڑوں سے محفوظ رکھتا ہے",
-        "پیداوار کی کوالٹی کو بہتر بناتا ہے"
-      ]
-    },
-    "crops": [
-      {
-        "name": {
-          "en": "Cotton",
-          "ur": "کپاس"
-        },
-        "icon": "🌱"
-      },
-      {
-        "name": {
-          "en": "Rice",
-          "ur": "دھان"
-        },
-        "icon": "🌾"
-      },
-      {
-        "name": {
-          "en": "Maize",
-          "ur": "مکئی"
-        },
-        "icon": "🌽"
-      },
-      {
-        "name": {
-          "en": "Wheat",
-          "ur": "گندم"
-        },
-        "icon": "🌾"
-      }
-    ],
-    "application": {
-      "en": "Apply as a foliar spray or through irrigation as recommended.",
-      "ur": "تجویز کردہ خوراک کے مطابق اسپرے کریں یا فلڈ کریں۔"
-    },
-    "specs": {
-      "type": {
-        "en": "INSECTICIDE",
-        "ur": "insecticide"
-      },
-      "storage": {
-        "en": "Store in cool, dry ventilated place away from children.",
-        "ur": "ٹھنڈی اور خشک جگہ پر بچوں کی پہنچ سے دور رکھیں"
-      }
-    },
-    "safety": {
-      "en": [
-        "Avoid inhalation and skin contact.",
-        "Wear protective gloves and mask during spray.",
-        "Wash hands thoroughly after use."
-      ],
-      "ur": [
-        "دوا کو سونگھنے اور جلد پر گرنے سے بچائیں۔",
-        "مکسنگ اور اسپرے کے دوران دستانے اور ماسک کا استعمال کریں۔",
-        "استعمال کے بعد ہاتھ صابن سے اچھی طرح دھوئیں۔"
-      ]
-    }
-  },
-
-  "peaso-gold": {
-    "id": "peaso-gold",
-    "slug": "peaso-gold",
-    "name": {
-      "en": "PEASO GOLD - 10% EC",
-      "ur": "PEASO GOLD"
-    },
-    "genericName": {
-      "en": "Biotech Compound",
-      "ur": "بائیوٹیک فارمولا"
-    },
-    "category": "insecticide",
-    "tagline": "PEASO GOLD — Advanced Crop Solution",
-    "imageUrl": "/products/peaso-gold.png",
-    "pngUrl": "/products/peaso-gold.png",
-    "rating": 4.8,
-    "sizes": [
-      {
-        "size": "250 ML",
-        "price": 699,
-        "oldPrice": 699,
-        "stockStatus": "In Stock",
-        "sku": "VA-PEASO-GOLD-250ML",
-        "weight": "0.25kg"
-      },
-      {
-        "size": "1 L",
-        "price": 2399,
-        "oldPrice": 2399,
-        "stockStatus": "In Stock",
-        "sku": "VA-PEASO-GOLD-1L",
-        "weight": "1kg"
-      }
-    ],
-    "formulation": "Emulsifiable Concentrate",
-    "activeIngredient": "Premium Active Compound",
-    "packaging": "250 ML, 1 L",
-    "productCode": "VA-PEASO-GOLD-250ML",
-    "status": {
-      "en": "Premium Quality Compound",
-      "ur": "اعلیٰ معیار کا مرکب"
-    },
-    "description": {
-      "en": "PEASO GOLD is a premium dynamic crop solution engineered under strict international standards to optimize harvest quality and yield.",
-      "ur": "PEASO GOLD ایک بہترین اور اعلیٰ معیار کا مرکب ہے جو عالمی معیار کے مطابق تیار کیا گیا ہے۔"
-    },
-    "features": {
-      "en": [
-        "Enhances crop resilience and vitality",
-        "Protects against standard stress factors",
-        "Improves overall yield quality"
-      ],
-      "ur": [
-        "فصل کی قوت مدافعت کو بڑھاتا ہے",
-        "بیماریوں اور کیڑوں سے محفوظ رکھتا ہے",
-        "پیداوار کی کوالٹی کو بہتر بناتا ہے"
-      ]
-    },
-    "benefits": {
-      "en": [
-        "Enhances crop resilience and vitality",
-        "Protects against standard stress factors",
-        "Improves overall yield quality"
-      ],
-      "ur": [
-        "فصل کی قوت مدافعت کو بڑھاتا ہے",
-        "بیماریوں اور کیڑوں سے محفوظ رکھتا ہے",
-        "پیداوار کی کوالٹی کو بہتر بناتا ہے"
-      ]
-    },
-    "crops": [
-      {
-        "name": {
-          "en": "Cotton",
-          "ur": "کپاس"
-        },
-        "icon": "🌱"
-      },
-      {
-        "name": {
-          "en": "Rice",
-          "ur": "دھان"
-        },
-        "icon": "🌾"
-      },
-      {
-        "name": {
-          "en": "Maize",
-          "ur": "مکئی"
-        },
-        "icon": "🌽"
-      },
-      {
-        "name": {
-          "en": "Wheat",
-          "ur": "گندم"
-        },
-        "icon": "🌾"
-      }
-    ],
-    "application": {
-      "en": "Apply as a foliar spray or through irrigation as recommended.",
-      "ur": "تجویز کردہ خوراک کے مطابق اسپرے کریں یا فلڈ کریں۔"
-    },
-    "specs": {
-      "type": {
-        "en": "INSECTICIDE",
-        "ur": "insecticide"
-      },
-      "storage": {
-        "en": "Store in cool, dry ventilated place away from children.",
-        "ur": "ٹھنڈی اور خشک جگہ پر بچوں کی پہنچ سے دور رکھیں"
-      }
-    },
-    "safety": {
-      "en": [
-        "Avoid inhalation and skin contact.",
-        "Wear protective gloves and mask during spray.",
-        "Wash hands thoroughly after use."
-      ],
-      "ur": [
-        "دوا کو سونگھنے اور جلد پر گرنے سے بچائیں۔",
-        "مکسنگ اور اسپرے کے دوران دستانے اور ماسک کا استعمال کریں۔",
-        "استعمال کے بعد ہاتھ صابن سے اچھی طرح دھوئیں۔"
-      ]
-    }
-  },
-
-  "pulip": {
-    "id": "pulip",
-    "slug": "pulip",
-    "name": {
-      "en": "PULIP - 10% EC",
-      "ur": "PULIP"
-    },
-    "genericName": {
-      "en": "Biotech Compound",
-      "ur": "بائیوٹیک فارمولا"
-    },
-    "category": "insecticide",
-    "tagline": "PULIP — Advanced Crop Solution",
-    "imageUrl": "/products/pulip.png",
-    "pngUrl": "/products/pulip.png",
-    "rating": 4.8,
-    "sizes": [
-      {
-        "size": "250 ML",
-        "price": 699,
-        "oldPrice": 699,
-        "stockStatus": "In Stock",
-        "sku": "VA-PULIP-250ML",
-        "weight": "0.25kg"
-      },
-      {
-        "size": "1 L",
-        "price": 2399,
-        "oldPrice": 2399,
-        "stockStatus": "In Stock",
-        "sku": "VA-PULIP-1L",
-        "weight": "1kg"
-      }
-    ],
-    "formulation": "Emulsifiable Concentrate",
-    "activeIngredient": "Premium Active Compound",
-    "packaging": "250 ML, 1 L",
-    "productCode": "VA-PULIP-250ML",
-    "status": {
-      "en": "Premium Quality Compound",
-      "ur": "اعلیٰ معیار کا مرکب"
-    },
-    "description": {
-      "en": "PULIP is a premium dynamic crop solution engineered under strict international standards to optimize harvest quality and yield.",
-      "ur": "PULIP ایک بہترین اور اعلیٰ معیار کا مرکب ہے جو عالمی معیار کے مطابق تیار کیا گیا ہے۔"
-    },
-    "features": {
-      "en": [
-        "Enhances crop resilience and vitality",
-        "Protects against standard stress factors",
-        "Improves overall yield quality"
-      ],
-      "ur": [
-        "فصل کی قوت مدافعت کو بڑھاتا ہے",
-        "بیماریوں اور کیڑوں سے محفوظ رکھتا ہے",
-        "پیداوار کی کوالٹی کو بہتر بناتا ہے"
-      ]
-    },
-    "benefits": {
-      "en": [
-        "Enhances crop resilience and vitality",
-        "Protects against standard stress factors",
-        "Improves overall yield quality"
-      ],
-      "ur": [
-        "فصل کی قوت مدافعت کو بڑھاتا ہے",
-        "بیماریوں اور کیڑوں سے محفوظ رکھتا ہے",
-        "پیداوار کی کوالٹی کو بہتر بناتا ہے"
-      ]
-    },
-    "crops": [
-      {
-        "name": {
-          "en": "Cotton",
-          "ur": "کپاس"
-        },
-        "icon": "🌱"
-      },
-      {
-        "name": {
-          "en": "Rice",
-          "ur": "دھان"
-        },
-        "icon": "🌾"
-      },
-      {
-        "name": {
-          "en": "Maize",
-          "ur": "مکئی"
-        },
-        "icon": "🌽"
-      },
-      {
-        "name": {
-          "en": "Wheat",
-          "ur": "گندم"
-        },
-        "icon": "🌾"
-      }
-    ],
-    "application": {
-      "en": "Apply as a foliar spray or through irrigation as recommended.",
-      "ur": "تجویز کردہ خوراک کے مطابق اسپرے کریں یا فلڈ کریں۔"
-    },
-    "specs": {
-      "type": {
-        "en": "INSECTICIDE",
-        "ur": "insecticide"
-      },
-      "storage": {
-        "en": "Store in cool, dry ventilated place away from children.",
-        "ur": "ٹھنڈی اور خشک جگہ پر بچوں کی پہنچ سے دور رکھیں"
-      }
-    },
-    "safety": {
-      "en": [
-        "Avoid inhalation and skin contact.",
-        "Wear protective gloves and mask during spray.",
-        "Wash hands thoroughly after use."
-      ],
-      "ur": [
-        "دوا کو سونگھنے اور جلد پر گرنے سے بچائیں۔",
-        "مکسنگ اور اسپرے کے دوران دستانے اور ماسک کا استعمال کریں۔",
-        "استعمال کے بعد ہاتھ صابن سے اچھی طرح دھوئیں۔"
-      ]
-    }
-  },
-
-  "push-up": {
-    "id": "push-up",
-    "slug": "push-up",
-    "name": {
-      "en": "PUSH UP - 10% EC",
-      "ur": "PUSH UP"
-    },
-    "genericName": {
-      "en": "Biotech Compound",
-      "ur": "بائیوٹیک فارمولا"
-    },
-    "category": "insecticide",
-    "tagline": "PUSH UP — Advanced Crop Solution",
-    "imageUrl": "/products/push-up.png",
-    "pngUrl": "/products/push-up.png",
-    "rating": 4.8,
-    "sizes": [
-      {
-        "size": "250 ML",
-        "price": 699,
-        "oldPrice": 699,
-        "stockStatus": "In Stock",
-        "sku": "VA-PUSH-UP-250ML",
-        "weight": "0.25kg"
-      },
-      {
-        "size": "1 L",
-        "price": 2399,
-        "oldPrice": 2399,
-        "stockStatus": "In Stock",
-        "sku": "VA-PUSH-UP-1L",
-        "weight": "1kg"
-      }
-    ],
-    "formulation": "Emulsifiable Concentrate",
-    "activeIngredient": "Premium Active Compound",
-    "packaging": "250 ML, 1 L",
-    "productCode": "VA-PUSH-UP-250ML",
-    "status": {
-      "en": "Premium Quality Compound",
-      "ur": "اعلیٰ معیار کا مرکب"
-    },
-    "description": {
-      "en": "PUSH UP is a premium dynamic crop solution engineered under strict international standards to optimize harvest quality and yield.",
-      "ur": "PUSH UP ایک بہترین اور اعلیٰ معیار کا مرکب ہے جو عالمی معیار کے مطابق تیار کیا گیا ہے۔"
-    },
-    "features": {
-      "en": [
-        "Enhances crop resilience and vitality",
-        "Protects against standard stress factors",
-        "Improves overall yield quality"
-      ],
-      "ur": [
-        "فصل کی قوت مدافعت کو بڑھاتا ہے",
-        "بیماریوں اور کیڑوں سے محفوظ رکھتا ہے",
-        "پیداوار کی کوالٹی کو بہتر بناتا ہے"
-      ]
-    },
-    "benefits": {
-      "en": [
-        "Enhances crop resilience and vitality",
-        "Protects against standard stress factors",
-        "Improves overall yield quality"
-      ],
-      "ur": [
-        "فصل کی قوت مدافعت کو بڑھاتا ہے",
-        "بیماریوں اور کیڑوں سے محفوظ رکھتا ہے",
-        "پیداوار کی کوالٹی کو بہتر بناتا ہے"
-      ]
-    },
-    "crops": [
-      {
-        "name": {
-          "en": "Cotton",
-          "ur": "کپاس"
-        },
-        "icon": "🌱"
-      },
-      {
-        "name": {
-          "en": "Rice",
-          "ur": "دھان"
-        },
-        "icon": "🌾"
-      },
-      {
-        "name": {
-          "en": "Maize",
-          "ur": "مکئی"
-        },
-        "icon": "🌽"
-      },
-      {
-        "name": {
-          "en": "Wheat",
-          "ur": "گندم"
-        },
-        "icon": "🌾"
-      }
-    ],
-    "application": {
-      "en": "Apply as a foliar spray or through irrigation as recommended.",
-      "ur": "تجویز کردہ خوراک کے مطابق اسپرے کریں یا فلڈ کریں۔"
-    },
-    "specs": {
-      "type": {
-        "en": "INSECTICIDE",
-        "ur": "insecticide"
-      },
-      "storage": {
-        "en": "Store in cool, dry ventilated place away from children.",
-        "ur": "ٹھنڈی اور خشک جگہ پر بچوں کی پہنچ سے دور رکھیں"
-      }
-    },
-    "safety": {
-      "en": [
-        "Avoid inhalation and skin contact.",
-        "Wear protective gloves and mask during spray.",
-        "Wash hands thoroughly after use."
-      ],
-      "ur": [
-        "دوا کو سونگھنے اور جلد پر گرنے سے بچائیں۔",
-        "مکسنگ اور اسپرے کے دوران دستانے اور ماسک کا استعمال کریں۔",
-        "استعمال کے بعد ہاتھ صابن سے اچھی طرح دھوئیں۔"
-      ]
-    }
-  },
-
-  "sabeel": {
-    "id": "sabeel",
-    "slug": "sabeel",
-    "name": {
-      "en": "SABEEL - 10% EC",
-      "ur": "SABEEL"
-    },
-    "genericName": {
-      "en": "Biotech Compound",
-      "ur": "بائیوٹیک فارمولا"
-    },
-    "category": "insecticide",
-    "tagline": "SABEEL — Advanced Crop Solution",
-    "imageUrl": "/products/sabeel.png",
-    "pngUrl": "/products/sabeel.png",
-    "rating": 4.8,
-    "sizes": [
-      {
-        "size": "250 ML",
-        "price": 699,
-        "oldPrice": 699,
-        "stockStatus": "In Stock",
-        "sku": "VA-SABEEL-250ML",
-        "weight": "0.25kg"
-      },
-      {
-        "size": "1 L",
-        "price": 2399,
-        "oldPrice": 2399,
-        "stockStatus": "In Stock",
-        "sku": "VA-SABEEL-1L",
-        "weight": "1kg"
-      }
-    ],
-    "formulation": "Emulsifiable Concentrate",
-    "activeIngredient": "Premium Active Compound",
-    "packaging": "250 ML, 1 L",
-    "productCode": "VA-SABEEL-250ML",
-    "status": {
-      "en": "Premium Quality Compound",
-      "ur": "اعلیٰ معیار کا مرکب"
-    },
-    "description": {
-      "en": "SABEEL is a premium dynamic crop solution engineered under strict international standards to optimize harvest quality and yield.",
-      "ur": "SABEEL ایک بہترین اور اعلیٰ معیار کا مرکب ہے جو عالمی معیار کے مطابق تیار کیا گیا ہے۔"
-    },
-    "features": {
-      "en": [
-        "Enhances crop resilience and vitality",
-        "Protects against standard stress factors",
-        "Improves overall yield quality"
-      ],
-      "ur": [
-        "فصل کی قوت مدافعت کو بڑھاتا ہے",
-        "بیماریوں اور کیڑوں سے محفوظ رکھتا ہے",
-        "پیداوار کی کوالٹی کو بہتر بناتا ہے"
-      ]
-    },
-    "benefits": {
-      "en": [
-        "Enhances crop resilience and vitality",
-        "Protects against standard stress factors",
-        "Improves overall yield quality"
-      ],
-      "ur": [
-        "فصل کی قوت مدافعت کو بڑھاتا ہے",
-        "بیماریوں اور کیڑوں سے محفوظ رکھتا ہے",
-        "پیداوار کی کوالٹی کو بہتر بناتا ہے"
-      ]
-    },
-    "crops": [
-      {
-        "name": {
-          "en": "Cotton",
-          "ur": "کپاس"
-        },
-        "icon": "🌱"
-      },
-      {
-        "name": {
-          "en": "Rice",
-          "ur": "دھان"
-        },
-        "icon": "🌾"
-      },
-      {
-        "name": {
-          "en": "Maize",
-          "ur": "مکئی"
-        },
-        "icon": "🌽"
-      },
-      {
-        "name": {
-          "en": "Wheat",
-          "ur": "گندم"
-        },
-        "icon": "🌾"
-      }
-    ],
-    "application": {
-      "en": "Apply as a foliar spray or through irrigation as recommended.",
-      "ur": "تجویز کردہ خوراک کے مطابق اسپرے کریں یا فلڈ کریں۔"
-    },
-    "specs": {
-      "type": {
-        "en": "INSECTICIDE",
-        "ur": "insecticide"
-      },
-      "storage": {
-        "en": "Store in cool, dry ventilated place away from children.",
-        "ur": "ٹھنڈی اور خشک جگہ پر بچوں کی پہنچ سے دور رکھیں"
-      }
-    },
-    "safety": {
-      "en": [
-        "Avoid inhalation and skin contact.",
-        "Wear protective gloves and mask during spray.",
-        "Wash hands thoroughly after use."
-      ],
-      "ur": [
-        "دوا کو سونگھنے اور جلد پر گرنے سے بچائیں۔",
-        "مکسنگ اور اسپرے کے دوران دستانے اور ماسک کا استعمال کریں۔",
-        "استعمال کے بعد ہاتھ صابن سے اچھی طرح دھوئیں۔"
-      ]
-    }
-  },
-
-  "ultranano": {
-    "id": "ultranano",
-    "slug": "ultranano",
-    "name": {
-      "en": "ULTRANANO - 10% EC",
-      "ur": "ULTRANANO"
-    },
-    "genericName": {
-      "en": "Biotech Compound",
-      "ur": "بائیوٹیک فارمولا"
-    },
-    "category": "insecticide",
-    "tagline": "ULTRANANO — Advanced Crop Solution",
-    "imageUrl": "/products/ultranano.png",
-    "pngUrl": "/products/ultranano.png",
-    "rating": 4.8,
-    "sizes": [
-      {
-        "size": "250 ML",
-        "price": 699,
-        "oldPrice": 699,
-        "stockStatus": "In Stock",
-        "sku": "VA-ULTRANANO-250ML",
-        "weight": "0.25kg"
-      },
-      {
-        "size": "1 L",
-        "price": 2399,
-        "oldPrice": 2399,
-        "stockStatus": "In Stock",
-        "sku": "VA-ULTRANANO-1L",
-        "weight": "1kg"
-      }
-    ],
-    "formulation": "Emulsifiable Concentrate",
-    "activeIngredient": "Premium Active Compound",
-    "packaging": "250 ML, 1 L",
-    "productCode": "VA-ULTRANANO-250ML",
-    "status": {
-      "en": "Premium Quality Compound",
-      "ur": "اعلیٰ معیار کا مرکب"
-    },
-    "description": {
-      "en": "ULTRANANO is a premium dynamic crop solution engineered under strict international standards to optimize harvest quality and yield.",
-      "ur": "ULTRANANO ایک بہترین اور اعلیٰ معیار کا مرکب ہے جو عالمی معیار کے مطابق تیار کیا گیا ہے۔"
-    },
-    "features": {
-      "en": [
-        "Enhances crop resilience and vitality",
-        "Protects against standard stress factors",
-        "Improves overall yield quality"
-      ],
-      "ur": [
-        "فصل کی قوت مدافعت کو بڑھاتا ہے",
-        "بیماریوں اور کیڑوں سے محفوظ رکھتا ہے",
-        "پیداوار کی کوالٹی کو بہتر بناتا ہے"
-      ]
-    },
-    "benefits": {
-      "en": [
-        "Enhances crop resilience and vitality",
-        "Protects against standard stress factors",
-        "Improves overall yield quality"
-      ],
-      "ur": [
-        "فصل کی قوت مدافعت کو بڑھاتا ہے",
-        "بیماریوں اور کیڑوں سے محفوظ رکھتا ہے",
-        "پیداوار کی کوالٹی کو بہتر بناتا ہے"
-      ]
-    },
-    "crops": [
-      {
-        "name": {
-          "en": "Cotton",
-          "ur": "کپاس"
-        },
-        "icon": "🌱"
-      },
-      {
-        "name": {
-          "en": "Rice",
-          "ur": "دھان"
-        },
-        "icon": "🌾"
-      },
-      {
-        "name": {
-          "en": "Maize",
-          "ur": "مکئی"
-        },
-        "icon": "🌽"
-      },
-      {
-        "name": {
-          "en": "Wheat",
-          "ur": "گندم"
-        },
-        "icon": "🌾"
-      }
-    ],
-    "application": {
-      "en": "Apply as a foliar spray or through irrigation as recommended.",
-      "ur": "تجویز کردہ خوراک کے مطابق اسپرے کریں یا فلڈ کریں۔"
-    },
-    "specs": {
-      "type": {
-        "en": "INSECTICIDE",
-        "ur": "insecticide"
-      },
-      "storage": {
-        "en": "Store in cool, dry ventilated place away from children.",
-        "ur": "ٹھنڈی اور خشک جگہ پر بچوں کی پہنچ سے دور رکھیں"
-      }
-    },
-    "safety": {
-      "en": [
-        "Avoid inhalation and skin contact.",
-        "Wear protective gloves and mask during spray.",
-        "Wash hands thoroughly after use."
-      ],
-      "ur": [
-        "دوا کو سونگھنے اور جلد پر گرنے سے بچائیں۔",
-        "مکسنگ اور اسپرے کے دوران دستانے اور ماسک کا استعمال کریں۔",
-        "استعمال کے بعد ہاتھ صابن سے اچھی طرح دھوئیں۔"
-      ]
-    }
-  },
-
-  "vital-phos": {
-    "id": "vital-phos",
-    "slug": "vital-phos",
-    "name": {
-      "en": "VITAL PHOS - 10% EC",
-      "ur": "VITAL PHOS"
-    },
-    "genericName": {
-      "en": "Biotech Compound",
-      "ur": "بائیوٹیک فارمولا"
-    },
-    "category": "plant-nutrition",
-    "tagline": "VITAL PHOS — Advanced Crop Solution",
-    "imageUrl": "/products/vital-phos.png",
-    "pngUrl": "/products/vital-phos.png",
-    "rating": 4.8,
-    "sizes": [
-      {
-            "size": "10 LTR",
-            "price": 6650,
-            "oldPrice": 6650,
-            "sku": "VA-VITAL-PHOS-10LTR",
-            "weight": "10kg",
-            "stockStatus": "In Stock"
-      },
-      {
-            "size": "20 LTR",
-            "price": 6650,
-            "oldPrice": 12999,
-            "sku": "VA-VITAL-PHOS-20LTR",
-            "weight": "20kg",
-            "stockStatus": "In Stock"
-      }
-],
-    "formulation": "Emulsifiable Concentrate",
-    "activeIngredient": "Premium Active Compound",
-    "packaging": "250 ML, 1 L",
-    "productCode": "VA-VITAL-PHOS-250ML",
-    "status": {
-      "en": "Premium Quality Compound",
-      "ur": "اعلیٰ معیار کا مرکب"
-    },
-    "description": {
-      "en": "VITAL PHOS is a premium dynamic crop solution engineered under strict international standards to optimize harvest quality and yield.",
-      "ur": "VITAL PHOS ایک بہترین اور اعلیٰ معیار کا مرکب ہے جو عالمی معیار کے مطابق تیار کیا گیا ہے۔"
-    },
-    "features": {
-      "en": [
-        "Enhances crop resilience and vitality",
-        "Protects against standard stress factors",
-        "Improves overall yield quality"
-      ],
-      "ur": [
-        "فصل کی قوت مدافعت کو بڑھاتا ہے",
-        "بیماریوں اور کیڑوں سے محفوظ رکھتا ہے",
-        "پیداوار کی کوالٹی کو بہتر بناتا ہے"
-      ]
-    },
-    "benefits": {
-      "en": [
-        "Enhances crop resilience and vitality",
-        "Protects against standard stress factors",
-        "Improves overall yield quality"
-      ],
-      "ur": [
-        "فصل کی قوت مدافعت کو بڑھاتا ہے",
-        "بیماریوں اور کیڑوں سے محفوظ رکھتا ہے",
-        "پیداوار کی کوالٹی کو بہتر بناتا ہے"
-      ]
-    },
-    "crops": [
-      {
-        "name": {
-          "en": "Cotton",
-          "ur": "کپاس"
-        },
-        "icon": "🌱"
-      },
-      {
-        "name": {
-          "en": "Rice",
-          "ur": "دھان"
-        },
-        "icon": "🌾"
-      },
-      {
-        "name": {
-          "en": "Maize",
-          "ur": "مکئی"
-        },
-        "icon": "🌽"
-      },
-      {
-        "name": {
-          "en": "Wheat",
-          "ur": "گندم"
-        },
-        "icon": "🌾"
-      }
-    ],
-    "application": {
-      "en": "Apply as a foliar spray or through irrigation as recommended.",
-      "ur": "تجویز کردہ خوراک کے مطابق اسپرے کریں یا فلڈ کریں۔"
-    },
-    "specs": {
-      "type": {
-        "en": "PLANT NUTRITION",
-        "ur": "plant-nutrition"
-      },
-      "storage": {
-        "en": "Store in cool, dry ventilated place away from children.",
-        "ur": "ٹھنڈی اور خشک جگہ پر بچوں کی پہنچ سے دور رکھیں"
-      }
-    },
-    "safety": {
-      "en": [
-        "Avoid inhalation and skin contact.",
-        "Wear protective gloves and mask during spray.",
-        "Wash hands thoroughly after use."
-      ],
-      "ur": [
-        "دوا کو سونگھنے اور جلد پر گرنے سے بچائیں۔",
-        "مکسنگ اور اسپرے کے دوران دستانے اور ماسک کا استعمال کریں۔",
-        "استعمال کے بعد ہاتھ صابن سے اچھی طرح دھوئیں۔"
-      ]
-    }
+        "size": "600 ML",
+        "price": 1730,
+        "oldPrice": 1730,
+        "sku": "VA-FAALQ_GOLD-600ML",
+        "weight": "0.6kg",
+        "stockStatus": "In Stock"
+      }
+    ],
+    "price": 1730,
+    "oldPrice": 1730
   }
 };

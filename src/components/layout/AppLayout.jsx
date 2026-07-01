@@ -9,6 +9,7 @@ import { MobileBottomNav } from './MobileBottomNav';
 import BiotechParticles from './BiotechParticles';
 import TopTicker from './TopTicker';
 import IntroVideoModal from './IntroVideoModal';
+import GlobalSearchOverlay from './GlobalSearchOverlay';
 
 export default function AppLayout() {
   const location = useLocation();
@@ -16,11 +17,11 @@ export default function AppLayout() {
   return (
     <div className="min-h-screen flex flex-col bioluminescent-grid text-emerald-950 relative">
       <BiotechParticles />
-      {/* Cinematic Volumetric Light Blobs for Trillion-Dollar Web Aesthetic */}
+      {/* Subtle Volumetric Light Blobs for Premium Aesthetic */}
       <div className="fixed inset-0 overflow-hidden pointer-events-none z-0">
-        <div className="absolute -top-[10%] left-[5%] w-[45vw] h-[45vw] rounded-full bg-emerald-500/5 blur-[120px] mix-blend-screen animate-pulse" style={{ animationDuration: '12s' }} />
-        <div className="absolute top-[30%] right-[-5%] w-[50vw] h-[50vw] rounded-full bg-lime-500/4 blur-[160px] mix-blend-screen animate-pulse" style={{ animationDuration: '18s' }} />
-        <div className="absolute bottom-[-10%] left-[10%] w-[40vw] h-[40vw] rounded-full bg-emerald-600/5 blur-[140px] mix-blend-screen animate-pulse" style={{ animationDuration: '15s' }} />
+        <div className="absolute -top-[10%] left-[5%] w-[45vw] h-[45vw] rounded-full bg-[#0E7A43]/[0.025] blur-[120px] mix-blend-screen animate-pulse" style={{ animationDuration: '12s' }} />
+        <div className="absolute top-[30%] right-[-5%] w-[50vw] h-[50vw] rounded-full bg-[#0E7A43]/[0.02] blur-[160px] mix-blend-screen animate-pulse" style={{ animationDuration: '18s' }} />
+        <div className="absolute bottom-[-10%] left-[10%] w-[40vw] h-[40vw] rounded-full bg-[#0E7A43]/[0.025] blur-[140px] mix-blend-screen animate-pulse" style={{ animationDuration: '15s' }} />
       </div>
       <ScrollToTop />
       <TopTicker />
@@ -42,6 +43,7 @@ export default function AppLayout() {
       <FloatingButtons />
       <MobileBottomNav />
       <IntroVideoModal />
+      <GlobalSearchOverlay />
     </div>
   );
 }

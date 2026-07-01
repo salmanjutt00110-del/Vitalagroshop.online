@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
 import { useLanguage } from '@/lib/LanguageContext';
 import { PRODUCTS_DATA, getProductImage } from '@/data/productsData';
 import { useApp } from '@/contexts/AppContext';
-import { ShoppingCart, Info, ArrowRight } from 'lucide-react';
+import { ShoppingCart, Info, ArrowRight, Search } from 'lucide-react';
 import BlurUpImage from '@/components/ui/BlurUpImage';
 
 // Pick 3 flagship products that have real images
@@ -12,7 +12,7 @@ const FEATURED_SLUGS = ['fatty', 'super-4g', 'aaqab'];
 
 export default function FeaturedProducts() {
   const { lang, t } = useLanguage();
-  const { setActiveDetailsProduct } = useApp();
+  const { setActiveDetailsProduct, setIsGlobalSearchOpen } = useApp();
   const navigate = useNavigate();
 
   const products = FEATURED_SLUGS
@@ -58,6 +58,26 @@ export default function FeaturedProducts() {
           </h2>
         </motion.div>
 
+        {/* Home Screen Search Trigger */}
+        <div className="max-w-md mx-auto mb-10 select-none px-4 relative z-20">
+          <motion.div
+            whileHover={{ scale: 1.015 }}
+            whileTap={{ scale: 0.985 }}
+            onClick={() => setIsGlobalSearchOpen(true)}
+            className="relative flex items-center group cursor-pointer bg-white/70 backdrop-blur-xl border border-[#0E7A43]/15 hover:border-[#0E7A43]/35 rounded-2xl py-3 px-4 shadow-sm transition-all duration-300"
+          >
+            <div className="flex items-center gap-3 text-[#0a331c]/60 flex-1">
+              <Search className="w-5 h-5 text-[#0E7A43]" />
+              <span className="text-xs sm:text-sm font-medium placeholder-emerald-900/40 select-none">
+                {lang === 'en' ? 'Search for products... (Ctrl+K)' : 'مصنوعات تلاش کریں...'}
+              </span>
+            </div>
+            <div className="px-4 py-1.5 bg-[#0E7A43] hover:bg-[#18C964] text-white rounded-xl text-xs font-black transition-colors flex items-center justify-center cursor-pointer shadow-sm">
+              <Search className="w-3.5 h-3.5" />
+            </div>
+          </motion.div>
+        </div>
+
         {/* Products Grid — 3 columns on mobile too */}
         <div className="grid grid-cols-3 gap-3 sm:gap-6 lg:gap-8">
           {products.map((product, idx) => (
@@ -67,10 +87,11 @@ export default function FeaturedProducts() {
               whileInView={{ opacity: 1, y: 0, scale: 1 }}
               viewport={{ once: true, margin: '-30px' }}
               transition={{ duration: 0.6, delay: idx * 0.1, ease: [0.16, 1, 0.3, 1] }}
-              className="group"
+              className="group cursor-pointer"
+              onClick={() => setActiveDetailsProduct(product)}
             >
               <div
-                className="rounded-[16px] sm:rounded-[24px] overflow-hidden border border-[#102415]/10 relative flex flex-col h-full premium-glass-card"
+                className="rounded-[16px] sm:rounded-[24px] overflow-hidden border border-[#102415]/10 relative flex flex-col h-full premium-glass-card hover:-translate-y-1.5 transition-all duration-300 hover:border-emerald-500/25 hover:shadow-[0_12px_24px_rgba(14,122,67,0.06)]"
               >
                 {/* Glare sweep */}
                 <div className="absolute inset-0 z-[5] pointer-events-none overflow-hidden rounded-[24px]">
@@ -100,31 +121,31 @@ export default function FeaturedProducts() {
 
                 {/* Info */}
                 <div className="px-2.5 sm:px-5 pb-3 sm:pb-5 flex flex-col flex-1 bg-transparent">
-                  <h3 className="text-[10px] sm:text-sm lg:text-base font-black text-[#ffffff] text-center line-clamp-1 group-hover:text-[#39D98A] transition-colors">
+                  <h3 className="text-[10px] sm:text-sm lg:text-base font-black text-[#0a331c] text-center line-clamp-1 group-hover:text-[#0E7A43] transition-colors">
                     {product.name_en}
                   </h3>
                   {product.name_ur && (lang === 'ur' || lang === 'pb') && (
-                    <p className="text-[9px] sm:text-xs text-[#39D98A] text-center font-bold mt-0.5" dir="rtl" style={{ fontFamily: "'Jameel Noori Nastaleeq', 'Noto Nastaliq Urdu', serif" }}>
+                    <p className="text-[9px] sm:text-xs text-[#0E7A43] text-center font-bold mt-0.5" dir="rtl" style={{ fontFamily: "'Jameel Noori Nastaleeq', 'Noto Nastaliq Urdu', serif" }}>
                       {product.name_ur}
                     </p>
                   )}
 
                   <div className="flex items-center justify-center mt-1.5 sm:mt-3">
-                    <span className="text-[#39D98A] font-black text-xs sm:text-lg font-mono">
-                      {product.price === 0 ? 'On Request' : `₨${product.price.toLocaleString()}`}
+                    <span className="text-[#0E7A43] font-black text-xs sm:text-lg font-mono">
+                      {product.price === 0 ? (lang === 'en' ? 'On Request' : 'قیمت طلب کریں') : `₨${product.price.toLocaleString()}`}
                     </span>
                   </div>
 
                   {/* Actions — hidden on very small mobile, shown on sm+ */}
                   <div className="hidden sm:flex gap-2 mt-3">
                     <button
-                      onClick={() => openCheckout(product)}
+                      onClick={(e) => { e.stopPropagation(); openCheckout(product); }}
                       className="flex-1 btn-premium-primary text-[9px] sm:text-[10px] tracking-wider gap-1"
                     >
                       <ShoppingCart size={11} /> Buy
                     </button>
                     <button
-                      onClick={() => setActiveDetailsProduct(product)}
+                      onClick={(e) => { e.stopPropagation(); setActiveDetailsProduct(product); }}
                       className="flex-1 btn-premium-secondary text-[9px] sm:text-[10px] tracking-wider gap-1"
                     >
                       <Info size={11} /> Details
@@ -133,7 +154,7 @@ export default function FeaturedProducts() {
 
                   {/* Mobile: single details button */}
                   <button
-                    onClick={() => setActiveDetailsProduct(product)}
+                    onClick={(e) => { e.stopPropagation(); setActiveDetailsProduct(product); }}
                     className="sm:hidden mt-2 w-full py-1.5 rounded-lg text-[8px] font-black text-[#39D98A] border border-[#39D98A]/30 bg-[#39D98A]/10 hover:bg-[#39D98A]/20 tracking-wider uppercase cursor-pointer active:scale-95 transition-all"
                   >
                     Details

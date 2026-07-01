@@ -226,7 +226,7 @@ export default function SwipeCard3D({ product, isActive, isPeek, isDragging, ope
                     className={`
                       px-2.5 py-1 rounded-lg text-[10px] font-black border transition-all duration-300
                       ${selectedSize === name
-                        ? 'bg-[#5cb85c]/20 border-[#5cb85c] text-emerald-600 scale-105 shadow-[0_0_8px_rgba(92,184,92,0.15)]'
+                        ? 'bg-[#0E7A43]/20 border-[#0E7A43] text-emerald-600 scale-105 shadow-[0_0_8px_rgba(92,184,92,0.15)]'
                         : 'bg-white/60 border-emerald-900/10 text-neutral-500 hover:text-emerald-950 hover:border-emerald-900/20'
                       }
                     `}

@@ -244,7 +244,7 @@ export default function Preloader({ onFinish }) {
                 fill="rgba(92,184,92,0.15)" stroke="rgba(92,184,92,0.4)" strokeWidth="0.5"/>
               {/* VITAL logo on trailer */}
               <text x="31" y="26" textAnchor="middle"
-                fill="#5cb85c" fontSize="7" fontWeight="bold" fontFamily="Arial">
+                fill="#0E7A43" fontSize="7" fontWeight="bold" fontFamily="Arial">
                 VITAL
               </text>
               {/* Cab */}
@@ -259,8 +259,8 @@ export default function Preloader({ onFinish }) {
                 fill="rgba(92,184,92,0.3)"
                 style={{ animation: 'smokePuff 1.5s ease-out infinite' }}/>
               {/* Light */}
-              <circle cx="95" cy="22" r="2.5" fill="#5cb85c"
-                style={{ boxShadow: '0 0 4px #5cb85c' }}/>
+              <circle cx="95" cy="22" r="2.5" fill="#0E7A43"
+                style={{ boxShadow: '0 0 4px #0E7A43' }}/>
             </svg>
           </div>
 
@@ -279,7 +279,7 @@ export default function Preloader({ onFinish }) {
                   fill="#0a2a0a" stroke="rgba(92,184,92,0.4)" strokeWidth="1.5"/>
                 <circle cx="12" cy="12" r="5"
                   fill="#1a4a1a" stroke="rgba(92,184,92,0.3)" strokeWidth="1"/>
-                <circle cx="12" cy="12" r="2" fill="#5cb85c"
+                <circle cx="12" cy="12" r="2" fill="#0E7A43"
                   style={{ filter: 'drop-shadow(0 0 3px rgba(92,184,92,0.8))' }}/>
                 {/* Wheel spokes */}
                 {[0,60,120,180,240,300].map(deg => (
@@ -326,7 +326,7 @@ export default function Preloader({ onFinish }) {
       <motion.p
         className="text-4xl font-black mb-4 relative z-10 font-mono"
         style={{
-          color: '#5cb85c',
+          color: '#0E7A43',
           textShadow: '0 0 20px rgba(92,184,92,0.6)',
           fontVariantNumeric: 'tabular-nums',
         }}
@@ -344,7 +344,7 @@ export default function Preloader({ onFinish }) {
           <motion.div
             style={{
               height: '100%', borderRadius: 99,
-              background: 'linear-gradient(90deg, #2d6a2d, #5cb85c)',
+              background: 'linear-gradient(90deg, #2d6a2d, #0E7A43)',
               boxShadow: '0 0 10px rgba(92,184,92,0.5)',
             }}
             animate={{ width: `${progress}%` }}

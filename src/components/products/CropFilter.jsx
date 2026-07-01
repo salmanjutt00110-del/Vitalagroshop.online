@@ -24,7 +24,7 @@ export default function CropFilter({ onCropSelect, activeCrop }) {
     <div className="mb-8">
       <div
         className={`rounded-2xl overflow-hidden border transition-all duration-300 ${
-          activeCrop ? 'border-[#76C945]/50 bg-[#76C945]/5' : 'border-border bg-card'
+          activeCrop ? 'border-[#0E7A43]/50 bg-[#0E7A43]/5' : 'border-border bg-card'
         }`}
       >
         <div
@@ -40,7 +40,7 @@ export default function CropFilter({ onCropSelect, activeCrop }) {
           }}
         >
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-xl bg-[#76C945]/15 flex items-center justify-center">
+            <div className="w-10 h-10 rounded-xl bg-[#0E7A43]/15 flex items-center justify-center">
               <Sprout className="w-5 h-5 text-emerald-700" />
             </div>
             <div className="text-left">
@@ -91,7 +91,7 @@ export default function CropFilter({ onCropSelect, activeCrop }) {
                       className={`flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium border transition-all ${
                         activeCrop?.name === crop.name
                           ? 'bg-[#0A2E1F] text-emerald-950 border-[#0A2E1F]'
-                          : 'bg-muted/50 text-foreground border-border hover:border-[#76C945]/50 hover:bg-[#76C945]/5'
+                          : 'bg-muted/50 text-foreground border-border hover:border-[#0E7A43]/50 hover:bg-[#0E7A43]/5'
                       }`}
                     >
                       <span>{crop.emoji}</span>

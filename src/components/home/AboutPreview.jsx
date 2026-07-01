@@ -28,9 +28,9 @@ export default function AboutPreview() {
   }, []);
 
   return (
-    <section className="py-24 relative overflow-hidden bg-gradient-to-b from-transparent via-[#76C945]/[0.01] to-transparent">
+    <section className="py-24 relative overflow-hidden bg-gradient-to-b from-transparent via-[#0E7A43]/[0.01] to-transparent">
       {/* Ambient background glow */}
-      <div className="absolute top-[20%] left-[-10%] w-[400px] h-[400px] bg-[#76C945]/5 rounded-full filter blur-[120px] pointer-events-none" />
+      <div className="absolute top-[20%] left-[-10%] w-[400px] h-[400px] bg-[#0E7A43]/5 rounded-full filter blur-[120px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-16 items-center perspective-container">
@@ -52,7 +52,7 @@ export default function AboutPreview() {
               whileHover={{ 
                 scale: 1.02, 
                 translateZ: 40,
-                boxShadow: "0 30px 60px rgba(0, 0, 0, 0.6), 0 0 40px rgba(118, 201, 69, 0.15)",
+                boxShadow: "0 30px 60px rgba(0, 0, 0, 0.6), 0 0 40px rgba(15, 123, 59, 0.15)",
               }}
               transition={{ type: "spring", stiffness: 200, damping: 18 }}
               className="relative rounded-3xl overflow-hidden aspect-[4/3] shadow-2xl border border-emerald-900/20"
@@ -139,7 +139,7 @@ export default function AboutPreview() {
                 { icon: HeartHandshake, title: t.about.supportTitle, desc: t.about.supportDesc },
               ].map((item, i) => (
                 <div key={i} className="flex flex-col gap-3 group">
-                  <div className="w-12 h-12 rounded-xl bg-[#76C945]/10 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                  <div className="w-12 h-12 rounded-xl bg-[#0E7A43]/10 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
                     <item.icon className="w-5 h-5 text-emerald-700" />
                   </div>
                   <h4 className="font-extrabold text-[#0A2E1F] text-sm">{item.title}</h4>

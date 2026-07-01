@@ -145,7 +145,7 @@ export default function CODVerificationModal({ receiptUrl, order, onClose, onVer
             <div className="p-6 border-t border-emerald-900/5 bg-emerald-950/5">
               <button 
                 onClick={handleSave}
-                className="w-full py-3.5 rounded-xl bg-gradient-to-r from-[#10B981] to-[#8AD65A] text-black font-extrabold uppercase tracking-widest shadow-[0_0_20px_rgba(16,185,129,0.3)] hover:shadow-[0_0_30px_rgba(16,185,129,0.5)] transition-all flex items-center justify-center gap-2"
+                className="w-full py-3.5 rounded-xl bg-gradient-to-r from-[#10B981] to-[#18C964] text-black font-extrabold uppercase tracking-widest shadow-[0_0_20px_rgba(16,185,129,0.3)] hover:shadow-[0_0_30px_rgba(16,185,129,0.5)] transition-all flex items-center justify-center gap-2"
               >
                 <Save size={16} />
                 Save Verification

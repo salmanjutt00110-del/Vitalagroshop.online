@@ -15,19 +15,20 @@ module.exports = {
   		colors: {
   			background: 'hsl(var(--background))',
   			foreground: 'hsl(var(--foreground))',
-  			white: '#F8FAF8',
+  			white: '#FFFFFF',
   			emerald: {
-  				50: '#F0FDF4',
-  				100: '#DCFCE7',
-  				200: '#BBF7D0',
-  				300: '#39D98A', /* Accent Green */
-  				400: '#1FAF5A', /* Secondary Green */
-  				500: '#1FAF5A', 
-  				600: '#0F7B3B', /* Primary Green */
-  				700: '#0B5D2D',
-  				800: '#08401F',
-  				900: '#052311',
-  				950: '#102415', /* Dark Surface */
+  				50: '#EAFBF3',
+  				100: '#D1F7E2',
+  				200: '#A3EFC6',
+  				300: '#18C964', /* Accent Green */
+  				400: '#18C964', /* Secondary Green */
+  				505: '#18C964', 
+  				500: '#18C964', 
+  				600: '#0E7A43', /* Primary Green */
+  				700: '#073B20',
+  				800: '#052F1A',
+  				900: '#031F10',
+  				950: '#02140c', /* Dark Surface */
   			},
   			neutral: {
   				400: '#8A8A8A',

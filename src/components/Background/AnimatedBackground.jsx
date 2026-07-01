@@ -73,7 +73,7 @@ export default function AnimatedBackground({ theme = {} }) {
     <div className="absolute inset-0 -z-10 pointer-events-none">
       <Canvas camera={{ position: [0, 0, 5], fov: 75 }} gl={{ alpha: true }}>
         <ambientLight intensity={0.4} />
-        <pointLight position={[0, 0, 2]} intensity={1.2} color={theme.glow || '#76c945'} />
+        <pointLight position={[0, 0, 2]} intensity={1.2} color={theme.glow || '#0E7A43'} />
         <Suspense fallback={null}>
           {/* Gradient Mesh */}
           <Float speed={0.2} rotationIntensity={0.1} floatIntensity={0.2}>

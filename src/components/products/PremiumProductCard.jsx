@@ -63,10 +63,10 @@ export default function PremiumProductCard({ product }) {
       <div className="p-5 sm:p-6 flex flex-col flex-1">
         {/* Category & Premium Tag */}
         <div className="flex justify-between items-center mb-4 relative z-10">
-          <span className="px-2.5 py-1 text-[9px] font-black uppercase tracking-[0.12em] text-[#0F7B3B] bg-[#0F7B3B]/10 border border-[#0F7B3B]/15 rounded-lg truncate max-w-[55%]">
+          <span className="px-2.5 py-1 text-[9px] font-black uppercase tracking-[0.12em] text-[#0E7A43] bg-[#0E7A43]/10 border border-[#0E7A43]/15 rounded-lg truncate max-w-[55%]">
             {getCategoryLabel(product.category)}
           </span>
-          <span className="px-2.5 py-1 text-[9px] font-black uppercase tracking-[0.12em] text-[#0F7B3B] bg-[#0F7B3B]/10 border border-[#0F7B3B]/15 rounded-lg truncate max-w-[45%]">
+          <span className="px-2.5 py-1 text-[9px] font-black uppercase tracking-[0.12em] text-[#0E7A43] bg-[#0E7A43]/10 border border-[#0E7A43]/15 rounded-lg truncate max-w-[45%]">
             {lang === 'en' ? 'PREMIUM QUALITY' : 'پریمیم کوالٹی'}
           </span>
         </div>
@@ -92,14 +92,14 @@ export default function PremiumProductCard({ product }) {
         <div className="space-y-1 mb-3 relative z-10 text-left">
           {prodNameUr && (
             <h3 
-              className="text-[#0F7B3B] font-extrabold text-base leading-snug"
+              className="text-[#0E7A43] font-extrabold text-base leading-snug"
               style={{ fontFamily: "'Jameel Noori Nastaleeq', 'Noto Nastaliq Urdu', serif" }}
               dir="rtl"
             >
               {prodNameUr}
             </h3>
           )}
-          <h4 className="text-[#0A1810] font-black text-sm leading-tight group-hover:text-[#0F7B3B] transition-colors duration-300 line-clamp-1">
+          <h4 className="text-[#0A1810] font-black text-sm leading-tight group-hover:text-[#0E7A43] transition-colors duration-300 line-clamp-1">
             {prodNameEn}
           </h4>
         </div>
@@ -122,7 +122,7 @@ export default function PremiumProductCard({ product }) {
                 exit={{ opacity: 0, y: -10 }}
                 transition={{ duration: 0.2 }}
                 onClick={toggleExpand}
-                className="w-full flex items-center justify-center gap-2 h-11 rounded-xl border border-[#0F7B3B]/20 hover:border-[#0F7B3B]/40 bg-[#0F7B3B]/5 hover:bg-[#0F7B3B]/10 text-[#0F7B3B] text-xs font-black uppercase tracking-wider transition-all duration-300 cursor-pointer active:scale-[0.98]"
+                className="w-full flex items-center justify-center gap-2 h-11 rounded-xl border border-[#0E7A43]/20 hover:border-[#0E7A43]/40 bg-[#0E7A43]/5 hover:bg-[#0E7A43]/10 text-[#0E7A43] text-xs font-black uppercase tracking-wider transition-all duration-300 cursor-pointer active:scale-[0.98]"
               >
                 <span className="w-1.5 h-1.5 rounded-full bg-[#39D98A] animate-pulse shadow-[0_0_8px_rgba(57,217,138,0.8)]" />
                 {lang === 'en' ? 'VIEW PRICING & BUY' : 'قیمت دیکھیں اور خریدیں'}
@@ -157,8 +157,8 @@ export default function PremiumProductCard({ product }) {
                             }}
                             className={`px-3 py-1.5 rounded-xl text-[10px] font-black border transition-all duration-300 cursor-pointer ${
                               isActive
-                                ? 'bg-[#0F7B3B]/10 text-[#0F7B3B] border border-[#0F7B3B]/40 shadow-[0_0_12px_rgba(15,123,59,0.15)]'
-                                : 'bg-white text-[#4B5E53] border border-black/10 hover:border-[#0F7B3B]/30 hover:text-[#0A1810] shadow-sm'
+                                ? 'bg-[#0E7A43]/10 text-[#0E7A43] border border-[#0E7A43]/40 shadow-[0_0_12px_rgba(15,123,59,0.15)]'
+                                : 'bg-white text-[#4B5E53] border border-black/10 hover:border-[#0E7A43]/30 hover:text-[#0A1810] shadow-sm'
                             }`}
                           >
                             {szName}
@@ -177,7 +177,7 @@ export default function PremiumProductCard({ product }) {
                   </span>
 
                   {/* Quantity Adjustment */}
-                  <div className="flex items-center gap-1.5 bg-[#F8FAF8] rounded-xl border border-black/10 px-1.5 py-1">
+                  <div className="flex items-center gap-1.5 bg-[#EAFBF3] rounded-xl border border-black/10 px-1.5 py-1">
                     <button
                       onClick={(e) => { e.stopPropagation(); setQuantity(q => Math.max(1, q - 1)); }}
                       className="w-7 h-7 rounded-lg bg-white hover:bg-gray-100 text-[#0A1810] text-sm flex items-center justify-center transition-all font-bold cursor-pointer active:scale-90 border border-black/5 shadow-sm"
@@ -185,7 +185,7 @@ export default function PremiumProductCard({ product }) {
                     <span className="text-[#0A1810] text-xs font-black w-5 text-center font-mono">{quantity}</span>
                     <button
                       onClick={(e) => { e.stopPropagation(); setQuantity(q => q + 1); }}
-                      className="w-7 h-7 rounded-lg bg-[#0F7B3B]/10 hover:bg-[#0F7B3B]/20 text-[#0F7B3B] text-sm flex items-center justify-center transition-all font-bold cursor-pointer active:scale-90 border border-[#0F7B3B]/10"
+                      className="w-7 h-7 rounded-lg bg-[#0E7A43]/10 hover:bg-[#0E7A43]/20 text-[#0E7A43] text-sm flex items-center justify-center transition-all font-bold cursor-pointer active:scale-90 border border-[#0E7A43]/10"
                     >+</button>
                   </div>
                 </div>
@@ -194,7 +194,7 @@ export default function PremiumProductCard({ product }) {
                 <div className="grid grid-cols-2 gap-2">
                   <button
                     onClick={handleBuyNow}
-                    className="flex items-center justify-center gap-1.5 h-11 bg-gradient-to-r from-[#39D98A] to-[#1FAF5A] hover:shadow-[0_4px_15px_rgba(57,217,138,0.3)] text-[#061509] rounded-xl text-[10px] font-black uppercase tracking-wider transition-all active:scale-95 cursor-pointer"
+                    className="flex items-center justify-center gap-1.5 h-11 bg-gradient-to-r from-[#39D98A] to-[#18C964] hover:shadow-[0_4px_15px_rgba(57,217,138,0.3)] text-[#061509] rounded-xl text-[10px] font-black uppercase tracking-wider transition-all active:scale-95 cursor-pointer"
                   >
                     <ShoppingBag className="w-3.5 h-3.5" />
                     {lang === 'en' ? 'Buy Now' : 'خریدیں'}
@@ -202,7 +202,7 @@ export default function PremiumProductCard({ product }) {
                   <Link
                     to={`/products/${product.slug || product.id}`}
                     onClick={(e) => e.stopPropagation()}
-                    className="flex items-center justify-center gap-1.5 h-11 bg-white border border-[#0F7B3B]/20 hover:bg-[#0F7B3B]/5 hover:border-[#0F7B3B]/40 text-[#0F7B3B] rounded-xl text-[10px] font-black uppercase tracking-wider transition-all active:scale-95 cursor-pointer shadow-sm"
+                    className="flex items-center justify-center gap-1.5 h-11 bg-white border border-[#0E7A43]/20 hover:bg-[#0E7A43]/5 hover:border-[#0E7A43]/40 text-[#0E7A43] rounded-xl text-[10px] font-black uppercase tracking-wider transition-all active:scale-95 cursor-pointer shadow-sm"
                   >
                     {lang === 'en' ? 'Details' : 'تفصیلات'}
                     <ChevronRight className="w-3.5 h-3.5" />

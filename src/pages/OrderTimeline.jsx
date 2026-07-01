@@ -42,7 +42,7 @@ export default function OrderTimeline() {
     return (
       <div className="min-h-screen flex items-center justify-center bg-[#071910] text-emerald-950">
         <div className="flex flex-col items-center gap-3">
-          <div className="w-10 h-10 rounded-full border-4 border-[#76C945] border-t-transparent animate-spin" />
+          <div className="w-10 h-10 rounded-full border-4 border-[#0E7A43] border-t-transparent animate-spin" />
           <p className="text-xs text-neutral-500 tracking-wider">Loading Tracking Timeline...</p>
         </div>
       </div>
@@ -60,7 +60,7 @@ export default function OrderTimeline() {
               ? 'The tracking ID is invalid or has expired. Please verify your link and try again.'
               : 'آرڈر ٹریکنگ آئی ڈی درست نہیں ہے۔ براہ کرم لنک چیک کر کے دوبارہ کوشش کریں۔'}
           </p>
-          <Link to="/products" className="inline-flex items-center gap-2 px-6 py-3 bg-[#76C945] hover:bg-[#8AD65A] text-[#0A2E1F] rounded-full text-sm font-black transition-colors">
+          <Link to="/products" className="inline-flex items-center gap-2 px-6 py-3 bg-[#0E7A43] hover:bg-[#18C964] text-[#0A2E1F] rounded-full text-sm font-black transition-colors">
             <ShoppingBag size={16} />
             <span>{lang === 'en' ? 'Go to Products' : 'مصنوعات پر جائیں'}</span>
           </Link>
@@ -125,7 +125,7 @@ export default function OrderTimeline() {
           
           <button
             onClick={() => downloadInvoice(order)}
-            className="flex items-center justify-center gap-2 px-5 py-3 bg-[#76C945] hover:bg-[#8AD65A] text-[#0A2E1F] rounded-2xl text-xs font-black transition-colors shadow-md shadow-[#76C945]/10"
+            className="flex items-center justify-center gap-2 px-5 py-3 bg-[#0E7A43] hover:bg-[#18C964] text-[#0A2E1F] rounded-2xl text-xs font-black transition-colors shadow-md shadow-[#0E7A43]/10"
           >
             <FileDown size={14} />
             <span>{lang === 'en' ? 'Download PDF Bill' : 'بل پی ڈی ایف ڈاؤن لوڈ کریں'}</span>

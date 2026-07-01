@@ -677,8 +677,8 @@ export default function ProductDetail() {
       />
       
       {/* Visual Ambient Glows */}
-      <div className="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] rounded-full bg-[#76C945]/10 blur-[130px] pointer-events-none" />
-      <div className="absolute bottom-[-10%] right-[-10%] w-[50%] h-[50%] rounded-full bg-[#76C945]/10 blur-[130px] pointer-events-none" />
+      <div className="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] rounded-full bg-[#0E7A43]/10 blur-[130px] pointer-events-none" />
+      <div className="absolute bottom-[-10%] right-[-10%] w-[50%] h-[50%] rounded-full bg-[#0E7A43]/10 blur-[130px] pointer-events-none" />
       
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-16">
         
@@ -745,7 +745,7 @@ export default function ProductDetail() {
                       {/* Soft Ambient Shadow under Pedestal */}
                       <div className="absolute inset-x-0 -bottom-2 h-[20px] rounded-full bg-black/60 blur-[6px]" />
                       {/* Dynamic Neon Laser Halo under bottle */}
-                      <div className="absolute -top-[10px] left-1/4 right-1/4 h-[8px] rounded-full bg-[#76C945]/30 blur-[4px] border border-[#76C945]/50 animate-pulse" />
+                      <div className="absolute -top-[10px] left-1/4 right-1/4 h-[8px] rounded-full bg-[#0E7A43]/30 blur-[4px] border border-[#0E7A43]/50 animate-pulse" />
                     </div>
                     
                     <BlurUpImage
@@ -759,7 +759,7 @@ export default function ProductDetail() {
                 {/* Animated Lens zoom tracking circle */}
                 {showLens && !isMobile && !galleryImages[activeTab]?.isLogo && (
                   <div
-                    className="absolute pointer-events-none rounded-full border border-[#76C945]/50 shadow-[0_0_20px_rgba(118,201,69,0.5)] bg-[#020502]/40"
+                    className="absolute pointer-events-none rounded-full border border-[#0E7A43]/50 shadow-[0_0_20px_rgba(15, 123, 59,0.5)] bg-[#020502]/40"
                     style={{
                       width: '150px',
                       height: '150px',
@@ -780,7 +780,7 @@ export default function ProductDetail() {
                 <Maximize className="w-4 h-4 text-neutral-700" />
               </div>
               <div className="absolute top-4 left-4">
-                <span className="px-3 py-1 bg-[#76C945]/10 border border-[#76C945]/30 text-emerald-600 text-xs font-black rounded-full uppercase tracking-wider backdrop-blur-md">
+                <span className="px-3 py-1 bg-[#0E7A43]/10 border border-[#0E7A43]/30 text-emerald-600 text-xs font-black rounded-full uppercase tracking-wider backdrop-blur-md">
                   {CATEGORY_LABELS[lang]?.[product.category] || "Agrotech Formula"}
                 </span>
               </div>
@@ -907,12 +907,12 @@ export default function ProductDetail() {
                     
                     <div className="flex items-baseline gap-3">
                       <span className="text-3xl sm:text-4xl font-black text-emerald-950">
-                        {unitPrice === 0 ? "On Request" : `PKR ${unitPrice || 0}`}
+                        {unitPrice === 0 ? (lang === 'en' ? 'On Request' : 'قیمت طلب کریں') : `Rs. ${(unitPrice || 0).toLocaleString()}`}
                       </span>
                       {originalPrice > 0 && originalPrice > unitPrice && unitPrice !== 0 && (
                         <div className="flex items-center gap-2">
                           <span className="line-through text-neutral-400 text-sm">
-                            PKR {originalPrice}
+                            Rs. {originalPrice.toLocaleString()}
                           </span>
                           <span className="px-1.5 py-0.5 bg-rose-500/20 text-rose-400 text-[9px] font-black rounded-md uppercase">
                             Save {Math.round((1 - (unitPrice || 0) / originalPrice) * 100)}%
@@ -1453,7 +1453,7 @@ export default function ProductDetail() {
                       {/* 5. Price */}
                       <div className="pt-2 border-t border-emerald-900/5 font-mono">
                         <span className="text-emerald-400 font-bold text-xs sm:text-sm">
-                          {pPrice === 0 ? 'On Request' : `₨ ${pPrice.toLocaleString()}`}
+                          {pPrice === 0 ? (lang === 'en' ? 'On Request' : 'قیمت طلب کریں') : `Rs. ${pPrice.toLocaleString()}`}
                         </span>
                       </div>
                     </div>

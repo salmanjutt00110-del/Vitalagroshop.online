@@ -132,7 +132,7 @@ export default function CTASection() {
                 className="relative aspect-square w-full max-w-[280px] flex items-center justify-center"
               >
                 {/* Back glowing aura */}
-                <div className="absolute w-44 h-44 bg-[#76C945]/20 rounded-full blur-[45px] pointer-events-none" />
+                <div className="absolute w-44 h-44 bg-[#0E7A43]/20 rounded-full blur-[45px] pointer-events-none" />
                 <div className="absolute bottom-0 w-[70%] h-4 bg-black/45 rounded-full blur-[8px]" />
                 <motion.img
                   src={vitalCImg}

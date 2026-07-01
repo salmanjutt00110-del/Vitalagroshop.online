@@ -62,13 +62,13 @@ export default function DosageCalculator({ dosage }) {
   }
 
   return (
-    <div className="rounded-2xl border border-[#76C945]/30 overflow-hidden bg-gradient-to-br from-[#76C945]/5 to-[#0A2E1F]/5">
+    <div className="rounded-2xl border border-[#0E7A43]/30 overflow-hidden bg-gradient-to-br from-[#0E7A43]/5 to-[#0A2E1F]/5">
       <button
         onClick={() => setOpen(!open)}
-        className="w-full flex items-center justify-between px-6 py-4 hover:bg-[#76C945]/5 transition-colors"
+        className="w-full flex items-center justify-between px-6 py-4 hover:bg-[#0E7A43]/5 transition-colors"
       >
         <div className="flex items-center gap-3">
-          <div className="w-10 h-10 rounded-xl bg-[#76C945]/15 flex items-center justify-center">
+          <div className="w-10 h-10 rounded-xl bg-[#0E7A43]/15 flex items-center justify-center">
             <Calculator className="w-5 h-5 text-emerald-700" />
           </div>
           <div className="text-left">
@@ -88,7 +88,7 @@ export default function DosageCalculator({ dosage }) {
             transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
             className="overflow-hidden"
           >
-            <div className="px-6 pb-6 pt-2 border-t border-[#76C945]/20">
+            <div className="px-6 pb-6 pt-2 border-t border-[#0E7A43]/20">
               {!dosage ? (
                 <p className="text-sm text-muted-foreground text-center py-4">
                   Dosage information not available for this product.

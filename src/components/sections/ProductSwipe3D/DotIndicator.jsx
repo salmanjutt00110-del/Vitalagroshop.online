@@ -18,7 +18,7 @@ export default function DotIndicator({ total, current, onChange }) {
         >
           {i === current && (
             <motion.div
-              className="h-full rounded-full bg-[#5cb85c] absolute inset-0"
+              className="h-full rounded-full bg-[#0E7A43] absolute inset-0"
               layoutId="active-dot"
               transition={{ type: 'spring', stiffness: 500, damping: 35 }}
             />

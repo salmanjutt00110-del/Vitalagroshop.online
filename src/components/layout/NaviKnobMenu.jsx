@@ -435,7 +435,7 @@ export default function NaviKnobMenu({ isOpen, onClose, setIsMenuOpen }) {
                             addToCart(p, p.sizes?.[0] || { size: "500ml", price: p.price || 750 }, 1);
                             handleCloseMenu();
                           }}
-                          className="w-full py-2 bg-[#10b981] hover:bg-[#8ad65a] text-neutral-950 rounded-xl font-mono text-[9px] font-black tracking-widest uppercase flex items-center justify-center gap-1 transition-all cursor-pointer glow-action-trigger"
+                          className="w-full py-2 bg-[#10b981] hover:bg-[#18C964] text-neutral-950 rounded-xl font-mono text-[9px] font-black tracking-widest uppercase flex items-center justify-center gap-1 transition-all cursor-pointer glow-action-trigger"
                         >
                           <ShoppingBag className="w-3.5 h-3.5" />
                           BUY NOW (COD)
@@ -533,7 +533,7 @@ export default function NaviKnobMenu({ isOpen, onClose, setIsMenuOpen }) {
                       />
                       <button
                         type="submit"
-                        className="w-full py-2.5 bg-[#10b981] hover:bg-[#8ad65a] text-neutral-950 rounded-xl font-mono text-[10px] font-black tracking-widest uppercase flex items-center justify-center gap-1.5 transition-all cursor-pointer glow-action-trigger"
+                        className="w-full py-2.5 bg-[#10b981] hover:bg-[#18C964] text-neutral-950 rounded-xl font-mono text-[10px] font-black tracking-widest uppercase flex items-center justify-center gap-1.5 transition-all cursor-pointer glow-action-trigger"
                       >
                         <Send className="w-3.5 h-3.5" />
                         SUBMIT INQUIRY

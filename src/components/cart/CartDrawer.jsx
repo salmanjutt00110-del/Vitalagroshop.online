@@ -11,7 +11,8 @@ export default function CartDrawer() {
   const navigate = useNavigate();
 
   const formatPrice = (val) => {
-    return `PKR ${Math.round(val).toLocaleString()}`;
+    if (val === 0) return lang === 'en' ? 'On Request' : 'قیمت طلب کریں';
+    return `Rs. ${Math.round(val).toLocaleString()}`;
   };
 
   if (!isCartOpen) return null;
@@ -43,7 +44,7 @@ export default function CartDrawer() {
               <div className="h-full flex flex-col bg-[#050f07]/95 backdrop-blur-3xl border-l border-emerald-900/10 shadow-[0_0_50px_rgba(0,0,0,0.8)] text-emerald-950 relative">
                 
                 {/* Aurora background glow */}
-                <div className="absolute -top-[10%] -right-[10%] w-[50%] h-[50%] rounded-full bg-[#76C945]/10 blur-[100px] pointer-events-none z-0" />
+                <div className="absolute -top-[10%] -right-[10%] w-[50%] h-[50%] rounded-full bg-[#0E7A43]/10 blur-[100px] pointer-events-none z-0" />
                 <div className="absolute -bottom-[10%] -left-[10%] w-[50%] h-[50%] rounded-full bg-[#C5A059]/5 blur-[100px] pointer-events-none z-0" />
 
                 {/* Header */}

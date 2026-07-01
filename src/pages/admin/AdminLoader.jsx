@@ -67,7 +67,7 @@ export default function AdminLoader({ onComplete }) {
           rotate: [0, -90, 0]
         }}
         transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
-        className="absolute -bottom-[30%] -right-[20%] w-[70vw] h-[70vw] rounded-full bg-[#8AD65A]/10 blur-[120px] pointer-events-none"
+        className="absolute -bottom-[30%] -right-[20%] w-[70vw] h-[70vw] rounded-full bg-[#18C964]/10 blur-[120px] pointer-events-none"
       />
 
       <div className="relative z-10 flex flex-col items-center justify-center space-y-12 w-full max-w-sm px-6">
@@ -89,7 +89,7 @@ export default function AdminLoader({ onComplete }) {
           <motion.div 
             animate={{ rotate: -360 }}
             transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
-            className="absolute -inset-4 rounded-full border-2 border-t-[#8AD65A] border-r-transparent border-b-[#10B981] border-l-transparent opacity-30"
+            className="absolute -inset-4 rounded-full border-2 border-t-[#18C964] border-r-transparent border-b-[#10B981] border-l-transparent opacity-30"
           />
           {/* Center Logo Icon */}
           <div className="w-24 h-24 flex items-center justify-center p-2">
@@ -114,7 +114,7 @@ export default function AdminLoader({ onComplete }) {
           
           <div className="h-1.5 w-full bg-emerald-950/10 rounded-full overflow-hidden border border-emerald-900/5 backdrop-blur-sm relative">
             <motion.div 
-              className="absolute top-0 left-0 bottom-0 bg-gradient-to-r from-[#10B981] to-[#8AD65A] shadow-[0_0_10px_rgba(16,185,129,0.8)]"
+              className="absolute top-0 left-0 bottom-0 bg-gradient-to-r from-[#10B981] to-[#18C964] shadow-[0_0_10px_rgba(16,185,129,0.8)]"
               initial={{ width: '0%' }}
               animate={{ width: `${progress}%` }}
               transition={{ ease: "linear", duration: 0.1 }}

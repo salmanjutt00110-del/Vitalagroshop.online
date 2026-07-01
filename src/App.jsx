@@ -49,7 +49,7 @@ import apiClient from '@/lib/apiClient';
 
 const AdminLoader = () => (
   <div className="min-h-screen flex items-center justify-center bg-slate-50">
-    <div className="w-10 h-10 rounded-full border-4 border-[#76C945] border-t-transparent animate-spin" />
+    <div className="w-10 h-10 rounded-full border-4 border-[#0E7A43] border-t-transparent animate-spin" />
   </div>
 );
 
@@ -100,7 +100,7 @@ class WelcomeErrorBoundary extends React.Component {
                     this.props.onBypass();
                   }
                 }}
-                className="px-8 py-4 bg-emerald-500/10 hover:bg-emerald-500/20 text-emerald-700 rounded-2xl text-sm font-black uppercase tracking-widest border border-[#76C945]/30 backdrop-blur-md transition-all shadow-xl hover:shadow-[#76C945]/10 hover:scale-103 active:scale-97 cursor-pointer"
+                className="px-8 py-4 bg-emerald-500/10 hover:bg-emerald-500/20 text-emerald-700 rounded-2xl text-sm font-black uppercase tracking-widest border border-[#0E7A43]/30 backdrop-blur-md transition-all shadow-xl hover:shadow-[#0E7A43]/10 hover:scale-103 active:scale-97 cursor-pointer"
               >
                 Enter Platform
               </button>
@@ -189,81 +189,124 @@ function App() {
     }
   }, []);
 
-  // Dynamic products hydration from Flask API
+  // Dynamic products hydration from Flask API with automatic retry
   React.useEffect(() => {
-    apiClient.get('/products', { timeout: 2000, __retryCount: 3 })
-      .then(res => res.data)
-      .then(data => {
-        if (Array.isArray(data)) {
-          const isValidImagePath = (p) => {
-            if (!p || typeof p !== 'string') return false;
-            const trimmed = p.trim();
-            return trimmed.startsWith('/') || trimmed.startsWith('http://') || trimmed.startsWith('https://') || trimmed.startsWith('data:');
-          };
+    let retryTimeout;
+    let retries = 0;
+    const maxRetries = 5;
+    const delay = 2000;
 
-          data.forEach(dbProd => {
-            const existing = PRODUCTS_DATA[dbProd.id];
-            
-            // Build sizes array from dynamicPricingMatrix JSON
-            const pricingMatrix = dbProd.dynamicPricingMatrix || {};
-            const sizesList = Object.entries(pricingMatrix).map(([size, price]) => ({
-              size: size.toUpperCase(),
-              price: Number(price),
-              oldPrice: Number(price),
-              stockStatus: dbProd.stockInventory > 0 ? "In Stock" : "Out of Stock",
-              sku: `VA-${dbProd.id.toUpperCase()}-${size.toUpperCase()}`,
-              weight: size.toLowerCase().includes('l') ? `${parseFloat(size)}kg` : `${parseFloat(size)/1000}kg`
-            }));
+    const loadDynamicCatalog = () => {
+      apiClient.get('/products', { timeout: 2000 })
+        .then(res => res.data)
+        .then(data => {
+          if (Array.isArray(data) && data.length > 0) {
+            const isValidImagePath = (p) => {
+              if (!p || typeof p !== 'string') return false;
+              const trimmed = p.trim();
+              return trimmed.startsWith('/') || trimmed.startsWith('http://') || trimmed.startsWith('https://') || trimmed.startsWith('data:') || trimmed.startsWith('blob:') || trimmed.startsWith('static/');
+            };
 
-            const defaultPrice = sizesList.length > 0 ? sizesList[0].price : dbProd.price;
-
-            if (existing) {
-              existing.name.en = dbProd.productName;
-              existing.category = dbProd.productCategory;
-              if (dbProd.productDescription) {
-                existing.description = { en: dbProd.productDescription, ur: existing.description?.ur || dbProd.productDescription };
+            // Rebuild PRODUCTS_DATA to only display products existing in the database
+            const dbIds = new Set(data.map(p => p.id));
+            Object.keys(PRODUCTS_DATA).forEach(key => {
+              if (!dbIds.has(key)) {
+                delete PRODUCTS_DATA[key];
               }
-              if (dbProd.baseImageURL && isValidImagePath(dbProd.baseImageURL)) {
-                existing.imageUrl = dbProd.baseImageURL.trim();
-                existing.pngUrl = dbProd.baseImageURL.trim();
-              }
-              if (sizesList.length > 0) {
-                existing.sizes = sizesList;
-                existing.price = defaultPrice;
-              }
-              existing.stockInventory = dbProd.stockInventory;
-              existing.stockStatus = dbProd.stockInventory > 0 ? "In Stock" : "Out of Stock";
-            } else {
-              // Synthesize a new product inside local reference
-              const finalImg = (dbProd.baseImageURL && isValidImagePath(dbProd.baseImageURL)) 
-                ? dbProd.baseImageURL.trim() 
-                : `/products/${dbProd.id}.png`;
+            });
 
-              PRODUCTS_DATA[dbProd.id] = {
-                id: dbProd.id,
-                slug: dbProd.id,
-                name: { en: dbProd.productName, ur: dbProd.productName },
-                genericName: { en: "Biotech Formula", ur: "بائیوٹیک فارمولا" },
-                category: dbProd.productCategory,
-                imageUrl: finalImg,
-                pngUrl: finalImg,
-                rating: 4.9,
-                sizes: sizesList,
-                price: defaultPrice,
-                description: { en: dbProd.productDescription, ur: dbProd.productDescription },
-                features: { en: ["Premium Dynamic Biotech Synthesis"], ur: ["پریمیئم بائیوٹیک مکس"] }
-              };
-            }
-          });
-          // Notify components that the catalog has updated
-          window.dispatchEvent(new CustomEvent('vital_catalog_hydrated'));
-        }
-        setCatalogLoaded(true);
-      })
-      .catch(err => {
-        console.error("Dynamic catalog synchronization failed:", err);
-        setCatalogLoaded(true);
-      });
+            data.forEach(dbProd => {
+              const existing = PRODUCTS_DATA[dbProd.id];
+              
+              // Build sizes array from dynamicPricingMatrix JSON
+              const pricingMatrix = dbProd.dynamicPricingMatrix || {};
+              const sizesList = Object.entries(pricingMatrix).map(([size, price]) => ({
+                size: size.toUpperCase(),
+                price: Number(price),
+                oldPrice: Number(price),
+                stockStatus: dbProd.stockInventory > 0 ? "In Stock" : "Out of Stock",
+                sku: `VA-${dbProd.id.toUpperCase()}-${size.toUpperCase()}`,
+                weight: size.toLowerCase().includes('l') ? `${parseFloat(size)}kg` : `${parseFloat(size)/1000}kg`
+              }));
+
+              const defaultPrice = sizesList.length > 0 ? sizesList[0].price : dbProd.price;
+
+              if (existing) {
+                existing.name.en = dbProd.productName;
+                existing.category = dbProd.productCategory;
+                if (dbProd.productDescription) {
+                  existing.description = { en: dbProd.productDescription, ur: existing.description?.ur || dbProd.productDescription };
+                } else {
+                  existing.description = { 
+                    en: "Product information will be updated soon.", 
+                    ur: "پروڈکٹ کی معلومات جلد اپ ڈیٹ کر دی جائیں گی۔" 
+                  };
+                }
+                if (dbProd.baseImageURL && isValidImagePath(dbProd.baseImageURL)) {
+                  existing.imageUrl = dbProd.baseImageURL.trim();
+                  existing.pngUrl = dbProd.baseImageURL.trim();
+                } else {
+                  // Keep empty so getProductImage renders "Image Coming Soon"
+                  existing.imageUrl = "";
+                  existing.pngUrl = "";
+                }
+                if (sizesList.length > 0) {
+                  existing.sizes = sizesList;
+                  existing.price = defaultPrice;
+                }
+                existing.stockInventory = dbProd.stockInventory;
+                existing.stockStatus = dbProd.stockInventory > 0 ? "In Stock" : "Out of Stock";
+              } else {
+                // Create product from real database data only - no fake genericName/features
+                const finalImg = (dbProd.baseImageURL && isValidImagePath(dbProd.baseImageURL)) 
+                  ? dbProd.baseImageURL.trim() 
+                  : "";
+
+                PRODUCTS_DATA[dbProd.id] = {
+                  id: dbProd.id,
+                  slug: dbProd.id,
+                  name: { en: dbProd.productName, ur: dbProd.productName },
+                  genericName: { en: dbProd.productName, ur: dbProd.productName },
+                  category: dbProd.productCategory,
+                  imageUrl: finalImg,
+                  pngUrl: finalImg,
+                  rating: 5.0,
+                  sizes: sizesList,
+                  price: defaultPrice,
+                  description: { 
+                    en: dbProd.productDescription || "Product information will be updated soon.", 
+                    ur: dbProd.productDescription || "پروڈکٹ کی معلومات جلد اپ ڈیٹ کر دی جائیں گی۔" 
+                  },
+                  features: { en: [], ur: [] },
+                  crops: []
+                };
+              }
+            });
+            // Notify components that the catalog has updated
+            window.dispatchEvent(new CustomEvent('vital_catalog_hydrated'));
+            setCatalogLoaded(true);
+          } else {
+            throw new Error("Empty products array returned by database API.");
+          }
+        })
+        .catch(err => {
+          console.warn(`Dynamic catalog sync failed (attempt ${retries + 1}/${maxRetries}):`, err.message);
+          if (retries < maxRetries) {
+            retries++;
+            retryTimeout = setTimeout(loadDynamicCatalog, delay * retries);
+          } else {
+            console.error("Max retries reached. Falling back to offline static product catalog.");
+            window.dispatchEvent(new CustomEvent('vital_catalog_hydrated'));
+            setCatalogLoaded(true);
+          }
+        });
+    };
+
+    loadDynamicCatalog();
+
+    return () => {
+      if (retryTimeout) clearTimeout(retryTimeout);
+    };
   }, []);
 
   // Show fail-safe loading screen while token is being verified
@@ -292,7 +335,7 @@ function App() {
               </AnimatePresence>
 
               {/* 3. MAIN APP */}
-              {(isInitialLoadComplete || stage === 'ready') && (
+              {(isInitialLoadComplete || stage === 'ready' || stage === 'welcome') && (
                 <Router>
                   <SmoothScroll>
                     <TopProgressBar />

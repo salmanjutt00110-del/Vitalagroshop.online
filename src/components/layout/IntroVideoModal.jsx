@@ -104,7 +104,7 @@ export default function IntroVideoModal() {
                     <div className="w-12 h-12 rounded-full border-2 border-t-emerald-500 border-r-transparent border-b-emerald-500 border-l-transparent animate-spin" />
                   </div>
                   <div className="w-48 h-3 bg-white/60 rounded-full overflow-hidden relative">
-                    <div className="absolute inset-0 bg-gradient-to-r from-emerald-500 to-[#8AD65A] rounded-full animate-pulse" />
+                    <div className="absolute inset-0 bg-gradient-to-r from-emerald-500 to-[#18C964] rounded-full animate-pulse" />
                   </div>
                   <span className="text-[10px] font-mono tracking-widest text-emerald-400/70 uppercase animate-pulse">Syncing Intro Video Ledger...</span>
                 </div>

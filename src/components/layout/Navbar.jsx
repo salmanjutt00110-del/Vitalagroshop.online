@@ -1,9 +1,10 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { ShoppingCart } from 'lucide-react';
+import { ShoppingCart, Search } from 'lucide-react';
 import { useLanguage } from '@/lib/LanguageContext';
 import { useCart } from '@/lib/CartContext';
+import { useApp } from '@/contexts/AppContext';
 import vitalAgroLogo from '@/assets/vital agro logo.webp';
 import MobileSidebar from './MobileSidebar';
 
@@ -14,6 +15,7 @@ export default function Navbar() {
   const { pathname } = useLocation();
   const { lang, setLang, t } = useLanguage();
   const { cartCount, setIsCartOpen } = useCart();
+  const { setIsGlobalSearchOpen } = useApp();
   const [isLangOpen, setIsLangOpen] = useState(false);
 
   useEffect(() => {
@@ -75,15 +77,15 @@ export default function Navbar() {
             margin: '0 auto',
             borderRadius: 22,
             overflow: 'hidden',
-            /* Premium Bright Glass Navbar */
-            background: 'rgba(255, 255, 255, 0.75)',
-            backdropFilter: 'blur(20px) saturate(180%)',
-            WebkitBackdropFilter: 'blur(20px) saturate(180%)',
-            border: '1px solid rgba(255, 255, 255, 0.6)',
+            /* Premium Frosted Glass Navbar */
+            background: 'rgba(248, 250, 248, 0.65)',
+            backdropFilter: 'blur(24px) saturate(170%)',
+            WebkitBackdropFilter: 'blur(24px) saturate(170%)',
+            border: '1px solid rgba(15, 123, 59, 0.08)',
             boxShadow: [
-              '0 4px 15px rgba(0,0,0,0.03)',
-              '0 10px 30px rgba(0,0,0,0.05)',
-              'inset 0 1px 0 rgba(255,255,255,0.5)',
+              '0 4px 20px rgba(0,0,0,0.04)',
+              '0 1px 3px rgba(15,123,59,0.04)',
+              'inset 0 1px 0 rgba(255,255,255,0.45)',
             ].join(', '),
           }}
         >
@@ -95,7 +97,7 @@ export default function Navbar() {
             position: 'absolute', inset: 0, pointerEvents: 'none',
             backgroundImage: "url('/all-bg-photo.png?v=3')",
             backgroundSize: 'cover', backgroundPosition: 'center',
-            opacity: 0.15,
+            opacity: 0.06,
           }} />
 
           {/* Glass highlight */}
@@ -136,7 +138,7 @@ export default function Navbar() {
                   transition={{ duration: 0.24, ease: [0.16, 1, 0.3, 1] }}
                   style={{
                     display: 'block', width: 22, height: 2.5,
-                    background: '#064e3b', borderRadius: 99,
+                    background: '#0a331c', borderRadius: 99,
                     transformOrigin: 'center',
                   }}
                 />
@@ -177,10 +179,10 @@ export default function Navbar() {
                     setIsLangOpen(p => !p);
                   }}
                   style={{
-                    background: 'rgba(255, 255, 255, 0.4)',
-                    border: '1px solid rgba(255, 255, 255, 0.5)',
+                    background: 'rgba(248, 250, 248, 0.55)',
+                    border: '1px solid rgba(15, 123, 59, 0.1)',
                   }}
-                  className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-[10px] font-extrabold uppercase text-emerald-950 hover:bg-white transition-all cursor-pointer shadow-sm"
+                  className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-[10px] font-extrabold uppercase text-[#0a331c] hover:bg-white/80 transition-all cursor-pointer shadow-sm"
                 >
                   <span>{lang === 'en' ? '🇬🇧 EN' : lang === 'ur' ? '🇵🇰 اردو' : '🇵🇰 پب'}</span>
                   <span className="text-[7px] opacity-60">▼</span>
@@ -192,8 +194,8 @@ export default function Navbar() {
                     e.stopPropagation();
                   }}
                   style={{
-                    background: 'rgba(255, 255, 255, 0.95)',
-                    border: '1px solid rgba(16, 185, 129, 0.15)',
+                    background: 'rgba(248, 250, 248, 0.92)',
+                    border: '1px solid rgba(14, 122, 67, 0.1)',
                   }}
                   className={`absolute right-0 top-full mt-2 w-28 backdrop-blur-xl rounded-xl py-1 shadow-xl transition-all duration-300 z-50 flex flex-col overflow-hidden ${
                     isLangOpen ? 'opacity-100 visible translate-y-0' : 'opacity-0 invisible -translate-y-2'
@@ -210,8 +212,8 @@ export default function Navbar() {
                         setLang(l.code);
                         setIsLangOpen(false);
                       }}
-                      className={`px-4 py-2 text-left text-xs font-black hover:bg-emerald-500/20 transition-colors cursor-pointer ${
-                        lang === l.code ? 'text-emerald-400' : 'text-neutral-600'
+                      className={`px-4 py-2 text-left text-xs font-black hover:bg-[#0E7A43]/10 transition-colors cursor-pointer ${
+                        lang === l.code ? 'text-[#0E7A43]' : 'text-neutral-600'
                       }`}
                     >
                       {l.label}
@@ -219,6 +221,18 @@ export default function Navbar() {
                   ))}
                 </div>
               </div>
+
+              {/* Global Search Button */}
+              <motion.button
+                type="button"
+                onClick={() => setIsGlobalSearchOpen(prev => !prev)}
+                aria-label="Search"
+                whileHover={{ scale: 1.12, y: -1 }}
+                whileTap={{ scale: 0.92 }}
+                style={{ position: 'relative', background: 'none', border: 'none', cursor: 'pointer', padding: 4 }}
+              >
+                <Search style={{ width: 22, height: 22, color: '#0a331c', strokeWidth: 1.8 }} />
+              </motion.button>
 
               {/* Cart */}
               <motion.button
@@ -229,7 +243,7 @@ export default function Navbar() {
                 whileTap={{ scale: 0.92 }}
                 style={{ position: 'relative', background: 'none', border: 'none', cursor: 'pointer', padding: 4 }}
               >
-                <ShoppingCart style={{ width: 22, height: 22, color: '#064e3b', strokeWidth: 1.8 }} />
+                <ShoppingCart style={{ width: 22, height: 22, color: '#0a331c', strokeWidth: 1.8 }} />
                 {cartCount > 0 && (
                   <motion.span
                     initial={{ scale: 0, rotate: -45 }}
@@ -237,34 +251,34 @@ export default function Navbar() {
                     style={{
                       position: 'absolute', top: -6, right: -6,
                       width: 18, height: 18, borderRadius: '50%',
-                      display: 'flex', alignItems: 'center', justifycontent: 'center',
+                      display: 'flex', alignItems: 'center', justifyContent: 'center',
                       fontSize: 9, fontWeight: 900, color: '#fff',
-                      background: 'linear-gradient(135deg, #059669, #047857)',
-                      boxShadow: '0 0 10px rgba(16,185,129,0.5)',
+                      background: 'linear-gradient(135deg, #18C964, #0E7A43)',
+                      boxShadow: '0 0 8px rgba(14, 122, 67, 0.3)',
                     }}
                   >
                     {cartCount}
                   </motion.span>
                 )}
               </motion.button>
-
+ 
               {/* Get Quote */}
               {!isMobile && (
                 <Link to="/contact">
                   <motion.span
                     whileHover={{
                       scale: 1.04, y: -2,
-                      boxShadow: '0 8px 28px rgba(34,197,94,0.55)',
+                      boxShadow: '0 8px 28px rgba(24, 201, 100, 0.55)',
                     }}
                     whileTap={{ scale: 0.95, y: 1 }}
                     transition={{ type: 'spring', stiffness: 300, damping: 20 }}
                     style={{
                       display: 'flex', alignItems: 'center', justifyContent: 'center',
                       height: 40, paddingLeft: 16, paddingRight: 16, borderRadius: 12,
-                      background: 'linear-gradient(155deg, #25d366 0%, #16a34a 55%, #15803d 100%)',
+                      background: 'linear-gradient(155deg, #18C964 0%, #0E7A43 55%, #073B20 100%)',
                       color: '#fff', fontWeight: 700, fontSize: 13.5,
                       cursor: 'pointer', whiteSpace: 'nowrap',
-                      boxShadow: '0 4px 16px rgba(34,197,94,0.38), inset 0 1px 0 rgba(255,255,255,0.22)',
+                      boxShadow: '0 4px 16px rgba(14, 122, 67, 0.25), inset 0 1px 0 rgba(255,255,255,0.18)',
                       letterSpacing: '0.01em',
                     }}
                   >

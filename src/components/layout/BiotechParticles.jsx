@@ -84,7 +84,7 @@ export default function BiotechParticles() {
         // Node 2
         ctx.beginPath();
         ctx.arc(node2X, this.y, this.size, 0, Math.PI * 2);
-        ctx.fillStyle = '#8AD65A';
+        ctx.fillStyle = '#18C964';
         ctx.fill();
 
         ctx.restore();

@@ -66,7 +66,7 @@ const OrderConfirmButton = ({ onConfirm, onValidate, onComplete, disabled }) => 
       particleCount: 50,
       spread: 60,
       origin: { y: 0.8 },
-      colors: ['#5cb85c', '#8AD65A', '#2d6a2d']
+      colors: ['#0E7A43', '#18C964', '#2d6a2d']
     });
 
     await sleep(2200);
@@ -126,7 +126,7 @@ const OrderConfirmButton = ({ onConfirm, onValidate, onComplete, disabled }) => 
             initial={{ scale: 1 }}
             animate={{ scale: 0.93, opacity: 0.8 }}
             exit={{ scale: 0.9 }}
-            className="w-full h-[58px] rounded-full bg-[#1b441b] border border-[#5cb85c]/60"
+            className="w-full h-[58px] rounded-full bg-[#1b441b] border border-[#0E7A43]/60"
             style={{
               boxShadow: '0 0 50px rgba(92,184,92,0.5)',
             }}
@@ -166,7 +166,7 @@ const OrderConfirmButton = ({ onConfirm, onValidate, onComplete, disabled }) => 
               {Array.from({ length: 12 }).map((_, i) => (
                 <motion.div
                   key={i}
-                  className="h-[1.5px] w-4 bg-[#5cb85c] rounded-full shrink-0"
+                  className="h-[1.5px] w-4 bg-[#0E7A43] rounded-full shrink-0"
                   animate={{ x: [0, -30] }}
                   transition={{ 
                     duration: 0.5, 
@@ -257,7 +257,7 @@ const OrderConfirmButton = ({ onConfirm, onValidate, onComplete, disabled }) => 
                 border-2 overflow-hidden"
               style={{
                 background: 'rgba(8, 22, 8, 0.95)',
-                borderColor: '#5cb85c',
+                borderColor: '#0E7A43',
                 boxShadow: `
                   0 0 40px rgba(92,184,92,0.85),
                   0 0 80px rgba(92,184,92,0.4),
@@ -270,7 +270,7 @@ const OrderConfirmButton = ({ onConfirm, onValidate, onComplete, disabled }) => 
                 <motion.div
                   className="absolute inset-[-15%] rounded-full"
                   style={{
-                    background: 'conic-gradient(#5cb85c 0deg, transparent 90deg, transparent 360deg)',
+                    background: 'conic-gradient(#0E7A43 0deg, transparent 90deg, transparent 360deg)',
                     filter: 'blur(3px)',
                   }}
                   animate={{ rotate: 360 }}
