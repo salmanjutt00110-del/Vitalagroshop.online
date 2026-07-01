@@ -136,36 +136,36 @@ export default function PremiumSearchBar({
   const suggestedProducts = useMemo(() => {
     return [
       {
-        id: 'fatty-80sl',
-        slug: 'fatty-80sl',
-        name: { en: 'FATTY - 80%SL', ur: 'فیٹی' },
-        category: 'fungicide',
-        sizes: [{ price: 1650 }],
+        id: 'easy-grow-gold',
+        slug: 'easy-grow-gold',
+        name: { en: 'EAZY GROW GOLD - 12%WP', ur: 'ایزی گرو گولڈ' },
+        category: 'seed-treatment',
+        sizes: [{ price: 365 }],
         shortDesc: {
-          en: 'Organic potassium salt of fatty acids targeting soft-bodied insects and powdery mildew.',
-          ur: 'نامیاتی پوٹاشیم نمک جو چوسنے والے کیڑوں کے خلاف بہترین مدافعت فراہم کرتا ہے۔'
+          en: 'Premium seed treatment compound combining DIFENOCONAZL + VALIDAMYCIN.',
+          ur: 'بیج کی صفائی اور صحت مند بڑھوتری کے لیے بہترین فارمولا۔'
         }
       },
       {
-        id: 'aaqaab-10ec',
-        slug: 'aaqaab-10ec',
+        id: 'conference-gold-fs',
+        slug: 'conference-gold-fs',
+        name: { en: 'CONFERENCE GOLD - 35%FS', ur: 'کانفرنس گولڈ' },
+        category: 'seed-treatment',
+        sizes: [{ price: 950 }],
+        shortDesc: {
+          en: 'Advanced seed protection insecticide for sucking pest control.',
+          ur: 'چوسنے والے کیڑوں کے خلاف بیج کا بہترین حفاظتی فارمولا۔'
+        }
+      },
+      {
+        id: 'aaqab',
+        slug: 'aaqab',
         name: { en: 'AAQAAB - 10%EC', ur: 'عقاب' },
         category: 'insecticide',
         sizes: [{ price: 980 }],
         shortDesc: {
-          en: 'Broad-spectrum insecticide for control of chewing and sucking pests in cotton and vegetables.',
-          ur: 'کپاس اور سبزیوں میں چوسنے والے اور چبانے والے کیڑوں کا خاتمہ۔'
-        }
-      },
-      {
-        id: 'super-4g',
-        slug: 'super-4g',
-        name: { en: 'SUPER 4G', ur: 'سپر فور جی' },
-        category: 'plant-nutrition',
-        sizes: [{ price: 2400 }],
-        shortDesc: {
-          en: 'High-purity liquid micronutrient fertilizer with seaweed extract and growth enzymes.',
-          ur: 'پودوں کی بھرپور بڑھوتری اور پیداوار بڑھانے کے لیے خاص مائیکرو نیوٹرینٹس۔'
+          en: 'Broad-spectrum insecticide for chewing and sucking pests.',
+          ur: 'کپاس اور سبزیوں میں نقصان دہ کیڑوں کا مکمل خاتمہ۔'
         }
       }
     ].map(p => ({
@@ -277,6 +277,18 @@ export default function PremiumSearchBar({
               value={query}
               onChange={(e) => setQuery(e.target.value)}
               onFocus={() => setIsFocused(true)}
+              onKeyDown={(e) => {
+                if (e.key === 'Escape') {
+                  e.preventDefault();
+                  setIsFocused(false);
+                  if (isExpandable) {
+                    setIsExpanded(false);
+                  }
+                  if (onCloseOverlay) {
+                    onCloseOverlay();
+                  }
+                }
+              }}
               placeholder={animatedPlaceholder}
               className="w-full h-full bg-transparent border-none outline-none focus:ring-0 pl-3 pr-8 text-xs sm:text-sm text-[#0a331c] placeholder-emerald-900/40"
             />

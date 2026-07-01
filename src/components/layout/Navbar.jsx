@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect, useCallback, useRef } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ShoppingCart, Search } from 'lucide-react';
@@ -17,13 +17,17 @@ export default function Navbar() {
   const { cartCount, setIsCartOpen } = useCart();
   const { setIsGlobalSearchOpen } = useApp();
   const [isLangOpen, setIsLangOpen] = useState(false);
+  const langRef = useRef(null);
 
   useEffect(() => {
-    if (!isLangOpen) return;
-    const handleClose = () => setIsLangOpen(false);
-    window.addEventListener('click', handleClose);
-    return () => window.removeEventListener('click', handleClose);
-  }, [isLangOpen]);
+    const handleOutsideClick = (e) => {
+      if (langRef.current && !langRef.current.contains(e.target)) {
+        setIsLangOpen(false);
+      }
+    };
+    document.addEventListener('click', handleOutsideClick);
+    return () => document.removeEventListener('click', handleOutsideClick);
+  }, []);
 
   useEffect(() => {
     const checkMobile = () => setIsMobile(window.innerWidth < 640);
@@ -115,42 +119,44 @@ export default function Navbar() {
           }}>
 
             {/* LEFT — Hamburger */}
-            <motion.button
-              type="button"
-              onClick={toggleMenu}
-              aria-label="Toggle menu"
-              whileHover={{ scale: 1.08 }}
-              whileTap={{ scale: 0.90 }}
-              style={{
-                display: 'flex', flexDirection: 'column', alignItems: 'center',
-                justifyContent: 'center', gap: 5, width: 42, height: 42,
-                cursor: 'pointer', flexShrink: 0, background: 'none', border: 'none', padding: 0,
-              }}
-            >
-              {[
-                { rotate: menuOpen ? 45  : 0,  y: menuOpen ? 7  : 0 },
-                { opacity: menuOpen ? 0  : 1,  scaleX: menuOpen ? 0 : 1 },
-                { rotate: menuOpen ? -45 : 0,  y: menuOpen ? -7 : 0 },
-              ].map((anim, i) => (
-                <motion.span
-                  key={i}
-                  animate={anim}
-                  transition={{ duration: 0.24, ease: [0.16, 1, 0.3, 1] }}
-                  style={{
-                    display: 'block', width: 22, height: 2.5,
-                    background: '#0a331c', borderRadius: 99,
-                    transformOrigin: 'center',
-                  }}
-                />
-              ))}
-            </motion.button>
+            <div style={{ flex: '1 0 0%', display: 'flex', justifyContent: 'flex-start' }}>
+              <motion.button
+                type="button"
+                onClick={toggleMenu}
+                aria-label="Toggle menu"
+                whileHover={{ scale: 1.08 }}
+                whileTap={{ scale: 0.90 }}
+                style={{
+                  display: 'flex', flexDirection: 'column', alignItems: 'center',
+                  justifyContent: 'center', gap: 5, width: 42, height: 42,
+                  cursor: 'pointer', flexShrink: 0, background: 'none', border: 'none', padding: 0,
+                }}
+              >
+                {[
+                  { rotate: menuOpen ? 45  : 0,  y: menuOpen ? 7  : 0 },
+                  { opacity: menuOpen ? 0  : 1,  scaleX: menuOpen ? 0 : 1 },
+                  { rotate: menuOpen ? -45 : 0,  y: menuOpen ? -7 : 0 },
+                ].map((anim, i) => (
+                  <motion.span
+                    key={i}
+                    animate={anim}
+                    transition={{ duration: 0.24, ease: [0.16, 1, 0.3, 1] }}
+                    style={{
+                      display: 'block', width: 22, height: 2.5,
+                      background: '#0a331c', borderRadius: 99,
+                      transformOrigin: 'center',
+                    }}
+                  />
+                ))}
+              </motion.button>
+            </div>
 
             {/* CENTER — Logo */}
             <div style={{
-              position: 'absolute', left: 0, right: 0,
-              display: 'flex', justifyContent: 'center', pointerEvents: 'none',
+              display: 'flex', justifyContent: 'center', alignItems: 'center',
+              flexShrink: 1, minWidth: 0, pointerEvents: 'none',
             }}>
-              <Link to="/" style={{ pointerEvents: 'auto' }}>
+              <Link to="/" style={{ pointerEvents: 'auto', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                 <motion.img
                   src={vitalAgroLogo}
                   alt="Vital Agro"
@@ -167,15 +173,14 @@ export default function Navbar() {
             </div>
 
             {/* RIGHT — Cart + Quote */}
-            <div style={{ display: 'flex', alignItems: 'center', gap: isMobile ? 6 : 12, flexShrink: 0, position: 'relative', zIndex: 2 }}>
+            <div style={{ flex: '1 0 0%', display: 'flex', justifyContent: 'flex-end', alignItems: 'center', gap: isMobile ? 6 : 12, position: 'relative', zIndex: 2 }}>
 
               {/* Language Selector Dropdown */}
-              <div className="relative flex items-center">
+              <div ref={langRef} className="relative flex items-center">
                 <motion.button
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
-                  onClick={(e) => {
-                    e.stopPropagation();
+                  onClick={() => {
                     setIsLangOpen(p => !p);
                   }}
                   style={{
@@ -184,7 +189,7 @@ export default function Navbar() {
                     backdropFilter: 'blur(12px)',
                     WebkitBackdropFilter: 'blur(12px)',
                   }}
-                  className="flex items-center gap-1 px-2 py-1.5 sm:px-3 sm:py-1.5 rounded-xl text-[9px] sm:text-[10px] font-extrabold uppercase text-[#0a331c] hover:bg-white/85 transition-all cursor-pointer shadow-sm animate-pulse-subtle"
+                  className="flex items-center gap-1 px-2 py-1.5 sm:px-3 sm:py-1.5 rounded-xl text-[9px] sm:text-[10px] font-extrabold uppercase text-[#0a331c] hover:bg-white/85 transition-all cursor-pointer shadow-sm"
                 >
                   <span>{lang === 'en' ? '🇬🇧 EN' : lang === 'ur' ? '🇵🇰 اردو' : '🇵🇰 پب'}</span>
                   <span className="text-[6px] sm:text-[7px] opacity-60">▼</span>
@@ -198,9 +203,6 @@ export default function Navbar() {
                       animate={{ opacity: 1, y: 0, scale: 1 }}
                       exit={{ opacity: 0, y: -10, scale: 0.95 }}
                       transition={{ duration: 0.2, ease: [0.16, 1, 0.3, 1] }}
-                      onClick={(e) => {
-                        e.stopPropagation();
-                      }}
                       style={{
                         background: 'rgba(255, 255, 255, 0.85)',
                         border: '1px solid rgba(14, 122, 67, 0.15)',
@@ -216,6 +218,7 @@ export default function Navbar() {
                       ].map((l) => (
                         <button
                           key={l.code}
+                          type="button"
                           onClick={() => {
                             setLang(l.code);
                             setIsLangOpen(false);

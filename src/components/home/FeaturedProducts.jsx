@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
 import { useLanguage } from '@/lib/LanguageContext';
@@ -8,7 +8,7 @@ import { ShoppingCart, Info, ArrowRight, Search } from 'lucide-react';
 import BlurUpImage from '@/components/ui/BlurUpImage';
 
 // Pick 3 flagship products that have real images
-const FEATURED_SLUGS = ['fatty', 'super-4g', 'aaqab'];
+const FEATURED_SLUGS = ['easy-grow-gold', 'conference-gold-fs', 'aaqab'];
 
 export default function FeaturedProducts() {
   const { lang, t } = useLanguage();

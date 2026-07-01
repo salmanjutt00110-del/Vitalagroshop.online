@@ -8,7 +8,6 @@ import PremiumProductCard from '../products/PremiumProductCard';
 export default function PremiumProductSlider({ products, title, subtitle }) {
   const [selectedIndex, setSelectedIndex] = useState(0);
 
-  // Embla with loop, snap, and autoplay
   const [emblaRef, emblaApi] = useEmblaCarousel(
     { 
       loop: true, 
@@ -17,7 +16,7 @@ export default function PremiumProductSlider({ products, title, subtitle }) {
       containScroll: 'trimSnaps',
       skipSnaps: false,
     },
-    [Autoplay({ delay: 5000, stopOnInteraction: true, stopOnMouseEnter: true })]
+    [Autoplay({ delay: 5000, stopOnInteraction: false, stopOnMouseEnter: true })]
   );
 
   const scrollPrev = useCallback(() => {
@@ -28,7 +27,6 @@ export default function PremiumProductSlider({ products, title, subtitle }) {
     if (emblaApi) emblaApi.scrollNext();
   }, [emblaApi]);
 
-  // Track selected index for dot indicators
   useEffect(() => {
     if (!emblaApi) return;
     const onSelect = () => setSelectedIndex(emblaApi.selectedScrollSnap());
@@ -62,20 +60,20 @@ export default function PremiumProductSlider({ products, title, subtitle }) {
           </div>
           
           {/* Desktop Navigation Controls */}
-          <div className="hidden sm:flex gap-2">
+          <div className="hidden sm:flex gap-3">
             <button
               onClick={scrollPrev}
-              className="w-10 h-10 rounded-full bg-white/90 hover:bg-white/[0.08] border border-emerald-900/10 hover:border-emerald-500/30 flex items-center justify-center text-neutral-500 hover:text-emerald-400 transition-all duration-300 cursor-pointer active:scale-95"
+              className="w-12 h-12 rounded-full bg-white/80 backdrop-blur-md border border-emerald-500/20 text-[#0E7A43] hover:text-white hover:bg-[#0E7A43] hover:shadow-[0_0_15px_rgba(14,122,67,0.4)] transition-all duration-300 flex items-center justify-center cursor-pointer active:scale-95 shadow-md"
               aria-label="Previous"
             >
-              <ChevronLeft className="w-5 h-5" />
+              <ChevronLeft className="w-6 h-6" />
             </button>
             <button
               onClick={scrollNext}
-              className="w-10 h-10 rounded-full bg-white/90 hover:bg-white/[0.08] border border-emerald-900/10 hover:border-emerald-500/30 flex items-center justify-center text-neutral-500 hover:text-emerald-400 transition-all duration-300 cursor-pointer active:scale-95"
+              className="w-12 h-12 rounded-full bg-white/80 backdrop-blur-md border border-emerald-500/20 text-[#0E7A43] hover:text-white hover:bg-[#0E7A43] hover:shadow-[0_0_15px_rgba(14,122,67,0.4)] transition-all duration-300 flex items-center justify-center cursor-pointer active:scale-95 shadow-md"
               aria-label="Next"
             >
-              <ChevronRight className="w-5 h-5" />
+              <ChevronRight className="w-6 h-6" />
             </button>
           </div>
         </motion.div>
@@ -119,20 +117,20 @@ export default function PremiumProductSlider({ products, title, subtitle }) {
       </div>
 
       {/* Mobile Navigation Controls */}
-      <div className="flex sm:hidden justify-center gap-3 mt-4">
+      <div className="flex sm:hidden justify-center gap-4 mt-4">
         <button
           onClick={scrollPrev}
-          className="w-10 h-10 rounded-full bg-white/90 border border-emerald-900/10 flex items-center justify-center text-neutral-500 active:text-emerald-400 transition-colors cursor-pointer active:scale-95"
+          className="w-12 h-12 rounded-full bg-white/80 backdrop-blur-md border border-emerald-500/20 text-[#0E7A43] hover:text-white hover:bg-[#0E7A43] hover:shadow-[0_0_15px_rgba(14,122,67,0.4)] transition-all duration-300 flex items-center justify-center cursor-pointer active:scale-95 shadow-md"
           aria-label="Previous"
         >
-          <ChevronLeft className="w-5 h-5" />
+          <ChevronLeft className="w-6 h-6" />
         </button>
         <button
           onClick={scrollNext}
-          className="w-10 h-10 rounded-full bg-white/90 border border-emerald-900/10 flex items-center justify-center text-neutral-500 active:text-emerald-400 transition-colors cursor-pointer active:scale-95"
+          className="w-12 h-12 rounded-full bg-[#0E7A43] border border-emerald-500/20 text-white shadow-[0_0_15px_rgba(14,122,67,0.3)] flex items-center justify-center cursor-pointer active:scale-95"
           aria-label="Next"
         >
-          <ChevronRight className="w-5 h-5" />
+          <ChevronRight className="w-6 h-6" />
         </button>
       </div>
     </div>
