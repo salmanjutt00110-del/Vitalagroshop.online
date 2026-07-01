@@ -156,12 +156,12 @@ export default function PremiumGlassShowcase() {
     setCurrentIndex((prev) => (prev - 1 + featuredProducts.length) % featuredProducts.length);
   };
 
-  // Autoplay Timer (7 seconds)
+  // Autoplay Timer (5 seconds)
   useEffect(() => {
     if (!isPlaying) return;
     const interval = setInterval(() => {
       handleNext();
-    }, 7000);
+    }, 5000);
     return () => clearInterval(interval);
   }, [isPlaying, currentIndex, featuredProducts]);
 
@@ -623,7 +623,11 @@ Thank You.`;
           </div>
 
           {/* Right Panel: Cinematic Awwwards 3-Card Carousel Arena */}
-          <div className="lg:col-span-7 flex flex-col items-center justify-center h-[380px] sm:h-[480px] lg:h-[500px] xl:h-[550px] relative overflow-hidden">
+          <div 
+            onMouseEnter={() => setIsPlaying(false)}
+            onMouseLeave={() => setIsPlaying(true)}
+            className="lg:col-span-7 flex flex-col items-center justify-center h-[380px] sm:h-[480px] lg:h-[500px] xl:h-[550px] relative overflow-hidden"
+          >
             
             {/* Canvas Particle Overlay (leaves/dust) */}
             <canvas ref={canvasRef} className="absolute inset-0 pointer-events-none z-10" />
@@ -660,6 +664,9 @@ Thank You.`;
                 lang={lang}
                 displayedPrice={displayedPrice}
                 navigate={navigate}
+                handlePrev={handlePrev}
+                handleNext={handleNext}
+                setIsPlaying={setIsPlaying}
               />
 
               {/* Right card peak (peaking from right boundary) */}
@@ -687,32 +694,46 @@ Thank You.`;
             </div>
 
             {/* Slider navigation Indicators underneath */}
-            <div className="flex items-center gap-3 mt-4 z-20">
-              <button
+            <div className="flex items-center gap-4 mt-6 z-20">
+              <motion.button
+                whileHover={{ scale: 1.1, boxShadow: '0 0 15px rgba(57, 217, 138, 0.4)' }}
+                whileTap={{ scale: 0.95 }}
                 onClick={handlePrev}
-                className="p-2.5 rounded-lg bg-white/60 border border-emerald-900/10 text-emerald-950 hover:text-emerald-700 transition-all"
+                style={{
+                  background: 'rgba(255, 255, 255, 0.45)',
+                  backdropFilter: 'blur(12px)',
+                  WebkitBackdropFilter: 'blur(12px)',
+                }}
+                className="w-12 h-12 rounded-xl border border-emerald-500/20 flex items-center justify-center text-emerald-950 hover:text-emerald-600 hover:border-emerald-500/40 transition-colors shadow-md cursor-pointer"
               >
-                <ChevronLeft className="w-4 h-4" />
-              </button>
+                <ChevronLeft className="w-6 h-6 stroke-[2.5]" />
+              </motion.button>
 
-              <div className="flex gap-1.5">
+              <div className="flex gap-2">
                 {featuredProducts.map((_, idx) => (
                   <button
                     key={idx}
                     onClick={() => setCurrentIndex(idx)}
-                    className={`h-1.5 rounded-full transition-all duration-300 ${
-                      idx === currentIndex ? 'w-6 bg-[#0E7A43]' : 'w-2 bg-white/20 hover:bg-white/40'
+                    className={`h-2 rounded-full transition-all duration-300 ${
+                      idx === currentIndex ? 'w-8 bg-[#0E7A43] shadow-[0_0_8px_rgba(14,122,67,0.4)]' : 'w-2 bg-neutral-300 hover:bg-neutral-400'
                     }`}
                   />
                 ))}
               </div>
 
-              <button
+              <motion.button
+                whileHover={{ scale: 1.1, boxShadow: '0 0 15px rgba(57, 217, 138, 0.4)' }}
+                whileTap={{ scale: 0.95 }}
                 onClick={handleNext}
-                className="p-2.5 rounded-lg bg-white/60 border border-emerald-900/10 text-emerald-950 hover:text-emerald-700 transition-all"
+                style={{
+                  background: 'rgba(255, 255, 255, 0.45)',
+                  backdropFilter: 'blur(12px)',
+                  WebkitBackdropFilter: 'blur(12px)',
+                }}
+                className="w-12 h-12 rounded-xl border border-emerald-500/20 flex items-center justify-center text-emerald-950 hover:text-emerald-600 hover:border-emerald-500/40 transition-colors shadow-md cursor-pointer"
               >
-                <ChevronRight className="w-4 h-4" />
-              </button>
+                <ChevronRight className="w-6 h-6 stroke-[2.5]" />
+              </motion.button>
             </div>
 
           </div>
@@ -725,7 +746,7 @@ Thank You.`;
 }
 
 // Isolated Glass Card Component to prevent mouse-move state from re-rendering the heavy showcase parent
-function ProductGlassCard({ activeProduct, lang, displayedPrice, navigate }) {
+function ProductGlassCard({ activeProduct, lang, displayedPrice, navigate, handlePrev, handleNext, setIsPlaying }) {
   const [tilt, setTilt] = useState({ x: 0, y: 0 });
   const [parallax, setParallax] = useState({ x: 0, y: 0 });
 
@@ -758,7 +779,20 @@ function ProductGlassCard({ activeProduct, lang, displayedPrice, navigate }) {
 
       {/* Glassmorphic card frame */}
       <motion.div
-        onClick={() => navigate(`/products/${activeProduct.slug || activeProduct.id}`)}
+        drag="x"
+        dragConstraints={{ left: 0, right: 0 }}
+        dragElastic={0.4}
+        onDragStart={() => setIsPlaying(false)}
+        onDragEnd={(e, info) => {
+          setIsPlaying(true);
+          const threshold = 60;
+          if (info.offset.x > threshold) {
+            handlePrev();
+          } else if (info.offset.x < -threshold) {
+            handleNext();
+          }
+        }}
+        onTap={() => navigate(`/products/${activeProduct.slug || activeProduct.id}`)}
         style={{
           transformStyle: 'preserve-3d',
           transform: `perspective(1000px) rotateX(${tilt.x}deg) rotateY(${tilt.y}deg)`,

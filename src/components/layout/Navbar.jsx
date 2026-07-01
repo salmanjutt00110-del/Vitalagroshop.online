@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { ShoppingCart, Search } from 'lucide-react';
 import { useLanguage } from '@/lib/LanguageContext';
 import { useCart } from '@/lib/CartContext';
@@ -158,7 +158,7 @@ export default function Navbar() {
                   whileTap={{ scale: 0.96 }}
                   transition={{ type: 'spring', stiffness: 320, damping: 22 }}
                   style={{
-                    height: 42, width: 'auto', objectFit: 'contain',
+                    height: isMobile ? 28 : 42, width: 'auto', objectFit: 'contain',
                     filter: 'drop-shadow(0 2px 4px rgba(0,0,0,0.15))',
                     cursor: 'pointer',
                   }}
@@ -167,7 +167,7 @@ export default function Navbar() {
             </div>
 
             {/* RIGHT — Cart + Quote */}
-            <div style={{ display: 'flex', alignItems: 'center', gap: 12, flexShrink: 0, position: 'relative', zIndex: 2 }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: isMobile ? 6 : 12, flexShrink: 0, position: 'relative', zIndex: 2 }}>
 
               {/* Language Selector Dropdown */}
               <div className="relative flex items-center">
@@ -179,47 +179,57 @@ export default function Navbar() {
                     setIsLangOpen(p => !p);
                   }}
                   style={{
-                    background: 'rgba(248, 250, 248, 0.55)',
-                    border: '1px solid rgba(15, 123, 59, 0.1)',
+                    background: 'rgba(255, 255, 255, 0.45)',
+                    border: '1px solid rgba(14, 122, 67, 0.12)',
+                    backdropFilter: 'blur(12px)',
+                    WebkitBackdropFilter: 'blur(12px)',
                   }}
-                  className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-[10px] font-extrabold uppercase text-[#0a331c] hover:bg-white/80 transition-all cursor-pointer shadow-sm"
+                  className="flex items-center gap-1 px-2 py-1.5 sm:px-3 sm:py-1.5 rounded-xl text-[9px] sm:text-[10px] font-extrabold uppercase text-[#0a331c] hover:bg-white/85 transition-all cursor-pointer shadow-sm animate-pulse-subtle"
                 >
                   <span>{lang === 'en' ? '🇬🇧 EN' : lang === 'ur' ? '🇵🇰 اردو' : '🇵🇰 پب'}</span>
-                  <span className="text-[7px] opacity-60">▼</span>
+                  <span className="text-[6px] sm:text-[7px] opacity-60">▼</span>
                 </motion.button>
                 
                 {/* Dropdown Menu */}
-                <div 
-                  onClick={(e) => {
-                    e.stopPropagation();
-                  }}
-                  style={{
-                    background: 'rgba(248, 250, 248, 0.92)',
-                    border: '1px solid rgba(14, 122, 67, 0.1)',
-                  }}
-                  className={`absolute right-0 top-full mt-2 w-28 backdrop-blur-xl rounded-xl py-1 shadow-xl transition-all duration-300 z-50 flex flex-col overflow-hidden ${
-                    isLangOpen ? 'opacity-100 visible translate-y-0' : 'opacity-0 invisible -translate-y-2'
-                  }`}
-                >
-                  {[
-                    { code: 'en', label: '🇬🇧 EN' },
-                    { code: 'ur', label: '🇵🇰 اردو' },
-                    { code: 'pb', label: '🇵🇰 پب' },
-                  ].map((l) => (
-                    <button
-                      key={l.code}
-                      onClick={() => {
-                        setLang(l.code);
-                        setIsLangOpen(false);
+                <AnimatePresence>
+                  {isLangOpen && (
+                    <motion.div 
+                      initial={{ opacity: 0, y: -10, scale: 0.95 }}
+                      animate={{ opacity: 1, y: 0, scale: 1 }}
+                      exit={{ opacity: 0, y: -10, scale: 0.95 }}
+                      transition={{ duration: 0.2, ease: [0.16, 1, 0.3, 1] }}
+                      onClick={(e) => {
+                        e.stopPropagation();
                       }}
-                      className={`px-4 py-2 text-left text-xs font-black hover:bg-[#0E7A43]/10 transition-colors cursor-pointer ${
-                        lang === l.code ? 'text-[#0E7A43]' : 'text-neutral-600'
-                      }`}
+                      style={{
+                        background: 'rgba(255, 255, 255, 0.85)',
+                        border: '1px solid rgba(14, 122, 67, 0.15)',
+                        backdropFilter: 'blur(20px)',
+                        WebkitBackdropFilter: 'blur(20px)',
+                      }}
+                      className="absolute right-0 top-full mt-2 w-28 rounded-xl py-1 shadow-xl z-50 flex flex-col overflow-hidden"
                     >
-                      {l.label}
-                    </button>
-                  ))}
-                </div>
+                      {[
+                        { code: 'en', label: '🇬🇧 EN' },
+                        { code: 'ur', label: '🇵🇰 اردو' },
+                        { code: 'pb', label: '🇵🇰 پب' },
+                      ].map((l) => (
+                        <button
+                          key={l.code}
+                          onClick={() => {
+                            setLang(l.code);
+                            setIsLangOpen(false);
+                          }}
+                          className={`px-4 py-2.5 text-left text-[11px] font-extrabold hover:bg-[#0E7A43]/10 transition-colors cursor-pointer ${
+                            lang === l.code ? 'text-[#0E7A43]' : 'text-[#0a331c]/70'
+                          }`}
+                        >
+                          {l.label}
+                        </button>
+                      ))}
+                    </motion.div>
+                  )}
+                </AnimatePresence>
               </div>
 
               {/* Global Search Button */}

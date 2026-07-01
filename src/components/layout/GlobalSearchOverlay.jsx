@@ -54,11 +54,19 @@ export default function GlobalSearchOverlay() {
 
           {/* Centered Spotlight Card */}
           <motion.div
+            drag="y"
+            dragConstraints={{ top: 0, bottom: 0 }}
+            dragElastic={{ top: 0, bottom: 0.85 }}
+            onDragEnd={(e, info) => {
+              if (info.offset.y > 110) {
+                setIsGlobalSearchOpen(false);
+              }
+            }}
             initial={{ opacity: 0, scale: 0.96, y: -20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.96, y: -20 }}
             transition={{ type: 'spring', damping: 26, stiffness: 320 }}
-            className="w-full max-w-2xl relative z-10"
+            className="w-full max-w-2xl relative z-10 cursor-grab active:cursor-grabbing"
           >
             {/* Close Button above the search card */}
             <div className="absolute right-4 -top-12 z-20">

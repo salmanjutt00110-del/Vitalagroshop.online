@@ -30,7 +30,7 @@ export default function HeroBackground({ videoRef }) {
           preload="metadata"
           poster={vitalBgPoster}
           className="absolute inset-0 w-full h-full object-cover opacity-90 z-0"
-          style={{ objectFit: 'cover', transform: 'translate3d(0, 0, 0)', willChange: 'transform' }}
+          style={{ objectFit: 'cover', objectPosition: 'center center', transform: 'translate3d(0, 0, 0)', willChange: 'transform' }}
         >
           <source src={vitalBg} type="video/mp4" />
           <source src={vitalBgWebm} type="video/webm" />

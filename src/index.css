@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Outfit:wght@300;400;500;600;700;800;900&family=Poppins:wght@400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Outfit:wght@300;400;500;600;700;800;900&family=Poppins:wght@400;500;600;700;800;900&family=Noto+Nastaliq+Urdu:wght@400..700&family=Noto+Sans+Arabic:wght@100..900&display=swap');
 @import './styles/mobile.css';
 @import './styles/tokens.css';
 
@@ -12,19 +12,18 @@
 }
 
 [lang="ur"], [lang="ur"] *, .lang-ur, .lang-ur *, .urdu-calligraphy, .urdu-calligraphy * {
-  font-family: 'Jameel Noori Nastaleeq', 'JameelNooriNastaliq', 'Plus Jakarta Sans', ui-sans-serif, system-ui, sans-serif !important;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.75), 0 2px 5px rgba(0, 0, 0, 0.45) !important;
+  font-family: 'Noto Nastaliq Urdu', 'Jameel Noori Nastaleeq', 'Noto Sans Arabic', 'Plus Jakarta Sans', ui-sans-serif, system-ui, sans-serif !important;
 }
 
 [lang="ur"] h1, [lang="ur"] h2, [lang="ur"] h3, [lang="ur"] h4, [lang="ur"] h5, [lang="ur"] h6,
 .lang-ur h1, .lang-ur h2, .lang-ur h3, .lang-ur h4, .lang-ur h5, .lang-ur h6 {
-  line-height: 1.65 !important;
+  line-height: 2.2 !important;
   padding-bottom: 0.15em;
 }
 
 [lang="ur"] p, [lang="ur"] span, [lang="ur"] a, [lang="ur"] li, [lang="ur"] button,
 .lang-ur p, .lang-ur span, .lang-ur a, .lang-ur li, .lang-ur button {
-  line-height: 1.85 !important;
+  line-height: 2.0 !important;
 }
 
 @tailwind base;
