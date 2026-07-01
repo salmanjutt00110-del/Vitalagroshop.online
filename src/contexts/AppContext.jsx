@@ -27,7 +27,7 @@ export const AppProvider = ({ children }) => {
     AppLoadState.hasLoaded ? 'ready' : 'welcome'
   );
 
-  const [catalogLoaded, setCatalogLoaded] = useState(false);
+  const [catalogLoaded, setCatalogLoaded] = useState(true);
   const [activeDetailsProduct, setActiveDetailsProduct] = useState(null);
   const [isGlobalSearchOpen, setIsGlobalSearchOpen] = useState(false);
   const [globalSearchQuery, setGlobalSearchQuery] = useState('');
