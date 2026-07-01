@@ -13,7 +13,7 @@ import {
 import { gsap } from 'gsap';
 import { useLanguage } from '@/lib/LanguageContext';
 import { useCart } from '@/lib/CartContext';
-import { PRODUCTS_DATA } from '@/data/productsData';
+import { PRODUCTS_DATA, PENDING_IMAGES } from '@/data/productsData';
 import { useApp } from '@/contexts/AppContext';
 
 // List of exact 11 featured products requested
@@ -67,7 +67,10 @@ export default function PremiumGlassShowcase() {
 
   // Map slugs dynamically from data
   const featuredProducts = useMemo(() => {
-    return FEATURED_SLUGS.map(slug => PRODUCTS_DATA[slug]).filter(Boolean);
+    return FEATURED_SLUGS
+      .filter(slug => !PENDING_IMAGES.includes(slug))
+      .map(slug => PRODUCTS_DATA[slug])
+      .filter(Boolean);
   }, []);
 
   const activeProduct = featuredProducts[currentIndex];

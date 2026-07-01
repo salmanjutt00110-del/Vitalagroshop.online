@@ -7,7 +7,7 @@ import { Download, Send,
   Flame, HardHat, FileText, Info, Leaf, Check, Sparkles, Zap, Clock, ShieldCheck, Gauge, Layers, Activity, Maximize, Users, ArrowLeft, Truck, Building, Upload, X, ChevronRight
 } from 'lucide-react';
 import { useLanguage } from '@/lib/LanguageContext';
-import { PRODUCTS_DATA, getProductImage } from '@/data/productsData';
+import { PRODUCTS_DATA, getProductImage, PENDING_IMAGES } from '@/data/productsData';
 import { useToast } from '@/components/ui/use-toast';
 import { useCart } from '@/lib/CartContext';
 import useVideoAutoplay from '@/hooks/useVideoAutoplay';
@@ -187,6 +187,8 @@ export default function ProductDetail() {
     if (!found) return null;
 
     // Product Safe Validation
+    const slug = found.slug || found.id;
+    if (PENDING_IMAGES.includes(slug)) return null;
     const nameVal = typeof found.name === 'object' ? (found.name.en || found.name.ur) : found.name;
     if (!nameVal || !nameVal.trim()) return null;
     if (!found.category || !found.category.trim()) return null;
@@ -707,7 +709,7 @@ export default function ProductDetail() {
 
   // Related products slider items
   const related = Object.values(PRODUCTS_DATA)
-    .filter(p => p?.id && p?.id !== product?.id && p?.category === product?.category)
+    .filter(p => p?.id && p?.id !== product?.id && p?.category === product?.category && !PENDING_IMAGES.includes(p.slug || p.id))
     .slice(0, 4);
 
   // Gallery array

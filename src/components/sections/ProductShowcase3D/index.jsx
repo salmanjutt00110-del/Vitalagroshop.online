@@ -4,7 +4,7 @@ import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
 import { useLanguage } from '@/lib/LanguageContext';
-import { PRODUCTS_DATA } from '@/data/productsData';
+import { PRODUCTS_DATA, PENDING_IMAGES } from '@/data/productsData';
 import { useApp } from '@/contexts/AppContext';
 
 const AUTO_MS = 7000;
@@ -167,7 +167,9 @@ const CROP_TRANSLATIONS = {
   }
 };
 
-const PRODUCTS = Object.values(PRODUCTS_DATA).map((p) => {
+const PRODUCTS = Object.values(PRODUCTS_DATA)
+  .filter(p => !PENDING_IMAGES.includes(p.slug || p.id))
+  .map((p) => {
   const themeInfo = PRODUCT_THEMES[p.slug] || {
     theme: '#0E7A43',
     themeBg: '#020c02',

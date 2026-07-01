@@ -1,5 +1,5 @@
 import React, { Suspense, useState, useEffect } from 'react';
-import { PRODUCTS_DATA } from '@/data/productsData';
+import { PRODUCTS_DATA, PENDING_IMAGES } from '@/data/productsData';
 import { useNavigate } from 'react-router-dom';
 
 const ProductShowcase3D = React.lazy(() => import('../sections/ProductShowcase3D').then(m => ({ default: m.ProductShowcase3D })));
@@ -21,7 +21,7 @@ export default function ProductsShowcase() {
     navigate(`/checkout?product=${product.slug || product.id}${sizeParam}`);
   };
 
-  const rawProducts = Object.values(PRODUCTS_DATA).filter(p => p.id || p.slug);
+  const rawProducts = Object.values(PRODUCTS_DATA).filter(p => (p.id || p.slug) && !PENDING_IMAGES.includes(p.slug || p.id));
 
   return (
     <Suspense fallback={

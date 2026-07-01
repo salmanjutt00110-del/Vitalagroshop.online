@@ -1,4 +1,4 @@
-import { PRODUCTS_DATA } from '@/data/productsData';
+import { PRODUCTS_DATA, PENDING_IMAGES } from '@/data/productsData';
 
 /**
  * Searches the products catalog by name, category, active ingredient, crop, disease, and code.
@@ -16,6 +16,9 @@ export function searchCatalog(query, lang = 'en') {
   const products = Object.values(PRODUCTS_DATA);
 
   return products.filter(p => {
+    // Exclude products without images
+    if (PENDING_IMAGES.includes(p.slug || p.id)) return false;
+
     // 1. Name Check (English and Urdu)
     const nameEn = typeof p.name === 'object' ? (p.name.en || '') : (p.name || '');
     const nameUr = typeof p.name === 'object' ? (p.name.ur || '') : '';

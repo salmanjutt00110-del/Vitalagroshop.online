@@ -7983,5 +7983,153 @@ export const PRODUCTS_DATA = {
     ],
     "price": 1730,
     "oldPrice": 1730
+  },
+  "fatty": {
+    "id": "fatty",
+    "slug": "fatty",
+    "name": {
+      "en": "FATTY",
+      "ur": "فیٹی"
+    },
+    "genericName": {
+      "en": "Organic Fatty Acids & Chelated Micronutrients",
+      "ur": "Organic Fatty Acids & Chelated Micronutrients"
+    },
+    "category": "plant-nutrition",
+    "tagline": "Premium Organic Fatty Acids & Chelated Micronutrients — Bio-Stimulant",
+    "imageUrl": "/products/fatty.png",
+    "pngUrl": "/products/fatty.png",
+    "rating": 4.9,
+    "importedFormulaBadge": true,
+    "premiumProductBadge": true,
+    "researchBasedBadge": true,
+    "shortDesc": {
+      "en": "Fatty is a world-class plant nutrition bio-stimulant formulated with premium organic fatty acids and chelated micronutrients. It accelerates chloroplast development, improves leaf thickness, and helps crops resist drought, heat, and water stress.",
+      "ur": "فیٹی ایک عالمی معیار کا پلانٹ نیوٹریشن بائیو اسٹیمولینٹ ہے جو پریمیم نامیاتی فیٹی ایسڈز اور چیلیٹڈ مائیکرو نیوٹرینٹس کے ساتھ تیار کیا گیا ہے۔ یہ کلوروپلاسٹ کی نشوونما کو تیز کرتا ہے، پتے کی موٹائی کو بہتر بناتا ہے اور فصلوں کو خشک سالی، گرمی اور پانی کے دباؤ کے خلاف مزاحمت میں مدد دیتا ہے۔"
+    },
+    "seoTitle": "FATTY | Premium Plant Nutrition Bio-Stimulant | Vital Agro",
+    "seoDescription": "Buy FATTY online. Premium organic fatty acids and chelated micronutrients formula to boost crop resistance and yield.",
+    "sizes": [
+      {
+        "size": "500 ML",
+        "price": 750,
+        "oldPrice": 750,
+        "sku": "VA-FATTY-500ML",
+        "weight": "0.5kg",
+        "stockStatus": "In Stock"
+      }
+    ],
+    "formulation": "Organic Fatty Acids + Chelated Micronutrients",
+    "activeIngredient": "Organic Fatty Acids + Chelated Micronutrients",
+    "packaging": "500 ML",
+    "productCode": "VA-FATTY-500ML",
+    "status": {
+      "en": "Premium Quality Compound",
+      "ur": "اعلیٰ معیار کا مرکب"
+    },
+    "description": {
+      "en": "Fatty is a world-class plant nutrition bio-stimulant formulated with premium organic fatty acids and chelated micronutrients. It accelerates chloroplast development, improves leaf thickness, and helps crops resist drought, heat, and water stress. It is a highly specialized chemical compound designed under strict international quality controls to maximize your crop yields.",
+      "ur": "فیٹی ایک عالمی معیار کا پلانٹ نیوٹریشن بائیو اسٹیمولینٹ ہے جو پریمیم نامیاتی فیٹی ایسڈز اور چیلیٹڈ مائیکرو نیوٹرینٹس کے ساتھ تیار کیا گیا ہے۔ یہ کلوروپلاسٹ کی نشوونما کو تیز کرتا ہے، پتے کی موٹائی کو بہتر بناتا ہے اور فصلوں کو خشک سالی، گرمی اور پانی کے دباؤ کے خلاف مزاحمت میں مدد دیتا ہے۔ یہ پودے کی بہترین نشوونما اور تحفظ کے لیے عالمی معیار کے مطابق تیار کیا گیا مرکب ہے۔"
+    },
+    "features": {
+      "en": [
+        "Accelerates chloroplast development",
+        "Improves leaf thickness and vigor",
+        "Helps crops resist drought, heat, and water stress",
+        "Boosts nutrient uptake efficiency"
+      ],
+      "ur": [
+        "کلوروپلاسٹ کی نشوونما کو تیز کرتا ہے",
+        "پتوں کی موٹائی اور رنگت کو بہتر بناتا ہے",
+        "خشک سالی، گرمی اور پانی کے دباؤ کے خلاف قوت مدافعت بڑھاتا ہے",
+        "غذائی اجزاء کے جذب ہونے کی صلاحیت کو بہتر بناتا ہے"
+      ]
+    },
+    "benefits": {
+      "en": [
+        "Formulated with premium organic fatty acids",
+        "Provides chelated micronutrients for rapid absorption",
+        "Improves yield quality and crop weight",
+        "Safe for all major cash crops and vegetables"
+      ],
+      "ur": [
+        "پریمیم نامیاتی فیٹی ایسڈز پر مشتمل فارمولا",
+        "فوری جذب کے لیے چیلیٹڈ مائیکرو نیوٹرینٹس فراہم کرتا ہے",
+        "پیداوار کے معیار اور وزن کو بہتر بناتا ہے",
+        "تمام اہم نقد آور فصلوں اور سبزیوں کے لیے محفوظ"
+      ]
+    },
+    "crops": [
+      {
+        "name": {
+          "en": "Cotton",
+          "ur": "کپاس"
+        },
+        "icon": "🌱"
+      },
+      {
+        "name": {
+          "en": "Rice",
+          "ur": "دھان"
+        },
+        "icon": "🌾"
+      },
+      {
+        "name": {
+          "en": "Wheat",
+          "ur": "گندم"
+        },
+        "icon": "🌾"
+      },
+      {
+        "name": {
+          "en": "Maize",
+          "ur": "مکئی"
+        },
+        "icon": "🌽"
+      },
+      {
+        "name": {
+          "en": "Vegetables",
+          "ur": "سبزیاں"
+        },
+        "icon": "🥦"
+      },
+      {
+        "name": {
+          "en": "Citrus",
+          "ur": "ترشاوہ پھل"
+        },
+        "icon": "🍊"
+      }
+    ],
+    "application": {
+      "en": "Apply as a foliar spray or through irrigation as recommended. Complete foliage coverage is essential for maximum efficacy. Avoid spraying during the midday heat.",
+      "ur": "تجویز کردہ خوراک کے مطابق پتوں پر اسپرے کریں یا آبپاشی کے ساتھ فلڈ کریں۔ زیادہ گرمی کے دوران اسپرے کرنے سے گریز کریں۔"
+    },
+    "specs": {
+      "type": {
+        "en": "Plant Nutrition",
+        "ur": "پلانٹ نیوٹریشن"
+      },
+      "storage": {
+        "en": "Store in cool, dry ventilated place away from children.",
+        "ur": "ٹھنڈی اور خشک جگہ پر بچوں کی پہنچ سے دور رکھیں"
+      }
+    },
+    "safety": {
+      "en": [
+        "Avoid inhalation and skin contact.",
+        "Wear protective gloves and mask during spray.",
+        "Wash hands thoroughly after use."
+      ],
+      "ur": [
+        "دوا کو سونگھنے اور جلد پر گرنے سے بچائیں۔",
+        "مکسنگ اور سپرے کے دوران دستانے اور ماسک کا استعمال کریں۔",
+        "استعمال کے بعد ہاتھ صابن سے اچھی طرح دھوئیں۔"
+      ]
+    },
+    "price": 750,
+    "oldPrice": 750
   }
 };

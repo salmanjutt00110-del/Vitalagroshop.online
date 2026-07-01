@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
 import { useSwipeable } from 'react-swipeable';
 import { useLanguage } from '@/lib/LanguageContext';
-import { PRODUCTS_DATA } from '@/data/productsData';
+import { PRODUCTS_DATA, PENDING_IMAGES } from '@/data/productsData';
 import CheckoutPage from '@/pages/Checkout';
 import toast from 'react-hot-toast';
 import { ShoppingBag, ChevronRight, Download, Package, Check, CreditCard, Truck } from 'lucide-react';
@@ -81,7 +81,7 @@ const SHOWCASE_PRODUCTS = [
     themeDark: '#130a1c',
     tagline: 'Systemic Fungicide Powder',
   }
-].filter((p) => p.id);
+].filter((p) => p.id && !PENDING_IMAGES.includes(p.slug || p.id));
 
 // 60FPS High Performance Rolling Number Price Counter
 const RollingPrice = ({ price }) => {

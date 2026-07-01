@@ -252,22 +252,23 @@ export default function PremiumSearchBar({
               ? { width: '100%', opacity: 1 } 
               : { width: 44, opacity: 1 }
           }
-          transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
-          className={`flex items-center rounded-full overflow-hidden border bg-white/70 backdrop-blur-xl transition-all duration-300 ${
+          transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
+          className={`flex items-center rounded-full overflow-hidden border-2 bg-white/80 backdrop-blur-xl transition-all duration-300 ${
             isFocused 
-              ? 'border-[#0E7A43] shadow-[0_0_22px_rgba(14,122,67,0.22)]' 
-              : 'border-[#0E7A43]/15 shadow-sm hover:border-[#0E7A43]/35'
-          } ${isExpanded ? 'h-12 pl-4 pr-12' : 'h-11 w-11 justify-center cursor-pointer'}`}
+              ? 'border-[#0E7A43] shadow-[0_0_24px_rgba(14,122,67,0.25),0_0_60px_rgba(14,122,67,0.08)]' 
+              : 'border-[#0E7A43]/15 shadow-sm hover:border-[#0E7A43]/40 hover:shadow-md'
+          } ${isExpanded ? 'h-13 sm:h-14 pl-4 pr-14' : 'h-11 w-11 justify-center cursor-pointer'}`}
           onClick={() => {
             if (!isExpanded) setIsExpanded(true);
           }}
         >
-          {/* Search Icon */}
-          <Search 
-            className={`w-5 h-5 text-[#0E7A43] shrink-0 transition-transform ${
-              isFocused ? 'scale-110' : ''
-            }`} 
-          />
+          {/* Animated Search Icon */}
+          <motion.div
+            animate={isFocused ? { scale: 1.15, rotate: -10 } : { scale: 1, rotate: 0 }}
+            transition={{ type: 'spring', stiffness: 400, damping: 15 }}
+          >
+            <Search className="w-5 h-5 text-[#0E7A43] shrink-0" />
+          </motion.div>
 
           {/* Text Input */}
           {isExpanded && (
@@ -280,6 +281,8 @@ export default function PremiumSearchBar({
               onKeyDown={(e) => {
                 if (e.key === 'Escape') {
                   e.preventDefault();
+                  e.stopPropagation();
+                  setQuery('');
                   setIsFocused(false);
                   if (isExpandable) {
                     setIsExpanded(false);
@@ -290,38 +293,45 @@ export default function PremiumSearchBar({
                 }
               }}
               placeholder={animatedPlaceholder}
-              className="w-full h-full bg-transparent border-none outline-none focus:ring-0 pl-3 pr-8 text-xs sm:text-sm text-[#0a331c] placeholder-emerald-900/40"
+              className="w-full h-full bg-transparent border-none outline-none focus:ring-0 pl-3 pr-8 text-sm sm:text-base text-[#0a331c] placeholder-emerald-900/35 font-medium"
             />
           )}
 
           {/* Actions panel inside search bar */}
           {isExpanded && (
-            <div className="absolute right-3 flex items-center gap-1.5 z-10">
-              {/* Clear button */}
-              {query && (
-                <button
-                  type="button"
-                  onClick={handleClear}
-                  className="p-1 rounded-full text-neutral-400 hover:text-[#0E7A43] hover:bg-neutral-100/50 transition-colors"
-                  aria-label="Clear search"
-                >
-                  <X className="w-4 h-4" />
-                </button>
-              )}
+            <div className="absolute right-3 flex items-center gap-2 z-10">
+              {/* Clear button with animation */}
+              <AnimatePresence>
+                {query && (
+                  <motion.button
+                    type="button"
+                    initial={{ opacity: 0, scale: 0.5, rotate: -90 }}
+                    animate={{ opacity: 1, scale: 1, rotate: 0 }}
+                    exit={{ opacity: 0, scale: 0.5, rotate: 90 }}
+                    transition={{ duration: 0.2 }}
+                    onClick={handleClear}
+                    className="p-1.5 rounded-full text-neutral-400 hover:text-white hover:bg-[#0E7A43] transition-all duration-200 cursor-pointer"
+                    aria-label="Clear search"
+                  >
+                    <X className="w-4 h-4" />
+                  </motion.button>
+                )}
+              </AnimatePresence>
 
               {/* Voice search button */}
-              <button
+              <motion.button
                 type="button"
+                whileTap={{ scale: 0.9 }}
                 onClick={startVoiceSearch}
-                className={`p-1.5 rounded-full border transition-all ${
+                className={`p-2 rounded-full border-2 transition-all duration-300 cursor-pointer ${
                   isListening 
-                    ? 'bg-[#0E7A43] border-[#0E7A43] text-white animate-pulse' 
-                    : 'bg-white border-[#0E7A43]/10 text-[#0E7A43] hover:bg-[#EAFBF3]'
+                    ? 'bg-[#0E7A43] border-[#0E7A43] text-white shadow-[0_0_20px_rgba(14,122,67,0.5)] animate-pulse' 
+                    : 'bg-white border-[#0E7A43]/15 text-[#0E7A43] hover:bg-[#EAFBF3] hover:border-[#0E7A43]/30 hover:shadow-md'
                 }`}
                 title="Voice Search"
               >
                 <Mic className="w-4 h-4" />
-              </button>
+              </motion.button>
             </div>
           )}
         </motion.div>
@@ -331,22 +341,29 @@ export default function PremiumSearchBar({
       <AnimatePresence>
         {isExpanded && isFocused && (query || isFocused) && (
           <motion.div
-            initial={{ opacity: 0, y: 8, scale: 0.98 }}
+            initial={{ opacity: 0, y: 12, scale: 0.96 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: 8, scale: 0.98 }}
-            transition={{ duration: 0.2, ease: "easeOut" }}
-            className="absolute top-full left-0 right-0 mt-3 rounded-[24px] border border-[#0E7A43]/12 p-3 shadow-2xl z-[999] overflow-hidden max-h-[460px] flex flex-col bg-white/95 backdrop-blur-2xl"
+            exit={{ opacity: 0, y: 12, scale: 0.96 }}
+            transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
+            className="absolute top-full left-0 right-0 mt-3 rounded-[24px] border-2 border-[#0E7A43]/10 p-3 shadow-2xl z-[999] overflow-hidden max-h-[460px] flex flex-col bg-white/95 backdrop-blur-2xl"
             style={{
-              boxShadow: '0 20px 40px rgba(14, 122, 67, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.6)'
+              boxShadow: '0 25px 50px rgba(14, 122, 67, 0.15), 0 8px 20px rgba(0,0,0,0.08), inset 0 1px 0 rgba(255, 255, 255, 0.8)'
             }}
           >
             {/* Header info */}
-            <div className="text-[10px] font-extrabold text-[#0E7A43] tracking-widest uppercase px-3 py-1.5 border-b border-[#0E7A43]/5 flex items-center justify-between">
-              <span>{query ? t.search?.results || 'Search Results' : t.search?.popular || 'Popular Searches'}</span>
+            <div className="text-[10px] font-extrabold text-[#0E7A43] tracking-widest uppercase px-3 py-2 border-b border-[#0E7A43]/8 flex items-center justify-between">
+              <span className="flex items-center gap-1.5">
+                <Sparkles className="w-3 h-3" />
+                {query ? t.search?.results || 'Search Results' : t.search?.popular || 'Popular Searches'}
+              </span>
               {query && (
-                <span className="font-mono text-neutral-400 bg-neutral-100/60 px-2 py-0.5 rounded text-[9px] font-bold">
+                <motion.span
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  className="font-mono text-neutral-400 bg-neutral-100/60 px-2 py-0.5 rounded-full text-[9px] font-bold"
+                >
                   {results.length} found
-                </span>
+                </motion.span>
               )}
             </div>
 
@@ -354,7 +371,7 @@ export default function PremiumSearchBar({
             <div className="overflow-y-auto flex-1 mt-2 pr-1 space-y-1 scrollbar-thin">
               {query ? (
                 results.length > 0 ? (
-                  results.map((product) => {
+                  results.map((product, idx) => {
                     const price = product.sizes?.[0]?.price || 0;
                     const name = typeof product.name === 'object' ? (product.name[lang] || product.name.en) : product.name;
                     const desc = typeof product.shortDesc === 'object' ? (product.shortDesc[lang] || product.shortDesc.en) : product.shortDesc;
@@ -362,28 +379,29 @@ export default function PremiumSearchBar({
                     const imgUrl = getProductImage(product);
 
                     return (
-                      <button
+                      <motion.button
                         key={product.id}
                         type="button"
+                        initial={{ opacity: 0, x: -10 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ delay: idx * 0.05, duration: 0.25 }}
                         onClick={() => handleResultClick(product)}
-                        className="w-full flex items-center gap-3.5 p-2 text-left rounded-2xl hover:bg-[#EAFBF3]/70 group transition-all duration-300 hover:translate-x-1 hover:scale-[1.01] border border-transparent hover:border-emerald-500/10 cursor-pointer"
+                        className="w-full flex items-center gap-3.5 p-2.5 text-left rounded-2xl hover:bg-[#EAFBF3]/70 group transition-all duration-300 hover:translate-x-1 hover:scale-[1.01] border border-transparent hover:border-emerald-500/10 cursor-pointer"
                       >
-                        {/* Thumbnail image */}
                         <div className="w-12 h-12 rounded-xl border border-[#0E7A43]/8 overflow-hidden bg-white/60 p-0.5 shrink-0 flex items-center justify-center">
                           <img 
                             src={imgUrl} 
                             alt={name} 
-                            className="w-full h-full object-contain group-hover:rotate-[3deg] transition-transform duration-300"
+                            className="w-full h-full object-contain group-hover:rotate-[3deg] group-hover:scale-110 transition-transform duration-300"
                           />
                         </div>
 
-                        {/* Text info */}
                         <div className="flex-1 min-w-0">
                           <div className="flex items-center gap-2 flex-wrap">
                             <span className="text-xs font-black text-[#0a331c] group-hover:text-[#0E7A43] transition-colors truncate">
                               {name}
                             </span>
-                            <span className="text-[9px] uppercase tracking-wider font-extrabold text-[#0E7A43] bg-[#EAFBF3] px-2 py-0.5 rounded border border-[#0E7A43]/5">
+                            <span className="text-[9px] uppercase tracking-wider font-extrabold text-[#0E7A43] bg-[#EAFBF3] px-2 py-0.5 rounded-full border border-[#0E7A43]/5">
                               {catLabel}
                             </span>
                           </div>
@@ -392,19 +410,21 @@ export default function PremiumSearchBar({
                           </p>
                         </div>
 
-                        {/* Price tag */}
                         <div className="text-right shrink-0">
                           <span className="text-xs font-black text-[#0E7A43] font-mono">
                             {price === 0 ? 'Request' : `PKR ${price.toLocaleString()}`}
                           </span>
-                          <ChevronRight className="w-3.5 h-3.5 text-[#0E7A43]/40 inline ml-1 transform group-hover:translate-x-0.5 transition-transform" />
+                          <ChevronRight className="w-3.5 h-3.5 text-[#0E7A43]/40 inline ml-1 transform group-hover:translate-x-1 transition-transform" />
                         </div>
-                      </button>
+                      </motion.button>
                     );
                   })
                 ) : (
-                  // Empty State: Suggestions
-                  <div className="py-6 px-4 text-center">
+                  <motion.div
+                    initial={{ opacity: 0, scale: 0.95 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    className="py-6 px-4 text-center"
+                  >
                     <Sparkles className="w-7 h-7 text-[#0E7A43]/40 mx-auto mb-2 animate-bounce" />
                     <p className="text-xs font-bold text-[#0a331c]">
                       {lang === 'en' ? 'No products found.' : 'کوئی مصنوعات نہیں ملیں۔'}
@@ -413,16 +433,18 @@ export default function PremiumSearchBar({
                       {lang === 'en' ? 'Try searching for other keywords. Here are some suggestions:' : 'کچھ اور تلاش کرنے کی کوشش کریں۔ یہاں کچھ تجاویز ہیں:'}
                     </p>
 
-                    {/* Suggested products grid */}
                     <div className="space-y-1.5 text-left max-w-md mx-auto">
-                      {suggestedProducts.map((p) => (
-                        <button
+                      {suggestedProducts.map((p, idx) => (
+                        <motion.button
                           key={p.id}
                           type="button"
+                          initial={{ opacity: 0, y: 8 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          transition={{ delay: idx * 0.08 }}
                           onClick={() => handleResultClick(p)}
-                          className="w-full flex items-center gap-3 p-2 bg-[#EAFBF3]/20 hover:bg-[#EAFBF3]/60 rounded-xl transition-colors cursor-pointer text-left border border-emerald-500/5 hover:border-emerald-500/10"
+                          className="w-full flex items-center gap-3 p-2.5 bg-[#EAFBF3]/20 hover:bg-[#EAFBF3]/60 rounded-xl transition-all cursor-pointer text-left border border-emerald-500/5 hover:border-emerald-500/15 hover:shadow-sm"
                         >
-                          <div className="w-8 h-8 rounded-lg bg-white/80 p-0.5 border border-emerald-500/5 flex items-center justify-center shrink-0">
+                          <div className="w-9 h-9 rounded-lg bg-white/80 p-0.5 border border-emerald-500/5 flex items-center justify-center shrink-0">
                             <img src={p.image} alt={p.name} className="w-full h-full object-contain" />
                           </div>
                           <div className="flex-1 min-w-0">
@@ -432,29 +454,31 @@ export default function PremiumSearchBar({
                           <span className="text-[10px] font-black text-emerald-700 font-mono">
                             PKR {p.sizes[0].price.toLocaleString()}
                           </span>
-                        </button>
+                        </motion.button>
                       ))}
                     </div>
-                  </div>
+                  </motion.div>
                 )
               ) : (
-                // Initial/Default state: Popular products
-                suggestedProducts.map((product) => (
-                  <button
+                suggestedProducts.map((product, idx) => (
+                  <motion.button
                     key={product.id}
                     type="button"
+                    initial={{ opacity: 0, x: -10 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: idx * 0.08, duration: 0.25 }}
                     onClick={() => handleResultClick(product)}
-                    className="w-full flex items-center gap-3.5 p-2 text-left rounded-2xl hover:bg-[#EAFBF3]/70 group transition-all duration-300 hover:translate-x-1 border border-transparent hover:border-emerald-500/10 cursor-pointer"
+                    className="w-full flex items-center gap-3.5 p-2.5 text-left rounded-2xl hover:bg-[#EAFBF3]/70 group transition-all duration-300 hover:translate-x-1 border border-transparent hover:border-emerald-500/10 cursor-pointer"
                   >
                     <div className="w-12 h-12 rounded-xl border border-[#0E7A43]/8 overflow-hidden bg-white/60 p-0.5 shrink-0 flex items-center justify-center">
-                      <img src={product.image} alt={product.name} className="w-full h-full object-contain" />
+                      <img src={product.image} alt={product.name} className="w-full h-full object-contain group-hover:scale-110 transition-transform duration-300" />
                     </div>
                     <div className="flex-1 min-w-0">
                       <div className="flex items-center gap-2">
                         <span className="text-xs font-black text-[#0a331c] group-hover:text-[#0E7A43] transition-colors truncate">
                           {product.name}
                         </span>
-                        <span className="text-[9px] uppercase tracking-wider font-extrabold text-[#0E7A43] bg-[#EAFBF3] px-2 py-0.5 rounded border border-[#0E7A43]/5">
+                        <span className="text-[9px] uppercase tracking-wider font-extrabold text-[#0E7A43] bg-[#EAFBF3] px-2 py-0.5 rounded-full border border-[#0E7A43]/5">
                           {product.categoryLabel}
                         </span>
                       </div>
@@ -467,7 +491,7 @@ export default function PremiumSearchBar({
                         PKR {product.sizes[0].price.toLocaleString()}
                       </span>
                     </div>
-                  </button>
+                  </motion.button>
                 ))
               )}
             </div>

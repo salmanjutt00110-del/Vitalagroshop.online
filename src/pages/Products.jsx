@@ -3,7 +3,7 @@ import { motion, useSpring, useTransform, useMotionValue, AnimatePresence } from
 import useEmblaCarousel from 'embla-carousel-react';
 import { Search, ShoppingCart, Info, ChevronLeft, ChevronRight, X } from 'lucide-react';
 import { useLanguage } from '@/lib/LanguageContext';
-import { PRODUCTS_DATA, getProductImage } from '@/data/productsData';
+import { PRODUCTS_DATA, getProductImage, PENDING_IMAGES } from '@/data/productsData';
 import SEOHead from '@/lib/seo/SEOHead';
 import { useNavigate, Link, useSearchParams } from 'react-router-dom';
 import { useMobile } from '@/hooks/useMobile';
@@ -226,6 +226,7 @@ const AnimatedPrice = React.memo(({ price, oldPrice, lang }) => {
 
 // Mockup-matched row layout card
 const ProductGridCard = React.memo(({ product, openCheckout, lang, index = 0, searchQuery = '' }) => {
+  const navigate = useNavigate();
   const { isMobile } = useMobile();
   const { setActiveDetailsProduct } = useApp();
   const [qty, setQty] = useState(1);
@@ -629,7 +630,9 @@ export default function Products() {
         // Validation Checks:
         // 1. ID exists
         if (!p.id) return false;
-        // 2. Product Name exists
+        // 2. Exclude products in PENDING_IMAGES
+        if (PENDING_IMAGES.includes(p.slug || p.id)) return false;
+        // 3. Product Name exists
         const nameVal = typeof p.name === 'object' ? (p.name.en || p.name.ur) : p.name;
         if (!nameVal || !nameVal.trim()) return false;
         // 3. Category exists
