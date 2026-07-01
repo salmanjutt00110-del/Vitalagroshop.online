@@ -270,7 +270,8 @@ const ProductGridCard = React.memo(({ product, openCheckout, lang, index = 0, se
     <motion.div
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
-      className="group relative rounded-[24px] overflow-hidden flex flex-row bg-white border border-[#0E7A43]/10 hover:border-[#0E7A43]/20 p-3 sm:p-4 shadow-sm hover:shadow-md transition-all duration-300 items-stretch gap-4"
+      onClick={() => navigate(`/products/${product.slug || product.id}`)}
+      className="group relative rounded-[24px] overflow-hidden flex flex-row bg-white border border-[#0E7A43]/10 hover:border-[#0E7A43]/20 p-3 sm:p-4 shadow-sm hover:shadow-md transition-all duration-300 items-stretch gap-4 cursor-pointer"
     >
       {/* Glare sweep */}
       <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden rounded-[24px]">
@@ -369,7 +370,7 @@ const ProductGridCard = React.memo(({ product, openCheckout, lang, index = 0, se
                 onClick={(e) => {
                   e.preventDefault();
                   e.stopPropagation();
-                  setActiveDetailsProduct(product);
+                  navigate(`/products/${product.slug || product.id}`);
                 }}
                 className="px-2.5 py-1.5 rounded-xl border border-[#0E7A43]/20 hover:border-[#0E7A43]/40 text-[#0E7A43] text-[9px] font-extrabold uppercase tracking-wide cursor-pointer active:scale-95 transition-all bg-white hover:bg-neutral-50"
               >

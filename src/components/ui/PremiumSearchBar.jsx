@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useNavigate } from 'react-router-dom';
 import { Search, X, Mic, Sparkles, ChevronRight } from 'lucide-react';
 import { useLanguage } from '@/lib/LanguageContext';
 import { useApp } from '@/contexts/AppContext';
@@ -54,6 +55,7 @@ export default function PremiumSearchBar({
 }) {
   const { lang, t } = useLanguage();
   const { setActiveDetailsProduct } = useApp();
+  const navigate = useNavigate();
   const [isExpanded, setIsExpanded] = useState(!isExpandable);
   const [query, setQuery] = useState(initialValue);
   const [debouncedQuery, setDebouncedQuery] = useState(initialValue);
@@ -219,7 +221,7 @@ export default function PremiumSearchBar({
   };
 
   const handleResultClick = (product) => {
-    setActiveDetailsProduct(product);
+    navigate(`/products/${product.slug || product.id}`);
     setIsFocused(false);
     if (isExpandable && !query) {
       setIsExpanded(false);

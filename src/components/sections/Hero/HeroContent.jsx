@@ -98,8 +98,7 @@ export default function HeroContent() {
   };
 
   const openModal = (slug) => {
-    const prod = PRODUCTS_DATA[slug];
-    if (prod) setActiveDetailsProduct(prod);
+    navigate(`/products/${slug}`);
   };
 
   return (

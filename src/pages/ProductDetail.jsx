@@ -223,6 +223,80 @@ export default function ProductDetail() {
   const [lensPos, setLensPos] = useState({ x: 0, y: 0 });
   const [showLens, setShowLens] = useState(false);
 
+  // Dynamic Disease & Usage Instructions resolution
+  const diseasesList = useMemo(() => {
+    if (!product) return [];
+    if (product.diseases) {
+      if (Array.isArray(product.diseases)) {
+        return product.diseases.map(d => typeof d === 'object' ? (d.name?.[lang] || d.name?.en || d[lang] || d.en || '') : d).filter(Boolean);
+      }
+      const val = product.diseases?.[lang] || product.diseases?.en || product.diseases;
+      if (typeof val === 'string' && val.trim()) {
+        return val.split(',').map(s => s.trim()).filter(Boolean);
+      }
+    }
+    switch (product.category?.toLowerCase()) {
+      case 'seed-treatment':
+      case 'seed_treatment':
+        return lang === 'en' 
+          ? ['Root Rot', 'Damping Off', 'Seed-borne Fungi', 'Seedling Blight', 'Early Wilt']
+          : ['جڑ کی سڑن', 'ڈیمپنگ آف', 'بیج کی فنگس', 'جھلساؤ', 'ابتدائی مرجھاؤ'];
+      case 'plant-nutrition':
+      case 'plant_nutrition':
+        return lang === 'en'
+          ? ['Nutrient Deficiency', 'Low Fruit Setting', 'Stunted Root Growth', 'Leaf Chlorosis (Yellowing)', 'Flower Drop']
+          : ['غذائی کمی', 'کم پھل لگنا', 'جڑوں کی کمزور نشوونما', 'پتوں کا پیلا ہونا', 'پھولوں کا گرنا'];
+      case 'insecticide':
+        return lang === 'en'
+          ? ['Sucking Pests (Thrips, Jassids)', 'Whiteflies & Aphids', 'Bollworms', 'Armyworms', 'Leafminers']
+          : ['رس چوسنے والے کیڑے', 'سفید مکھی اور تیلا', 'گلابی سنڈی', 'لشکر سنڈی', 'پتا لپیٹ سنڈی'];
+      case 'herbicide':
+        return lang === 'en'
+          ? ['Broadleaf Weeds', 'Narrow-leaf Grasses', 'Annual Grasses', 'Sedges', 'Field Bindweed']
+          : ['چوڑے پتے والی جڑی بوٹیاں', 'نوکیلے پتے والی جڑی بوٹیاں', 'موسمی گھاس', 'ڈیلا جڑی بوٹی', 'لیلی'];
+      case 'fungicide':
+        return lang === 'en'
+          ? ['Powdery Mildew', 'Downy Mildew', 'Rust & Smut', 'Leaf Spot & Scab', 'Early & Late Blight']
+          : ['سفید فنگس (پاؤڈری)', 'روئیں دار فنگس', 'کنگی اور ہرسٹ', 'پتوں کے دھبے', 'ابتدائی و آخری جھلساؤ'];
+      default:
+        return lang === 'en'
+          ? ['Pest Infestation', 'Fungal Attack', 'Growth Stagnation']
+          : ['کیڑے مکوڑوں کا حملہ', 'پھپھوندی کا حملہ', 'نشوونما کا رکنا'];
+    }
+  }, [product, lang]);
+
+  const usageInstructions = useMemo(() => {
+    if (!product) return "";
+    const val = product.usage?.[lang] || product.usage?.en || product.usage;
+    if (typeof val === 'string' && val.trim()) return val;
+
+    switch (product.category?.toLowerCase()) {
+      case 'seed-treatment':
+      case 'seed_treatment':
+        return lang === 'en'
+          ? "1. Mix the recommended dose with 10-15ml of water to create a uniform slurry.\n2. Coat seeds thoroughly and evenly with the mixture.\n3. Spread seeds in shade and allow to dry completely before sowing."
+          : "1. سفارش کردہ خوراک کو 10 سے 15 ملی لیٹر پانی میں ملا کر پیسٹ بنائیں۔\n2. بیجوں پر اس پیسٹ کا یکساں اور اچھی طرح لیپ کریں۔\n3. بیجوں کو سائے میں پھیلا دیں اور بجائی سے پہلے مکمل خشک ہونے دیں۔";
+      case 'plant-nutrition':
+      case 'plant_nutrition':
+        return lang === 'en'
+          ? "1. Mix recommended dosage in 100-120 liters of clean water per acre.\n2. Apply as a foliar spray during early morning or late afternoon.\n3. Ensure uniform coverage on both upper and lower leaf surfaces."
+          : "1. سفارش کردہ خوراک کو 100 سے 120 لیٹر صاف پانی فی ایکڑ میں مکس کریں۔\n2. صبح سویرے یا شام کے وقت پتوں پر سپرے کریں۔\n3. پتوں کے اوپر اور نیچے دونوں سطحوں پر یکساں سپرے یقینی بنائیں۔";
+      case 'insecticide':
+      case 'fungicide':
+        return lang === 'en'
+          ? "1. Fill spray tank halfway with clean water and add recommended dosage.\n2. Mix thoroughly and top up the tank with water.\n3. Spray uniformly at first sign of pest or disease onset. Avoid spraying in high winds."
+          : "1. سفارش کردہ خوراک کو 100 سے 120 لیٹر صاف پانی فی ایکڑ میں مکس کریں۔\n2. صبح سویرے یا شام کے وقت پتوں پر سپرے کریں۔\n3. پتوں کے اوپر اور نیچے دونوں سطحوں پر یکساں سپرے یقینی بنائیں۔";
+      case 'herbicide':
+        return lang === 'en'
+          ? "1. Dissolve target dosage in 120 liters of water per acre.\n2. Spray evenly on moist soil conditions (Watar) or post-weed emergence as indicated.\n3. Use flat fan nozzle and ensure overlap is minimized to prevent crop injury."
+          : "1. سفارش کردہ خوراک کو 120 لیٹر پانی فی ایکڑ میں حل کریں۔\n2. زمین کے وتر حالت میں یا جڑی بوٹیوں کے اگنے کے بعد یکساں سپرے کریں۔\n3. فلیٹ فین نوزل استعمال کریں اور فصل کے نقصان سے بچنے کے لیے نوزل کا صحیح زاویہ رکھیں کریں۔";
+      default:
+        return lang === 'en'
+          ? "Mix recommended dosage in 100-120 liters of water per acre. Apply foliar spray during vegetative growth stage."
+          : "سفارش کردہ مقدار کو 100 سے 120 لیٹر پانی فی ایکڑ میں حل کر کے سپرے کریں۔ نشوونما کے دوران پتوں پر سپرے کریں۔";
+    }
+  }, [product, lang]);
+
   // Pricing Hook
   const {
     selectedSize,
@@ -637,12 +711,31 @@ export default function ProductDetail() {
     .slice(0, 4);
 
   // Gallery array
-  const galleryImages = [
-    { url: getProductImage(product), label: "Premium Showcase" },
-    { url: product?.imageUrl || getProductImage(product), label: "Packaging Details" },
-    { url: vitalGroup, label: "Vital Certified", isLogo: true },
-    { url: tagLogo, label: "Tag Formula", isLogo: true }
-  ];
+  const galleryImages = useMemo(() => {
+    const list = [{ url: getProductImage(product), label: "Premium Showcase" }];
+    if (product?.variantImages) {
+      try {
+        const parsed = typeof product.variantImages === 'string' 
+          ? JSON.parse(product.variantImages) 
+          : product.variantImages;
+        if (Array.isArray(parsed)) {
+          parsed.forEach((img, idx) => {
+            if (img && img !== product.imageUrl && img !== product.pngUrl) {
+              list.push({ url: img, label: `Detail View ${idx + 1}` });
+            }
+          });
+        }
+      } catch (e) {
+        console.warn("Failed to parse variantImages:", e);
+      }
+    }
+    if (list.length < 2 && product?.imageUrl) {
+      list.push({ url: product.imageUrl, label: "Packaging Details" });
+    }
+    list.push({ url: vitalGroup, label: "Vital Certified", isLogo: true });
+    list.push({ url: tagLogo, label: "Tag Formula", isLogo: true });
+    return list;
+  }, [product]);
 
   const activeImage = galleryImages[activeTab]?.url || getProductImage(product);
 
@@ -748,11 +841,36 @@ export default function ProductDetail() {
                       <div className="absolute -top-[10px] left-1/4 right-1/4 h-[8px] rounded-full bg-[#0E7A43]/30 blur-[4px] border border-[#0E7A43]/50 animate-pulse" />
                     </div>
                     
-                    <BlurUpImage
-                      src={activeImage}
-                      alt={product.name.en}
-                      className="max-h-[250px] w-auto object-contain z-10 drop-shadow-[0_20px_30px_rgba(0,0,0,0.8)] relative -top-[12px] select-none pointer-events-none transition-transform duration-300 group-hover:scale-105"
-                    />
+                    {/* Floating Product Image Showcase (Increased size by 30%) */}
+                    <motion.div
+                      animate={{
+                        y: [-5, 5, -5]
+                      }}
+                      transition={{
+                        duration: 5,
+                        repeat: Infinity,
+                        ease: "easeInOut"
+                      }}
+                      className="w-full h-full flex flex-col items-center justify-center relative z-10"
+                    >
+                      <BlurUpImage
+                        src={activeImage}
+                        alt={product.name.en}
+                        className="max-h-[345px] w-auto object-contain drop-shadow-[0_25px_35px_rgba(0,0,0,0.6)] select-none pointer-events-none transition-transform duration-500 group-hover:scale-105"
+                      />
+                    </motion.div>
+
+                    {/* Premium mirror reflection effect */}
+                    <div 
+                      className="absolute bottom-[-8%] left-1/2 -translate-x-1/2 w-[65%] h-[20%] pointer-events-none opacity-20 filter blur-[2px] overflow-hidden select-none z-0"
+                      style={{
+                        transform: 'scaleY(-1) rotate(180deg)',
+                        maskImage: 'linear-gradient(to bottom, transparent 20%, rgba(0,0,0,0.85) 100%)',
+                        WebkitMaskImage: '-webkit-gradient(linear, left top, left bottom, from(transparent), to(rgba(0,0,0,0.85)))'
+                      }}
+                    >
+                      <img src={activeImage} className="w-full h-full object-contain" alt="reflection" />
+                    </div>
                   </div>
                 )}
 
@@ -1071,6 +1189,47 @@ export default function ProductDetail() {
               ) : (
                 <p className="text-neutral-500 text-xs font-sans italic">{lang === 'en' ? 'No information available' : 'کوئی معلومات دستیاب نہیں ہے'}</p>
               )}
+            </section>
+
+            {/* Target Diseases Section */}
+            <section className="bg-white/60 border border-emerald-900/5 p-8 rounded-[28px] backdrop-blur-2xl text-left">
+              <h2 className="text-2xl font-black text-emerald-950 mb-6 pb-3 border-b border-emerald-900/5 flex items-center gap-2">
+                <AlertTriangle className="w-5 h-5 text-emerald-400" />
+                {lang === 'en' ? 'Target Pests & Diseases' : 'ہدف کیڑے اور بیماریاں'}
+              </h2>
+              {diseasesList && diseasesList.length > 0 ? (
+                <div className="flex flex-wrap gap-3">
+                  {diseasesList.map((disease, idx) => (
+                    <motion.div
+                      key={idx}
+                      whileHover={{ scale: 1.05 }}
+                      className="flex items-center gap-2.5 px-4 py-2 bg-white/70 border border-emerald-900/5 text-neutral-700 rounded-full text-xs font-semibold cursor-default"
+                    >
+                      <span className="w-2.5 h-2.5 rounded-full bg-red-500 animate-pulse" />
+                      <span>{disease}</span>
+                    </motion.div>
+                  ))}
+                </div>
+              ) : (
+                <p className="text-neutral-500 text-xs font-sans italic">{lang === 'en' ? 'No information available' : 'کوئی معلومات دستیاب نہیں ہے'}</p>
+              )}
+            </section>
+
+            {/* Usage Instructions Section */}
+            <section className="bg-white/60 border border-emerald-900/5 p-8 rounded-[28px] backdrop-blur-2xl text-left">
+              <h2 className="text-2xl font-black text-emerald-950 mb-6 pb-3 border-b border-emerald-900/5 flex items-center gap-2">
+                <Cpu className="w-5 h-5 text-emerald-400" />
+                {lang === 'en' ? 'Usage & Application Instructions' : 'طریقہ استعمال اور ہدایات'}
+              </h2>
+              <div className="p-5 bg-white/70 border border-emerald-900/5 rounded-2xl space-y-3">
+                <p className="text-neutral-600 text-sm leading-relaxed whitespace-pre-line font-medium">
+                  {usageInstructions}
+                </p>
+                <div className="flex items-center gap-2.5 text-xs text-amber-500 font-bold bg-amber-500/5 border border-amber-500/10 p-3 rounded-xl">
+                  <ShieldCheck className="w-4 h-4 shrink-0" />
+                  <span>{lang === 'en' ? 'Caution: Wear protective gloves and mask during spray application.' : 'احتیاط: سپرے کے دوران دستانے اور ماسک کا استعمال کریں۔'}</span>
+                </div>
+              </div>
             </section>
 
             {/* Dosages specification table */}

@@ -88,7 +88,7 @@ export default function FeaturedProducts() {
               viewport={{ once: true, margin: '-30px' }}
               transition={{ duration: 0.6, delay: idx * 0.1, ease: [0.16, 1, 0.3, 1] }}
               className="group cursor-pointer"
-              onClick={() => setActiveDetailsProduct(product)}
+              onClick={() => navigate(`/products/${product.slug || product.id}`)}
             >
               <div
                 className="rounded-[16px] sm:rounded-[24px] overflow-hidden border border-[#102415]/10 relative flex flex-col h-full premium-glass-card hover:-translate-y-1.5 transition-all duration-300 hover:border-emerald-500/25 hover:shadow-[0_12px_24px_rgba(14,122,67,0.06)]"
@@ -97,8 +97,6 @@ export default function FeaturedProducts() {
                 <div className="absolute inset-0 z-[5] pointer-events-none overflow-hidden rounded-[24px]">
                   <div style={{ transitionDuration: '1.4s' }} className="absolute inset-0 w-[200%] h-full bg-gradient-to-r from-transparent via-white/[0.06] to-transparent -translate-x-full group-hover:translate-x-full transition-transform ease-out" />
                 </div>
-
-
 
                 {/* Product Image */}
                 <div className="relative aspect-square w-full flex items-center justify-center p-3 sm:p-6 overflow-hidden">
@@ -145,7 +143,7 @@ export default function FeaturedProducts() {
                       <ShoppingCart size={11} /> Buy
                     </button>
                     <button
-                      onClick={(e) => { e.stopPropagation(); setActiveDetailsProduct(product); }}
+                      onClick={(e) => { e.stopPropagation(); navigate(`/products/${product.slug || product.id}`); }}
                       className="flex-1 btn-premium-secondary text-[9px] sm:text-[10px] tracking-wider gap-1"
                     >
                       <Info size={11} /> Details
@@ -154,7 +152,7 @@ export default function FeaturedProducts() {
 
                   {/* Mobile: single details button */}
                   <button
-                    onClick={(e) => { e.stopPropagation(); setActiveDetailsProduct(product); }}
+                    onClick={(e) => { e.stopPropagation(); navigate(`/products/${product.slug || product.id}`); }}
                     className="sm:hidden mt-2 w-full py-1.5 rounded-lg text-[8px] font-black text-[#39D98A] border border-[#39D98A]/30 bg-[#39D98A]/10 hover:bg-[#39D98A]/20 tracking-wider uppercase cursor-pointer active:scale-95 transition-all"
                   >
                     Details

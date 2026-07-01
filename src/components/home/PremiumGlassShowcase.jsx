@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useNavigate } from 'react-router-dom';
 import { 
   ShoppingCart, 
   MessageCircle, 
@@ -46,6 +47,7 @@ export default function PremiumGlassShowcase() {
   const { lang, t } = useLanguage();
   const { addToCart, setIsCartOpen } = useCart();
   const { setActiveDetailsProduct } = useApp();
+  const navigate = useNavigate();
   const [currentIndex, setCurrentIndex] = useState(0);
   
   // Track selected pack size index per product slug (key = slug, value = sizeIndex)
@@ -657,7 +659,7 @@ Thank You.`;
                 activeProduct={activeProduct}
                 lang={lang}
                 displayedPrice={displayedPrice}
-                setActiveDetailsProduct={setActiveDetailsProduct}
+                navigate={navigate}
               />
 
               {/* Right card peak (peaking from right boundary) */}
@@ -723,7 +725,7 @@ Thank You.`;
 }
 
 // Isolated Glass Card Component to prevent mouse-move state from re-rendering the heavy showcase parent
-function ProductGlassCard({ activeProduct, lang, displayedPrice, setActiveDetailsProduct }) {
+function ProductGlassCard({ activeProduct, lang, displayedPrice, navigate }) {
   const [tilt, setTilt] = useState({ x: 0, y: 0 });
   const [parallax, setParallax] = useState({ x: 0, y: 0 });
 
@@ -756,7 +758,7 @@ function ProductGlassCard({ activeProduct, lang, displayedPrice, setActiveDetail
 
       {/* Glassmorphic card frame */}
       <motion.div
-        onClick={() => setActiveDetailsProduct(activeProduct)}
+        onClick={() => navigate(`/products/${activeProduct.slug || activeProduct.id}`)}
         style={{
           transformStyle: 'preserve-3d',
           transform: `perspective(1000px) rotateX(${tilt.x}deg) rotateY(${tilt.y}deg)`,

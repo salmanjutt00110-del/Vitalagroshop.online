@@ -73,7 +73,7 @@ export default function PremiumProductRange() {
       addToCart(product, defaultSize);
       setIsCartOpen(true);
     } else {
-      setActiveDetailsProduct(product);
+      navigate(`/products/${product.slug || product.id}`);
     }
   };
 
@@ -266,7 +266,7 @@ export default function PremiumProductRange() {
                     onClick={(e) => {
                       e.preventDefault();
                       e.stopPropagation();
-                      setActiveDetailsProduct(prod);
+                      navigate(`/products/${prod.slug || prod.id}`);
                     }}
                     className="flex items-center justify-center gap-2 h-11 bg-white/60 hover:bg-white/80 border border-emerald-900/10 rounded-xl text-xs font-bold text-emerald-950 transition-all active:scale-95 cursor-pointer shadow-sm group/btn"
                   >

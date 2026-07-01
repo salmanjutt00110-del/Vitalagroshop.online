@@ -449,7 +449,7 @@ export const ProductShowcase3D = () => {
 
                   {/* VIEW DETAILS */}
                   <motion.button
-                    onClick={() => setActiveDetailsProduct(PRODUCTS_DATA[prod.slug])}
+                    onClick={() => navigate(`/products/${prod.slug}`)}
                     whileTap={{ scale: 0.97 }}
                     className="px-8 py-4 rounded-2xl font-bold text-sm border transition-all duration-300 flex-1 sm:flex-none bg-white/60"
                     style={{
