@@ -76,11 +76,15 @@ export default function NotificationCenter({ orders, lowStockCount, messages, th
     <div className="relative">
       <button 
         onClick={() => setIsOpen(!isOpen)}
-        className="relative p-2.5 rounded-xl bg-white/60 hover:bg-white/80 transition-colors text-neutral-400 hover:text-emerald-950 border border-emerald-900/5"
+        className={`relative p-1.5 rounded-lg border transition-colors cursor-pointer ${
+          theme === 'light' 
+            ? 'hover:bg-neutral-100 border-neutral-200 text-neutral-600 hover:text-neutral-900 bg-white' 
+            : 'hover:bg-white/60 border-emerald-900/5 text-neutral-500 hover:text-emerald-950 bg-transparent'
+        }`}
       >
-        <Bell size={18} className={unreadCount > 0 ? "animate-wiggle" : ""} />
+        <Bell size={13.5} className={unreadCount > 0 ? "animate-wiggle" : ""} />
         {unreadCount > 0 && (
-          <span className="absolute top-1.5 right-1.5 w-2.5 h-2.5 bg-red-500 rounded-full border border-black shadow-[0_0_8px_rgba(239,68,68,0.8)]" />
+          <span className="absolute top-1 right-1 w-1.5 h-1.5 rounded-full bg-red-500 shadow-[0_0_8px_rgba(239,68,68,0.8)]" />
         )}
       </button>
 
@@ -99,10 +103,18 @@ export default function NotificationCenter({ orders, lowStockCount, messages, th
               initial={{ opacity: 0, y: 10, scale: 0.95 }}
               animate={{ opacity: 1, y: 0, scale: 1 }}
               exit={{ opacity: 0, y: 10, scale: 0.95 }}
-              className="absolute right-0 mt-3 w-80 bg-black/80 backdrop-blur-3xl border border-emerald-900/10 rounded-3xl shadow-[0_20px_50px_rgba(0,0,0,0.5)] z-50 overflow-hidden transform-gpu"
+              className={`absolute right-0 mt-2 w-80 border rounded-3xl shadow-[0_20px_50px_rgba(0,0,0,0.5)] z-50 overflow-hidden transform-gpu ${
+                theme === 'light'
+                  ? 'bg-white border-neutral-200 text-neutral-800'
+                  : 'bg-[#0b150e]/95 backdrop-blur-3xl border-emerald-900/20 text-neutral-200'
+              }`}
             >
-              <div className="p-4 border-b border-emerald-900/5 flex justify-between items-center bg-white/60">
-                <h3 className="font-bold text-emerald-950 uppercase tracking-widest text-xs">Notifications</h3>
+              <div className={`p-4 border-b flex justify-between items-center ${
+                theme === 'light' ? 'border-neutral-200 bg-neutral-50/50' : 'border-emerald-900/5 bg-white/5'
+              }`}>
+                <h3 className={`font-bold uppercase tracking-widest text-xs ${
+                  theme === 'light' ? 'text-emerald-800' : 'text-[#10B981]'
+                }`}>Notifications</h3>
                 {unreadCount > 0 && (
                   <button onClick={markAllRead} className="text-[9px] text-[#10B981] hover:text-emerald-600 uppercase tracking-wider font-bold">
                     Mark Read
@@ -118,12 +130,19 @@ export default function NotificationCenter({ orders, lowStockCount, messages, th
                   </div>
                 ) : (
                   notifications.map((n) => (
-                    <div key={n.id} className="p-3 hover:bg-white/60 rounded-2xl transition-colors flex gap-3 cursor-pointer group">
+                    <div 
+                      key={n.id} 
+                      className={`p-3 rounded-2xl transition-colors flex gap-3 cursor-pointer group ${
+                        theme === 'light' ? 'hover:bg-neutral-50' : 'hover:bg-white/5'
+                      }`}
+                    >
                       <div className={`w-10 h-10 rounded-xl flex items-center justify-center shrink-0 ${n.bg} ${n.color}`}>
                         <n.icon size={16} />
                       </div>
                       <div>
-                        <h4 className="text-xs font-bold text-neutral-200 group-hover:text-emerald-950 transition-colors">{n.title}</h4>
+                        <h4 className={`text-xs font-bold transition-colors ${
+                          theme === 'light' ? 'text-neutral-800 group-hover:text-emerald-700' : 'text-neutral-200 group-hover:text-[#10B981]'
+                        }`}>{n.title}</h4>
                         <p className="text-[10px] text-neutral-500 mt-0.5 leading-snug">{n.message}</p>
                         <span className="text-[9px] text-neutral-600 mt-1 block uppercase tracking-wider">{n.time}</span>
                       </div>

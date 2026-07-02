@@ -20,7 +20,7 @@ import {
 import { motion } from 'framer-motion';
 import { getThemeClasses } from './themeHelper';
 
-export default function StatsCards({ stats, theme }) {
+function StatsCards({ stats, theme }) {
   const c = getThemeClasses(theme);
   const cards = [
     { label: 'TOTAL ORDERS', value: stats.total, icon: Tractor, color: theme === 'light' ? '#059669' : '#32D74B', desc: 'ALL RECORDS' },
@@ -100,3 +100,4 @@ export default function StatsCards({ stats, theme }) {
   );
 }
 
+export default React.memo(StatsCards);

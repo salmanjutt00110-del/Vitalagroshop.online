@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { subscribeToOrders } from '@/lib/firestore/orders';
+import { useLanguage } from '@/lib/LanguageContext';
 const StatsCards = React.lazy(() => import('./StatsCards'));
 const OrdersTable = React.lazy(() => import('./OrdersTable'));
 const BankManager = React.lazy(() => import('./BankManager'));
@@ -84,15 +85,106 @@ const AdminWorkspaceLoader = () => (
   </div>
 );
 
+const ADMIN_TRANSLATIONS = {
+  en: {
+    dashboard: 'Dashboard',
+    reports: 'Reports',
+    securityLogs: 'Security Logs',
+    products: 'Products',
+    categories: 'Categories',
+    coupons: 'Coupons',
+    reviews: 'Reviews',
+    orders: 'Orders',
+    codVerification: 'COD Verification',
+    payments: 'Payments',
+    customers: 'Customers',
+    dealers: 'Dealers',
+    delivery: 'Delivery Management',
+    messages: 'Messages',
+    scanner: 'AI Scanner',
+    media: 'Media Library',
+    websiteSettings: 'Website Settings',
+    pages: 'Pages',
+    roles: 'Roles',
+    settings: 'Settings',
+    banks: 'Bank Accounts',
+    signout: 'Sign Out',
+    telemetry: 'Telemetry',
+    storefront: 'Storefront',
+    operations: 'Operations',
+    cmsSettings: 'CMS & Settings',
+  },
+  ur: {
+    dashboard: 'ڈیش بورڈ',
+    reports: 'رپورٹس',
+    securityLogs: 'سیکورٹی لاگز',
+    products: 'مصنوعات',
+    categories: 'زمرہ جات',
+    coupons: 'کوپنز',
+    reviews: 'ریویوز',
+    orders: 'آرڈرز',
+    codVerification: 'سی او ڈی تصدیق',
+    payments: 'ادائیگیاں',
+    customers: 'گاہک',
+    dealers: 'ڈیلرز',
+    delivery: 'ڈیلیوری مینجمنٹ',
+    messages: 'پیغامات',
+    scanner: 'اے آئی سکینر',
+    media: 'میڈیا لائبریری',
+    websiteSettings: 'ویب سائٹ ترتیبات',
+    pages: 'صفحات',
+    roles: 'کردار',
+    settings: 'ترتیبات',
+    banks: 'بینک اکاؤنٹس',
+    signout: 'سائن آؤٹ',
+    telemetry: 'ٹیلی میٹری',
+    storefront: 'اسٹور فرنٹ',
+    operations: 'آپریشنز',
+    cmsSettings: 'سی ایم ایس اور ترتیبات',
+  },
+  pb: {
+    dashboard: 'ڈیش بورڈ',
+    reports: 'رپورٹس',
+    securityLogs: 'سیکورٹی لاگز',
+    products: 'مصنوعات',
+    categories: 'زمرے',
+    coupons: 'کوپنز',
+    reviews: 'ریویوز',
+    orders: 'آرڈرز',
+    codVerification: 'سی او ڈی تصدیق',
+    payments: 'ادائیگیاں',
+    customers: 'گاہک',
+    dealers: 'ڈیلرز',
+    delivery: 'ڈیلیوری مینجمنٹ',
+    messages: 'پیغامات',
+    scanner: 'اے آئی سکینر',
+    media: 'میڈیا لائبریری',
+    websiteSettings: 'ویب سائٹ ترتیبات',
+    pages: 'صفحات',
+    roles: 'کردار',
+    settings: 'ترتیبات',
+    banks: 'بینک اکاؤنٹس',
+    signout: 'سائن آؤٹ',
+    telemetry: 'ٹیلی میٹری',
+    storefront: 'اسٹور فرنٹ',
+    operations: 'آپریشنز',
+    cmsSettings: 'سی ایم ایس اور ترتیبات',
+  }
+};
+
 export default function AdminDashboard() {
   const navigate = useNavigate();
+  const { lang, setLang } = useLanguage();
+  const isRTL = lang === 'ur' || lang === 'pb';
+  const at = ADMIN_TRANSLATIONS[lang] || ADMIN_TRANSLATIONS.en;
+
   const [isAppReady, setIsAppReady] = useState(false);
   const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
   const [userRole, setUserRole] = useState(() => localStorage.getItem('vitalAdminRole') || 'admin');
   const [userEmail, setUserEmail] = useState(() => localStorage.getItem('vitalAdminEmail') || '');
   const [userName, setUserName] = useState(() => localStorage.getItem('vitalAdminName') || 'Staff');
   const [quickActionsOpen, setQuickActionsOpen] = useState(false);
-    const [selectedVerificationOrder, setSelectedVerificationOrder] = useState(null);
+  const [selectedVerificationOrder, setSelectedVerificationOrder] = useState(null);
   const [profileMenuOpen, setProfileMenuOpen] = useState(false);
   
   const [currentTab, setCurrentTab] = useState(() => {
@@ -105,18 +197,27 @@ export default function AdminDashboard() {
   const [dbProducts, setDbProducts] = useState([]);
   const [selectedProductIds, setSelectedProductIds] = useState([]);
   const [loadingProducts, setLoadingProducts] = useState(false);
-  const [isRTL, setIsRTL] = useState(false);
   const [notificationsOpen, setNotificationsOpen] = useState(false);
-    const [liveVisitors, setLiveVisitors] = useState(184);
-    useEffect(() => {
-      const interval = setInterval(() => {
-        setLiveVisitors(prev => {
-          const change = Math.floor(Math.random() * 5) - 2; // -2 to +2
-          return Math.max(120, prev + change);
-        });
-      }, 5000);
-      return () => clearInterval(interval);
-    }, []);
+  const [liveVisitors, setLiveVisitors] = useState(184);
+  const [visitorStats, setVisitorStats] = useState({ today: 184, total: 2450, live: 184 });
+
+  const fetchLiveTelemetry = async () => {
+    try {
+      const targetURL = import.meta.env.VITE_API_URL || '';
+      const response = await fetch(`${targetURL}/api/analytics/visitors`);
+      if (response.ok) {
+        const data = await response.json();
+        setVisitorStats(data);
+        if (data.live) {
+          setLiveVisitors(data.live);
+        }
+      }
+    } catch (e) {
+      console.error("Failed to sync telemetry:", e);
+    }
+  };
+
+
 
   const [theme, setTheme] = useState(() => {
     return localStorage.getItem('vitalAdminTheme') || 'website';
@@ -177,8 +278,10 @@ export default function AdminDashboard() {
   // Form states
   const [formId, setFormId] = useState('');
   const [formName, setFormName] = useState('');
+  const [formNameUr, setFormNameUr] = useState('');
   const [formCategory, setFormCategory] = useState('plant_nutrition');
   const [formDesc, setFormDesc] = useState('');
+  const [formDescUr, setFormDescUr] = useState('');
   const [formStock, setFormStock] = useState(100);
   const [formPricingMatrix, setFormPricingMatrix] = useState([{ size: '500ml', price: '750' }]);
   const [formBaseImage, setFormBaseImage] = useState(null);
@@ -307,13 +410,35 @@ export default function AdminDashboard() {
     if (currentTab === 'messages') fetchMessages();
   }, [currentTab]);
 
+  // Real-time polling for visitors (5s), products (10s), and messages (15s)
+  useEffect(() => {
+    if (!isAuthenticated) return;
+    
+    // Initial fetch
+    fetchLiveTelemetry();
+    fetchProducts();
+    fetchMessages();
+    
+    const telemetryInterval = setInterval(fetchLiveTelemetry, 5000);
+    const productsInterval = setInterval(fetchProducts, 10000);
+    const messagesInterval = setInterval(fetchMessages, 15000);
+    
+    return () => {
+      clearInterval(telemetryInterval);
+      clearInterval(productsInterval);
+      clearInterval(messagesInterval);
+    };
+  }, [isAuthenticated]);
+
   // Modal Open Handlers
   const handleOpenCreateModal = () => {
     setEditingProduct(null);
     setFormId('');
     setFormName('');
+    setFormNameUr('');
     setFormCategory('plant_nutrition');
     setFormDesc('');
+    setFormDescUr('');
     setFormStock(100);
     setFormPricingMatrix([{ size: '500ml', price: '750' }]);
     setFormBaseImage(null);
@@ -326,8 +451,18 @@ export default function AdminDashboard() {
     const randomSuffix = Math.floor(100 + Math.random() * 900);
     setFormId(`${p.id}-copy-${randomSuffix}`);
     setFormName(`${p.productName} (Copy)`);
+    setFormNameUr(p.name?.ur || p.name_ur || '');
     setFormCategory(p.productCategory || 'plant_nutrition');
     setFormDesc(p.productDescription || '');
+    let dUr = '';
+    try {
+      if (p.description?.ur) dUr = p.description.ur;
+      else if (p.description_json) {
+        const parsed = typeof p.description_json === 'string' ? JSON.parse(p.description_json) : p.description_json;
+        dUr = parsed.ur || '';
+      }
+    } catch(e){}
+    setFormDescUr(dUr || '');
     setFormStock(p.stockInventory || 100);
     
     const matrix = [];
@@ -349,8 +484,18 @@ export default function AdminDashboard() {
     setEditingProduct(p);
     setFormId(p.id);
     setFormName(p.productName);
+    setFormNameUr(p.name?.ur || p.name_ur || '');
     setFormCategory(p.productCategory);
     setFormDesc(p.productDescription || '');
+    let dUr = '';
+    try {
+      if (p.description?.ur) dUr = p.description.ur;
+      else if (p.description_json) {
+        const parsed = typeof p.description_json === 'string' ? JSON.parse(p.description_json) : p.description_json;
+        dUr = parsed.ur || '';
+      }
+    } catch(e){}
+    setFormDescUr(dUr || '');
     setFormStock(p.stockInventory);
     
     const matrix = [];
@@ -410,6 +555,13 @@ export default function AdminDashboard() {
     formData.append('productDescription', formDesc);
     formData.append('stockInventory', formStock);
     formData.append('dynamicPricingMatrix', JSON.stringify(matrixObj));
+    
+    // Translation attributes for localized catalogs
+    formData.append('name', JSON.stringify({ en: formName.trim(), ur: formNameUr.trim() || formName.trim() }));
+    formData.append('name_ur', formNameUr.trim() || formName.trim());
+    formData.append('description', JSON.stringify({ en: formDesc, ur: formDescUr || formDesc }));
+    formData.append('shortDesc', JSON.stringify({ en: formDesc, ur: formDescUr || formDesc }));
+
     if (formBaseImage) {
       formData.append('baseImage', formBaseImage);
     }
@@ -996,10 +1148,18 @@ export default function AdminDashboard() {
         <div className="absolute inset-0 z-0 bg-gradient-to-tr from-black/60 via-black/30 to-[#10b981]/10 pointer-events-none" />
       )}
 
+      {/* Mobile backdrop drawer overlay */}
+      {!sidebarCollapsed && (
+        <div 
+          className="fixed inset-0 bg-[#02140c]/40 backdrop-blur-sm z-30 md:hidden transition-all duration-300"
+          onClick={() => setSidebarCollapsed(true)}
+        />
+      )}
+
       {/* LEFT SIDEBAR PANEL */}
       <div 
-        className={`${c.sidebar} h-screen flex flex-col justify-between transition-all duration-300 relative z-40 select-none ${
-          sidebarCollapsed ? 'w-20' : 'w-[290px]'
+        className={`${c.sidebar} fixed md:relative h-screen flex flex-col justify-between transition-all duration-300 z-40 select-none overflow-hidden ${
+          sidebarCollapsed ? 'w-0 -translate-x-full md:w-20 md:translate-x-0' : 'w-[290px] translate-x-0'
         }`}
       >
         {/* Organic Vine Overlay (Right edge winding vine) (only for website theme) */}
@@ -1254,8 +1414,9 @@ export default function AdminDashboard() {
             {/* Language toggle */}
             <button 
               onClick={() => {
-                setIsRTL(!isRTL);
-                toast.success(isRTL ? 'Language toggled to English' : 'Language toggled to Urdu / RTL Mode');
+                const nextLang = isRTL ? 'en' : 'ur';
+                setLang(nextLang);
+                toast.success(nextLang === 'ur' ? 'Language toggled to Urdu / RTL Mode' : 'Language toggled to English');
               }}
               className={`p-1.5 rounded-lg border text-[10px] font-bold uppercase font-mono transition-colors cursor-pointer ${
                 theme === 'light' 
@@ -1267,34 +1428,13 @@ export default function AdminDashboard() {
               {isRTL ? 'اردو' : 'EN'}
             </button>
 
-            {/* Notification Alert Center dropdown */}
-            <div className="relative">
-              <button 
-                onClick={() => setNotificationsOpen(!notificationsOpen)}
-                className={`p-1.5 rounded-lg border transition-colors relative cursor-pointer ${
-                  theme === 'light' 
-                    ? 'hover:bg-neutral-100 border-neutral-200 text-neutral-600 hover:text-neutral-900' 
-                    : 'hover:bg-white/60 border-emerald-900/5 text-neutral-500 hover:text-emerald-950'
-                }`}
-              >
-                <Bell size={13.5} />
-                <span className="absolute top-1 right-1 w-1.5 h-1.5 rounded-full bg-[#10B981] animate-pulse" />
-              </button>
-              {notificationsOpen && (
-                <>
-                  <div className="fixed inset-0 z-45" onClick={() => setNotificationsOpen(false)} />
-                  <div className={`absolute right-0 mt-2 w-72 border rounded-2xl p-3.5 shadow-2xl space-y-2 z-55 text-xs text-left ${c.modal}`}>
-                    <span className="font-bold block uppercase tracking-wider text-[10px] border-b border-emerald-900/5 pb-1 text-[#10B981] font-mono">System Alerts</span>
-                    <div className="space-y-2 max-h-56 overflow-y-auto font-mono text-[9px] text-neutral-400">
-                      <p className="p-2 bg-white/60 border-l-2 border-[#10B981] rounded-r-lg">⚠️ Vac Zinc is running low (4 items remaining in inventory)</p>
-                      <p className="p-2 bg-white/60 border-l-2 border-[#10B981] rounded-r-lg">⚠️ Farbasin stock warning check (7 units available)</p>
-                      <p className="p-2 bg-white/60 border-l-2 border-emerald-500 rounded-r-lg">🔔 New Cash on Delivery checkout confirmation #1042</p>
-                      <p className="p-2 bg-white/60 border-l-2 border-emerald-500 rounded-r-lg">🔔 Meezan Bank Transfer deposit TID-91048 verifications pending</p>
-                    </div>
-                  </div>
-                </>
-              )}
-            </div>
+            {/* Notification Center */}
+            <NotificationCenter 
+              orders={orders} 
+              lowStockCount={lowStockCount} 
+              messages={stats.messages || 0} 
+              theme={theme} 
+            />
 
             {/* Online Live Status Badge */}
             <div className={`flex items-center gap-1 px-2 py-1 rounded-full text-[8px] font-black font-mono uppercase tracking-wider hidden sm:flex ${
@@ -1372,7 +1512,7 @@ export default function AdminDashboard() {
 
               {/* Responsive 8 Charts Group */}
               <React.Suspense fallback={<AdminWorkspaceLoader />}>
-                <AnalyticsCharts theme={theme} c={c} />
+                <AnalyticsCharts theme={theme} c={c} orders={orders} dbProducts={dbProducts} />
               </React.Suspense>
 
               {/* 8. Recent Activity Feed Timeline */}
@@ -2726,7 +2866,7 @@ export default function AdminDashboard() {
               <form onSubmit={handleSubmitProductForm} className="space-y-4 text-xs font-mono text-left">
                 
                 {/* ID & Name row */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                   <div className="space-y-1">
                     <label className="text-[9px] font-black text-neutral-400 uppercase tracking-wider">Product Catalog ID / Slug</label>
                     <input
@@ -2740,7 +2880,7 @@ export default function AdminDashboard() {
                     />
                   </div>
                   <div className="space-y-1">
-                    <label className="text-[9px] font-black text-neutral-400 uppercase tracking-wider">Chemical Formula Name</label>
+                    <label className="text-[9px] font-black text-neutral-400 uppercase tracking-wider">Chemical Name (English)</label>
                     <input
                       type="text"
                       required
@@ -2748,6 +2888,17 @@ export default function AdminDashboard() {
                       value={formName}
                       onChange={e => setFormName(e.target.value)}
                       className="w-full px-4 py-2.5 rounded-xl bg-black border border-emerald-900/5 text-emerald-950 text-xs outline-none focus:border-emerald-500/40 transition-all font-sans"
+                    />
+                  </div>
+                  <div className="space-y-1">
+                    <label className="text-[9px] font-black text-neutral-400 uppercase tracking-wider">نام (Urdu)</label>
+                    <input
+                      type="text"
+                      placeholder="مثال: فیٹی ایسڈ فارمولا"
+                      value={formNameUr}
+                      onChange={e => setFormNameUr(e.target.value)}
+                      className="w-full px-4 py-2.5 rounded-xl bg-black border border-emerald-900/5 text-emerald-950 text-xs outline-none focus:border-emerald-500/40 transition-all font-sans text-right"
+                      dir="rtl"
                     />
                   </div>
                 </div>
@@ -2783,15 +2934,28 @@ export default function AdminDashboard() {
                 </div>
 
                 {/* Description */}
-                <div className="space-y-1">
-                  <label className="text-[9px] font-black text-neutral-400 uppercase tracking-wider">Foliar Absorption Description</label>
-                  <textarea
-                    rows="3.5"
-                    placeholder="Enter professional biotech details..."
-                    value={formDesc}
-                    onChange={e => setFormDesc(e.target.value)}
-                    className="w-full px-4 py-2.5 rounded-xl bg-black border border-emerald-900/5 text-emerald-950 text-xs outline-none focus:border-emerald-500/40 transition-all resize-none font-sans leading-relaxed"
-                  />
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div className="space-y-1">
+                    <label className="text-[9px] font-black text-neutral-400 uppercase tracking-wider">Description (English)</label>
+                    <textarea
+                      rows="3.5"
+                      placeholder="Enter professional biotech details..."
+                      value={formDesc}
+                      onChange={e => setFormDesc(e.target.value)}
+                      className="w-full px-4 py-2.5 rounded-xl bg-black border border-emerald-900/5 text-emerald-950 text-xs outline-none focus:border-emerald-500/40 transition-all resize-none font-sans leading-relaxed"
+                    />
+                  </div>
+                  <div className="space-y-1">
+                    <label className="text-[9px] font-black text-neutral-400 uppercase tracking-wider">تفصیل (Urdu)</label>
+                    <textarea
+                      rows="3.5"
+                      placeholder="پروڈکٹ کی تفصیلات یہاں لکھیں..."
+                      value={formDescUr}
+                      onChange={e => setFormDescUr(e.target.value)}
+                      className="w-full px-4 py-2.5 rounded-xl bg-black border border-emerald-900/5 text-emerald-950 text-xs outline-none focus:border-emerald-500/40 transition-all resize-none font-sans leading-relaxed text-right"
+                      dir="rtl"
+                    />
+                  </div>
                 </div>
 
                 {/* Base Image Upload */}

@@ -1,7 +1,7 @@
 'use client'
 import React, { useEffect, useRef, useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import vitalAgroLogo from '@/assets/vital agro logo.webp'
+
 
 const MESSAGES = [
   '...Initializing Systems',
@@ -236,7 +236,7 @@ export const OrbPreloader = ({ onComplete }) => {
             animate={{ y: [0, -4, 0] }}
             transition={{ duration: 3.5, repeat: Infinity, ease: 'easeInOut' }}
           >
-            <img src={vitalAgroLogo} alt="Vital Agro"
+            <img src="/logo.webp" alt="Vital Agro"
               className="h-12 md:h-14 w-auto object-contain filter drop-shadow-[0_0_12px_rgba(92,184,92,0.25)]"
             />
           </motion.div>

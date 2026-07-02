@@ -246,18 +246,18 @@ export default function PremiumSearchBar({
       <form onSubmit={handleSubmit} className="relative flex items-center">
         {/* Expanded Search Bar Container */}
         <motion.div
-          initial={isExpandable ? { width: 44, opacity: 0 } : { width: '100%', opacity: 1 }}
+          initial={isExpandable ? { width: 52, opacity: 0 } : { width: '100%', opacity: 1 }}
           animate={
             isExpanded 
               ? { width: '100%', opacity: 1 } 
-              : { width: 44, opacity: 1 }
+              : { width: 52, opacity: 1 }
           }
-          transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
-          className={`flex items-center rounded-full overflow-hidden border-2 bg-white/80 backdrop-blur-xl transition-all duration-300 ${
+          transition={{ type: 'spring', stiffness: 350, damping: 28 }}
+          className={`flex items-center rounded-full overflow-hidden border backdrop-blur-2xl transition-all duration-300 ${
             isFocused 
-              ? 'border-[#0E7A43] shadow-[0_0_24px_rgba(14,122,67,0.25),0_0_60px_rgba(14,122,67,0.08)]' 
-              : 'border-[#0E7A43]/15 shadow-sm hover:border-[#0E7A43]/40 hover:shadow-md'
-          } ${isExpanded ? 'h-13 sm:h-14 pl-4 pr-14' : 'h-11 w-11 justify-center cursor-pointer'}`}
+              ? 'border-[#10B981] bg-white/60 dark:bg-[#060b07]/45 shadow-[0_0_30px_rgba(16,185,129,0.25),0_10px_30px_rgba(0,0,0,0.05),inset_0_1px_1px_rgba(255,255,255,0.25)]' 
+              : 'border-white/20 dark:border-emerald-500/10 bg-white/40 dark:bg-[#060b07]/30 shadow-[inset_0_1px_1px_rgba(255,255,255,0.2),0_4px_24px_rgba(0,0,0,0.04)] hover:border-[#10B981]/40'
+          } ${isExpanded ? 'h-13 pl-4 pr-14' : 'h-13 w-13 justify-center cursor-pointer'}`}
           onClick={() => {
             if (!isExpanded) setIsExpanded(true);
           }}
@@ -345,9 +345,10 @@ export default function PremiumSearchBar({
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 12, scale: 0.96 }}
             transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
-            className="absolute top-full left-0 right-0 mt-3 rounded-[24px] border-2 border-[#0E7A43]/10 p-3 shadow-2xl z-[999] overflow-hidden max-h-[460px] flex flex-col bg-white/95 backdrop-blur-2xl"
+            className="absolute top-full left-0 right-0 mt-3 rounded-[24px] border p-3 z-[999] overflow-hidden max-h-[460px] flex flex-col bg-white/70 dark:bg-[#060b07]/75 backdrop-blur-3xl"
             style={{
-              boxShadow: '0 25px 50px rgba(14, 122, 67, 0.15), 0 8px 20px rgba(0,0,0,0.08), inset 0 1px 0 rgba(255, 255, 255, 0.8)'
+              borderColor: 'rgba(255, 255, 255, 0.15)',
+              boxShadow: '0 30px 70px rgba(0, 0, 0, 0.25), 0 0 50px rgba(16, 185, 129, 0.05), inset 0 1px 1px rgba(255, 255, 255, 0.2)'
             }}
           >
             {/* Header info */}

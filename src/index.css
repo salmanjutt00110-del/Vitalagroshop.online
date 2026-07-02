@@ -13,19 +13,24 @@
 
 [lang="ur"], [lang="ur"] *, [lang="pb"], [lang="pb"] *, .lang-ur, .lang-ur *, .urdu-calligraphy, .urdu-calligraphy * {
   font-family: 'Jameel Noori Nastaleeq', 'Noto Nastaliq Urdu', 'Noto Sans Arabic', 'Plus Jakarta Sans', ui-sans-serif, system-ui, sans-serif !important;
+  letter-spacing: normal !important;
+  word-spacing: 0.05em !important;
 }
 
 [lang="ur"] h1, [lang="ur"] h2, [lang="ur"] h3, [lang="ur"] h4, [lang="ur"] h5, [lang="ur"] h6,
 [lang="pb"] h1, [lang="pb"] h2, [lang="pb"] h3, [lang="pb"] h4, [lang="pb"] h5, [lang="pb"] h6,
 .lang-ur h1, .lang-ur h2, .lang-ur h3, .lang-ur h4, .lang-ur h5, .lang-ur h6 {
-  line-height: 1.8 !important;
-  padding-bottom: 0.12em;
+  line-height: 2.2 !important;
+  padding-top: 0.2em !important;
+  padding-bottom: 0.25em !important;
 }
 
 [lang="ur"] p, [lang="ur"] span, [lang="ur"] a, [lang="ur"] li, [lang="ur"] button,
 [lang="pb"] p, [lang="pb"] span, [lang="pb"] a, [lang="pb"] li, [lang="pb"] button,
 .lang-ur p, .lang-ur span, .lang-ur a, .lang-ur li, .lang-ur button {
-  line-height: 1.8 !important;
+  line-height: 2.2 !important;
+  padding-top: 0.05em !important;
+  padding-bottom: 0.05em !important;
 }
 
 @tailwind base;

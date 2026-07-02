@@ -3,8 +3,7 @@ import React, { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { useLanguage } from '@/lib/LanguageContext'
 
-// Import assets for disk caching
-import vitalAgroLogo from '@/assets/vital agro logo.webp'
+
 import fatty from '@/assets/fatty.webp'
 import super4g from '@/assets/super-4g.webp'
 import aaqaab from '@/assets/Aaqaab.webp'
@@ -73,7 +72,7 @@ export default function Preloader({ onFinish }) {
 
       // Preload Images
       try {
-        const imageAssets = [vitalAgroLogo, fatty, super4g, aaqaab]
+        const imageAssets = ['/logo.webp', fatty, super4g, aaqaab]
         await Promise.all(
           imageAssets.map((src) => {
             return new Promise((resolve) => {
@@ -189,7 +188,7 @@ export default function Preloader({ onFinish }) {
           }}
         >
           <motion.img
-            src={vitalAgroLogo} alt="Vital Agro"
+            src="/logo.webp" alt="Vital Agro"
             className="h-20 w-auto object-contain"
             animate={{ y: [0, -8, 0] }}
             transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' }}

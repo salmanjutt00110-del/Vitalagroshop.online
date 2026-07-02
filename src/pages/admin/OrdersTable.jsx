@@ -21,7 +21,7 @@ const STATUS_LABELS = {
   cancelled: '❌ Cancelled'
 };
 
-export default function OrdersTable({ orders, activeFilter, theme }) {
+function OrdersTable({ orders, activeFilter, theme }) {
   const c = getThemeClasses(theme);
   const [selectedOrder, setSelectedOrder] = useState(null);
   const [updating, setUpdating] = useState(false);
@@ -661,3 +661,5 @@ export default function OrdersTable({ orders, activeFilter, theme }) {
     </div>
   );
 }
+
+export default React.memo(OrdersTable);

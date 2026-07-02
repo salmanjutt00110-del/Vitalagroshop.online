@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState, useMemo, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import vitalAgroLogo from '@/assets/vital agro logo.webp';
+
 
 // Premium rotating loading messages
 const LOADING_MESSAGES = [
@@ -278,7 +278,7 @@ export const WelcomeScreen = ({ onComplete }) => {
             />
             
             <img
-              src={vitalAgroLogo}
+              src="/logo.webp"
               alt="Vital Agro Logo"
               className="w-full h-full object-contain filter drop-shadow-[0_0_12px_rgba(24,201,100,0.25)]"
             />

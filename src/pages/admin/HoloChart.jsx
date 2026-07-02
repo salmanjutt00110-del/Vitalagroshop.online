@@ -2,7 +2,7 @@ import React, { useRef, useState, useEffect } from 'react';
 import { motion, useSpring, useTransform, useMotionValue } from 'framer-motion';
 import { Activity, Terminal } from 'lucide-react';
 
-export default function HoloChart({ stats }) {
+function HoloChart({ stats }) {
   const cardRef = useRef(null);
   const [rotation, setRotation] = useState(0);
   const [pulse, setPulse] = useState(true);
@@ -202,3 +202,5 @@ export default function HoloChart({ stats }) {
     </div>
   );
 }
+
+export default React.memo(HoloChart);

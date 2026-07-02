@@ -232,16 +232,29 @@ function App() {
               const defaultPrice = sizesList.length > 0 ? sizesList[0].price : dbProd.price;
 
               if (existing) {
-                existing.name.en = dbProd.productName;
+                // Dynamic translation mapping from backend dbProd
+                existing.name = {
+                  en: dbProd.name?.en || dbProd.productName || existing.name?.en || '',
+                  ur: dbProd.name?.ur || existing.name?.ur || dbProd.productName || ''
+                };
+                existing.genericName = {
+                  en: dbProd.genericName?.en || existing.genericName?.en || '',
+                  ur: dbProd.genericName?.ur || existing.genericName?.ur || ''
+                };
                 existing.category = dbProd.productCategory;
-                if (dbProd.productDescription) {
-                  existing.description = { en: dbProd.productDescription, ur: existing.description?.ur || dbProd.productDescription };
-                } else {
-                  existing.description = { 
-                    en: "Product information will be updated soon.", 
-                    ur: "پروڈکٹ کی معلومات جلد اپ ڈیٹ کر دی جائیں گی۔" 
-                  };
-                }
+                existing.description = {
+                  en: dbProd.description?.en || dbProd.productDescription || existing.description?.en || '',
+                  ur: dbProd.description?.ur || existing.description?.ur || dbProd.productDescription || ''
+                };
+                existing.shortDesc = {
+                  en: dbProd.shortDesc?.en || dbProd.productDescription || existing.shortDesc?.en || '',
+                  ur: dbProd.shortDesc?.ur || existing.shortDesc?.ur || dbProd.productDescription || ''
+                };
+                existing.features = dbProd.features || existing.features || { en: [], ur: [] };
+                existing.benefits = dbProd.benefits || existing.benefits || { en: [], ur: [] };
+                existing.crops = dbProd.crops || existing.crops || [];
+                existing.specs = dbProd.specs || existing.specs || {};
+
                 if (dbProd.baseImageURL && isValidImagePath(dbProd.baseImageURL)) {
                   existing.imageUrl = dbProd.baseImageURL.trim();
                   existing.pngUrl = dbProd.baseImageURL.trim();
@@ -257,7 +270,7 @@ function App() {
                 existing.stockInventory = dbProd.stockInventory;
                 existing.stockStatus = dbProd.stockInventory > 0 ? "In Stock" : "Out of Stock";
               } else {
-                // Create product from real database data only - no fake genericName/features
+                // Create product from real database data only
                 const finalImg = (dbProd.baseImageURL && isValidImagePath(dbProd.baseImageURL)) 
                   ? dbProd.baseImageURL.trim() 
                   : "";
@@ -265,8 +278,14 @@ function App() {
                 PRODUCTS_DATA[dbProd.id] = {
                   id: dbProd.id,
                   slug: dbProd.id,
-                  name: { en: dbProd.productName, ur: dbProd.productName },
-                  genericName: { en: dbProd.productName, ur: dbProd.productName },
+                  name: {
+                    en: dbProd.name?.en || dbProd.productName || '',
+                    ur: dbProd.name?.ur || dbProd.productName || ''
+                  },
+                  genericName: {
+                    en: dbProd.genericName?.en || dbProd.productName || '',
+                    ur: dbProd.genericName?.ur || dbProd.productName || ''
+                  },
                   category: dbProd.productCategory,
                   imageUrl: finalImg,
                   pngUrl: finalImg,
@@ -274,11 +293,17 @@ function App() {
                   sizes: sizesList,
                   price: defaultPrice,
                   description: { 
-                    en: dbProd.productDescription || "Product information will be updated soon.", 
-                    ur: dbProd.productDescription || "پروڈکٹ کی معلومات جلد اپ ڈیٹ کر دی جائیں گی۔" 
+                    en: dbProd.description?.en || dbProd.productDescription || "Product information will be updated soon.", 
+                    ur: dbProd.description?.ur || dbProd.productDescription || "پروڈکٹ کی معلومات جلد اپ ڈیٹ کر دی جائیں گی۔" 
                   },
-                  features: { en: [], ur: [] },
-                  crops: []
+                  shortDesc: {
+                    en: dbProd.shortDesc?.en || dbProd.productDescription || "Product information will be updated soon.",
+                    ur: dbProd.shortDesc?.ur || dbProd.productDescription || "پروڈکٹ کی معلومات جلد اپ ڈیٹ کر دی جائیں گی۔"
+                  },
+                  features: dbProd.features || { en: [], ur: [] },
+                  benefits: dbProd.benefits || { en: [], ur: [] },
+                  crops: dbProd.crops || [],
+                  specs: dbProd.specs || {}
                 };
               }
             });
